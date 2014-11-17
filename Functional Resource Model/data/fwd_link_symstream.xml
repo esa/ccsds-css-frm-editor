@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:FunctionalResource xmlns:ns1="http://iso.org.dod.ccsds">
+	<parameter typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (78125 .. 2560000000)" name="data-clock" SemanticDefinition="This parameter reports the configured forward link symbol rate in 1/10000 Hz, where the range is 78125 to 2560000000." oidBit="1"/>
+	<parameter typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 2)&#xA;{   nrz-l   (0)&#xA;,    nrz-m   (1)&#xA;,   sp-l   (2)&#xA;}" name="baseband-waveform" SemanticDefinition="This enumerated parameter reports the baseband waveform used to modulate the subcarrier or carrier of the forward link. It can take on the following values:&#xA;- 'NRZ-L';&#xA;- 'NRZ-M';&#xA;- 'SP-L'." oidBit="2"/>
+</ns1:FunctionalResource>

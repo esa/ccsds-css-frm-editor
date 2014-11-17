@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:fr="http://iso.org.dod.ccsds" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI"  targetNamespace="http://iso.org.dod.ccsds">
+  <xsd:element name="FunctionalResourceModel" type="fr:FunctionalResourceModel"/>
+  <xsd:complexType name="FunctionalResourceModel">
+    <xsd:sequence>
+      <xsd:element  name="rootOid" type="fr:Oid"/>
+      <xsd:element  maxOccurs="unbounded" minOccurs="0" name="functionalResource" type="fr:FunctionalResource"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FrModelElement">
+    <xsd:sequence>
+      <xsd:element  name="oid" type="fr:Oid" minOccurs="0"/> <!-- mandatory --> 
+    </xsd:sequence>
+    <xsd:attribute name="SemanticDefinition" type="xsd:string" use="required"/>
+    <xsd:attribute name="oidBit" type="xsd:int" use="required"/>
+    <xsd:attribute name="deprecated" type="xsd:boolean" use="optional" default="false"/> <!-- mandatory -->
+    <xsd:attribute name="authorizingEntity" type="xsd:string" use="optional"/> <!-- mandatory -->
+    <xsd:attribute name="creationDate" type="xsd:string" use="optional"/> <!-- mandatory type: xsd:date? -->
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="version" type="xsd:integer" use="optional" default="1"> <!-- mandatory -->
+      <xsd:annotation>
+        <xsd:documentation>The version will be, if present, appended to the OID of this element.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:complexType name="Oid">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="oidBit" type="xsd:integer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FunctionalResource">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:sequence>
+          <xsd:element  maxOccurs="unbounded" minOccurs="0" name="events" type="fr:Event"/>
+          <xsd:element  maxOccurs="unbounded" minOccurs="0" name="directives" type="fr:Directive"/>
+          <xsd:element  maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Event">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Directive">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Parameter">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:attribute name="engineeringUnit" type="xsd:string"/>
+        <xsd:attribute name="typeDefinition" type="xsd:string" use="required"/>
+        <xsd:attribute name="externalType" type="xsd:boolean" use="optional" default="false"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

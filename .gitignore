@@ -1,0 +1,7 @@
+*.class
+*.zip
+RemoteSystemsTempFiles/*
+org.eclipse.*
+sw-delivery
+.metadata
+
