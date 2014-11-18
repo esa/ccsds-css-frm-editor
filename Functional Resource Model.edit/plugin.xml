@@ -64,7 +64,7 @@
                afterTab="Base"
                category="default"
                id="TypeDefinitionView"
-               label="Type">
+               label="TypeDefinitionView">
          </propertyTab>
 
       </propertyTabs>
