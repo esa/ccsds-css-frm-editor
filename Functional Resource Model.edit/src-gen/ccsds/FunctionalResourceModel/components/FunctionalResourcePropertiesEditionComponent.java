@@ -559,4 +559,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 
 	
 
+	
+
 }

@@ -16,6 +16,7 @@ import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontNameAction;
 import org.eclipse.emf.eef.runtime.ui.widgets.richtext.actions.EEFFontSizeAction;
@@ -46,12 +47,15 @@ import org.eclipse.epf.richtext.actions.SuperscriptAction;
 import org.eclipse.epf.richtext.actions.TidyActionGroup;
 import org.eclipse.epf.richtext.actions.UnderlineAction;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -64,7 +68,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
  */
 public class TypeDefinitionViewPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TypeDefinitionViewPropertiesEditionPart {
 
-	protected RichText typeDefinitionRichText;
+	protected Text typeDefinitionRichText;
 
 
 
@@ -116,7 +120,7 @@ public class TypeDefinitionViewPropertiesEditionPartForm extends SectionProperti
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText) {
-					return createTypeDefinitionRichTextRichText(widgetFactory, parent);
+					return createTypeDefinitionRichTextTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -124,87 +128,62 @@ public class TypeDefinitionViewPropertiesEditionPartForm extends SectionProperti
 		composer.compose(view);
 	}
 	
-	protected Composite createTypeDefinitionRichTextRichText(FormToolkit widgetFactory, Composite parent) {
+	protected Composite createTypeDefinitionRichTextTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label typeDefinitionRichTextLabel = createDescription(parent, FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText, FunctionalResourceModelMessages.TypeDefinitionViewPropertiesEditionPart_TypeDefinitionRichTextLabel);
 		GridData typeDefinitionRichTextLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		typeDefinitionRichTextLabelData.horizontalSpan = 2;
+		typeDefinitionRichTextLabelData.horizontalSpan = 3;
 		typeDefinitionRichTextLabel.setLayoutData(typeDefinitionRichTextLabelData);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		Composite toolbarContainer = widgetFactory.createComposite(parent);
-		toolbarContainer.setLayout(new GridLayout(2, false));
-		GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);
-		toolbarData.horizontalSpan = 3;
-		toolbarData.widthHint = 200;
-		toolbarContainer.setLayoutData(toolbarData);
-		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, typeDefinitionRichText);
-		typeDefinitionRichText = new RichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		typeDefinitionRichText.setEditable(true);
+		typeDefinitionRichText = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData typeDefinitionRichTextData = new GridData(GridData.FILL_HORIZONTAL);
-		typeDefinitionRichTextData.horizontalSpan = 3;
-		typeDefinitionRichTextData.heightHint = 400;
+		typeDefinitionRichTextData.horizontalSpan = 2;
+		typeDefinitionRichTextData.heightHint = 80;
 		typeDefinitionRichTextData.widthHint = 200;
 		typeDefinitionRichText.setLayoutData(typeDefinitionRichTextData);
+		typeDefinitionRichText.addFocusListener(new FocusAdapter() {
 
-		typeDefinitionRichText.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent(TypeDefinitionViewPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinitionRichText.getText()));
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							TypeDefinitionViewPropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinitionRichText.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TypeDefinitionViewPropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, typeDefinitionRichText.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TypeDefinitionViewPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
+		EditingUtils.setID(typeDefinitionRichText, FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText);
+		EditingUtils.setEEFtype(typeDefinitionRichText, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeDefinitionRichTextTextArea
 
-		fillToolBar(toolBar, typeDefinitionRichText);
+		// End of user code
 		return parent;
-	}
-
-	/**
-	 * Populate actions in the Toolbar to link with the RichText
-	 * 
-	 * @param toolBar The IRichTextToolBar
-	 * @param richText The IRichText
-	 */
-	private void fillToolBar(IRichTextToolBar toolBar, IRichText richText) {
-				toolBar.addAction(new EEFFontStyleAction(richText));
-				toolBar.addAction(new EEFFontNameAction(richText));
-				toolBar.addAction(new EEFFontSizeAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new CutAction(richText));
-				toolBar.addAction(new CopyAction(richText));
-				toolBar.addAction(new PasteAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new ClearContentAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new BoldAction(richText));
-				toolBar.addAction(new ItalicAction(richText));
-				toolBar.addAction(new UnderlineAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new SubscriptAction(richText));
-				toolBar.addAction(new SuperscriptAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new TidyActionGroup(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new AddOrderedListAction(richText));
-				toolBar.addAction(new AddUnorderedListAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new OutdentAction(richText));
-				toolBar.addAction(new IndentAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new JustifyLeftAction(richText));
-				toolBar.addAction(new JustifyCenterAction(richText));
-				toolBar.addAction(new JustifyRightAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new FindReplaceAction(richText) {
-					/**
-					 * @see org.eclipse.epf.richtext.actions.FindReplaceAction#execute(org.eclipse.epf.richtext.IRichText)
-					 */
-					public void execute(IRichText rText) {
-						rText.getFindReplaceAction().execute(rText);
-					}
-				});
-				toolBar.addSeparator();
-				toolBar.addAction(new AddLinkAction(richText));
-				toolBar.addAction(new AddImageAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new AddTableAction(richText));
-		
 	}
 
 
@@ -242,13 +221,14 @@ public class TypeDefinitionViewPropertiesEditionPartForm extends SectionProperti
 		} else {
 			typeDefinitionRichText.setText(""); //$NON-NLS-1$
 		}
-//		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText);
-//		if (eefElementEditorReadOnlyState && typeDefinitionRichText.isEnabled()) {
-//			typeDefinitionRichText.setEnabled(false);
-//			typeDefinitionRichText.setToolTipText(FunctionalResourceModelMessages.TypeDefinitionView_ReadOnly);
-//		} else if (!eefElementEditorReadOnlyState && !typeDefinitionRichText.isEnabled()) {
-//			typeDefinitionRichText.setEnabled(true);
-//		}	
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText);
+		if (eefElementEditorReadOnlyState && typeDefinitionRichText.isEnabled()) {
+			typeDefinitionRichText.setEnabled(false);
+			typeDefinitionRichText.setBackground(typeDefinitionRichText.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			typeDefinitionRichText.setToolTipText(FunctionalResourceModelMessages.TypeDefinitionView_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !typeDefinitionRichText.isEnabled()) {
+			typeDefinitionRichText.setEnabled(true);
+		}	
 		
 	}
 

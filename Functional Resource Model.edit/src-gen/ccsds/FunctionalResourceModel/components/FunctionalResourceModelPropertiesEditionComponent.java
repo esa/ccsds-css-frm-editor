@@ -220,4 +220,6 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 
 	
 
+	
+
 }

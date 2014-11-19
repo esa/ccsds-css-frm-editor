@@ -72,7 +72,7 @@ import org.eclipse.swt.widgets.Text;
  */
 public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ParameterPropertiesEditionPart {
 
-	protected RichText semanticDefinition;
+	protected Text semanticDefinition;
 	protected Text oidBit;
 	protected Button deprecated;
 	protected Text authorizingEntity;
@@ -136,7 +136,7 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 					return createPropertiesGroup(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition) {
-					return createSemanticDefinitionRichText(parent);
+					return createSemanticDefinitionTextarea(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.oidBit) {
 					return createOidBitText(parent);
@@ -181,86 +181,38 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	
-	protected Composite createSemanticDefinitionRichText(Composite parent) {
+	protected Composite createSemanticDefinitionTextarea(Composite parent) {
 		Label semanticDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_SemanticDefinitionLabel);
 		GridData semanticDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionLabelData.horizontalSpan = 2;
+		semanticDefinitionLabelData.horizontalSpan = 3;
 		semanticDefinitionLabel.setLayoutData(semanticDefinitionLabelData);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		Composite toolbarContainer = new Composite(parent, SWT.NONE);
-		toolbarContainer.setLayout(new GridLayout(2, false));
-		GridData toolbarData = new GridData(GridData.FILL_HORIZONTAL);
-		toolbarData.horizontalSpan = 3;
-		toolbarContainer.setLayoutData(toolbarData);
-		RichTextToolBar toolBar = new RichTextToolBar(toolbarContainer, SWT.NONE, semanticDefinition);
-		semanticDefinition = new RichText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		semanticDefinition.setEditable(true);
+		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionData.horizontalSpan = 3;
-		semanticDefinitionData.heightHint = 200;
+		semanticDefinitionData.horizontalSpan = 2;
+		semanticDefinitionData.heightHint = 80;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
+		semanticDefinition.addFocusListener(new FocusAdapter() {
 
-		semanticDefinition.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				propertiesEditionComponent.delayedFirePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
 			}
+
 		});
+		EditingUtils.setID(semanticDefinition, FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition);
+		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createSemanticDefinitionTextArea
 
-		fillToolBar(toolBar, semanticDefinition);
+		// End of user code
 		return parent;
-	}
-
-	/**
-	 * Populate actions in the Toolbar to link with the RichText
-	 * 
-	 * @param toolBar The IRichTextToolBar
-	 * @param richText The IRichText
-	 */
-	private void fillToolBar(IRichTextToolBar toolBar, IRichText richText) {
-				toolBar.addAction(new EEFFontStyleAction(richText));
-				toolBar.addAction(new EEFFontNameAction(richText));
-				toolBar.addAction(new EEFFontSizeAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new CutAction(richText));
-				toolBar.addAction(new CopyAction(richText));
-				toolBar.addAction(new PasteAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new ClearContentAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new BoldAction(richText));
-				toolBar.addAction(new ItalicAction(richText));
-				toolBar.addAction(new UnderlineAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new SubscriptAction(richText));
-				toolBar.addAction(new SuperscriptAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new TidyActionGroup(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new AddOrderedListAction(richText));
-				toolBar.addAction(new AddUnorderedListAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new OutdentAction(richText));
-				toolBar.addAction(new IndentAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new JustifyLeftAction(richText));
-				toolBar.addAction(new JustifyCenterAction(richText));
-				toolBar.addAction(new JustifyRightAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new FindReplaceAction(richText) {
-					 /**
-					 * @see org.eclipse.epf.richtext.actions.FindReplaceAction#execute(org.eclipse.epf.richtext.IRichText)
-					 */
-					public void execute(IRichText rText) {
-						rText.getFindReplaceAction().execute(rText);
-					}
-				});
-				toolBar.addSeparator();
-				toolBar.addAction(new AddLinkAction(richText));
-				toolBar.addAction(new AddImageAction(richText));
-				toolBar.addSeparator();
-				toolBar.addAction(new AddTableAction(richText));
-		
 	}
 
 	
@@ -622,13 +574,14 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		} else {
 			semanticDefinition.setText(""); //$NON-NLS-1$
 		}
-//		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition);
-//		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
-//			semanticDefinition.setEnabled(false);
-//			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
-//		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
-//			semanticDefinition.setEnabled(true);
-//		}	
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition);
+		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
+			semanticDefinition.setEnabled(false);
+			semanticDefinition.setBackground(semanticDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
+			semanticDefinition.setEnabled(true);
+		}	
 		
 	}
 

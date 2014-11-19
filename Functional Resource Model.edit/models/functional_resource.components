@@ -301,7 +301,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="_iL6sl2s6EeSK0JOrFF5pQA" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_iL6smGs6EeSK0JOrFF5pQA" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.codegen.extended.widgets.richtext/std/Extended.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_iL6smWs6EeSK0JOrFF5pQA" name="oidBit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -328,7 +328,7 @@
       </views>
       <views xmi:id="_Agfe4Gv0EeSGoO6XiQ2n9Q" name="TypeDefinitionView">
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_GWkhcGv0EeSGoO6XiQ2n9Q" name="typeDefinitionRichText">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.codegen.extended.widgets.richtext/std/Extended.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
         </elements>
       </views>
     </categories>

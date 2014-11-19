@@ -66,7 +66,7 @@ public class ParameterTypeDefinitionViewPropertiesEditionComponent extends Singl
 			final Parameter parameter = (Parameter)elt;
 			final TypeDefinitionViewPropertiesEditionPart typeDefinitionViewPart = (TypeDefinitionViewPropertiesEditionPart)editingPart;
 			// init values
-			if (parameter.getTypeDefinition() != null && isAccessible(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText))
+			if (isAccessible(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText))
 				typeDefinitionViewPart.setTypeDefinitionRichText(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, parameter.getTypeDefinition()));
 			// init filters
 			
@@ -112,7 +112,7 @@ public class ParameterTypeDefinitionViewPropertiesEditionComponent extends Singl
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TypeDefinitionViewPropertiesEditionPart typeDefinitionViewPart = (TypeDefinitionViewPropertiesEditionPart)editingPart;
-			if (FunctionalResourceModelPackage.eINSTANCE.getParameter_TypeDefinition().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText)){
+			if (FunctionalResourceModelPackage.eINSTANCE.getParameter_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && typeDefinitionViewPart != null && isAccessible(FunctionalResourceModelViewsRepository.TypeDefinitionView.typeDefinitionRichText)){
 				if (msg.getNewValue() != null) {
 					typeDefinitionViewPart.setTypeDefinitionRichText(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -172,6 +172,8 @@ public class ParameterTypeDefinitionViewPropertiesEditionComponent extends Singl
 		return ret;
 	}
 
+
+	
 
 	
 

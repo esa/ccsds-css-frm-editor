@@ -75,7 +75,7 @@ public class ParameterBasePropertiesEditionComponent extends SinglePartPropertie
 			final Parameter parameter = (Parameter)elt;
 			final ParameterPropertiesEditionPart basePart = (ParameterPropertiesEditionPart)editingPart;
 			// init values
-			if (parameter.getSemanticDefinition() != null && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition))
+			if (isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition))
 				basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, parameter.getSemanticDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.oidBit)) {
 				basePart.setOidBit(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, parameter.getOidBit()));
@@ -200,7 +200,7 @@ public class ParameterBasePropertiesEditionComponent extends SinglePartPropertie
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			ParameterPropertiesEditionPart basePart = (ParameterPropertiesEditionPart)editingPart;
-			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition)){
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.semanticDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -361,6 +361,8 @@ public class ParameterBasePropertiesEditionComponent extends SinglePartPropertie
 		return ret;
 	}
 
+
+	
 
 	
 

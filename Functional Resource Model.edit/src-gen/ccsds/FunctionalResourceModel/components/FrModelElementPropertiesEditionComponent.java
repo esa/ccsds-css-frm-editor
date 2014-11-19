@@ -338,4 +338,6 @@ public class FrModelElementPropertiesEditionComponent extends SinglePartProperti
 
 	
 
+	
+
 }
