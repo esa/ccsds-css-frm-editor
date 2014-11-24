@@ -2,9 +2,14 @@ package ccsds.tranform;
 
 import java.io.IOException;
 
+
+
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -15,6 +20,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -183,8 +189,9 @@ public class FrModelTransformation {
 		semanticDescrAttr.setDefaultValueLiteral(fr.getSemanticDefinition());		
 		semanticDescrAttr.setUpperBound(1);
 		frInstanceClass.getEStructuralFeatures().add(semanticDescrAttr);
-				
-		createManagementClass(fr, frInstanceClass);
+		
+		// Add the semantic definition as model documentation
+		EcoreUtil.setDocumentation(frInstanceClass, fr.getSemanticDefinition());
 
 		// add an attribute of the created FRI type to the complex class
 		EReference frList = theCoreFactory.createEReference();
@@ -196,6 +203,8 @@ public class FrModelTransformation {
 		complexClass.getEStructuralFeatures().add(frList);
 		
 		friPackage.getEClassifiers().add(frInstanceClass);
+		
+		createManagementClass(fr, frInstanceClass);
 		
 		return frInstanceClass;
 	}
@@ -310,6 +319,7 @@ public class FrModelTransformation {
 			mgmntRef.setLowerBound(1); 
 			mgmntRef.setUpperBound(1);
 			mgmntRef.setContainment(true);
+			EcoreUtil.setDocumentation(mgmntRef, p.getSemanticDefinition());
 			
 			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
 		}
@@ -321,6 +331,7 @@ public class FrModelTransformation {
 			mgmntRef.setLowerBound(1); 
 			mgmntRef.setUpperBound(1);
 			mgmntRef.setContainment(true);
+			EcoreUtil.setDocumentation(mgmntRef, d.getSemanticDefinition());
 			
 			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
 		}
@@ -332,6 +343,7 @@ public class FrModelTransformation {
 			mgmntRef.setLowerBound(1); 
 			mgmntRef.setUpperBound(1);
 			mgmntRef.setContainment(true);
+			EcoreUtil.setDocumentation(mgmntRef, e.getSemanticDefinition());
 			
 			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
 		}
