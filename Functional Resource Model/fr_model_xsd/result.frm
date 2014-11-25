@@ -449,7 +449,7 @@ Note: Time-tagged meteo data (relative humidity, atmospheric pressure, temperatu
       <semantic_definition>This parameter reports the temperature in °C as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this instant in time.</semantic_definition>
       <type_definition>SEQUENCE (SIZE (1)) OF Integer (-100 ..  100)</type_definition>
     </parameter>
-    <semantic_definition>TBD</semantic_definition>
+    <semantic_definition>antenna tbd</semantic_definition>
   </functionalResource>
   <functionalResource oidBit="2" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="Forward Space Link Carrier Transmission" uses="#//@functionalResource.0">
     <oid>

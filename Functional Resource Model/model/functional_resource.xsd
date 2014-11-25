@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:fr="http://iso.org.dod.ccsds" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="fr" ecore:package="ccsds.FunctionalResourceModel" targetNamespace="http://iso.org.dod.ccsds">
-  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="Ecore.xsd"/>
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
   <xsd:element ecore:ignore="true" name="FunctionalResourceModel" type="fr:FunctionalResourceModel"/>
   <xsd:element ecore:ignore="true" name="FrModelElement" type="fr:FrModelElement"/>
   <xsd:element ecore:ignore="true" name="Oid" type="fr:Oid"/>
@@ -16,15 +16,15 @@
   </xsd:complexType>
   <xsd:complexType name="FrModelElement">
     <xsd:sequence>
-      
+      <xsd:element ecore:name="SemanticDefinition" name="semantic_definition" type="ecore:EString"/>
       <xsd:element ecore:resolveProxies="true" name="oid" type="fr:Oid"/>
     </xsd:sequence>
-    <xsd:attribute ecore:unsettable="false" name="oidBit" type="ecore:EInt" use="optional"/>
-    <xsd:attribute ecore:unsettable="false" name="deprecated" type="ecore:EBoolean" use="optional"/>
+    <xsd:attribute ecore:unsettable="false" name="oidBit" type="ecore:EInt" use="required"/>
+    <xsd:attribute ecore:unsettable="false" name="deprecated" type="ecore:EBoolean" use="required"/>
     <xsd:attribute name="authorizingEntity" type="ecore:EString" use="required"/>
     <xsd:attribute name="creationDate" type="ecore:EDate"/>
     <xsd:attribute name="name" type="ecore:EString" use="required"/>
-    <xsd:attribute ecore:default="1" ecore:unsettable="false" name="version" type="ecore:EInt" use="optional">
+    <xsd:attribute ecore:default="1" ecore:unsettable="false" name="version" type="ecore:EInt" use="required">
       <xsd:annotation>
         <xsd:documentation>The version will be, if present, appended to the OID of this element.</xsd:documentation>
       </xsd:annotation>
@@ -42,11 +42,9 @@
     <xsd:complexContent>
       <xsd:extension base="fr:FrModelElement">
         <xsd:sequence>
-          <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="events" type="fr:Event"/>
-          <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="directives" type="fr:Directive"/>
-          <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
-          
-          <xsd:element ecore:name="SemanticDefinition" name="semantic_definition" type="ecore:EString"/>
+          <xsd:element ecore:ordered="false" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="events" type="fr:Event"/>
+          <xsd:element ecore:ordered="false" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="directives" type="fr:Directive"/>
+          <xsd:element ecore:ordered="false" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
         </xsd:sequence>
         <xsd:attribute ecore:reference="fr:FunctionalResource" name="uses">
           <xsd:simpleType>
@@ -66,7 +64,6 @@
       <xsd:extension base="fr:FrModelElement">
         <xsd:sequence>
           <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
-          <xsd:element ecore:name="SemanticDefinition" name="semantic_definition" type="ecore:EString"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -75,7 +72,6 @@
     <xsd:complexContent>
       <xsd:extension base="fr:FrModelElement">
         <xsd:sequence>
-          <xsd:element ecore:name="SemanticDefinition" name="semantic_definition" type="ecore:EString"/>
           <xsd:element ecore:name="typeDefinition" name="type_definition" type="ecore:EString"/>
           <xsd:element ecore:resolveProxies="true" minOccurs="0" name="externalTypeOid" type="fr:Oid"/>
         </xsd:sequence>
