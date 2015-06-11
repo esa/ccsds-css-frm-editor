@@ -1,5 +1,6 @@
 *.class
 *.zip
+*.lost
 RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery
