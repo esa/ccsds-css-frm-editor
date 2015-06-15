@@ -12,7 +12,6 @@ import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceModelProperti
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourcePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.OidPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm;
-import ccsds.FunctionalResourceModel.parts.forms.TypeDefinitionViewPropertiesEditionPartForm;
 
 import ccsds.FunctionalResourceModel.parts.impl.DirectivePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.EventPropertiesEditionPartImpl;
@@ -21,7 +20,6 @@ import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceModelPropertie
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourcePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.OidPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.ParameterPropertiesEditionPartImpl;
-import ccsds.FunctionalResourceModel.parts.impl.TypeDefinitionViewPropertiesEditionPartImpl;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -91,12 +89,6 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new ParameterPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new ParameterPropertiesEditionPartForm(component);
-		}
-		if (key == FunctionalResourceModelViewsRepository.TypeDefinitionView.class) {
-			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
-				return new TypeDefinitionViewPropertiesEditionPartImpl(component);
-			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
-				return new TypeDefinitionViewPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

@@ -6,9 +6,7 @@ package ccsds.FunctionalResourceModel.providers;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Parameter;
 
-import ccsds.FunctionalResourceModel.components.ParameterBasePropertiesEditionComponent;
 import ccsds.FunctionalResourceModel.components.ParameterPropertiesEditionComponent;
-import ccsds.FunctionalResourceModel.components.ParameterTypeDefinitionViewPropertiesEditionComponent;
 
 import java.util.List;
 
@@ -63,7 +61,7 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Parameter) && (ParameterBasePropertiesEditionComponent.BASE_PART.equals(part) || ParameterTypeDefinitionViewPropertiesEditionComponent.TYPEDEFINITIONVIEW_PART.equals(part));
+		return (editingContext.getEObject() instanceof Parameter) && (ParameterPropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
@@ -73,7 +71,7 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterBasePropertiesEditionComponent.class || refinement == ParameterTypeDefinitionViewPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -83,7 +81,7 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && ((ParameterBasePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ParameterBasePropertiesEditionComponent.class) || (ParameterTypeDefinitionViewPropertiesEditionComponent.TYPEDEFINITIONVIEW_PART.equals(part) && refinement == ParameterTypeDefinitionViewPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Parameter) && ((ParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ParameterPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -105,10 +103,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterBasePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ParameterBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ParameterTypeDefinitionViewPropertiesEditionComponent.TYPEDEFINITIONVIEW_PART.equals(part))
-				return new ParameterTypeDefinitionViewPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterPropertiesEditionComponent.BASE_PART.equals(part))
+				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -120,12 +116,9 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterBasePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == ParameterBasePropertiesEditionComponent.class)
-				return new ParameterBasePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ParameterTypeDefinitionViewPropertiesEditionComponent.TYPEDEFINITIONVIEW_PART.equals(part)
-				&& refinement == ParameterTypeDefinitionViewPropertiesEditionComponent.class)
-				return new ParameterTypeDefinitionViewPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterPropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == ParameterPropertiesEditionComponent.class)
+				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

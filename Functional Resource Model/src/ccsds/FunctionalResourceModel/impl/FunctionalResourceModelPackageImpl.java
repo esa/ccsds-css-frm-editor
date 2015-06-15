@@ -375,6 +375,24 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getParameter_Monitored() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameter_Controlled() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FunctionalResourceModelFactory getFunctionalResourceModelFactory() {
 		return (FunctionalResourceModelFactory)getEFactoryInstance();
 	}
@@ -430,6 +448,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(parameterEClass, PARAMETER__ENGINEERING_UNIT);
 		createEAttribute(parameterEClass, PARAMETER__TYPE_DEFINITION);
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_TYPE_OID);
+		createEAttribute(parameterEClass, PARAMETER__MONITORED);
+		createEAttribute(parameterEClass, PARAMETER__CONTROLLED);
 	}
 
 	/**
@@ -498,37 +518,11 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getParameter_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Monitored(), ecorePackage.getEBoolean(), "monitored", "true", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Controlled(), ecorePackage.getEBoolean(), "controlled", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-		createExtendedMetaDataAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
-		addAnnotation
-		  (getFrModelElement_SemanticDefinition(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "semantic_definition"
-		   });			
-		addAnnotation
-		  (getParameter_TypeDefinition(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "type_definition"
-		   });
 	}
 
 } //FunctionalResourceModelPackageImpl

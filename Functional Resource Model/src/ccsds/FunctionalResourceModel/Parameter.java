@@ -14,6 +14,8 @@ package ccsds.FunctionalResourceModel;
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getExternalTypeOid <em>External Type Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,7 +62,6 @@ public interface Parameter extends FrModelElement {
 	 * @see #setTypeDefinition(String)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_TypeDefinition()
 	 * @model required="true"
-	 *        extendedMetaData="kind='element' name='type_definition'"
 	 * @generated
 	 */
 	String getTypeDefinition();
@@ -100,5 +101,59 @@ public interface Parameter extends FrModelElement {
 	 * @generated
 	 */
 	void setExternalTypeOid(Oid value);
+
+	/**
+	 * Returns the value of the '<em><b>Monitored</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Monitored</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Monitored</em>' attribute.
+	 * @see #setMonitored(boolean)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_Monitored()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isMonitored();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#isMonitored <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Monitored</em>' attribute.
+	 * @see #isMonitored()
+	 * @generated
+	 */
+	void setMonitored(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Controlled</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Controlled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Controlled</em>' attribute.
+	 * @see #setControlled(boolean)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_Controlled()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isControlled();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Controlled</em>' attribute.
+	 * @see #isControlled()
+	 * @generated
+	 */
+	void setControlled(boolean value);
 
 } // Parameter

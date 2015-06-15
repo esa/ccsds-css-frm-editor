@@ -52,6 +52,9 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	protected Text name;
 	protected Text version;
 	protected Text engineeringUnit;
+	protected Text typeDefinition;
+	protected Button monitored;
+	protected Button controlled;
 
 
 
@@ -98,6 +101,9 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.engineeringUnit);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
 		
 		
 		composer = new PartComposer(parameterStep) {
@@ -130,6 +136,15 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.engineeringUnit) {
 					return createEngineeringUnitText(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition) {
+					return createTypeDefinitionTextarea(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.monitored) {
+					return createMonitoredCheckbox(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.controlled) {
+					return createControlledCheckbox(parent);
 				}
 				return parent;
 			}
@@ -511,6 +526,101 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		return parent;
 	}
 
+	
+	protected Composite createTypeDefinitionTextarea(Composite parent) {
+		Label typeDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_TypeDefinitionLabel);
+		GridData typeDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		typeDefinitionLabelData.horizontalSpan = 3;
+		typeDefinitionLabel.setLayoutData(typeDefinitionLabelData);
+		typeDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
+		typeDefinitionData.horizontalSpan = 2;
+		typeDefinitionData.heightHint = 80;
+		typeDefinitionData.widthHint = 200;
+		typeDefinition.setLayoutData(typeDefinitionData);
+		typeDefinition.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinition.getText()));
+			}
+
+		});
+		EditingUtils.setID(typeDefinition, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
+		EditingUtils.setEEFtype(typeDefinition, "eef::Textarea"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createTypeDefinitionTextArea
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createMonitoredCheckbox(Composite parent) {
+		monitored = new Button(parent, SWT.CHECK);
+		monitored.setText(getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_MonitoredLabel));
+		monitored.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(monitored.getSelection())));
+			}
+
+		});
+		GridData monitoredData = new GridData(GridData.FILL_HORIZONTAL);
+		monitoredData.horizontalSpan = 2;
+		monitored.setLayoutData(monitoredData);
+		EditingUtils.setID(monitored, FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
+		EditingUtils.setEEFtype(monitored, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createMonitoredCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createControlledCheckbox(Composite parent) {
+		controlled = new Button(parent, SWT.CHECK);
+		controlled.setText(getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_ControlledLabel));
+		controlled.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(controlled.getSelection())));
+			}
+
+		});
+		GridData controlledData = new GridData(GridData.FILL_HORIZONTAL);
+		controlledData.horizontalSpan = 2;
+		controlled.setLayoutData(controlledData);
+		EditingUtils.setID(controlled, FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
+		EditingUtils.setEEFtype(controlled, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createControlledCheckbox
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -777,6 +887,103 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 			engineeringUnit.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !engineeringUnit.isEnabled()) {
 			engineeringUnit.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getTypeDefinition()
+	 * 
+	 */
+	public String getTypeDefinition() {
+		return typeDefinition.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setTypeDefinition(String newValue)
+	 * 
+	 */
+	public void setTypeDefinition(String newValue) {
+		if (newValue != null) {
+			typeDefinition.setText(newValue);
+		} else {
+			typeDefinition.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
+		if (eefElementEditorReadOnlyState && typeDefinition.isEnabled()) {
+			typeDefinition.setEnabled(false);
+			typeDefinition.setBackground(typeDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			typeDefinition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !typeDefinition.isEnabled()) {
+			typeDefinition.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getMonitored()
+	 * 
+	 */
+	public Boolean getMonitored() {
+		return Boolean.valueOf(monitored.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setMonitored(Boolean newValue)
+	 * 
+	 */
+	public void setMonitored(Boolean newValue) {
+		if (newValue != null) {
+			monitored.setSelection(newValue.booleanValue());
+		} else {
+			monitored.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
+		if (eefElementEditorReadOnlyState && monitored.isEnabled()) {
+			monitored.setEnabled(false);
+			monitored.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !monitored.isEnabled()) {
+			monitored.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getControlled()
+	 * 
+	 */
+	public Boolean getControlled() {
+		return Boolean.valueOf(controlled.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setControlled(Boolean newValue)
+	 * 
+	 */
+	public void setControlled(Boolean newValue) {
+		if (newValue != null) {
+			controlled.setSelection(newValue.booleanValue());
+		} else {
+			controlled.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
+		if (eefElementEditorReadOnlyState && controlled.isEnabled()) {
+			controlled.setEnabled(false);
+			controlled.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !controlled.isEnabled()) {
+			controlled.setEnabled(true);
 		}	
 		
 	}

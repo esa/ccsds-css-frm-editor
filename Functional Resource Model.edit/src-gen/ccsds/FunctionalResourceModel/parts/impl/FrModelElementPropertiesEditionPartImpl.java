@@ -104,7 +104,7 @@ public class FrModelElementPropertiesEditionPartImpl extends CompositeProperties
 					return createPropertiesGroup(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition) {
-					return createSemanticDefinitionTextarea(parent);
+					return createSemanticDefinitionText(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.oidBit) {
 					return createOidBitText(parent);
@@ -146,16 +146,10 @@ public class FrModelElementPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	
-	protected Composite createSemanticDefinitionTextarea(Composite parent) {
-		Label semanticDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelMessages.FrModelElementPropertiesEditionPart_SemanticDefinitionLabel);
-		GridData semanticDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionLabelData.horizontalSpan = 3;
-		semanticDefinitionLabel.setLayoutData(semanticDefinitionLabelData);
-		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+	protected Composite createSemanticDefinitionText(Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelMessages.FrModelElementPropertiesEditionPart_SemanticDefinitionLabel);
+		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 80;
-		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
 
@@ -165,16 +159,36 @@ public class FrModelElementPropertiesEditionPartImpl extends CompositeProperties
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
 			}
 
 		});
+		semanticDefinition.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
+				}
+			}
+
+		});
 		EditingUtils.setID(semanticDefinition, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition);
-		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(semanticDefinition, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSemanticDefinitionTextArea
+		// Start of user code for createSemanticDefinitionText
 
 		// End of user code
 		return parent;
@@ -493,7 +507,6 @@ public class FrModelElementPropertiesEditionPartImpl extends CompositeProperties
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition);
 		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(false);
-			semanticDefinition.setBackground(semanticDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.FrModelElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(true);

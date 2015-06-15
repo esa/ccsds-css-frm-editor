@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isControlled <em>Controlled</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,6 +78,46 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected Oid externalTypeOid;
+
+	/**
+	 * The default value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMonitored()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MONITORED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMonitored()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean monitored = MONITORED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isControlled() <em>Controlled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isControlled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CONTROLLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isControlled() <em>Controlled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isControlled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean controlled = CONTROLLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +228,48 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMonitored() {
+		return monitored;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMonitored(boolean newMonitored) {
+		boolean oldMonitored = monitored;
+		monitored = newMonitored;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__MONITORED, oldMonitored, monitored));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isControlled() {
+		return controlled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setControlled(boolean newControlled) {
+		boolean oldControlled = controlled;
+		controlled = newControlled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__CONTROLLED, oldControlled, controlled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -209,6 +293,10 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return getTypeDefinition();
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				return getExternalTypeOid();
+			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
+				return isMonitored();
+			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
+				return isControlled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -229,6 +317,12 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)newValue);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
+				setMonitored((Boolean)newValue);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
+				setControlled((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -251,6 +345,12 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)null);
 				return;
+			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
+				setMonitored(MONITORED_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
+				setControlled(CONTROLLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -269,6 +369,10 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return TYPE_DEFINITION_EDEFAULT == null ? typeDefinition != null : !TYPE_DEFINITION_EDEFAULT.equals(typeDefinition);
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				return externalTypeOid != null;
+			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
+				return monitored != MONITORED_EDEFAULT;
+			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
+				return controlled != CONTROLLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -287,6 +391,10 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		result.append(engineeringUnit);
 		result.append(", typeDefinition: ");
 		result.append(typeDefinition);
+		result.append(", monitored: ");
+		result.append(monitored);
+		result.append(", controlled: ");
+		result.append(controlled);
 		result.append(')');
 		return result.toString();
 	}

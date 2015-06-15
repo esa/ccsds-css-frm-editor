@@ -77,12 +77,6 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String Parameter_Part_Title;
 
-	
-	public static String TypeDefinitionView_ReadOnly;
-
-	
-	public static String TypeDefinitionView_Part_Title;
-
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceLabel;
@@ -214,7 +208,13 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ParameterPropertiesEditionPart_EngineeringUnitLabel;
 
 	
-	public static String TypeDefinitionViewPropertiesEditionPart_TypeDefinitionRichTextLabel;
+	public static String ParameterPropertiesEditionPart_TypeDefinitionLabel;
+
+	
+	public static String ParameterPropertiesEditionPart_MonitoredLabel;
+
+	
+	public static String ParameterPropertiesEditionPart_ControlledLabel;
 
 
 	

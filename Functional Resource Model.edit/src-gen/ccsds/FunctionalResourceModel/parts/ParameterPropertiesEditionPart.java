@@ -127,6 +127,48 @@ public interface ParameterPropertiesEditionPart {
 	public void setEngineeringUnit(String newValue);
 
 
+	/**
+	 * @return the typeDefinition
+	 * 
+	 */
+	public String getTypeDefinition();
+
+	/**
+	 * Defines a new typeDefinition
+	 * @param newValue the new typeDefinition to set
+	 * 
+	 */
+	public void setTypeDefinition(String newValue);
+
+
+	/**
+	 * @return the monitored
+	 * 
+	 */
+	public Boolean getMonitored();
+
+	/**
+	 * Defines a new monitored
+	 * @param newValue the new monitored to set
+	 * 
+	 */
+	public void setMonitored(Boolean newValue);
+
+
+	/**
+	 * @return the controlled
+	 * 
+	 */
+	public Boolean getControlled();
+
+	/**
+	 * Defines a new controlled
+	 * @param newValue the new controlled to set
+	 * 
+	 */
+	public void setControlled(Boolean newValue);
+
+
 
 
 

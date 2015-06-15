@@ -222,18 +222,17 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String engineeringUnit = "FunctionalResourceModel::Parameter::properties::engineeringUnit";
 			
+			
+			public static String typeDefinition = "FunctionalResourceModel::Parameter::properties::typeDefinition";
+			
+			
+			public static String monitored = "FunctionalResourceModel::Parameter::properties::monitored";
+			
+			
+			public static String controlled = "FunctionalResourceModel::Parameter::properties::controlled";
+			
 	
 		}
-	
-	}
-
-	/**
-	 * TypeDefinitionView view descriptor
-	 * 
-	 */
-	public static class TypeDefinitionView {
-	
-	public static String typeDefinitionRichText = "FunctionalResourceModel::TypeDefinitionView::typeDefinitionRichText";
 	
 	}
 

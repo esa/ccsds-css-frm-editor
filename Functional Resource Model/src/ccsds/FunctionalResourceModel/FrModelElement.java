@@ -42,7 +42,6 @@ public interface FrModelElement extends EObject {
 	 * @see #setSemanticDefinition(String)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_SemanticDefinition()
 	 * @model required="true"
-	 *        extendedMetaData="kind='element' name='semantic_definition'"
 	 * @generated
 	 */
 	String getSemanticDefinition();

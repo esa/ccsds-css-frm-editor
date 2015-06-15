@@ -115,12 +115,6 @@
                id="ccsds.FunctionalResourceModel.section.Parameter"
                tab="Base">
          </propertySection>
-         <propertySection
-               class="ccsds.FunctionalResourceModel.parts.forms.TypeDefinitionViewPropertiesEditionPartForm"
-               filter="ccsds.FunctionalResourceModel.providers.TypeDefinitionCompPropertiesEditionProvider$EditionFilter"
-               id="ccsds.FunctionalResourceModel.section.Parameter"
-               tab="TypeDefinitionView">
-         </propertySection>
       </propertySections>
    </extension>
 </plugin>
