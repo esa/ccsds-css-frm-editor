@@ -23,7 +23,7 @@
             <command
                   commandId="fr.create.oid"
                   icon="icons/Oid.gif"
-                  label="Create Parameter OIDs"
+                  label="Create Prameter / Directive / Event OIDs"
                   style="push"
                   tooltip="Create Parameter OIDs">
             </command>

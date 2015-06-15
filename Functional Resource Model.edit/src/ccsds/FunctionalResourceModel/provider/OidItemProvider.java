@@ -5,8 +5,10 @@ package ccsds.FunctionalResourceModel.provider;
 
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
+
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -36,6 +38,12 @@ public class OidItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
+	/**
+	 *  @generated NOT
+	 */			
+	private static final String OID_SEP = ".";
+
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -105,10 +113,10 @@ public class OidItemProvider
 		String sOid = "";
 		if(oid != null) {
 			for(Integer i : oid.getOidBit()) {
-				sOid = sOid + "." + i;
+				sOid = sOid + OID_SEP + i;
 			}
 			if(sOid.length() > 0)
-				return sOid.substring(1);
+				return OID_SEP + sOid.substring(1);
 			
 		}
 		

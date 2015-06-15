@@ -3,11 +3,14 @@
 package ccsds.FunctionalResourceModel.provider;
 
 
+import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Parameter;
+
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -190,7 +193,7 @@ public class ParameterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Parameter)object).getOidBit() + " " + ((Parameter)object).getName();
+		String label = ((FrModelElement)object).getOidBit() + " " + ((Parameter)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Parameter_type") :
 			getString("_UI_Parameter_type") + " " + label;

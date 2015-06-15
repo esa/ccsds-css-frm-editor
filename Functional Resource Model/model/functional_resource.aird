@@ -227,7 +227,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_U1jvEW5vEeSGbJZkLuyisg" routing="Tree"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_U1jvEm5vEeSGbJZkLuyisg" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1jvE25vEeSGbJZkLuyisg" points="[0, -49, -122, 120]$[0, -64, -122, 105]$[139, -64, 17, 105]$[139, -113, 17, 56]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U1jvE25vEeSGbJZkLuyisg" points="[0, -49, -115, 120]$[0, -74, -115, 95]$[132, -74, 17, 95]$[132, -113, 17, 56]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1jvGm5vEeSGbJZkLuyisg" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_U1jvG25vEeSGbJZkLuyisg" id="(0.020833333333333332,0.6083916083916084)"/>
           </edges>
