@@ -4,6 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -21,6 +22,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
+import functional_resource_transformation.Activator;
 
 public class CreateParameterOidsHandler extends AbstractHandler implements IHandler {
 
@@ -85,6 +87,10 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 			setAll.append(setFrOidCmd);
 			//fr.setOid(frOid);
 			
+			int parameterIndex = 1;
+			int eventIndex = 1;
+			int directiveIndex = 1;
+			int currentOidBit = -1;
 			
 			for(EObject o : fr.eContents()) {
 				if(o instanceof FrModelElement) {
@@ -93,22 +99,46 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 					childOid.getOidBit().add(fr.getOidBit());
 					
 					// add the type: parameter(1) / event(2) / directive(3)
-					if(m instanceof Parameter)
+					if(m instanceof Parameter) {
 						childOid.getOidBit().add(1);
-					else if(m instanceof Event)
+						currentOidBit = parameterIndex;
+						parameterIndex++;
+					}
+					else if(m instanceof Event) {
 						childOid.getOidBit().add(2);
-					else if (m instanceof Directive)
+						currentOidBit = eventIndex;
+						eventIndex++;
+					}
+					else if (m instanceof Directive) {
 						childOid.getOidBit().add(3);
+						currentOidBit = directiveIndex;
+						directiveIndex++;
+					}
 					
 					// add the identifier of the parameter itself
-					childOid.getOidBit().add(m.getOidBit());
+					if(currentOidBit == m.getOidBit()) {
+						childOid.getOidBit().add(m.getOidBit());
+					}
+					else
+					{
+						int old = m.getOidBit();
+						SetCommand setOidBit = new SetCommand(domain, m, 
+								m.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT),
+								new Integer(currentOidBit));
+						setAll.append(setOidBit);
+						Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
+								"Replaced OID bit for " + fr.getName() + " / " + m.getName() + " from " + old + " to " + currentOidBit));
+						
+						childOid.getOidBit().add(currentOidBit);
+					}
 					
 					// add the version as a suffix to the OID
 					childOid.getOidBit().add(m.getVersion());
 					
 					SetCommand setFrModelElOidCmd = new SetCommand(domain, m, 
 							m.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID),
-							childOid); 
+							childOid);
+					//Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, ""));
 					
 					setAll.append(setFrModelElOidCmd);
 					//m.setOid(childOid);
