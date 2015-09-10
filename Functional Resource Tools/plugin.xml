@@ -25,7 +25,7 @@
                   icon="icons/Oid.gif"
                   label="Create Prameter / Directive / Event OIDs"
                   style="push"
-                  tooltip="Create Parameter OIDs">
+                  tooltip="Create / Update OIDs">
             </command>
             <command
                   commandId="fr.create.auth.entity"

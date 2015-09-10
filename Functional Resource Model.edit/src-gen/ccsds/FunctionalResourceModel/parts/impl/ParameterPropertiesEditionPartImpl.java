@@ -176,7 +176,7 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 80;
+		semanticDefinitionData.heightHint = 200;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -535,7 +535,7 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		typeDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		typeDefinitionData.horizontalSpan = 2;
-		typeDefinitionData.heightHint = 80;
+		typeDefinitionData.heightHint = 200;
 		typeDefinitionData.widthHint = 200;
 		typeDefinition.setLayoutData(typeDefinitionData);
 		typeDefinition.addFocusListener(new FocusAdapter() {

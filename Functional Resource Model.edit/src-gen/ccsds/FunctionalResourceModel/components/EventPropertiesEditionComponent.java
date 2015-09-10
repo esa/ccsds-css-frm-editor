@@ -6,34 +6,35 @@ package ccsds.FunctionalResourceModel.components;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
-
+import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -76,7 +77,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			final EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition))
-				basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, event.getSemanticDefinition()));
+				basePart.setSemanticDefinition(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, event.getSemanticDefinition()));
+			
 			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.oidBit)) {
 				basePart.setOidBit(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, event.getOidBit()));
 			}
@@ -189,7 +191,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			EventPropertiesEditionPart basePart = (EventPropertiesEditionPart)editingPart;
-			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition)){
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition)) {
 				if (msg.getNewValue() != null) {
 					basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

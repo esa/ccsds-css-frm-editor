@@ -7,15 +7,14 @@ import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
-import ccsds.FunctionalResourceModel.Parameter;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -47,8 +46,31 @@ public class DirectiveItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addGuardConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Guard Condition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGuardConditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Directive_guardCondition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Directive_guardCondition_feature", "_UI_Directive_type"),
+				 FunctionalResourceModelPackage.Literals.DIRECTIVE__GUARD_CONDITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -118,6 +140,9 @@ public class DirectiveItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Directive.class)) {
+			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case FunctionalResourceModelPackage.DIRECTIVE__PARAMETER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

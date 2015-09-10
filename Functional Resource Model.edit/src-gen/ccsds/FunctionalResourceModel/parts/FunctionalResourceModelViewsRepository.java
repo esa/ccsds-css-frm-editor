@@ -186,6 +186,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String parameter = "FunctionalResourceModel::Directive::properties::parameter";
 			
+			
+			public static String guardCondition = "FunctionalResourceModel::Directive::properties::guardCondition";
+			
 	
 		}
 	

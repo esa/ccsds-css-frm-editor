@@ -11,12 +11,10 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -321,6 +319,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEvent_Parameter() {
+		return (EReference)eventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDirective() {
 		return directiveEClass;
 	}
@@ -332,6 +339,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 */
 	public EReference getDirective_Parameter() {
 		return (EReference)directiveEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDirective_GuardCondition() {
+		return (EAttribute)directiveEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -440,9 +456,11 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
 
 		eventEClass = createEClass(EVENT);
+		createEReference(eventEClass, EVENT__PARAMETER);
 
 		directiveEClass = createEClass(DIRECTIVE);
 		createEReference(directiveEClass, DIRECTIVE__PARAMETER);
+		createEAttribute(directiveEClass, DIRECTIVE__GUARD_CONDITION);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__ENGINEERING_UNIT);
@@ -510,9 +528,11 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEvent_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directiveEClass, Directive.class, "Directive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirective_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDirective_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 1, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

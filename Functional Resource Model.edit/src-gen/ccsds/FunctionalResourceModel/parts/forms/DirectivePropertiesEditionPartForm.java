@@ -64,6 +64,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	protected ReferencesTable parameter;
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
+	protected Text guardCondition;
 
 
 
@@ -117,6 +118,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
 		
 		
 		composer = new PartComposer(directiveStep) {
@@ -150,6 +152,9 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.parameter) {
 					return createParameterTableComposition(widgetFactory, parent);
 				}
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition) {
+					return createGuardConditionTextarea(widgetFactory, parent);
+				}
 				return parent;
 			}
 		};
@@ -181,8 +186,8 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 160;
-		semanticDefinitionData.widthHint = 400;
+		semanticDefinitionData.heightHint = 200;
+		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
 
@@ -651,6 +656,65 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
+	
+	protected Composite createGuardConditionTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label guardConditionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_GuardConditionLabel);
+		GridData guardConditionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		guardConditionLabelData.horizontalSpan = 3;
+		guardConditionLabel.setLayoutData(guardConditionLabelData);
+		guardCondition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
+		guardConditionData.horizontalSpan = 2;
+		guardConditionData.heightHint = 200;
+		guardConditionData.widthHint = 200;
+		guardCondition.setLayoutData(guardConditionData);
+		guardCondition.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DirectivePropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, guardCondition.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, guardCondition.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		EditingUtils.setID(guardCondition, FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
+		EditingUtils.setEEFtype(guardCondition, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGuardConditionTextArea
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -953,6 +1017,39 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	 */
 	public boolean isContainedInParameterTable(EObject element) {
 		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getGuardCondition()
+	 * 
+	 */
+	public String getGuardCondition() {
+		return guardCondition.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setGuardCondition(String newValue)
+	 * 
+	 */
+	public void setGuardCondition(String newValue) {
+		if (newValue != null) {
+			guardCondition.setText(newValue);
+		} else {
+			guardCondition.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
+		if (eefElementEditorReadOnlyState && guardCondition.isEnabled()) {
+			guardCondition.setEnabled(false);
+			guardCondition.setBackground(guardCondition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			guardCondition.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !guardCondition.isEnabled()) {
+			guardCondition.setEnabled(true);
+		}	
+		
 	}
 
 

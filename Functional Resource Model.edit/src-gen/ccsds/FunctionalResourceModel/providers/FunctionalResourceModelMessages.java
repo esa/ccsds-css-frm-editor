@@ -184,6 +184,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String DirectivePropertiesEditionPart_ParameterLabel;
 
 	
+	public static String DirectivePropertiesEditionPart_GuardConditionLabel;
+
+	
 	public static String ParameterPropertiesEditionPart_SemanticDefinitionLabel;
 
 	

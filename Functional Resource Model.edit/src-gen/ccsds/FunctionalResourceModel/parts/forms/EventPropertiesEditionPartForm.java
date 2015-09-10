@@ -4,10 +4,14 @@
 package ccsds.FunctionalResourceModel.parts.forms;
 
 // Start of user code for imports
+import java.util.ArrayList;
+import java.util.List;
+
 import ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 import ccsds.FunctionalResourceModel.providers.FunctionalResourceModelMessages;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -19,6 +23,11 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -114,7 +123,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition) {
-					return createSemanticDefinitionTextarea(widgetFactory, parent);
+					return createSemanticDefinitionText(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.oidBit) {
 					return createOidBitText(widgetFactory, parent);
@@ -157,25 +166,20 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	}
 
 	
-	protected Composite createSemanticDefinitionTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label semanticDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition, FunctionalResourceModelMessages.EventPropertiesEditionPart_SemanticDefinitionLabel);
-		GridData semanticDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionLabelData.horizontalSpan = 3;
-		semanticDefinitionLabel.setLayoutData(semanticDefinitionLabelData);
-		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+	protected Composite createSemanticDefinitionText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition, FunctionalResourceModelMessages.EventPropertiesEditionPart_SemanticDefinitionLabel);
+		semanticDefinition = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		semanticDefinition.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
-		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 160;
-		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
@@ -206,10 +210,24 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 				}
 			}
 		});
+		semanticDefinition.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
+				}
+			}
+		});
 		EditingUtils.setID(semanticDefinition, FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition);
-		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(semanticDefinition, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSemanticDefinitionTextArea
+		// Start of user code for createSemanticDefinitionText
 
 		// End of user code
 		return parent;
@@ -622,7 +640,6 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Event.Properties.semanticDefinition);
 		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(false);
-			semanticDefinition.setBackground(semanticDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.Event_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(true);

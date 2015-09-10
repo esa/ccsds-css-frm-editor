@@ -161,6 +161,20 @@ public interface DirectivePropertiesEditionPart {
 	public boolean isContainedInParameterTable(EObject element);
 
 
+	/**
+	 * @return the guardCondition
+	 * 
+	 */
+	public String getGuardCondition();
+
+	/**
+	 * Defines a new guardCondition
+	 * @param newValue the new guardCondition to set
+	 * 
+	 */
+	public void setGuardCondition(String newValue);
+
+
 
 
 

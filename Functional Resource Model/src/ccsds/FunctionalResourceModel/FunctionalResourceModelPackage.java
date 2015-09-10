@@ -458,13 +458,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Event</em>' class.
@@ -567,13 +576,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Directive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Directive</em>' class.
@@ -946,6 +964,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EClass getEvent();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.Event#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameter</em>'.
+	 * @see ccsds.FunctionalResourceModel.Event#getParameter()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	EReference getEvent_Parameter();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Directive <em>Directive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -965,6 +994,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDirective_Parameter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Guard Condition</em>'.
+	 * @see ccsds.FunctionalResourceModel.Directive#getGuardCondition()
+	 * @see #getDirective()
+	 * @generated
+	 */
+	EAttribute getDirective_GuardCondition();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Parameter <em>Parameter</em>}'.
@@ -1225,6 +1265,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EClass EVENT = eINSTANCE.getEvent();
 
 		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT__PARAMETER = eINSTANCE.getEvent_Parameter();
+
+		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1241,6 +1289,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DIRECTIVE__PARAMETER = eINSTANCE.getDirective_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Guard Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIRECTIVE__GUARD_CONDITION = eINSTANCE.getDirective_GuardCondition();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.

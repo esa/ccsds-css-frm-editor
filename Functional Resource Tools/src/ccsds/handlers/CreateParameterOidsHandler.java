@@ -6,7 +6,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.ui.IEditorPart;
@@ -22,9 +24,14 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
+import ccsds.FunctionalResourceModel.provider.OidItemProvider;
 import functional_resource_transformation.Activator;
 
 public class CreateParameterOidsHandler extends AbstractHandler implements IHandler {
+
+	private static final int DIRECTIVE_OID_TYPE = 3;
+	private static final int EVENT_OID_TYPE = 2;
+	private static final int PARAMETER_OID_TYPE = 1;
 
 	/**
 	 * Creates Parameter OIDs from the root OID and the 
@@ -100,17 +107,17 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 					
 					// add the type: parameter(1) / event(2) / directive(3)
 					if(m instanceof Parameter) {
-						childOid.getOidBit().add(1);
+						childOid.getOidBit().add(PARAMETER_OID_TYPE);
 						currentOidBit = parameterIndex;
 						parameterIndex++;
 					}
 					else if(m instanceof Event) {
-						childOid.getOidBit().add(2);
+						childOid.getOidBit().add(EVENT_OID_TYPE);
 						currentOidBit = eventIndex;
 						eventIndex++;
 					}
 					else if (m instanceof Directive) {
-						childOid.getOidBit().add(3);
+						childOid.getOidBit().add(DIRECTIVE_OID_TYPE);
 						currentOidBit = directiveIndex;
 						directiveIndex++;
 					}
@@ -140,6 +147,9 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 							childOid);
 					//Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, ""));
 					
+					// update the child parameters of directives and events
+					updateChildOids(domain, m, childOid, setAll);
+					
 					setAll.append(setFrModelElOidCmd);
 					//m.setOid(childOid);
 					
@@ -153,6 +163,58 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 		domain.getCommandStack().execute(setAll);
 	}
 
+	/**
+	 * Update the OIDs of the child parameters for the given model element
+	 * @param domain	the EMF editing domain
+	 * @param m the		model element
+	 * @param mOid		the OID of the model element
+	 * @param setOids	the set command which will finally set the OIDs
+	 */
+	private void updateChildOids(EditingDomain domain, FrModelElement m, Oid mOid, CompoundCommand setOids) {
+		int index = 1;
+		EList<Parameter> parameters = null;
+		String type = "";
+		
+		if(m instanceof Event) {
+			parameters = ((Event)m).getParameter();
+			type = "Event";
+		} else if(m instanceof Directive) {
+			parameters = ((Directive)m).getParameter();
+			type = "Directive";
+		}
+			
+		if(parameters != null) {
+			for(Parameter p : parameters) {
+				Oid childOid = cloneOid(mOid);
+				childOid.getOidBit().add(index);
+				childOid.getOidBit().add(p.getVersion()); // add the version as a suffix to the OID
+				
+				boolean oidUpdate = false;
+				if(p.getOid() == null) {
+					oidUpdate = true;
+					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
+							"Created OID for " + type + " "
+									+ m.getName() + " / " + p.getName() + ": " + OidItemProvider.getOidStr(childOid)));					
+				}
+				if(p.getOid() != null && EcoreUtil.equals(p.getOid(), childOid) == false) {
+					oidUpdate = true;
+					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
+							"Upated OID for " + type + " " 
+									+ m.getName() + " / " + p.getName() + " from " + OidItemProvider.getOidStr(p.getOid())
+									+ " to " + OidItemProvider.getOidStr(childOid)));					
+				}
+				
+				if(oidUpdate == true) {
+					SetCommand setParameterOidCmd = new SetCommand(domain, p, 
+							p.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID),
+							childOid);
+					setOids.append(setParameterOidCmd);
+				}
+				index++;
+			}
+		}
+	}
+	
 	/**
 	 * Clones the given OID
 	 * @param sourceOid
