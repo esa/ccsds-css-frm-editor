@@ -523,6 +523,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		parameter.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createParameterAdvancedTableComposition
 
+
 		// End of user code
 		return parent;
 	}
