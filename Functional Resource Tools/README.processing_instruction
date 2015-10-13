@@ -1,0 +1,26 @@
+To include processing instructions in an XML serialised EMF model follow the link / the explanation below.
+Needed to include <?xml-stylesheet href="frm.xsl" type="text/xsl" ?>
+
+http://www.eclipse.org/forums/index.php?t=msg&th=133191/
+
+To modify XML header generation you have to extend 3 EMF classes and modify plugin.xml.
+1. Extend XMISaveImpl
+Copy the traverse() method, add more processing instructions (e.g. stylesheet declaration) after XML declaration
+2. Extend XMIResourceImpl
+Override the createXMLSave() method to return your own XMLSave
+3. Extend XMIResourceFactoryImpl
+Override the createResource(URI) method to return your own Resource.
+Add load and save options as you see fit.
+4. Edit plugin.xml of your plug-in that holds these 3 new classes and add the following:
+
+<extension point="org.eclipse.emf.ecore.extension_parser">
+<parser type="your_file_ext" class="com.plete.package.path.YourResourceFactoryImpl" />
+</extension>
+
+<extension point="org.eclipse.team.core.fileTypes">
+<fileTypes extension="your_file_ext" type="text" />
+</extension>
+
+********************************************************************************
+Remaining issue: !MESSAGE Both 'Functional_Resource_Model' and 'Functional_Resource_Tools' register an extension parser for 'frm'
+

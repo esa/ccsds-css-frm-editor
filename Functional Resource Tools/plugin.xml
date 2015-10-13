@@ -53,5 +53,12 @@
             commandId="fr.create.auth.entity">
       </handler>
    </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="emf.helper.XMLResourceFactoryPiImpl"
+            type="frm">
+      </parser>
+   </extension>
 
 </plugin>
