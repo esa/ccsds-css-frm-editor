@@ -35,7 +35,7 @@ import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProvide
 public class FrModelTransformation {
 	
 	private EcoreFactory theCoreFactory;
-	private EClass friElement;
+	private EClass functionalresourceInstanceClass;
 	private EPackage friPackage;
 	private EClass srvUserClass;
 	private EClass entityMgmtClass;
@@ -79,7 +79,7 @@ public class FrModelTransformation {
 			friPackage = createEPackage();
 			
 			// create globally needed classes and make them available to the ecore package and the transformation
-			friElement = createFriElement();
+			functionalresourceInstanceClass = createFunctionalResourceInstance();
 
 			// create a service user class needed for modelling
 			srvUserClass = createServiceUser();
@@ -147,12 +147,12 @@ public class FrModelTransformation {
 		return friPacakge;
 	}
 	
-	private EClass createFriElement() {
-		EClass friElement = theCoreFactory.createEClass();
-		friElement.setName("FrInstanceElement");
+	private EClass createFunctionalResourceInstance() {
+		EClass frInstance = theCoreFactory.createEClass();
+		frInstance.setName("FunctionalResourceInstance");
 		
-		friPackage.getEClassifiers().add(friElement);
-		return friElement;
+		friPackage.getEClassifiers().add(frInstance);
+		return frInstance;
 	}
 	
 	/**
@@ -167,7 +167,7 @@ public class FrModelTransformation {
 		
 		EClass frInstanceClass = theCoreFactory.createEClass();
 		frInstanceClass.setName(wellFormed(fr.getName()));
-		frInstanceClass.getESuperTypes().add(friElement);
+		frInstanceClass.getESuperTypes().add(functionalresourceInstanceClass);
 
 		EAttribute instanceNo = theCoreFactory.createEAttribute();
 		instanceNo.setName("instanceNumber");

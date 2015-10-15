@@ -211,7 +211,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_lWi1Hm5vEeSGbJZkLuyisg" routing="Rectilinear" jumpLinkStatus="Above"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_lWi1H25vEeSGbJZkLuyisg" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lWi1IG5vEeSGbJZkLuyisg" points="[62, 1, -111, -419]$[154, 1, -19, -419]$[154, 371, -19, -49]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lWi1IG5vEeSGbJZkLuyisg" points="[62, 1, -156, -429]$[209, 1, -9, -429]$[209, 381, -9, -49]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lWi1J25vEeSGbJZkLuyisg" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lWi1KG5vEeSGbJZkLuyisg" id="(0.5,0.5)"/>
           </edges>
@@ -227,7 +227,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_lWi1Km5vEeSGbJZkLuyisg" routing="Tree"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_lWi1K25vEeSGbJZkLuyisg" fontName="Segoe UI" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lWi1LG5vEeSGbJZkLuyisg" points="[0, -1, 137, 135]$[0, -41, 137, 95]$[-72, -41, 65, 95]$[-72, -65, 65, 71]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lWi1LG5vEeSGbJZkLuyisg" points="[0, -1, 167, 135]$[0, -46, 167, 90]$[-102, -46, 65, 90]$[-102, -65, 65, 71]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lWi1M25vEeSGbJZkLuyisg" id="(0.19166666666666668,0.02)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lWi1NG5vEeSGbJZkLuyisg" id="(0.5,0.5)"/>
           </edges>

@@ -13,6 +13,40 @@
                mnemonic="M1+T"
                style="push"
                tooltip="Transforms the Functional Resource Model to an ecore  model">
+    			<visibleWhen
+				       checkEnabled="false">
+				   <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="frm" />
+				         </adapt>
+				      </iterate>
+				   </with>
+				</visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.sirius.ui.tools.views.model.explorer#PopupMenu">
+         <command
+               commandId="fr.transform"
+               icon="icons/transform.gif"
+               label="Transform Functional Resource"
+               mnemonic="M1+T"
+               style="push"
+               tooltip="Transforms the Functional Resource Model to an ecore  model">
+    			<visibleWhen
+				       checkEnabled="false">
+				   <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="frm" />
+				         </adapt>
+				      </iterate>
+				   </with>
+				</visibleWhen>
          </command>
       </menuContribution>
       <menuContribution

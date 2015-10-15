@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="FunctionalResourceModelInstance" nsURI="http://iso.org.dod.ccsds.fri"
+    nsPrefix="fri">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceUser">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ServiceUserName" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityMgmnt">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Support" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Access" upperBound="-1"
+        eType="#//ServiceUser" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Complex">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ComplexName" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Antenna" upperBound="-1"
+        eType="#//Antenna" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ForwardSpaceLinkCarrier"
+        upperBound="-1" eType="#//ForwardSpaceLinkCarrier" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ForwardSpaceLinkRanging"
+        upperBound="-1" eType="#//ForwardSpaceLinkRanging" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TCChannelSynchronizationAndEncoding"
+        upperBound="-1" eType="#//TCChannelSynchronizationAndEncoding" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AOSMCMultiplexingChannelSynchronizationAndEncoding"
+        upperBound="-1" eType="#//AOSMCMultiplexingChannelSynchronizationAndEncoding"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TCMasterChannelMultiplexing"
+        upperBound="-1" eType="#//TCMasterChannelMultiplexing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TCVCMultiplexing" upperBound="-1"
+        eType="#//TCVCMultiplexing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TCEncapsulationVCPacketProcessingAndVCGeneration"
+        upperBound="-1" eType="#//TCEncapsulationVCPacketProcessingAndVCGeneration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EncapsulationMAPPacketProcessingAndMAPMultiplexing"
+        upperBound="-1" eType="#//EncapsulationMAPPacketProcessingAndMAPMultiplexing"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EncapsulationAndMAPPacketProcessing"
+        upperBound="-1" eType="#//EncapsulationAndMAPPacketProcessing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AOSMasterChannelMultiplexing"
+        upperBound="-1" eType="#//AOSMasterChannelMultiplexing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AOSVCMultiplexing" upperBound="-1"
+        eType="#//AOSVCMultiplexing" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AOSEncapsulationPacketProcessingAndVCGeneration"
+        upperBound="-1" eType="#//AOSEncapsulationPacketProcessingAndVCGeneration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FCLTUTSProvider" upperBound="-1"
+        eType="#//FCLTUTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ForwardFrameCSTSProvider"
+        upperBound="-1" eType="#//ForwardFrameCSTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FSPTSProvider" upperBound="-1"
+        eType="#//FSPTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CFDPSendingEntity" upperBound="-1"
+        eType="#//CFDPSendingEntity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ForwardFileServer" upperBound="-1"
+        eType="#//ForwardFileServer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ForwardFileDataStore" upperBound="-1"
+        eType="#//ForwardFileDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CrossSupportFileTransferServiceProvider"
+        upperBound="-1" eType="#//CrossSupportFileTransferServiceProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReturnSpaceLinkCarrier"
+        upperBound="-1" eType="#//ReturnSpaceLinkCarrier" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RangeAndDopplerExtraction"
+        upperBound="-1" eType="#//RangeAndDopplerExtraction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReturnTMSyncAndDecoding"
+        upperBound="-1" eType="#//ReturnTMSyncAndDecoding" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TelemetrySegmenter" upperBound="-1"
+        eType="#//TelemetrySegmenter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="AllFramesReception" upperBound="-1"
+        eType="#//AllFramesReception" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MCDemuxReception" upperBound="-1"
+        eType="#//MCDemuxReception" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="VCDemuxReception" upperBound="-1"
+        eType="#//VCDemuxReception" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PacketExtractionDeEncapsulation"
+        upperBound="-1" eType="#//PacketExtractionDeEncapsulation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FrameDataSink" upperBound="-1"
+        eType="#//FrameDataSink" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TelemetrySegmentSink" upperBound="-1"
+        eType="#//TelemetrySegmentSink" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OfflineFrameBuffer" upperBound="-1"
+        eType="#//OfflineFrameBuffer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TelemetrySegmentRecordingBuffer"
+        upperBound="-1" eType="#//TelemetrySegmentRecordingBuffer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RAFTSProvider" upperBound="-1"
+        eType="#//RAFTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RCFTSProvider" upperBound="-1"
+        eType="#//RCFTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ROCFTSProvider" upperBound="-1"
+        eType="#//ROCFTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RUFTCSTSProvider" upperBound="-1"
+        eType="#//RUFTCSTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="CFDPReceivingEntity" upperBound="-1"
+        eType="#//CFDPReceivingEntity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReturnFileServer" upperBound="-1"
+        eType="#//ReturnFileServer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ReturnFileDataStore" upperBound="-1"
+        eType="#//ReturnFileDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TDMSegmentGeneration" upperBound="-1"
+        eType="#//TDMSegmentGeneration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TDMSink" upperBound="-1"
+        eType="#//TDMSink" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TDMRecordingBuffer" upperBound="-1"
+        eType="#//TDMRecordingBuffer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RealTimeTrackingDataCSTSProvider"
+        upperBound="-1" eType="#//RealTimeTrackingDataCSTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OpenLoopReceiver" upperBound="-1"
+        eType="#//OpenLoopReceiver" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OpenLoopDataStore" upperBound="-1"
+        eType="#//OpenLoopDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DDORRawDataCollection"
+        upperBound="-1" eType="#//DDORRawDataCollection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DDORRawDataStore" upperBound="-1"
+        eType="#//DDORRawDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RawRadioMetricDataCollection"
+        upperBound="-1" eType="#//RawRadioMetricDataCollection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RawRadioMetricDataStore"
+        upperBound="-1" eType="#//RawRadioMetricDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ValidatedRadiometricDataStore"
+        upperBound="-1" eType="#//ValidatedRadiometricDataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MonitoredDataCSTSProvider"
+        upperBound="-1" eType="#//MonitoredDataCSTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MonitoredDataCollection"
+        upperBound="-1" eType="#//MonitoredDataCollection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ServiceControlCSTSProvider"
+        upperBound="-1" eType="#//ServiceControlCSTSProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ServiceControlProduction"
+        upperBound="-1" eType="#//ServiceControlProduction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Network">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NetworkName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ComplexList" upperBound="-1"
+        eType="#//Complex" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Antenna" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="Represents the Antenna"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAntennaId" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAntennaId" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualAzimuth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualElevation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCommandedAzimuth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCommandedElevation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAzimuthError"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterElevationError"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPointingMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTrackingReceiverLockStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTrackingReceiverMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTrackingReceiverInputLevel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTrackingReceiverLoopBandwidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMeanWindSpeed"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPeakWindSpeed"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterWindDirection"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAccumulatedPrecipitation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPrecipitationRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRelativeHumidity"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAtmosphericPressure"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTemperature" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToHalt"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToPoint"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToSlew"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToProgramTrack"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToConicalScan"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetAntennaPointingModeToAutoTrack"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetTrackingReceiverMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetTrackingReceiverLoopBandwidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardSpaceLinkCarrier" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEirp" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterForwardLinkPolarization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualTransmitFrequency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierModulation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDataModulationType"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDataModulationIndex"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRngModulationIndex"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSweepProcedure"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSweepProfile"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterClcwRfLock" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierFrequency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierModulation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierFrequencyToDataClockCoherency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDataClock" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBasebandWaveform"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DirectiveSetFwdCarrierProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventBitrateChange" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardSpaceLinkRanging" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRangingActive"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRangingType" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterToneFrequencyHybrid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCodeLengthHybrid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterChipRatePn" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCodeTypePn" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCodeCdma" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TCChannelSynchronizationAndEncoding"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPhysicalChannelName"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumCltuLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRandomizer" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumCltuRepetitions"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPhysicalLayerOperationsProcedure"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAcquisitionSequenceLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMinimumDelayTime"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPlop1IdleSequenceLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterForwardLinkStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterClcwPhysicalChannel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterClcwGlobalVcid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaxNumberOfFramesPerCltu"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventBitrateChange" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AOSMCMultiplexingChannelSynchronizationAndEncoding"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPhysicalChannelName"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransferFrameLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidScids" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMcMultiplexingScheme"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMcMultiplexingControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPresenceOfFrameHeaderErrorControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterInsertZoneLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPresenceOfFrameErrorControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRandomization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFrameEncoding"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterConvolutionalCodeRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRsErrorCorrectionCapability"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRsInterleavingDepth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTurboCodeRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterLdpcCodeRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TCMasterChannelMultiplexing" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumTcFrameLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidScids" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMcMultiplexingScheme"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMcMultiplexingControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPresenceOfFrameErrorControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TCVCMultiplexing" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumTransferFrameLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMasterChannel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidVcids" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVcMultiplexingScheme"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVcMultiplexingControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TCEncapsulationVCPacketProcessingAndVCGeneration"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumTransferFrameLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMasterChannel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVirtualChannel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaxPacketLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPresenceOfSegmentHeader"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDataFieldContent"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidPacketVersionNumbers"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEncapMinDataUnitLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEncapMaxDataUnitLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidProtocolIds"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidProtocolIdExtensions"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBlocking" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBlockingTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTypeARepetitions"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCopControlRepetions"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterT1Initial" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransmissionLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFopSlidingWindowWidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTimeoutType" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFopState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransmitterFrameSequenceNumber"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EncapsulationMAPPacketProcessingAndMAPMultiplexing"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="Note: The present FR Model does not envisage the use of the &#xD;&#xA;MAPA.request primitive as an input to this FR type. Therefore, the &#xD;&#xA;parameters defined for this FR do not cover the case of incoming &#xD;&#xA;MAPA.request primitives. "/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaximumTransferFrameLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidPacketVersionNumbers"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEncapMinDataUnitLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEncapMaxDataUnitLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidProtocolIds"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidProtocolIdExtensions"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidMapIds" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMapMultiplexingScheme"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMapMultiplexingControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EncapsulationAndMAPPacketProcessing"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AOSMasterChannelMultiplexing" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AOSVCMultiplexing" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMasterChannel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidVcIds" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVcMultiplexingScheme"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVcMultiplexingControl"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AOSEncapsulationPacketProcessingAndVCGeneration"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterValidPacketVersionNumbers"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaxPacketLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FCLTUTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServiceInstanceIdentifier"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDeliveryMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReturnTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNotificationMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProtocolAbortMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSiState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportingCycle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRfAvailableRequired"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBitLockRequired"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterExpectedCltuIdentification"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterExpectedEventInvocationIdentification"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfCltusReceived"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfCltusProcessed"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfCltusRadiated"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionOperational"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionInterrupted"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionHalted"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionConfigured"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardFrameCSTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FSPTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServiceInstanceIdentifier"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSiState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDeliveryMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReturnTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRfAvailableRequired"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBitLockRequired"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDirectiveInvocationEnabled"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDirectiveInvocationOnline"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedTransmissionMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterApidList" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportingCycle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterExpectedPacketIdentification"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterExpectedDirectiveIdentification"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterExpectedEventInvocationIdentification"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CFDPSendingEntity" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEntityIds" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEofSentIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFaultHandlerOverride"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestType" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransferFrameVersionNumber"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSpacecraftId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVirtualChannelId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMapId" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOneWayLightTime"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNakInterval" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterKeepAliveInterval"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportInterval"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNakMode" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDefaultTransmissionMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterIncompleteFileHandling"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCrc" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMaxFileSegmentLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNakTimerExpirationLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransactionInactivityLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReceptionOpportunity"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardFileServer" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardFileDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CrossSupportFileTransferServiceProvider"
+      eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnSpaceLinkCarrier" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSignalLevel" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSystemNoiseTemperature"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPolarizationAngle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierFrequencyUncertainty"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPredictMode" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTrackingLoopBandwidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOrderOfLoop" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierLock" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierLoopMeanPhaseError"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierLoopPeakPhaseError"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCarrierLoopSnr"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualReceiveFrequency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFrequencyOffset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterBestLockFrequency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDopplerStdDeviation"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierDemodLoopBandwidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierLevelEstimate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierLockStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualSubcarrierFrequency"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubcarrierWaveform"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSymbolSynchronizerLoopBandwidth"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSymbolSynchronizerLockStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterActualSymbolRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEsOverNo" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RangeAndDopplerExtraction" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRangingToneOrPnchipLoop"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRangingTonePnchipLevel"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRangingLoopLockStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEstimatedEffectiveRangingModulationIndex"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCodeNumberPnCodeOffset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAmbiguityResolved"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnTMSyncAndDecoding" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterAsmCorrelationError"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFrameSynchronizerLockStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSymbolInversion"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFrameErrorRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfRsErrorsCorrected"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterErtAnnotationLockedToReference"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventFrameLockAcquired"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventLossOfFrameLock" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TelemetrySegmenter" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTmSegmentLength"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSymbolResolution"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AllFramesReception" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCDemuxReception" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterMasterChannelId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterClcwExtraction"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VCDemuxReception" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterVirtualChannelId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterClcwExtraction"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PacketExtractionDeEncapsulation" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRfspApidSet" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRfspProtocolIdSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRfspProtocolIdExtensionSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRiocrProtocolIdSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRiocrProtocolIdExtensionSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCreApidSet" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCreProtocolIdSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCreProtocolIdExtensionSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterCfdpPduExtraction"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FrameDataSink" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServicePackageId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TelemetrySegmentSink" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServicePackageId"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OfflineFrameBuffer" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TelemetrySegmentRecordingBuffer" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RAFTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServiceInstanceIdentifier"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDeliveryMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReturnTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterLatencyLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransferBufferSize"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedFrameQuality"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSiState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportingCycle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedFrameQuality"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfErrorFreeFramesDelivered"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfFramesDelivered"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionRunning"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionInterrupted"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventProductionHalted"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RCFTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServiceInstanceIdentifier"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDeliveryMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReturnTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterLatencyLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransferBufferSize"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedGlobalVcidSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSiState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportingCycle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedGlobalVcid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfFramesDelivered"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ROCFTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterServiceInstanceIdentifier"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterDeliveryMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReturnTimeoutPeriod"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterLatencyLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransferBufferSize"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedGlobalVcidSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedControlWordTypeSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedTcVcidSet"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPermittedUpdateMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSiState" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterReportingCycle"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedGlobalVcid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedControlWordType"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedTcVcid"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterRequestedUpdateMode"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterNumberOfOcfsDelivered"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RUFTCSTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CFDPReceivingEntity" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEntityIds" lowerBound="1"
+        eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterEofRecvIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFileSegmentRecvIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransactionFinishedIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSuspendedIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterResumedIndication"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterFaultHandlerOverride"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOneWayLightTime"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPromptInterval"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterKeepAliveDiscrepancyLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterPositiveAckTimerExpirationLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransactionInactivityLimit"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterTransmissionOpportunity"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnFileServer" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnFileDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TDMSegmentGeneration" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TDMSink" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TDMRecordingBuffer" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RealTimeTrackingDataCSTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpenLoopReceiver" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOpenLoopSamplingRate"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOpenLoopQuantization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOpenLoopCenterFrequencyOffsetRhc"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterOpenLoopCenterFrequencyOffsetLhc"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel1Offset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel1Polarization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel2Offset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel2Polarization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel3Offset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel3Polarization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel4Offset"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterSubchannel4Polarization"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpenLoopDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DDORRawDataCollection" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DDORRawDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RawRadioMetricDataCollection" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RawRadioMetricDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidatedRadiometricDataStore" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="None"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonitoredDataCSTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonitoredDataCollection" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceControlCSTSProvider" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceControlProduction" eSuperTypes="#//FunctionalResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="none"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ParameterProductionStatus"
+        lowerBound="1" eType="#//EntityMgmnt" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

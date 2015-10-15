@@ -255,7 +255,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="_E6qVR1bUEeWgwNqVUD1VLQ" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E6qVSFbUEeWgwNqVUD1VLQ" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_E6qVSVbUEeWgwNqVUD1VLQ" name="oidBit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
