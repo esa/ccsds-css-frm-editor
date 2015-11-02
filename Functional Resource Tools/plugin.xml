@@ -9,10 +9,10 @@
          <command
                commandId="fr.transform"
                icon="icons/transform.gif"
-               label="Transform Functional Resource"
+               label="FRM to an FRIM ecore"
                mnemonic="M1+T"
                style="push"
-               tooltip="Transforms the Functional Resource Model to an ecore  model">
+               tooltip="Functional Resource Model to Functional Resource Instance Model (ecore)">
     			<visibleWhen
 				       checkEnabled="false">
 				   <with variable="activeMenuSelection">
@@ -32,10 +32,10 @@
          <command
                commandId="fr.transform"
                icon="icons/transform.gif"
-               label="Transform Functional Resource"
+               label="FRM to an FRIM ecore"
                mnemonic="M1+T"
                style="push"
-               tooltip="Transforms the Functional Resource Model to an ecore  model">
+               tooltip="Functional Resource Model to Functional Resource Instance Model (ecore)">
     			<visibleWhen
 				       checkEnabled="false">
 				   <with variable="activeMenuSelection">

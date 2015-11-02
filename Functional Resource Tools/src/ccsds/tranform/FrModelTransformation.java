@@ -7,6 +7,7 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -96,6 +97,8 @@ public class FrModelTransformation {
 				createFrInstance(fr, complexClass);
 			}
 		
+			createDependencyForUse(frm, friPackage);
+			
 			// save the new ecore model
 			ResourceSet metaResourceSet = new ResourceSetImpl();
 			
@@ -128,7 +131,7 @@ public class FrModelTransformation {
 		
 		return false;
 	}
-
+	
 	/**
 	 * Creates an ecore package for functional resource instance models
 	 * @return the created EPackage object
@@ -193,6 +196,7 @@ public class FrModelTransformation {
 		frList.setLowerBound(0); 
 		frList.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
 		frList.setContainment(true);
+		
 		complexClass.getEStructuralFeatures().add(frList);
 		
 		friPackage.getEClassifiers().add(frInstanceClass);
@@ -200,6 +204,48 @@ public class FrModelTransformation {
 		return frInstanceClass;
 	}
 
+	/**
+	 * Create the a dependency for each uses relations as expressed in the frm 
+	 * for the created FunctionalresourceInstanceClasses
+	 * @param frm
+	 * @param theFriPackage
+	 */
+	private void createDependencyForUse(FunctionalResourceModel frm, EPackage theFriPackage) {
+		for(FunctionalResource fr : frm.getFunctionalResource()) {
+			EClass refSource = getClassByName(wellFormed(fr.getName()));
+			for(FunctionalResource usedFr : fr.getUses()) {
+				try {
+					EClass refTarget = getClassByName(wellFormed(usedFr.getName()));
+					if(refSource != null && refTarget != null) {
+						EReference usesRef = theCoreFactory.createEReference();
+						usesRef.setName("uses");
+						usesRef.setLowerBound(1);
+						usesRef.setUpperBound(1);
+						usesRef.setEType(refTarget);
+						usesRef.setContainment(false);
+						refSource.getEStructuralFeatures().add(usesRef);							
+					}						
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Returns the EClass of the given name from friPackage
+	 * @param name
+	 * @return
+	 */
+	private EClass getClassByName(String name) {
+		EClassifier cl = friPackage.getEClassifier(name);
+		if(cl != null && cl instanceof EClass)
+			return (EClass)cl;
+	
+		return null;
+	}
+	
 	/**
 	 * Creates a class for a network. For our purposes the network has a name
 	 * and a number of complexes.

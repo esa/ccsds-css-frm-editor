@@ -3,7 +3,7 @@ https://www.eclipse.org/downloads/
 
 2) place all plugins (*.jar) in the 'dropins' folder of your eclipse installation
 
-3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project)
+3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project (Modelling Project))
 
 4) Place the ccsds.frm file in the created project and open it.
 
