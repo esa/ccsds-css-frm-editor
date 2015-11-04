@@ -58,6 +58,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected Text creationDate;
 	protected Text name;
 	protected Text version;
+	protected ReferencesTable parameter;
+	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -103,6 +106,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.creationDate);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.version);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.parameter);
 		
 		
 		composer = new PartComposer(eventStep) {
@@ -132,6 +136,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.version) {
 					return createVersionText(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Event.Properties.parameter) {
+					return createParameterAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -478,6 +485,57 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createParameterAdvancedTableComposition(Composite parent) {
+		this.parameter = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Event.Properties.parameter, FunctionalResourceModelMessages.EventPropertiesEditionPart_ParameterLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				parameter.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				parameter.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				parameter.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				parameter.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.parameterFilters) {
+			this.parameter.addFilter(filter);
+		}
+		this.parameter.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Event.Properties.parameter, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.parameter.createControls(parent);
+		this.parameter.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.parameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData parameterData = new GridData(GridData.FILL_HORIZONTAL);
+		parameterData.horizontalSpan = 3;
+		this.parameter.setLayoutData(parameterData);
+		this.parameter.setLowerBound(0);
+		this.parameter.setUpperBound(-1);
+		parameter.setID(FunctionalResourceModelViewsRepository.Event.Properties.parameter);
+		parameter.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createParameterAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -713,6 +771,72 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			version.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#initParameter(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initParameter(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		parameter.setContentProvider(contentProvider);
+		parameter.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Event.Properties.parameter);
+		if (eefElementEditorReadOnlyState && parameter.isEnabled()) {
+			parameter.setEnabled(false);
+			parameter.setToolTipText(FunctionalResourceModelMessages.Event_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !parameter.isEnabled()) {
+			parameter.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#updateParameter()
+	 * 
+	 */
+	public void updateParameter() {
+	parameter.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#addFilterParameter(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToParameter(ViewerFilter filter) {
+		parameterFilters.add(filter);
+		if (this.parameter != null) {
+			this.parameter.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#addBusinessFilterParameter(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToParameter(ViewerFilter filter) {
+		parameterBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#isContainedInParameterTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInParameterTable(EObject element) {
+		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
 	}
 
 

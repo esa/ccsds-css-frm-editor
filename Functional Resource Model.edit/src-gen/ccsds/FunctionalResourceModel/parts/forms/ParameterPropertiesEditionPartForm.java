@@ -58,6 +58,7 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 	protected Text typeDefinition;
 	protected Button monitored;
 	protected Button controlled;
+	protected Text guardCondition;
 
 
 
@@ -114,6 +115,7 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition);
 		
 		
 		composer = new PartComposer(parameterStep) {
@@ -148,13 +150,16 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 					return createEngineeringUnitText(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition) {
-					return createTypeDefinitionTextarea(widgetFactory, parent);
+					return createTypeDefinitionText(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.monitored) {
 					return createMonitoredCheckbox(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.controlled) {
 					return createControlledCheckbox(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition) {
+					return createGuardConditionTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -187,7 +192,7 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 200;
+		semanticDefinitionData.heightHint = 160;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -675,25 +680,20 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	
-	protected Composite createTypeDefinitionTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label typeDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_TypeDefinitionLabel);
-		GridData typeDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		typeDefinitionLabelData.horizontalSpan = 3;
-		typeDefinitionLabel.setLayoutData(typeDefinitionLabelData);
-		typeDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+	protected Composite createTypeDefinitionText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_TypeDefinitionLabel);
+		typeDefinition = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		typeDefinition.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
 		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
-		typeDefinitionData.horizontalSpan = 2;
-		typeDefinitionData.heightHint = 200;
-		typeDefinitionData.widthHint = 200;
 		typeDefinition.setLayoutData(typeDefinitionData);
 		typeDefinition.addFocusListener(new FocusAdapter() {
-
 			/**
-			 * {@inheritDoc}
-			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
@@ -724,10 +724,24 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 				}
 			}
 		});
+		typeDefinition.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinition.getText()));
+				}
+			}
+		});
 		EditingUtils.setID(typeDefinition, FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
-		EditingUtils.setEEFtype(typeDefinition, "eef::Textarea"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(typeDefinition, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createTypeDefinitionTextArea
+		// Start of user code for createTypeDefinitionText
 
 		// End of user code
 		return parent;
@@ -786,6 +800,65 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(controlled, "eef::Checkbox"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createControlledCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createGuardConditionTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label guardConditionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_GuardConditionLabel);
+		GridData guardConditionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		guardConditionLabelData.horizontalSpan = 3;
+		guardConditionLabel.setLayoutData(guardConditionLabelData);
+		guardCondition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
+		guardConditionData.horizontalSpan = 2;
+		guardConditionData.heightHint = 160;
+		guardConditionData.widthHint = 200;
+		guardCondition.setLayoutData(guardConditionData);
+		guardCondition.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ParameterPropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, guardCondition.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ParameterPropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, guardCondition.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ParameterPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		EditingUtils.setID(guardCondition, FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition);
+		EditingUtils.setEEFtype(guardCondition, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createGuardConditionTextArea
 
 		// End of user code
 		return parent;
@@ -1086,7 +1159,6 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
 		if (eefElementEditorReadOnlyState && typeDefinition.isEnabled()) {
 			typeDefinition.setEnabled(false);
-			typeDefinition.setBackground(typeDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			typeDefinition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !typeDefinition.isEnabled()) {
 			typeDefinition.setEnabled(true);
@@ -1154,6 +1226,39 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 			controlled.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !controlled.isEnabled()) {
 			controlled.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getGuardCondition()
+	 * 
+	 */
+	public String getGuardCondition() {
+		return guardCondition.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setGuardCondition(String newValue)
+	 * 
+	 */
+	public void setGuardCondition(String newValue) {
+		if (newValue != null) {
+			guardCondition.setText(newValue);
+		} else {
+			guardCondition.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition);
+		if (eefElementEditorReadOnlyState && guardCondition.isEnabled()) {
+			guardCondition.setEnabled(false);
+			guardCondition.setBackground(guardCondition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			guardCondition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !guardCondition.isEnabled()) {
+			guardCondition.setEnabled(true);
 		}	
 		
 	}

@@ -409,6 +409,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getParameter_GuardCondition() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FunctionalResourceModelFactory getFunctionalResourceModelFactory() {
 		return (FunctionalResourceModelFactory)getEFactoryInstance();
 	}
@@ -468,6 +477,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_TYPE_OID);
 		createEAttribute(parameterEClass, PARAMETER__MONITORED);
 		createEAttribute(parameterEClass, PARAMETER__CONTROLLED);
+		createEAttribute(parameterEClass, PARAMETER__GUARD_CONDITION);
 	}
 
 	/**
@@ -540,6 +550,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getParameter_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Monitored(), ecorePackage.getEBoolean(), "monitored", "true", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Controlled(), ecorePackage.getEBoolean(), "controlled", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

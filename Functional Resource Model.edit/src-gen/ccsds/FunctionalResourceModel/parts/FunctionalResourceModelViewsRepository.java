@@ -150,6 +150,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String version = "FunctionalResourceModel::Event::properties::version";
 			
+			
+			public static String parameter = "FunctionalResourceModel::Event::properties::parameter";
+			
 	
 		}
 	
@@ -233,6 +236,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String controlled = "FunctionalResourceModel::Parameter::properties::controlled";
+			
+			
+			public static String guardCondition = "FunctionalResourceModel::Parameter::properties::guardCondition";
 			
 	
 		}

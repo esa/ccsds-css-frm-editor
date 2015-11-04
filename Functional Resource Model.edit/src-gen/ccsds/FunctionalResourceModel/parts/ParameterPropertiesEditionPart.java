@@ -169,6 +169,20 @@ public interface ParameterPropertiesEditionPart {
 	public void setControlled(Boolean newValue);
 
 
+	/**
+	 * @return the guardCondition
+	 * 
+	 */
+	public String getGuardCondition();
+
+	/**
+	 * Defines a new guardCondition
+	 * @param newValue the new guardCondition to set
+	 * 
+	 */
+	public void setGuardCondition(String newValue);
+
+
 
 
 

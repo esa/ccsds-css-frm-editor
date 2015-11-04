@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isControlled <em>Controlled</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +119,26 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected boolean controlled = CONTROLLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getGuardCondition() <em>Guard Condition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuardCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String GUARD_CONDITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getGuardCondition() <em>Guard Condition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuardCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String guardCondition = GUARD_CONDITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,6 +291,27 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getGuardCondition() {
+		return guardCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGuardCondition(String newGuardCondition) {
+		String oldGuardCondition = guardCondition;
+		guardCondition = newGuardCondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION, oldGuardCondition, guardCondition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -297,6 +339,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return isMonitored();
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				return isControlled();
+			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
+				return getGuardCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -323,6 +367,9 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				setControlled((Boolean)newValue);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
+				setGuardCondition((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -351,6 +398,9 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				setControlled(CONTROLLED_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
+				setGuardCondition(GUARD_CONDITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -373,6 +423,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return monitored != MONITORED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				return controlled != CONTROLLED_EDEFAULT;
+			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
+				return GUARD_CONDITION_EDEFAULT == null ? guardCondition != null : !GUARD_CONDITION_EDEFAULT.equals(guardCondition);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -395,6 +447,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		result.append(monitored);
 		result.append(", controlled: ");
 		result.append(controlled);
+		result.append(", guardCondition: ");
+		result.append(guardCondition);
 		result.append(')');
 		return result.toString();
 	}

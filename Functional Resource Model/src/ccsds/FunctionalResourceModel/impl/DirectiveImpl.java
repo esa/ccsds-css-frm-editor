@@ -49,7 +49,6 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 	 * @ordered
 	 */
 	protected static final String GUARD_CONDITION_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getGuardCondition() <em>Guard Condition</em>}' attribute.
 	 * <!-- begin-user-doc -->

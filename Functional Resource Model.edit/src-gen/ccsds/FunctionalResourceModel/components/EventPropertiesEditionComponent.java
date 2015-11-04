@@ -49,6 +49,11 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
 	
+	/**
+	 * Settings for parameter ReferencesTable
+	 */
+	protected ReferencesTableSettings parameterSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -99,6 +104,10 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 				basePart.setVersion(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, event.getVersion()));
 			}
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.parameter)) {
+				parameterSettings = new ReferencesTableSettings(event, FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter());
+				basePart.initParameter(parameterSettings);
+			}
 			// init filters
 			
 			
@@ -107,6 +116,21 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.parameter)) {
+				basePart.addFilterToParameter(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Parameter); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for parameter
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -114,6 +138,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -150,6 +175,9 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.version) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version();
 		}
+		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.parameter) {
+			return FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -180,6 +208,31 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (FunctionalResourceModelViewsRepository.Event.Properties.version == event.getAffectedEditor()) {
 			event_.setVersion((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+		}
+		if (FunctionalResourceModelViewsRepository.Event.Properties.parameter == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameterSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				parameterSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				parameterSettings.move(event.getNewIndex(), (Parameter) event.getNewValue());
+			}
 		}
 	}
 
@@ -236,6 +289,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 					basePart.setVersion("");
 				}
 			}
+			if (FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.parameter))
+				basePart.updateParameter();
 			
 		}
 	}
@@ -254,7 +309,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_AuthorizingEntity(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_CreationDate(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Name(),
-			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version()		);
+			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version(),
+			FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter()		);
 		return new NotificationFilter[] {filter,};
 	}
 

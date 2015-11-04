@@ -16,6 +16,7 @@ package ccsds.FunctionalResourceModel;
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,5 +156,31 @@ public interface Parameter extends FrModelElement {
 	 * @generated
 	 */
 	void setControlled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Guard Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Guard Condition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Guard Condition</em>' attribute.
+	 * @see #setGuardCondition(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_GuardCondition()
+	 * @model
+	 * @generated
+	 */
+	String getGuardCondition();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#getGuardCondition <em>Guard Condition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Guard Condition</em>' attribute.
+	 * @see #getGuardCondition()
+	 * @generated
+	 */
+	void setGuardCondition(String value);
 
 } // Parameter

@@ -218,7 +218,7 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 200;
+		semanticDefinitionData.heightHint = 160;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -1137,8 +1137,6 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		uses.setContentProvider(contentProvider);
 		uses.setInput(settings);
-		usesBusinessFilters.clear();
-		usesFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses);
 		if (eefElementEditorReadOnlyState && uses.getTable().isEnabled()) {
 			uses.setEnabled(false);
