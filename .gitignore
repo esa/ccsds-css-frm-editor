@@ -1,6 +1,7 @@
 *.class
 *.zip
 *.lost
+*.uml
 RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery

@@ -730,13 +730,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER__CONTROLLED = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__CONFIGURATION = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -745,7 +754,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int PARAMETER_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -1081,6 +1090,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getParameter_Controlled();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Configuration</em>'.
+	 * @see ccsds.FunctionalResourceModel.Parameter#isConfiguration()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_Configuration();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#getGuardCondition <em>Guard Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1367,6 +1387,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__CONTROLLED = eINSTANCE.getParameter_Controlled();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__CONFIGURATION = eINSTANCE.getParameter_Configuration();
 
 		/**
 		 * The meta object literal for the '<em><b>Guard Condition</b></em>' attribute feature.

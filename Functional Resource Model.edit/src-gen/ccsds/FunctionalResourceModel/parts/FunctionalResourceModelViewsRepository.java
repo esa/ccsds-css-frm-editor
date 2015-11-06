@@ -238,6 +238,9 @@ public class FunctionalResourceModelViewsRepository {
 			public static String controlled = "FunctionalResourceModel::Parameter::properties::controlled";
 			
 			
+			public static String configuration = "FunctionalResourceModel::Parameter::properties::configuration";
+			
+			
 			public static String guardCondition = "FunctionalResourceModel::Parameter::properties::guardCondition";
 			
 	

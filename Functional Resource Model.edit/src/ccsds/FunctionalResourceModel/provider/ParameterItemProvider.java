@@ -52,6 +52,7 @@ public class ParameterItemProvider
 			addTypeDefinitionPropertyDescriptor(object);
 			addMonitoredPropertyDescriptor(object);
 			addControlledPropertyDescriptor(object);
+			addConfigurationPropertyDescriptor(object);
 			addGuardConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -137,6 +138,28 @@ public class ParameterItemProvider
 				 getString("_UI_Parameter_controlled_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_controlled_feature", "_UI_Parameter_type"),
 				 FunctionalResourceModelPackage.Literals.PARAMETER__CONTROLLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Configuration feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConfigurationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_configuration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_configuration_feature", "_UI_Parameter_type"),
+				 FunctionalResourceModelPackage.Literals.PARAMETER__CONFIGURATION,
 				 true,
 				 false,
 				 false,
@@ -238,6 +261,7 @@ public class ParameterItemProvider
 			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

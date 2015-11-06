@@ -170,6 +170,20 @@ public interface ParameterPropertiesEditionPart {
 
 
 	/**
+	 * @return the configuration
+	 * 
+	 */
+	public Boolean getConfiguration();
+
+	/**
+	 * Defines a new configuration
+	 * @param newValue the new configuration to set
+	 * 
+	 */
+	public void setConfiguration(Boolean newValue);
+
+
+	/**
 	 * @return the guardCondition
 	 * 
 	 */

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isControlled <em>Controlled</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isConfiguration <em>Configuration</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
  * </p>
@@ -119,6 +120,26 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected boolean controlled = CONTROLLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isConfiguration() <em>Configuration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CONFIGURATION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isConfiguration() <em>Configuration</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean configuration = CONFIGURATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getGuardCondition() <em>Guard Condition</em>}' attribute.
@@ -291,6 +312,27 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isConfiguration() {
+		return configuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfiguration(boolean newConfiguration) {
+		boolean oldConfiguration = configuration;
+		configuration = newConfiguration;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__CONFIGURATION, oldConfiguration, configuration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getGuardCondition() {
 		return guardCondition;
 	}
@@ -339,6 +381,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return isMonitored();
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				return isControlled();
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
+				return isConfiguration();
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				return getGuardCondition();
 		}
@@ -367,6 +411,9 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				setControlled((Boolean)newValue);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
+				setConfiguration((Boolean)newValue);
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				setGuardCondition((String)newValue);
@@ -398,6 +445,9 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				setControlled(CONTROLLED_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
+				setConfiguration(CONFIGURATION_EDEFAULT);
+				return;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				setGuardCondition(GUARD_CONDITION_EDEFAULT);
 				return;
@@ -423,6 +473,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return monitored != MONITORED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
 				return controlled != CONTROLLED_EDEFAULT;
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
+				return configuration != CONFIGURATION_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				return GUARD_CONDITION_EDEFAULT == null ? guardCondition != null : !GUARD_CONDITION_EDEFAULT.equals(guardCondition);
 		}
@@ -447,6 +499,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		result.append(monitored);
 		result.append(", controlled: ");
 		result.append(controlled);
+		result.append(", configuration: ");
+		result.append(configuration);
 		result.append(", guardCondition: ");
 		result.append(guardCondition);
 		result.append(')');
