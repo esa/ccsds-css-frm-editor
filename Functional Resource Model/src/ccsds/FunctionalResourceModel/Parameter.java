@@ -22,7 +22,8 @@ package ccsds.FunctionalResourceModel;
  * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='GuardConditionInv'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot GuardConditionInv='self.controlled = true implies self.guardCondition->notEmpty()'"
  * @generated
  */
 public interface Parameter extends FrModelElement {
