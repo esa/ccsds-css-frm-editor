@@ -37,6 +37,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/directives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/uses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/parameter"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="" propertyDescription=""
+          propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/referencedParameter"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//Event">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/parameter"/>
@@ -51,6 +53,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Parameter/externalTypeOid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/monitored"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/controlled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/guardCondition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

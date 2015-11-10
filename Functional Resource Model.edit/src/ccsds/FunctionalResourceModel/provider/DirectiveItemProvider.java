@@ -47,6 +47,7 @@ public class DirectiveItemProvider
 			super.getPropertyDescriptors(object);
 
 			addGuardConditionPropertyDescriptor(object);
+			addQualifierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -65,6 +66,28 @@ public class DirectiveItemProvider
 				 getString("_UI_Directive_guardCondition_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Directive_guardCondition_feature", "_UI_Directive_type"),
 				 FunctionalResourceModelPackage.Literals.DIRECTIVE__GUARD_CONDITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Qualifier feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addQualifierPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Directive_qualifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Directive_qualifier_feature", "_UI_Directive_type"),
+				 FunctionalResourceModelPackage.Literals.DIRECTIVE__QUALIFIER,
 				 true,
 				 false,
 				 false,
@@ -141,6 +164,7 @@ public class DirectiveItemProvider
 
 		switch (notification.getFeatureID(Directive.class)) {
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.DIRECTIVE__PARAMETER:

@@ -65,6 +65,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
 	protected Text guardCondition;
+	protected Text qualifier;
 
 
 
@@ -119,6 +120,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
 		
 		
 		composer = new PartComposer(directiveStep) {
@@ -154,6 +156,9 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition) {
 					return createGuardConditionTextarea(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
+					return createQualifierTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -715,6 +720,65 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
+	
+	protected Composite createQualifierTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label qualifierLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_QualifierLabel);
+		GridData qualifierLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierLabelData.horizontalSpan = 3;
+		qualifierLabel.setLayoutData(qualifierLabelData);
+		qualifier = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierData.horizontalSpan = 2;
+		qualifierData.heightHint = 160;
+		qualifierData.widthHint = 200;
+		qualifier.setLayoutData(qualifierData);
+		qualifier.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DirectivePropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.Directive.Properties.qualifier,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, qualifier.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.Directive.Properties.qualifier,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, qualifier.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		EditingUtils.setID(qualifier, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQualifierTextArea
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -1048,6 +1112,39 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			guardCondition.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !guardCondition.isEnabled()) {
 			guardCondition.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getQualifier()
+	 * 
+	 */
+	public String getQualifier() {
+		return qualifier.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setQualifier(String newValue)
+	 * 
+	 */
+	public void setQualifier(String newValue) {
+		if (newValue != null) {
+			qualifier.setText(newValue);
+		} else {
+			qualifier.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setBackground(qualifier.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			qualifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
 		}	
 		
 	}

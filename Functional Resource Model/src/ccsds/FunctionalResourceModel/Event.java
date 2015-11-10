@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,4 +39,30 @@ public interface Event extends FrModelElement {
 	 * @generated
 	 */
 	EList<Parameter> getParameter();
+
+	/**
+	 * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Qualifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Qualifier</em>' attribute.
+	 * @see #setQualifier(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent_Qualifier()
+	 * @model
+	 * @generated
+	 */
+	String getQualifier();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Qualifier</em>' attribute.
+	 * @see #getQualifier()
+	 * @generated
+	 */
+	void setQualifier(String value);
 } // Event

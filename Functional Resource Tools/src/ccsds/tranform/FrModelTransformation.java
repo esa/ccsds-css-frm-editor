@@ -250,18 +250,18 @@ public class FrModelTransformation {
 			monitorAttr.setUpperBound(1);
 			paramClass.getEStructuralFeatures().add(monitorAttr);			
 			
-			EAttribute controlledAttr = theCoreFactory.createEAttribute();
-			controlledAttr.setName("controlled");
-			controlledAttr.setEType(EcorePackage.eINSTANCE.getEBoolean());		
-			controlledAttr.setDefaultValue(parameter.isControlled());		
-			controlledAttr.setChangeable(false);
-			controlledAttr.setUpperBound(1);
-			paramClass.getEStructuralFeatures().add(controlledAttr);			
+//			EAttribute controlledAttr = theCoreFactory.createEAttribute();
+//			controlledAttr.setName("controlled");
+//			controlledAttr.setEType(EcorePackage.eINSTANCE.getEBoolean());		
+//			controlledAttr.setDefaultValue(parameter.isControlled());		
+//			controlledAttr.setChangeable(false);
+//			controlledAttr.setUpperBound(1);
+//			paramClass.getEStructuralFeatures().add(controlledAttr);			
 
 			EAttribute configAttr = theCoreFactory.createEAttribute();
-			configAttr.setName("configuration");
+			configAttr.setName("configured");
 			configAttr.setEType(EcorePackage.eINSTANCE.getEBoolean());		
-			configAttr.setDefaultValue(parameter.isConfiguration());
+			configAttr.setDefaultValue(parameter.isConfigured());
 			configAttr.setChangeable(false);
 			configAttr.setUpperBound(1);
 			paramClass.getEStructuralFeatures().add(configAttr);			

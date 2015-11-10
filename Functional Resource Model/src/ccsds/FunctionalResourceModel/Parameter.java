@@ -15,15 +15,15 @@ package ccsds.FunctionalResourceModel;
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isMonitored <em>Monitored</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Parameter#isConfigured <em>Configured</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getGuardCondition <em>Guard Condition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Parameter#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='GuardConditionInv'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot GuardConditionInv='self.controlled = true implies self.guardCondition->notEmpty()'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot GuardConditionInv='self.configured = true implies self.guardCondition->notEmpty()'"
  * @generated
  */
 public interface Parameter extends FrModelElement {
@@ -133,58 +133,31 @@ public interface Parameter extends FrModelElement {
 	void setMonitored(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Controlled</b></em>' attribute.
+	 * Returns the value of the '<em><b>Configured</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Controlled</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Configured</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Controlled</em>' attribute.
-	 * @see #setControlled(boolean)
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_Controlled()
+	 * @return the value of the '<em>Configured</em>' attribute.
+	 * @see #setConfigured(boolean)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_Configured()
 	 * @model default="false"
 	 * @generated
 	 */
-	boolean isControlled();
+	boolean isConfigured();
 
 	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}' attribute.
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#isConfigured <em>Configured</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Controlled</em>' attribute.
-	 * @see #isControlled()
+	 * @param value the new value of the '<em>Configured</em>' attribute.
+	 * @see #isConfigured()
 	 * @generated
 	 */
-	void setControlled(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Configuration</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Configuration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Configuration</em>' attribute.
-	 * @see #setConfiguration(boolean)
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_Configuration()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isConfiguration();
-
-	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#isConfiguration <em>Configuration</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Configuration</em>' attribute.
-	 * @see #isConfiguration()
-	 * @generated
-	 */
-	void setConfiguration(boolean value);
+	void setConfigured(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Guard Condition</b></em>' attribute.
@@ -211,5 +184,31 @@ public interface Parameter extends FrModelElement {
 	 * @generated
 	 */
 	void setGuardCondition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>External Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Oid</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Oid</em>' containment reference.
+	 * @see #setExternalOid(Oid)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getParameter_ExternalOid()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Oid getExternalOid();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Parameter#getExternalOid <em>External Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External Oid</em>' containment reference.
+	 * @see #getExternalOid()
+	 * @generated
+	 */
+	void setExternalOid(Oid value);
 
 } // Parameter

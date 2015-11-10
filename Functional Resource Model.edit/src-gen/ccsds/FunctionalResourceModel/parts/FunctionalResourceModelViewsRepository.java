@@ -153,6 +153,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String parameter = "FunctionalResourceModel::Event::properties::parameter";
 			
+			
+			public static String qualifier = "FunctionalResourceModel::Event::properties::qualifier";
+			
 	
 		}
 	
@@ -191,6 +194,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String guardCondition = "FunctionalResourceModel::Directive::properties::guardCondition";
+			
+			
+			public static String qualifier = "FunctionalResourceModel::Directive::properties::qualifier";
 			
 	
 		}
@@ -235,10 +241,7 @@ public class FunctionalResourceModelViewsRepository {
 			public static String monitored = "FunctionalResourceModel::Parameter::properties::monitored";
 			
 			
-			public static String controlled = "FunctionalResourceModel::Parameter::properties::controlled";
-			
-			
-			public static String configuration = "FunctionalResourceModel::Parameter::properties::configuration";
+			public static String configured = "FunctionalResourceModel::Parameter::properties::configured";
 			
 			
 			public static String guardCondition = "FunctionalResourceModel::Parameter::properties::guardCondition";

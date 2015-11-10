@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Directive#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,4 +66,30 @@ public interface Directive extends FrModelElement {
 	 * @generated
 	 */
 	void setGuardCondition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Qualifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Qualifier</em>' attribute.
+	 * @see #setQualifier(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getDirective_Qualifier()
+	 * @model
+	 * @generated
+	 */
+	String getQualifier();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Qualifier</em>' attribute.
+	 * @see #getQualifier()
+	 * @generated
+	 */
+	void setQualifier(String value);
 } // Directive

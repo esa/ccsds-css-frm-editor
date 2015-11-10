@@ -339,6 +339,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEvent_Qualifier() {
+		return (EAttribute)eventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDirective() {
 		return directiveEClass;
 	}
@@ -359,6 +368,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 */
 	public EAttribute getDirective_GuardCondition() {
 		return (EAttribute)directiveEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDirective_Qualifier() {
+		return (EAttribute)directiveEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -411,7 +429,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Controlled() {
+	public EAttribute getParameter_Configured() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -420,7 +438,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Configuration() {
+	public EAttribute getParameter_GuardCondition() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -429,8 +447,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_GuardCondition() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(6);
+	public EReference getParameter_ExternalOid() {
+		return (EReference)parameterEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -486,19 +504,21 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		eventEClass = createEClass(EVENT);
 		createEReference(eventEClass, EVENT__PARAMETER);
+		createEAttribute(eventEClass, EVENT__QUALIFIER);
 
 		directiveEClass = createEClass(DIRECTIVE);
 		createEReference(directiveEClass, DIRECTIVE__PARAMETER);
 		createEAttribute(directiveEClass, DIRECTIVE__GUARD_CONDITION);
+		createEAttribute(directiveEClass, DIRECTIVE__QUALIFIER);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__ENGINEERING_UNIT);
 		createEAttribute(parameterEClass, PARAMETER__TYPE_DEFINITION);
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_TYPE_OID);
 		createEAttribute(parameterEClass, PARAMETER__MONITORED);
-		createEAttribute(parameterEClass, PARAMETER__CONTROLLED);
-		createEAttribute(parameterEClass, PARAMETER__CONFIGURATION);
+		createEAttribute(parameterEClass, PARAMETER__CONFIGURED);
 		createEAttribute(parameterEClass, PARAMETER__GUARD_CONDITION);
+		createEReference(parameterEClass, PARAMETER__EXTERNAL_OID);
 	}
 
 	/**
@@ -560,19 +580,21 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvent_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEvent_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directiveEClass, Directive.class, "Directive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirective_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDirective_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 1, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDirective_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Monitored(), ecorePackage.getEBoolean(), "monitored", "true", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Controlled(), ecorePackage.getEBoolean(), "controlled", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Configuration(), ecorePackage.getEBoolean(), "configuration", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Configured(), ecorePackage.getEBoolean(), "configured", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -638,7 +660,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		  (parameterEClass, 
 		   source, 
 		   new String[] {
-			 "GuardConditionInv", "self.controlled = true implies self.guardCondition->notEmpty()"
+			 "GuardConditionInv", "self.configured = true implies self.guardCondition->notEmpty()"
 		   });
 	}
 

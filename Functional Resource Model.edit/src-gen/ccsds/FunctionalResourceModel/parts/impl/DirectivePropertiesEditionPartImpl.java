@@ -62,6 +62,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
 	protected Text guardCondition;
+	protected Text qualifier;
 
 
 
@@ -109,6 +110,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
 		
 		
 		composer = new PartComposer(directiveStep) {
@@ -144,6 +146,9 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition) {
 					return createGuardConditionTextarea(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
+					return createQualifierTextarea(parent);
 				}
 				return parent;
 			}
@@ -564,6 +569,41 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		return parent;
 	}
 
+	
+	protected Composite createQualifierTextarea(Composite parent) {
+		Label qualifierLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_QualifierLabel);
+		GridData qualifierLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierLabelData.horizontalSpan = 3;
+		qualifierLabel.setLayoutData(qualifierLabelData);
+		qualifier = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierData.horizontalSpan = 2;
+		qualifierData.heightHint = 160;
+		qualifierData.widthHint = 200;
+		qualifier.setLayoutData(qualifierData);
+		qualifier.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, qualifier.getText()));
+			}
+
+		});
+		EditingUtils.setID(qualifier, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQualifierTextArea
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -897,6 +937,39 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 			guardCondition.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !guardCondition.isEnabled()) {
 			guardCondition.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getQualifier()
+	 * 
+	 */
+	public String getQualifier() {
+		return qualifier.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setQualifier(String newValue)
+	 * 
+	 */
+	public void setQualifier(String newValue) {
+		if (newValue != null) {
+			qualifier.setText(newValue);
+		} else {
+			qualifier.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setBackground(qualifier.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			qualifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
 		}	
 		
 	}

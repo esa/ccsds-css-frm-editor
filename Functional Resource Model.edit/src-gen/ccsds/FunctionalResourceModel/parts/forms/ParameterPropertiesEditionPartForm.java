@@ -57,8 +57,7 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 	protected Text engineeringUnit;
 	protected Text typeDefinition;
 	protected Button monitored;
-	protected Button controlled;
-	protected Button configuration;
+	protected Button configured;
 	protected Text guardCondition;
 
 
@@ -115,8 +114,7 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.engineeringUnit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.configuration);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.configured);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition);
 		
 		
@@ -157,11 +155,8 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.monitored) {
 					return createMonitoredCheckbox(widgetFactory, parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.controlled) {
-					return createControlledCheckbox(widgetFactory, parent);
-				}
-				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.configuration) {
-					return createConfigurationCheckbox(widgetFactory, parent);
+				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.configured) {
+					return createConfiguredCheckbox(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition) {
 					return createGuardConditionTextarea(widgetFactory, parent);
@@ -773,9 +768,9 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	
-	protected Composite createControlledCheckbox(FormToolkit widgetFactory, Composite parent) {
-		controlled = widgetFactory.createButton(parent, getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_ControlledLabel), SWT.CHECK);
-		controlled.addSelectionListener(new SelectionAdapter() {
+	protected Composite createConfiguredCheckbox(FormToolkit widgetFactory, Composite parent) {
+		configured = widgetFactory.createButton(parent, getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.configured, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_ConfiguredLabel), SWT.CHECK);
+		configured.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
@@ -785,46 +780,17 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(controlled.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Parameter.Properties.configured, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(configured.getSelection())));
 			}
 
 		});
-		GridData controlledData = new GridData(GridData.FILL_HORIZONTAL);
-		controlledData.horizontalSpan = 2;
-		controlled.setLayoutData(controlledData);
-		EditingUtils.setID(controlled, FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
-		EditingUtils.setEEFtype(controlled, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createControlledCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createConfigurationCheckbox(FormToolkit widgetFactory, Composite parent) {
-		configuration = widgetFactory.createButton(parent, getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.configuration, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_ConfigurationLabel), SWT.CHECK);
-		configuration.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Parameter.Properties.configuration, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(configuration.getSelection())));
-			}
-
-		});
-		GridData configurationData = new GridData(GridData.FILL_HORIZONTAL);
-		configurationData.horizontalSpan = 2;
-		configuration.setLayoutData(configurationData);
-		EditingUtils.setID(configuration, FunctionalResourceModelViewsRepository.Parameter.Properties.configuration);
-		EditingUtils.setEEFtype(configuration, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.configuration, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createConfigurationCheckbox
+		GridData configuredData = new GridData(GridData.FILL_HORIZONTAL);
+		configuredData.horizontalSpan = 2;
+		configured.setLayoutData(configuredData);
+		EditingUtils.setID(configured, FunctionalResourceModelViewsRepository.Parameter.Properties.configured);
+		EditingUtils.setEEFtype(configured, "eef::Checkbox"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.configured, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createConfiguredCheckbox
 
 		// End of user code
 		return parent;
@@ -1227,63 +1193,31 @@ public class ParameterPropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getControlled()
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getConfigured()
 	 * 
 	 */
-	public Boolean getControlled() {
-		return Boolean.valueOf(controlled.getSelection());
+	public Boolean getConfigured() {
+		return Boolean.valueOf(configured.getSelection());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setControlled(Boolean newValue)
+	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setConfigured(Boolean newValue)
 	 * 
 	 */
-	public void setControlled(Boolean newValue) {
+	public void setConfigured(Boolean newValue) {
 		if (newValue != null) {
-			controlled.setSelection(newValue.booleanValue());
+			configured.setSelection(newValue.booleanValue());
 		} else {
-			controlled.setSelection(false);
+			configured.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.controlled);
-		if (eefElementEditorReadOnlyState && controlled.isEnabled()) {
-			controlled.setEnabled(false);
-			controlled.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !controlled.isEnabled()) {
-			controlled.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getConfiguration()
-	 * 
-	 */
-	public Boolean getConfiguration() {
-		return Boolean.valueOf(configuration.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setConfiguration(Boolean newValue)
-	 * 
-	 */
-	public void setConfiguration(Boolean newValue) {
-		if (newValue != null) {
-			configuration.setSelection(newValue.booleanValue());
-		} else {
-			configuration.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.configuration);
-		if (eefElementEditorReadOnlyState && configuration.isEnabled()) {
-			configuration.setEnabled(false);
-			configuration.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !configuration.isEnabled()) {
-			configuration.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.configured);
+		if (eefElementEditorReadOnlyState && configured.isEnabled()) {
+			configured.setEnabled(false);
+			configured.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !configured.isEnabled()) {
+			configured.setEnabled(true);
 		}	
 		
 	}

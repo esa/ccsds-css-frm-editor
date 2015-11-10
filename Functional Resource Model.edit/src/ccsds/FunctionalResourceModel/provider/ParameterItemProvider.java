@@ -51,8 +51,7 @@ public class ParameterItemProvider
 			addEngineeringUnitPropertyDescriptor(object);
 			addTypeDefinitionPropertyDescriptor(object);
 			addMonitoredPropertyDescriptor(object);
-			addControlledPropertyDescriptor(object);
-			addConfigurationPropertyDescriptor(object);
+			addConfiguredPropertyDescriptor(object);
 			addGuardConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -125,41 +124,19 @@ public class ParameterItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Controlled feature.
+	 * This adds a property descriptor for the Configured feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addControlledPropertyDescriptor(Object object) {
+	protected void addConfiguredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Parameter_controlled_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_controlled_feature", "_UI_Parameter_type"),
-				 FunctionalResourceModelPackage.Literals.PARAMETER__CONTROLLED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Configuration feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConfigurationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Parameter_configuration_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_configuration_feature", "_UI_Parameter_type"),
-				 FunctionalResourceModelPackage.Literals.PARAMETER__CONFIGURATION,
+				 getString("_UI_Parameter_configured_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_configured_feature", "_UI_Parameter_type"),
+				 FunctionalResourceModelPackage.Literals.PARAMETER__CONFIGURED,
 				 true,
 				 false,
 				 false,
@@ -203,6 +180,7 @@ public class ParameterItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID);
 		}
 		return childrenFeatures;
 	}
@@ -260,12 +238,12 @@ public class ParameterItemProvider
 			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
 			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
-			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
-			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -287,6 +265,11 @@ public class ParameterItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID,
+				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
 	}
 
 	/**
@@ -302,7 +285,8 @@ public class ParameterItemProvider
 
 		boolean qualify =
 			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
-			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID;
+			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID;
 
 		if (qualify) {
 			return getString

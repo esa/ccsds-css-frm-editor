@@ -157,6 +157,20 @@ public interface EventPropertiesEditionPart {
 	public boolean isContainedInParameterTable(EObject element);
 
 
+	/**
+	 * @return the qualifier
+	 * 
+	 */
+	public String getQualifier();
+
+	/**
+	 * Defines a new qualifier
+	 * @param newValue the new qualifier to set
+	 * 
+	 */
+	public void setQualifier(String newValue);
+
+
 
 
 

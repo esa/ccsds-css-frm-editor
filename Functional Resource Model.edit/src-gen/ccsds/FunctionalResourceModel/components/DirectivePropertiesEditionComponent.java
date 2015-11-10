@@ -109,6 +109,8 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition))
 				basePart.setGuardCondition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, directive.getGuardCondition()));
+			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier))
+				basePart.setQualifier(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, directive.getQualifier()));
 			// init filters
 			
 			
@@ -133,6 +135,7 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 				// End of user code
 			}
 			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -140,6 +143,7 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -183,6 +187,9 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition) {
 			return FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
+			return FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -242,6 +249,9 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		if (FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition == event.getAffectedEditor()) {
 			directive.setGuardCondition((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (FunctionalResourceModelViewsRepository.Directive.Properties.qualifier == event.getAffectedEditor()) {
+			directive.setQualifier((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -307,6 +317,13 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 					basePart.setGuardCondition("");
 				}
 			}
+			if (FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier)){
+				if (msg.getNewValue() != null) {
+					basePart.setQualifier(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setQualifier("");
+				}
+			}
 			
 		}
 	}
@@ -327,7 +344,8 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Name(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version(),
 			FunctionalResourceModelPackage.eINSTANCE.getDirective_Parameter(),
-			FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition()		);
+			FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition(),
+			FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -407,6 +425,13 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition().getEAttributeType(), newValue);
+				}
+				if (FunctionalResourceModelViewsRepository.Directive.Properties.qualifier == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

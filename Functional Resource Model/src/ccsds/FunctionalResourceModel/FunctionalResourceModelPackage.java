@@ -469,13 +469,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Qualifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Event</em>' class.
@@ -587,13 +596,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Qualifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Directive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Directive</em>' class.
@@ -723,22 +741,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER__MONITORED = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Controlled</b></em>' attribute.
+	 * The feature id for the '<em><b>Configured</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CONTROLLED = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__CONFIGURATION = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PARAMETER__CONFIGURED = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
@@ -747,7 +756,16 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -995,6 +1013,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getEvent_Parameter();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Qualifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.Event#getQualifier()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	EAttribute getEvent_Qualifier();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Directive <em>Directive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1025,6 +1054,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDirective_GuardCondition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Qualifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.Directive#getQualifier()
+	 * @see #getDirective()
+	 * @generated
+	 */
+	EAttribute getDirective_Qualifier();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Parameter <em>Parameter</em>}'.
@@ -1081,26 +1121,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getParameter_Monitored();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isControlled <em>Controlled</em>}'.
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isConfigured <em>Configured</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Controlled</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#isControlled()
+	 * @return the meta object for the attribute '<em>Configured</em>'.
+	 * @see ccsds.FunctionalResourceModel.Parameter#isConfigured()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameter_Controlled();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Configuration</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#isConfiguration()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Configuration();
+	EAttribute getParameter_Configured();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#getGuardCondition <em>Guard Condition</em>}'.
@@ -1112,6 +1141,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParameter_GuardCondition();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.Parameter#getExternalOid <em>External Oid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>External Oid</em>'.
+	 * @see ccsds.FunctionalResourceModel.Parameter#getExternalOid()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_ExternalOid();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1315,6 +1355,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EReference EVENT__PARAMETER = eINSTANCE.getEvent_Parameter();
 
 		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT__QUALIFIER = eINSTANCE.getEvent_Qualifier();
+
+		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1339,6 +1387,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DIRECTIVE__GUARD_CONDITION = eINSTANCE.getDirective_GuardCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIRECTIVE__QUALIFIER = eINSTANCE.getDirective_Qualifier();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1383,20 +1439,12 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EAttribute PARAMETER__MONITORED = eINSTANCE.getParameter_Monitored();
 
 		/**
-		 * The meta object literal for the '<em><b>Controlled</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Configured</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER__CONTROLLED = eINSTANCE.getParameter_Controlled();
-
-		/**
-		 * The meta object literal for the '<em><b>Configuration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__CONFIGURATION = eINSTANCE.getParameter_Configuration();
+		EAttribute PARAMETER__CONFIGURED = eINSTANCE.getParameter_Configured();
 
 		/**
 		 * The meta object literal for the '<em><b>Guard Condition</b></em>' attribute feature.
@@ -1405,6 +1453,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__GUARD_CONDITION = eINSTANCE.getParameter_GuardCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>External Oid</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__EXTERNAL_OID = eINSTANCE.getParameter_ExternalOid();
 
 	}
 

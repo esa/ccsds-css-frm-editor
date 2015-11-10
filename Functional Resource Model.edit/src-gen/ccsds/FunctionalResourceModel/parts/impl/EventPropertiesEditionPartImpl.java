@@ -61,6 +61,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected ReferencesTable parameter;
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
+	protected Text qualifier;
 
 
 
@@ -107,6 +108,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.parameter);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
 		
 		
 		composer = new PartComposer(eventStep) {
@@ -139,6 +141,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.parameter) {
 					return createParameterAdvancedTableComposition(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Event.Properties.qualifier) {
+					return createQualifierTextarea(parent);
 				}
 				return parent;
 			}
@@ -522,6 +527,41 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+	
+	protected Composite createQualifierTextarea(Composite parent) {
+		Label qualifierLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Event.Properties.qualifier, FunctionalResourceModelMessages.EventPropertiesEditionPart_QualifierLabel);
+		GridData qualifierLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierLabelData.horizontalSpan = 3;
+		qualifierLabel.setLayoutData(qualifierLabelData);
+		qualifier = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierData.horizontalSpan = 2;
+		qualifierData.heightHint = 160;
+		qualifierData.widthHint = 200;
+		qualifier.setLayoutData(qualifierData);
+		qualifier.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, qualifier.getText()));
+			}
+
+		});
+		EditingUtils.setID(qualifier, FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
+		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Event.Properties.qualifier, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQualifierTextArea
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -824,6 +864,39 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 */
 	public boolean isContainedInParameterTable(EObject element) {
 		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#getQualifier()
+	 * 
+	 */
+	public String getQualifier() {
+		return qualifier.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#setQualifier(String newValue)
+	 * 
+	 */
+	public void setQualifier(String newValue) {
+		if (newValue != null) {
+			qualifier.setText(newValue);
+		} else {
+			qualifier.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
+		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setBackground(qualifier.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			qualifier.setToolTipText(FunctionalResourceModelMessages.Event_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
+		}	
+		
 	}
 
 

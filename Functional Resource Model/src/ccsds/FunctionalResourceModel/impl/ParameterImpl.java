@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isMonitored <em>Monitored</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isControlled <em>Controlled</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isConfigured <em>Configured</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getGuardCondition <em>Guard Condition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,44 +102,24 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	protected boolean monitored = MONITORED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isControlled() <em>Controlled</em>}' attribute.
+	 * The default value of the '{@link #isConfigured() <em>Configured</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isControlled()
+	 * @see #isConfigured()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CONTROLLED_EDEFAULT = false;
+	protected static final boolean CONFIGURED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isControlled() <em>Controlled</em>}' attribute.
+	 * The cached value of the '{@link #isConfigured() <em>Configured</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isControlled()
+	 * @see #isConfigured()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean controlled = CONTROLLED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isConfiguration() <em>Configuration</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isConfiguration()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CONFIGURATION_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isConfiguration() <em>Configuration</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isConfiguration()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean configuration = CONFIGURATION_EDEFAULT;
+	protected boolean configured = CONFIGURED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getGuardCondition() <em>Guard Condition</em>}' attribute.
@@ -160,6 +140,16 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected String guardCondition = GUARD_CONDITION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExternalOid() <em>External Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid externalOid;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,8 +281,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isControlled() {
-		return controlled;
+	public boolean isConfigured() {
+		return configured;
 	}
 
 	/**
@@ -300,32 +290,11 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setControlled(boolean newControlled) {
-		boolean oldControlled = controlled;
-		controlled = newControlled;
+	public void setConfigured(boolean newConfigured) {
+		boolean oldConfigured = configured;
+		configured = newConfigured;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__CONTROLLED, oldControlled, controlled));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isConfiguration() {
-		return configuration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConfiguration(boolean newConfiguration) {
-		boolean oldConfiguration = configuration;
-		configuration = newConfiguration;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__CONFIGURATION, oldConfiguration, configuration));
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__CONFIGURED, oldConfigured, configured));
 	}
 
 	/**
@@ -354,11 +323,56 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Oid getExternalOid() {
+		return externalOid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExternalOid(Oid newExternalOid, NotificationChain msgs) {
+		Oid oldExternalOid = externalOid;
+		externalOid = newExternalOid;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID, oldExternalOid, newExternalOid);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalOid(Oid newExternalOid) {
+		if (newExternalOid != externalOid) {
+			NotificationChain msgs = null;
+			if (externalOid != null)
+				msgs = ((InternalEObject)externalOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID, null, msgs);
+			if (newExternalOid != null)
+				msgs = ((InternalEObject)newExternalOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID, null, msgs);
+			msgs = basicSetExternalOid(newExternalOid, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID, newExternalOid, newExternalOid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				return basicSetExternalTypeOid(null, msgs);
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
+				return basicSetExternalOid(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -379,12 +393,12 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return getExternalTypeOid();
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 				return isMonitored();
-			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
-				return isControlled();
-			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
-				return isConfiguration();
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
+				return isConfigured();
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				return getGuardCondition();
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
+				return getExternalOid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -409,14 +423,14 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 				setMonitored((Boolean)newValue);
 				return;
-			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
-				setControlled((Boolean)newValue);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
-				setConfiguration((Boolean)newValue);
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
+				setConfigured((Boolean)newValue);
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				setGuardCondition((String)newValue);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
+				setExternalOid((Oid)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -442,14 +456,14 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 				setMonitored(MONITORED_EDEFAULT);
 				return;
-			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
-				setControlled(CONTROLLED_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
-				setConfiguration(CONFIGURATION_EDEFAULT);
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
+				setConfigured(CONFIGURED_EDEFAULT);
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				setGuardCondition(GUARD_CONDITION_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
+				setExternalOid((Oid)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -471,12 +485,12 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return externalTypeOid != null;
 			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 				return monitored != MONITORED_EDEFAULT;
-			case FunctionalResourceModelPackage.PARAMETER__CONTROLLED:
-				return controlled != CONTROLLED_EDEFAULT;
-			case FunctionalResourceModelPackage.PARAMETER__CONFIGURATION:
-				return configuration != CONFIGURATION_EDEFAULT;
+			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
+				return configured != CONFIGURED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				return GUARD_CONDITION_EDEFAULT == null ? guardCondition != null : !GUARD_CONDITION_EDEFAULT.equals(guardCondition);
+			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
+				return externalOid != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -497,10 +511,8 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		result.append(typeDefinition);
 		result.append(", monitored: ");
 		result.append(monitored);
-		result.append(", controlled: ");
-		result.append(controlled);
-		result.append(", configuration: ");
-		result.append(configuration);
+		result.append(", configured: ");
+		result.append(configured);
 		result.append(", guardCondition: ");
 		result.append(guardCondition);
 		result.append(')');

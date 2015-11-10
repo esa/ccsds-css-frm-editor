@@ -184,7 +184,7 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String PARAMETER__GUARD_CONDITION_INV__EEXPRESSION = "self.controlled = true implies self.guardCondition->notEmpty()";
+	protected static final String PARAMETER__GUARD_CONDITION_INV__EEXPRESSION = "self.configured = true implies self.guardCondition->notEmpty()";
 
 	/**
 	 * Validates the GuardConditionInv constraint of '<em>Parameter</em>'.

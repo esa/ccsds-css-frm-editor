@@ -163,6 +163,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String EventPropertiesEditionPart_ParameterLabel;
 
 	
+	public static String EventPropertiesEditionPart_QualifierLabel;
+
+	
 	public static String DirectivePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
@@ -188,6 +191,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String DirectivePropertiesEditionPart_GuardConditionLabel;
+
+	
+	public static String DirectivePropertiesEditionPart_QualifierLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_SemanticDefinitionLabel;
@@ -220,10 +226,7 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ParameterPropertiesEditionPart_MonitoredLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_ControlledLabel;
-
-	
-	public static String ParameterPropertiesEditionPart_ConfigurationLabel;
+	public static String ParameterPropertiesEditionPart_ConfiguredLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_GuardConditionLabel;

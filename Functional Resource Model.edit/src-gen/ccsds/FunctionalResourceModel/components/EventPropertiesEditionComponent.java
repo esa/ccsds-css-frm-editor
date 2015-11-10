@@ -107,6 +107,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 				parameterSettings = new ReferencesTableSettings(event, FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter());
 				basePart.initParameter(parameterSettings);
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.qualifier))
+				basePart.setQualifier(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, event.getQualifier()));
 			// init filters
 			
 			
@@ -130,6 +132,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 				// Start of user code for additional businessfilters for parameter
 				// End of user code
 			}
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -137,6 +140,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -176,6 +180,9 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.parameter) {
 			return FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.qualifier) {
+			return FunctionalResourceModelPackage.eINSTANCE.getEvent_Qualifier();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -232,6 +239,9 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				parameterSettings.move(event.getNewIndex(), (Parameter) event.getNewValue());
 			}
+		}
+		if (FunctionalResourceModelViewsRepository.Event.Properties.qualifier == event.getAffectedEditor()) {
+			event_.setQualifier((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -290,6 +300,13 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			}
 			if (FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.parameter))
 				basePart.updateParameter();
+			if (FunctionalResourceModelPackage.eINSTANCE.getEvent_Qualifier().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.qualifier)){
+				if (msg.getNewValue() != null) {
+					basePart.setQualifier(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setQualifier("");
+				}
+			}
 			
 		}
 	}
@@ -309,7 +326,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_CreationDate(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Name(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version(),
-			FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter()		);
+			FunctionalResourceModelPackage.eINSTANCE.getEvent_Parameter(),
+			FunctionalResourceModelPackage.eINSTANCE.getEvent_Qualifier()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -382,6 +400,13 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Version().getEAttributeType(), newValue);
+				}
+				if (FunctionalResourceModelViewsRepository.Event.Properties.qualifier == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getEvent_Qualifier().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getEvent_Qualifier().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

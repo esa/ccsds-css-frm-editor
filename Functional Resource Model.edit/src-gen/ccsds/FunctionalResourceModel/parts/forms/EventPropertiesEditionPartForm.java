@@ -64,6 +64,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected ReferencesTable parameter;
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
+	protected Text qualifier;
 
 
 
@@ -117,6 +118,7 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.parameter);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
 		
 		
 		composer = new PartComposer(eventStep) {
@@ -149,6 +151,9 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.parameter) {
 					return createParameterTableComposition(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Event.Properties.qualifier) {
+					return createQualifierTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -651,6 +656,65 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 		return parent;
 	}
 
+	
+	protected Composite createQualifierTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label qualifierLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Event.Properties.qualifier, FunctionalResourceModelMessages.EventPropertiesEditionPart_QualifierLabel);
+		GridData qualifierLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierLabelData.horizontalSpan = 3;
+		qualifierLabel.setLayoutData(qualifierLabelData);
+		qualifier = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
+		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierData.horizontalSpan = 2;
+		qualifierData.heightHint = 160;
+		qualifierData.widthHint = 200;
+		qualifier.setLayoutData(qualifierData);
+		qualifier.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							EventPropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.Event.Properties.qualifier,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, qualifier.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EventPropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.Event.Properties.qualifier,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, qualifier.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									EventPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		EditingUtils.setID(qualifier, FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
+		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Event.Properties.qualifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createQualifierTextArea
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -953,6 +1017,39 @@ public class EventPropertiesEditionPartForm extends SectionPropertiesEditingPart
 	 */
 	public boolean isContainedInParameterTable(EObject element) {
 		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#getQualifier()
+	 * 
+	 */
+	public String getQualifier() {
+		return qualifier.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#setQualifier(String newValue)
+	 * 
+	 */
+	public void setQualifier(String newValue) {
+		if (newValue != null) {
+			qualifier.setText(newValue);
+		} else {
+			qualifier.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Event.Properties.qualifier);
+		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setBackground(qualifier.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			qualifier.setToolTipText(FunctionalResourceModelMessages.Event_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
+		}	
+		
 	}
 
 

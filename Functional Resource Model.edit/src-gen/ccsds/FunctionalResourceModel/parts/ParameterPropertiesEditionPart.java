@@ -156,31 +156,17 @@ public interface ParameterPropertiesEditionPart {
 
 
 	/**
-	 * @return the controlled
+	 * @return the configured
 	 * 
 	 */
-	public Boolean getControlled();
+	public Boolean getConfigured();
 
 	/**
-	 * Defines a new controlled
-	 * @param newValue the new controlled to set
+	 * Defines a new configured
+	 * @param newValue the new configured to set
 	 * 
 	 */
-	public void setControlled(Boolean newValue);
-
-
-	/**
-	 * @return the configuration
-	 * 
-	 */
-	public Boolean getConfiguration();
-
-	/**
-	 * Defines a new configuration
-	 * @param newValue the new configuration to set
-	 * 
-	 */
-	public void setConfiguration(Boolean newValue);
+	public void setConfigured(Boolean newValue);
 
 
 	/**

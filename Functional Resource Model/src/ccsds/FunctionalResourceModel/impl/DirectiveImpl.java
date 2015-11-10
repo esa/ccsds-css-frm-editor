@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl#getGuardCondition <em>Guard Condition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +59,26 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 	 * @ordered
 	 */
 	protected String guardCondition = GUARD_CONDITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected String qualifier = QUALIFIER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,6 +137,27 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getQualifier() {
+		return qualifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setQualifier(String newQualifier) {
+		String oldQualifier = qualifier;
+		qualifier = newQualifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER, oldQualifier, qualifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -137,6 +179,8 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 				return getParameter();
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
 				return getGuardCondition();
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
+				return getQualifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
 				setGuardCondition((String)newValue);
 				return;
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
+				setQualifier((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -175,6 +222,9 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
 				setGuardCondition(GUARD_CONDITION_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
+				setQualifier(QUALIFIER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -191,6 +241,8 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 				return parameter != null && !parameter.isEmpty();
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
 				return GUARD_CONDITION_EDEFAULT == null ? guardCondition != null : !GUARD_CONDITION_EDEFAULT.equals(guardCondition);
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
+				return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -207,6 +259,8 @@ public class DirectiveImpl extends FrModelElementImpl implements Directive {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (guardCondition: ");
 		result.append(guardCondition);
+		result.append(", qualifier: ");
+		result.append(qualifier);
 		result.append(')');
 		return result.toString();
 	}
