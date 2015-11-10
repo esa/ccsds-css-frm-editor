@@ -478,13 +478,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Event</em>' class.
@@ -1024,6 +1033,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getEvent_Qualifier();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>External Oid</em>'.
+	 * @see ccsds.FunctionalResourceModel.Event#getExternalOid()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	EReference getEvent_ExternalOid();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Directive <em>Directive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1361,6 +1381,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT__QUALIFIER = eINSTANCE.getEvent_Qualifier();
+
+		/**
+		 * The meta object literal for the '<em><b>External Oid</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVENT__EXTERNAL_OID = eINSTANCE.getEvent_ExternalOid();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.

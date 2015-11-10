@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/Functional Resource Model.edit/src-gen">
   <editionContexts basePackage="ccsds" descriptorsGenericPropertiesViews="true">
-    <PropertiesEditionContext href="functional_resource.components#_PUAUQIfdEeWPxOMdB6h5yQ"/>
+    <PropertiesEditionContext href="functional_resource.components#_QOvW0IfgEeWPxOMdB6h5yQ"/>
   </editionContexts>
   <viewsRepositories basePackage="ccsds.FunctionalResourceModel" swtViews="true" formViews="true">
-    <viewsRepository href="functional_resource.components#_PUAUfIfdEeWPxOMdB6h5yQ"/>
+    <viewsRepository href="functional_resource.components#_QOvXDIfgEeWPxOMdB6h5yQ"/>
   </viewsRepositories>
 </eef-gen:EEFGenModel>

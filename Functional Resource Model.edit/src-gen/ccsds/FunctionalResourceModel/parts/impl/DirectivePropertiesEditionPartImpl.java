@@ -180,7 +180,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 160;
+		semanticDefinitionData.heightHint = 80;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -201,7 +201,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSemanticDefinitionTextArea
-
+		semanticDefinitionData.heightHint = 160;
 		// End of user code
 		return parent;
 	}
@@ -543,7 +543,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		guardCondition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
 		guardConditionData.horizontalSpan = 2;
-		guardConditionData.heightHint = 160;
+		guardConditionData.heightHint = 80;
 		guardConditionData.widthHint = 200;
 		guardCondition.setLayoutData(guardConditionData);
 		guardCondition.addFocusListener(new FocusAdapter() {
@@ -564,7 +564,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setEEFtype(guardCondition, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createGuardConditionTextArea
-
+		guardConditionData.heightHint = 160;
 		// End of user code
 		return parent;
 	}
@@ -578,7 +578,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		qualifier = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
 		qualifierData.horizontalSpan = 2;
-		qualifierData.heightHint = 160;
+		qualifierData.heightHint = 80;
 		qualifierData.widthHint = 200;
 		qualifier.setLayoutData(qualifierData);
 		qualifier.addFocusListener(new FocusAdapter() {
@@ -599,7 +599,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createQualifierTextArea
-
+		qualifierData.heightHint = 160;
 		// End of user code
 		return parent;
 	}

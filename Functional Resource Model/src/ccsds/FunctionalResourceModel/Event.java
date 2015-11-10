@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,4 +66,30 @@ public interface Event extends FrModelElement {
 	 * @generated
 	 */
 	void setQualifier(String value);
+
+	/**
+	 * Returns the value of the '<em><b>External Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Oid</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Oid</em>' containment reference.
+	 * @see #setExternalOid(Oid)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent_ExternalOid()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Oid getExternalOid();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External Oid</em>' containment reference.
+	 * @see #getExternalOid()
+	 * @generated
+	 */
+	void setExternalOid(Oid value);
 } // Event

@@ -5,6 +5,7 @@ package ccsds.FunctionalResourceModel.impl;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 
+import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getQualifier <em>Qualifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,6 +61,16 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	 * @ordered
 	 */
 	protected String qualifier = QUALIFIER_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExternalOid() <em>External Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid externalOid;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,11 +129,56 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Oid getExternalOid() {
+		return externalOid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExternalOid(Oid newExternalOid, NotificationChain msgs) {
+		Oid oldExternalOid = externalOid;
+		externalOid = newExternalOid;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.EVENT__EXTERNAL_OID, oldExternalOid, newExternalOid);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalOid(Oid newExternalOid) {
+		if (newExternalOid != externalOid) {
+			NotificationChain msgs = null;
+			if (externalOid != null)
+				msgs = ((InternalEObject)externalOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.EVENT__EXTERNAL_OID, null, msgs);
+			if (newExternalOid != null)
+				msgs = ((InternalEObject)newExternalOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.EVENT__EXTERNAL_OID, null, msgs);
+			msgs = basicSetExternalOid(newExternalOid, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.EVENT__EXTERNAL_OID, newExternalOid, newExternalOid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FunctionalResourceModelPackage.EVENT__PARAMETER:
 				return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				return basicSetExternalOid(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -138,6 +195,8 @@ public class EventImpl extends FrModelElementImpl implements Event {
 				return getParameter();
 			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
 				return getQualifier();
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				return getExternalOid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,6 +217,9 @@ public class EventImpl extends FrModelElementImpl implements Event {
 			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
 				setQualifier((String)newValue);
 				return;
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				setExternalOid((Oid)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -176,6 +238,9 @@ public class EventImpl extends FrModelElementImpl implements Event {
 			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
 				setQualifier(QUALIFIER_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				setExternalOid((Oid)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,6 +257,8 @@ public class EventImpl extends FrModelElementImpl implements Event {
 				return parameter != null && !parameter.isEmpty();
 			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
 				return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				return externalOid != null;
 		}
 		return super.eIsSet(featureID);
 	}

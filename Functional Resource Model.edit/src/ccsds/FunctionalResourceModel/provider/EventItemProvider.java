@@ -86,6 +86,7 @@ public class EventItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__PARAMETER);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID);
 		}
 		return childrenFeatures;
 	}
@@ -144,6 +145,7 @@ public class EventItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.EVENT__PARAMETER:
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,6 +167,34 @@ public class EventItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.EVENT__PARAMETER,
 				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID,
+				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }
