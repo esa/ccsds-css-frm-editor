@@ -113,11 +113,12 @@ public class OidItemProvider
 		String sOid = "";
 		if(oid != null) {
 			for(Integer i : oid.getOidBit()) {
-				sOid = sOid + OID_SEP + i;
+		 		sOid = sOid + OID_SEP + i;
 			}
-			if(sOid.length() > 0)
-				return OID_SEP + sOid.substring(1);
-			
+			if(sOid.length() > 0) {
+				//return OID_SEP + sOid.substring(1);
+				return sOid.substring(1);
+			}
 		}
 		
 		return sOid;
@@ -190,5 +191,4 @@ public class OidItemProvider
 	public ResourceLocator getResourceLocator() {
 		return Functional_resourceEditPlugin.INSTANCE;
 	}
-
 }

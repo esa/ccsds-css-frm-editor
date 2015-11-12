@@ -218,6 +218,8 @@ public class ParameterItemProvider
 	@Override
 	public String getText(Object object) {
 		String label = ((FrModelElement)object).getOidBit() + " " + ((Parameter)object).getName();
+		if(object instanceof Parameter && ((Parameter)object).getExternalOid() != null)
+			return label = "Parameter (external) " + ((Parameter)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Parameter_type") :
 			getString("_UI_Parameter_type") + " " + label;

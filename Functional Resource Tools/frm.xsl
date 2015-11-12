@@ -110,9 +110,11 @@
 						<xsl:value-of select="@authorizingEntity" />
 						<xsl:text>, </xsl:text>
 						<xsl:text>Creation Date '</xsl:text><xsl:value-of select="@creationDate" />
+						<xsl:text> Version '</xsl:text><xsl:value-of select="@version" />
 						<xsl:text>' </xsl:text>
 						<b>
 							<xsl:apply-templates select="oid" />
+							<xsl:apply-templates select="externalOid" />
 						</b>
 					</div>
 				</td>
@@ -185,6 +187,12 @@
 		<xsl:text>OID </xsl:text>
 		<xsl:apply-templates select="oidBit"/>
 	</xsl:template>
+
+	<xsl:template match="externalOid">
+		<xsl:text>External OID </xsl:text>
+		<xsl:apply-templates select="oidBit"/>
+	</xsl:template>
+
 
 	<xsl:template match="oidBit">
 		<xsl:text>.</xsl:text><xsl:value-of select="."/>

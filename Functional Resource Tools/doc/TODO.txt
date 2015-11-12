@@ -6,3 +6,5 @@ FRM changes:
 - Allow CSTS OIDs for Parameters / Events of FRs
 - externalTypeOid as a property of Parameter, not as child element
 - Directive and Event has 0..n Qualifier is a  Directive / Directive property, which specifies the Type Definition
+
+- add short name for FR elements

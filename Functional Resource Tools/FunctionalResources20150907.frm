@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="frm.xsl" type="text/xsl" ?>
-<fr:FunctionalResourceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fr="http://iso.org.dod.ccsds">
+<fr:FunctionalResourceModel xmlns:fr="http://iso.org.dod.ccsds">
   <rootOid>
     <oidBit>3</oidBit>
     <oidBit>112</oidBit>
     <oidBit>4</oidBit>
     <oidBit>4</oidBit>
     <oidBit>2</oidBit>
-    <oidBit>1</oidBit>
+    <oidBit>3</oidBit>
   </rootOid>
   <functionalResource SemanticDefinition="None" oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="Antenna">
     <oid>
@@ -16,9 +16,25 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>1</oidBit>
       <oidBit>1</oidBit>
     </oid>
+    <events SemanticDefinition="add event values as children" oidBit="1" name="Test Event">
+      <oid>
+        <oidBit>3</oidBit>
+        <oidBit>112</oidBit>
+        <oidBit>4</oidBit>
+        <oidBit>4</oidBit>
+        <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
+        <oidBit>1</oidBit>
+        <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
+        <oidBit>1</oidBit>
+      </oid>
+    </events>
     <directives SemanticDefinition="This directive permits setting of the antenna production-status parameter. " oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="set-antenna-production-status" guardCondition="None">
       <oid>
         <oidBit>3</oidBit>
@@ -26,6 +42,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -39,9 +56,11 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>3</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -56,6 +75,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -70,6 +90,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -83,10 +104,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>3</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -100,6 +123,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -113,10 +137,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>4</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -130,6 +156,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -144,6 +171,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -158,6 +186,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -172,6 +201,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -185,10 +215,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>8</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -202,6 +234,7 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -215,6 +248,7 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>3</oidBit>
@@ -222,16 +256,29 @@
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
+          <oidBit>1</oidBit>
         </oid>
       </parameter>
     </directives>
     <parameter SemanticDefinition="This parameter identifies the antenna that is involved in providing a given support. So far, these antenna identifiers are typically defined by the operating agency so that no guarantee can be given that the identifier is globally unique. Knowledge of which antenna is being used is needed for a number of aspects, e.g. to assess the observed signal levels with respect to the antenna performance or to perform time correlation that requires knowledge of the exact location of the given antenna.&#xD;&#xA;Note: In case the antennas used for uplink and downlink are not identical, the Functional Resource (FR) instance number shall be used to differentiate them. As concerns antenna arraying, it is assumed that each array is associated with a name constituting a single functional resource." oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="antenna-id" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE(3..16))">
+      <externalOid>
+        <oidBit>3</oidBit>
+        <oidBit>112</oidBit>
+        <oidBit>4</oidBit>
+        <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
+        <oidBit>1</oidBit>
+        <oidBit>5</oidBit>
+      </externalOid>
+    </parameter>
+    <parameter SemanticDefinition="This enumerated parameter reports the overall status of the antenna and can take on four values: &#xD;&#xA;- 'configured': the antenna system has been configured, but is not yet tracking because it is still moving to the initial pointing or the spacecraft is not yet or no longer in view; &#xD;&#xA; - 'operational': the antenna is tracking in the reported pointing mode (cf. pointing-mode); &#xD;&#xA; - 'interrupted': a failure has been detected that prevents the antenna from tracking nominally; &#xD;&#xA; - 'halted': the antenna has been taken out of service, e.g. due to wind speed requiring the antenna to be put into stow position." oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -239,13 +286,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the overall status of the antenna and can take on four values: &#xD;&#xA;- 'configured': the antenna system has been configured, but is not yet tracking because it is still moving to the initial pointing or the spacecraft is not yet or no longer in view; &#xD;&#xA; - 'operational': the antenna is tracking in the reported pointing mode (cf. pointing-mode); &#xD;&#xA; - 'interrupted': a failure has been detected that prevents the antenna from tracking nominally; &#xD;&#xA; - 'halted': the antenna has been taken out of service, e.g. due to wind speed requiring the antenna to be put into stow position." oidBit="2" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the current antenna azimuth pointing in 1/1000 degrees, where 0 degrees corresponds to pointing north and 90 degrees corresponds to pointing east. Depending on the way the antenna is built, values above 360 degrees may be reported in cases where the antenna enables such azimuth range as to mitigate the cable unwrap issue. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity.&#xD;&#xA;Note: Time-tagged antenna pointing is regarded a radiometric product and therefore not part of monitoring. " oidBit="2" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="actual-azimuth" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 540000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -253,13 +301,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the current antenna azimuth pointing in 1/1000 degrees, where 0 degrees corresponds to pointing north and 90 degrees corresponds to pointing east. Depending on the way the antenna is built, values above 360 degrees may be reported in cases where the antenna enables such azimuth range as to mitigate the cable unwrap issue. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity.&#xD;&#xA;Note: Time-tagged antenna pointing is regarded a radiometric product and therefore not part of monitoring. " oidBit="3" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="actual-azimuth" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 540000)">
+    <parameter SemanticDefinition="This parameter reports the current antenna elevation pointing in 1/1000 degrees, where 0 degrees corresponds to pointing to the local horizon and 90 degrees corresponds to zenith pointing. Depending on the way the antenna is built, values above 90 degrees may be reported in cases where the antenna enables such elevation range as to mitigate the azimuth singularity at zenith. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="3" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="actual-elevation" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 180000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -267,13 +316,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the current antenna elevation pointing in 1/1000 degrees, where 0 degrees corresponds to pointing to the local horizon and 90 degrees corresponds to zenith pointing. Depending on the way the antenna is built, values above 90 degrees may be reported in cases where the antenna enables such elevation range as to mitigate the azimuth singularity at zenith. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="4" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="actual-elevation" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 180000)">
+    <parameter SemanticDefinition="This parameter reports the azimuth pointing in 1/1000 degrees commanded to the servo system, where 0 degrees corresponds to pointing north and 90 degrees corresponds to pointing east. Depending on the way the antenna is built, values above 360 degrees may be reported in cases where the antenna enables such azimuth range as to mitigate the cable unwrap issue. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="4" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="commanded-azimuth" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0  .. 540000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -281,13 +331,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the azimuth pointing in 1/1000 degrees commanded to the servo system, where 0 degrees corresponds to pointing north and 90 degrees corresponds to pointing east. Depending on the way the antenna is built, values above 360 degrees may be reported in cases where the antenna enables such azimuth range as to mitigate the cable unwrap issue. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="5" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="commanded-azimuth" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0  .. 540000)">
+    <parameter SemanticDefinition="This parameter reports the antenna elevation pointing in 1/1000 degrees commanded to the servo system, where 0 degrees corresponds to pointing to the local horizon and 90 degrees corresponds to zenith pointing. Depending on the way the antenna is built, values above 90 degrees may be reported in cases where the antenna enables such elevation range as to mitigate the azimuth singularity at zenith. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="5" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="commanded-elevation" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 180000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -295,13 +346,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the antenna elevation pointing in 1/1000 degrees commanded to the servo system, where 0 degrees corresponds to pointing to the local horizon and 90 degrees corresponds to zenith pointing. Depending on the way the antenna is built, values above 90 degrees may be reported in cases where the antenna enables such elevation range as to mitigate the azimuth singularity at zenith. For antennas with a mount different from elevation over azimuth (e.g. x/y mount), the antenna pointing shall be converted to the azimuth/elevation presentation. This also applies to antennas having a tilt mode as to overcome the zenith track singularity." oidBit="6" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="commanded-elevation" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 180000)">
+    <parameter SemanticDefinition="This parameter reports the difference in 1/1000 degrees between the actual and the predicted azimuth. Consequently this parameter will only be valid if pointing-mode = ('auto-track' OR 'conical scan'). Antennas not having or not being operated in any closed-loop tracking mode cannot provide this parameter and in this case the parameter shall be flagged as unavailable. &#xD;&#xA;Note: Time-tagged antenna pointing is regarded a radiometric product and therfore not part of monitoring.  " oidBit="6" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="azimuth-error" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-54000  .. 540000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -309,13 +361,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the difference in 1/1000 degrees between the actual and the predicted azimuth. Consequently this parameter will only be valid if pointing-mode = ('auto-track' OR 'conical scan'). Antennas not having or not being operated in any closed-loop tracking mode cannot provide this parameter and in this case the parameter shall be flagged as unavailable. &#xD;&#xA;Note: Time-tagged antenna pointing is regarded a radiometric product and therfore not part of monitoring.  " oidBit="7" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="azimuth-error" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-54000  .. 540000)">
+    <parameter SemanticDefinition="This parameter reports the difference in 1/1000 degrees between the actual and the predicted elevation. Consequently this parameter will only be valid if pointing-mode = ('auto-track' OR  'conical scan'). Antennas not having or not being operated in any closed-loop tracking mode cannot provide this parameter and in this case the parameter shall be flagged as unavailable." oidBit="7" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="elevation-error" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-18000 .. 180000)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -323,13 +376,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the difference in 1/1000 degrees between the actual and the predicted elevation. Consequently this parameter will only be valid if pointing-mode = ('auto-track' OR  'conical scan'). Antennas not having or not being operated in any closed-loop tracking mode cannot provide this parameter and in this case the parameter shall be flagged as unavailable." oidBit="8" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="elevation-error" engineeringUnit="1/1000 degree" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-18000 .. 180000)">
+    <parameter SemanticDefinition="This enumerated parameter reports the pointing mode of the antenna servo system. The values this parameter can take on are:&#xD;&#xA;- 'stow': the antenna is in or is moving to its stow position;&#xD;&#xA;- 'halt': the antenna has been stopped in its current position;&#xD;&#xA;- 'point': the antenna is moving or has moved to the specified azimuth and elevation;&#xD;&#xA;- 'slew': the antenna is moving at commanded angular rates;&#xD;&#xA;- 'program-track': the antenna is pointed in accordance with spacecraft trajectory predicts;&#xD;&#xA;- 'conical scan': the antenna is performing a conical scan around the nominal pointing and applies offsets with respect to the predicts such that the observed signal strength is constant throughout the scan;&#xD;&#xA;- 'auto-track': the antenna pointing is driven by a tracking receiver that by means of a suitable feed (e.g. monopulse) determines an error signal both for azimuth and elevation.&#xD;&#xA;Antenna implementations will typically support only a subset of the above listed pointing modes." oidBit="8" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="pointing-mode" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 5)&#xD;&#xA;{   stow   (0)&#xD;&#xA;,   halt   (1)&#xD;&#xA;,   point (2)&#xD;&#xA;,   slew   (3)&#xD;&#xA;,   programTrack   (4)&#xD;&#xA;,   conicalScan   (5)&#xD;&#xA;,   autoTrack   (6)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -337,13 +391,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the pointing mode of the antenna servo system. The values this parameter can take on are:&#xD;&#xA;- 'stow': the antenna is in or is moving to its stow position;&#xD;&#xA;- 'halt': the antenna has been stopped in its current position;&#xD;&#xA;- 'point': the antenna is moving or has moved to the specified azimuth and elevation;&#xD;&#xA;- 'slew': the antenna is moving at commanded angular rates;&#xD;&#xA;- 'program-track': the antenna is pointed in accordance with spacecraft trajectory predicts;&#xD;&#xA;- 'conical scan': the antenna is performing a conical scan around the nominal pointing and applies offsets with respect to the predicts such that the observed signal strength is constant throughout the scan;&#xD;&#xA;- 'auto-track': the antenna pointing is driven by a tracking receiver that by means of a suitable feed (e.g. monopulse) determines an error signal both for azimuth and elevation.&#xD;&#xA;Antenna implementations will typically support only a subset of the above listed pointing modes." oidBit="9" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="pointing-mode" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 5)&#xD;&#xA;{   stow   (0)&#xD;&#xA;,   halt   (1)&#xD;&#xA;,   point (2)&#xD;&#xA;,   slew   (3)&#xD;&#xA;,   programTrack   (4)&#xD;&#xA;,   conicalScan   (5)&#xD;&#xA;,   autoTrack   (6)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports the lock status of the tracking receiver and as such is only supported by antennas that support and are configured to operate in 'auto-track' mode. The values the parameter may have are:&#xD;&#xA;- 'locked': the tracking receiver has locked on the return link signal and consequently is driving the antenna pointing;&#xD;&#xA;- 'not locked': the tracking receiver is not locked on the return link signal and therefore cannot drive the antenna pointing. &#xD;&#xA;As a consequence, the pointing-mode will have changed to 'program-track' and won't return to 'auto-track' until tracking receiver lock is reacquired. If a tracking receiver is not available or not used, this parameter shall be flagged as undefined." oidBit="9" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-lock-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   locked   (0)&#xD;&#xA;,   notLocked   (1)&#xD;&#xA;}">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -351,13 +406,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the lock status of the tracking receiver and as such is only supported by antennas that support and are configured to operate in 'auto-track' mode. The values the parameter may have are:&#xD;&#xA;- 'locked': the tracking receiver has locked on the return link signal and consequently is driving the antenna pointing;&#xD;&#xA;- 'not locked': the tracking receiver is not locked on the return link signal and therefore cannot drive the antenna pointing. &#xD;&#xA;As a consequence, the pointing-mode will have changed to 'program-track' and won't return to 'auto-track' until tracking receiver lock is reacquired. If a tracking receiver is not available or not used, this parameter shall be flagged as undefined." oidBit="10" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-lock-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   locked   (0)&#xD;&#xA;,   notLocked   (1)&#xD;&#xA;}">
+    <parameter SemanticDefinition="This enumerated parameter reports the configuration of the tracking receiver and as such is only supported by antennas that support and are configured to operate in auto-track mode. The values the parameter may have are:&#xD;&#xA;- 'carrier tracking loop': the tracking receiver tracks the remnant carrier by means of a carrier tracking PLL;&#xD;&#xA;- 'cross-correlation mode': the tracking receiver tracks the return link signal by means of checking for the spectral symmetry (e.g. in case of suppressed carrier modulation schemes).&#xD;&#xA;If a tracking receiver is not available or not used, this parameter shall be flagged as undefined." oidBit="10" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-mode" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   carrierTrackingMode   (0)&#xD;&#xA;,   crossCorrelationMode   (1)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -365,13 +421,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the configuration of the tracking receiver and as such is only supported by antennas that support and are configured to operate in auto-track mode. The values the parameter may have are:&#xD;&#xA;- 'carrier tracking loop': the tracking receiver tracks the remnant carrier by means of a carrier tracking PLL;&#xD;&#xA;- 'cross-correlation mode': the tracking receiver tracks the return link signal by means of checking for the spectral symmetry (e.g. in case of suppressed carrier modulation schemes).&#xD;&#xA;If a tracking receiver is not available or not used, this parameter shall be flagged as undefined." oidBit="11" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-mode" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   carrierTrackingMode   (0)&#xD;&#xA;,   crossCorrelationMode   (1)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the return link signal level in tenth of dBm as observed by the tracking receiver, i.e., the signal level derived from the tracking receiver AGC reading. As to have comparable, i.e. station level plan independent, values the level reading should be calibrated to the LNA input. Due to the levels to be expected, the numbers will always be negative." oidBit="11" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-input-level" engineeringUnit="1/10 dBm" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-2000 .. -30)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -379,13 +436,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the return link signal level in tenth of dBm as observed by the tracking receiver, i.e., the signal level derived from the tracking receiver AGC reading. As to have comparable, i.e. station level plan independent, values the level reading should be calibrated to the LNA input. Due to the levels to be expected, the numbers will always be negative." oidBit="12" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-input-level" engineeringUnit="1/10 dBm" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-2000 .. -30)">
+    <parameter SemanticDefinition="This parameter reports the tracking receiver's dual-sided tracking loop bandwidth in tenth Hz." oidBit="12" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-loop-bandwidth" engineeringUnit="1/10 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntPos (1 .. 1000000)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -393,13 +451,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the tracking receiver's dual-sided tracking loop bandwidth in tenth Hz." oidBit="13" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="tracking-receiver-loop-bandwidth" engineeringUnit="1/10 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntPos (1 .. 1000000)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the wind speed as observed close to the antenna. This parameter is measured in tenth m/s and averaged over the most recent minute." oidBit="13" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="mean-wind-speed " engineeringUnit="1/10 m/s" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -407,13 +466,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the wind speed as observed close to the antenna. This parameter is measured in tenth m/s and averaged over the most recent minute." oidBit="14" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="mean-wind-speed " engineeringUnit="1/10 m/s" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the highest wind speed observed close to the antenna during the most recent 10 minutes. This parameter is measured in tenth m/s." oidBit="14" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="peak-wind-speed" engineeringUnit="1/10 m/s" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -421,13 +481,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the highest wind speed observed close to the antenna during the most recent 10 minutes. This parameter is measured in tenth m/s." oidBit="15" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="peak-wind-speed" engineeringUnit="1/10 m/s" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the current wind direction in degrees, where 0 degrees corresponds to north and 90 degrees to east." oidBit="15" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="wind-direction" engineeringUnit="degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 359)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -435,13 +496,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the current wind direction in degrees, where 0 degrees corresponds to north and 90 degrees to east." oidBit="16" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="wind-direction" engineeringUnit="degree" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 359)">
+    <parameter SemanticDefinition="This parameter reports the amount of precipitation in mm that accumulated since 0:00 UTC of the current day." oidBit="16" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="accumulated-precipitation" engineeringUnit="mm" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -449,13 +511,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the amount of precipitation in mm that accumulated since 0:00 UTC of the current day." oidBit="17" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="accumulated-precipitation" engineeringUnit="mm" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the precipitation rate in mm/h as observed during the most recent hour." oidBit="17" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="precipitation-rate" engineeringUnit="mm/h" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -463,13 +526,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the precipitation rate in mm/h as observed during the most recent hour." oidBit="18" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="precipitation-rate" engineeringUnit="mm/h" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the relative humidity in % as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this time.&#xD;&#xA;Note: Time-tagged meteo data (relative humidity, atmospheric pressure, temperature) is regarded a radiometric product and therefore not part of the monitoring data." oidBit="18" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="relative-humidity" engineeringUnit="%" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -477,13 +541,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the relative humidity in % as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this time.&#xD;&#xA;Note: Time-tagged meteo data (relative humidity, atmospheric pressure, temperature) is regarded a radiometric product and therefore not part of the monitoring data." oidBit="19" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="relative-humidity" engineeringUnit="%" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the atmospheric pressure in hPa as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this time." oidBit="19" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="atmospheric-pressure " engineeringUnit="hPa" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -491,13 +556,14 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the atmospheric pressure in hPa as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this time." oidBit="20" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="atmospheric-pressure " engineeringUnit="hPa" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 100)">
+    <parameter SemanticDefinition="This parameter reports the temperature in °C as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this instant in time." oidBit="20" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="temperature" engineeringUnit="°C" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-100 ..  100)">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -505,30 +571,17 @@
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the temperature in °C as observed by an outdoor meteorological sensor at the station. This parameter shall be flagged as invalid if the value from the Meteo unit is invalid and it shall be flagged as unavailable if this parameter is not available at this instant in time." oidBit="21" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="temperature" engineeringUnit="°C" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (-100 ..  100)">
-      <oid>
-        <oidBit>3</oidBit>
-        <oidBit>112</oidBit>
-        <oidBit>4</oidBit>
-        <oidBit>4</oidBit>
-        <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
-        <oidBit>1</oidBit>
-        <oidBit>1</oidBit>
-        <oidBit>21</oidBit>
-        <oidBit>1</oidBit>
-      </oid>
-    </parameter>
   </functionalResource>
-  <functionalResource SemanticDefinition="None" oidBit="2" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="Forward Space Link Carrier">
+  <functionalResource SemanticDefinition="None" oidBit="2" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="Forward Space Link Carrier" uses="//@functionalResource.0">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>2</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <directives SemanticDefinition="This directive permits setting of the forward carrier production-status parameter." oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="set-fwd-carrier-production-status">
       <oid>
@@ -537,8 +590,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -550,9 +604,11 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
-          <oidBit>2</oidBit>
           <oidBit>3</oidBit>
+          <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -567,8 +623,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -580,10 +637,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
-          <oidBit>2</oidBit>
           <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
+          <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -597,8 +656,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -610,10 +670,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>3</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -627,8 +689,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -640,10 +703,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>4</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -657,8 +722,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -670,10 +736,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>5</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -687,8 +755,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -700,10 +769,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>6</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -717,8 +788,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -730,10 +802,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>7</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -747,8 +821,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -760,10 +835,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>8</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -777,8 +854,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -790,10 +868,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>9</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -807,8 +887,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -821,8 +902,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -834,10 +916,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>11</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -851,8 +935,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -864,10 +949,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>12</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -881,8 +968,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -894,10 +982,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>13</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -911,8 +1001,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -924,10 +1015,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>14</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -941,8 +1034,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -954,10 +1048,12 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>15</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
@@ -971,8 +1067,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
@@ -984,53 +1081,58 @@
           <oidBit>4</oidBit>
           <oidBit>4</oidBit>
           <oidBit>2</oidBit>
-          <oidBit>1</oidBit>
+          <oidBit>3</oidBit>
           <oidBit>2</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>3</oidBit>
           <oidBit>16</oidBit>
+          <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
           <oidBit>1</oidBit>
         </oid>
       </parameter>
     </directives>
-    <parameter SemanticDefinition="This enumerated parameter reports the Forward Space Link Carrier Transmission FR status and can take on four values:&#xD;&#xA;- 'configured': the forward link equipment has been configured, but the carrier has not been brought up or has been stopped;&#xD;&#xA;- 'operational': the forward link is active, i.e., the carrier is up;&#xD;&#xA;- 'interrupted': a failure has been detected, e.g. carrier still on outside the transmission mask, that resulted in the carrier being shut down;&#xD;&#xA;- 'halted': the forward link has been taken out of service, e.g. due to failed HPA cooling." oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports the Forward Space Link Carrier Transmission FR status and can take on four values:&#xD;&#xA;- 'configured': the forward link equipment has been configured, but the carrier has not been brought up or has been stopped;&#xD;&#xA;- 'operational': the forward link is active, i.e., the carrier is up;&#xD;&#xA;- 'interrupted': a failure has been detected, e.g. carrier still on outside the transmission mask, that resulted in the carrier being shut down;&#xD;&#xA;- 'halted': the forward link has been taken out of service, e.g. due to failed HPA cooling." oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the current state of the carrier radiation and can take on three values:&#xD;&#xA;- 'up': the carrier is presently up and the signal is radiated via the antenna;&#xD;&#xA;- 'test': the carrier is presently up and the signal is radiated into the water load;&#xD;&#xA;- 'down': the carrier is presently down, i.e., no signal is being radiated." oidBit="2" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="carrier-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 2)&#xD;&#xA;{   up   (0)&#xD;&#xA;,   test   (1)&#xD;&#xA;,   down   (2)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports the current state of the carrier radiation and can take on three values:&#xD;&#xA;- 'up': the carrier is presently up and the signal is radiated via the antenna;&#xD;&#xA;- 'test': the carrier is presently up and the signal is radiated into the water load;&#xD;&#xA;- 'down': the carrier is presently down, i.e., no signal is being radiated." oidBit="2" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="carrier-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 2)&#xD;&#xA;{   up   (0)&#xD;&#xA;,   test   (1)&#xD;&#xA;,   down   (2)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the current forward link signal level expressed as Equivalent Isotropically Radiated Power (EIRP) in dBW." oidBit="3" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="eirp" engineeringUnit="dBW" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 150)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the current forward link signal level expressed as Equivalent Isotropically Radiated Power (EIRP) in dBW." oidBit="3" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="eirp" engineeringUnit="dBW" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 150)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1043,8 +1145,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1057,64 +1160,69 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the current state of the carrier modulation and can take on two values:&#xD;&#xA;- 'on': the carrier is presently being modulated;&#xD;&#xA;- 'off': the carrier is presently not being modulated.&#xD;&#xA;Note: This parameter reports the modulation being off also when this is not explicitly commanded, e.g. when it is forced off automatically because the forward link sweep is active (sweep-procedure = 'active')." oidBit="6" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="carrier-modulation" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   on   (0)&#xD;&#xA;,   off   (1)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports the current state of the carrier modulation and can take on two values:&#xD;&#xA;- 'on': the carrier is presently being modulated;&#xD;&#xA;- 'off': the carrier is presently not being modulated.&#xD;&#xA;Note: This parameter reports the modulation being off also when this is not explicitly commanded, e.g. when it is forced off automatically because the forward link sweep is active (sweep-procedure = 'active')." oidBit="6" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="carrier-modulation" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   on   (0)&#xD;&#xA;,   off   (1)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports whether the symbol stream directly modulates the forward carrier or modulates a subcarrier that in turn modulates the forward carrier. It can take on two values:&#xD;&#xA;- 'direct': the carrier is directly modulated by the input data symbol stream;&#xD;&#xA;- 'subcarrier': the carrier modulating signal is the subcarrier which in turn is modulated by the to be radiated symbol stream." oidBit="7" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-modulation-type" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{  direct   (0)&#xD;&#xA;,   subcarrier   (1)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports whether the symbol stream directly modulates the forward carrier or modulates a subcarrier that in turn modulates the forward carrier. It can take on two values:&#xD;&#xA;- 'direct': the carrier is directly modulated by the input data symbol stream;&#xD;&#xA;- 'subcarrier': the carrier modulating signal is the subcarrier which in turn is modulated by the to be radiated symbol stream." oidBit="7" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-modulation-type" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{  direct   (0)&#xD;&#xA;,   subcarrier   (1)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the configured peak modulation index for the forward data signal in 1/100 radians. It applies either to the carrier modulation by the symbol stream or in case the symbol strem modulates a subcarrier to the modulation of the carrier by the subcarrier. In case of suppressed carrier, this parameter shall report &quot;-1&quot;." oidBit="8" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-modulation-index" engineeringUnit="1/100 rad" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (0 .. 140, -1)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the configured peak modulation index for the forward data signal in 1/100 radians. It applies either to the carrier modulation by the symbol stream or in case the symbol strem modulates a subcarrier to the modulation of the carrier by the subcarrier. In case of suppressed carrier, this parameter shall report &quot;-1&quot;." oidBit="8" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-modulation-index" engineeringUnit="1/100 rad" typeDefinition="SEQUENCE (SIZE (1)) OF INTEGER (0 .. 140, -1)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the configured peak modulation index for the ranging signal in 1/100 radians." oidBit="9" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="rng-modulation-index" engineeringUnit="1/100 rad" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 140)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the configured peak modulation index for the ranging signal in 1/100 radians." oidBit="9" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="rng-modulation-index" engineeringUnit="1/100 rad" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 140)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -1127,22 +1235,24 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This complex parameter reports on the start frequency in Hz of the first leg of the sweep. For each leg it then specifies the stop frequency in Hz, the sweep rate in Hz/s and the duration of the dwell period in seconds (i.e., the time during which the carrier frequency is not changed) before the next leg is started. The assumption is that there are no frequency discontinuities, i.e., the start frequency of a sweep leg is always equal to the stop frequency of the previous leg." oidBit="11" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="sweep-profile" engineeringUnit="Hz, Hz/s, s (see Semantic Definition for details)" typeDefinition="SEQUENCE OF IntUnsigned, where the first element specifies the start frequency of the first leg of the sweep profile and has a range of (2025000000 .. 40500000000). The remainder of the sequence consist of three elements for each leg of the sweep profile as follows:&#xD;&#xA;- stop frequency with a range of (2025000000 .. 40500000000);&#xD;&#xA;- sweep rate with a range of (1 .. 32000);&#xD;&#xA;- dwell time with a range of (0 .. 20)." controlled="true">
+    <parameter SemanticDefinition="This complex parameter reports on the start frequency in Hz of the first leg of the sweep. For each leg it then specifies the stop frequency in Hz, the sweep rate in Hz/s and the duration of the dwell period in seconds (i.e., the time during which the carrier frequency is not changed) before the next leg is started. The assumption is that there are no frequency discontinuities, i.e., the start frequency of a sweep leg is always equal to the stop frequency of the previous leg." oidBit="11" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="sweep-profile" engineeringUnit="Hz, Hz/s, s (see Semantic Definition for details)" typeDefinition="SEQUENCE OF IntUnsigned, where the first element specifies the start frequency of the first leg of the sweep profile and has a range of (2025000000 .. 40500000000). The remainder of the sequence consist of three elements for each leg of the sweep profile as follows:&#xD;&#xA;- stop frequency with a range of (2025000000 .. 40500000000);&#xD;&#xA;- sweep rate with a range of (1 .. 32000);&#xD;&#xA;- dwell time with a range of (0 .. 20)." configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -1155,78 +1265,84 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the configured subcarrier frequency in 1/1000 Hz. As per CCSDS 401.0-B-25, only 8 kHz or 16 kHz are permissible. The fine resolution is specified here as to enable fine tuning of the subcarrier frequency in cases where this is necessary to compensate the forward link Doppler shift. In case that direct modulation is used (data-modulation-type = 'direct'), this parameter shall report '0'.  &#xD;&#xA;Note: The specified range is intended to also cover the case of non-CCSDS missions. " oidBit="13" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-frequency" engineeringUnit="1/1000 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned  (0 .. 300000000)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the configured subcarrier frequency in 1/1000 Hz. As per CCSDS 401.0-B-25, only 8 kHz or 16 kHz are permissible. The fine resolution is specified here as to enable fine tuning of the subcarrier frequency in cases where this is necessary to compensate the forward link Doppler shift. In case that direct modulation is used (data-modulation-type = 'direct'), this parameter shall report '0'.  &#xD;&#xA;Note: The specified range is intended to also cover the case of non-CCSDS missions. " oidBit="13" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-frequency" engineeringUnit="1/1000 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned  (0 .. 300000000)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports if the subcarrier is currently being modulated and can take on two values:&#xD;&#xA;- 'on': the subcarrier is currently being modulated;&#xD;&#xA;- 'off': the subcarrier is currently not being modulated.&#xD;&#xA;In case no subcarrier is used (data-modulation-type = 'direct'), this parameter shall be flagged as undefined." oidBit="14" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-modulation" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   on   (0)&#xD;&#xA;,   off   (1)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports if the subcarrier is currently being modulated and can take on two values:&#xD;&#xA;- 'on': the subcarrier is currently being modulated;&#xD;&#xA;- 'off': the subcarrier is currently not being modulated.&#xD;&#xA;In case no subcarrier is used (data-modulation-type = 'direct'), this parameter shall be flagged as undefined." oidBit="14" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-modulation" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   on   (0)&#xD;&#xA;,   off   (1)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports if the coherency between the subcarrier frequency and data clock is given in case a subcarrier&#xD;&#xA;is used. This parameter can take on 2 values:&#xD;&#xA;- 'yes': the subcarrier frequency is coherent with data clock;&#xD;&#xA;- 'no': the subcarrier frequency is not coherent with data clock.&#xD;&#xA;In case no subcarrier is used (data-modulation-type = 'direct'), this parameter shall be flagged as undefined." oidBit="15" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-frequency-to-data-clock-coherency" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   yes   (0)&#xD;&#xA;,   no   (1)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports if the coherency between the subcarrier frequency and data clock is given in case a subcarrier&#xD;&#xA;is used. This parameter can take on 2 values:&#xD;&#xA;- 'yes': the subcarrier frequency is coherent with data clock;&#xD;&#xA;- 'no': the subcarrier frequency is not coherent with data clock.&#xD;&#xA;In case no subcarrier is used (data-modulation-type = 'direct'), this parameter shall be flagged as undefined." oidBit="15" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="subcarrier-frequency-to-data-clock-coherency" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 1)&#xD;&#xA;{   yes   (0)&#xD;&#xA;,   no   (1)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This parameter reports the configured forward link symbol rate in 1/10000 Hz, where the range is 78125 to 2560000000." oidBit="16" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-clock" engineeringUnit="1/10000 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntPos (78125 .. 2560000000)" controlled="true">
+    <parameter SemanticDefinition="This parameter reports the configured forward link symbol rate in 1/10000 Hz, where the range is 78125 to 2560000000." oidBit="16" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="data-clock" engineeringUnit="1/10000 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntPos (78125 .. 2560000000)" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
-    <parameter SemanticDefinition="This enumerated parameter reports the baseband waveform used to modulate the subcarrier or carrier of the forward link. It can take on the following values:&#xD;&#xA;- 'nrz-l';&#xD;&#xA;- 'nrz-m';&#xD;&#xA;- 'sp-l'." oidBit="17" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="baseband-waveform" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 2)&#xD;&#xA;{   nrzL   (0)&#xD;&#xA;,    nrzM   (1)&#xD;&#xA;,   spL   (2)&#xD;&#xA;}" controlled="true">
+    <parameter SemanticDefinition="This enumerated parameter reports the baseband waveform used to modulate the subcarrier or carrier of the forward link. It can take on the following values:&#xD;&#xA;- 'nrz-l';&#xD;&#xA;- 'nrz-m';&#xD;&#xA;- 'sp-l'." oidBit="17" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="baseband-waveform" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF Enumerated (0 .. 2)&#xD;&#xA;{   nrzL   (0)&#xD;&#xA;,    nrzM   (1)&#xD;&#xA;,   spL   (2)&#xD;&#xA;}" configured="true">
       <oid>
         <oidBit>3</oidBit>
         <oidBit>112</oidBit>
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>2</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>17</oidBit>
         <oidBit>1</oidBit>
@@ -1240,8 +1356,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
       <oidBit>3</oidBit>
+      <oidBit>3</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This enumerated parameter reports if the ranging system is active and can take on two values:&#xD;&#xA;- 'active': the ranging system is presently active, i.e., the ranging system is generating the ranging signal and modulating it on the forward link carrier;&#xD;&#xA;- 'not active': the ranging system is presently not active as far as the forward link is concerned, i.e., no ranging signal is modulated on the forward link carrier." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="ranging-active" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 1)&#xA;{   active   (0)&#xA;,   not-active   (1)&#xA;}">
       <oid>
@@ -1250,8 +1367,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1264,8 +1382,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1278,8 +1397,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1292,8 +1412,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1306,8 +1427,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1320,8 +1442,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -1334,23 +1457,25 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
         <oidBit>3</oidBit>
+        <oidBit>3</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
   </functionalResource>
-  <functionalResource SemanticDefinition="None" oidBit="4" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="TC Channel Synchronization and Encoding">
+  <functionalResource SemanticDefinition="None" oidBit="4" authorizingEntity="CSTS WG" creationDate="2014-05-30T00:00:00.000+0200" name="TC Channel Synchronization and Encoding" uses="//@functionalResource.1">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>4</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the name assigned to the forward physical channel. This name is a Visible String which has a length of 1 to 32 characters." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-17T00:00:00.000+0200" name="physical-channel-name" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (1 ..32)">
       <oid>
@@ -1359,8 +1484,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1373,8 +1499,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1387,8 +1514,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1401,8 +1529,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1415,8 +1544,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1429,8 +1559,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -1443,8 +1574,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -1457,8 +1589,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -1471,8 +1604,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -1485,8 +1619,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -1499,8 +1634,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -1513,8 +1649,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>4</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -1528,8 +1665,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>5</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the name assigned to the forward physical channel. This name is a Visible String which has a length of 1 to 32 characters." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-02T00:00:00.000+0200" name="physical-channel-name" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (1 ..32)">
       <oid>
@@ -1538,8 +1676,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1552,8 +1691,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1566,8 +1706,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1580,8 +1721,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1594,8 +1736,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1608,8 +1751,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -1622,8 +1766,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -1636,8 +1781,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -1650,8 +1796,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -1664,8 +1811,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -1678,8 +1826,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -1692,8 +1841,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -1706,8 +1856,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -1720,8 +1871,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -1734,8 +1886,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>5</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -1749,8 +1902,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>6</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the maximum length in octets of a TC VC frame the FR accepts for further processing. The reported length refers to the frame length after insertion of the Frame Error Control Field if applicable. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-28T00:00:00.000+0200" name="maximum-tc-frame-length " engineeringUnit="octets" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1 .. 1024)">
       <oid>
@@ -1759,8 +1913,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>6</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1773,8 +1928,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>6</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1787,8 +1943,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>6</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1801,8 +1958,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>6</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1815,8 +1973,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>6</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1830,8 +1989,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>7</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports on the maximum TC frame length in octets that is permitted on the given Master Channel, where the specified length must take into account the Frame Error Control Field, if present on the given physical channel.&#xD;&#xA;Note: The value of the maximum-transfer-frame-length parameter of an instance of this FR must be lessthan or equal to the parameter maximum-transfer-frame-length of the TC MC Multiplexing, Channel Synchronization and Encoding FR consuming the TC MC frames generated by this TC VC Multiplexing FR instance." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-02T00:00:00.000+0200" name="maximum-transfer-frame-length" engineeringUnit="octets" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1 .. 1024)">
       <oid>
@@ -1840,8 +2000,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>7</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1854,8 +2015,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>7</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1868,8 +2030,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>7</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1882,8 +2045,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>7</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1896,8 +2060,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>7</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1911,8 +2076,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>8</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports on the maximum transfer frame length in octets that is permitted on the given Virtual Channel, where the specified length must take into account the Frame Error Control Field, if present on the given physical channel.&#xD;&#xA;Note: The value of the maximum-transfer-frame-length parameter of an instance of this FR must be less than or equal to the parameter maximum-transfer-frame-length of the TC VC Multiplexing FR consuming the TC VC generated by this TC Encapsulation, VC Packet Processing and VC Generation FR instance." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-03T00:00:00.000+0200" name="maximum-transfer-frame-length" engineeringUnit="Octets" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1 .. 1024)">
       <oid>
@@ -1921,8 +2087,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -1935,8 +2102,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -1949,8 +2117,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -1963,8 +2132,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -1977,8 +2147,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -1991,8 +2162,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -2005,8 +2177,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -2019,8 +2192,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -2033,8 +2207,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -2047,8 +2222,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -2061,8 +2237,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -2075,8 +2252,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -2089,8 +2267,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -2103,8 +2282,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -2117,8 +2297,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -2131,8 +2312,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
@@ -2145,8 +2327,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>17</oidBit>
         <oidBit>1</oidBit>
@@ -2159,8 +2342,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>18</oidBit>
         <oidBit>1</oidBit>
@@ -2173,8 +2357,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>19</oidBit>
         <oidBit>1</oidBit>
@@ -2187,8 +2372,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>20</oidBit>
         <oidBit>1</oidBit>
@@ -2201,8 +2387,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>8</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>21</oidBit>
         <oidBit>1</oidBit>
@@ -2216,8 +2403,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>9</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports on the maximum transfer frame length in octets that is permitted on the given MAP Channel, where the specified length must take into account the Frame Error Control Field, if present on the given physical channel.&#xD;&#xA;Note: The value of the maximum-transfer-frame-length parameter of an instance of this FR must be less than or equal to the parameter maximum-transfer-frame-length of the TC Encapsulation, VC Packet Processing and VC Generation FR consuming the MAP channel generated by this Encapsulation, MAP Packet Processing and MAP Multiplexing FR instance." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-16T00:00:00.000+0200" name="maximum-transfer-frame-length" engineeringUnit="octets" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1 .. 1024)">
       <oid>
@@ -2226,8 +2414,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2240,8 +2429,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2254,8 +2444,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -2268,8 +2459,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -2282,8 +2474,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -2296,8 +2489,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -2310,8 +2504,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -2324,8 +2519,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -2338,8 +2534,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>9</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -2353,8 +2550,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>10</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="None" oidBit="11" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="AOS Master Channel Multiplexing">
@@ -2364,19 +2562,21 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>11</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
-  <functionalResource SemanticDefinition="None" oidBit="12" authorizingEntity="CSTS WG" creationDate="2014-06-02T00:00:00.000+0200" name="AOS VC Multiplexing">
+  <functionalResource SemanticDefinition="None" oidBit="12" authorizingEntity="CSTS WG" creationDate="2014-06-02T00:00:00.000+0200" name="AOS VC Multiplexing" uses="//@functionalResource.3">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>12</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports on the spacecraft ID of the Master Channel that is generated by the given FR instance. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-02T00:00:00.000+0200" name="master-channel" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 255)">
       <oid>
@@ -2385,8 +2585,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>12</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2399,8 +2600,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>12</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2413,8 +2615,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>12</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -2427,23 +2630,25 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>12</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
   </functionalResource>
-  <functionalResource SemanticDefinition="None" oidBit="13" authorizingEntity="CSTS WG" creationDate="2014-06-14T00:00:00.000+0200" name="AOS Encapsulation, Packet Processing and VC Generation">
+  <functionalResource SemanticDefinition="None" oidBit="13" authorizingEntity="CSTS WG" creationDate="2014-06-14T00:00:00.000+0200" name="AOS Encapsulation, Packet Processing and VC Generation" uses="//@functionalResource.11">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>13</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This  parameter reports on the Packet Version Numbers of packets that the FR may insert into the AOS VC Channel.&#xD;&#xA;Note 1: If 1 is not an element of the set of supported Packet Version Numbers, then incoming VCP requests are disregarded by the FR. If 8 is not an element of the set of supported Packet Version Numbers, then incoming ENCAP requests are disregarded. If both versions are allowed, then the data insertion is performed in the same sequence as the requests are received by the FR." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-16T00:00:00.000+0200" name="valid-packet-version-numbers" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1 .. 2) OF IntUnsigned ({1,8})">
       <oid>
@@ -2452,8 +2657,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>13</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2466,8 +2672,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>13</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2481,8 +2688,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>14</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <events SemanticDefinition="The 'production-operational' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'operational'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-operational">
       <oid>
@@ -2491,8 +2699,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2505,8 +2714,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2519,8 +2729,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -2533,8 +2744,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -2547,8 +2759,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2561,8 +2774,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2575,8 +2789,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -2589,8 +2804,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -2603,8 +2819,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -2617,8 +2834,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -2631,8 +2849,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -2645,8 +2864,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -2659,8 +2879,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -2673,8 +2894,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -2687,8 +2909,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -2701,8 +2924,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -2715,8 +2939,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -2729,8 +2954,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -2743,23 +2969,25 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>14</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
   </functionalResource>
-  <functionalResource SemanticDefinition="none" oidBit="15" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Forward Frame CSTS Provider">
+  <functionalResource SemanticDefinition="none" oidBit="15" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Forward Frame CSTS Provider" uses="//@functionalResource.11">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>15</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="16" authorizingEntity="CSTS WG" creationDate="2014-06-18T00:00:00.000+0200" name="FSP TS Provider">
@@ -2769,8 +2997,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>16</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the identifier of the given service instance. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-18T00:00:00.000+0200" name="service-instance-identifier" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE (30 .. 256))">
       <oid>
@@ -2779,8 +3008,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -2793,8 +3023,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -2807,8 +3038,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -2821,8 +3053,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -2835,8 +3068,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -2849,8 +3083,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -2863,8 +3098,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -2877,8 +3113,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -2891,8 +3128,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -2905,8 +3143,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -2919,8 +3158,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -2933,8 +3173,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -2947,8 +3188,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -2961,8 +3203,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -2975,8 +3218,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>16</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -2990,8 +3234,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>17</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the entity id length and the entity IDs required for the CFDP core procedure where the first element of the parameter specifies the length of the entity IDs in octets, the second element reports the ID of the local, i.e. the sending entity and the third element reports the ID of the receiving entity. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-29T00:00:00.000+0200" name="entity-ids" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (3)) OF IntUnsigned">
       <oid>
@@ -3000,8 +3245,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3014,8 +3260,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3028,8 +3275,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -3042,8 +3290,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -3056,8 +3305,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -3070,8 +3320,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -3084,8 +3335,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -3098,8 +3350,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -3112,8 +3365,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -3126,8 +3380,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -3140,8 +3395,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -3154,8 +3410,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -3168,8 +3425,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -3182,8 +3440,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -3196,8 +3455,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -3210,8 +3470,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
@@ -3224,8 +3485,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>17</oidBit>
         <oidBit>1</oidBit>
@@ -3238,8 +3500,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>18</oidBit>
         <oidBit>1</oidBit>
@@ -3252,8 +3515,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>19</oidBit>
         <oidBit>1</oidBit>
@@ -3266,8 +3530,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>17</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>20</oidBit>
         <oidBit>1</oidBit>
@@ -3281,8 +3546,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>18</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="None" oidBit="19" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="Forward File Data Store">
@@ -3292,8 +3558,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>19</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="20" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Cross Support File Transfer Service Provider">
@@ -3303,19 +3570,21 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>20</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
-  <functionalResource SemanticDefinition="None" oidBit="21" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="Return Space Link Carrier">
+  <functionalResource SemanticDefinition="None" oidBit="21" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="Return Space Link Carrier" uses="//@functionalResource.0">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>21</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This enumerated parameter reports on the return link carrier production status and can take on four values:&#xD;&#xA;- 'configured': the return link equipment has been configured and the antenna moved to point, but due to geometry or spacecraft timeline, no carrier signal is expected to be seen at this time or the expected LOS time has passed where again LOS may be due to geometry or due to the spacecraft timeline;&#xD;&#xA;- 'operational': the return link is active, i.e., all receiving equipment is in nominal condition, the expected AOS time has passed and the expected LOS has not yet been reached;&#xD;&#xA;- 'interrupted': a failure has been detected, e.g. a receiver malfunction, that prevents the reception of the carrier signal;&#xD;&#xA;- 'halted': the return link has been taken out of service, e.g. due to a power failure affecting the return link string." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 3)&#xA;{   configured   (0)&#xA;,   operational   (1)&#xA;,   interrupted   (2)&#xA;,   halted   (3)&#xA;}">
       <oid>
@@ -3324,8 +3593,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3338,8 +3608,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3352,8 +3623,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -3366,8 +3638,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -3380,8 +3653,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -3394,8 +3668,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -3408,8 +3683,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -3422,8 +3698,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -3436,8 +3713,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -3450,8 +3728,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -3464,8 +3743,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -3478,8 +3758,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -3492,8 +3773,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -3506,8 +3788,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -3520,8 +3803,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -3534,8 +3818,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
@@ -3548,8 +3833,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>17</oidBit>
         <oidBit>1</oidBit>
@@ -3562,8 +3848,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>18</oidBit>
         <oidBit>1</oidBit>
@@ -3576,8 +3863,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>19</oidBit>
         <oidBit>1</oidBit>
@@ -3590,8 +3878,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>20</oidBit>
         <oidBit>1</oidBit>
@@ -3604,8 +3893,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>21</oidBit>
         <oidBit>1</oidBit>
@@ -3618,8 +3908,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>22</oidBit>
         <oidBit>1</oidBit>
@@ -3632,8 +3923,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>23</oidBit>
         <oidBit>1</oidBit>
@@ -3646,8 +3938,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>24</oidBit>
         <oidBit>1</oidBit>
@@ -3660,8 +3953,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>21</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>25</oidBit>
         <oidBit>1</oidBit>
@@ -3675,8 +3969,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>22</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports, in 1/1000 Hz, the dual sided bandwidth of the tone or PN chip tracking loop. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="ranging-tone-or-pnchip-loop" engineeringUnit="1/1000 Hz" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1 .. 3000)">
       <oid>
@@ -3685,8 +3980,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3699,8 +3995,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3713,8 +4010,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -3727,8 +4025,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -3741,8 +4040,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -3755,23 +4055,25 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>22</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
       </oid>
     </parameter>
   </functionalResource>
-  <functionalResource SemanticDefinition="none" oidBit="23" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Return TM Sync and Decoding">
+  <functionalResource SemanticDefinition="none" oidBit="23" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Return TM Sync and Decoding" uses="//@functionalResource.20">
     <oid>
       <oidBit>3</oidBit>
       <oidBit>112</oidBit>
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>23</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <events SemanticDefinition="This event notifies the successful acquisition of frame lock, i.e., in two consecutive frames the ASM was detected at the expected position and with a correlation error not exceeding the permitted limit." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="frame-lock-acquired">
       <oid>
@@ -3780,8 +4082,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3794,8 +4097,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3808,8 +4112,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3822,8 +4127,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3836,8 +4142,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -3850,8 +4157,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -3864,8 +4172,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -3878,8 +4187,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>23</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -3893,8 +4203,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>24</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the length of the telemetry segments in octets this FR instance is configured to generate from the incoming telemetry bit stream." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-29T00:00:00.000+0200" name="tm-segment-length" engineeringUnit="octets" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 16384)">
       <oid>
@@ -3903,8 +4214,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>24</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3917,8 +4229,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>24</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3932,8 +4245,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>25</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="26" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="MC Demux &amp; Reception">
@@ -3943,8 +4257,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>26</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the Master Channel ID the given FR instance is configured to process. If the Transfer Frame Version Number part of the MC-ID is '00', then the range of the MC-ID is 0 .. 1023.  If the Transfer Frame Version Number part of the MC-ID is '00', then the range of the MC-ID is 512 .. 767. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="master-channel-id" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1) OF IntUnsigned (0 .. 1023)">
       <oid>
@@ -3953,8 +4268,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>26</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -3967,8 +4283,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>26</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -3982,8 +4299,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>27</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the Virtual Channel ID the given FR instance is configured to process. If the Transfer Frame Version Number part of the MC-ID is '00', then the range of the VC-ID is 0 .. 7.  If the Transfer Frame Version Number part of the MC-ID is '00', then the range of the VC-ID is 0 .. 63. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="virtual-channel-id" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1) OF IntUnsigned (0 .. 63)">
       <oid>
@@ -3992,8 +4310,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>27</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4006,8 +4325,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>27</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4021,8 +4341,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>28</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the set of APIDs of the space packets that are to be forwarded by means of Packet.indication primitives to the Return File Service Production FR.  If the APID set contains an element set to the value -1, no space packets shall be forwarded to the Return File Service Production FR. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="rfsp-apid-set" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1 .. 2048) OF IntUnsigned (-1 .. 2047)">
       <oid>
@@ -4031,8 +4352,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4045,8 +4367,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4059,8 +4382,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4073,8 +4397,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -4087,8 +4412,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -4101,8 +4427,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -4115,8 +4442,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -4129,8 +4457,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -4143,8 +4472,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>28</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -4158,8 +4488,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>29</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the service package on behalf of which telemetry frames are passed to one or more offline frame buffers." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="service-package-id" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (1 .. 255)">
       <oid>
@@ -4168,8 +4499,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>29</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4182,8 +4514,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>29</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4197,8 +4530,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>30</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the service package on behalf of which telemetry segments are passed to the Telemetry Segment Recording Buffer." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-29T00:00:00.000+0200" name="service-package-id" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (1 .. 255)">
       <oid>
@@ -4207,8 +4541,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>30</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4221,8 +4556,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>30</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4236,8 +4572,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>31</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="32" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Telemetry Segment Recording Buffer">
@@ -4247,8 +4584,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>32</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="33" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="RAF TS Provider">
@@ -4258,8 +4596,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>33</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <events SemanticDefinition="The event 'production-running' notifies the transition of the production-status parameter associated with the given RAF service instance to 'running'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-running">
       <oid>
@@ -4268,8 +4607,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4282,8 +4622,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4296,8 +4637,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4310,8 +4652,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4324,8 +4667,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4338,8 +4682,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4352,8 +4697,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -4366,8 +4712,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -4380,8 +4727,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -4394,8 +4742,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -4408,8 +4757,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -4422,8 +4772,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -4436,8 +4787,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -4450,8 +4802,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -4464,8 +4817,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>33</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -4479,8 +4833,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>34</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the identifier of the given service instance. " oidBit="1" authorizingEntity="CSTS WG" name="service-instance-identifier" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE (30 .. 256))">
       <oid>
@@ -4489,8 +4844,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4503,8 +4859,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4517,8 +4874,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4531,8 +4889,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -4545,8 +4904,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -4559,8 +4919,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -4573,8 +4934,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -4587,8 +4949,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -4601,8 +4964,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -4615,8 +4979,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -4629,8 +4994,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>34</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -4644,8 +5010,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>35</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the identifier of the given service instance. " oidBit="1" authorizingEntity="CSTS WG" name="service-instance-identifier" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE (30 .. 256))">
       <oid>
@@ -4654,8 +5021,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4668,8 +5036,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4682,8 +5051,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4696,8 +5066,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -4710,8 +5081,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -4724,8 +5096,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -4738,8 +5111,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -4752,8 +5126,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -4766,8 +5141,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -4780,8 +5156,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -4794,8 +5171,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -4808,8 +5186,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -4822,8 +5201,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -4836,8 +5216,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>14</oidBit>
         <oidBit>1</oidBit>
@@ -4850,8 +5231,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>15</oidBit>
         <oidBit>1</oidBit>
@@ -4864,8 +5246,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>16</oidBit>
         <oidBit>1</oidBit>
@@ -4878,8 +5261,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>35</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>17</oidBit>
         <oidBit>1</oidBit>
@@ -4893,8 +5277,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>36</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="37" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="CFDP Receiving Entity">
@@ -4904,8 +5289,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>37</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter reports the entity id length and the entity IDs required for the CFDP core procedure where the first element of the parameter specifies the length of the entity IDs in octets, the second element reports the ID of the local, i.e. the receiving entity and the third element reports the ID of the sending entity. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-30T00:00:00.000+0200" name="entity-ids" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (3)) OF IntUnsigned">
       <oid>
@@ -4914,8 +5300,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -4928,8 +5315,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -4942,8 +5330,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -4956,8 +5345,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -4970,8 +5360,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -4984,8 +5375,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -4998,8 +5390,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -5012,8 +5405,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -5026,8 +5420,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -5040,8 +5435,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -5054,8 +5450,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -5068,8 +5465,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -5082,8 +5480,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>37</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>13</oidBit>
         <oidBit>1</oidBit>
@@ -5097,8 +5496,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>38</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="None" oidBit="39" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="Return File Data Store">
@@ -5108,8 +5508,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>39</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="40" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="TDM Segment Generation">
@@ -5119,8 +5520,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>40</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="41" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="TDM Sink">
@@ -5130,8 +5532,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>41</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="None" oidBit="42" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="TDM Recording Buffer">
@@ -5141,8 +5544,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>42</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="43" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Real-Time Tracking Data CSTS Provider">
@@ -5152,8 +5556,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>43</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="mm since 00:00 UTC" oidBit="1" authorizingEntity="CSTS WG" name="Production status" typeDefinition="Unsigned Integer">
       <oid>
@@ -5162,8 +5567,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>43</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -5177,8 +5583,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>44</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This parameter specifies in Hz the sampling rate used for the open-loop recording." oidBit="1" authorizingEntity="CSTS WG" name="open-loop-sampling-rate" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (1000 .. 2000000)">
       <oid>
@@ -5187,8 +5594,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -5201,8 +5609,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
@@ -5215,8 +5624,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
@@ -5229,8 +5639,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
@@ -5243,8 +5654,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>5</oidBit>
         <oidBit>1</oidBit>
@@ -5257,8 +5669,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>6</oidBit>
         <oidBit>1</oidBit>
@@ -5271,8 +5684,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>7</oidBit>
         <oidBit>1</oidBit>
@@ -5285,8 +5699,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>8</oidBit>
         <oidBit>1</oidBit>
@@ -5299,8 +5714,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>9</oidBit>
         <oidBit>1</oidBit>
@@ -5313,8 +5729,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>10</oidBit>
         <oidBit>1</oidBit>
@@ -5327,8 +5744,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>11</oidBit>
         <oidBit>1</oidBit>
@@ -5341,8 +5759,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>44</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>12</oidBit>
         <oidBit>1</oidBit>
@@ -5356,8 +5775,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>45</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="46" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="D-DOR Raw Data Collection">
@@ -5367,8 +5787,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>46</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="47" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="D-DOR Raw Data Store">
@@ -5378,8 +5799,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>47</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="48" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Raw Radio Metric Data Collection">
@@ -5389,8 +5811,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>48</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="49" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Raw Radio Metric Data Store">
@@ -5400,8 +5823,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>49</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="None" oidBit="50" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="Validated Radiometric Data Store">
@@ -5411,8 +5835,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>50</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="51" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Monitored Data CSTS Provider">
@@ -5422,8 +5847,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>51</oidBit>
+      <oidBit>1</oidBit>
     </oid>
   </functionalResource>
   <functionalResource SemanticDefinition="none" oidBit="52" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="Monitored Data Collection">
@@ -5433,8 +5859,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>52</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This enumerated parameter reports the status of the monitored data collection. It can take on the following values:&#xD;&#xA;- 'configured': equipment has been assigned to support the data collection, but data collection process is not active;&#xD;&#xA;- 'operational': the data collection process is active, i.e., it collects all relevant monitored data;&#xD;&#xA;- 'interrupted': the data collection process is stopped due to a fault;&#xD;&#xA;- 'halted': the data collection process is stopped and production equipment is out of service due to management action." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}">
       <oid>
@@ -5443,8 +5870,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>52</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -5458,8 +5886,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>53</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This enumerated parameter reports the production status of the service production process associated with the given Service Control service instance.  It can take on the following values:&#xD;&#xA;- 'configured': equipment has been assigned to support the service instance, but the production process is not yet capable of acting on configuration data;&#xD;&#xA;- 'operational': the production process has been configured for support and is now capable to act on configuration data;&#xD;&#xA;- 'interrupted': the service production process is stopped due to a fault;&#xD;&#xA;- 'halted': the service production process is stopped and production equipment is out of service due to management action." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}">
       <oid>
@@ -5468,8 +5897,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>53</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
@@ -5483,8 +5913,9 @@
       <oidBit>4</oidBit>
       <oidBit>4</oidBit>
       <oidBit>2</oidBit>
-      <oidBit>1</oidBit>
+      <oidBit>3</oidBit>
       <oidBit>54</oidBit>
+      <oidBit>1</oidBit>
     </oid>
     <parameter SemanticDefinition="This enumerated parameter reports the status of the service production necessary for acting on configuration parameters. It can take on the following values:&#xD;&#xA;- 'configured': equipment has been assigned to support acting on configuration data, but the process implementing this is not active;&#xD;&#xA;- 'operational': the process interacting with configuration parameters is active;&#xD;&#xA;- 'interrupted': the process for interaction with configuration parameters is stopped due to a fault;&#xD;&#xA;- 'halted': the process for interaction with configuration parameters is stopped and production equipment is out of service due to management action." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-status" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 3)&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   operational   (1)&#xD;&#xA;,   interrupted   (2)&#xD;&#xA;,   halted   (3)&#xD;&#xA;}">
       <oid>
@@ -5493,8 +5924,9 @@
         <oidBit>4</oidBit>
         <oidBit>4</oidBit>
         <oidBit>2</oidBit>
-        <oidBit>1</oidBit>
+        <oidBit>3</oidBit>
         <oidBit>54</oidBit>
+        <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>

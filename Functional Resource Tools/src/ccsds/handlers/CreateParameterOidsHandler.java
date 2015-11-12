@@ -154,6 +154,8 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 				mElementMap.get(mElement.getName()).add(mElement);
 			}
 			
+			filterExternalOids(mElementMap); // filter out external OIDs
+			
 			int mElementIndex = 1;	// first parameter index in the OID to be used		
 			Iterator<String> paramIt = mElementMap.keySet().iterator();
 			while(paramIt.hasNext()) {
@@ -235,6 +237,33 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 		}
 	}
 	
+	/**
+	 * Removes those model element lists from the map which contain external Oids 
+	 * @param mElementMap
+	 */
+	private void filterExternalOids(LinkedHashMap<String, List<FrModelElement>> mElementMap) {
+		Iterator<String> paramIt = mElementMap.keySet().iterator();
+		while(paramIt.hasNext()) {
+			boolean hasExternalOids = false;
+			List<FrModelElement> mElementVersions = mElementMap.get(paramIt.next());
+			for(FrModelElement mElement : mElementVersions) {
+				if(mElement instanceof FunctionalResource) {
+				} else if(mElement instanceof Event) {
+					hasExternalOids = (((Event)mElement).getExternalOid() != null) ? true : false;					
+				} else if(mElement instanceof Directive) {
+				} else if(mElement instanceof Parameter) {					
+					Oid test = ((Parameter)mElement).getExternalOid();
+					hasExternalOids = (((Parameter)mElement).getExternalOid() != null) ? true : false;					
+				}
+				if(hasExternalOids == true) {
+					paramIt.remove();
+					break;
+				}
+			}
+		}		
+	}
+
+
 	/**
 	 * Clones the given OID
 	 * @param sourceOid
