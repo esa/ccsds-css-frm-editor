@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="ccsds.fr.model.feature"
+      label="ccsds.fr.model"
+      version="3.0.0.qualifier"
+      provider-name="esa.esoc.int"
+      os="linux,macosx,win32">
+
+   <description url="http://www.esa.int/ESA">
+      CCSDS Functional Resource Model Editor
+   </description>
+
+   <copyright>
+      TBD
+   </copyright>
+
+   <license url="">
+      TBD
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.eef.runtime"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="ccsds.fr.model"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="ccsds.fr.model.edit" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="ccsds.fr.model.editor"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.sirius"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
+   </requires>
+
+   <plugin
+         id="ccsds.fr.model"
+         download-size="0"
+         install-size="0"
+         version="3.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="ccsds.fr.model.edit"
+         download-size="0"
+         install-size="0"
+         version="3.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="ccsds.fr.model.editor"
+         download-size="0"
+         install-size="0"
+         version="3.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="ccsds.fr.model.tools"
+         download-size="0"
+         install-size="0"
+         version="3.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="ccsds.fr.model.tools.diagram.design"
+         download-size="0"
+         install-size="0"
+         version="3.0.0.qualifier"
+         unpack="false"/>
+
+</feature>

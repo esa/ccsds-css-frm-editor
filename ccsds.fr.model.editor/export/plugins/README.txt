@@ -11,7 +11,15 @@ Linux64:	http://www.eclipse.org/downloads/download.php?file=/technology/epp/down
 1.1) Install OCL (Object Constraint Language, used for FRM validation):
 Help -> Install New Software, Modeling -> OCL Examples and SDK
 
-2) place all FRM plugins (ccsds.fr.*.jar) in the 'dropins' folder of your eclipse installation. Remove older jars before
+2.1) Installation via dropins folder
+	place all FRM plugins (ccsds.fr.*.jar) in the 'dropins' folder of your eclipse installation. Remove older jars before
+
+2.2) Alternative Installation over local archive
+	- Help -> Install New Software
+	- Available Software Sites -> Add -> Archive: point to ccsds.fr.feature.zip
+	- Select the created software site in 'Work with'
+	- Untick 'Group Items by category
+	- select 'ccsds.fr.model' and follow the installation wizard
 
 3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project (Modeling Project or General -> Resource))
 

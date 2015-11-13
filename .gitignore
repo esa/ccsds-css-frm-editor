@@ -2,6 +2,7 @@
 *.zip
 *.lost
 *.uml
+*.jar
 RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery
