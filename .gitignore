@@ -6,5 +6,5 @@ RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery
 .metadata
-*/export/*
+*/export/**/*.jar
 

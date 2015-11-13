@@ -1,0 +1,11 @@
+Version 3.0.0 from 13.11.2015
+
+- added 0..1 Qualifier for Directives and Events
+- 0..1 Guard Condition for Directives and Configured Parameters
+- added Short Name for all FRelements
+- changed Parameter/Controlled to Parameter/Configured
+- Validation: Configured Parameters must have a guard condition - TBC, this does not sound correct?!
+- External OID for Parameters and Events (e.g. production-status OID from the css.csts.framework sub-branch
+- Updated OID generation to handle different versions and to ignore external OIDs. The key to be the same element (e.g. Parameter) in a different version is the name
+- Added OID tooltips for OIDs showing decorated OIDs like iso(1).identifiedOrganisation(3).standard(112).ccsds(4)  
+- Renamed plug-ins to eclipse standard convention - remove old plug-ins before installation!!!
