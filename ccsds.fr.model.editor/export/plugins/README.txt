@@ -1,4 +1,5 @@
-1) Install eclipse kepler, choose the Eclipse Modeling Tools from
+1) Installation 
+1.1) Install eclipse luna, choose the Eclipse Modeling Tools from
 https://www.eclipse.org/downloads/
 
 URLs
@@ -7,10 +8,12 @@ Win64:		http://www.eclipse.org/downloads/download.php?file=/technology/epp/downl
 Mac64:		http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-modeling-luna-SR2-macosx-cocoa-x86_64.tar.gz		
 Linux64:	http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-modeling-luna-SR2-linux-gtk-x86_64.tar.gz 	
 
+1.1) Install OCL (Object Constraint Language, used for FRM validation):
+Help -> Install New Software, Modeling -> OCL Examples and SDK
 
-2) place all FRM plugins (ccsds.fr.*.jar) in the 'dropins' folder of your eclipse installation
+2) place all FRM plugins (ccsds.fr.*.jar) in the 'dropins' folder of your eclipse installation. Remove older jars before
 
-3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project (Modeling Project))
+3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project (Modeling Project or General -> Resource))
 
 4) Place the *.frm file in the created project and open it.
 

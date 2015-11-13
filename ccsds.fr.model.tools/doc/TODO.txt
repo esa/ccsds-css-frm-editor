@@ -2,7 +2,7 @@ FRM changes:
 
 - keep only the Configured flag for parameters
 - Event / 0..n Values
-- Directive / 0..n Qualifier / 0..n Parameter
+- Directive / 0..n Qualifier / 0..n Parameter update : 0..1
 - Allow CSTS OIDs for Parameters / Events of FRs
 - externalTypeOid as a property of Parameter, not as child element - update: why? re-discuss
 - Directive and Event has 0..n Qualifier is a  Directive / Directive property, which specifies the Type Definition
