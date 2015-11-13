@@ -42,7 +42,7 @@ public class FrModelTransformation {
 	private EClass functionalresourceInstanceClass;
 	private EPackage friPackage;
 	private EClass srvUserClass;
-	private EClass entityMgmtClass;
+	//private EClass entityMgmtClass;
 
 	public FrModelTransformation() {
 		theCoreFactory = EcoreFactory.eINSTANCE;
