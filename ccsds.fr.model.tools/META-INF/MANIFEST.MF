@@ -19,3 +19,4 @@ Import-Package: ccsds.FunctionalResourceModel.provider,
  org.eclipse.emf.edit.domain,
  org.eclipse.emf.edit.provider,
  org.eclipse.emf.edit.provider.resource
+Bundle-Vendor: esa.esoc.int
