@@ -11,6 +11,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -32,7 +33,8 @@ import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.FunctionalResourceModel.provider.OidItemProvider;
-import functional_resource_transformation.Activator;
+import ccsds.fr.model.tools.Activator;
+import ccsds.fr.model.tools.NameTool;
 
 enum ModelElementType {
 	FR_OID_TYPE(-1),
@@ -51,7 +53,7 @@ enum ModelElementType {
 	}
 }
 
-public class CreateParameterOidsHandler extends AbstractHandler implements IHandler {
+public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 
 	/**
 	 * Creates Parameter OIDs from the root OID and the 
@@ -75,10 +77,42 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 			
 			FunctionalResourceModelEditor editor = (FunctionalResourceModelEditor)ep;
 			FunctionalResourceModel frm = editor.getModel();
-			updateFrmOids(frm, editor.getEditingDomain());		
+			
+			CompoundCommand setAll = new MyCompoundCommand();
+			updateFrmOids(frm, editor.getEditingDomain(), setAll);
+			updateShortNames(frm, editor.getEditingDomain(), setAll);
+			
+			// There are two issues with the command:
+			// 1) after applying all items in the tree are selected and all nodes are expanded
+			// 2) undo is extremely slow if all items are selected and the tree is expanded
+			editor.getEditingDomain().getCommandStack().execute(setAll);			
 		}
 		
 		return null;
+	}
+
+
+	/**
+	 * Update the short name of FR elements if it is not already set
+	 * @param frm
+	 * @param editingDomain
+	 * @param setAll
+	 */
+	private void updateShortNames(EObject frm,
+			EditingDomain editingDomain, CompoundCommand setAll) {
+		
+		for(EObject o : frm.eContents()) {
+			if(o instanceof FrModelElement) {
+				FrModelElement el = (FrModelElement)o;
+				if(el.getShortName() == null || el.getShortName().length() == 0) {
+					SetCommand setCmd = new SetCommand(editingDomain, el,
+							el.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME),
+							NameTool.wellFormed(el.getName()));					
+						setAll.append(setCmd);								
+				}
+				updateShortNames(el, editingDomain, setAll);
+			}
+		}
 	}
 
 
@@ -102,8 +136,7 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 	 * @param editingDomain 
 	 * @param commandStack 
 	 */
-	private void updateFrmOids(FunctionalResourceModel frm, EditingDomain domain) {
-		CompoundCommand setAll = new MyCompoundCommand();
+	private void updateFrmOids(FunctionalResourceModel frm, EditingDomain domain, CompoundCommand setAll) {		
 		setAll.setLabel("Update Functional Resource OIDs from root OID");
 		Oid rootOid = frm.getRootOid();
 		if(rootOid == null) {
@@ -121,11 +154,6 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 		
 		updateOids(domain, "", frm.getFunctionalResource().toArray(new FrModelElement[0]), 
 				rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
-		
-		// There are two issues with the command:
-		// 1) after applying all items in the tree are selected and all nodes are expanded
-		// 2) undo is extremely slow if all items are selected and the tree is expanded
-		domain.getCommandStack().execute(setAll);
 	}
 
 	/**

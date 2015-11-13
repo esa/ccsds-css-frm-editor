@@ -25,6 +25,51 @@
 				   </with>
 				</visibleWhen>
          </command>
+         <command
+               commandId="fr.create.oid.name"
+               icon="icons/Oid.gif"
+               label="Create Parameter / Directive / Event OIDs and Short Names"
+               style="push"
+               tooltip="Create Parameter / Directive / Event OIDs and Short Names">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.auth.entity"
+               icon="icons/auth_entity.gif"
+               label="Create Authorizing Entity"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -48,6 +93,51 @@
 				   </with>
 				</visibleWhen>
          </command>
+         <command
+               commandId="fr.create.oid.name"
+               icon="icons/Oid.gif"
+               label="Create Parameter / Directive / Event OIDs and Short Names"
+               style="push"
+               tooltip="Create Parameter / Directive / Event OIDs and Short Names">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.auth.entity"
+               icon="icons/auth_entity.gif"
+               label="Create Authorizing Entity"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -55,11 +145,11 @@
          <toolbar
                id="fr.tools.toolbar">
             <command
-                  commandId="fr.create.oid"
+                  commandId="fr.create.oid.name"
                   icon="icons/Oid.gif"
-                  label="Create Prameter / Directive / Event OIDs"
+                  label="Create Parameter / Directive / Event OIDs and Short Names"
                   style="push"
-                  tooltip="Create / Update OIDs">
+                  tooltip="Create or update Parameter / Directive / Event OIDs and Short Names">
             </command>
             <command
                   commandId="fr.create.auth.entity"
@@ -79,8 +169,8 @@
             commandId="fr.transform">
       </handler>
       <handler
-            class="ccsds.handlers.CreateParameterOidsHandler"
-            commandId="fr.create.oid">
+            class="ccsds.handlers.UpdateOidsNameHandler"
+            commandId="fr.create.oid.name">
       </handler>
       <handler
             class="ccsds.handlers.CreateAuthEntities"

@@ -1,4 +1,4 @@
-package functional_resource_transformation;
+package ccsds.fr.model.tools;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

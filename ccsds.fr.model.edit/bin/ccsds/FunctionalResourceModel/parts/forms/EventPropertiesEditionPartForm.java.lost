@@ -46,3 +46,21 @@ Wed Nov 04 10:15:44 CET 2015
 Start of user code for createSemanticDefinitionText
 
 		// End of user code
+
+Fri Nov 13 11:36:40 CET 2015
+================================================================================
+Start of user code for createSemanticDefinitionTextArea
+		semanticDefinitionData.heightHint = 160;
+		// End of user code
+Start of user code for createQualifierTextArea
+		qualifierData.heightHint = 160;
+		// End of user code
+
+Fri Nov 13 11:37:13 CET 2015
+================================================================================
+Start of user code for createSemanticDefinitionText
+
+		// End of user code
+Start of user code for createQualifierText
+
+		// End of user code

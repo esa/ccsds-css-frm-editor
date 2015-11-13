@@ -40,22 +40,25 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FrModelElement::properties::SemanticDefinition";
 			
 			
-			public static String oidBit = "FunctionalResourceModel::FrModelElement::properties::oidBit";
+			public static String name = "FunctionalResourceModel::FrModelElement::properties::name";
 			
 			
-			public static String deprecated = "FunctionalResourceModel::FrModelElement::properties::deprecated";
+			public static String shortName = "FunctionalResourceModel::FrModelElement::properties::shortName";
 			
 			
-			public static String authorizingEntity = "FunctionalResourceModel::FrModelElement::properties::authorizingEntity";
+			public static String version = "FunctionalResourceModel::FrModelElement::properties::version";
 			
 			
 			public static String creationDate = "FunctionalResourceModel::FrModelElement::properties::creationDate";
 			
 			
-			public static String name = "FunctionalResourceModel::FrModelElement::properties::name";
+			public static String authorizingEntity = "FunctionalResourceModel::FrModelElement::properties::authorizingEntity";
 			
 			
-			public static String version = "FunctionalResourceModel::FrModelElement::properties::version";
+			public static String oidBit = "FunctionalResourceModel::FrModelElement::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::FrModelElement::properties::deprecated";
 			
 	
 		}
@@ -88,22 +91,25 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FunctionalResource::properties::SemanticDefinition";
 			
 			
-			public static String oidBit = "FunctionalResourceModel::FunctionalResource::properties::oidBit";
+			public static String name = "FunctionalResourceModel::FunctionalResource::properties::name";
 			
 			
-			public static String deprecated = "FunctionalResourceModel::FunctionalResource::properties::deprecated";
+			public static String shortName = "FunctionalResourceModel::FunctionalResource::properties::shortName";
 			
 			
-			public static String authorizingEntity = "FunctionalResourceModel::FunctionalResource::properties::authorizingEntity";
+			public static String version = "FunctionalResourceModel::FunctionalResource::properties::version";
 			
 			
 			public static String creationDate = "FunctionalResourceModel::FunctionalResource::properties::creationDate";
 			
 			
-			public static String name = "FunctionalResourceModel::FunctionalResource::properties::name";
+			public static String authorizingEntity = "FunctionalResourceModel::FunctionalResource::properties::authorizingEntity";
 			
 			
-			public static String version = "FunctionalResourceModel::FunctionalResource::properties::version";
+			public static String oidBit = "FunctionalResourceModel::FunctionalResource::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::FunctionalResource::properties::deprecated";
 			
 			
 			public static String event = "FunctionalResourceModel::FunctionalResource::properties::event";
@@ -133,22 +139,25 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Event::properties::SemanticDefinition";
 			
 			
-			public static String oidBit = "FunctionalResourceModel::Event::properties::oidBit";
+			public static String name = "FunctionalResourceModel::Event::properties::name";
 			
 			
-			public static String deprecated = "FunctionalResourceModel::Event::properties::deprecated";
+			public static String shortName = "FunctionalResourceModel::Event::properties::shortName";
 			
 			
-			public static String authorizingEntity = "FunctionalResourceModel::Event::properties::authorizingEntity";
+			public static String version = "FunctionalResourceModel::Event::properties::version";
 			
 			
 			public static String creationDate = "FunctionalResourceModel::Event::properties::creationDate";
 			
 			
-			public static String name = "FunctionalResourceModel::Event::properties::name";
+			public static String authorizingEntity = "FunctionalResourceModel::Event::properties::authorizingEntity";
 			
 			
-			public static String version = "FunctionalResourceModel::Event::properties::version";
+			public static String oidBit = "FunctionalResourceModel::Event::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::Event::properties::deprecated";
 			
 			
 			public static String parameter = "FunctionalResourceModel::Event::properties::parameter";
@@ -172,22 +181,25 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Directive::properties::SemanticDefinition";
 			
 			
-			public static String oidBit = "FunctionalResourceModel::Directive::properties::oidBit";
+			public static String name = "FunctionalResourceModel::Directive::properties::name";
 			
 			
-			public static String deprecated = "FunctionalResourceModel::Directive::properties::deprecated";
+			public static String shortName = "FunctionalResourceModel::Directive::properties::shortName";
 			
 			
-			public static String authorizingEntity = "FunctionalResourceModel::Directive::properties::authorizingEntity";
+			public static String version = "FunctionalResourceModel::Directive::properties::version";
 			
 			
 			public static String creationDate = "FunctionalResourceModel::Directive::properties::creationDate";
 			
 			
-			public static String name = "FunctionalResourceModel::Directive::properties::name";
+			public static String authorizingEntity = "FunctionalResourceModel::Directive::properties::authorizingEntity";
 			
 			
-			public static String version = "FunctionalResourceModel::Directive::properties::version";
+			public static String oidBit = "FunctionalResourceModel::Directive::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::Directive::properties::deprecated";
 			
 			
 			public static String parameter = "FunctionalResourceModel::Directive::properties::parameter";
@@ -214,22 +226,25 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Parameter::properties::SemanticDefinition";
 			
 			
-			public static String oidBit = "FunctionalResourceModel::Parameter::properties::oidBit";
+			public static String name = "FunctionalResourceModel::Parameter::properties::name";
 			
 			
-			public static String deprecated = "FunctionalResourceModel::Parameter::properties::deprecated";
+			public static String shortName = "FunctionalResourceModel::Parameter::properties::shortName";
 			
 			
-			public static String authorizingEntity = "FunctionalResourceModel::Parameter::properties::authorizingEntity";
+			public static String version = "FunctionalResourceModel::Parameter::properties::version";
 			
 			
 			public static String creationDate = "FunctionalResourceModel::Parameter::properties::creationDate";
 			
 			
-			public static String name = "FunctionalResourceModel::Parameter::properties::name";
+			public static String authorizingEntity = "FunctionalResourceModel::Parameter::properties::authorizingEntity";
 			
 			
-			public static String version = "FunctionalResourceModel::Parameter::properties::version";
+			public static String oidBit = "FunctionalResourceModel::Parameter::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::Parameter::properties::deprecated";
 			
 			
 			public static String engineeringUnit = "FunctionalResourceModel::Parameter::properties::engineeringUnit";

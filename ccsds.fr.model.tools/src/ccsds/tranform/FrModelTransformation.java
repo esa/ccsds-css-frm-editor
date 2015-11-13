@@ -29,6 +29,7 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
+import ccsds.fr.model.tools.NameTool;
 
 /**
  * Transforms a Functional Resource Model to the corresponding ecore model for instances
@@ -171,7 +172,7 @@ public class FrModelTransformation {
 	private EClass createDerivedFrInstance(FunctionalResource fr, EClass complexClass) {
 		
 		EClass frInstanceClass = theCoreFactory.createEClass();
-		frInstanceClass.setName(wellFormed(fr.getName()));
+		frInstanceClass.setName(NameTool.wellFormed(fr.getName()));
 		frInstanceClass.getESuperTypes().add(functionalresourceInstanceClass);
 
 		EAttribute instanceNo = theCoreFactory.createEAttribute();
@@ -195,7 +196,7 @@ public class FrModelTransformation {
 
 		// add an attribute of the created FRI type to the complex class
 		EReference frList = theCoreFactory.createEReference();
-		frList.setName(wellFormed(fr.getName()));
+		frList.setName(NameTool.wellFormed(fr.getName()));
 		frList.setEType(frInstanceClass);
 		frList.setLowerBound(0); 
 		frList.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
@@ -216,7 +217,7 @@ public class FrModelTransformation {
 	private List<EClass> createParamClasses(EClass parent, EList<Parameter> parameters) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Parameter parameter : parameters) {
-			String paramName = getUniqueClassifierName(parent.getName(), wellFormed(parameter.getName()));
+			String paramName = getUniqueClassifierName(parent.getName(), NameTool.wellFormed(parameter.getName()));
 			EClass paramClass = theCoreFactory.createEClass();
 			paramClass.setName(paramName);
 			
@@ -310,10 +311,10 @@ public class FrModelTransformation {
 	 */
 	private void createDependencyForUse(FunctionalResourceModel frm, EPackage theFriPackage) {
 		for(FunctionalResource fr : frm.getFunctionalResource()) {
-			EClass refSource = getClassByName(wellFormed(fr.getName()));
+			EClass refSource = getClassByName(NameTool.wellFormed(fr.getName()));
 			for(FunctionalResource usedFr : fr.getUses()) {
 				try {
-					EClass refTarget = getClassByName(wellFormed(usedFr.getName()));
+					EClass refTarget = getClassByName(NameTool.wellFormed(usedFr.getName()));
 					if(refSource != null && refTarget != null) {
 						EReference usesRef = theCoreFactory.createEReference();
 						usesRef.setName("uses");
@@ -449,7 +450,7 @@ public class FrModelTransformation {
 //	private void createManagementClass(FunctionalResource fr, EClass frInstanceClass) {		
 //		for(Parameter p : fr.getParameter()) {
 //			EReference mgmntRef = theCoreFactory.createEReference();
-//			mgmntRef.setName("Parameter"+ wellFormed(p.getName()));
+//			mgmntRef.setName("Parameter"+ NameTool.wellFormed(p.getName()));
 //			mgmntRef.setEType(entityMgmtClass);
 //			mgmntRef.setLowerBound(1); 
 //			mgmntRef.setUpperBound(1);
@@ -460,7 +461,7 @@ public class FrModelTransformation {
 //		
 //		for(Directive d : fr.getDirectives()) {
 //			EReference mgmntRef = theCoreFactory.createEReference();
-//			mgmntRef.setName("Directive"+ wellFormed(d.getName()));
+//			mgmntRef.setName("Directive"+ NameTool.wellFormed(d.getName()));
 //			mgmntRef.setEType(entityMgmtClass);
 //			mgmntRef.setLowerBound(1); 
 //			mgmntRef.setUpperBound(1);
@@ -471,7 +472,7 @@ public class FrModelTransformation {
 //
 //		for(Event e : fr.getEvents()) {
 //			EReference mgmntRef = theCoreFactory.createEReference();
-//			mgmntRef.setName("Event"+ wellFormed(e.getName()));
+//			mgmntRef.setName("Event"+ NameTool.wellFormed(e.getName()));
 //			mgmntRef.setEType(entityMgmtClass);
 //			mgmntRef.setLowerBound(1); 
 //			mgmntRef.setUpperBound(1);
@@ -507,35 +508,6 @@ public class FrModelTransformation {
 		} while(c != null);
 						
 		return name;
-	}
-	
-	/**
-	 * Transforms the given string to a well formed name
-	 * by eliminating ' ' and '-' char. After such a character
-	 * the name character is capitalised.
-	 * @param name
-	 * @return
-	 */
-	private String wellFormed(String name) {
-		String forbidden = " -,&/\\";
-		String result = "";
-		String ucName = name.toUpperCase();
-		boolean capitalize = true;
-		
-		for(int idx=0; idx<name.length(); idx++) {
-			if(forbidden.indexOf(name.charAt(idx)) == -1) {
-				if(capitalize == false) {
-					result += name.charAt(idx);
-				} else {					
-					result += ucName.charAt(idx);
-					capitalize = false;
-				}
-				
-			} else {
-				capitalize = true;
-			}
-		}
-		return result;
 	}
 	
 }

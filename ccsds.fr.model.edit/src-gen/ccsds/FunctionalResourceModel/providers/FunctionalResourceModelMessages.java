@@ -85,22 +85,25 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FrModelElementPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_OidBitLabel;
+	public static String FrModelElementPropertiesEditionPart_NameLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_DeprecatedLabel;
+	public static String FrModelElementPropertiesEditionPart_ShortNameLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_AuthorizingEntityLabel;
+	public static String FrModelElementPropertiesEditionPart_VersionLabel;
 
 	
 	public static String FrModelElementPropertiesEditionPart_CreationDateLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_NameLabel;
+	public static String FrModelElementPropertiesEditionPart_AuthorizingEntityLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_VersionLabel;
+	public static String FrModelElementPropertiesEditionPart_OidBitLabel;
+
+	
+	public static String FrModelElementPropertiesEditionPart_DeprecatedLabel;
 
 	
 	public static String OidPropertiesEditionPart_OidBitLabel;
@@ -109,22 +112,25 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourcePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_OidBitLabel;
+	public static String FunctionalResourcePropertiesEditionPart_NameLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_DeprecatedLabel;
+	public static String FunctionalResourcePropertiesEditionPart_ShortNameLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_AuthorizingEntityLabel;
+	public static String FunctionalResourcePropertiesEditionPart_VersionLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_CreationDateLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_NameLabel;
+	public static String FunctionalResourcePropertiesEditionPart_AuthorizingEntityLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_VersionLabel;
+	public static String FunctionalResourcePropertiesEditionPart_OidBitLabel;
+
+	
+	public static String FunctionalResourcePropertiesEditionPart_DeprecatedLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_EventLabel;
@@ -142,22 +148,25 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String EventPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String EventPropertiesEditionPart_OidBitLabel;
+	public static String EventPropertiesEditionPart_NameLabel;
 
 	
-	public static String EventPropertiesEditionPart_DeprecatedLabel;
+	public static String EventPropertiesEditionPart_ShortNameLabel;
 
 	
-	public static String EventPropertiesEditionPart_AuthorizingEntityLabel;
+	public static String EventPropertiesEditionPart_VersionLabel;
 
 	
 	public static String EventPropertiesEditionPart_CreationDateLabel;
 
 	
-	public static String EventPropertiesEditionPart_NameLabel;
+	public static String EventPropertiesEditionPart_AuthorizingEntityLabel;
 
 	
-	public static String EventPropertiesEditionPart_VersionLabel;
+	public static String EventPropertiesEditionPart_OidBitLabel;
+
+	
+	public static String EventPropertiesEditionPart_DeprecatedLabel;
 
 	
 	public static String EventPropertiesEditionPart_ParameterLabel;
@@ -169,22 +178,25 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String DirectivePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_OidBitLabel;
+	public static String DirectivePropertiesEditionPart_NameLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_DeprecatedLabel;
+	public static String DirectivePropertiesEditionPart_ShortNameLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_AuthorizingEntityLabel;
+	public static String DirectivePropertiesEditionPart_VersionLabel;
 
 	
 	public static String DirectivePropertiesEditionPart_CreationDateLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_NameLabel;
+	public static String DirectivePropertiesEditionPart_AuthorizingEntityLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_VersionLabel;
+	public static String DirectivePropertiesEditionPart_OidBitLabel;
+
+	
+	public static String DirectivePropertiesEditionPart_DeprecatedLabel;
 
 	
 	public static String DirectivePropertiesEditionPart_ParameterLabel;
@@ -199,22 +211,25 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ParameterPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_OidBitLabel;
+	public static String ParameterPropertiesEditionPart_NameLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_DeprecatedLabel;
+	public static String ParameterPropertiesEditionPart_ShortNameLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_AuthorizingEntityLabel;
+	public static String ParameterPropertiesEditionPart_VersionLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_CreationDateLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_NameLabel;
+	public static String ParameterPropertiesEditionPart_AuthorizingEntityLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_VersionLabel;
+	public static String ParameterPropertiesEditionPart_OidBitLabel;
+
+	
+	public static String ParameterPropertiesEditionPart_DeprecatedLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_EngineeringUnitLabel;

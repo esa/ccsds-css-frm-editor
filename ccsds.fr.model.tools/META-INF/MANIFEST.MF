@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Functional_Resource_Transformation
 Bundle-SymbolicName: ccsds.fr.model.tools;singleton:=true
-Bundle-Version: 1.0.5.qualifier
-Bundle-Activator: functional_resource_transformation.Activator
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: ccsds.fr.model.tools.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  ccsds.fr.model.edit;bundle-version="1.0.0",

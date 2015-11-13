@@ -25,13 +25,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getSemanticDefinition <em>Semantic Definition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getOidBit <em>Oid Bit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#isDeprecated <em>Deprecated</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getCreationDate <em>Creation Date</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,6 +58,106 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String semanticDefinition = SEMANTIC_DEFINITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SHORT_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String shortName = SHORT_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VERSION_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected int version = VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreationDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date CREATION_DATE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCreationDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date creationDate = CREATION_DATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAuthorizingEntity() <em>Authorizing Entity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAuthorizingEntity()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String AUTHORIZING_ENTITY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAuthorizingEntity() <em>Authorizing Entity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAuthorizingEntity()
+	 * @generated
+	 * @ordered
+	 */
+	protected String authorizingEntity = AUTHORIZING_ENTITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getOidBit() <em>Oid Bit</em>}' attribute.
@@ -107,86 +208,6 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected boolean deprecated = DEPRECATED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getAuthorizingEntity() <em>Authorizing Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAuthorizingEntity()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String AUTHORIZING_ENTITY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAuthorizingEntity() <em>Authorizing Entity</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAuthorizingEntity()
-	 * @generated
-	 * @ordered
-	 */
-	protected String authorizingEntity = AUTHORIZING_ENTITY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCreationDate()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Date CREATION_DATE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getCreationDate() <em>Creation Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCreationDate()
-	 * @generated
-	 * @ordered
-	 */
-	protected Date creationDate = CREATION_DATE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int VERSION_EDEFAULT = 1;
-
-	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
-	protected int version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -381,6 +402,27 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getShortName() {
+		return shortName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortName(String newShortName) {
+		String oldShortName = shortName;
+		shortName = newShortName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME, oldShortName, shortName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getVersion() {
 		return version;
 	}
@@ -421,20 +463,22 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				return getSemanticDefinition();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
+				return getName();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+				return getShortName();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
+				return getVersion();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
+				return getCreationDate();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
+				return getAuthorizingEntity();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT:
 				return getOidBit();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID:
 				return getOid();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				return isDeprecated();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
-				return getAuthorizingEntity();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
-				return getCreationDate();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				return getName();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
-				return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -450,6 +494,21 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				setSemanticDefinition((String)newValue);
 				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
+				setName((String)newValue);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+				setShortName((String)newValue);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
+				setVersion((Integer)newValue);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
+				setCreationDate((Date)newValue);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
+				setAuthorizingEntity((String)newValue);
+				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT:
 				setOidBit((Integer)newValue);
 				return;
@@ -458,18 +517,6 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				setDeprecated((Boolean)newValue);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
-				setAuthorizingEntity((String)newValue);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
-				setCreationDate((Date)newValue);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				setName((String)newValue);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
-				setVersion((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -486,6 +533,21 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				setSemanticDefinition(SEMANTIC_DEFINITION_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+				setShortName(SHORT_NAME_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
+				setCreationDate(CREATION_DATE_EDEFAULT);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
+				setAuthorizingEntity(AUTHORIZING_ENTITY_EDEFAULT);
+				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT:
 				setOidBit(OID_BIT_EDEFAULT);
 				return;
@@ -494,18 +556,6 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				setDeprecated(DEPRECATED_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
-				setAuthorizingEntity(AUTHORIZING_ENTITY_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
-				setCreationDate(CREATION_DATE_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
-				setVersion(VERSION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -521,20 +571,22 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				return SEMANTIC_DEFINITION_EDEFAULT == null ? semanticDefinition != null : !SEMANTIC_DEFINITION_EDEFAULT.equals(semanticDefinition);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
+				return version != VERSION_EDEFAULT;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
+				return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
+				return AUTHORIZING_ENTITY_EDEFAULT == null ? authorizingEntity != null : !AUTHORIZING_ENTITY_EDEFAULT.equals(authorizingEntity);
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT:
 				return oidBit != OID_BIT_EDEFAULT;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID:
 				return oid != null;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				return deprecated != DEPRECATED_EDEFAULT;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
-				return AUTHORIZING_ENTITY_EDEFAULT == null ? authorizingEntity != null : !AUTHORIZING_ENTITY_EDEFAULT.equals(authorizingEntity);
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
-				return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
-				return version != VERSION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -551,18 +603,20 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (SemanticDefinition: ");
 		result.append(semanticDefinition);
+		result.append(", name: ");
+		result.append(name);
+		result.append(", shortName: ");
+		result.append(shortName);
+		result.append(", version: ");
+		result.append(version);
+		result.append(", creationDate: ");
+		result.append(creationDate);
+		result.append(", authorizingEntity: ");
+		result.append(authorizingEntity);
 		result.append(", oidBit: ");
 		result.append(oidBit);
 		result.append(", deprecated: ");
 		result.append(deprecated);
-		result.append(", authorizingEntity: ");
-		result.append(authorizingEntity);
-		result.append(", creationDate: ");
-		result.append(creationDate);
-		result.append(", name: ");
-		result.append(name);
-		result.append(", version: ");
-		result.append(version);
 		result.append(')');
 		return result.toString();
 	}

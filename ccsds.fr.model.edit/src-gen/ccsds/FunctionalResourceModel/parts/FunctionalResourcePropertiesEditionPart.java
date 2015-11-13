@@ -34,6 +34,76 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 	/**
+	 * @return the name
+	 * 
+	 */
+	public String getName();
+
+	/**
+	 * Defines a new name
+	 * @param newValue the new name to set
+	 * 
+	 */
+	public void setName(String newValue);
+
+
+	/**
+	 * @return the shortName
+	 * 
+	 */
+	public String getShortName();
+
+	/**
+	 * Defines a new shortName
+	 * @param newValue the new shortName to set
+	 * 
+	 */
+	public void setShortName(String newValue);
+
+
+	/**
+	 * @return the version
+	 * 
+	 */
+	public String getVersion();
+
+	/**
+	 * Defines a new version
+	 * @param newValue the new version to set
+	 * 
+	 */
+	public void setVersion(String newValue);
+
+
+	/**
+	 * @return the creationDate
+	 * 
+	 */
+	public String getCreationDate();
+
+	/**
+	 * Defines a new creationDate
+	 * @param newValue the new creationDate to set
+	 * 
+	 */
+	public void setCreationDate(String newValue);
+
+
+	/**
+	 * @return the authorizingEntity
+	 * 
+	 */
+	public String getAuthorizingEntity();
+
+	/**
+	 * Defines a new authorizingEntity
+	 * @param newValue the new authorizingEntity to set
+	 * 
+	 */
+	public void setAuthorizingEntity(String newValue);
+
+
+	/**
 	 * @return the oidBit
 	 * 
 	 */
@@ -59,62 +129,6 @@ public interface FunctionalResourcePropertiesEditionPart {
 	 * 
 	 */
 	public void setDeprecated(Boolean newValue);
-
-
-	/**
-	 * @return the authorizingEntity
-	 * 
-	 */
-	public String getAuthorizingEntity();
-
-	/**
-	 * Defines a new authorizingEntity
-	 * @param newValue the new authorizingEntity to set
-	 * 
-	 */
-	public void setAuthorizingEntity(String newValue);
-
-
-	/**
-	 * @return the creationDate
-	 * 
-	 */
-	public String getCreationDate();
-
-	/**
-	 * Defines a new creationDate
-	 * @param newValue the new creationDate to set
-	 * 
-	 */
-	public void setCreationDate(String newValue);
-
-
-	/**
-	 * @return the name
-	 * 
-	 */
-	public String getName();
-
-	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
-	 * 
-	 */
-	public void setName(String newValue);
-
-
-	/**
-	 * @return the version
-	 * 
-	 */
-	public String getVersion();
-
-	/**
-	 * Defines a new version
-	 * @param newValue the new version to set
-	 * 
-	 */
-	public void setVersion(String newValue);
 
 
 

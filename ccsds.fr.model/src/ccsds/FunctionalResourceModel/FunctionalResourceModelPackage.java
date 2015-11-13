@@ -124,58 +124,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FR_MODEL_ELEMENT__SEMANTIC_DEFINITION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__OID_BIT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__OID = 2;
-
-	/**
-	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__DEPRECATED = 3;
-
-	/**
-	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__AUTHORIZING_ENTITY = 4;
-
-	/**
-	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__CREATION_DATE = 5;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT__NAME = 6;
+	int FR_MODEL_ELEMENT__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__SHORT_NAME = 2;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -184,7 +148,52 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT__VERSION = 7;
+	int FR_MODEL_ELEMENT__VERSION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__CREATION_DATE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__AUTHORIZING_ENTITY = 5;
+
+	/**
+	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__OID_BIT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__OID = 7;
+
+	/**
+	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__DEPRECATED = 8;
 
 	/**
 	 * The number of structural features of the '<em>Fr Model Element</em>' class.
@@ -193,7 +202,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT_FEATURE_COUNT = 8;
+	int FR_MODEL_ELEMENT_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Fr Model Element</em>' class.
@@ -261,6 +270,51 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__NAME = FR_MODEL_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,42 +340,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_RESOURCE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
-
-	/**
-	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
-
-	/**
-	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__NAME = FR_MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Event</b></em>' containment reference list.
@@ -397,6 +415,51 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__NAME = FR_MODEL_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,42 +485,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
-
-	/**
-	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
-
-	/**
-	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__NAME = FR_MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
@@ -524,6 +551,51 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__NAME = FR_MODEL_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -549,42 +621,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTIVE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
-
-	/**
-	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
-
-	/**
-	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__NAME = FR_MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
@@ -651,6 +687,51 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__NAME = FR_MODEL_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -676,42 +757,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
-
-	/**
-	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
-
-	/**
-	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__NAME = FR_MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
@@ -913,6 +958,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFrModelElement_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getShortName()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_ShortName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}'.
@@ -1287,6 +1343,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FR_MODEL_ELEMENT__NAME = eINSTANCE.getFrModelElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__SHORT_NAME = eINSTANCE.getFrModelElement_ShortName();
 
 		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.

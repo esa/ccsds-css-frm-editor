@@ -64,12 +64,13 @@ public class FrModelElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSemanticDefinitionPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addShortNamePropertyDescriptor(object);
+			addVersionPropertyDescriptor(object);
+			addCreationDatePropertyDescriptor(object);
+			addAuthorizingEntityPropertyDescriptor(object);
 			addOidBitPropertyDescriptor(object);
 			addDeprecatedPropertyDescriptor(object);
-			addAuthorizingEntityPropertyDescriptor(object);
-			addCreationDatePropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
-			addVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -207,6 +208,28 @@ public class FrModelElementItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Short Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addShortNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FrModelElement_shortName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_shortName_feature", "_UI_FrModelElement_type"),
+				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__SHORT_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Version feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,12 +319,13 @@ public class FrModelElementItemProvider
 
 		switch (notification.getFeatureID(FrModelElement.class)) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID:

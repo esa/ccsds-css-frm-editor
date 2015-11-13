@@ -196,51 +196,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getFrModelElement_OidBit() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrModelElement_Oid() {
-		return (EReference)frModelElementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_Deprecated() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_AuthorizingEntity() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_CreationDate() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_Name() {
 		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -249,8 +204,62 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFrModelElement_Oid() {
+		return (EReference)frModelElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_Deprecated() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_AuthorizingEntity() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_CreationDate() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_Name() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_ShortName() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getFrModelElement_Version() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -494,13 +503,14 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		frModelElementEClass = createEClass(FR_MODEL_ELEMENT);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SEMANTIC_DEFINITION);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__NAME);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SHORT_NAME);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__VERSION);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CREATION_DATE);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__AUTHORIZING_ENTITY);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__OID_BIT);
 		createEReference(frModelElementEClass, FR_MODEL_ELEMENT__OID);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__DEPRECATED);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__AUTHORIZING_ENTITY);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CREATION_DATE);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__NAME);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__VERSION);
 
 		oidEClass = createEClass(OID);
 		createEAttribute(oidEClass, OID__OID_BIT);
@@ -571,13 +581,14 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		initEClass(frModelElementEClass, FrModelElement.class, "FrModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrModelElement_SemanticDefinition(), ecorePackage.getEString(), "SemanticDefinition", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_ShortName(), ecorePackage.getEString(), "shortName", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_Version(), ecorePackage.getEInt(), "version", "1", 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_AuthorizingEntity(), ecorePackage.getEString(), "authorizingEntity", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_OidBit(), ecorePackage.getEInt(), "oidBit", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFrModelElement_Oid(), this.getOid(), null, "oid", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_Deprecated(), ecorePackage.getEBoolean(), "deprecated", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_AuthorizingEntity(), ecorePackage.getEString(), "authorizingEntity", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_Version(), ecorePackage.getEInt(), "version", "1", 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oidEClass, Oid.class, "Oid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOid_OidBit(), ecorePackage.getEInt(), "oidBit", null, 0, -1, Oid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

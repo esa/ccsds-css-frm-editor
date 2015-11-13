@@ -15,13 +15,14 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getSemanticDefinition <em>Semantic Definition</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getName <em>Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getOidBit <em>Oid Bit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#isDeprecated <em>Deprecated</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getName <em>Name</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -211,6 +212,32 @@ public interface FrModelElement extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Short Name</em>' attribute.
+	 * @see #setShortName(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_ShortName()
+	 * @model
+	 * @generated
+	 */
+	String getShortName();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Short Name</em>' attribute.
+	 * @see #getShortName()
+	 * @generated
+	 */
+	void setShortName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.

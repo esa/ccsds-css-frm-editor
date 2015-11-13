@@ -6,8 +6,6 @@
 	<xsl:template match="/">
 		<html xmlns:f="http://www.w3.org/2002/xforms">
 			<head>
-
-
 				<style>
 					table.alternate-odd:nth-child(odd) {
 						background: #F0F8FF;
@@ -49,9 +47,19 @@
 			<tr>
 				<td style="font-size:18px">
 					<b>
-						Functional Resource
-						<xsl:value-of select="@name" />
-						<xsl:text> </xsl:text>
+						<xsl:element name="a">
+								<xsl:attribute name="title">					
+									<xsl:text>Authorizing Entity </xsl:text>
+									<xsl:value-of select="@authorizingEntity" />
+									<xsl:text>, </xsl:text>
+									<xsl:text>Creation Date '</xsl:text><xsl:value-of select="@creationDate" /><xsl:text>'</xsl:text>
+									<xsl:text> Version '</xsl:text><xsl:value-of select="@version" />
+									<xsl:text>' </xsl:text>
+								</xsl:attribute>
+							Functional Resource
+							<xsl:value-of select="@name" />
+							<xsl:text> </xsl:text>
+						</xsl:element>
 					</b>
 					<a href="{TOC-ID}">(back to top)</a>
 				</td>
@@ -96,34 +104,46 @@
 					</b>
 					<xsl:text> </xsl:text>				
 
-					<xsl:if test="name(.) != 'directives'">	
-						<xsl:value-of select="name(.)" />
-					</xsl:if>
-					<xsl:if test="name(.) = 'directives'">
-						<xsl:text>directive</xsl:text>
-						<a name="{generate-id(.)}"></a>
-					</xsl:if>
+					<xsl:element name="a">
+						<xsl:attribute name="title">					
+							<xsl:text>Authorizing Entity </xsl:text>
+							<xsl:value-of select="@authorizingEntity" />
+							<xsl:text>, </xsl:text>
+							<xsl:text>Creation Date '</xsl:text><xsl:value-of select="@creationDate" /><xsl:text>'</xsl:text>
+							<xsl:text> Version '</xsl:text><xsl:value-of select="@version" />
+							<xsl:text>' </xsl:text>
+						</xsl:attribute>
+
+						<xsl:if test="name(.) != 'directives'">	
+							<xsl:value-of select="name(.)" />
+						</xsl:if>
+						<xsl:if test="name(.) = 'directives'">
+							<xsl:text>directive</xsl:text>
+							<a name="{generate-id(.)}"></a>
+						</xsl:if>
 					
 					'<b><xsl:value-of select="@name" /></b>'
-					<div style="font-family:Times; font-size:12px; color:black">
-						<xsl:text>Authorizing Entity </xsl:text>
-						<xsl:value-of select="@authorizingEntity" />
-						<xsl:text>, </xsl:text>
-						<xsl:text>Creation Date '</xsl:text><xsl:value-of select="@creationDate" />
-						<xsl:text> Version '</xsl:text><xsl:value-of select="@version" />
-						<xsl:text>' </xsl:text>
-						<b>
-							<xsl:apply-templates select="oid" />
-							<xsl:apply-templates select="externalOid" />
-						</b>
-					</div>
+					<xsl:element name="a">
+<!-- 
+						<xsl:attribute name="style">					
+							font-family:Times; font-size:12px; color:black	
+						</xsl:attribute>
+ -->
+						<xsl:text>(</xsl:text><xsl:value-of select="@shortName" /><xsl:text>)</xsl:text>
+						<xsl:text> </xsl:text><xsl:apply-templates select="oid" />
+						<xsl:text> </xsl:text><xsl:apply-templates select="externalOid" />
+					</xsl:element>
+					</xsl:element>
+					
 				</td>
 			</tr>
 			
  			
 			<xsl:apply-templates select="@SemanticDefinition"/>
 			<xsl:apply-templates select="@qualifier"/>
+			<xsl:apply-templates select="@guardCondition"/>
 			<xsl:apply-templates select="@engineeringUnit"/>
+			<xsl:apply-templates select="@configured"/>
  			<xsl:apply-templates select="@typeDefinition" />
  						
 			<tr>
@@ -140,7 +160,9 @@
 			<tr>
 				<td>
 					<b>Definition: </b>
+					<span style="white-space: pre-wrap; ">
 					<i><xsl:value-of select="." /></i>
+					</span>
 				</td>
 			</tr>	
 	</xsl:template>
@@ -149,10 +171,24 @@
 			<tr>
 				<td>
 					<b>Qualifier: </b>
+					<span style="white-space: pre-wrap; font-family:Courier">
 					<i><xsl:value-of select="." /></i>
+					</span>
 				</td>
 			</tr>	
 	</xsl:template>
+
+	<xsl:template match="@guardCondition">
+			<tr>
+				<td>
+					<b>Guard Condition: </b>
+					<span style="white-space: pre-wrap;">
+					<xsl:value-of select="." />
+					</span>
+				</td>
+			</tr>	
+	</xsl:template>
+
 
 	<xsl:template match="@typeDefinition">
 		<tr>
@@ -185,6 +221,15 @@
 		<tr>
 			<td>
 				<b>Engineering Unit: </b>
+				<xsl:value-of select="." />
+			</td>
+		</tr>
+	</xsl:template>
+
+	<xsl:template match="@configured">
+		<tr>
+			<td>
+				<b>Configured: </b>
 				<xsl:value-of select="." />
 			</td>
 		</tr>
