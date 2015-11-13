@@ -215,7 +215,7 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 						FunctionalResource fr = (FunctionalResource)mElement;
 						updateOids(domain, fr.getName(), fr.getParameter().toArray(new FrModelElement[0]), 
 								mElementOid,ModelElementType.PARAMETER_OID_TYPE.getValue(), setOids);
-						updateOids(domain, fr.getName(), fr.getEvents().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getName(), fr.getEvent().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
 						updateOids(domain, fr.getName(), fr.getDirectives().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.DIRECTIVE_OID_TYPE.getValue(), setOids);

@@ -85,9 +85,9 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	protected Text creationDate;
 	protected Text name;
 	protected Text version;
-	protected ReferencesTable events;
-	protected List<ViewerFilter> eventsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> eventsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable event;
+	protected List<ViewerFilter> eventBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> eventFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable directives;
 	protected List<ViewerFilter> directivesBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> directivesFilters = new ArrayList<ViewerFilter>();
@@ -142,7 +142,7 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.creationDate);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.version);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.directives);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter);
@@ -176,8 +176,8 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.version) {
 					return createVersionText(parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events) {
-					return createEventsAdvancedTableComposition(parent);
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event) {
+					return createEventAdvancedTableComposition(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.directives) {
 					return createDirectivesAdvancedTableComposition(parent);
@@ -523,48 +523,48 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	 * @param container
 	 * 
 	 */
-	protected Composite createEventsAdvancedTableComposition(Composite parent) {
-		this.events = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_EventsLabel), new ReferencesTableListener() {
+	protected Composite createEventAdvancedTableComposition(Composite parent) {
+		this.event = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_EventLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				events.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				event.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				events.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				event.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				events.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				event.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				events.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				event.refresh();
 			}
 			public void navigateTo(EObject element) { }
 		});
-		for (ViewerFilter filter : this.eventsFilters) {
-			this.events.addFilter(filter);
+		for (ViewerFilter filter : this.eventFilters) {
+			this.event.addFilter(filter);
 		}
-		this.events.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, FunctionalResourceModelViewsRepository.SWT_KIND));
-		this.events.createControls(parent);
-		this.events.addSelectionListener(new SelectionAdapter() {
+		this.event.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.event.createControls(parent);
+		this.event.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
 		});
-		GridData eventsData = new GridData(GridData.FILL_HORIZONTAL);
-		eventsData.horizontalSpan = 3;
-		this.events.setLayoutData(eventsData);
-		this.events.setLowerBound(0);
-		this.events.setUpperBound(-1);
-		events.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events);
-		events.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createEventsAdvancedTableComposition
+		GridData eventData = new GridData(GridData.FILL_HORIZONTAL);
+		eventData.horizontalSpan = 3;
+		this.event.setLayoutData(eventData);
+		this.event.setLowerBound(0);
+		this.event.setUpperBound(-1);
+		event.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event);
+		event.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createEventAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -997,20 +997,20 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initEvents(EObject current, EReference containingFeature, EReference feature)
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initEvent(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initEvents(ReferencesTableSettings settings) {
+	public void initEvent(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		events.setContentProvider(contentProvider);
-		events.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.events);
-		if (eefElementEditorReadOnlyState && events.isEnabled()) {
-			events.setEnabled(false);
-			events.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !events.isEnabled()) {
-			events.setEnabled(true);
+		event.setContentProvider(contentProvider);
+		event.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event);
+		if (eefElementEditorReadOnlyState && event.isEnabled()) {
+			event.setEnabled(false);
+			event.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !event.isEnabled()) {
+			event.setEnabled(true);
 		}	
 		
 	}
@@ -1018,44 +1018,44 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateEvents()
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateEvent()
 	 * 
 	 */
-	public void updateEvents() {
-	events.refresh();
+	public void updateEvent() {
+	event.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterEvents(ViewerFilter filter)
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterEvent(ViewerFilter filter)
 	 * 
 	 */
-	public void addFilterToEvents(ViewerFilter filter) {
-		eventsFilters.add(filter);
-		if (this.events != null) {
-			this.events.addFilter(filter);
+	public void addFilterToEvent(ViewerFilter filter) {
+		eventFilters.add(filter);
+		if (this.event != null) {
+			this.event.addFilter(filter);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterEvents(ViewerFilter filter)
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterEvent(ViewerFilter filter)
 	 * 
 	 */
-	public void addBusinessFilterToEvents(ViewerFilter filter) {
-		eventsBusinessFilters.add(filter);
+	public void addBusinessFilterToEvent(ViewerFilter filter) {
+		eventBusinessFilters.add(filter);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInEventsTable(EObject element)
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInEventTable(EObject element)
 	 * 
 	 */
-	public boolean isContainedInEventsTable(EObject element) {
-		return ((ReferencesTableSettings)events.getInput()).contains(element);
+	public boolean isContainedInEventTable(EObject element) {
+		return ((ReferencesTableSettings)event.getInput()).contains(element);
 	}
 
 

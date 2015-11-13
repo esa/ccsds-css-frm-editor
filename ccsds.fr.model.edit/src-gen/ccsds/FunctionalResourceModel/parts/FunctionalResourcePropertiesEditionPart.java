@@ -120,45 +120,45 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 	/**
-	 * Init the events
+	 * Init the event
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initEvents(ReferencesTableSettings settings);
+	public void initEvent(ReferencesTableSettings settings);
 
 	/**
-	 * Update the events
-	 * @param newValue the events to update
+	 * Update the event
+	 * @param newValue the event to update
 	 * 
 	 */
-	public void updateEvents();
+	public void updateEvent();
 
 	/**
-	 * Adds the given filter to the events edition editor.
+	 * Adds the given filter to the event edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToEvents(ViewerFilter filter);
+	public void addFilterToEvent(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the events edition editor.
+	 * Adds the given filter to the event edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToEvents(ViewerFilter filter);
+	public void addBusinessFilterToEvent(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the events table
+	 * @return true if the given element is contained inside the event table
 	 * 
 	 */
-	public boolean isContainedInEventsTable(EObject element);
+	public boolean isContainedInEventTable(EObject element);
 
 
 

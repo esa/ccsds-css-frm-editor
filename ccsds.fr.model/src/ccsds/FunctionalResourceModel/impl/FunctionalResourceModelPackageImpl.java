@@ -285,7 +285,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResource_Events() {
+	public EReference getFunctionalResource_Event() {
 		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -506,7 +506,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(oidEClass, OID__OID_BIT);
 
 		functionalResourceEClass = createEClass(FUNCTIONAL_RESOURCE);
-		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__EVENTS);
+		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__EVENT);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__DIRECTIVES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__USES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
@@ -583,7 +583,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getOid_OidBit(), ecorePackage.getEInt(), "oidBit", null, 0, -1, Oid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(functionalResourceEClass, FunctionalResource.class, "FunctionalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFunctionalResource_Events(), this.getEvent(), null, "events", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResource_Event(), this.getEvent(), null, "event", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Directives(), this.getDirective(), null, "directives", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Uses(), this.getFunctionalResource(), null, "uses", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

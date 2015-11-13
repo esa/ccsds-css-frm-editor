@@ -122,6 +122,7 @@
 			
  			
 			<xsl:apply-templates select="@SemanticDefinition"/>
+			<xsl:apply-templates select="@qualifier"/>
 			<xsl:apply-templates select="@engineeringUnit"/>
  			<xsl:apply-templates select="@typeDefinition" />
  						
@@ -138,10 +139,17 @@
 	<xsl:template match="@SemanticDefinition">
 			<tr>
 				<td>
-					<i>
-						Definition:
-						<xsl:value-of select="." />
-					</i>
+					<b>Definition: </b>
+					<i><xsl:value-of select="." /></i>
+				</td>
+			</tr>	
+	</xsl:template>
+
+	<xsl:template match="@qualifier">
+			<tr>
+				<td>
+					<b>Qualifier: </b>
+					<i><xsl:value-of select="." /></i>
 				</td>
 			</tr>	
 	</xsl:template>

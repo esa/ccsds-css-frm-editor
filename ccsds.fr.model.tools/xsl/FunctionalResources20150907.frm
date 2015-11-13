@@ -22,7 +22,7 @@
       <oidBit>1</oidBit>
       <oidBit>1</oidBit>
     </oid>
-    <events SemanticDefinition="add event values as children" oidBit="1" name="Test Event" qualifier="This is an event qualifier">
+    <event SemanticDefinition="add event values as children" oidBit="1" name="Test Event" qualifier="This is an event qualifier">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -37,7 +37,7 @@
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
+    </event>
     <directives SemanticDefinition="This directive permits setting of the antenna production-status parameter. " oidBit="1" authorizingEntity="CSS Area" creationDate="2015-09-11T00:00:00.000+0200" name="set-antenna-production-status" guardCondition="None" qualifier="This enumerated directive qualifier permits setting of the antenna production status. The production-status values that can be set are: &#xD;&#xA;- 'configured': the antenna system configuration has been completed and is ready to track;&#xD;&#xA;- 'halted': the antenna is taken out of service, e.g. due to wind speed requiring the antenna to be put into stow position.&#xD;&#xA;&#xD;&#xA;'directiveQualifier': 'functResourceDirQualifier': 'functionalResourceQualifiers': 'DirectiveQualifierValues': 'parameterlessValues': 'TypeAndValueComplexQualified': 'typeAndValue': 'TypeAndValue':&#xD;&#xA;SEQUENCE (SIZE (1)) OF Enumerated&#xD;&#xA;{   configured   (0)&#xD;&#xA;,   halted   (1)&#xD;&#xA;}">
       <oid>
         <oidBit>1</oidBit>
@@ -2853,7 +2853,7 @@
       <oidBit>14</oidBit>
       <oidBit>1</oidBit>
     </oid>
-    <events SemanticDefinition="The 'production-operational' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'operational'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-operational">
+    <event SemanticDefinition="The 'production-operational' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'operational'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-operational">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -2868,8 +2868,8 @@
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="The 'production-interupted' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'interrupted'." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-interrupted">
+    </event>
+    <event SemanticDefinition="The 'production-interupted' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'interrupted'." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-interrupted">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -2884,8 +2884,8 @@
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="The 'production-halted' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'halted'." oidBit="3" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-halted">
+    </event>
+    <event SemanticDefinition="The 'production-halted' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'halted'." oidBit="3" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-halted">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -2900,8 +2900,8 @@
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="The 'production-configured' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'configured'." oidBit="4" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-configured">
+    </event>
+    <event SemanticDefinition="The 'production-configured' event shall be notified when the production-status parameter associated with the given F-CLTU service instance changes to 'configured'." oidBit="4" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-configured">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -2916,7 +2916,7 @@
         <oidBit>4</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
+    </event>
     <parameter SemanticDefinition="This parameter reports the identifier of the given service instance. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-18T00:00:00.000+0200" name="service-instance-identifier" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE (30 .. 256))">
       <oid>
         <oidBit>1</oidBit>
@@ -4330,7 +4330,7 @@
       <oidBit>23</oidBit>
       <oidBit>1</oidBit>
     </oid>
-    <events SemanticDefinition="This event notifies the successful acquisition of frame lock, i.e., in two consecutive frames the ASM was detected at the expected position and with a correlation error not exceeding the permitted limit." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="frame-lock-acquired">
+    <event SemanticDefinition="This event notifies the successful acquisition of frame lock, i.e., in two consecutive frames the ASM was detected at the expected position and with a correlation error not exceeding the permitted limit." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="frame-lock-acquired">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -4345,8 +4345,8 @@
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="This event shall be notified if frame lock is lost, i.e., at the expected position no ASM with a correlation error below the permitted limit has been detected." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="loss-of-frame-lock">
+    </event>
+    <event SemanticDefinition="This event shall be notified if frame lock is lost, i.e., at the expected position no ASM with a correlation error below the permitted limit has been detected." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="loss-of-frame-lock">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -4361,7 +4361,7 @@
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
+    </event>
     <parameter SemanticDefinition="This parameter reports the number of symbols in the most recently received ASM that differ from the nominal ASM pattern. When comparing these numbers, one needs to take into consideration whether the synchronization is done on the (pre Viterbi decoder) symbol stream or on the (post Viterbi decoder) bit stream.&#xD;&#xA;The frame synchronization is also used to remove the phase ambiguity of some modulation schemes. To that end, the correlation process is performed both for the standard ASM pattern and its inversion.&#xD;&#xA;A given implementation will specify if the the synchronization is performed in the symbol or bit domain. This shall be recorded in the Service Agreement." oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-27T00:00:00.000+0200" name="asm-correlation-error" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF IntUnsigned (0 .. 192)">
       <oid>
         <oidBit>1</oidBit>
@@ -4892,7 +4892,7 @@
       <oidBit>33</oidBit>
       <oidBit>1</oidBit>
     </oid>
-    <events SemanticDefinition="The event 'production-running' notifies the transition of the production-status parameter associated with the given RAF service instance to 'running'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-running">
+    <event SemanticDefinition="The event 'production-running' notifies the transition of the production-status parameter associated with the given RAF service instance to 'running'." oidBit="1" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-running">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -4907,8 +4907,8 @@
         <oidBit>1</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="The event 'production-interrupted' notifies the transition of the production-status parameter associated with the given RAF service instance to 'interrupted'." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-interrupted">
+    </event>
+    <event SemanticDefinition="The event 'production-interrupted' notifies the transition of the production-status parameter associated with the given RAF service instance to 'interrupted'." oidBit="2" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-interrupted">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -4923,8 +4923,8 @@
         <oidBit>2</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
-    <events SemanticDefinition="The event 'production-halted' notifies the transition of the production-status parameter associated with the given RAF service instance to 'halted'." oidBit="3" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-halted">
+    </event>
+    <event SemanticDefinition="The event 'production-halted' notifies the transition of the production-status parameter associated with the given RAF service instance to 'halted'." oidBit="3" authorizingEntity="CSTS WG" creationDate="2015-05-26T00:00:00.000+0200" name="production-halted">
       <oid>
         <oidBit>1</oidBit>
         <oidBit>3</oidBit>
@@ -4939,7 +4939,7 @@
         <oidBit>3</oidBit>
         <oidBit>1</oidBit>
       </oid>
-    </events>
+    </event>
     <parameter SemanticDefinition="This parameter reports the identifier of the given service instance. " oidBit="1" authorizingEntity="CSTS WG" creationDate="2014-06-18T00:00:00.000+0200" name="service-instance-identifier" engineeringUnit="none" typeDefinition="SEQUENCE (SIZE (1)) OF VisibleString (SIZE (30 .. 256))">
       <oid>
         <oidBit>1</oidBit>

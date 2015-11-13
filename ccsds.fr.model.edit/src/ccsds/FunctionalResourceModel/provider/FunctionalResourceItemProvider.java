@@ -107,7 +107,7 @@ public class FunctionalResourceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENTS);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENT);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DIRECTIVES);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER);
 		}
@@ -175,7 +175,7 @@ public class FunctionalResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(FunctionalResource.class)) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:			
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -200,7 +200,7 @@ public class FunctionalResourceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENTS,
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENT,
 				 FunctionalResourceModelFactory.eINSTANCE.createEvent()));
 
 		newChildDescriptors.add

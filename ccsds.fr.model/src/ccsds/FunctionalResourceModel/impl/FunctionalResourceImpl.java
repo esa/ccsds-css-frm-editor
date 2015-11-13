@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getEvents <em>Events</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getParameter <em>Parameter</em>}</li>
@@ -34,14 +34,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class FunctionalResourceImpl extends FrModelElementImpl implements FunctionalResource {
 	/**
-	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEvents()
+	 * @see #getEvent()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Event> events;
+	protected EList<Event> event;
 
 	/**
 	 * The cached value of the '{@link #getDirectives() <em>Directives</em>}' containment reference list.
@@ -97,11 +97,11 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Event> getEvents() {
-		if (events == null) {
-			events = new EObjectContainmentEList<Event>(Event.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS);
+	public EList<Event> getEvent() {
+		if (event == null) {
+			event = new EObjectContainmentEList<Event>(Event.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT);
 		}
-		return events;
+		return event;
 	}
 
 	/**
@@ -148,8 +148,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
-				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
+				return ((InternalEList<?>)getEvent()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return ((InternalEList<?>)getDirectives()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
@@ -166,8 +166,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
-				return getEvents();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
+				return getEvent();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return getDirectives();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:
@@ -187,9 +187,9 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
-				getEvents().clear();
-				getEvents().addAll((Collection<? extends Event>)newValue);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
+				getEvent().clear();
+				getEvent().addAll((Collection<? extends Event>)newValue);
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				getDirectives().clear();
@@ -215,8 +215,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
-				getEvents().clear();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
+				getEvent().clear();
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				getDirectives().clear();
@@ -239,8 +239,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENTS:
-				return events != null && !events.isEmpty();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
+				return event != null && !event.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return directives != null && !directives.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:

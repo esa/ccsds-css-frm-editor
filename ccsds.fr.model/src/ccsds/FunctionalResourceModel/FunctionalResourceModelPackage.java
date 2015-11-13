@@ -324,13 +324,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__VERSION = FR_MODEL_ELEMENT__VERSION;
 
 	/**
-	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Event</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__EVENTS = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int FUNCTIONAL_RESOURCE__EVENT = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Directives</b></em>' containment reference list.
@@ -957,15 +957,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EClass getFunctionalResource();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getEvents <em>Events</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getEvent <em>Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Events</em>'.
-	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getEvents()
+	 * @return the meta object for the containment reference list '<em>Event</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getEvent()
 	 * @see #getFunctionalResource()
 	 * @generated
 	 */
-	EReference getFunctionalResource_Events();
+	EReference getFunctionalResource_Event();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getDirectives <em>Directives</em>}'.
@@ -1325,12 +1325,12 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EClass FUNCTIONAL_RESOURCE = eINSTANCE.getFunctionalResource();
 
 		/**
-		 * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Event</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference FUNCTIONAL_RESOURCE__EVENTS = eINSTANCE.getFunctionalResource_Events();
+		EReference FUNCTIONAL_RESOURCE__EVENT = eINSTANCE.getFunctionalResource_Event();
 
 		/**
 		 * The meta object literal for the '<em><b>Directives</b></em>' containment reference list feature.

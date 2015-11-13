@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getEvents <em>Events</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getEvent <em>Event</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getParameter <em>Parameter</em>}</li>
@@ -25,20 +25,20 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface FunctionalResource extends FrModelElement {
 	/**
-	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Event</b></em>' containment reference list.
 	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Event}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Events</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Event</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Events</em>' containment reference list.
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_Events()
+	 * @return the value of the '<em>Event</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_Event()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Event> getEvents();
+	EList<Event> getEvent();
 
 	/**
 	 * Returns the value of the '<em><b>Directives</b></em>' containment reference list.

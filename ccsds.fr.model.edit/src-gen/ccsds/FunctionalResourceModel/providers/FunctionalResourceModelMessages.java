@@ -127,7 +127,7 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourcePropertiesEditionPart_VersionLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_EventsLabel;
+	public static String FunctionalResourcePropertiesEditionPart_EventLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_DirectivesLabel;

@@ -106,7 +106,7 @@ public class FunctionalResourceModelViewsRepository {
 			public static String version = "FunctionalResourceModel::FunctionalResource::properties::version";
 			
 			
-			public static String events = "FunctionalResourceModel::FunctionalResource::properties::events";
+			public static String event = "FunctionalResourceModel::FunctionalResource::properties::event";
 			
 			
 			public static String directives = "FunctionalResourceModel::FunctionalResource::properties::directives";
