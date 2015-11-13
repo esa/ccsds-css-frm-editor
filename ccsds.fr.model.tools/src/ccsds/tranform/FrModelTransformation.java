@@ -25,8 +25,6 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
-import ccsds.FunctionalResourceModel.Directive;
-import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Parameter;
@@ -42,7 +40,8 @@ public class FrModelTransformation {
 	private EClass functionalresourceInstanceClass;
 	private EPackage friPackage;
 	private EClass srvUserClass;
-	//private EClass entityMgmtClass;
+	@SuppressWarnings("unused")
+	private EClass entityMgmtClass;
 
 	public FrModelTransformation() {
 		theCoreFactory = EcoreFactory.eINSTANCE;
