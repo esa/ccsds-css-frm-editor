@@ -447,41 +447,41 @@ public class FrModelTransformation {
 	 * @param fr				The functional resource (input) with parameters
 	 * @param frInstanceClass	The functional resource instance class which is extended by the attributes  
 	 */
-	private void createManagementClass(FunctionalResource fr, EClass frInstanceClass) {		
-		for(Parameter p : fr.getParameter()) {
-			EReference mgmntRef = theCoreFactory.createEReference();
-			mgmntRef.setName("Parameter"+ wellFormed(p.getName()));
-			mgmntRef.setEType(entityMgmtClass);
-			mgmntRef.setLowerBound(1); 
-			mgmntRef.setUpperBound(1);
-			mgmntRef.setContainment(true);
-			
-			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
-		}
-		
-		for(Directive d : fr.getDirectives()) {
-			EReference mgmntRef = theCoreFactory.createEReference();
-			mgmntRef.setName("Directive"+ wellFormed(d.getName()));
-			mgmntRef.setEType(entityMgmtClass);
-			mgmntRef.setLowerBound(1); 
-			mgmntRef.setUpperBound(1);
-			mgmntRef.setContainment(true);
-			
-			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
-		}
-
-		for(Event e : fr.getEvents()) {
-			EReference mgmntRef = theCoreFactory.createEReference();
-			mgmntRef.setName("Event"+ wellFormed(e.getName()));
-			mgmntRef.setEType(entityMgmtClass);
-			mgmntRef.setLowerBound(1); 
-			mgmntRef.setUpperBound(1);
-			mgmntRef.setContainment(true);
-			
-			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
-		}
-		
-	}
+//	private void createManagementClass(FunctionalResource fr, EClass frInstanceClass) {		
+//		for(Parameter p : fr.getParameter()) {
+//			EReference mgmntRef = theCoreFactory.createEReference();
+//			mgmntRef.setName("Parameter"+ wellFormed(p.getName()));
+//			mgmntRef.setEType(entityMgmtClass);
+//			mgmntRef.setLowerBound(1); 
+//			mgmntRef.setUpperBound(1);
+//			mgmntRef.setContainment(true);
+//			
+//			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
+//		}
+//		
+//		for(Directive d : fr.getDirectives()) {
+//			EReference mgmntRef = theCoreFactory.createEReference();
+//			mgmntRef.setName("Directive"+ wellFormed(d.getName()));
+//			mgmntRef.setEType(entityMgmtClass);
+//			mgmntRef.setLowerBound(1); 
+//			mgmntRef.setUpperBound(1);
+//			mgmntRef.setContainment(true);
+//			
+//			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
+//		}
+//
+//		for(Event e : fr.getEvents()) {
+//			EReference mgmntRef = theCoreFactory.createEReference();
+//			mgmntRef.setName("Event"+ wellFormed(e.getName()));
+//			mgmntRef.setEType(entityMgmtClass);
+//			mgmntRef.setLowerBound(1); 
+//			mgmntRef.setUpperBound(1);
+//			mgmntRef.setContainment(true);
+//			
+//			frInstanceClass.getEStructuralFeatures().add(mgmntRef);
+//		}
+//		
+//	}
 
 	/**
 	 * Returns a classifier name which is valid within the fro package.

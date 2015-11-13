@@ -9,13 +9,11 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -252,7 +250,6 @@ public class CreateParameterOidsHandler extends AbstractHandler implements IHand
 					hasExternalOids = (((Event)mElement).getExternalOid() != null) ? true : false;					
 				} else if(mElement instanceof Directive) {
 				} else if(mElement instanceof Parameter) {					
-					Oid test = ((Parameter)mElement).getExternalOid();
 					hasExternalOids = (((Parameter)mElement).getExternalOid() != null) ? true : false;					
 				}
 				if(hasExternalOids == true) {
