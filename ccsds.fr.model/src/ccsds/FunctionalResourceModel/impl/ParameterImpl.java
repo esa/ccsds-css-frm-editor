@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isMonitored <em>Monitored</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isConfigured <em>Configured</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getGuardCondition <em>Guard Condition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalOid <em>External Oid</em>}</li>
@@ -80,26 +79,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected Oid externalTypeOid;
-
-	/**
-	 * The default value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMonitored()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean MONITORED_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMonitored()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean monitored = MONITORED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isConfigured() <em>Configured</em>}' attribute.
@@ -260,27 +239,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isMonitored() {
-		return monitored;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMonitored(boolean newMonitored) {
-		boolean oldMonitored = monitored;
-		monitored = newMonitored;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__MONITORED, oldMonitored, monitored));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isConfigured() {
 		return configured;
 	}
@@ -391,8 +349,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return getTypeDefinition();
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				return getExternalTypeOid();
-			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
-				return isMonitored();
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				return isConfigured();
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
@@ -419,9 +375,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)newValue);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
-				setMonitored((Boolean)newValue);
 				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				setConfigured((Boolean)newValue);
@@ -453,9 +406,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)null);
 				return;
-			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
-				setMonitored(MONITORED_EDEFAULT);
-				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				setConfigured(CONFIGURED_EDEFAULT);
 				return;
@@ -483,8 +433,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 				return TYPE_DEFINITION_EDEFAULT == null ? typeDefinition != null : !TYPE_DEFINITION_EDEFAULT.equals(typeDefinition);
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 				return externalTypeOid != null;
-			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
-				return monitored != MONITORED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				return configured != CONFIGURED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
@@ -509,8 +457,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		result.append(engineeringUnit);
 		result.append(", typeDefinition: ");
 		result.append(typeDefinition);
-		result.append(", monitored: ");
-		result.append(monitored);
 		result.append(", configured: ");
 		result.append(configured);
 		result.append(", guardCondition: ");

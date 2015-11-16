@@ -54,7 +54,6 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	protected Button deprecated;
 	protected Text engineeringUnit;
 	protected Text typeDefinition;
-	protected Button monitored;
 	protected Button configured;
 	protected Text guardCondition;
 
@@ -105,7 +104,6 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.deprecated);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.engineeringUnit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.configured);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition);
 		
@@ -146,9 +144,6 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition) {
 					return createTypeDefinitionTextarea(parent);
-				}
-				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.monitored) {
-					return createMonitoredCheckbox(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.configured) {
 					return createConfiguredCheckbox(parent);
@@ -621,36 +616,6 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 	}
 
 	
-	protected Composite createMonitoredCheckbox(Composite parent) {
-		monitored = new Button(parent, SWT.CHECK);
-		monitored.setText(getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_MonitoredLabel));
-		monitored.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParameterPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(monitored.getSelection())));
-			}
-
-		});
-		GridData monitoredData = new GridData(GridData.FILL_HORIZONTAL);
-		monitoredData.horizontalSpan = 2;
-		monitored.setLayoutData(monitoredData);
-		EditingUtils.setID(monitored, FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
-		EditingUtils.setEEFtype(monitored, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createMonitoredCheckbox
-
-		// End of user code
-		return parent;
-	}
-
-	
 	protected Composite createConfiguredCheckbox(Composite parent) {
 		configured = new Button(parent, SWT.CHECK);
 		configured.setText(getDescription(FunctionalResourceModelViewsRepository.Parameter.Properties.configured, FunctionalResourceModelMessages.ParameterPropertiesEditionPart_ConfiguredLabel));
@@ -1046,38 +1011,6 @@ public class ParameterPropertiesEditionPartImpl extends CompositePropertiesEditi
 			typeDefinition.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !typeDefinition.isEnabled()) {
 			typeDefinition.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#getMonitored()
-	 * 
-	 */
-	public Boolean getMonitored() {
-		return Boolean.valueOf(monitored.getSelection());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ParameterPropertiesEditionPart#setMonitored(Boolean newValue)
-	 * 
-	 */
-	public void setMonitored(Boolean newValue) {
-		if (newValue != null) {
-			monitored.setSelection(newValue.booleanValue());
-		} else {
-			monitored.setSelection(false);
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Parameter.Properties.monitored);
-		if (eefElementEditorReadOnlyState && monitored.isEnabled()) {
-			monitored.setEnabled(false);
-			monitored.setToolTipText(FunctionalResourceModelMessages.Parameter_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !monitored.isEnabled()) {
-			monitored.setEnabled(true);
 		}	
 		
 	}

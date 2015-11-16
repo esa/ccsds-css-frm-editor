@@ -786,22 +786,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER__EXTERNAL_TYPE_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Monitored</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__MONITORED = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Configured</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CONFIGURED = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PARAMETER__CONFIGURED = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
@@ -810,7 +801,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
@@ -819,7 +810,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int PARAMETER__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -828,7 +819,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 7;
+	int PARAMETER_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -1186,17 +1177,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getParameter_ExternalTypeOid();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isMonitored <em>Monitored</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Monitored</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#isMonitored()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_Monitored();
-
-	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isConfigured <em>Configured</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1521,14 +1501,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PARAMETER__EXTERNAL_TYPE_OID = eINSTANCE.getParameter_ExternalTypeOid();
-
-		/**
-		 * The meta object literal for the '<em><b>Monitored</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__MONITORED = eINSTANCE.getParameter_Monitored();
 
 		/**
 		 * The meta object literal for the '<em><b>Configured</b></em>' attribute feature.

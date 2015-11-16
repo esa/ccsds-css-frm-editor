@@ -156,20 +156,6 @@ public interface ParameterPropertiesEditionPart {
 
 
 	/**
-	 * @return the monitored
-	 * 
-	 */
-	public Boolean getMonitored();
-
-	/**
-	 * Defines a new monitored
-	 * @param newValue the new monitored to set
-	 * 
-	 */
-	public void setMonitored(Boolean newValue);
-
-
-	/**
 	 * @return the configured
 	 * 
 	 */

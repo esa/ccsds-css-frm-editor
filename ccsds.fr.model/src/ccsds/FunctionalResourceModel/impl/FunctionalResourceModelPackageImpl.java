@@ -438,7 +438,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Monitored() {
+	public EAttribute getParameter_Configured() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -447,7 +447,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Configured() {
+	public EAttribute getParameter_GuardCondition() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -456,17 +456,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_GuardCondition() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getParameter_ExternalOid() {
-		return (EReference)parameterEClass.getEStructuralFeatures().get(6);
+		return (EReference)parameterEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -535,7 +526,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(parameterEClass, PARAMETER__ENGINEERING_UNIT);
 		createEAttribute(parameterEClass, PARAMETER__TYPE_DEFINITION);
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_TYPE_OID);
-		createEAttribute(parameterEClass, PARAMETER__MONITORED);
 		createEAttribute(parameterEClass, PARAMETER__CONFIGURED);
 		createEAttribute(parameterEClass, PARAMETER__GUARD_CONDITION);
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_OID);
@@ -613,7 +603,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getParameter_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Monitored(), ecorePackage.getEBoolean(), "monitored", "true", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Configured(), ecorePackage.getEBoolean(), "configured", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

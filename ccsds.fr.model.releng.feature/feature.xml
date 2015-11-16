@@ -2,7 +2,7 @@
 <feature
       id="ccsds.fr.model.feature"
       label="ccsds.fr.model"
-      version="3.0.0.qualifier"
+      version="3.0.1.qualifier"
       provider-name="esa.esoc.int"
       os="linux,macosx,win32">
 
@@ -44,35 +44,35 @@
          id="ccsds.fr.model"
          download-size="0"
          install-size="0"
-         version="3.0.0.qualifier"
+         version="3.0.1.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.edit"
          download-size="0"
          install-size="0"
-         version="3.0.0.qualifier"
+         version="3.0.1.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.editor"
          download-size="0"
          install-size="0"
-         version="3.0.0.qualifier"
+         version="3.0.1.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools"
          download-size="0"
          install-size="0"
-         version="3.0.0.qualifier"
+         version="3.0.1.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools.diagram.design"
          download-size="0"
          install-size="0"
-         version="3.0.0.qualifier"
+         version="3.0.1.qualifier"
          unpack="false"/>
 
 </feature>

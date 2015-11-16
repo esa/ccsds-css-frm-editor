@@ -253,9 +253,6 @@ public class FunctionalResourceModelViewsRepository {
 			public static String typeDefinition = "FunctionalResourceModel::Parameter::properties::typeDefinition";
 			
 			
-			public static String monitored = "FunctionalResourceModel::Parameter::properties::monitored";
-			
-			
 			public static String configured = "FunctionalResourceModel::Parameter::properties::configured";
 			
 			

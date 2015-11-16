@@ -50,7 +50,6 @@ public class ParameterItemProvider
 
 			addEngineeringUnitPropertyDescriptor(object);
 			addTypeDefinitionPropertyDescriptor(object);
-			addMonitoredPropertyDescriptor(object);
 			addConfiguredPropertyDescriptor(object);
 			addGuardConditionPropertyDescriptor(object);
 		}
@@ -97,28 +96,6 @@ public class ParameterItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Monitored feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMonitoredPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Parameter_monitored_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_monitored_feature", "_UI_Parameter_type"),
-				 FunctionalResourceModelPackage.Literals.PARAMETER__MONITORED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -239,7 +216,6 @@ public class ParameterItemProvider
 		switch (notification.getFeatureID(Parameter.class)) {
 			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
 			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
-			case FunctionalResourceModelPackage.PARAMETER__MONITORED:
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
