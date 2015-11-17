@@ -111,7 +111,7 @@ public class FrModelTransformation {
 				createDerivedFrInstance(fr, complexClass);
 			}
 		
-			createDependencyForUse(frm, friTopPackage);
+			createDependencyForUse(frm);
 			
 			// save the new ecore model
 			ResourceSet metaResourceSet = new ResourceSetImpl();
@@ -231,7 +231,7 @@ public class FrModelTransformation {
 
 		// add an attribute of the created FRI type to the complex class
 		EReference frList = theCoreFactory.createEReference();
-		frList.setName(NameTool.wellFormed(fr.getName()));
+		frList.setName(deriveClassName(fr));
 		frList.setEType(frInstanceClass);
 		frList.setLowerBound(0); 
 		frList.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
@@ -266,11 +266,9 @@ public class FrModelTransformation {
 	private List<EClass> createEventClasses(EPackage thePackage, EClass parent, EList<Event> events) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Event event : events) {
-			String name = event.getShortName();
-			if(name == null)
-				name = event.getName();
+			String name = deriveClassName(event);
 					
-			name = getUniqueClassifierName(parent.getName(), NameTool.wellFormed(name));
+			name = getUniqueClassifierName(parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractEvent);
@@ -307,11 +305,9 @@ public class FrModelTransformation {
 	private List<EClass> createDirectiveClasses(EPackage thePackage, EClass parent, EList<Directive> directives) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Directive directive : directives) {
-			String name = directive.getShortName();
-			if(name == null)
-				name = directive.getName();
+			String name = deriveClassName(directive);
 					
-			name = getUniqueClassifierName(parent.getName(), NameTool.wellFormed(name));
+			name = getUniqueClassifierName(parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractDirective);
@@ -349,11 +345,9 @@ public class FrModelTransformation {
 	private List<EClass> createParamClasses(EPackage thePackage, EClass parent, EList<Parameter> parameters) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Parameter parameter : parameters) {
-			String name = parameter.getShortName();
-			if(name == null)
-				name = parameter.getName();
+			String name = deriveClassName(parameter);
 					
-			name = getUniqueClassifierName(parent.getName(), NameTool.wellFormed(name));
+			name = getUniqueClassifierName(parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractParameter);
@@ -446,17 +440,16 @@ public class FrModelTransformation {
 	 * Create the a dependency for each uses relations as expressed in the frm 
 	 * for the created FunctionalresourceInstanceClasses
 	 * @param frm
-	 * @param theFriPackage
 	 */
-	private void createDependencyForUse(FunctionalResourceModel frm, EPackage theFriPackage) {
+	private void createDependencyForUse(FunctionalResourceModel frm) {
 		for(FunctionalResource fr : frm.getFunctionalResource()) {
-			EClass refSource = getClassByName(NameTool.wellFormed(fr.getName()));
+			EClass refSource = getClassByName(deriveClassName(fr), friTopPackage);
 			for(FunctionalResource usedFr : fr.getUses()) {
 				try {
-					EClass refTarget = getClassByName(NameTool.wellFormed(usedFr.getName()));
+					EClass refTarget = getClassByName(deriveClassName(usedFr), friTopPackage);
 					if(refSource != null && refTarget != null) {
 						EReference usesRef = theCoreFactory.createEReference();
-						usesRef.setName("uses");
+						usesRef.setName("uses" + deriveClassName(usedFr));
 						usesRef.setLowerBound(1);
 						usesRef.setUpperBound(1);
 						usesRef.setEType(refTarget);
@@ -472,15 +465,38 @@ public class FrModelTransformation {
 	}
 
 	/**
+	 * Construct a class name out of the short name or
+	 * the name of the element.
+	 * @param element the element for which the class name is requested
+	 * @return the class name
+	 */
+	private String deriveClassName(FrModelElement element) {
+		String name = element.getShortName(); 
+		if(name == null || name.length() == 0)
+			name = element.getName();
+		
+		return NameTool.wellFormed(name);
+	}
+
+	/**
 	 * Returns the EClass of the given name from friPackage
-	 * @param name
+	 * @param name the searched class name
+	 * @param EPackage p the package to search. Subpackages are searched as well.
 	 * @return
 	 */
-	private EClass getClassByName(String name) {
-		EClassifier cl = friTopPackage.getEClassifier(name);
+	private EClass getClassByName(String name, EPackage p) {
+		EClassifier cl = p.getEClassifier(name);
+		
 		if(cl != null && cl instanceof EClass)
 			return (EClass)cl;
 	
+		// search in the sub packages
+		for(EPackage subPackage : p.getESubpackages()) {
+			cl = getClassByName(name, subPackage);
+			if(cl != null && cl instanceof EClass)
+				return (EClass)cl;
+		}
+		
 		return null;
 	}
 	
