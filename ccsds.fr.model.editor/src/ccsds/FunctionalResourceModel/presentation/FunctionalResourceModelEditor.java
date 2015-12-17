@@ -1534,6 +1534,7 @@ public class FunctionalResourceModelEditor
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
 		saveOptions.put(XMLResource.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+		saveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//

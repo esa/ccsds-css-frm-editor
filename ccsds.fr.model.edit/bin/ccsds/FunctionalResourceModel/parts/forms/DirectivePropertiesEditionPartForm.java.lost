@@ -76,3 +76,27 @@ Start of user code for createGuardConditionText
 Start of user code for createQualifierText
 
 		// End of user code
+
+Tue Nov 17 10:33:56 CET 2015
+================================================================================
+Start of user code for createSemanticDefinitionTextArea
+		semanticDefinitionData.heightHint = 160;
+		// End of user code
+Start of user code for createQualifierTextArea
+
+		// End of user code
+Start of user code for createGuardConditionTextArea
+		guardConditionData.heightHint = 160;
+		// End of user code
+
+Tue Nov 17 10:34:57 CET 2015
+================================================================================
+Start of user code for createSemanticDefinitionText
+
+		// End of user code
+Start of user code for createGuardConditionText
+
+		// End of user code
+Start of user code for createQualifierText
+
+		// End of user code

@@ -1015,7 +1015,7 @@
         <semanticElements xmi:type="ecore:EReference" href="functional_resource.ecore#//FrModelElement/oid"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Qd6DR5UdEeWVTKlGNS6nKA" description="_Qd6DQ5UdEeWVTKlGNS6nKA" sourceArrow="FillDiamond" routingStyle="manhattan">
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Qd6DSJUdEeWVTKlGNS6nKA"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Qd6DSZUdEeWVTKlGNS6nKA" showIcon="false">
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Qd6DSZUdEeWVTKlGNS6nKA" labelFormat="bold" showIcon="false">
             <customFeatures>labelSize</customFeatures>
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Qd6DSpUdEeWVTKlGNS6nKA"/>
           </centerLabelStyle>

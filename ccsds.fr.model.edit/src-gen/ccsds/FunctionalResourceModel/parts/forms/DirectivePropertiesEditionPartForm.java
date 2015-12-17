@@ -241,7 +241,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSemanticDefinitionTextArea
-		semanticDefinitionData.heightHint = 160;
+
 		// End of user code
 		return parent;
 	}
@@ -788,7 +788,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(guardCondition, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createGuardConditionTextArea
-		guardConditionData.heightHint = 160;
+
 		// End of user code
 		return parent;
 	}
