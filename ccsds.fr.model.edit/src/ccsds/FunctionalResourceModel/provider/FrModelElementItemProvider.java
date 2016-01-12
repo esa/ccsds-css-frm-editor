@@ -64,8 +64,8 @@ public class FrModelElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSemanticDefinitionPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
-			addShortNamePropertyDescriptor(object);
+			addStringIdentifierPropertyDescriptor(object);
+			addClassifierPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 			addCreationDatePropertyDescriptor(object);
 			addAuthorizingEntityPropertyDescriptor(object);
@@ -89,6 +89,50 @@ public class FrModelElementItemProvider
 				 getString("_UI_FrModelElement_SemanticDefinition_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_SemanticDefinition_feature", "_UI_FrModelElement_type"),
 				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the String Identifier feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStringIdentifierPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FrModelElement_stringIdentifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_stringIdentifier_feature", "_UI_FrModelElement_type"),
+				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__STRING_IDENTIFIER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Classifier feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassifierPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FrModelElement_classifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_classifier_feature", "_UI_FrModelElement_type"),
+				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__CLASSIFIER,
 				 true,
 				 false,
 				 false,
@@ -186,50 +230,6 @@ public class FrModelElementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FrModelElement_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_name_feature", "_UI_FrModelElement_type"),
-				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Short Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addShortNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FrModelElement_shortName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_shortName_feature", "_UI_FrModelElement_type"),
-				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__SHORT_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Version feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -300,7 +300,7 @@ public class FrModelElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getName();
+		String label = ((FrModelElement)object).getSemanticDefinition();
 		return label == null || label.length() == 0 ?
 			getString("_UI_FrModelElement_type") :
 			getString("_UI_FrModelElement_type") + " " + label;
@@ -319,8 +319,8 @@ public class FrModelElementItemProvider
 
 		switch (notification.getFeatureID(FrModelElement.class)) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:

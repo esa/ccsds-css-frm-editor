@@ -3,7 +3,6 @@
 package ccsds.FunctionalResourceModel.provider;
 
 
-import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Parameter;
@@ -25,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParameterItemProvider
-	extends FrModelElementItemProvider {
+public class ParameterItemProvider extends TypedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -48,56 +46,10 @@ public class ParameterItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addEngineeringUnitPropertyDescriptor(object);
-			addTypeDefinitionPropertyDescriptor(object);
 			addConfiguredPropertyDescriptor(object);
 			addGuardConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Engineering Unit feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEngineeringUnitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Parameter_engineeringUnit_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_engineeringUnit_feature", "_UI_Parameter_type"),
-				 FunctionalResourceModelPackage.Literals.PARAMETER__ENGINEERING_UNIT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Type Definition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTypeDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Parameter_typeDefinition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_typeDefinition_feature", "_UI_Parameter_type"),
-				 FunctionalResourceModelPackage.Literals.PARAMETER__TYPE_DEFINITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -156,7 +108,6 @@ public class ParameterItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID);
 		}
 		return childrenFeatures;
@@ -194,13 +145,20 @@ public class ParameterItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getOidBit() + " " + ((Parameter)object).getName();
-		if(object instanceof Parameter && ((Parameter)object).getExternalOid() != null)
-			return label = "Parameter (external) " + ((Parameter)object).getName();
+		String label = ((Parameter)object).getStringIdentifier();
+		if(object instanceof Parameter) {
+			Parameter p = (Parameter)object;
+			String oid = OidItemProvider.getOidStr(p.getOid());
+			if(oid != null && oid.length() > 0) {
+				label = label + " OID: " + oid;
+			}
+		}
+		
 		return label == null || label.length() == 0 ?
 			getString("_UI_Parameter_type") :
 			getString("_UI_Parameter_type") + " " + label;
 	}
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -214,13 +172,10 @@ public class ParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Parameter.class)) {
-			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
-			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -241,11 +196,6 @@ public class ParameterItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID,
-				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
 	}
@@ -263,7 +213,7 @@ public class ParameterItemProvider
 
 		boolean qualify =
 			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
-			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_TYPE_OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID ||
 			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID;
 
 		if (qualify) {

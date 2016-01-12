@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.drop']" name="functional.resources.diagram" label="Functional Resource Diagram" domainClass="FunctionalResourceModel.FunctionalResourceModel" enablePopupBars="true">
       <defaultLayer name="functional.resources.diagram.default.layer" icon="/Functional Resource Tools Diagram.design/icons/CWELogo.png">
         <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel.FunctionalResource">
-          <style xsi:type="style:SquareDescription" tooltipExpression="feature:SemanticDefinition" labelPosition="node" resizeKind="NSEW" width="15" height="5">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:SemanticDefinition" labelPosition="node" resizeKind="NSEW" width="15" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>

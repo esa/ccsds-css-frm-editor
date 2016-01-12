@@ -12,6 +12,9 @@ import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceModelProperti
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourcePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.OidPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.QualifierPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.TypedElementPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.ValuePropertiesEditionPartForm;
 
 import ccsds.FunctionalResourceModel.parts.impl.DirectivePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.EventPropertiesEditionPartImpl;
@@ -20,6 +23,9 @@ import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceModelPropertie
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourcePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.OidPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.ParameterPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.QualifierPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.TypedElementPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.ValuePropertiesEditionPartImpl;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -89,6 +95,24 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new ParameterPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new ParameterPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.Value.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new ValuePropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new ValuePropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.Qualifier.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new QualifierPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new QualifierPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.TypedElement.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new TypedElementPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new TypedElementPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

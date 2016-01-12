@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getSemanticDefinition <em>Semantic Definition</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getName <em>Name</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier <em>String Identifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
@@ -56,6 +56,58 @@ public interface FrModelElement extends EObject {
 	 * @generated
 	 */
 	void setSemanticDefinition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>String Identifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>String Identifier</em>' attribute.
+	 * @see #setStringIdentifier(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_StringIdentifier()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getStringIdentifier();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier <em>String Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>String Identifier</em>' attribute.
+	 * @see #getStringIdentifier()
+	 * @generated
+	 */
+	void setStringIdentifier(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Classifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classifier</em>' attribute.
+	 * @see #setClassifier(String)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_Classifier()
+	 * @model
+	 * @generated
+	 */
+	String getClassifier();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Classifier</em>' attribute.
+	 * @see #getClassifier()
+	 * @generated
+	 */
+	void setClassifier(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Oid Bit</b></em>' attribute.
@@ -186,58 +238,6 @@ public interface FrModelElement extends EObject {
 	 * @generated
 	 */
 	void setCreationDate(Date value);
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_Name()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Short Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Short Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Short Name</em>' attribute.
-	 * @see #setShortName(String)
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_ShortName()
-	 * @model
-	 * @generated
-	 */
-	String getShortName();
-
-	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Short Name</em>' attribute.
-	 * @see #getShortName()
-	 * @generated
-	 */
-	void setShortName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.

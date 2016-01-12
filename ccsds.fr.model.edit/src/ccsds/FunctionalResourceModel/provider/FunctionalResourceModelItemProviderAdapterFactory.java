@@ -233,6 +233,75 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.Value} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValueItemProvider valueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.Value}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createValueAdapter() {
+		if (valueItemProvider == null) {
+			valueItemProvider = new ValueItemProvider(this);
+		}
+
+		return valueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.Qualifier} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected QualifierItemProvider qualifierItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.Qualifier}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createQualifierAdapter() {
+		if (qualifierItemProvider == null) {
+			qualifierItemProvider = new QualifierItemProvider(this);
+		}
+
+		return qualifierItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.TypedElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TypedElementItemProvider typedElementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.TypedElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTypedElementAdapter() {
+		if (typedElementItemProvider == null) {
+			typedElementItemProvider = new TypedElementItemProvider(this);
+		}
+
+		return typedElementItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -338,6 +407,9 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 		if (eventItemProvider != null) eventItemProvider.dispose();
 		if (directiveItemProvider != null) directiveItemProvider.dispose();
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
+		if (valueItemProvider != null) valueItemProvider.dispose();
+		if (qualifierItemProvider != null) qualifierItemProvider.dispose();
+		if (typedElementItemProvider != null) typedElementItemProvider.dispose();
 	}
 
 }

@@ -4,9 +4,8 @@ package ccsds.FunctionalResourceModel.impl;
 
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
-
 import ccsds.FunctionalResourceModel.Oid;
-import ccsds.FunctionalResourceModel.Parameter;
+import ccsds.FunctionalResourceModel.Value;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,8 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getParameter <em>Parameter</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getQualifier <em>Qualifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getValue <em>Value</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
@@ -34,33 +32,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class EventImpl extends FrModelElementImpl implements Event {
 	/**
-	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference list.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParameter()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> parameter;
-
-	/**
-	 * The default value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String QUALIFIER_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected String qualifier = QUALIFIER_EDEFAULT;
+	protected EList<Value> value;
 
 	/**
 	 * The cached value of the '{@link #getExternalOid() <em>External Oid</em>}' containment reference.
@@ -96,32 +75,11 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Parameter> getParameter() {
-		if (parameter == null) {
-			parameter = new EObjectContainmentEList<Parameter>(Parameter.class, this, FunctionalResourceModelPackage.EVENT__PARAMETER);
+	public EList<Value> getValue() {
+		if (value == null) {
+			value = new EObjectContainmentEList<Value>(Value.class, this, FunctionalResourceModelPackage.EVENT__VALUE);
 		}
-		return parameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getQualifier() {
-		return qualifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setQualifier(String newQualifier) {
-		String oldQualifier = qualifier;
-		qualifier = newQualifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.EVENT__QUALIFIER, oldQualifier, qualifier));
+		return value;
 	}
 
 	/**
@@ -175,8 +133,8 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
-				return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return basicSetExternalOid(null, msgs);
 		}
@@ -191,10 +149,8 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
-				return getParameter();
-			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
-				return getQualifier();
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return getValue();
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return getExternalOid();
 		}
@@ -210,12 +166,9 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
-				getParameter().clear();
-				getParameter().addAll((Collection<? extends Parameter>)newValue);
-				return;
-			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
-				setQualifier((String)newValue);
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				getValue().clear();
+				getValue().addAll((Collection<? extends Value>)newValue);
 				return;
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				setExternalOid((Oid)newValue);
@@ -232,11 +185,8 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
-				getParameter().clear();
-				return;
-			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
-				setQualifier(QUALIFIER_EDEFAULT);
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				getValue().clear();
 				return;
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				setExternalOid((Oid)null);
@@ -253,30 +203,12 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
-				return parameter != null && !parameter.isEmpty();
-			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
-				return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return value != null && !value.isEmpty();
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return externalOid != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qualifier: ");
-		result.append(qualifier);
-		result.append(')');
-		return result.toString();
 	}
 
 } //EventImpl

@@ -124,22 +124,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FR_MODEL_ELEMENT__SEMANTIC_DEFINITION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT__NAME = 1;
+	int FR_MODEL_ELEMENT__STRING_IDENTIFIER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT__SHORT_NAME = 2;
+	int FR_MODEL_ELEMENT__CLASSIFIER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -270,22 +270,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__NAME = FR_MODEL_ELEMENT__NAME;
+	int FUNCTIONAL_RESOURCE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+	int FUNCTIONAL_RESOURCE__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -415,22 +415,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__NAME = FR_MODEL_ELEMENT__NAME;
+	int EVENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+	int EVENT__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -487,22 +487,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Qualifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int EVENT__VALUE = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
@@ -511,7 +502,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int EVENT__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Event</em>' class.
@@ -520,7 +511,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int EVENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Event</em>' class.
@@ -551,22 +542,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE__NAME = FR_MODEL_ELEMENT__NAME;
+	int DIRECTIVE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+	int DIRECTIVE__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -623,13 +614,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int DIRECTIVE__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
@@ -641,22 +632,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Qualifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__QUALIFIER = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Directive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int DIRECTIVE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Directive</em>' class.
@@ -666,6 +648,142 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTIVE_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl <em>Typed Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.TypedElementImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getTypedElement()
+	 * @generated
+	 */
+	int TYPED_ELEMENT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__OID_BIT = FR_MODEL_ELEMENT__OID_BIT;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__OID = FR_MODEL_ELEMENT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__TYPE_DEFINITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__ENGINEERING_UNIT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>External Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__EXTERNAL_TYPE_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Typed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Typed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -684,25 +802,25 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
+	int PARAMETER__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__NAME = FR_MODEL_ELEMENT__NAME;
+	int PARAMETER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
 
 	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__SHORT_NAME = FR_MODEL_ELEMENT__SHORT_NAME;
+	int PARAMETER__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -711,7 +829,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__VERSION = FR_MODEL_ELEMENT__VERSION;
+	int PARAMETER__VERSION = TYPED_ELEMENT__VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
@@ -720,7 +838,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+	int PARAMETER__CREATION_DATE = TYPED_ELEMENT__CREATION_DATE;
 
 	/**
 	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
@@ -729,7 +847,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+	int PARAMETER__AUTHORIZING_ENTITY = TYPED_ELEMENT__AUTHORIZING_ENTITY;
 
 	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
@@ -738,7 +856,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__OID_BIT = FR_MODEL_ELEMENT__OID_BIT;
+	int PARAMETER__OID_BIT = TYPED_ELEMENT__OID_BIT;
 
 	/**
 	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
@@ -747,7 +865,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__OID = FR_MODEL_ELEMENT__OID;
+	int PARAMETER__OID = TYPED_ELEMENT__OID;
 
 	/**
 	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
@@ -756,16 +874,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
-
-	/**
-	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__ENGINEERING_UNIT = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int PARAMETER__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
 
 	/**
 	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
@@ -774,7 +883,16 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__TYPE_DEFINITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER__TYPE_DEFINITION = TYPED_ELEMENT__TYPE_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__ENGINEERING_UNIT = TYPED_ELEMENT__ENGINEERING_UNIT;
 
 	/**
 	 * The feature id for the '<em><b>External Type Oid</b></em>' containment reference.
@@ -783,7 +901,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__EXTERNAL_TYPE_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int PARAMETER__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
 
 	/**
 	 * The feature id for the '<em><b>Configured</b></em>' attribute.
@@ -792,7 +910,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__CONFIGURED = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int PARAMETER__CONFIGURED = TYPED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Guard Condition</b></em>' attribute.
@@ -801,7 +919,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__GUARD_CONDITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PARAMETER__GUARD_CONDITION = TYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
@@ -810,7 +928,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PARAMETER__EXTERNAL_OID = TYPED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -819,7 +937,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int PARAMETER_FEATURE_COUNT = TYPED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -828,7 +946,279 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int PARAMETER_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ValueImpl <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.ValueImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__VERSION = TYPED_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__CREATION_DATE = TYPED_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__AUTHORIZING_ENTITY = TYPED_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__OID_BIT = TYPED_ELEMENT__OID_BIT;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__OID = TYPED_ELEMENT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__TYPE_DEFINITION = TYPED_ELEMENT__TYPE_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__ENGINEERING_UNIT = TYPED_ELEMENT__ENGINEERING_UNIT;
+
+	/**
+	 * The feature id for the '<em><b>External Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+
+	/**
+	 * The number of structural features of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_FEATURE_COUNT = TYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.QualifierImpl <em>Qualifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.QualifierImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getQualifier()
+	 * @generated
+	 */
+	int QUALIFIER = 8;
+
+	/**
+	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__VERSION = TYPED_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__CREATION_DATE = TYPED_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__AUTHORIZING_ENTITY = TYPED_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__OID_BIT = TYPED_ELEMENT__OID_BIT;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__OID = TYPED_ELEMENT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__TYPE_DEFINITION = TYPED_ELEMENT__TYPE_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Engineering Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__ENGINEERING_UNIT = TYPED_ELEMENT__ENGINEERING_UNIT;
+
+	/**
+	 * The feature id for the '<em><b>External Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+
+	/**
+	 * The number of structural features of the '<em>Qualifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER_FEATURE_COUNT = TYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Qualifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -885,6 +1275,61 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getFrModelElement_SemanticDefinition();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier <em>String Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Identifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_StringIdentifier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Classifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getClassifier()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_Classifier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getVersion()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_Version();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Creation Date</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getCreationDate()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_CreationDate();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Authorizing Entity</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EAttribute getFrModelElement_AuthorizingEntity();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getOidBit <em>Oid Bit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -916,61 +1361,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFrModelElement_Deprecated();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Authorizing Entity</em>'.
-	 * @see ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity()
-	 * @see #getFrModelElement()
-	 * @generated
-	 */
-	EAttribute getFrModelElement_AuthorizingEntity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Creation Date</em>'.
-	 * @see ccsds.FunctionalResourceModel.FrModelElement#getCreationDate()
-	 * @see #getFrModelElement()
-	 * @generated
-	 */
-	EAttribute getFrModelElement_CreationDate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see ccsds.FunctionalResourceModel.FrModelElement#getName()
-	 * @see #getFrModelElement()
-	 * @generated
-	 */
-	EAttribute getFrModelElement_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getShortName <em>Short Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Short Name</em>'.
-	 * @see ccsds.FunctionalResourceModel.FrModelElement#getShortName()
-	 * @see #getFrModelElement()
-	 * @generated
-	 */
-	EAttribute getFrModelElement_ShortName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see ccsds.FunctionalResourceModel.FrModelElement#getVersion()
-	 * @see #getFrModelElement()
-	 * @generated
-	 */
-	EAttribute getFrModelElement_Version();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Oid <em>Oid</em>}'.
@@ -1058,26 +1448,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EClass getEvent();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.Event#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.Event#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameter</em>'.
-	 * @see ccsds.FunctionalResourceModel.Event#getParameter()
+	 * @return the meta object for the containment reference list '<em>Value</em>'.
+	 * @see ccsds.FunctionalResourceModel.Event#getValue()
 	 * @see #getEvent()
 	 * @generated
 	 */
-	EReference getEvent_Parameter();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Qualifier</em>'.
-	 * @see ccsds.FunctionalResourceModel.Event#getQualifier()
-	 * @see #getEvent()
-	 * @generated
-	 */
-	EAttribute getEvent_Qualifier();
+	EReference getEvent_Value();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}'.
@@ -1101,15 +1480,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EClass getDirective();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.Directive#getParameter <em>Parameter</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameter</em>'.
-	 * @see ccsds.FunctionalResourceModel.Directive#getParameter()
+	 * @return the meta object for the containment reference list '<em>Qualifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.Directive#getQualifier()
 	 * @see #getDirective()
 	 * @generated
 	 */
-	EReference getDirective_Parameter();
+	EReference getDirective_Qualifier();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}'.
@@ -1123,17 +1502,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getDirective_GuardCondition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Qualifier</em>'.
-	 * @see ccsds.FunctionalResourceModel.Directive#getQualifier()
-	 * @see #getDirective()
-	 * @generated
-	 */
-	EAttribute getDirective_Qualifier();
-
-	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1142,39 +1510,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParameter();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#getEngineeringUnit <em>Engineering Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Engineering Unit</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#getEngineeringUnit()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_EngineeringUnit();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#getTypeDefinition <em>Type Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type Definition</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#getTypeDefinition()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_TypeDefinition();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.Parameter#getExternalTypeOid <em>External Type Oid</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>External Type Oid</em>'.
-	 * @see ccsds.FunctionalResourceModel.Parameter#getExternalTypeOid()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EReference getParameter_ExternalTypeOid();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Parameter#isConfigured <em>Configured</em>}'.
@@ -1208,6 +1543,69 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getParameter_ExternalOid();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value</em>'.
+	 * @see ccsds.FunctionalResourceModel.Value
+	 * @generated
+	 */
+	EClass getValue();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Qualifier <em>Qualifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Qualifier</em>'.
+	 * @see ccsds.FunctionalResourceModel.Qualifier
+	 * @generated
+	 */
+	EClass getQualifier();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.TypedElement <em>Typed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Typed Element</em>'.
+	 * @see ccsds.FunctionalResourceModel.TypedElement
+	 * @generated
+	 */
+	EClass getTypedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.TypedElement#getTypeDefinition <em>Type Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type Definition</em>'.
+	 * @see ccsds.FunctionalResourceModel.TypedElement#getTypeDefinition()
+	 * @see #getTypedElement()
+	 * @generated
+	 */
+	EAttribute getTypedElement_TypeDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.TypedElement#getEngineeringUnit <em>Engineering Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Engineering Unit</em>'.
+	 * @see ccsds.FunctionalResourceModel.TypedElement#getEngineeringUnit()
+	 * @see #getTypedElement()
+	 * @generated
+	 */
+	EAttribute getTypedElement_EngineeringUnit();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.TypedElement#getExternalTypeOid <em>External Type Oid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>External Type Oid</em>'.
+	 * @see ccsds.FunctionalResourceModel.TypedElement#getExternalTypeOid()
+	 * @see #getTypedElement()
+	 * @generated
+	 */
+	EReference getTypedElement_ExternalTypeOid();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1277,6 +1675,46 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EAttribute FR_MODEL_ELEMENT__SEMANTIC_DEFINITION = eINSTANCE.getFrModelElement_SemanticDefinition();
 
 		/**
+		 * The meta object literal for the '<em><b>String Identifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__STRING_IDENTIFIER = eINSTANCE.getFrModelElement_StringIdentifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__CLASSIFIER = eINSTANCE.getFrModelElement_Classifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__VERSION = eINSTANCE.getFrModelElement_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Creation Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__CREATION_DATE = eINSTANCE.getFrModelElement_CreationDate();
+
+		/**
+		 * The meta object literal for the '<em><b>Authorizing Entity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FR_MODEL_ELEMENT__AUTHORIZING_ENTITY = eINSTANCE.getFrModelElement_AuthorizingEntity();
+
+		/**
 		 * The meta object literal for the '<em><b>Oid Bit</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1299,46 +1737,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FR_MODEL_ELEMENT__DEPRECATED = eINSTANCE.getFrModelElement_Deprecated();
-
-		/**
-		 * The meta object literal for the '<em><b>Authorizing Entity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FR_MODEL_ELEMENT__AUTHORIZING_ENTITY = eINSTANCE.getFrModelElement_AuthorizingEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Creation Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FR_MODEL_ELEMENT__CREATION_DATE = eINSTANCE.getFrModelElement_CreationDate();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FR_MODEL_ELEMENT__NAME = eINSTANCE.getFrModelElement_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Short Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FR_MODEL_ELEMENT__SHORT_NAME = eINSTANCE.getFrModelElement_ShortName();
-
-		/**
-		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FR_MODEL_ELEMENT__VERSION = eINSTANCE.getFrModelElement_Version();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.OidImpl <em>Oid</em>}' class.
@@ -1411,20 +1809,12 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EClass EVENT = eINSTANCE.getEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EVENT__PARAMETER = eINSTANCE.getEvent_Parameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EVENT__QUALIFIER = eINSTANCE.getEvent_Qualifier();
+		EReference EVENT__VALUE = eINSTANCE.getEvent_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>External Oid</b></em>' containment reference feature.
@@ -1445,12 +1835,12 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EClass DIRECTIVE = eINSTANCE.getDirective();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DIRECTIVE__PARAMETER = eINSTANCE.getDirective_Parameter();
+		EReference DIRECTIVE__QUALIFIER = eINSTANCE.getDirective_Qualifier();
 
 		/**
 		 * The meta object literal for the '<em><b>Guard Condition</b></em>' attribute feature.
@@ -1461,14 +1851,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EAttribute DIRECTIVE__GUARD_CONDITION = eINSTANCE.getDirective_GuardCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DIRECTIVE__QUALIFIER = eINSTANCE.getDirective_Qualifier();
-
-		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1477,30 +1859,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARAMETER = eINSTANCE.getParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Engineering Unit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__ENGINEERING_UNIT = eINSTANCE.getParameter_EngineeringUnit();
-
-		/**
-		 * The meta object literal for the '<em><b>Type Definition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__TYPE_DEFINITION = eINSTANCE.getParameter_TypeDefinition();
-
-		/**
-		 * The meta object literal for the '<em><b>External Type Oid</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARAMETER__EXTERNAL_TYPE_OID = eINSTANCE.getParameter_ExternalTypeOid();
 
 		/**
 		 * The meta object literal for the '<em><b>Configured</b></em>' attribute feature.
@@ -1525,6 +1883,60 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PARAMETER__EXTERNAL_OID = eINSTANCE.getParameter_ExternalOid();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ValueImpl <em>Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.ValueImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getValue()
+		 * @generated
+		 */
+		EClass VALUE = eINSTANCE.getValue();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.QualifierImpl <em>Qualifier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.QualifierImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getQualifier()
+		 * @generated
+		 */
+		EClass QUALIFIER = eINSTANCE.getQualifier();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl <em>Typed Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.TypedElementImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getTypedElement()
+		 * @generated
+		 */
+		EClass TYPED_ELEMENT = eINSTANCE.getTypedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPED_ELEMENT__TYPE_DEFINITION = eINSTANCE.getTypedElement_TypeDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Engineering Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPED_ELEMENT__ENGINEERING_UNIT = eINSTANCE.getTypedElement_EngineeringUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>External Type Oid</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED_ELEMENT__EXTERNAL_TYPE_OID = eINSTANCE.getTypedElement_ExternalTypeOid();
 
 	}
 

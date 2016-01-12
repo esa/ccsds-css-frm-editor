@@ -63,6 +63,9 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 			case FunctionalResourceModelPackage.EVENT: return createEvent();
 			case FunctionalResourceModelPackage.DIRECTIVE: return createDirective();
 			case FunctionalResourceModelPackage.PARAMETER: return createParameter();
+			case FunctionalResourceModelPackage.VALUE: return createValue();
+			case FunctionalResourceModelPackage.QUALIFIER: return createQualifier();
+			case FunctionalResourceModelPackage.TYPED_ELEMENT: return createTypedElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +139,36 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
 		return parameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Value createValue() {
+		ValueImpl value = new ValueImpl();
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Qualifier createQualifier() {
+		QualifierImpl qualifier = new QualifierImpl();
+		return qualifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypedElement createTypedElement() {
+		TypedElementImpl typedElement = new TypedElementImpl();
+		return typedElement;
 	}
 
 	/**

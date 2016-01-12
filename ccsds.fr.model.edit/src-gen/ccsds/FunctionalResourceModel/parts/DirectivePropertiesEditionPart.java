@@ -30,31 +30,31 @@ public interface DirectivePropertiesEditionPart {
 
 
 	/**
-	 * @return the name
+	 * @return the stringIdentifier
 	 * 
 	 */
-	public String getName();
+	public String getStringIdentifier();
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Defines a new stringIdentifier
+	 * @param newValue the new stringIdentifier to set
 	 * 
 	 */
-	public void setName(String newValue);
+	public void setStringIdentifier(String newValue);
 
 
 	/**
-	 * @return the shortName
+	 * @return the classifier
 	 * 
 	 */
-	public String getShortName();
+	public String getClassifier();
 
 	/**
-	 * Defines a new shortName
-	 * @param newValue the new shortName to set
+	 * Defines a new classifier
+	 * @param newValue the new classifier to set
 	 * 
 	 */
-	public void setShortName(String newValue);
+	public void setClassifier(String newValue);
 
 
 	/**
@@ -130,45 +130,45 @@ public interface DirectivePropertiesEditionPart {
 
 
 	/**
-	 * Init the parameter
+	 * Init the qualifier
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initParameter(ReferencesTableSettings settings);
+	public void initQualifier(ReferencesTableSettings settings);
 
 	/**
-	 * Update the parameter
-	 * @param newValue the parameter to update
+	 * Update the qualifier
+	 * @param newValue the qualifier to update
 	 * 
 	 */
-	public void updateParameter();
+	public void updateQualifier();
 
 	/**
-	 * Adds the given filter to the parameter edition editor.
+	 * Adds the given filter to the qualifier edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToParameter(ViewerFilter filter);
+	public void addFilterToQualifier(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the parameter edition editor.
+	 * Adds the given filter to the qualifier edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToParameter(ViewerFilter filter);
+	public void addBusinessFilterToQualifier(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the parameter table
+	 * @return true if the given element is contained inside the qualifier table
 	 * 
 	 */
-	public boolean isContainedInParameterTable(EObject element);
+	public boolean isContainedInQualifierTable(EObject element);
 
 
 	/**
@@ -183,20 +183,6 @@ public interface DirectivePropertiesEditionPart {
 	 * 
 	 */
 	public void setGuardCondition(String newValue);
-
-
-	/**
-	 * @return the qualifier
-	 * 
-	 */
-	public String getQualifier();
-
-	/**
-	 * Defines a new qualifier
-	 * @param newValue the new qualifier to set
-	 * 
-	 */
-	public void setQualifier(String newValue);
 
 
 

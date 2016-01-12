@@ -40,10 +40,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FrModelElement::properties::SemanticDefinition";
 			
 			
-			public static String name = "FunctionalResourceModel::FrModelElement::properties::name";
+			public static String stringIdentifier = "FunctionalResourceModel::FrModelElement::properties::stringIdentifier";
 			
 			
-			public static String shortName = "FunctionalResourceModel::FrModelElement::properties::shortName";
+			public static String classifier = "FunctionalResourceModel::FrModelElement::properties::classifier";
 			
 			
 			public static String version = "FunctionalResourceModel::FrModelElement::properties::version";
@@ -91,10 +91,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FunctionalResource::properties::SemanticDefinition";
 			
 			
-			public static String name = "FunctionalResourceModel::FunctionalResource::properties::name";
+			public static String stringIdentifier = "FunctionalResourceModel::FunctionalResource::properties::stringIdentifier";
 			
 			
-			public static String shortName = "FunctionalResourceModel::FunctionalResource::properties::shortName";
+			public static String classifier = "FunctionalResourceModel::FunctionalResource::properties::classifier";
 			
 			
 			public static String version = "FunctionalResourceModel::FunctionalResource::properties::version";
@@ -139,10 +139,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Event::properties::SemanticDefinition";
 			
 			
-			public static String name = "FunctionalResourceModel::Event::properties::name";
+			public static String stringIdentifier = "FunctionalResourceModel::Event::properties::stringIdentifier";
 			
 			
-			public static String shortName = "FunctionalResourceModel::Event::properties::shortName";
+			public static String classifier = "FunctionalResourceModel::Event::properties::classifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Event::properties::version";
@@ -160,10 +160,7 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Event::properties::deprecated";
 			
 			
-			public static String parameter = "FunctionalResourceModel::Event::properties::parameter";
-			
-			
-			public static String qualifier = "FunctionalResourceModel::Event::properties::qualifier";
+			public static String value = "FunctionalResourceModel::Event::properties::value";
 			
 	
 		}
@@ -181,10 +178,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Directive::properties::SemanticDefinition";
 			
 			
-			public static String name = "FunctionalResourceModel::Directive::properties::name";
+			public static String stringIdentifier = "FunctionalResourceModel::Directive::properties::stringIdentifier";
 			
 			
-			public static String shortName = "FunctionalResourceModel::Directive::properties::shortName";
+			public static String classifier = "FunctionalResourceModel::Directive::properties::classifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Directive::properties::version";
@@ -202,13 +199,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Directive::properties::deprecated";
 			
 			
-			public static String parameter = "FunctionalResourceModel::Directive::properties::parameter";
+			public static String qualifier = "FunctionalResourceModel::Directive::properties::qualifier";
 			
 			
 			public static String guardCondition = "FunctionalResourceModel::Directive::properties::guardCondition";
-			
-			
-			public static String qualifier = "FunctionalResourceModel::Directive::properties::qualifier";
 			
 	
 		}
@@ -226,10 +220,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Parameter::properties::SemanticDefinition";
 			
 			
-			public static String name = "FunctionalResourceModel::Parameter::properties::name";
+			public static String stringIdentifier = "FunctionalResourceModel::Parameter::properties::stringIdentifier";
 			
 			
-			public static String shortName = "FunctionalResourceModel::Parameter::properties::shortName";
+			public static String classifier = "FunctionalResourceModel::Parameter::properties::classifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Parameter::properties::version";
@@ -247,16 +241,142 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Parameter::properties::deprecated";
 			
 			
-			public static String engineeringUnit = "FunctionalResourceModel::Parameter::properties::engineeringUnit";
-			
-			
 			public static String typeDefinition = "FunctionalResourceModel::Parameter::properties::typeDefinition";
+			
+			
+			public static String engineeringUnit = "FunctionalResourceModel::Parameter::properties::engineeringUnit";
 			
 			
 			public static String configured = "FunctionalResourceModel::Parameter::properties::configured";
 			
 			
 			public static String guardCondition = "FunctionalResourceModel::Parameter::properties::guardCondition";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * Value view descriptor
+	 * 
+	 */
+	public static class Value {
+		public static class Properties {
+	
+			
+			public static String semanticDefinition = "FunctionalResourceModel::Value::properties::SemanticDefinition";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Value::properties::stringIdentifier";
+			
+			
+			public static String classifier = "FunctionalResourceModel::Value::properties::classifier";
+			
+			
+			public static String version = "FunctionalResourceModel::Value::properties::version";
+			
+			
+			public static String creationDate = "FunctionalResourceModel::Value::properties::creationDate";
+			
+			
+			public static String authorizingEntity = "FunctionalResourceModel::Value::properties::authorizingEntity";
+			
+			
+			public static String oidBit = "FunctionalResourceModel::Value::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::Value::properties::deprecated";
+			
+			
+			public static String typeDefinition = "FunctionalResourceModel::Value::properties::typeDefinition";
+			
+			
+			public static String engineeringUnit = "FunctionalResourceModel::Value::properties::engineeringUnit";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * Qualifier view descriptor
+	 * 
+	 */
+	public static class Qualifier {
+		public static class Properties {
+	
+			
+			public static String semanticDefinition = "FunctionalResourceModel::Qualifier::properties::SemanticDefinition";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Qualifier::properties::stringIdentifier";
+			
+			
+			public static String classifier = "FunctionalResourceModel::Qualifier::properties::classifier";
+			
+			
+			public static String version = "FunctionalResourceModel::Qualifier::properties::version";
+			
+			
+			public static String creationDate = "FunctionalResourceModel::Qualifier::properties::creationDate";
+			
+			
+			public static String authorizingEntity = "FunctionalResourceModel::Qualifier::properties::authorizingEntity";
+			
+			
+			public static String oidBit = "FunctionalResourceModel::Qualifier::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::Qualifier::properties::deprecated";
+			
+			
+			public static String typeDefinition = "FunctionalResourceModel::Qualifier::properties::typeDefinition";
+			
+			
+			public static String engineeringUnit = "FunctionalResourceModel::Qualifier::properties::engineeringUnit";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * TypedElement view descriptor
+	 * 
+	 */
+	public static class TypedElement {
+		public static class Properties {
+	
+			
+			public static String semanticDefinition = "FunctionalResourceModel::TypedElement::properties::SemanticDefinition";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::TypedElement::properties::stringIdentifier";
+			
+			
+			public static String classifier = "FunctionalResourceModel::TypedElement::properties::classifier";
+			
+			
+			public static String version = "FunctionalResourceModel::TypedElement::properties::version";
+			
+			
+			public static String creationDate = "FunctionalResourceModel::TypedElement::properties::creationDate";
+			
+			
+			public static String authorizingEntity = "FunctionalResourceModel::TypedElement::properties::authorizingEntity";
+			
+			
+			public static String oidBit = "FunctionalResourceModel::TypedElement::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::TypedElement::properties::deprecated";
+			
+			
+			public static String typeDefinition = "FunctionalResourceModel::TypedElement::properties::typeDefinition";
+			
+			
+			public static String engineeringUnit = "FunctionalResourceModel::TypedElement::properties::engineeringUnit";
 			
 	
 		}

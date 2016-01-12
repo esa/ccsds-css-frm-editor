@@ -3,7 +3,7 @@
 package ccsds.FunctionalResourceModel.util;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelResourceFactoryImpl
  * @generated
  */
-public class FunctionalResourceModelResourceImpl extends XMIResourceImpl {
+public class FunctionalResourceModelResourceImpl extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->

@@ -30,31 +30,31 @@ public interface EventPropertiesEditionPart {
 
 
 	/**
-	 * @return the name
+	 * @return the stringIdentifier
 	 * 
 	 */
-	public String getName();
+	public String getStringIdentifier();
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Defines a new stringIdentifier
+	 * @param newValue the new stringIdentifier to set
 	 * 
 	 */
-	public void setName(String newValue);
+	public void setStringIdentifier(String newValue);
 
 
 	/**
-	 * @return the shortName
+	 * @return the classifier
 	 * 
 	 */
-	public String getShortName();
+	public String getClassifier();
 
 	/**
-	 * Defines a new shortName
-	 * @param newValue the new shortName to set
+	 * Defines a new classifier
+	 * @param newValue the new classifier to set
 	 * 
 	 */
-	public void setShortName(String newValue);
+	public void setClassifier(String newValue);
 
 
 	/**
@@ -130,59 +130,45 @@ public interface EventPropertiesEditionPart {
 
 
 	/**
-	 * Init the parameter
+	 * Init the value
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initParameter(ReferencesTableSettings settings);
+	public void initValue(ReferencesTableSettings settings);
 
 	/**
-	 * Update the parameter
-	 * @param newValue the parameter to update
+	 * Update the value
+	 * @param newValue the value to update
 	 * 
 	 */
-	public void updateParameter();
+	public void updateValue();
 
 	/**
-	 * Adds the given filter to the parameter edition editor.
+	 * Adds the given filter to the value edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToParameter(ViewerFilter filter);
+	public void addFilterToValue(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the parameter edition editor.
+	 * Adds the given filter to the value edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToParameter(ViewerFilter filter);
+	public void addBusinessFilterToValue(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the parameter table
+	 * @return true if the given element is contained inside the value table
 	 * 
 	 */
-	public boolean isContainedInParameterTable(EObject element);
-
-
-	/**
-	 * @return the qualifier
-	 * 
-	 */
-	public String getQualifier();
-
-	/**
-	 * Defines a new qualifier
-	 * @param newValue the new qualifier to set
-	 * 
-	 */
-	public void setQualifier(String newValue);
+	public boolean isContainedInValueTable(EObject element);
 
 
 

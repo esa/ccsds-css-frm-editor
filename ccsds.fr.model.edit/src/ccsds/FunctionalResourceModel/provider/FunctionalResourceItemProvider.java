@@ -155,7 +155,7 @@ public class FunctionalResourceItemProvider
 				label = label + " OID: " + oid;
 			}
 			
-			label = fr.getName() + " " + label;
+			label = fr.getStringIdentifier() + " " + label;
 		}
 		
 		return label == null || label.length() == 0 ?

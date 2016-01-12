@@ -30,31 +30,31 @@ public interface ParameterPropertiesEditionPart {
 
 
 	/**
-	 * @return the name
+	 * @return the stringIdentifier
 	 * 
 	 */
-	public String getName();
+	public String getStringIdentifier();
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Defines a new stringIdentifier
+	 * @param newValue the new stringIdentifier to set
 	 * 
 	 */
-	public void setName(String newValue);
+	public void setStringIdentifier(String newValue);
 
 
 	/**
-	 * @return the shortName
+	 * @return the classifier
 	 * 
 	 */
-	public String getShortName();
+	public String getClassifier();
 
 	/**
-	 * Defines a new shortName
-	 * @param newValue the new shortName to set
+	 * Defines a new classifier
+	 * @param newValue the new classifier to set
 	 * 
 	 */
-	public void setShortName(String newValue);
+	public void setClassifier(String newValue);
 
 
 	/**
@@ -128,20 +128,6 @@ public interface ParameterPropertiesEditionPart {
 
 
 	/**
-	 * @return the engineeringUnit
-	 * 
-	 */
-	public String getEngineeringUnit();
-
-	/**
-	 * Defines a new engineeringUnit
-	 * @param newValue the new engineeringUnit to set
-	 * 
-	 */
-	public void setEngineeringUnit(String newValue);
-
-
-	/**
 	 * @return the typeDefinition
 	 * 
 	 */
@@ -153,6 +139,20 @@ public interface ParameterPropertiesEditionPart {
 	 * 
 	 */
 	public void setTypeDefinition(String newValue);
+
+
+	/**
+	 * @return the engineeringUnit
+	 * 
+	 */
+	public String getEngineeringUnit();
+
+	/**
+	 * Defines a new engineeringUnit
+	 * @param newValue the new engineeringUnit to set
+	 * 
+	 */
+	public void setEngineeringUnit(String newValue);
 
 
 	/**

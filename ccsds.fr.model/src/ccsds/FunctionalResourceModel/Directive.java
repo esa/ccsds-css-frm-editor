@@ -13,9 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.Directive#getParameter <em>Parameter</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,22 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Directive extends FrModelElement {
-
-	/**
-	 * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Parameter}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter</em>' containment reference list.
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getDirective_Parameter()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Parameter> getParameter();
 
 	/**
 	 * Returns the value of the '<em><b>Guard Condition</b></em>' attribute.
@@ -68,28 +51,18 @@ public interface Directive extends FrModelElement {
 	void setGuardCondition(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
+	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Qualifier}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Qualifier</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Qualifier</em>' attribute.
-	 * @see #setQualifier(String)
+	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getDirective_Qualifier()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getQualifier();
-
-	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Qualifier</em>' attribute.
-	 * @see #getQualifier()
-	 * @generated
-	 */
-	void setQualifier(String value);
+	EList<Qualifier> getQualifier();
 } // Directive

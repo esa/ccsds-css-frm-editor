@@ -63,11 +63,35 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createTypedElementAdapter()
+	 * 
+	 */
+	public Adapter createTypedElementAdapter() {
+		return new TypedElementPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createParameterAdapter()
 	 * 
 	 */
 	public Adapter createParameterAdapter() {
 		return new ParameterPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createValueAdapter()
+	 * 
+	 */
+	public Adapter createValueAdapter() {
+		return new ValuePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createQualifierAdapter()
+	 * 
+	 */
+	public Adapter createQualifierAdapter() {
+		return new QualifierPropertiesEditionProvider();
 	}
 
 }

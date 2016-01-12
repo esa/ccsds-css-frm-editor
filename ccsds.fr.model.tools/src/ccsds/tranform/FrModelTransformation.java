@@ -208,7 +208,7 @@ public class FrModelTransformation {
 	private EClass createDerivedFrInstance(FunctionalResource fr, EClass complexClass) {
 				
 		EClass frInstanceClass = theCoreFactory.createEClass();
-		frInstanceClass.setName(NameTool.wellFormed(fr.getName()));
+		frInstanceClass.setName(NameTool.wellFormed(fr.getStringIdentifier()));
 		frInstanceClass.getESuperTypes().add(functionalresourceInstanceClass);
 		
 		EPackage frPackage = createEPackage("Fr"+frInstanceClass.getName(), "frp"+frInstanceClass.getName(), "http://iso.org.dod.ccsds."+frInstanceClass.getName());
@@ -281,11 +281,11 @@ public class FrModelTransformation {
 			semanticDescrAttr.setUpperBound(1);
 			theClass.getEStructuralFeatures().add(semanticDescrAttr);
 			
-			if(event.getQualifier() != null) {
+			if(event.getValue() != null) {
 				EAttribute qualifierAttr = theCoreFactory.createEAttribute();
-				qualifierAttr.setName("qualifier");
+				qualifierAttr.setName("value");
 				qualifierAttr.setEType(EcorePackage.eINSTANCE.getEString());		
-				qualifierAttr.setDefaultValueLiteral(event.getQualifier());		
+				//qualifierAttr.setDefaultValueLiteral(event.getValue());		
 				qualifierAttr.setUpperBound(1);
 				theClass.getEStructuralFeatures().add(qualifierAttr);
 			}
@@ -324,7 +324,7 @@ public class FrModelTransformation {
 				EAttribute qualifierAttr = theCoreFactory.createEAttribute();
 				qualifierAttr.setName("qualifier");
 				qualifierAttr.setEType(EcorePackage.eINSTANCE.getEString());		
-				qualifierAttr.setDefaultValueLiteral(directive.getQualifier());		
+				//qualifierAttr.setDefaultValueLiteral(directive.getQualifier());		
 				qualifierAttr.setUpperBound(1);
 				theClass.getEStructuralFeatures().add(qualifierAttr);
 			}
@@ -471,9 +471,9 @@ public class FrModelTransformation {
 	 * @return the class name
 	 */
 	private String deriveClassName(FrModelElement element) {
-		String name = element.getShortName(); 
+		String name = element.getClassifier(); 
 		if(name == null || name.length() == 0)
-			name = element.getName();
+			name = element.getStringIdentifier();
 		
 		return NameTool.wellFormed(name);
 	}

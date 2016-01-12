@@ -89,9 +89,9 @@ public class OidTree {
 		OidNode frVersion = functionalResourcesGenericIdentifiers.addChildNode(OidNode.OID_WILDCARD, "fr").
 			addChildNode(OidNode.OID_WILDCARD, "version");
 		
-		frVersion.addChildNode(1, "parameter").addChildNode(OidNode.OID_WILDCARD, "type").addChildNode(OidNode.OID_WILDCARD, "version");
-		frVersion.addChildNode(2, "event").addChildNode(OidNode.OID_WILDCARD, "type").addChildNode(OidNode.OID_WILDCARD, "version");
-		frVersion.addChildNode(3, "directive").addChildNode(OidNode.OID_WILDCARD, "type").addChildNode(OidNode.OID_WILDCARD, "version");
+		frVersion.addChildNode(1, "parameter").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		frVersion.addChildNode(2, "event").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		frVersion.addChildNode(3, "directive").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
 		
 		// System.out.println(this.toString());
 	}

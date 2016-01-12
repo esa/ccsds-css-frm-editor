@@ -5,6 +5,7 @@ package ccsds.FunctionalResourceModel;
 import org.eclipse.emf.common.util.EList;
 
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Event</b></em>'.
@@ -13,8 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.Event#getParameter <em>Parameter</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.Event#getValue <em>Value</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}</li>
  * </ul>
  * </p>
@@ -26,46 +26,20 @@ import org.eclipse.emf.common.util.EList;
 public interface Event extends FrModelElement {
 
 	/**
-	 * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Parameter}.
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Value}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parameter</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter</em>' containment reference list.
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent_Parameter()
+	 * @return the value of the '<em>Value</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent_Value()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Parameter> getParameter();
-
-	/**
-	 * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Qualifier</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Qualifier</em>' attribute.
-	 * @see #setQualifier(String)
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent_Qualifier()
-	 * @model
-	 * @generated
-	 */
-	String getQualifier();
-
-	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.Event#getQualifier <em>Qualifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Qualifier</em>' attribute.
-	 * @see #getQualifier()
-	 * @generated
-	 */
-	void setQualifier(String value);
+	EList<Value> getValue();
 
 	/**
 	 * Returns the value of the '<em><b>External Oid</b></em>' containment reference.

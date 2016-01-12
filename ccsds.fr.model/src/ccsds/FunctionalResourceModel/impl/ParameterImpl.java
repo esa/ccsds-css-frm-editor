@@ -18,9 +18,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getTypeDefinition <em>Type Definition</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#isConfigured <em>Configured</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getGuardCondition <em>Guard Condition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ParameterImpl#getExternalOid <em>External Oid</em>}</li>
@@ -29,57 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ParameterImpl extends FrModelElementImpl implements Parameter {
-	/**
-	 * The default value of the '{@link #getEngineeringUnit() <em>Engineering Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEngineeringUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ENGINEERING_UNIT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getEngineeringUnit() <em>Engineering Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEngineeringUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected String engineeringUnit = ENGINEERING_UNIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTypeDefinition() <em>Type Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypeDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TYPE_DEFINITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTypeDefinition() <em>Type Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypeDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String typeDefinition = TYPE_DEFINITION_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getExternalTypeOid() <em>External Type Oid</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExternalTypeOid()
-	 * @generated
-	 * @ordered
-	 */
-	protected Oid externalTypeOid;
-
+public class ParameterImpl extends TypedElementImpl implements Parameter {
 	/**
 	 * The default value of the '{@link #isConfigured() <em>Configured</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -147,91 +94,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	protected EClass eStaticClass() {
 		return FunctionalResourceModelPackage.Literals.PARAMETER;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getEngineeringUnit() {
-		return engineeringUnit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEngineeringUnit(String newEngineeringUnit) {
-		String oldEngineeringUnit = engineeringUnit;
-		engineeringUnit = newEngineeringUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT, oldEngineeringUnit, engineeringUnit));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getTypeDefinition() {
-		return typeDefinition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypeDefinition(String newTypeDefinition) {
-		String oldTypeDefinition = typeDefinition;
-		typeDefinition = newTypeDefinition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION, oldTypeDefinition, typeDefinition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Oid getExternalTypeOid() {
-		return externalTypeOid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetExternalTypeOid(Oid newExternalTypeOid, NotificationChain msgs) {
-		Oid oldExternalTypeOid = externalTypeOid;
-		externalTypeOid = newExternalTypeOid;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID, oldExternalTypeOid, newExternalTypeOid);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExternalTypeOid(Oid newExternalTypeOid) {
-		if (newExternalTypeOid != externalTypeOid) {
-			NotificationChain msgs = null;
-			if (externalTypeOid != null)
-				msgs = ((InternalEObject)externalTypeOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID, null, msgs);
-			if (newExternalTypeOid != null)
-				msgs = ((InternalEObject)newExternalTypeOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID, null, msgs);
-			msgs = basicSetExternalTypeOid(newExternalTypeOid, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID, newExternalTypeOid, newExternalTypeOid));
 	}
 
 	/**
@@ -327,8 +189,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
-				return basicSetExternalTypeOid(null, msgs);
 			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_OID:
 				return basicSetExternalOid(null, msgs);
 		}
@@ -343,12 +203,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
-				return getEngineeringUnit();
-			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
-				return getTypeDefinition();
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
-				return getExternalTypeOid();
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				return isConfigured();
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
@@ -367,15 +221,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
-				setEngineeringUnit((String)newValue);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
-				setTypeDefinition((String)newValue);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
-				setExternalTypeOid((Oid)newValue);
-				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				setConfigured((Boolean)newValue);
 				return;
@@ -397,15 +242,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
-				setEngineeringUnit(ENGINEERING_UNIT_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
-				setTypeDefinition(TYPE_DEFINITION_EDEFAULT);
-				return;
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
-				setExternalTypeOid((Oid)null);
-				return;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				setConfigured(CONFIGURED_EDEFAULT);
 				return;
@@ -427,12 +263,6 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.PARAMETER__ENGINEERING_UNIT:
-				return ENGINEERING_UNIT_EDEFAULT == null ? engineeringUnit != null : !ENGINEERING_UNIT_EDEFAULT.equals(engineeringUnit);
-			case FunctionalResourceModelPackage.PARAMETER__TYPE_DEFINITION:
-				return TYPE_DEFINITION_EDEFAULT == null ? typeDefinition != null : !TYPE_DEFINITION_EDEFAULT.equals(typeDefinition);
-			case FunctionalResourceModelPackage.PARAMETER__EXTERNAL_TYPE_OID:
-				return externalTypeOid != null;
 			case FunctionalResourceModelPackage.PARAMETER__CONFIGURED:
 				return configured != CONFIGURED_EDEFAULT;
 			case FunctionalResourceModelPackage.PARAMETER__GUARD_CONDITION:
@@ -453,11 +283,7 @@ public class ParameterImpl extends FrModelElementImpl implements Parameter {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (engineeringUnit: ");
-		result.append(engineeringUnit);
-		result.append(", typeDefinition: ");
-		result.append(typeDefinition);
-		result.append(", configured: ");
+		result.append(" (configured: ");
 		result.append(configured);
 		result.append(", guardCondition: ");
 		result.append(guardCondition);

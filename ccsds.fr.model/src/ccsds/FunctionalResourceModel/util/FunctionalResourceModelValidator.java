@@ -100,6 +100,12 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 				return validateDirective((Directive)value, diagnostics, context);
 			case FunctionalResourceModelPackage.PARAMETER:
 				return validateParameter((Parameter)value, diagnostics, context);
+			case FunctionalResourceModelPackage.VALUE:
+				return validateValue((Value)value, diagnostics, context);
+			case FunctionalResourceModelPackage.QUALIFIER:
+				return validateQualifier((Qualifier)value, diagnostics, context);
+			case FunctionalResourceModelPackage.TYPED_ELEMENT:
+				return validateTypedElement((TypedElement)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -205,6 +211,33 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateValue(Value value, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(value, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateQualifier(Qualifier qualifier, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(qualifier, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTypedElement(TypedElement typedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(typedElement, diagnostics, context);
 	}
 
 	/**

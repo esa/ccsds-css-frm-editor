@@ -47,7 +47,6 @@ public class DirectiveItemProvider
 			super.getPropertyDescriptors(object);
 
 			addGuardConditionPropertyDescriptor(object);
-			addQualifierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -75,28 +74,6 @@ public class DirectiveItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Qualifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQualifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Directive_qualifier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Directive_qualifier_feature", "_UI_Directive_type"),
-				 FunctionalResourceModelPackage.Literals.DIRECTIVE__QUALIFIER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -108,7 +85,7 @@ public class DirectiveItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.DIRECTIVE__PARAMETER);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.DIRECTIVE__QUALIFIER);
 		}
 		return childrenFeatures;
 	}
@@ -145,7 +122,7 @@ public class DirectiveItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getName();
+		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getStringIdentifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Directive_type") :
 			getString("_UI_Directive_type") + " " + label;
@@ -164,10 +141,9 @@ public class DirectiveItemProvider
 
 		switch (notification.getFeatureID(Directive.class)) {
 			case FunctionalResourceModelPackage.DIRECTIVE__GUARD_CONDITION:
-			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case FunctionalResourceModelPackage.DIRECTIVE__PARAMETER:
+			case FunctionalResourceModelPackage.DIRECTIVE__QUALIFIER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -187,8 +163,8 @@ public class DirectiveItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.DIRECTIVE__PARAMETER,
-				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
+				(FunctionalResourceModelPackage.Literals.DIRECTIVE__QUALIFIER,
+				 FunctionalResourceModelFactory.eINSTANCE.createQualifier()));
 	}
 
 }

@@ -110,13 +110,31 @@
                filter="ccsds.FunctionalResourceModel.providers.DirectivePropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.Directive"
                tab="Base">
-         </propertySection>
+         </propertySection>         
          <propertySection
                class="ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.ParameterPropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.Parameter"
                tab="Base">
          </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.ValuePropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.ValuePropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.Value"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.QualifierPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.QualifierPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.Qualifier"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.TypedElementPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.TypedElementPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.TypedElement"
+               tab="Base">
+          </propertySection>              
       </propertySections>
 
    </extension>

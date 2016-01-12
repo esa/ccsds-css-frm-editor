@@ -11,6 +11,9 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
+import ccsds.FunctionalResourceModel.Qualifier;
+import ccsds.FunctionalResourceModel.TypedElement;
+import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.util.FunctionalResourceModelValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -74,6 +77,27 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass qualifierEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typedElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -195,6 +219,24 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFrModelElement_StringIdentifier() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFrModelElement_Classifier() {
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getFrModelElement_OidBit() {
 		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(6);
 	}
@@ -233,24 +275,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 */
 	public EAttribute getFrModelElement_CreationDate() {
 		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_Name() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFrModelElement_ShortName() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -339,7 +363,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEvent_Parameter() {
+	public EReference getEvent_Value() {
 		return (EReference)eventEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -348,17 +372,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEvent_Qualifier() {
-		return (EAttribute)eventEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEvent_ExternalOid() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(2);
+		return (EReference)eventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -375,15 +390,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDirective_Parameter() {
-		return (EReference)directiveEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getDirective_GuardCondition() {
 		return (EAttribute)directiveEClass.getEStructuralFeatures().get(1);
 	}
@@ -393,8 +399,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDirective_Qualifier() {
-		return (EAttribute)directiveEClass.getEStructuralFeatures().get(2);
+	public EReference getDirective_Qualifier() {
+		return (EReference)directiveEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -411,7 +417,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_EngineeringUnit() {
+	public EAttribute getParameter_Configured() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -420,7 +426,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_TypeDefinition() {
+	public EAttribute getParameter_GuardCondition() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -429,7 +435,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getParameter_ExternalTypeOid() {
+	public EReference getParameter_ExternalOid() {
 		return (EReference)parameterEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -438,8 +444,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Configured() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(3);
+	public EClass getValue() {
+		return valueEClass;
 	}
 
 	/**
@@ -447,8 +453,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_GuardCondition() {
-		return (EAttribute)parameterEClass.getEStructuralFeatures().get(4);
+	public EClass getQualifier() {
+		return qualifierEClass;
 	}
 
 	/**
@@ -456,8 +462,35 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getParameter_ExternalOid() {
-		return (EReference)parameterEClass.getEStructuralFeatures().get(5);
+	public EClass getTypedElement() {
+		return typedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypedElement_TypeDefinition() {
+		return (EAttribute)typedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypedElement_EngineeringUnit() {
+		return (EAttribute)typedElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTypedElement_ExternalTypeOid() {
+		return (EReference)typedElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -494,8 +527,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		frModelElementEClass = createEClass(FR_MODEL_ELEMENT);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SEMANTIC_DEFINITION);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__NAME);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SHORT_NAME);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__STRING_IDENTIFIER);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CLASSIFIER);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__VERSION);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CREATION_DATE);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__AUTHORIZING_ENTITY);
@@ -513,22 +546,26 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
 
 		eventEClass = createEClass(EVENT);
-		createEReference(eventEClass, EVENT__PARAMETER);
-		createEAttribute(eventEClass, EVENT__QUALIFIER);
+		createEReference(eventEClass, EVENT__VALUE);
 		createEReference(eventEClass, EVENT__EXTERNAL_OID);
 
 		directiveEClass = createEClass(DIRECTIVE);
-		createEReference(directiveEClass, DIRECTIVE__PARAMETER);
+		createEReference(directiveEClass, DIRECTIVE__QUALIFIER);
 		createEAttribute(directiveEClass, DIRECTIVE__GUARD_CONDITION);
-		createEAttribute(directiveEClass, DIRECTIVE__QUALIFIER);
 
 		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__ENGINEERING_UNIT);
-		createEAttribute(parameterEClass, PARAMETER__TYPE_DEFINITION);
-		createEReference(parameterEClass, PARAMETER__EXTERNAL_TYPE_OID);
 		createEAttribute(parameterEClass, PARAMETER__CONFIGURED);
 		createEAttribute(parameterEClass, PARAMETER__GUARD_CONDITION);
 		createEReference(parameterEClass, PARAMETER__EXTERNAL_OID);
+
+		valueEClass = createEClass(VALUE);
+
+		qualifierEClass = createEClass(QUALIFIER);
+
+		typedElementEClass = createEClass(TYPED_ELEMENT);
+		createEAttribute(typedElementEClass, TYPED_ELEMENT__TYPE_DEFINITION);
+		createEAttribute(typedElementEClass, TYPED_ELEMENT__ENGINEERING_UNIT);
+		createEReference(typedElementEClass, TYPED_ELEMENT__EXTERNAL_TYPE_OID);
 	}
 
 	/**
@@ -562,7 +599,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		functionalResourceEClass.getESuperTypes().add(this.getFrModelElement());
 		eventEClass.getESuperTypes().add(this.getFrModelElement());
 		directiveEClass.getESuperTypes().add(this.getFrModelElement());
-		parameterEClass.getESuperTypes().add(this.getFrModelElement());
+		parameterEClass.getESuperTypes().add(this.getTypedElement());
+		valueEClass.getESuperTypes().add(this.getTypedElement());
+		qualifierEClass.getESuperTypes().add(this.getTypedElement());
+		typedElementEClass.getESuperTypes().add(this.getFrModelElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(functionalResourceModelEClass, FunctionalResourceModel.class, "FunctionalResourceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -571,8 +611,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		initEClass(frModelElementEClass, FrModelElement.class, "FrModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrModelElement_SemanticDefinition(), ecorePackage.getEString(), "SemanticDefinition", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_ShortName(), ecorePackage.getEString(), "shortName", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_StringIdentifier(), ecorePackage.getEString(), "stringIdentifier", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_Classifier(), ecorePackage.getEString(), "classifier", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_Version(), ecorePackage.getEInt(), "version", "1", 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_AuthorizingEntity(), ecorePackage.getEString(), "authorizingEntity", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -590,22 +630,26 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEvent_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEvent_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvent_Value(), this.getValue(), null, "value", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEvent_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directiveEClass, Directive.class, "Directive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDirective_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDirective_Qualifier(), this.getQualifier(), null, "qualifier", null, 0, -1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDirective_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 1, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDirective_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getParameter_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Configured(), ecorePackage.getEBoolean(), "configured", "false", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_GuardCondition(), ecorePackage.getEString(), "guardCondition", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(qualifierEClass, Qualifier.class, "Qualifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(typedElementEClass, TypedElement.class, "TypedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypedElement_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypedElement_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypedElement_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

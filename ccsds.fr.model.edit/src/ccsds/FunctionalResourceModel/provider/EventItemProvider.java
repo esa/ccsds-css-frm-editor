@@ -12,9 +12,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -46,31 +44,8 @@ public class EventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addQualifierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Qualifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQualifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Event_qualifier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Event_qualifier_feature", "_UI_Event_type"),
-				 FunctionalResourceModelPackage.Literals.EVENT__QUALIFIER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -85,7 +60,7 @@ public class EventItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__PARAMETER);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__VALUE);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID);
 		}
 		return childrenFeatures;
@@ -123,7 +98,7 @@ public class EventItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getName();
+		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getStringIdentifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Event_type") :
 			getString("_UI_Event_type") + " " + label;
@@ -141,10 +116,7 @@ public class EventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Event.class)) {
-			case FunctionalResourceModelPackage.EVENT__QUALIFIER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case FunctionalResourceModelPackage.EVENT__PARAMETER:
+			case FunctionalResourceModelPackage.EVENT__VALUE:
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -165,8 +137,8 @@ public class EventItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.EVENT__PARAMETER,
-				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
+				(FunctionalResourceModelPackage.Literals.EVENT__VALUE,
+				 FunctionalResourceModelFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add
 			(createChildParameter

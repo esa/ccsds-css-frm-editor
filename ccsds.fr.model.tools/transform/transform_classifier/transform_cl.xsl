@@ -25,7 +25,7 @@
 
 	<xsl:template match="directives/parameter">
 		<xsl:element name="qualifier">
-		 <xsl:apply-templates select="@*|node()"/>
+		 <xsl:apply-templates select="@*[not(name() = 'configured')]"/>
 		</xsl:element>
 	</xsl:template>
 	

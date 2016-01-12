@@ -104,10 +104,10 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 		for(EObject o : frm.eContents()) {
 			if(o instanceof FrModelElement) {
 				FrModelElement el = (FrModelElement)o;
-				if(el.getShortName() == null || el.getShortName().length() == 0) {
+				if(el.getClassifier() == null || el.getClassifier().length() == 0) {
 					SetCommand setCmd = new SetCommand(editingDomain, el,
-							el.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME),
-							NameTool.wellFormed(el.getName()));					
+							el.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER),
+							NameTool.wellFormed(el.getStringIdentifier()));					
 						setAll.append(setCmd);								
 				}
 				updateShortNames(el, editingDomain, setAll);
@@ -175,9 +175,9 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			// LinkedHashMap preserves the order of insertion
 			LinkedHashMap<String, List<FrModelElement> > mElementMap = new LinkedHashMap<String, List<FrModelElement> >();
 			for(FrModelElement mElement : modelElements) {
-				if(mElementMap.containsKey(mElement.getName()) == false)
-					mElementMap.put(mElement.getName(), new LinkedList<FrModelElement>());
-				mElementMap.get(mElement.getName()).add(mElement);
+				if(mElementMap.containsKey(mElement.getStringIdentifier()) == false)
+					mElementMap.put(mElement.getStringIdentifier(), new LinkedList<FrModelElement>());
+				mElementMap.get(mElement.getStringIdentifier()).add(mElement);
 			}
 			
 			filterExternalOids(mElementMap); // filter out external OIDs
@@ -198,6 +198,8 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 						type = "Directive";
 					} else if(mElement instanceof Parameter) {
 						type = "Parameter";
+					} else {
+						continue; // no need for an OID for Directive/Qualifier and Event/Value
 					}
 					
 					Oid mElementOid = cloneOid(parentOid);
@@ -211,13 +213,13 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 						oidUpdate = true;
 						Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
 								"Created OID for " + type + " "
-										+ parentName + " / " + mElement.getName() + ": " + OidItemProvider.getOidStr(mElementOid)));					
+										+ parentName + " / " + mElement.getStringIdentifier() + ": " + OidItemProvider.getOidStr(mElementOid)));					
 					}
 					if(mElement.getOid() != null && EcoreUtil.equals(mElement.getOid(), mElementOid) == false) {
 						oidUpdate = true;
 						Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
 								"Upated OID for " + type + " " 
-										+ parentName + " / " + mElement.getName() + " from " + OidItemProvider.getOidStr(mElement.getOid())
+										+ parentName + " / " + mElement.getStringIdentifier() + " from " + OidItemProvider.getOidStr(mElement.getOid())
 										+ " to " + OidItemProvider.getOidStr(mElementOid)));					
 					}
 					
@@ -241,19 +243,19 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 					// update the children of functional resources directives and events
 					if(mElement instanceof FunctionalResource) {
 						FunctionalResource fr = (FunctionalResource)mElement;
-						updateOids(domain, fr.getName(), fr.getParameter().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), fr.getParameter().toArray(new FrModelElement[0]), 
 								mElementOid,ModelElementType.PARAMETER_OID_TYPE.getValue(), setOids);
-						updateOids(domain, fr.getName(), fr.getEvent().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), fr.getEvent().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
-						updateOids(domain, fr.getName(), fr.getDirectives().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), fr.getDirectives().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.DIRECTIVE_OID_TYPE.getValue(), setOids);
 						
 					} else if(mElement instanceof Directive) {
-						updateOids(domain, mElement.getName(), ((Directive)mElement).getParameter().toArray(new FrModelElement[0]) ,
-								mElementOid, ModelElementType.PARAMETER_OID_TYPE.getValue(), setOids);
+						updateOids(domain, mElement.getClassifier(), ((Directive)mElement).getQualifier().toArray(new FrModelElement[0]) ,
+								mElementOid, ModelElementType.DIRECTIVE_OID_TYPE.getValue(), setOids);
 					} else if(mElement instanceof Event) {
-						updateOids(domain, mElement.getName(), ((Event)mElement).getParameter().toArray(new FrModelElement[0]) ,
-								mElementOid, ModelElementType.PARAMETER_OID_TYPE.getValue(), setOids);
+						updateOids(domain, mElement.getClassifier(), ((Event)mElement).getValue().toArray(new FrModelElement[0]) ,
+								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
 					}
 					
 					version++; // go to the next version

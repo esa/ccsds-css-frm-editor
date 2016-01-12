@@ -55,18 +55,17 @@ import org.eclipse.ui.forms.widgets.Section;
 public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DirectivePropertiesEditionPart {
 
 	protected Text semanticDefinition;
-	protected Text name;
-	protected Text shortName;
+	protected Text stringIdentifier;
+	protected Text classifier;
 	protected Text version;
 	protected Text creationDate;
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
-	protected ReferencesTable parameter;
-	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable qualifier;
+	protected List<ViewerFilter> qualifierBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> qualifierFilters = new ArrayList<ViewerFilter>();
 	protected Text guardCondition;
-	protected Text qualifier;
 
 
 
@@ -113,16 +112,15 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		CompositionSequence directiveStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = directiveStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.class);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.name);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.shortName);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.classifier);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.creationDate);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.deprecated);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
 		
 		
 		composer = new PartComposer(directiveStep) {
@@ -135,11 +133,11 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition) {
 					return createSemanticDefinitionTextarea(widgetFactory, parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.name) {
-					return createNameText(widgetFactory, parent);
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier) {
+					return createStringIdentifierText(widgetFactory, parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.shortName) {
-					return createShortNameText(widgetFactory, parent);
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.classifier) {
+					return createClassifierText(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.version) {
 					return createVersionText(widgetFactory, parent);
@@ -156,14 +154,11 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.deprecated) {
 					return createDeprecatedCheckbox(widgetFactory, parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.parameter) {
-					return createParameterTableComposition(widgetFactory, parent);
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
+					return createQualifierTableComposition(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition) {
 					return createGuardConditionTextarea(widgetFactory, parent);
-				}
-				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
-					return createQualifierTextarea(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -247,14 +242,14 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	}
 
 	
-	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.name, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_NameLabel);
-		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	protected Composite createStringIdentifierText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_StringIdentifierLabel);
+		stringIdentifier = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		stringIdentifier.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
+		GridData stringIdentifierData = new GridData(GridData.FILL_HORIZONTAL);
+		stringIdentifier.setLayoutData(stringIdentifierData);
+		stringIdentifier.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
@@ -265,14 +260,14 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							DirectivePropertiesEditionPartForm.this,
-							FunctionalResourceModelViewsRepository.Directive.Properties.name,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+							FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									DirectivePropertiesEditionPartForm.this,
-									FunctionalResourceModelViewsRepository.Directive.Properties.name,
+									FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, name.getText()));
+									null, stringIdentifier.getText()));
 				}
 			}
 
@@ -291,7 +286,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				}
 			}
 		});
-		name.addKeyListener(new KeyAdapter() {
+		stringIdentifier.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 * 
@@ -301,28 +296,28 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(name, FunctionalResourceModelViewsRepository.Directive.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.name, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createNameText
+		EditingUtils.setID(stringIdentifier, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
+		EditingUtils.setEEFtype(stringIdentifier, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createStringIdentifierText
 
 		// End of user code
 		return parent;
 	}
 
 	
-	protected Composite createShortNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.shortName, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_ShortNameLabel);
-		shortName = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		shortName.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+	protected Composite createClassifierText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.classifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_ClassifierLabel);
+		classifier = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		classifier.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
-		GridData shortNameData = new GridData(GridData.FILL_HORIZONTAL);
-		shortName.setLayoutData(shortNameData);
-		shortName.addFocusListener(new FocusAdapter() {
+		GridData classifierData = new GridData(GridData.FILL_HORIZONTAL);
+		classifier.setLayoutData(classifierData);
+		classifier.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
@@ -333,14 +328,14 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
 							DirectivePropertiesEditionPartForm.this,
-							FunctionalResourceModelViewsRepository.Directive.Properties.shortName,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, shortName.getText()));
+							FunctionalResourceModelViewsRepository.Directive.Properties.classifier,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, classifier.getText()));
 					propertiesEditionComponent
 							.firePropertiesChanged(new PropertiesEditionEvent(
 									DirectivePropertiesEditionPartForm.this,
-									FunctionalResourceModelViewsRepository.Directive.Properties.shortName,
+									FunctionalResourceModelViewsRepository.Directive.Properties.classifier,
 									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, shortName.getText()));
+									null, classifier.getText()));
 				}
 			}
 
@@ -359,7 +354,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				}
 			}
 		});
-		shortName.addKeyListener(new KeyAdapter() {
+		classifier.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
 			 * 
@@ -369,14 +364,14 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.shortName, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, shortName.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.classifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, classifier.getText()));
 				}
 			}
 		});
-		EditingUtils.setID(shortName, FunctionalResourceModelViewsRepository.Directive.Properties.shortName);
-		EditingUtils.setEEFtype(shortName, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.shortName, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createShortNameText
+		EditingUtils.setID(classifier, FunctionalResourceModelViewsRepository.Directive.Properties.classifier);
+		EditingUtils.setEEFtype(classifier, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.classifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createClassifierText
 
 		// End of user code
 		return parent;
@@ -687,48 +682,48 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	 * @param container
 	 * 
 	 */
-	protected Composite createParameterTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.parameter = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Directive.Properties.parameter, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_ParameterLabel), new ReferencesTableListener() {
+	protected Composite createQualifierTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.qualifier = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_QualifierLabel), new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				parameter.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				qualifier.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				parameter.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				qualifier.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				parameter.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				qualifier.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				parameter.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				qualifier.refresh();
 			}
 			public void navigateTo(EObject element) { }
 		});
-		for (ViewerFilter filter : this.parameterFilters) {
-			this.parameter.addFilter(filter);
+		for (ViewerFilter filter : this.qualifierFilters) {
+			this.qualifier.addFilter(filter);
 		}
-		this.parameter.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.parameter, FunctionalResourceModelViewsRepository.FORM_KIND));
-		this.parameter.createControls(parent, widgetFactory);
-		this.parameter.addSelectionListener(new SelectionAdapter() {
+		this.qualifier.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.qualifier.createControls(parent, widgetFactory);
+		this.qualifier.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.parameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
 		});
-		GridData parameterData = new GridData(GridData.FILL_HORIZONTAL);
-		parameterData.horizontalSpan = 3;
-		this.parameter.setLayoutData(parameterData);
-		this.parameter.setLowerBound(0);
-		this.parameter.setUpperBound(-1);
-		parameter.setID(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
-		parameter.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createParameterTableComposition
+		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
+		qualifierData.horizontalSpan = 3;
+		this.qualifier.setLayoutData(qualifierData);
+		this.qualifier.setLowerBound(0);
+		this.qualifier.setUpperBound(-1);
+		qualifier.setID(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		qualifier.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createQualifierTableComposition
 
 		// End of user code
 		return parent;
@@ -793,65 +788,6 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		return parent;
 	}
 
-	
-	protected Composite createQualifierTextarea(FormToolkit widgetFactory, Composite parent) {
-		Label qualifierLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_QualifierLabel);
-		GridData qualifierLabelData = new GridData(GridData.FILL_HORIZONTAL);
-		qualifierLabelData.horizontalSpan = 3;
-		qualifierLabel.setLayoutData(qualifierLabelData);
-		qualifier = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
-		GridData qualifierData = new GridData(GridData.FILL_HORIZONTAL);
-		qualifierData.horizontalSpan = 2;
-		qualifierData.heightHint=160;
-		qualifierData.widthHint = 200;
-		qualifier.setLayoutData(qualifierData);
-		qualifier.addFocusListener(new FocusAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							DirectivePropertiesEditionPartForm.this,
-							FunctionalResourceModelViewsRepository.Directive.Properties.qualifier,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, qualifier.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									DirectivePropertiesEditionPartForm.this,
-									FunctionalResourceModelViewsRepository.Directive.Properties.qualifier,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, qualifier.getText()));
-				}
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									DirectivePropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		EditingUtils.setID(qualifier, FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
-		EditingUtils.setEEFtype(qualifier, "eef::Textarea"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createQualifierTextArea
-
-		// End of user code
-		return parent;
-	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -901,31 +837,31 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getName()
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getStringIdentifier()
 	 * 
 	 */
-	public String getName() {
-		return name.getText();
+	public String getStringIdentifier() {
+		return stringIdentifier.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setName(String newValue)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setStringIdentifier(String newValue)
 	 * 
 	 */
-	public void setName(String newValue) {
+	public void setStringIdentifier(String newValue) {
 		if (newValue != null) {
-			name.setText(newValue);
+			stringIdentifier.setText(newValue);
 		} else {
-			name.setText(""); //$NON-NLS-1$
+			stringIdentifier.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.name);
-		if (eefElementEditorReadOnlyState && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
-			name.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
+		if (eefElementEditorReadOnlyState && stringIdentifier.isEnabled()) {
+			stringIdentifier.setEnabled(false);
+			stringIdentifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !stringIdentifier.isEnabled()) {
+			stringIdentifier.setEnabled(true);
 		}	
 		
 	}
@@ -933,31 +869,31 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getShortName()
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getClassifier()
 	 * 
 	 */
-	public String getShortName() {
-		return shortName.getText();
+	public String getClassifier() {
+		return classifier.getText();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setShortName(String newValue)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setClassifier(String newValue)
 	 * 
 	 */
-	public void setShortName(String newValue) {
+	public void setClassifier(String newValue) {
 		if (newValue != null) {
-			shortName.setText(newValue);
+			classifier.setText(newValue);
 		} else {
-			shortName.setText(""); //$NON-NLS-1$
+			classifier.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.shortName);
-		if (eefElementEditorReadOnlyState && shortName.isEnabled()) {
-			shortName.setEnabled(false);
-			shortName.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !shortName.isEnabled()) {
-			shortName.setEnabled(true);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.classifier);
+		if (eefElementEditorReadOnlyState && classifier.isEnabled()) {
+			classifier.setEnabled(false);
+			classifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !classifier.isEnabled()) {
+			classifier.setEnabled(true);
 		}	
 		
 	}
@@ -1127,20 +1063,20 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#initParameter(EObject current, EReference containingFeature, EReference feature)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#initQualifier(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initParameter(ReferencesTableSettings settings) {
+	public void initQualifier(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		parameter.setContentProvider(contentProvider);
-		parameter.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.parameter);
-		if (eefElementEditorReadOnlyState && parameter.isEnabled()) {
-			parameter.setEnabled(false);
-			parameter.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !parameter.isEnabled()) {
-			parameter.setEnabled(true);
+		qualifier.setContentProvider(contentProvider);
+		qualifier.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
+		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
 		}	
 		
 	}
@@ -1148,44 +1084,44 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#updateParameter()
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#updateQualifier()
 	 * 
 	 */
-	public void updateParameter() {
-	parameter.refresh();
+	public void updateQualifier() {
+	qualifier.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addFilterParameter(ViewerFilter filter)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addFilterQualifier(ViewerFilter filter)
 	 * 
 	 */
-	public void addFilterToParameter(ViewerFilter filter) {
-		parameterFilters.add(filter);
-		if (this.parameter != null) {
-			this.parameter.addFilter(filter);
+	public void addFilterToQualifier(ViewerFilter filter) {
+		qualifierFilters.add(filter);
+		if (this.qualifier != null) {
+			this.qualifier.addFilter(filter);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addBusinessFilterParameter(ViewerFilter filter)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addBusinessFilterQualifier(ViewerFilter filter)
 	 * 
 	 */
-	public void addBusinessFilterToParameter(ViewerFilter filter) {
-		parameterBusinessFilters.add(filter);
+	public void addBusinessFilterToQualifier(ViewerFilter filter) {
+		qualifierBusinessFilters.add(filter);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#isContainedInParameterTable(EObject element)
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#isContainedInQualifierTable(EObject element)
 	 * 
 	 */
-	public boolean isContainedInParameterTable(EObject element) {
-		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+	public boolean isContainedInQualifierTable(EObject element) {
+		return ((ReferencesTableSettings)qualifier.getInput()).contains(element);
 	}
 
 	/**
@@ -1217,39 +1153,6 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			guardCondition.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !guardCondition.isEnabled()) {
 			guardCondition.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getQualifier()
-	 * 
-	 */
-	public String getQualifier() {
-		return qualifier.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setQualifier(String newValue)
-	 * 
-	 */
-	public void setQualifier(String newValue) {
-		if (newValue != null) {
-			qualifier.setText(newValue);
-		} else {
-			qualifier.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
-		if (eefElementEditorReadOnlyState && qualifier.isEnabled()) {
-			qualifier.setEnabled(false);
-			qualifier.setBackground(qualifier.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
-			qualifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !qualifier.isEnabled()) {
-			qualifier.setEnabled(true);
 		}	
 		
 	}

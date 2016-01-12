@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getSemanticDefinition <em>Semantic Definition</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getShortName <em>Short Name</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getStringIdentifier <em>String Identifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getClassifier <em>Classifier</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
@@ -60,44 +60,44 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	protected String semanticDefinition = SEMANTIC_DEFINITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getStringIdentifier() <em>String Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getStringIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String STRING_IDENTIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getStringIdentifier() <em>String Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getStringIdentifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String stringIdentifier = STRING_IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * The default value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getShortName()
+	 * @see #getClassifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SHORT_NAME_EDEFAULT = null;
+	protected static final String CLASSIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getShortName() <em>Short Name</em>}' attribute.
+	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getShortName()
+	 * @see #getClassifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected String shortName = SHORT_NAME_EDEFAULT;
+	protected String classifier = CLASSIFIER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -254,6 +254,48 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStringIdentifier() {
+		return stringIdentifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringIdentifier(String newStringIdentifier) {
+		String oldStringIdentifier = stringIdentifier;
+		stringIdentifier = newStringIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER, oldStringIdentifier, stringIdentifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getClassifier() {
+		return classifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setClassifier(String newClassifier) {
+		String oldClassifier = classifier;
+		classifier = newClassifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER, oldClassifier, classifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getOidBit() {
 		return oidBit;
 	}
@@ -381,48 +423,6 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getShortName() {
-		return shortName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setShortName(String newShortName) {
-		String oldShortName = shortName;
-		shortName = newShortName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME, oldShortName, shortName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getVersion() {
 		return version;
 	}
@@ -463,10 +463,10 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				return getSemanticDefinition();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				return getName();
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
-				return getShortName();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
+				return getStringIdentifier();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
+				return getClassifier();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 				return getVersion();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
@@ -494,11 +494,11 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				setSemanticDefinition((String)newValue);
 				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				setName((String)newValue);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
+				setStringIdentifier((String)newValue);
 				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
-				setShortName((String)newValue);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
+				setClassifier((String)newValue);
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 				setVersion((Integer)newValue);
@@ -533,11 +533,11 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				setSemanticDefinition(SEMANTIC_DEFINITION_EDEFAULT);
 				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				setName(NAME_EDEFAULT);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
+				setStringIdentifier(STRING_IDENTIFIER_EDEFAULT);
 				return;
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
-				setShortName(SHORT_NAME_EDEFAULT);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
+				setClassifier(CLASSIFIER_EDEFAULT);
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 				setVersion(VERSION_EDEFAULT);
@@ -571,10 +571,10 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
 				return SEMANTIC_DEFINITION_EDEFAULT == null ? semanticDefinition != null : !SEMANTIC_DEFINITION_EDEFAULT.equals(semanticDefinition);
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SHORT_NAME:
-				return SHORT_NAME_EDEFAULT == null ? shortName != null : !SHORT_NAME_EDEFAULT.equals(shortName);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
+				return STRING_IDENTIFIER_EDEFAULT == null ? stringIdentifier != null : !STRING_IDENTIFIER_EDEFAULT.equals(stringIdentifier);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
+				return CLASSIFIER_EDEFAULT == null ? classifier != null : !CLASSIFIER_EDEFAULT.equals(classifier);
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 				return version != VERSION_EDEFAULT;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
@@ -603,10 +603,10 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (SemanticDefinition: ");
 		result.append(semanticDefinition);
-		result.append(", name: ");
-		result.append(name);
-		result.append(", shortName: ");
-		result.append(shortName);
+		result.append(", stringIdentifier: ");
+		result.append(stringIdentifier);
+		result.append(", classifier: ");
+		result.append(classifier);
 		result.append(", version: ");
 		result.append(version);
 		result.append(", creationDate: ");

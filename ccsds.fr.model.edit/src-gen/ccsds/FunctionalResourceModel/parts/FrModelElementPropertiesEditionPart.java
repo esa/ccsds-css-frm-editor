@@ -30,31 +30,31 @@ public interface FrModelElementPropertiesEditionPart {
 
 
 	/**
-	 * @return the name
+	 * @return the stringIdentifier
 	 * 
 	 */
-	public String getName();
+	public String getStringIdentifier();
 
 	/**
-	 * Defines a new name
-	 * @param newValue the new name to set
+	 * Defines a new stringIdentifier
+	 * @param newValue the new stringIdentifier to set
 	 * 
 	 */
-	public void setName(String newValue);
+	public void setStringIdentifier(String newValue);
 
 
 	/**
-	 * @return the shortName
+	 * @return the classifier
 	 * 
 	 */
-	public String getShortName();
+	public String getClassifier();
 
 	/**
-	 * Defines a new shortName
-	 * @param newValue the new shortName to set
+	 * Defines a new classifier
+	 * @param newValue the new classifier to set
 	 * 
 	 */
-	public void setShortName(String newValue);
+	public void setClassifier(String newValue);
 
 
 	/**
