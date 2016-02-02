@@ -76,8 +76,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			final TypedElementPropertiesEditionPart basePart = (TypedElementPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition))
-				basePart.setSemanticDefinition(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getSemanticDefinition()));
-			
+				basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getSemanticDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.stringIdentifier))
 				basePart.setStringIdentifier(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getStringIdentifier()));
 			
@@ -102,8 +101,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 				basePart.setDeprecated(typedElement.isDeprecated());
 			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition))
-				basePart.setTypeDefinition(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getTypeDefinition()));
-			
+				basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getTypeDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.engineeringUnit))
 				basePart.setEngineeringUnit(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getEngineeringUnit()));
 			
@@ -223,7 +221,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			TypedElementPropertiesEditionPart basePart = (TypedElementPropertiesEditionPart)editingPart;
-			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition)) {
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
@@ -275,7 +273,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
-			if (FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition)) {
+			if (FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

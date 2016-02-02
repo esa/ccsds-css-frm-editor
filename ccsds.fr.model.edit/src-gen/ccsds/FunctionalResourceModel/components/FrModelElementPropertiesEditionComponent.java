@@ -76,8 +76,7 @@ public class FrModelElementPropertiesEditionComponent extends SinglePartProperti
 			final FrModelElementPropertiesEditionPart basePart = (FrModelElementPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition))
-				basePart.setSemanticDefinition(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, frModelElement.getSemanticDefinition()));
-			
+				basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, frModelElement.getSemanticDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.FrModelElement.Properties.stringIdentifier))
 				basePart.setStringIdentifier(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, frModelElement.getStringIdentifier()));
 			
@@ -201,7 +200,7 @@ public class FrModelElementPropertiesEditionComponent extends SinglePartProperti
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FrModelElementPropertiesEditionPart basePart = (FrModelElementPropertiesEditionPart)editingPart;
-			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition)) {
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_SemanticDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setSemanticDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

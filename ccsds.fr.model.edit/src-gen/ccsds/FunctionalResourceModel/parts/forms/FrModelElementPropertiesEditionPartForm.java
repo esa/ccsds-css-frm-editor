@@ -30,6 +30,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -115,7 +116,7 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition) {
-					return createSemanticDefinitionText(widgetFactory, parent);
+					return createSemanticDefinitionTextarea(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.stringIdentifier) {
 					return createStringIdentifierText(widgetFactory, parent);
@@ -161,20 +162,25 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 	}
 
 	
-	protected Composite createSemanticDefinitionText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelMessages.FrModelElementPropertiesEditionPart_SemanticDefinitionLabel);
-		semanticDefinition = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		semanticDefinition.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
+	protected Composite createSemanticDefinitionTextarea(FormToolkit widgetFactory, Composite parent) {
+		Label semanticDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelMessages.FrModelElementPropertiesEditionPart_SemanticDefinitionLabel);
+		GridData semanticDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		semanticDefinitionLabelData.horizontalSpan = 3;
+		semanticDefinitionLabel.setLayoutData(semanticDefinitionLabelData);
+		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
+		semanticDefinitionData.horizontalSpan = 2;
+		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
+
 			/**
+			 * {@inheritDoc}
+			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null) {
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
@@ -205,24 +211,10 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 				}
 			}
 		});
-		semanticDefinition.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
-				}
-			}
-		});
 		EditingUtils.setID(semanticDefinition, FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition);
-		EditingUtils.setEEFtype(semanticDefinition, "eef::Text"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSemanticDefinitionText
+		// Start of user code for createSemanticDefinitionTextArea
 
 		// End of user code
 		return parent;
@@ -703,6 +695,7 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FrModelElement.Properties.semanticDefinition);
 		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(false);
+			semanticDefinition.setBackground(semanticDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.FrModelElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(true);

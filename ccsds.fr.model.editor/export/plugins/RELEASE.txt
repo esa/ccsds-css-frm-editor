@@ -1,3 +1,9 @@
+Version 3.0.2 from 02.02.2016
+Changed Directives to have a Qualifier
+Changed Events to have 0..* Values
+name -> String Identifier
+outstanding: uses -> data flow
+
 Version 3.0.1 from 16.11.2015
 - removed the monitored attribute from Parameter
 

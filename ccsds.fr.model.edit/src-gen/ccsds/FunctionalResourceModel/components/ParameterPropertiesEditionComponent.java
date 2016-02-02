@@ -96,8 +96,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 				basePart.setDeprecated(parameter.isDeprecated());
 			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition))
-				basePart.setTypeDefinition(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, parameter.getTypeDefinition()));
-			
+				basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, parameter.getTypeDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.engineeringUnit))
 				basePart.setEngineeringUnit(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, parameter.getEngineeringUnit()));
 			
@@ -290,7 +289,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
-			if (FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition)) {
+			if (FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Parameter.Properties.typeDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {

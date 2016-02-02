@@ -6,44 +6,32 @@ package ccsds.FunctionalResourceModel.parts.impl;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 import ccsds.FunctionalResourceModel.parts.TypedElementPropertiesEditionPart;
-
 import ccsds.FunctionalResourceModel.providers.FunctionalResourceModelMessages;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
-
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
-
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
-
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 // End of user code
@@ -122,7 +110,7 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 					return createPropertiesGroup(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition) {
-					return createSemanticDefinitionText(parent);
+					return createSemanticDefinitionTextarea(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.TypedElement.Properties.stringIdentifier) {
 					return createStringIdentifierText(parent);
@@ -146,7 +134,7 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 					return createDeprecatedCheckbox(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition) {
-					return createTypeDefinitionText(parent);
+					return createTypeDefinitionTextarea(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.TypedElement.Properties.engineeringUnit) {
 					return createEngineeringUnitText(parent);
@@ -173,10 +161,16 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	
-	protected Composite createSemanticDefinitionText(Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition, FunctionalResourceModelMessages.TypedElementPropertiesEditionPart_SemanticDefinitionLabel);
-		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	protected Composite createSemanticDefinitionTextarea(Composite parent) {
+		Label semanticDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition, FunctionalResourceModelMessages.TypedElementPropertiesEditionPart_SemanticDefinitionLabel);
+		GridData semanticDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		semanticDefinitionLabelData.horizontalSpan = 3;
+		semanticDefinitionLabel.setLayoutData(semanticDefinitionLabelData);
+		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
+		semanticDefinitionData.horizontalSpan = 2;
+		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
 
@@ -186,36 +180,16 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypedElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
 			}
 
 		});
-		semanticDefinition.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypedElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, semanticDefinition.getText()));
-				}
-			}
-
-		});
 		EditingUtils.setID(semanticDefinition, FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition);
-		EditingUtils.setEEFtype(semanticDefinition, "eef::Text"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createSemanticDefinitionText
+		// Start of user code for createSemanticDefinitionTextArea
 
 		// End of user code
 		return parent;
@@ -546,10 +520,16 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	
-	protected Composite createTypeDefinitionText(Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition, FunctionalResourceModelMessages.TypedElementPropertiesEditionPart_TypeDefinitionLabel);
-		typeDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER);
+	protected Composite createTypeDefinitionTextarea(Composite parent) {
+		Label typeDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition, FunctionalResourceModelMessages.TypedElementPropertiesEditionPart_TypeDefinitionLabel);
+		GridData typeDefinitionLabelData = new GridData(GridData.FILL_HORIZONTAL);
+		typeDefinitionLabelData.horizontalSpan = 3;
+		typeDefinitionLabel.setLayoutData(typeDefinitionLabelData);
+		typeDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
+		typeDefinitionData.horizontalSpan = 2;
+		typeDefinitionData.heightHint=160;
+		typeDefinitionData.widthHint = 200;
 		typeDefinition.setLayoutData(typeDefinitionData);
 		typeDefinition.addFocusListener(new FocusAdapter() {
 
@@ -559,36 +539,16 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
 			 * 
 			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
 					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypedElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinition.getText()));
 			}
 
 		});
-		typeDefinition.addKeyListener(new KeyAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypedElementPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, typeDefinition.getText()));
-				}
-			}
-
-		});
 		EditingUtils.setID(typeDefinition, FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition);
-		EditingUtils.setEEFtype(typeDefinition, "eef::Text"); //$NON-NLS-1$
+		EditingUtils.setEEFtype(typeDefinition, "eef::Textarea"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createTypeDefinitionText
+		// Start of user code for createTypeDefinitionTextArea
 
 		// End of user code
 		return parent;
@@ -681,6 +641,7 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.TypedElement.Properties.semanticDefinition);
 		if (eefElementEditorReadOnlyState && semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(false);
+			semanticDefinition.setBackground(semanticDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			semanticDefinition.setToolTipText(FunctionalResourceModelMessages.TypedElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !semanticDefinition.isEnabled()) {
 			semanticDefinition.setEnabled(true);
@@ -937,6 +898,7 @@ public class TypedElementPropertiesEditionPartImpl extends CompositePropertiesEd
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition);
 		if (eefElementEditorReadOnlyState && typeDefinition.isEnabled()) {
 			typeDefinition.setEnabled(false);
+			typeDefinition.setBackground(typeDefinition.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
 			typeDefinition.setToolTipText(FunctionalResourceModelMessages.TypedElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !typeDefinition.isEnabled()) {
 			typeDefinition.setEnabled(true);
