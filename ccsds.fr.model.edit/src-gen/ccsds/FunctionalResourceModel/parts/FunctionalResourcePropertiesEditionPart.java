@@ -34,20 +34,6 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 	/**
-	 * @return the stringIdentifier
-	 * 
-	 */
-	public String getStringIdentifier();
-
-	/**
-	 * Defines a new stringIdentifier
-	 * @param newValue the new stringIdentifier to set
-	 * 
-	 */
-	public void setStringIdentifier(String newValue);
-
-
-	/**
 	 * @return the classifier
 	 * 
 	 */
@@ -59,6 +45,20 @@ public interface FunctionalResourcePropertiesEditionPart {
 	 * 
 	 */
 	public void setClassifier(String newValue);
+
+
+	/**
+	 * @return the stringIdentifier
+	 * 
+	 */
+	public String getStringIdentifier();
+
+	/**
+	 * Defines a new stringIdentifier
+	 * @param newValue the new stringIdentifier to set
+	 * 
+	 */
+	public void setStringIdentifier(String newValue);
 
 
 	/**

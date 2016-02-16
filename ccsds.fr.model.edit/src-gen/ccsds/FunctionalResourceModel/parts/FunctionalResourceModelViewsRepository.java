@@ -40,10 +40,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FrModelElement::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::FrModelElement::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::FrModelElement::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::FrModelElement::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::FrModelElement::properties::version";
@@ -91,10 +91,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::FunctionalResource::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::FunctionalResource::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::FunctionalResource::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::FunctionalResource::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::FunctionalResource::properties::version";
@@ -139,10 +139,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Event::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::Event::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::Event::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Event::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Event::properties::version";
@@ -178,10 +178,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Directive::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::Directive::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::Directive::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Directive::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Directive::properties::version";
@@ -220,10 +220,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Parameter::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::Parameter::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::Parameter::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Parameter::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Parameter::properties::version";
@@ -268,10 +268,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Value::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::Value::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::Value::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Value::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Value::properties::version";
@@ -310,10 +310,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::Qualifier::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::Qualifier::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::Qualifier::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::Qualifier::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::Qualifier::properties::version";
@@ -352,10 +352,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String semanticDefinition = "FunctionalResourceModel::TypedElement::properties::SemanticDefinition";
 			
 			
-			public static String stringIdentifier = "FunctionalResourceModel::TypedElement::properties::stringIdentifier";
-			
-			
 			public static String classifier = "FunctionalResourceModel::TypedElement::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::TypedElement::properties::stringIdentifier";
 			
 			
 			public static String version = "FunctionalResourceModel::TypedElement::properties::version";

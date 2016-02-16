@@ -112,10 +112,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FrModelElementPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_StringIdentifierLabel;
+	public static String FrModelElementPropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String FrModelElementPropertiesEditionPart_ClassifierLabel;
+	public static String FrModelElementPropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String FrModelElementPropertiesEditionPart_VersionLabel;
@@ -139,10 +139,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourcePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_StringIdentifierLabel;
+	public static String FunctionalResourcePropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String FunctionalResourcePropertiesEditionPart_ClassifierLabel;
+	public static String FunctionalResourcePropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_VersionLabel;
@@ -175,10 +175,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String EventPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String EventPropertiesEditionPart_StringIdentifierLabel;
+	public static String EventPropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String EventPropertiesEditionPart_ClassifierLabel;
+	public static String EventPropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String EventPropertiesEditionPart_VersionLabel;
@@ -202,10 +202,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String DirectivePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_StringIdentifierLabel;
+	public static String DirectivePropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String DirectivePropertiesEditionPart_ClassifierLabel;
+	public static String DirectivePropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String DirectivePropertiesEditionPart_VersionLabel;
@@ -232,10 +232,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ParameterPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_StringIdentifierLabel;
+	public static String ParameterPropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String ParameterPropertiesEditionPart_ClassifierLabel;
+	public static String ParameterPropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_VersionLabel;
@@ -268,10 +268,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ValuePropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String ValuePropertiesEditionPart_StringIdentifierLabel;
+	public static String ValuePropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String ValuePropertiesEditionPart_ClassifierLabel;
+	public static String ValuePropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String ValuePropertiesEditionPart_VersionLabel;
@@ -298,10 +298,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String QualifierPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String QualifierPropertiesEditionPart_StringIdentifierLabel;
+	public static String QualifierPropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String QualifierPropertiesEditionPart_ClassifierLabel;
+	public static String QualifierPropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String QualifierPropertiesEditionPart_VersionLabel;
@@ -328,10 +328,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String TypedElementPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
-	public static String TypedElementPropertiesEditionPart_StringIdentifierLabel;
+	public static String TypedElementPropertiesEditionPart_ClassifierLabel;
 
 	
-	public static String TypedElementPropertiesEditionPart_ClassifierLabel;
+	public static String TypedElementPropertiesEditionPart_StringIdentifierLabel;
 
 	
 	public static String TypedElementPropertiesEditionPart_VersionLabel;

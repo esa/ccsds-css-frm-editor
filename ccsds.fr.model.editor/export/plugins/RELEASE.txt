@@ -1,3 +1,8 @@
+Version 3.0.3 from 16.02.2016
+- Classifier is now mandatory, String Identifier optional
+- the Classifier is used as label in the navigation tree
+- the Classifier is used in the model transformation
+
 Version 3.0.2 from 02.02.2016
 Changed Directives to have a Qualifier
 Changed Events to have 0..* Values

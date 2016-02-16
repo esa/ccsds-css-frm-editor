@@ -55,8 +55,8 @@ import org.eclipse.ui.forms.widgets.Section;
 public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DirectivePropertiesEditionPart {
 
 	protected Text semanticDefinition;
-	protected Text stringIdentifier;
 	protected Text classifier;
+	protected Text stringIdentifier;
 	protected Text version;
 	protected Text creationDate;
 	protected Text authorizingEntity;
@@ -112,8 +112,8 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		CompositionSequence directiveStep = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = directiveStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.class);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.classifier);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.version);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.creationDate);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.authorizingEntity);
@@ -133,11 +133,11 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition) {
 					return createSemanticDefinitionTextarea(widgetFactory, parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier) {
-					return createStringIdentifierText(widgetFactory, parent);
-				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.classifier) {
 					return createClassifierText(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier) {
+					return createStringIdentifierText(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.version) {
 					return createVersionText(widgetFactory, parent);
@@ -191,7 +191,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.heightHint = 80;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -236,74 +236,6 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(semanticDefinition, "eef::Textarea"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.semanticDefinition, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createSemanticDefinitionTextArea
-
-		// End of user code
-		return parent;
-	}
-
-	
-	protected Composite createStringIdentifierText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_StringIdentifierLabel);
-		stringIdentifier = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		stringIdentifier.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData stringIdentifierData = new GridData(GridData.FILL_HORIZONTAL);
-		stringIdentifier.setLayoutData(stringIdentifierData);
-		stringIdentifier.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							DirectivePropertiesEditionPartForm.this,
-							FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									DirectivePropertiesEditionPartForm.this,
-									FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, stringIdentifier.getText()));
-				}
-			}
-
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									DirectivePropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		stringIdentifier.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(stringIdentifier, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
-		EditingUtils.setEEFtype(stringIdentifier, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createStringIdentifierText
 
 		// End of user code
 		return parent;
@@ -372,6 +304,74 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		EditingUtils.setEEFtype(classifier, "eef::Text"); //$NON-NLS-1$
 		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.classifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
 		// Start of user code for createClassifierText
+
+		// End of user code
+		return parent;
+	}
+
+	
+	protected Composite createStringIdentifierText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_StringIdentifierLabel);
+		stringIdentifier = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		stringIdentifier.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData stringIdentifierData = new GridData(GridData.FILL_HORIZONTAL);
+		stringIdentifier.setLayoutData(stringIdentifierData);
+		stringIdentifier.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DirectivePropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, stringIdentifier.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DirectivePropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		stringIdentifier.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, stringIdentifier.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(stringIdentifier, FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
+		EditingUtils.setEEFtype(stringIdentifier, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createStringIdentifierText
 
 		// End of user code
 		return parent;
@@ -738,7 +738,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		guardCondition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
 		guardConditionData.horizontalSpan = 2;
-		guardConditionData.heightHint=160;
+		guardConditionData.heightHint = 80;
 		guardConditionData.widthHint = 200;
 		guardCondition.setLayoutData(guardConditionData);
 		guardCondition.addFocusListener(new FocusAdapter() {
@@ -837,38 +837,6 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getStringIdentifier()
-	 * 
-	 */
-	public String getStringIdentifier() {
-		return stringIdentifier.getText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setStringIdentifier(String newValue)
-	 * 
-	 */
-	public void setStringIdentifier(String newValue) {
-		if (newValue != null) {
-			stringIdentifier.setText(newValue);
-		} else {
-			stringIdentifier.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
-		if (eefElementEditorReadOnlyState && stringIdentifier.isEnabled()) {
-			stringIdentifier.setEnabled(false);
-			stringIdentifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !stringIdentifier.isEnabled()) {
-			stringIdentifier.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getClassifier()
 	 * 
 	 */
@@ -894,6 +862,38 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			classifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !classifier.isEnabled()) {
 			classifier.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#getStringIdentifier()
+	 * 
+	 */
+	public String getStringIdentifier() {
+		return stringIdentifier.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#setStringIdentifier(String newValue)
+	 * 
+	 */
+	public void setStringIdentifier(String newValue) {
+		if (newValue != null) {
+			stringIdentifier.setText(newValue);
+		} else {
+			stringIdentifier.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.stringIdentifier);
+		if (eefElementEditorReadOnlyState && stringIdentifier.isEnabled()) {
+			stringIdentifier.setEnabled(false);
+			stringIdentifier.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !stringIdentifier.isEnabled()) {
+			stringIdentifier.setEnabled(true);
 		}	
 		
 	}

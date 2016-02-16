@@ -24,7 +24,7 @@
 						<tr>
 							<td>
 								<a href="#{generate-id(.)}">
-									<xsl:value-of select="@name" />
+									<xsl:value-of select="@classifier" />
 								</a>
 							</td>
 						</tr>
@@ -57,7 +57,7 @@
 									<xsl:text>' </xsl:text>
 								</xsl:attribute>
 							Functional Resource
-							<xsl:value-of select="@name" />
+							<xsl:value-of select="@classifier" />
 							<xsl:text> </xsl:text>
 						</xsl:element>
 					</b>
@@ -89,7 +89,7 @@
 	   </xsl:choose>
 	</xsl:variable>
 
-	<xsl:template match="parameter|event|directives">
+	<xsl:template match="parameter|event|directives|value|qualifier">
 		
 			<table class="{$tableStyle}" align="center" width="100%" border="0">
 	
@@ -99,7 +99,7 @@
 						<xsl:apply-templates select="@deprecated"/>
 						<xsl:text> </xsl:text>
 						<a href="#{generate-id(..)}">
-							<xsl:value-of select="../@name" />
+							<xsl:value-of select="../@classifier" />
 						</a>
 					</b>
 					<xsl:text> </xsl:text>				
@@ -122,14 +122,15 @@
 							<a name="{generate-id(.)}"></a>
 						</xsl:if>
 					
-					'<b><xsl:value-of select="@name" /></b>'
+					'<b><xsl:value-of select="@classifier" /></b>'
+					
 					<xsl:element name="a">
 <!-- 
 						<xsl:attribute name="style">					
 							font-family:Times; font-size:12px; color:black	
 						</xsl:attribute>
  -->
-						<xsl:text>(</xsl:text><xsl:value-of select="@shortName" /><xsl:text>)</xsl:text>
+						<xsl:text>(</xsl:text><xsl:value-of select="@stringIdentifier" /><xsl:text>)</xsl:text>
 						<xsl:text> </xsl:text><xsl:apply-templates select="oid" />
 						<xsl:text> </xsl:text><xsl:apply-templates select="externalOid" />
 					</xsl:element>
@@ -150,6 +151,8 @@
 				<td>					
 					<!-- directives may have child parameters -->			
 					<xsl:apply-templates select="parameter" />
+					<xsl:apply-templates select="value" />
+					<xsl:apply-templates select="qualifier" />
 				</td>
 			</tr>	
 
