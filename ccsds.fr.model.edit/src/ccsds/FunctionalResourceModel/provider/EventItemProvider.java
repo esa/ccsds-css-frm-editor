@@ -98,7 +98,7 @@ public class EventItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getStringIdentifier();
+		String label = ((FrModelElement)object).getOidBit() + " " + ((FrModelElement)object).getClassifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Event_type") :
 			getString("_UI_Event_type") + " " + label;

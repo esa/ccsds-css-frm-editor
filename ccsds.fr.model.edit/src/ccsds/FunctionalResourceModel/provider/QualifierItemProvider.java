@@ -65,7 +65,7 @@ public class QualifierItemProvider extends TypedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Qualifier)object).getStringIdentifier();
+		String label = ((Qualifier)object).getClassifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Qualifier_type") :
 			getString("_UI_Qualifier_type") + " " + label;

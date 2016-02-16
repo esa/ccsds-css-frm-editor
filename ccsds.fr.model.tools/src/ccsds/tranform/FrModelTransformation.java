@@ -208,7 +208,7 @@ public class FrModelTransformation {
 	private EClass createDerivedFrInstance(FunctionalResource fr, EClass complexClass) {
 				
 		EClass frInstanceClass = theCoreFactory.createEClass();
-		frInstanceClass.setName(NameTool.wellFormed(fr.getStringIdentifier()));
+		frInstanceClass.setName(NameTool.wellFormed(fr.getClassifier()));
 		frInstanceClass.getESuperTypes().add(functionalresourceInstanceClass);
 		
 		EPackage frPackage = createEPackage("Fr"+frInstanceClass.getName(), "frp"+frInstanceClass.getName(), "http://iso.org.dod.ccsds."+frInstanceClass.getName());
@@ -473,7 +473,7 @@ public class FrModelTransformation {
 	private String deriveClassName(FrModelElement element) {
 		String name = element.getClassifier(); 
 		if(name == null || name.length() == 0)
-			name = element.getStringIdentifier();
+			name = element.getClassifier();
 		
 		return NameTool.wellFormed(name);
 	}

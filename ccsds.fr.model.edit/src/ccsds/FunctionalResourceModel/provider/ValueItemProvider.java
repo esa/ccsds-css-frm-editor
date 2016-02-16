@@ -65,7 +65,7 @@ public class ValueItemProvider extends TypedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Value)object).getStringIdentifier();
+		String label = ((Value)object).getClassifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Value_type") :
 			getString("_UI_Value_type") + " " + label;

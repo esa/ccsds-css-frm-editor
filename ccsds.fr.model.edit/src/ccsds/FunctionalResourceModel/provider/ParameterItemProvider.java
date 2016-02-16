@@ -145,7 +145,7 @@ public class ParameterItemProvider extends TypedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Parameter)object).getStringIdentifier();
+		String label = ((Parameter)object).getClassifier();
 		if(object instanceof Parameter) {
 			Parameter p = (Parameter)object;
 			String oid = OidItemProvider.getOidStr(p.getOid());
