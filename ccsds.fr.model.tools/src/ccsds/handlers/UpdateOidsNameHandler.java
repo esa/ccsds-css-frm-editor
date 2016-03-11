@@ -171,13 +171,13 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			
 		if(modelElements != null) {
 
-			// organise the elements by position and name. Elements (parameter, event or directive) with the same name must be distinguished by version 
+			// organise the elements by position and classifier. Elements (parameter, event or directive) with the same name must be distinguished by version 
 			// LinkedHashMap preserves the order of insertion
 			LinkedHashMap<String, List<FrModelElement> > mElementMap = new LinkedHashMap<String, List<FrModelElement> >();
 			for(FrModelElement mElement : modelElements) {
-				if(mElementMap.containsKey(mElement.getStringIdentifier()) == false)
-					mElementMap.put(mElement.getStringIdentifier(), new LinkedList<FrModelElement>());
-				mElementMap.get(mElement.getStringIdentifier()).add(mElement);
+				if(mElementMap.containsKey(mElement.getClassifier()) == false)
+					mElementMap.put(mElement.getClassifier(), new LinkedList<FrModelElement>());
+				mElementMap.get(mElement.getClassifier()).add(mElement);
 			}
 			
 			filterExternalOids(mElementMap); // filter out external OIDs
@@ -188,7 +188,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 				List<FrModelElement> mElementVersions = mElementMap.get(paramIt.next());
 				int version = 1; // first version to be used
 				for(FrModelElement mElement : mElementVersions) {
-					
+					version = mElement.getVersion(); // this destroys automatic version numbering, but takes into account the user specified version
 					// for logging, determine the type
 					if(mElement instanceof FunctionalResource) {
 						type = "Functional Resource";
@@ -206,7 +206,8 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 					if(elementType != ModelElementType.FR_OID_TYPE.getValue()) // TODO: to keep the model extensible the FRs should have a type!
 						mElementOid.getOidBit().add(elementType);
 					mElementOid.getOidBit().add(mElementIndex);
-					mElementOid.getOidBit().add(version); // add the version as a suffix to the OID.				
+					if(mElement instanceof FunctionalResource == false) // not for FRs themselves!
+						mElementOid.getOidBit().add(version); // add the version as a suffix to the OID.				
 					boolean oidUpdate = false;
 					
 					if(mElement.getOid() == null) {

@@ -1,3 +1,10 @@
+Version 3.0.5 from 09.03.2016
+- remove the version OID bit for FRs
+
+
+Version 3.0.4 from 03.03.2016
+- optional OID for all FRM elements
+
 Version 3.0.3 from 16.02.2016
 - Classifier is now mandatory, String Identifier optional
 - the Classifier is used as label in the navigation tree

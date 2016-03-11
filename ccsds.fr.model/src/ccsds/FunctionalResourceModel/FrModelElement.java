@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getSemanticDefinition <em>Semantic Definition</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier <em>String Identifier</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getStringIdentifier <em>String Identifier</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getVersion <em>Version</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getAuthorizingEntity <em>Authorizing Entity</em>}</li>
@@ -68,7 +68,7 @@ public interface FrModelElement extends EObject {
 	 * @return the value of the '<em>String Identifier</em>' attribute.
 	 * @see #setStringIdentifier(String)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_StringIdentifier()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getStringIdentifier();
@@ -94,7 +94,7 @@ public interface FrModelElement extends EObject {
 	 * @return the value of the '<em>Classifier</em>' attribute.
 	 * @see #setClassifier(String)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_Classifier()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getClassifier();
@@ -146,7 +146,7 @@ public interface FrModelElement extends EObject {
 	 * @return the value of the '<em>Oid</em>' containment reference.
 	 * @see #setOid(Oid)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_Oid()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Oid getOid();

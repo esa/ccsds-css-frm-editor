@@ -64,8 +64,8 @@ public class FrModelElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSemanticDefinitionPropertyDescriptor(object);
-			addStringIdentifierPropertyDescriptor(object);
 			addClassifierPropertyDescriptor(object);
+			addStringIdentifierPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 			addCreationDatePropertyDescriptor(object);
 			addAuthorizingEntityPropertyDescriptor(object);
@@ -319,8 +319,8 @@ public class FrModelElementItemProvider
 
 		switch (notification.getFeatureID(FrModelElement.class)) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION:
-			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CLASSIFIER:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__STRING_IDENTIFIER:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__CREATION_DATE:
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__AUTHORIZING_ENTITY:

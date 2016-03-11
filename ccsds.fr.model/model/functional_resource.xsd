@@ -19,7 +19,7 @@
   </xsd:complexType>
   <xsd:complexType name="FrModelElement">
     <xsd:sequence>
-      <xsd:element ecore:resolveProxies="true" name="oid" type="fr:Oid"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="oid" type="fr:Oid"/>
     </xsd:sequence>
     <xsd:attribute ecore:name="SemanticDefinition" name="SemanticDefinition" type="ecore:EString" use="required"/>
     <xsd:attribute name="classifier" type="ecore:EString" use="required"/>

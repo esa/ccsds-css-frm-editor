@@ -220,7 +220,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getFrModelElement_StringIdentifier() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getFrModelElement_Classifier() {
-		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -527,8 +527,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		frModelElementEClass = createEClass(FR_MODEL_ELEMENT);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SEMANTIC_DEFINITION);
-		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__STRING_IDENTIFIER);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CLASSIFIER);
+		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__STRING_IDENTIFIER);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__VERSION);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__CREATION_DATE);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__AUTHORIZING_ENTITY);
@@ -611,13 +611,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		initEClass(frModelElementEClass, FrModelElement.class, "FrModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrModelElement_SemanticDefinition(), ecorePackage.getEString(), "SemanticDefinition", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_StringIdentifier(), ecorePackage.getEString(), "stringIdentifier", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFrModelElement_Classifier(), ecorePackage.getEString(), "classifier", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_Classifier(), ecorePackage.getEString(), "classifier", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrModelElement_StringIdentifier(), ecorePackage.getEString(), "stringIdentifier", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_Version(), ecorePackage.getEInt(), "version", "1", 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_AuthorizingEntity(), ecorePackage.getEString(), "authorizingEntity", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_OidBit(), ecorePackage.getEInt(), "oidBit", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFrModelElement_Oid(), this.getOid(), null, "oid", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFrModelElement_Oid(), this.getOid(), null, "oid", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_Deprecated(), ecorePackage.getEBoolean(), "deprecated", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oidEClass, Oid.class, "Oid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

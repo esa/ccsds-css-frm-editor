@@ -180,7 +180,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		semanticDefinition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint = 80;
+		semanticDefinitionData.heightHint=160;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -590,7 +590,7 @@ public class DirectivePropertiesEditionPartImpl extends CompositePropertiesEditi
 		guardCondition = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
 		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
 		guardConditionData.horizontalSpan = 2;
-		guardConditionData.heightHint = 80;
+		guardConditionData.heightHint=160;
 		guardConditionData.widthHint = 200;
 		guardCondition.setLayoutData(guardConditionData);
 		guardCondition.addFocusListener(new FocusAdapter() {

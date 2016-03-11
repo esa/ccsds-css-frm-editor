@@ -85,13 +85,17 @@ public class OidTree {
 		OidNode crossSupprtResources = css.addChildNode(2, "crossSupportResources");
 		css.addChildNode(3, "abstractServiceComponents");
 		
-		OidNode functionalResourcesGenericIdentifiers = crossSupprtResources.addChildNode(3, "functionalResourcesGenericIdentifiers");
-		OidNode frVersion = functionalResourcesGenericIdentifiers.addChildNode(OidNode.OID_WILDCARD, "fr").
-			addChildNode(OidNode.OID_WILDCARD, "version");
+		// Where did I functionalResourcesGenericIdentifiers(3) from? A presentation?
+//		OidNode functionalResourcesGenericIdentifiers = crossSupprtResources.addChildNode(3, "functionalResourcesGenericIdentifiers");
+
+		OidNode crossSupportFunctionalities = crossSupprtResources.addChildNode(1, "crossSupportFunctionalities");
+//		OidNode frVersion = crossSupportFunctionalities.addChildNode(OidNode.OID_WILDCARD, "fr").
+//			addChildNode(OidNode.OID_WILDCARD, "version");
+		OidNode fr = crossSupportFunctionalities.addChildNode(OidNode.OID_WILDCARD, "fr");
 		
-		frVersion.addChildNode(1, "parameter").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
-		frVersion.addChildNode(2, "event").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
-		frVersion.addChildNode(3, "directive").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		fr.addChildNode(1, "parameter-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		fr.addChildNode(2, "event-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		fr.addChildNode(3, "directive-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
 		
 		// System.out.println(this.toString());
 	}

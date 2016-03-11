@@ -124,22 +124,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FR_MODEL_ELEMENT__SEMANTIC_DEFINITION = 0;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FR_MODEL_ELEMENT__STRING_IDENTIFIER = 1;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT__CLASSIFIER = 2;
+	int FR_MODEL_ELEMENT__CLASSIFIER = 1;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__STRING_IDENTIFIER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -270,15 +270,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,6 +277,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_RESOURCE__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -415,15 +415,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,6 +422,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -542,15 +542,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTIVE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -558,6 +549,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTIVE__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -669,15 +669,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int TYPED_ELEMENT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -685,6 +676,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPED_ELEMENT__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -805,15 +805,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,6 +812,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -968,15 +968,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int VALUE__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -984,6 +975,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1104,15 +1104,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int QUALIFIER__SEMANTIC_DEFINITION = TYPED_ELEMENT__SEMANTIC_DEFINITION;
 
 	/**
-	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUALIFIER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
-
-	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1120,6 +1111,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALIFIER__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__STRING_IDENTIFIER = TYPED_ELEMENT__STRING_IDENTIFIER;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
