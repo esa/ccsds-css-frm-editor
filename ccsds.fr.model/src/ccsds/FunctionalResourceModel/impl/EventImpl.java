@@ -23,24 +23,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getValue <em>Value</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getExternalOid <em>External Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class EventImpl extends FrModelElementImpl implements Event {
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Value> value;
-
 	/**
 	 * The cached value of the '{@link #getExternalOid() <em>External Oid</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -50,6 +40,16 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	 * @ordered
 	 */
 	protected Oid externalOid;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Value> value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,10 +133,10 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__VALUE:
-				return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return basicSetExternalOid(null, msgs);
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -149,10 +149,10 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__VALUE:
-				return getValue();
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return getExternalOid();
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,12 +166,12 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+				setExternalOid((Oid)newValue);
+				return;
 			case FunctionalResourceModelPackage.EVENT__VALUE:
 				getValue().clear();
 				getValue().addAll((Collection<? extends Value>)newValue);
-				return;
-			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
-				setExternalOid((Oid)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,11 +185,11 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__VALUE:
-				getValue().clear();
-				return;
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				setExternalOid((Oid)null);
+				return;
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				getValue().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -203,10 +203,10 @@ public class EventImpl extends FrModelElementImpl implements Event {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.EVENT__VALUE:
-				return value != null && !value.isEmpty();
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
 				return externalOid != null;
+			case FunctionalResourceModelPackage.EVENT__VALUE:
+				return value != null && !value.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

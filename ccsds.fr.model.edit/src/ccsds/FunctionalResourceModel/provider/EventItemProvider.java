@@ -60,8 +60,8 @@ public class EventItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__VALUE);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.EVENT__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -116,8 +116,8 @@ public class EventItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Event.class)) {
-			case FunctionalResourceModelPackage.EVENT__VALUE:
 			case FunctionalResourceModelPackage.EVENT__EXTERNAL_OID:
+			case FunctionalResourceModelPackage.EVENT__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -137,13 +137,13 @@ public class EventItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.EVENT__VALUE,
-				 FunctionalResourceModelFactory.eINSTANCE.createValue()));
+				(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID,
+				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.EVENT__EXTERNAL_OID,
-				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+				(FunctionalResourceModelPackage.Literals.EVENT__VALUE,
+				 FunctionalResourceModelFactory.eINSTANCE.createValue()));
 	}
 
 	/**

@@ -50,10 +50,10 @@
         eType="#//Parameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//FrModelElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
-        eType="#//Value" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalOid" eType="#//Oid"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//Value" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Directive" eSuperTypes="#//FrModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="qualifier" upperBound="-1"

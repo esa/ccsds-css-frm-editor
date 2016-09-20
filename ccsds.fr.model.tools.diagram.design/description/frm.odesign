@@ -11,7 +11,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="functional.resource.uses.relation" label="uses" deletionDescription="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.delete']" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetFinderExpression="feature:uses" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.reconnect']">
-          <style sizeComputationExpression="2">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="4">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

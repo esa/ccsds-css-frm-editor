@@ -44,8 +44,6 @@ public class FrModelTransformation {
 	private EClass functionalresourceInstanceClass;
 	private EPackage friTopPackage;
 	private EClass srvUserClass;
-	@SuppressWarnings("unused")
-	private EClass entityMgmtClass;
 	private EClass abstractParameter;
 	private EClass abstractEvent;
 	private EClass abstractDirective;
@@ -96,19 +94,20 @@ public class FrModelTransformation {
 			abstractEvent = createEventClass();
 			abstractDirective = createDirectiveClass();
 
-			// create a service user class needed for modelling
-			srvUserClass = createServiceUser();
-			
-			// create the entity management class
-			entityMgmtClass = createEntityMgmntClass();
-			
-			// create the top-level classes complex and network
-			EClass complexClass = createComplexClass();			
-			createNetworkClass(complexClass);
+//			// create a service user class needed for modelling
+//			srvUserClass = createServiceUser();
+//			
+//			// create the entity management class
+//			EClass entityMgmtClass = createEntityMgmntClass();
+//			
+//			// create the top-level classes complex and network
+//			EClass complexClass = createComplexClass();			
+//			createNetworkClass(complexClass);
 			
 			// iterate over the functional resource model and map to target ecore elements (classes)
 			for(FunctionalResource fr : frm.getFunctionalResource()) {
-				createDerivedFrInstance(fr, complexClass);
+				//createDerivedFrInstance(fr, complexClass);
+				createDerivedFrInstance(fr, null);
 			}
 		
 			createDependencyForUse(frm);
@@ -237,7 +236,9 @@ public class FrModelTransformation {
 		frList.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
 		frList.setContainment(true);
 		
-		complexClass.getEStructuralFeatures().add(frList);
+		if(complexClass != null) {
+			complexClass.getEStructuralFeatures().add(frList);
+		}
 		
 		frPackage.getEClassifiers().add(frInstanceClass);
 		friTopPackage.getESubpackages().add(frPackage);		

@@ -364,7 +364,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getEvent_Value() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(0);
+		return (EReference)eventEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -373,7 +373,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getEvent_ExternalOid() {
-		return (EReference)eventEClass.getEStructuralFeatures().get(1);
+		return (EReference)eventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -546,8 +546,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
 
 		eventEClass = createEClass(EVENT);
-		createEReference(eventEClass, EVENT__VALUE);
 		createEReference(eventEClass, EVENT__EXTERNAL_OID);
+		createEReference(eventEClass, EVENT__VALUE);
 
 		directiveEClass = createEClass(DIRECTIVE);
 		createEReference(directiveEClass, DIRECTIVE__QUALIFIER);
@@ -630,8 +630,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEvent_Value(), this.getValue(), null, "value", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEvent_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvent_Value(), this.getValue(), null, "value", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directiveEClass, Directive.class, "Directive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirective_Qualifier(), this.getQualifier(), null, "qualifier", null, 0, -1, Directive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

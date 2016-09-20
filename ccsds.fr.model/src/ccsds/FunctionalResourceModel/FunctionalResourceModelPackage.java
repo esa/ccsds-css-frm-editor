@@ -487,22 +487,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__VALUE = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int EVENT__EXTERNAL_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__VALUE = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Event</em>' class.
