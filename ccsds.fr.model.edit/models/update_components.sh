@@ -1,22 +1,26 @@
-@ECHO OFF
-REM Runs the xsl on the EEF model
+#!/bin/sh
+# Runs the xsl on the EEF model
 
-set INPUT=functional_resource.components
-set RESULT=functional_resource_updated.components
+INPUT=functional_resource.components
+RESULT=functional_resource_updated.components
 
-REM backup copy
-copy /Y functional_resource.components bak\
+# backup copy
+cp functional_resource.components bak
 
-set P=C:\Users\Holger Dreihahn\Documents\Tools\xalan\xalan-j_2_7_2
-set CLASSPATH=%P%/xalan.jar;%P%/serializer.jar;%P%/xercesImpl.jar;%P%/xml-apis.jar
+export P="$HOME/Documents/Tools/xalan/xalan-j_2_7_2"
+export CLASSPATH="$P/xalan.jar:$P/serializer.jar:$P/xercesImpl.jar:$P/xml-apis.jar"
 
-REM echo CLASSPATH: %CLASSPATH%
+# echo CLASSPATH: $CLASSPATH
 
-REM rename SemanticDescription to xSemanticDescription
-java org.apache.xalan.xslt.Process -IN %INPUT% -XSL update_components.xsl -OUT %RESULT%
-if %ERRORLEVEL% GEQ 1 EXIT /B 1
+# rename SemanticDescription to xSemanticDescription
+#echo "java org.apache.xalan.xslt.Process -IN $INPUT -XSL update_components.xsl -OUT $RESULT"
+java org.apache.xalan.xslt.Process -IN $INPUT -XSL update_components.xsl -OUT $RESULT
+if [ "$?" != "0" ] ; then
+	echo "XSLT returned $?"
+	exit -1;
+fi
 
-copy /Y %RESULT% %INPUT%
-del %RESULT%
+cp $RESULT $INPUT
+rm $RESULT
 
-echo updated %INPUT%
+echo updated $INPUT
