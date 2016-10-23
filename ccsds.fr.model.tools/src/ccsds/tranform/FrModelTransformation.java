@@ -43,7 +43,6 @@ public class FrModelTransformation {
 	private EcoreFactory theCoreFactory;
 	private EClass functionalresourceInstanceClass;
 	private EPackage friTopPackage;
-	private EClass srvUserClass;
 	private EClass abstractParameter;
 	private EClass abstractEvent;
 	private EClass abstractDirective;
@@ -500,101 +499,6 @@ public class FrModelTransformation {
 		
 		return null;
 	}
-	
-	/**
-	 * Creates a class for a network. For our purposes the network has a name
-	 * and a number of complexes.
-	 * @param complexClass
-	 * @return
-	 */
-	private EClass createNetworkClass(EClass complexClass) {
-		EClass networkClass = theCoreFactory.createEClass();		
-		friTopPackage.getEClassifiers().add(networkClass);
-		networkClass.setName("Network");
-		EAttribute attr = theCoreFactory.createEAttribute();
-		attr.setName("NetworkName");
-		attr.setLowerBound(1);
-		attr.setUpperBound(1);
-		attr.setEType(EcorePackage.eINSTANCE.getEString());
-		networkClass.getEStructuralFeatures().add(attr);
-		
-		EReference complexRef = theCoreFactory.createEReference();
-		complexRef.setName("ComplexList");
-		complexRef.setLowerBound(0);
-		complexRef.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
-		complexRef.setEType(complexClass);
-		complexRef.setContainment(true);
-		networkClass.getEStructuralFeatures().add(complexRef);		
-		
-		return networkClass;
-		
-	}
-	
-	/**
-	 * Creates a complex class, which can host functional resources
-	 * @return 
-	 */
-	private EClass createComplexClass() {
-		EClass complexClass = theCoreFactory.createEClass();		
-		friTopPackage.getEClassifiers().add(complexClass);
-		complexClass.setName("Complex");
-		EAttribute attr = theCoreFactory.createEAttribute();
-		attr.setName("ComplexName");
-		attr.setLowerBound(0);
-		attr.setUpperBound(-1);
-		attr.setEType(EcorePackage.eINSTANCE.getEString());
-		complexClass.getEStructuralFeatures().add(attr);
-		
-		return complexClass;
-	}
-	
-	/**
-	 * Creates a service user class
-	 * @return 
-	 */
-	private EClass createServiceUser() {
-		EClass srvUserClass = theCoreFactory.createEClass();
-		friTopPackage.getEClassifiers().add(srvUserClass);
-		srvUserClass.setName("ServiceUser");
-		EAttribute attr = theCoreFactory.createEAttribute();
-		attr.setName("ServiceUserName");
-		attr.setLowerBound(0);
-		attr.setUpperBound(-1);
-		attr.setEType(EcorePackage.eINSTANCE.getEString());
-		srvUserClass.getEStructuralFeatures().add(attr);
-		
-		return srvUserClass;
-	}
-	
-	/**
-	 * Creates the access management class
-	 * @return 
-	 */
-	private EClass createEntityMgmntClass() {
-		EClass entityMgmntClass = theCoreFactory.createEClass();
-		friTopPackage.getEClassifiers().add(entityMgmntClass);
-		entityMgmntClass.setName("EntityMgmnt");
-
-		EAttribute attr = theCoreFactory.createEAttribute();
-		attr.setName("Support");
-		attr.setEType(EcorePackage.eINSTANCE.getEBoolean());
-		attr.setDefaultValueLiteral("true"); // TBC
-		attr.setEType(EcorePackage.eINSTANCE.getEBoolean());
-		attr.setLowerBound(1);			
-		attr.setUpperBound(1);			
-		attr.setDefaultValueLiteral("true");
-		entityMgmntClass.getEStructuralFeatures().add(attr);
-
-		EReference srvUsers = theCoreFactory.createEReference();
-		srvUsers.setName("Access");
-		srvUsers.setEType(srvUserClass);
-		srvUsers.setLowerBound(0); 
-		srvUsers.setUpperBound(EStructuralFeature.UNBOUNDED_MULTIPLICITY);
-		srvUsers.setContainment(true);
-		entityMgmntClass.getEStructuralFeatures().add(srvUsers);						
-		
-		return entityMgmntClass;
-	}	
 	
 	/**
 	 * Creates for each parameter of the given functional resource
