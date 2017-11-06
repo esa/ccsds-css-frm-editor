@@ -194,7 +194,7 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.heightHint = 80;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -690,7 +690,7 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 		typeDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		typeDefinitionData.horizontalSpan = 2;
-		typeDefinitionData.heightHint=160;
+		typeDefinitionData.heightHint = 80;
 		typeDefinitionData.widthHint = 200;
 		typeDefinition.setLayoutData(typeDefinitionData);
 		typeDefinition.addFocusListener(new FocusAdapter() {

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+<?xml version="1.0" encoding="UTF-8"?><xmi:XMI xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0" xmi:version="2.0">
   <eef-components:PropertiesEditionContext xmi:id="__AGQgOE3EeWCbILJ1HB8ww" documentation="Edition Context for FunctionalResourceModel GenPackage">
     <categories xmi:id="__AGQgeE3EeWCbILJ1HB8ww" name="FunctionalResourceModel">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="__AGQguE3EeWCbILJ1HB8ww" name="FunctionalResourceModel" views="__AGQ4eE3EeWCbILJ1HB8ww">
@@ -36,7 +35,7 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//FrModelElement"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="__AGQjeE3EeWCbILJ1HB8ww" name="Oid" views="__AGQ7uE3EeWCbILJ1HB8ww">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__AGQjuE3EeWCbILJ1HB8ww" name="oidBit" views="__AGQ8OE3EeWCbILJ1HB8ww">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__AGQjuE3EeWCbILJ1HB8ww" name="oidBit" views="_m5dq0ML0EeeWDZt4hYSrCA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//Oid/oidBit"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//Oid"/>
@@ -300,7 +299,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGQ5eE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ5uE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ5-E3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -328,16 +327,14 @@
       <views xmi:id="__AGQ7uE3EeWCbILJ1HB8ww" name="Oid">
         <elements xsi:type="eef-views:Container" xmi:id="__AGQ7-E3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ8OE3EeWCbILJ1HB8ww" name="oidBit">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_m5dq0ML0EeeWDZt4hYSrCA" name="oidBit"/>
         </elements>
       </views>
       <views xmi:id="__AGQ8eE3EeWCbILJ1HB8ww" name="FunctionalResource">
         <elements xsi:type="eef-views:Container" xmi:id="__AGQ8uE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ8-E3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ9OE3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -378,7 +375,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRAOE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRAeE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRAuE3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -410,7 +407,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRC-E3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRDOE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRDeE3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -437,7 +434,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRFeE3EeWCbILJ1HB8ww" name="guardCondition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
         </elements>
       </views>
@@ -445,7 +442,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRF-E3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRGOE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRGeE3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -469,7 +466,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRIOE3EeWCbILJ1HB8ww" name="typeDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRIeE3EeWCbILJ1HB8ww" name="engineeringUnit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -478,7 +475,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRI-E3EeWCbILJ1HB8ww" name="guardCondition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
         </elements>
       </views>
@@ -486,7 +483,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRJeE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRJuE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRJ-E3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -510,7 +507,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRLuE3EeWCbILJ1HB8ww" name="typeDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRL-E3EeWCbILJ1HB8ww" name="engineeringUnit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -521,7 +518,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRMeE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRMuE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRM-E3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -545,7 +542,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGROuE3EeWCbILJ1HB8ww" name="typeDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRO-E3EeWCbILJ1HB8ww" name="engineeringUnit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -556,7 +553,7 @@
         <elements xsi:type="eef-views:Container" xmi:id="__AGRPeE3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRPuE3EeWCbILJ1HB8ww" name="SemanticDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRP-E3EeWCbILJ1HB8ww" name="classifier">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
@@ -580,7 +577,7 @@
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRRuE3EeWCbILJ1HB8ww" name="typeDefinition">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGRR-E3EeWCbILJ1HB8ww" name="engineeringUnit">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>

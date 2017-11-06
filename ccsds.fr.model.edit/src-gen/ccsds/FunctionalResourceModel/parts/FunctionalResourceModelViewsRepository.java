@@ -72,8 +72,9 @@ public class FunctionalResourceModelViewsRepository {
 	public static class Oid {
 		public static class Properties {
 	
-			
+			// Start of user code for oidBit ElementEditor key
 			public static String oidBit = "FunctionalResourceModel::Oid::properties::oidBit";
+			// End of user code
 			
 	
 		}

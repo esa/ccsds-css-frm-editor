@@ -5,9 +5,6 @@ package ccsds.FunctionalResourceModel.parts;
 
 // Start of user code for imports
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -18,34 +15,22 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface OidPropertiesEditionPart {
 
+
+
+	// Start of user code for oidBit specific getters and setters declaration
 	/**
 	 * @return the oidBit
 	 * 
 	 */
-	public EList getOidBit();
-
+	public EList<Integer> getOidBit();	
+	
 	/**
 	 * Defines a new oidBit
 	 * @param newValue the new oidBit to set
 	 * 
 	 */
-	public void setOidBit(EList newValue);
-
-	/**
-	 * Add a value to the oidBit multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToOidBit(Object newValue);
-
-	/**
-	 * Remove a value to the oidBit multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToOidBit(Object newValue);
-
-
-
-
+	public void setOidBit(EList<Integer> newValue);	
+	// End of user code
 
 	/**
 	 * Returns the internationalized title text.

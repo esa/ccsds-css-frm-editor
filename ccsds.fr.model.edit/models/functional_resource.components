@@ -35,7 +35,7 @@
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//FrModelElement"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="__AGQjeE3EeWCbILJ1HB8ww" name="Oid" views="__AGQ7uE3EeWCbILJ1HB8ww">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__AGQjuE3EeWCbILJ1HB8ww" name="oidBit" views="__AGQ8OE3EeWCbILJ1HB8ww">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__AGQjuE3EeWCbILJ1HB8ww" name="oidBit" views="_m5dq0ML0EeeWDZt4hYSrCA">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//Oid/oidBit"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.model/model/functional_resource.ecore#//Oid"/>
@@ -327,9 +327,7 @@
       <views xmi:id="__AGQ7uE3EeWCbILJ1HB8ww" name="Oid">
         <elements xsi:type="eef-views:Container" xmi:id="__AGQ7-E3EeWCbILJ1HB8ww" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="__AGQ8OE3EeWCbILJ1HB8ww" name="oidBit">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
-          </elements>
+          <elements xsi:type="eef-views:CustomElementEditor" xmi:id="_m5dq0ML0EeeWDZt4hYSrCA" name="oidBit"/>
         </elements>
       </views>
       <views xmi:id="__AGQ8eE3EeWCbILJ1HB8ww" name="FunctionalResource">
