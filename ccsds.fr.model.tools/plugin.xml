@@ -184,5 +184,38 @@
             type="frm">
       </parser>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="ccsds.handlers.FindHandler"
+            description="Find command for FR editor"
+            id="fr.find"
+            name="find">
+         <defaultHandler
+               class="ccsds.handlers.FindHandler">
+            <parameter
+                  name="ccsds.fr.model.tools.parameter1"
+                  value="ccsds.fr.model.tools.parameter1">
+            </parameter>
+         </defaultHandler>
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="fr.find"
+            contextId="ccsds.fr.model.tools.context.fr"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+F">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id="ccsds.fr.model.tools.context.fr"
+            name="FR Context"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
 
 </plugin>

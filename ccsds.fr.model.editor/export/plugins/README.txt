@@ -1,4 +1,7 @@
 1) Installation 
+
+1.0) Install Java 8, e.g. from here: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 1.1) Install eclipse luna, choose the Eclipse Modeling Tools from
 https://www.eclipse.org/downloads/
 
@@ -8,8 +11,9 @@ Win64:		http://www.eclipse.org/downloads/download.php?file=/technology/epp/downl
 Mac64:		http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-modeling-luna-SR2-macosx-cocoa-x86_64.tar.gz		
 Linux64:	http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR2/eclipse-modeling-luna-SR2-linux-gtk-x86_64.tar.gz 	
 
-1.1) Install OCL (Object Constraint Language, used for FRM validation):
-Help -> Install New Software, Modeling -> OCL Examples and SDK
+1.1) Install OCL (Object Constraint Language, used for FRM validation) and Extended Editing:
+- Help -> Install New Software, Modeling -> OCL Examples and SDK
+- Install Extended Editing Framework from the eclipse (luna) Update site (Help -> Install New Software)
 
 2.1) Installation via dropins folder
 	place all FRM plugins (ccsds.fr.*.jar) in the 'dropins' folder of your eclipse installation. Remove older jars before
