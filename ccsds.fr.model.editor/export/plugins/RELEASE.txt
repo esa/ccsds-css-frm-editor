@@ -1,3 +1,6 @@
+Version 3.0.7 from 08.11.2017
+- Edit OIDs in a simple text field.
+
 Version 3.0.6 from 01.11.2016
 - Added search for functional resource tree. Use a simplified regular expression syntax for search, e.g. *Cfdp
 
