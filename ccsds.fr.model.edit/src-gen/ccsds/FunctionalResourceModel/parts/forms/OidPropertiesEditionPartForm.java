@@ -30,6 +30,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
@@ -107,7 +109,9 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				// Start of user code for oidBit addToPart creation
-				createOidEditor(widgetFactory, parent);
+				if (key == FunctionalResourceModelViewsRepository.Oid.Properties.oidBit) {
+					return createOidEditor(widgetFactory, parent);
+				}
 				// End of user code
 				return parent;
 			}
@@ -140,6 +144,13 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
+		EList<Integer> oidBits = getOidBit();
+		
+		if(oidBits != null) {
+			propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OidPropertiesEditionPartForm.this,
+					FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, PropertiesEditionEvent.COMMIT,
+					PropertiesEditionEvent.SET, null, oidBits));
+		}
 		
 		// End of user code
 	}
@@ -181,6 +192,14 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		}
 		
 		this.oidBit.setText(oidString);
+		
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
+		if (eefElementEditorReadOnlyState && oidBit.isEnabled()) {
+			oidBit.setEnabled(false);
+			oidBit.setToolTipText(FunctionalResourceModelMessages.Oid_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !oidBit.isEnabled()) {
+			oidBit.setEnabled(true);
+		}	
 	}
 	// End of user code
 
@@ -199,21 +218,56 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 	 * Create OID editor
 	 * @param parent
 	 */
-	private void createOidEditor(FormToolkit widgetFactory, Composite parent) {
+	private Composite createOidEditor(FormToolkit widgetFactory, Composite parent) {
 		this.oidBit = widgetFactory.createText(parent, "", SWT.BORDER);
 		GridData oidBitData = new GridData(GridData.FILL_HORIZONTAL);
 		oidBitData.horizontalSpan = 2;
 		oidBit.setLayoutData(oidBitData);
+
 		oidBit.addFocusListener(new FocusAdapter() {
 			
 			@Override
 			public void focusLost(FocusEvent e) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OidPropertiesEditionPartForm.this,
-							FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, PropertiesEditionEvent.COMMIT,
-							PropertiesEditionEvent.SET, null, getOidBit()));
-				setHasChanged(true);
+				try {
+					EList<Integer> oidBits = getOidBit();
+					
+					if(oidBits != null) {
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OidPropertiesEditionPartForm.this,
+								FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, PropertiesEditionEvent.COMMIT,
+								PropertiesEditionEvent.SET, null, oidBits));
+						setHasChanged(true);
+					}
+				
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
+		
+//		oidBit.addListener(SWT.Traverse, new Listener()
+//	    {
+//	        @Override
+//	        public void handleEvent(Event event)
+//	        {
+//	            if(event.detail == SWT.TRAVERSE_RETURN)
+//	            {
+//					try {
+//						EList<Integer> oidBits = getOidBit();
+//						
+//						if(oidBits != null) {
+//							propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OidPropertiesEditionPartForm.this,
+//									FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, PropertiesEditionEvent.COMMIT,
+//									PropertiesEditionEvent.SET, null, oidBits));
+//							setHasChanged(true);
+//						}
+//					
+//					} catch(Exception ex) {
+//						ex.printStackTrace();
+//					}
+//	            }
+//	        }
+//	    });
+
 		
 		oidBit.addVerifyListener(new VerifyListener() {
 			
@@ -234,9 +288,11 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		});
 		
 		EditingUtils.setID(oidBit, FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
-		EditingUtils.setEEFtype(oidBit, "eef::MultiValuedEditor::field");	}
-	// End of user code
-
+		EditingUtils.setEEFtype(oidBit, "eef::MultiValuedEditor::field");
+		
+		return parent;
+	}
+	
 	/**
 	 * Tests if the given char is an integer.
 	 * @param c
@@ -252,4 +308,7 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 			return false;
 		}		
 	}
+	// End of user code
+
+
 }
