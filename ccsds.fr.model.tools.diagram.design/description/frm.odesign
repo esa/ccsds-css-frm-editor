@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="frm" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="frm" version="12.0.0.2017041100">
   <ownedViewpoints name="functional.resources" label="Functional Resources" modelFileExtension="frm">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.drop']" name="functional.resources.diagram" label="Functional Resource Diagram" domainClass="FunctionalResourceModel.FunctionalResourceModel" enablePopupBars="true">
+      <metamodel href="../../ccsds.fr.model/model/functional_resource.ecore#/"/>
       <defaultLayer name="functional.resources.diagram.default.layer" icon="/Functional Resource Tools Diagram.design/icons/CWELogo.png">
         <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel.FunctionalResource">
-          <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:SemanticDefinition" labelPosition="node" resizeKind="NSEW" width="15" height="5">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:stringIdentifier" labelPosition="node" resizeKind="NSEW" width="15" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -68,6 +69,67 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="functional.resources.diagram.details" titleExpression="aql:'Details of '+self.classifier" domainClass="FunctionalResourceModel::FunctionalResource" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="functional.resource.container" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="functional.resource.container.parameters" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="List">
+            <subNodeMappings name="functional.resource.container.parameter.node" semanticCandidatesExpression="feature:parameter" domainClass="FunctionalResourceModel::Parameter">
+              <style xsi:type="style:SquareDescription" labelExpression="feature:classifier" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Parameters" iconPath="/ccsds.fr.model.edit/icons/full/obj16/Parameter.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="functional.resource.container.directives" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="List">
+            <subNodeMappings name="functional.resource.container.directive.node" semanticCandidatesExpression="feature:directives" domainClass="FunctionalResourceModel::Directive">
+              <style xsi:type="style:SquareDescription" labelExpression="feature:classifier" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Directives" iconPath="/ccsds.fr.model.edit/icons/full/obj16/Directive.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="functional.resource.container.events" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="List">
+            <subNodeMappings name="functional.resource.container.event.node" semanticCandidatesExpression="feature:event" domainClass="FunctionalResourceModel::Event">
+              <style xsi:type="style:SquareDescription" labelExpression="feature:classifier" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Events" iconPath="/ccsds.fr.model.edit/icons/full/obj16/Event.gif">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="feature:classifier">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>

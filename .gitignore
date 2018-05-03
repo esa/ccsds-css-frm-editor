@@ -8,4 +8,6 @@ org.eclipse.*
 sw-delivery
 .metadata
 */export/**/*.jar
+**/.DS_Store
+.DS_Store
 
