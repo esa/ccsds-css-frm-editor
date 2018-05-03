@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:fr="http://iso.org.dod.ccsds" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://iso.org.dod.ccsds">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:complexType name="FunctionalResourceModel">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="rootOid" type="fr:Oid"/>
+      <xsd:element name="functionalResource" type="fr:FunctionalResource"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="FunctionalResourceModel" type="fr:FunctionalResourceModel"/>
+  <xsd:complexType name="FrModelElement">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="oid" type="fr:Oid"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="SemanticDefinition" type="xsd:string" use="required"/>
+    <xsd:attribute name="oidBit" type="xsd:int" use="required"/>
+    <xsd:attribute name="deprecated" type="xsd:boolean" use="required"/>
+    <xsd:attribute name="authorizingEntity" type="xsd:string" use="required"/>
+    <xsd:attribute name="creationDate" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="version" type="xsd:int" use="required">
+      <xsd:annotation>
+        <xsd:documentation>The version will be, if present, appended to the OID of this element.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:element name="FrModelElement" type="fr:FrModelElement"/>
+  <xsd:complexType name="Oid">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="oidBit" type="xsd:int"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="Oid" type="fr:Oid"/>
+  <xsd:complexType name="FunctionalResource">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="events" type="fr:Event"/>
+          <xsd:element name="directives" type="fr:Directive"/>
+          <xsd:element name="uses" type="fr:FunctionalResource"/>
+          <xsd:element name="parameter" type="fr:Parameter"/>
+        </xsd:choice>
+        <xsd:attribute name="uses" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="FunctionalResource" type="fr:FunctionalResource"/>
+  <xsd:complexType name="Event">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Event" type="fr:Event"/>
+  <xsd:complexType name="Directive">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Directive" type="fr:Directive"/>
+  <xsd:complexType name="Parameter">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="externalTypeOid" type="fr:Oid"/>
+        </xsd:choice>
+        <xsd:attribute name="engineeringUnit" type="xsd:string"/>
+        <xsd:attribute name="typeDefinition" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Parameter" type="fr:Parameter"/>
+</xsd:schema>

@@ -5,4 +5,13 @@ RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery
 .metadata
-
+*.class
+*.zip
+*.lost
+*.uml
+RemoteSystemsTempFiles/*
+org.eclipse.*
+sw-delivery
+.metadata
+**/.DS_Store
+.DS_Store

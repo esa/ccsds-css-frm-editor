@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ccsds.fr.model/src" editDirectory="/ccsds.fr.model.edit/src"
+    editorDirectory="/ccsds.fr.model.editor/src" modelPluginID="ccsds.fr.model" modelName="Functional_resource"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>functional_resource.ecore</foreignModel>
+  <genPackages prefix="FunctionalResourceModel" basePackage="ccsds" resource="XML"
+      disposableProviderFactory="true" contentTypeIdentifier="" fileExtensions="frm"
+      ecorePackage="functional_resource.ecore#/" publicationLocation="">
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+      <genAnnotations source="../test/functional_resource.xsd"/>
+      <genAnnotations source="functional_resource.xsd"/>
+    </genAnnotations>
+    <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+      <genAnnotations source="functional_resourceXMI.xsd"/>
+    </genAnnotations>
+    <genClasses ecoreClass="functional_resource.ecore#//FunctionalResourceModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/rootOid"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/functionalResource"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//FrModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/SemanticDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/stringIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/classifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/creationDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/authorizingEntity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/oidBit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FrModelElement/oid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/deprecated"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//Oid">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Oid/oidBit"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//FunctionalResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/directives"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/uses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/externalOid"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//Directive">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Directive/qualifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Directive/guardCondition"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/configured"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/guardCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Parameter/externalOid"/>
+    </genClasses>
+    <genClasses ecoreClass="functional_resource.ecore#//Value"/>
+    <genClasses ecoreClass="functional_resource.ecore#//Qualifier"/>
+    <genClasses ecoreClass="functional_resource.ecore#//TypedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/typeDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/engineeringUnit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/externalTypeOid"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

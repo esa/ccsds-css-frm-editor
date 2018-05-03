@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+         <command
+               commandId="fr.transform"
+               icon="icons/transform.gif"
+               label="FRM to an FRIM ecore"
+               mnemonic="M1+T"
+               style="push"
+               tooltip="Functional Resource Model to Functional Resource Instance Model (ecore)">
+    			<visibleWhen
+				       checkEnabled="false">
+				   <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="frm" />
+				         </adapt>
+				      </iterate>
+				   </with>
+				</visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.oid.name"
+               icon="icons/Oid.gif"
+               label="Create Parameter / Directive / Event OIDs and Short Names"
+               style="push"
+               tooltip="Create Parameter / Directive / Event OIDs and Short Names">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.auth.entity"
+               icon="icons/auth_entity.gif"
+               label="Create Authorizing Entity"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.sirius.ui.tools.views.model.explorer#PopupMenu">
+         <command
+               commandId="fr.transform"
+               icon="icons/transform.gif"
+               label="FRM to an FRIM ecore"
+               mnemonic="M1+T"
+               style="push"
+               tooltip="Functional Resource Model to Functional Resource Instance Model (ecore)">
+    			<visibleWhen
+				       checkEnabled="false">
+				   <with variable="activeMenuSelection">
+				      <iterate
+				           ifEmpty="false">
+				         <adapt type="org.eclipse.core.resources.IResource">
+				              <test property="org.eclipse.core.resources.extension" value="frm" />
+				         </adapt>
+				      </iterate>
+				   </with>
+				</visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.oid.name"
+               icon="icons/Oid.gif"
+               label="Create Parameter / Directive / Event OIDs and Short Names"
+               style="push"
+               tooltip="Create Parameter / Directive / Event OIDs and Short Names">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.create.auth.entity"
+               icon="icons/auth_entity.gif"
+               label="Create Authorizing Entity"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar ">
+         <toolbar
+               id="fr.tools.toolbar">
+            <command
+                  commandId="fr.create.oid.name"
+                  icon="icons/Oid.gif"
+                  label="Create Parameter / Directive / Event OIDs and Short Names"
+                  style="push"
+                  tooltip="Create or update Parameter / Directive / Event OIDs and Short Names">
+            </command>
+            <command
+                  commandId="fr.create.auth.entity"
+                  icon="icons/auth_entity.gif"
+                  label="Create Authorizing Entity"
+                  style="push"
+                  tooltip="Sets the Authorizing Entity if it is empty">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         id="fr.create.auth.entity"
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="ccsds.handlers.TransformFrHandler"
+            commandId="fr.transform">
+      </handler>
+      <handler
+            class="ccsds.handlers.UpdateOidsNameHandler"
+            commandId="fr.create.oid.name">
+      </handler>
+      <handler
+            class="ccsds.handlers.CreateAuthEntities"
+            commandId="fr.create.auth.entity">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="emf.helper.XMLResourceFactoryPiImpl"
+            type="frm">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="ccsds.handlers.FindHandler"
+            description="Find command for FR editor"
+            id="fr.find"
+            name="find">
+         <defaultHandler
+               class="ccsds.handlers.FindHandler">
+            <parameter
+                  name="ccsds.fr.model.tools.parameter1"
+                  value="ccsds.fr.model.tools.parameter1">
+            </parameter>
+         </defaultHandler>
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="fr.find"
+            contextId="ccsds.fr.model.tools.context.fr"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+F">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id="ccsds.fr.model.tools.context.fr"
+            name="FR Context"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
+
+</plugin>

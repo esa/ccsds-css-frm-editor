@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<fr:FunctionalResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://iso.org.dod.ccsds parameter.xsd" xmlns:fr="http://iso.org.dod.ccsds">
-    <parameter SemanticDefinition="This parameterd ..." name="antenna-id" typeDefinition="def1" oidBit="1" />
-    <parameter SemanticDefinition="p2 ..." name="p2" typeDefinition="def2" oidBit="2" />
-</fr:FunctionalResource>

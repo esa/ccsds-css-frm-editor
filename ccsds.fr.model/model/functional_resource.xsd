@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:fr="http://iso.org.dod.ccsds" xmlns:org.eclipse.emf._2002.ecore.ocl.pivot="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" xmlns:org.eclipse.ocl.import="http://www.eclipse.org/OCL/Import" org.eclipse.ocl.import:ecore="http://www.eclipse.org/emf/2002/Ecore" targetNamespace="http://iso.org.dod.ccsds">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:element name="FunctionalResourceModel" type="fr:FunctionalResourceModel"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <xsd:complexType name="FunctionalResourceModel">
+    <xsd:sequence>
+      <xsd:element name="rootOid" type="fr:Oid"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="functionalResource" type="fr:FunctionalResource"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FrModelElement">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="oid" type="fr:Oid"/>
+    </xsd:sequence>
+    <xsd:attribute name="SemanticDefinition" type="ecore:EString" use="required"/>
+    <xsd:attribute name="classifier" type="ecore:EString" use="required"/>
+    <xsd:attribute name="stringIdentifier" type="ecore:EString"/>
+    <xsd:attribute name="version" type="ecore:EInt" use="required">
+      <xsd:annotation>
+        <xsd:documentation>The version will be, if present, appended to the OID of this element.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="creationDate" type="ecore:EDate"/>
+    <xsd:attribute name="authorizingEntity" type="ecore:EString" use="required"/>
+    <xsd:attribute name="oidBit" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="deprecated" type="ecore:EBoolean" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="Oid">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="oidBit" type="ecore:EInt"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FunctionalResource">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="event" type="fr:Event"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="directives" type="fr:Directive"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
+        </xsd:sequence>
+        <xsd:attribute name="uses">
+          <xsd:simpleType>
+            <xsd:list itemType="xsd:anyURI"/>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Event">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="value" type="fr:Value"/>
+          <xsd:element minOccurs="0" name="externalOid" type="fr:Oid"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Directive">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="fr:Qualifier"/>
+        </xsd:sequence>
+        <xsd:attribute name="guardCondition" type="ecore:EString" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Parameter" org.eclipse.emf._2002.ecore.ocl.pivot:GuardConditionInv="self.configured = true implies self.guardCondition-&gt;notEmpty()">
+    <xsd:complexContent>
+      <xsd:extension base="fr:TypedElement">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="externalOid" type="fr:Oid"/>
+        </xsd:sequence>
+        <xsd:attribute default="false" name="configured" type="ecore:EBoolean"/>
+        <xsd:attribute name="guardCondition" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Value">
+    <xsd:complexContent>
+      <xsd:extension base="fr:TypedElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Qualifier">
+    <xsd:complexContent>
+      <xsd:extension base="fr:TypedElement"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TypedElement">
+    <xsd:complexContent>
+      <xsd:extension base="fr:FrModelElement">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="externalTypeOid" type="fr:Oid"/>
+        </xsd:sequence>
+        <xsd:attribute name="typeDefinition" type="ecore:EString" use="required"/>
+        <xsd:attribute name="engineeringUnit" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>
