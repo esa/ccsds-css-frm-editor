@@ -4,36 +4,53 @@
 package ccsds.FunctionalResourceModel.parts.forms;
 
 // Start of user code for imports
-import java.util.StringTokenizer;
+import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 import ccsds.FunctionalResourceModel.parts.OidPropertiesEditionPart;
+
 import ccsds.FunctionalResourceModel.providers.FunctionalResourceModelMessages;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
+
+import org.eclipse.jface.window.Window;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -47,11 +64,10 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OidPropertiesEditionPart {
 
-	// Start of user code  for oidBit widgets declarations
-	private static final String OID_SEP_STRING = ".";
-	Text oidBit;
-	// End of user code
-
+	protected static final String OID_SEP_STRING = ".";
+	protected Text oidBit;
+	protected Button editOidBit;
+	protected EList oidBitList;
 
 
 
@@ -108,11 +124,9 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 				if (key == FunctionalResourceModelViewsRepository.Oid.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
-				// Start of user code for oidBit addToPart creation
 				if (key == FunctionalResourceModelViewsRepository.Oid.Properties.oidBit) {
-					return createOidEditor(widgetFactory, parent);
+					return createOidBitMultiValuedEditor(widgetFactory, parent);
 				}
-				// End of user code
 				return parent;
 			}
 		};
@@ -135,6 +149,52 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		return propertiesGroup;
 	}
 
+	/**
+	 * 
+	 */
+	protected Composite createOidBitMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
+		oidBit = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
+		GridData oidBitData = new GridData(GridData.FILL_HORIZONTAL);
+		oidBitData.horizontalSpan = 2;
+		oidBit.setLayoutData(oidBitData);
+		EditingUtils.setID(oidBit, FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
+		EditingUtils.setEEFtype(oidBit, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
+		editOidBit = widgetFactory.createButton(parent, getDescription(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, FunctionalResourceModelMessages.OidPropertiesEditionPart_OidBitLabel), SWT.NONE);
+		GridData editOidBitData = new GridData();
+		editOidBit.setLayoutData(editOidBitData);
+		editOidBit.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
+						oidBit.getShell(), "Oid", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
+						oidBitList, FunctionalResourceModelPackage.eINSTANCE.getOid_OidBit().getEType(), null,
+						false, true, 
+						null, null);
+				if (dialog.open() == Window.OK) {
+					oidBitList = dialog.getResult();
+					if (oidBitList == null) {
+						oidBitList = new BasicEList();
+					}
+					oidBit.setText(oidBitList.toString());
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OidPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Oid.Properties.oidBit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(oidBitList)));
+					setHasChanged(true);
+				}
+			}
+		});
+		EditingUtils.setID(editOidBit, FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
+		EditingUtils.setEEFtype(editOidBit, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
+		// Start of user code for createOidBitMultiValuedEditor
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -155,44 +215,29 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		// End of user code
 	}
 
-
-
-
-
-
-	// Start of user code for oidBit specific getters and setters implementation
-	@Override
-	public EList<Integer> getOidBit() {
-		EList<Integer> oidBits = new BasicEList<Integer>();
-		
-		StringTokenizer tokenizer = new StringTokenizer(this.oidBit.getText(), OID_SEP_STRING);
-		while(tokenizer.hasMoreTokens()) {
-			try {
-				oidBits.add(Integer.parseInt(tokenizer.nextToken()));
-			} catch(NumberFormatException nf) {
-				MessageBox error = new MessageBox(Display.getCurrent().getActiveShell());
-				error.setText("Wrong OID format");
-				error.setMessage("Wrong format of OID " + this.oidBit.getText());
-				error.open();
-			}
-		}
-		
-		return oidBits;
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.OidPropertiesEditionPart#getOidBit()
+	 * 
+	 */
+	public EList getOidBit() {
+		return oidBitList;
 	}
-	
-	@Override
-	public void setOidBit(EList<Integer> newValue) {
-		String oidString = "";
-		for(int idx=0; idx<newValue.size(); idx++) {
-			oidString += newValue.get(idx);
-			
-			if(idx+1 < newValue.size()) {
-				oidString += OID_SEP_STRING;
-			}			
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.OidPropertiesEditionPart#setOidBit(EList newValue)
+	 * 
+	 */
+	public void setOidBit(EList newValue) {
+		oidBitList = newValue;
+		if (newValue != null) {
+			oidBit.setText(oidBitList.toString());
+		} else {
+			oidBit.setText(""); //$NON-NLS-1$
 		}
-		
-		this.oidBit.setText(oidString);
-		
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
 		if (eefElementEditorReadOnlyState && oidBit.isEnabled()) {
 			oidBit.setEnabled(false);
@@ -200,8 +245,31 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		} else if (!eefElementEditorReadOnlyState && !oidBit.isEnabled()) {
 			oidBit.setEnabled(true);
 		}	
+		
 	}
-	// End of user code
+
+	public void addToOidBit(Object newValue) {
+		oidBitList.add(newValue);
+		if (newValue != null) {
+			oidBit.setText(oidBitList.toString());
+		} else {
+			oidBit.setText(""); //$NON-NLS-1$
+		}
+	}
+
+	public void removeToOidBit(Object newValue) {
+		oidBitList.remove(newValue);
+		if (newValue != null) {
+			oidBit.setText(oidBitList.toString());
+		} else {
+			oidBit.setText(""); //$NON-NLS-1$
+		}
+	}
+
+
+
+
+
 
 	/**
 	 * {@inheritDoc}

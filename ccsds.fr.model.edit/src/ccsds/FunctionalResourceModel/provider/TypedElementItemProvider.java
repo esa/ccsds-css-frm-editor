@@ -69,7 +69,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_typeDefinition_feature", "_UI_TypedElement_type"),
 				 FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_DEFINITION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -147,7 +147,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TypedElement)object).getSemanticDefinition();
+		String label = crop(((TypedElement)object).getSemanticDefinition());
 		return label == null || label.length() == 0 ?
 			getString("_UI_TypedElement_type") :
 			getString("_UI_TypedElement_type") + " " + label;

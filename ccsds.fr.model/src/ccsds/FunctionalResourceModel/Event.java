@@ -13,11 +13,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getExternalOid <em>External Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Event#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getEvent()
  * @model

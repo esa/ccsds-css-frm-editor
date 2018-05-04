@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getRootOid <em>Root Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

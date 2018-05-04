@@ -20,9 +20,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/functionalResource"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//FrModelElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/SemanticDefinition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/stringIdentifier"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/SemanticDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/classifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/stringIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/creationDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/authorizingEntity"/>
@@ -40,22 +40,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/parameter"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//Event">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/externalOid"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/value"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//Directive">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Directive/qualifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Directive/guardCondition"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Directive/guardCondition"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/configured"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/guardCondition"/>
+      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
+          propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/guardCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Parameter/externalOid"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//Value"/>
     <genClasses ecoreClass="functional_resource.ecore#//Qualifier"/>
     <genClasses ecoreClass="functional_resource.ecore#//TypedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/typeDefinition"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/typeDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/engineeringUnit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/externalTypeOid"/>
     </genClasses>

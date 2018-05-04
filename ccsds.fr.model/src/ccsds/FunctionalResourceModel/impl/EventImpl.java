@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getExternalOid <em>External Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.EventImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

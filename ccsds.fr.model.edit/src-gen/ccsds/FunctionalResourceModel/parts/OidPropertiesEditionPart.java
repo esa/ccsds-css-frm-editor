@@ -15,22 +15,34 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface OidPropertiesEditionPart {
 
-
-
-	// Start of user code for oidBit specific getters and setters declaration
 	/**
 	 * @return the oidBit
 	 * 
 	 */
-	public EList<Integer> getOidBit();	
-	
+	public EList getOidBit();
+
 	/**
 	 * Defines a new oidBit
 	 * @param newValue the new oidBit to set
 	 * 
 	 */
-	public void setOidBit(EList<Integer> newValue);	
-	// End of user code
+	public void setOidBit(EList newValue);
+
+	/**
+	 * Add a value to the oidBit multivalued attribute.
+	 * @param newValue the value to add
+	 */
+	public void addToOidBit(Object newValue);
+
+	/**
+	 * Remove a value to the oidBit multivalued attribute.
+	 * @param newValue the value to remove
+	 */
+	public void removeToOidBit(Object newValue);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

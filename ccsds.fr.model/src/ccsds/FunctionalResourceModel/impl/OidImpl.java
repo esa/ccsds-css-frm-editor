@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.OidImpl#getOidBit <em>Oid Bit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

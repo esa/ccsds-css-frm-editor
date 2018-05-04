@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getSemanticDefinition <em>Semantic Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getClassifier <em>Classifier</em>}</li>
@@ -34,7 +35,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#isDeprecated <em>Deprecated</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

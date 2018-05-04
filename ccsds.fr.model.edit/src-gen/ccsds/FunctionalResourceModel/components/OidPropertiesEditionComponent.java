@@ -77,15 +77,10 @@ public class OidPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			final Oid oid = (Oid)elt;
 			final OidPropertiesEditionPart basePart = (OidPropertiesEditionPart)editingPart;
 			// init values
-			// Start of user code  for oidBit command update
-			if (isAccessible(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit)) {
+			if (isAccessible(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit))
 				basePart.setOidBit(oid.getOidBit());
-			}
-			// End of user code
 			
 			// init filters
-			// Start of user code  for oidBit filter update
-			// End of user code
 			
 			// init values for referenced views
 			
@@ -117,13 +112,10 @@ public class OidPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Oid oid = (Oid)semanticObject;
 		if (FunctionalResourceModelViewsRepository.Oid.Properties.oidBit == event.getAffectedEditor()) {
-			// Start of user code for updateOidBit method body
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				oid.getOidBit().clear();
 				oid.getOidBit().addAll(((EList) event.getNewValue()));
 			}
-			// End of user code
-			
 		}
 	}
 
@@ -135,23 +127,17 @@ public class OidPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			OidPropertiesEditionPart basePart = (OidPropertiesEditionPart)editingPart;
-					// Start of user code for oidBit live update
-					if (FunctionalResourceModelPackage.eINSTANCE.getOid_OidBit().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit)) {
-						if (msg.getNewValue() instanceof EList<?>) {
-							basePart.setOidBit((EList<Integer>)msg.getNewValue());
-						} else if (msg.getNewValue() == null) {
-							basePart.setOidBit(new BasicEList<Integer>());
-						} else {
-							BasicEList<Integer> newValueAsList = new BasicEList<Integer>();
-							try {
-								newValueAsList.add(Integer.parseInt(msg.getNewValue().toString()));
-							} catch(NumberFormatException nf) {
-								// TODO: what to do now?
-							}
-							basePart.setOidBit(newValueAsList);
-						}
-					}					
-					// End of user code
+			if (FunctionalResourceModelPackage.eINSTANCE.getOid_OidBit().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Oid.Properties.oidBit)) {
+				if (msg.getNewValue() instanceof EList<?>) {
+					basePart.setOidBit((EList<?>)msg.getNewValue());
+				} else if (msg.getNewValue() == null) {
+					basePart.setOidBit(new BasicEList<Object>());
+				} else {
+					BasicEList<Object> newValueAsList = new BasicEList<Object>();
+					newValueAsList.add(msg.getNewValue());
+					basePart.setOidBit(newValueAsList);
+				}
+			}
 			
 			
 		}

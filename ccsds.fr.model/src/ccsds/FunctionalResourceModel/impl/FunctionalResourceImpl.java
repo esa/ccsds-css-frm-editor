@@ -22,13 +22,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

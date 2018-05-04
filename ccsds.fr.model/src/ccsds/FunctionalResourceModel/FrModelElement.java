@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getSemanticDefinition <em>Semantic Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#isDeprecated <em>Deprecated</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement()
  * @model

@@ -89,7 +89,7 @@ public class ParameterItemProvider extends TypedElementItemProvider {
 				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_guardCondition_feature", "_UI_Parameter_type"),
 				 FunctionalResourceModelPackage.Literals.PARAMETER__GUARD_CONDITION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

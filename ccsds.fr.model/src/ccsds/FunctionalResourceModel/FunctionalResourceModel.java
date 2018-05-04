@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getRootOid <em>Root Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceModel()
  * @model

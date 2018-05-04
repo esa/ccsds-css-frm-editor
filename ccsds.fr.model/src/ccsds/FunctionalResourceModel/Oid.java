@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Oid#getOidBit <em>Oid Bit</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getOid()
  * @model

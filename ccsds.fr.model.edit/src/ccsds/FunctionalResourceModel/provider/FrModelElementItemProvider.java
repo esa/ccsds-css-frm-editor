@@ -90,7 +90,7 @@ public class FrModelElementItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_FrModelElement_SemanticDefinition_feature", "_UI_FrModelElement_type"),
 				 FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__SEMANTIC_DEFINITION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
@@ -300,7 +300,7 @@ public class FrModelElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FrModelElement)object).getSemanticDefinition();
+		String label = crop(((FrModelElement)object).getSemanticDefinition());
 		return label == null || label.length() == 0 ?
 			getString("_UI_FrModelElement_type") :
 			getString("_UI_FrModelElement_type") + " " + label;

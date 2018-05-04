@@ -12,11 +12,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.Directive#getQualifier <em>Qualifier</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.Directive#getGuardCondition <em>Guard Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getDirective()
  * @model

@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getEvent <em>Event</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getParameter <em>Parameter</em>}</li>
  * </ul>
- * </p>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource()
  * @model

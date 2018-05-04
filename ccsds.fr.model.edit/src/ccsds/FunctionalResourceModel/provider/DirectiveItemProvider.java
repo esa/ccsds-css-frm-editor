@@ -66,7 +66,7 @@ public class DirectiveItemProvider
 				 getString("_UI_PropertyDescriptor_description", "_UI_Directive_guardCondition_feature", "_UI_Directive_type"),
 				 FunctionalResourceModelPackage.Literals.DIRECTIVE__GUARD_CONDITION,
 				 true,
-				 false,
+				 true,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,

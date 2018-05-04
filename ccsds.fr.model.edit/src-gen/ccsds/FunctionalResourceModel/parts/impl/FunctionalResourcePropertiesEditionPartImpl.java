@@ -1223,6 +1223,8 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		uses.setContentProvider(contentProvider);
 		uses.setInput(settings);
+		usesBusinessFilters.clear();
+		usesFilters.clear();
 		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses);
 		if (eefElementEditorReadOnlyState && uses.getTable().isEnabled()) {
 			uses.setEnabled(false);

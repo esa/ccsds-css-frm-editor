@@ -354,6 +354,18 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
+	 * 
+	 */
+	public String getHelpContent(Object key, int kind) {
+		if (key == FunctionalResourceModelViewsRepository.Parameter.Properties.guardCondition)
+			return ""; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
