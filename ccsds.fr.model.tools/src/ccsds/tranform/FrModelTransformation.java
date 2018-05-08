@@ -32,6 +32,7 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
+import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.model.tools.NameTool;
 
 /**
@@ -104,7 +105,8 @@ public class FrModelTransformation {
 //			createNetworkClass(complexClass);
 			
 			// iterate over the functional resource model and map to target ecore elements (classes)
-			for(FunctionalResource fr : frm.getFunctionalResource()) {
+			FunctionalResource[] frArray = FrUtility.getFunctionalResources(frm);
+			for(FunctionalResource fr : frArray) {
 				//createDerivedFrInstance(fr, complexClass);
 				createDerivedFrInstance(fr, null);
 			}

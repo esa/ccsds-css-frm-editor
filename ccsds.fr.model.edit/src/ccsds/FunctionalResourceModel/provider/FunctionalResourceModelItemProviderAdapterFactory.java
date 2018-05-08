@@ -302,6 +302,75 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.ServiceAccessPoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceAccessPointItemProvider serviceAccessPointItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.ServiceAccessPoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceAccessPointAdapter() {
+		if (serviceAccessPointItemProvider == null) {
+			serviceAccessPointItemProvider = new ServiceAccessPointItemProvider(this);
+		}
+
+		return serviceAccessPointItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.AncillaryInterface} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AncillaryInterfaceItemProvider ancillaryInterfaceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.AncillaryInterface}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAncillaryInterfaceAdapter() {
+		if (ancillaryInterfaceItemProvider == null) {
+			ancillaryInterfaceItemProvider = new AncillaryInterfaceItemProvider(this);
+		}
+
+		return ancillaryInterfaceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.FunctionalResourceSet} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalResourceSetItemProvider functionalResourceSetItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.FunctionalResourceSet}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalResourceSetAdapter() {
+		if (functionalResourceSetItemProvider == null) {
+			functionalResourceSetItemProvider = new FunctionalResourceSetItemProvider(this);
+		}
+
+		return functionalResourceSetItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -401,6 +470,7 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	 */
 	public void dispose() {
 		if (functionalResourceModelItemProvider != null) functionalResourceModelItemProvider.dispose();
+		if (functionalResourceSetItemProvider != null) functionalResourceSetItemProvider.dispose();
 		if (frModelElementItemProvider != null) frModelElementItemProvider.dispose();
 		if (oidItemProvider != null) oidItemProvider.dispose();
 		if (functionalResourceItemProvider != null) functionalResourceItemProvider.dispose();
@@ -410,6 +480,8 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 		if (valueItemProvider != null) valueItemProvider.dispose();
 		if (qualifierItemProvider != null) qualifierItemProvider.dispose();
 		if (typedElementItemProvider != null) typedElementItemProvider.dispose();
+		if (serviceAccessPointItemProvider != null) serviceAccessPointItemProvider.dispose();
+		if (ancillaryInterfaceItemProvider != null) ancillaryInterfaceItemProvider.dispose();
 	}
 
 }

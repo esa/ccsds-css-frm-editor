@@ -98,6 +98,12 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	protected ReferencesTable parameter;
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable serviceAccesspoint;
+	protected List<ViewerFilter> serviceAccesspointBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> serviceAccesspointFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable providedAncillaryInterface;
+	protected List<ViewerFilter> providedAncillaryInterfaceBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> providedAncillaryInterfaceFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -148,6 +154,8 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.directives);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface);
 		
 		
 		composer = new PartComposer(functionalResourceStep) {
@@ -192,6 +200,12 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter) {
 					return createParameterAdvancedTableComposition(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint) {
+					return createServiceAccesspointAdvancedTableComposition(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface) {
+					return createProvidedAncillaryInterfaceAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -808,6 +822,108 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createServiceAccesspointAdvancedTableComposition(Composite parent) {
+		this.serviceAccesspoint = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_ServiceAccesspointLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				serviceAccesspoint.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				serviceAccesspoint.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				serviceAccesspoint.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				serviceAccesspoint.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.serviceAccesspointFilters) {
+			this.serviceAccesspoint.addFilter(filter);
+		}
+		this.serviceAccesspoint.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.serviceAccesspoint.createControls(parent);
+		this.serviceAccesspoint.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData serviceAccesspointData = new GridData(GridData.FILL_HORIZONTAL);
+		serviceAccesspointData.horizontalSpan = 3;
+		this.serviceAccesspoint.setLayoutData(serviceAccesspointData);
+		this.serviceAccesspoint.setLowerBound(0);
+		this.serviceAccesspoint.setUpperBound(-1);
+		serviceAccesspoint.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint);
+		serviceAccesspoint.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createServiceAccesspointAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createProvidedAncillaryInterfaceAdvancedTableComposition(Composite parent) {
+		this.providedAncillaryInterface = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_ProvidedAncillaryInterfaceLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				providedAncillaryInterface.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				providedAncillaryInterface.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				providedAncillaryInterface.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				providedAncillaryInterface.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.providedAncillaryInterfaceFilters) {
+			this.providedAncillaryInterface.addFilter(filter);
+		}
+		this.providedAncillaryInterface.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.providedAncillaryInterface.createControls(parent);
+		this.providedAncillaryInterface.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData providedAncillaryInterfaceData = new GridData(GridData.FILL_HORIZONTAL);
+		providedAncillaryInterfaceData.horizontalSpan = 3;
+		this.providedAncillaryInterface.setLayoutData(providedAncillaryInterfaceData);
+		this.providedAncillaryInterface.setLowerBound(0);
+		this.providedAncillaryInterface.setUpperBound(-1);
+		providedAncillaryInterface.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface);
+		providedAncillaryInterface.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createProvidedAncillaryInterfaceAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -1339,6 +1455,138 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	 */
 	public boolean isContainedInParameterTable(EObject element) {
 		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initServiceAccesspoint(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initServiceAccesspoint(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		serviceAccesspoint.setContentProvider(contentProvider);
+		serviceAccesspoint.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint);
+		if (eefElementEditorReadOnlyState && serviceAccesspoint.isEnabled()) {
+			serviceAccesspoint.setEnabled(false);
+			serviceAccesspoint.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !serviceAccesspoint.isEnabled()) {
+			serviceAccesspoint.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateServiceAccesspoint()
+	 * 
+	 */
+	public void updateServiceAccesspoint() {
+	serviceAccesspoint.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterServiceAccesspoint(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToServiceAccesspoint(ViewerFilter filter) {
+		serviceAccesspointFilters.add(filter);
+		if (this.serviceAccesspoint != null) {
+			this.serviceAccesspoint.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterServiceAccesspoint(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToServiceAccesspoint(ViewerFilter filter) {
+		serviceAccesspointBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInServiceAccesspointTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInServiceAccesspointTable(EObject element) {
+		return ((ReferencesTableSettings)serviceAccesspoint.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initProvidedAncillaryInterface(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initProvidedAncillaryInterface(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		providedAncillaryInterface.setContentProvider(contentProvider);
+		providedAncillaryInterface.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface);
+		if (eefElementEditorReadOnlyState && providedAncillaryInterface.isEnabled()) {
+			providedAncillaryInterface.setEnabled(false);
+			providedAncillaryInterface.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !providedAncillaryInterface.isEnabled()) {
+			providedAncillaryInterface.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateProvidedAncillaryInterface()
+	 * 
+	 */
+	public void updateProvidedAncillaryInterface() {
+	providedAncillaryInterface.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterProvidedAncillaryInterface(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToProvidedAncillaryInterface(ViewerFilter filter) {
+		providedAncillaryInterfaceFilters.add(filter);
+		if (this.providedAncillaryInterface != null) {
+			this.providedAncillaryInterface.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterProvidedAncillaryInterface(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToProvidedAncillaryInterface(ViewerFilter filter) {
+		providedAncillaryInterfaceBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInProvidedAncillaryInterfaceTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInProvidedAncillaryInterfaceTable(EObject element) {
+		return ((ReferencesTableSettings)providedAncillaryInterface.getInput()).contains(element);
 	}
 
 

@@ -5,6 +5,7 @@ package ccsds.FunctionalResourceModel.impl;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
+import ccsds.FunctionalResourceModel.FunctionalResourceSet;
 import ccsds.FunctionalResourceModel.Oid;
 
 import java.util.Collection;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getRootOid <em>Root Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
  *
@@ -47,6 +49,16 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected Oid rootOid;
+
+	/**
+	 * The cached value of the '{@link #getFunctionalResourceSet() <em>Functional Resource Set</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFunctionalResourceSet()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FunctionalResourceSet> functionalResourceSet;
 
 	/**
 	 * The cached value of the '{@link #getFunctionalResource() <em>Functional Resource</em>}' containment reference list.
@@ -125,6 +137,18 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<FunctionalResourceSet> getFunctionalResourceSet() {
+		if (functionalResourceSet == null) {
+			functionalResourceSet = new EObjectContainmentEList<FunctionalResourceSet>(FunctionalResourceSet.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
+		}
+		return functionalResourceSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<FunctionalResource> getFunctionalResource() {
 		if (functionalResource == null) {
 			functionalResource = new EObjectContainmentEList<FunctionalResource>(FunctionalResource.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
@@ -142,6 +166,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return basicSetRootOid(null, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
+				return ((InternalEList<?>)getFunctionalResourceSet()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				return ((InternalEList<?>)getFunctionalResource()).basicRemove(otherEnd, msgs);
 		}
@@ -158,6 +184,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return getRootOid();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
+				return getFunctionalResourceSet();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				return getFunctionalResource();
 		}
@@ -175,6 +203,10 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				setRootOid((Oid)newValue);
+				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
+				getFunctionalResourceSet().clear();
+				getFunctionalResourceSet().addAll((Collection<? extends FunctionalResourceSet>)newValue);
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				getFunctionalResource().clear();
@@ -195,6 +227,9 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				setRootOid((Oid)null);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
+				getFunctionalResourceSet().clear();
+				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				getFunctionalResource().clear();
 				return;
@@ -212,6 +247,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return rootOid != null;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
+				return functionalResourceSet != null && !functionalResourceSet.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				return functionalResource != null && !functionalResource.isEmpty();
 		}

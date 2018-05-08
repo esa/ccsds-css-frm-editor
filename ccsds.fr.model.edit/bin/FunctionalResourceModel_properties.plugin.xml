@@ -57,6 +57,12 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceSetPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.FunctionalResourceSet"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="ccsds.FunctionalResourceModel.parts.forms.FrModelElementPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.FrModelElementPropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.FrModelElement"
@@ -108,6 +114,18 @@
                class="ccsds.FunctionalResourceModel.parts.forms.TypedElementPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.TypedElementPropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.TypedElement"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.ServiceAccessPointPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.ServiceAccessPointPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.ServiceAccessPoint"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AncillaryInterfacePropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.AncillaryInterface"
                tab="Base">
          </propertySection>
       </propertySections>

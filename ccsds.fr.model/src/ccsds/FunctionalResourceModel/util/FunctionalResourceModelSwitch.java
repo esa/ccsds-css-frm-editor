@@ -72,6 +72,12 @@ public class FunctionalResourceModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET: {
+				FunctionalResourceSet functionalResourceSet = (FunctionalResourceSet)theEObject;
+				T result = caseFunctionalResourceSet(functionalResourceSet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT: {
 				FrModelElement frModelElement = (FrModelElement)theEObject;
 				T result = caseFrModelElement(frModelElement);
@@ -133,6 +139,18 @@ public class FunctionalResourceModelSwitch<T> extends Switch<T> {
 				TypedElement typedElement = (TypedElement)theEObject;
 				T result = caseTypedElement(typedElement);
 				if (result == null) result = caseFrModelElement(typedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT: {
+				ServiceAccessPoint serviceAccessPoint = (ServiceAccessPoint)theEObject;
+				T result = caseServiceAccessPoint(serviceAccessPoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FunctionalResourceModelPackage.ANCILLARY_INTERFACE: {
+				AncillaryInterface ancillaryInterface = (AncillaryInterface)theEObject;
+				T result = caseAncillaryInterface(ancillaryInterface);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -287,6 +305,51 @@ public class FunctionalResourceModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTypedElement(TypedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Service Access Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Service Access Point</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServiceAccessPoint(ServiceAccessPoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ancillary Interface</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ancillary Interface</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAncillaryInterface(AncillaryInterface object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Resource Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Resource Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionalResourceSet(FunctionalResourceSet object) {
 		return null;
 	}
 

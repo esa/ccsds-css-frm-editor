@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getRootOid <em>Root Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
  *
@@ -49,6 +50,22 @@ public interface FunctionalResourceModel extends EObject {
 	 * @generated
 	 */
 	void setRootOid(Oid value);
+
+	/**
+	 * Returns the value of the '<em><b>Functional Resource Set</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.FunctionalResourceSet}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Functional Resource Set</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Functional Resource Set</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceModel_FunctionalResourceSet()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<FunctionalResourceSet> getFunctionalResourceSet();
 
 	/**
 	 * Returns the value of the '<em><b>Functional Resource</b></em>' containment reference list.

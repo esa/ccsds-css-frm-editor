@@ -34,6 +34,7 @@ import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.FunctionalResourceModel.provider.OidItemProvider;
 import ccsds.fr.model.tools.Activator;
+import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.model.tools.NameTool;
 
 enum ModelElementType {
@@ -152,7 +153,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			return;
 		}
 		
-		updateOids(domain, "", frm.getFunctionalResource().toArray(new FrModelElement[0]), 
+		updateOids(domain, "", FrUtility.getFunctionalResources(frm), 
 				rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
 	}
 

@@ -2,17 +2,20 @@
  */
 package ccsds.FunctionalResourceModel.impl;
 
+import ccsds.FunctionalResourceModel.AncillaryInterface;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Parameter;
+import ccsds.FunctionalResourceModel.ServiceAccessPoint;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -28,6 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getServiceAccesspoint <em>Service Accesspoint</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,6 +77,26 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * @ordered
 	 */
 	protected EList<Parameter> parameter;
+
+	/**
+	 * The cached value of the '{@link #getServiceAccesspoint() <em>Service Accesspoint</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceAccesspoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ServiceAccessPoint> serviceAccesspoint;
+
+	/**
+	 * The cached value of the '{@link #getProvidedAncillaryInterface() <em>Provided Ancillary Interface</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProvidedAncillaryInterface()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AncillaryInterface> providedAncillaryInterface;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,6 +170,47 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ServiceAccessPoint> getServiceAccesspoint() {
+		if (serviceAccesspoint == null) {
+			serviceAccesspoint = new EObjectContainmentWithInverseEList<ServiceAccessPoint>(ServiceAccessPoint.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE);
+		}
+		return serviceAccesspoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<AncillaryInterface> getProvidedAncillaryInterface() {
+		if (providedAncillaryInterface == null) {
+			providedAncillaryInterface = new EObjectContainmentWithInverseEList<AncillaryInterface>(AncillaryInterface.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE, FunctionalResourceModelPackage.ANCILLARY_INTERFACE__PROVIDING_FUNCTIONAL_RESOURCE);
+		}
+		return providedAncillaryInterface;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getServiceAccesspoint()).basicAdd(otherEnd, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProvidedAncillaryInterface()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -154,6 +220,10 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return ((InternalEList<?>)getDirectives()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 				return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				return ((InternalEList<?>)getServiceAccesspoint()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				return ((InternalEList<?>)getProvidedAncillaryInterface()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -174,6 +244,10 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return getUses();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 				return getParameter();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				return getServiceAccesspoint();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				return getProvidedAncillaryInterface();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -203,6 +277,14 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				getParameter().clear();
 				getParameter().addAll((Collection<? extends Parameter>)newValue);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				getServiceAccesspoint().clear();
+				getServiceAccesspoint().addAll((Collection<? extends ServiceAccessPoint>)newValue);
+				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				getProvidedAncillaryInterface().clear();
+				getProvidedAncillaryInterface().addAll((Collection<? extends AncillaryInterface>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -227,6 +309,12 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 				getParameter().clear();
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				getServiceAccesspoint().clear();
+				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				getProvidedAncillaryInterface().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -247,6 +335,10 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return uses != null && !uses.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 				return parameter != null && !parameter.isEmpty();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+				return serviceAccesspoint != null && !serviceAccesspoint.isEmpty();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+				return providedAncillaryInterface != null && !providedAncillaryInterface.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

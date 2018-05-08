@@ -5,25 +5,31 @@ package ccsds.FunctionalResourceModel.providers;
 
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 
+import ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.DirectivePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.EventPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FrModelElementPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceModelPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourcePropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.OidPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.QualifierPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.ServiceAccessPointPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.TypedElementPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.ValuePropertiesEditionPartForm;
 
+import ccsds.FunctionalResourceModel.parts.impl.AncillaryInterfacePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.DirectivePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.EventPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FrModelElementPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceModelPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourcePropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceSetPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.OidPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.ParameterPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.QualifierPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.ServiceAccessPointPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.TypedElementPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.ValuePropertiesEditionPartImpl;
 
@@ -59,6 +65,12 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new FunctionalResourceModelPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new FunctionalResourceModelPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new FunctionalResourceSetPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new FunctionalResourceSetPropertiesEditionPartForm(component);
 		}
 		if (key == FunctionalResourceModelViewsRepository.FrModelElement.class) {
 			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
@@ -113,6 +125,18 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new TypedElementPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new TypedElementPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new ServiceAccessPointPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new ServiceAccessPointPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.AncillaryInterface.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new AncillaryInterfacePropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new AncillaryInterfacePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

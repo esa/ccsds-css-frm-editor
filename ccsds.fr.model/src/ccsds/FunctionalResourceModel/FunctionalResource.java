@@ -17,6 +17,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint <em>Service Accesspoint</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource()
@@ -87,5 +89,41 @@ public interface FunctionalResource extends FrModelElement {
 	 * @generated
 	 */
 	EList<Parameter> getParameter();
+
+	/**
+	 * Returns the value of the '<em><b>Service Accesspoint</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.ServiceAccessPoint}.
+	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Service Accesspoint</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Service Accesspoint</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_ServiceAccesspoint()
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource
+	 * @model opposite="accessingFunctionalResource" containment="true"
+	 * @generated
+	 */
+	EList<ServiceAccessPoint> getServiceAccesspoint();
+
+	/**
+	 * Returns the value of the '<em><b>Provided Ancillary Interface</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.AncillaryInterface}.
+	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.AncillaryInterface#getProvidingFunctionalResource <em>Providing Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Provided Ancillary Interface</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Provided Ancillary Interface</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_ProvidedAncillaryInterface()
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface#getProvidingFunctionalResource
+	 * @model opposite="providingFunctionalResource" containment="true"
+	 * @generated
+	 */
+	EList<AncillaryInterface> getProvidedAncillaryInterface();
 
 } // FunctionalResource

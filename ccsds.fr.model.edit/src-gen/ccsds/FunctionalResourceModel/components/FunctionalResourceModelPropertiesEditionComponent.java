@@ -7,7 +7,7 @@ package ccsds.FunctionalResourceModel.components;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
-
+import ccsds.FunctionalResourceModel.FunctionalResourceSet;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 
@@ -64,6 +64,11 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 
 	
 	/**
+	 * Settings for functionalResourceSet ReferencesTable
+	 */
+	protected ReferencesTableSettings functionalResourceSetSettings;
+	
+	/**
 	 * Settings for functionalResource ReferencesTable
 	 */
 	protected ReferencesTableSettings functionalResourceSettings;
@@ -95,11 +100,30 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 			final FunctionalResourceModel functionalResourceModel = (FunctionalResourceModel)elt;
 			final FunctionalResourceModelPropertiesEditionPart basePart = (FunctionalResourceModelPropertiesEditionPart)editingPart;
 			// init values
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet)) {
+				functionalResourceSetSettings = new ReferencesTableSettings(functionalResourceModel, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet());
+				basePart.initFunctionalResourceSet(functionalResourceSetSettings);
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource)) {
 				functionalResourceSettings = new ReferencesTableSettings(functionalResourceModel, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource());
 				basePart.initFunctionalResource(functionalResourceSettings);
 			}
 			// init filters
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet)) {
+				basePart.addFilterToFunctionalResourceSet(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof FunctionalResourceSet); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for functionalResourceSet
+				// End of user code
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource)) {
 				basePart.addFilterToFunctionalResource(new ViewerFilter() {
 					/**
@@ -126,11 +150,15 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet();
+		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource();
 		}
@@ -144,6 +172,31 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FunctionalResourceModel functionalResourceModel = (FunctionalResourceModel)semanticObject;
+		if (FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, functionalResourceSetSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				functionalResourceSetSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				functionalResourceSetSettings.move(event.getNewIndex(), (FunctionalResourceSet) event.getNewValue());
+			}
+		}
 		if (FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, functionalResourceSettings, editingContext.getAdapterFactory());
@@ -179,6 +232,8 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			FunctionalResourceModelPropertiesEditionPart basePart = (FunctionalResourceModelPropertiesEditionPart)editingPart;
+			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet))
+				basePart.updateFunctionalResourceSet();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource))
 				basePart.updateFunctionalResource();
 			
@@ -193,6 +248,7 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource()		);
 		return new NotificationFilter[] {filter,};
 	}

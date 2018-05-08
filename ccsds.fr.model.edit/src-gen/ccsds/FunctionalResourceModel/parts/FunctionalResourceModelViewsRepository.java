@@ -22,7 +22,28 @@ public class FunctionalResourceModelViewsRepository {
 		public static class Properties {
 	
 			
+			public static String functionalResourceSet = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResourceSet";
+			
+			
 			public static String functionalResource = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResource";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * FunctionalResourceSet view descriptor
+	 * 
+	 */
+	public static class FunctionalResourceSet {
+		public static class Properties {
+	
+			
+			public static String name = "FunctionalResourceModel::FunctionalResourceSet::properties::name";
+			
+			
+			public static String functionalResource = "FunctionalResourceModel::FunctionalResourceSet::properties::functionalResource";
 			
 	
 		}
@@ -122,6 +143,12 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String parameter = "FunctionalResourceModel::FunctionalResource::properties::parameter";
+			
+			
+			public static String serviceAccesspoint = "FunctionalResourceModel::FunctionalResource::properties::serviceAccesspoint";
+			
+			
+			public static String providedAncillaryInterface = "FunctionalResourceModel::FunctionalResource::properties::providedAncillaryInterface";
 			
 	
 		}
@@ -377,6 +404,60 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String engineeringUnit = "FunctionalResourceModel::TypedElement::properties::engineeringUnit";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * ServiceAccessPoint view descriptor
+	 * 
+	 */
+	public static class ServiceAccessPoint {
+		public static class Properties {
+	
+			
+			public static String name = "FunctionalResourceModel::ServiceAccessPoint::properties::name";
+			
+			
+			public static String minAccessor = "FunctionalResourceModel::ServiceAccessPoint::properties::minAccessor";
+			
+			
+			public static String maxAccessor = "FunctionalResourceModel::ServiceAccessPoint::properties::maxAccessor";
+			
+			
+			public static String minAccessed = "FunctionalResourceModel::ServiceAccessPoint::properties::minAccessed";
+			
+			
+			public static String maxAccessed = "FunctionalResourceModel::ServiceAccessPoint::properties::maxAccessed";
+			
+			
+			public static String accessingFunctionalResource = "FunctionalResourceModel::ServiceAccessPoint::properties::accessingFunctionalResource";
+			
+			
+			public static String accessedFunctionalResource = "FunctionalResourceModel::ServiceAccessPoint::properties::accessedFunctionalResource";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * AncillaryInterface view descriptor
+	 * 
+	 */
+	public static class AncillaryInterface {
+		public static class Properties {
+	
+			
+			public static String name = "FunctionalResourceModel::AncillaryInterface::properties::name";
+			
+			
+			public static String providingFunctionalResource = "FunctionalResourceModel::AncillaryInterface::properties::providingFunctionalResource";
+			
+			
+			public static String requiringFunctionalResource = "FunctionalResourceModel::AncillaryInterface::properties::requiringFunctionalResource";
 			
 	
 		}

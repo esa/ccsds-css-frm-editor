@@ -99,6 +99,29 @@
                id="ccsds.FunctionalResourceModel.section.FunctionalResource"
                tab="Base">
          </propertySection>
+         
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceSetPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.FunctionalResourceSet"
+               tab="Base">
+         </propertySection>
+
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.ServiceAccessPointPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.ServiceAccessPointPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.ServiceAccessPoint"
+               tab="Base">
+         </propertySection>
+         
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AncillaryInterfacePropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.AncillaryInterface"
+               tab="Base">
+         </propertySection>
+         
+                  
          <propertySection
                class="ccsds.FunctionalResourceModel.parts.forms.EventPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.EventPropertiesEditionProvider$EditionFilter"
@@ -167,6 +190,29 @@
                id="ccsds.FunctionalResourceModel.section.FunctionalResource"
                tab="Base">
          </propertySection>
+         
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceSetPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.FunctionalResourceSet"
+               tab="Base">
+         </propertySection>         
+ 
+          <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AncillaryInterfacePropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.AncillaryInterface"
+               tab="Base">
+         </propertySection>
+ 
+ 
+          <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.ServiceAccessPointPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.ServiceAccessPointPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.ServiceAccessPoint"
+               tab="Base">
+         </propertySection>
+         
          <propertySection
                class="ccsds.FunctionalResourceModel.parts.forms.EventPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.EventPropertiesEditionProvider$EditionFilter"

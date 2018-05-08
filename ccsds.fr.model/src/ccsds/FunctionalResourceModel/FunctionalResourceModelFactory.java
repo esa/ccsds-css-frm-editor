@@ -112,6 +112,33 @@ public interface FunctionalResourceModelFactory extends EFactory {
 	TypedElement createTypedElement();
 
 	/**
+	 * Returns a new object of class '<em>Service Access Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service Access Point</em>'.
+	 * @generated
+	 */
+	ServiceAccessPoint createServiceAccessPoint();
+
+	/**
+	 * Returns a new object of class '<em>Ancillary Interface</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ancillary Interface</em>'.
+	 * @generated
+	 */
+	AncillaryInterface createAncillaryInterface();
+
+	/**
+	 * Returns a new object of class '<em>Functional Resource Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Functional Resource Set</em>'.
+	 * @generated
+	 */
+	FunctionalResourceSet createFunctionalResourceSet();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

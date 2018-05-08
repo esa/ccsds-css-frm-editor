@@ -22,6 +22,50 @@ public interface FunctionalResourceModelPropertiesEditionPart {
 
 
 	/**
+	 * Init the functionalResourceSet
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initFunctionalResourceSet(ReferencesTableSettings settings);
+
+	/**
+	 * Update the functionalResourceSet
+	 * @param newValue the functionalResourceSet to update
+	 * 
+	 */
+	public void updateFunctionalResourceSet();
+
+	/**
+	 * Adds the given filter to the functionalResourceSet edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToFunctionalResourceSet(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the functionalResourceSet edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToFunctionalResourceSet(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the functionalResourceSet table
+	 * 
+	 */
+	public boolean isContainedInFunctionalResourceSetTable(EObject element);
+
+
+
+
+	/**
 	 * Init the functionalResource
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary

@@ -78,13 +78,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE_MODEL__ROOT_OID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Functional Resource Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET = 1;
+
+	/**
 	 * The feature id for the '<em><b>Functional Resource</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = 1;
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Functional Resource Model</em>' class.
@@ -93,7 +102,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL_FEATURE_COUNT = 2;
+	int FUNCTIONAL_RESOURCE_MODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Functional Resource Model</em>' class.
@@ -112,7 +121,143 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFrModelElement()
 	 * @generated
 	 */
-	int FR_MODEL_ELEMENT = 1;
+	int FR_MODEL_ELEMENT = 2;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.OidImpl <em>Oid</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.OidImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getOid()
+	 * @generated
+	 */
+	int OID = 3;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl <em>Functional Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResource()
+	 * @generated
+	 */
+	int FUNCTIONAL_RESOURCE = 4;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.EventImpl <em>Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.EventImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getEvent()
+	 * @generated
+	 */
+	int EVENT = 5;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.DirectiveImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getDirective()
+	 * @generated
+	 */
+	int DIRECTIVE = 6;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl <em>Typed Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.TypedElementImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getTypedElement()
+	 * @generated
+	 */
+	int TYPED_ELEMENT = 10;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.ParameterImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getParameter()
+	 * @generated
+	 */
+	int PARAMETER = 7;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ValueImpl <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.ValueImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 8;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.QualifierImpl <em>Qualifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.QualifierImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getQualifier()
+	 * @generated
+	 */
+	int QUALIFIER = 9;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl <em>Service Access Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getServiceAccessPoint()
+	 * @generated
+	 */
+	int SERVICE_ACCESS_POINT = 11;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl <em>Functional Resource Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResourceSet()
+	 * @generated
+	 */
+	int FUNCTIONAL_RESOURCE_SET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_SET__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Functional Resource</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Functional Resource Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_SET_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Functional Resource Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_SET_OPERATION_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -214,16 +359,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FR_MODEL_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.OidImpl <em>Oid</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.OidImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getOid()
-	 * @generated
-	 */
-	int OID = 2;
-
-	/**
 	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,16 +384,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int OID_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl <em>Functional Resource</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResource()
-	 * @generated
-	 */
-	int FUNCTIONAL_RESOURCE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -378,13 +503,31 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Service Accesspoint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Provided Ancillary Interface</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Functional Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int FUNCTIONAL_RESOURCE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Functional Resource</em>' class.
@@ -394,16 +537,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_RESOURCE_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.EventImpl <em>Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.EventImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getEvent()
-	 * @generated
-	 */
-	int EVENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -523,16 +656,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.DirectiveImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getDirective()
-	 * @generated
-	 */
-	int DIRECTIVE = 5;
-
-	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -648,16 +771,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int DIRECTIVE_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl <em>Typed Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.TypedElementImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getTypedElement()
-	 * @generated
-	 */
-	int TYPED_ELEMENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -784,16 +897,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPED_ELEMENT_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.ParameterImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getParameter()
-	 * @generated
-	 */
-	int PARAMETER = 6;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -949,16 +1052,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int PARAMETER_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ValueImpl <em>Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.ValueImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getValue()
-	 * @generated
-	 */
-	int VALUE = 7;
-
-	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1083,16 +1176,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.QualifierImpl <em>Qualifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.QualifierImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getQualifier()
-	 * @generated
-	 */
-	int QUALIFIER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
@@ -1220,6 +1303,143 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 */
 	int QUALIFIER_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
 
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Min Accessor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__MIN_ACCESSOR = 1;
+
+	/**
+	 * The feature id for the '<em><b>Max Accessor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__MAX_ACCESSOR = 2;
+
+	/**
+	 * The feature id for the '<em><b>Min Accessed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__MIN_ACCESSED = 3;
+
+	/**
+	 * The feature id for the '<em><b>Max Accessed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__MAX_ACCESSED = 4;
+
+	/**
+	 * The feature id for the '<em><b>Accessing Functional Resource</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Accessed Functional Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE = 6;
+
+	/**
+	 * The number of structural features of the '<em>Service Access Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT_FEATURE_COUNT = 7;
+
+	/**
+	 * The number of operations of the '<em>Service Access Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ACCESS_POINT_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl <em>Ancillary Interface</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAncillaryInterface()
+	 * @generated
+	 */
+	int ANCILLARY_INTERFACE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCILLARY_INTERFACE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Providing Functional Resource</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCILLARY_INTERFACE__PROVIDING_FUNCTIONAL_RESOURCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Requiring Functional Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Ancillary Interface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCILLARY_INTERFACE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Ancillary Interface</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANCILLARY_INTERFACE_OPERATION_COUNT = 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel <em>Functional Resource Model</em>}'.
@@ -1241,6 +1461,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionalResourceModel_RootOid();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet <em>Functional Resource Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Functional Resource Set</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet()
+	 * @see #getFunctionalResourceModel()
+	 * @generated
+	 */
+	EReference getFunctionalResourceModel_FunctionalResourceSet();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResource <em>Functional Resource</em>}'.
@@ -1438,6 +1669,28 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getFunctionalResource_Parameter();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint <em>Service Accesspoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Service Accesspoint</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint()
+	 * @see #getFunctionalResource()
+	 * @generated
+	 */
+	EReference getFunctionalResource_ServiceAccesspoint();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Provided Ancillary Interface</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getProvidedAncillaryInterface()
+	 * @see #getFunctionalResource()
+	 * @generated
+	 */
+	EReference getFunctionalResource_ProvidedAncillaryInterface();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Event <em>Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1608,6 +1861,168 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getTypedElement_ExternalTypeOid();
 
 	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint <em>Service Access Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Service Access Point</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint
+	 * @generated
+	 */
+	EClass getServiceAccessPoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getName()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EAttribute getServiceAccessPoint_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMinAccessor <em>Min Accessor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Accessor</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getMinAccessor()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EAttribute getServiceAccessPoint_MinAccessor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessor <em>Max Accessor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Accessor</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessor()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EAttribute getServiceAccessPoint_MaxAccessor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMinAccessed <em>Min Accessed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Accessed</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getMinAccessed()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EAttribute getServiceAccessPoint_MinAccessed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessed <em>Max Accessed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Accessed</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessed()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EAttribute getServiceAccessPoint_MaxAccessed();
+
+	/**
+	 * Returns the meta object for the container reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Accessing Functional Resource</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EReference getServiceAccessPoint_AccessingFunctionalResource();
+
+	/**
+	 * Returns the meta object for the reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Accessed Functional Resource</em>'.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource()
+	 * @see #getServiceAccessPoint()
+	 * @generated
+	 */
+	EReference getServiceAccessPoint_AccessedFunctionalResource();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.AncillaryInterface <em>Ancillary Interface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ancillary Interface</em>'.
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface
+	 * @generated
+	 */
+	EClass getAncillaryInterface();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.AncillaryInterface#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface#getName()
+	 * @see #getAncillaryInterface()
+	 * @generated
+	 */
+	EAttribute getAncillaryInterface_Name();
+
+	/**
+	 * Returns the meta object for the container reference '{@link ccsds.FunctionalResourceModel.AncillaryInterface#getProvidingFunctionalResource <em>Providing Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Providing Functional Resource</em>'.
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface#getProvidingFunctionalResource()
+	 * @see #getAncillaryInterface()
+	 * @generated
+	 */
+	EReference getAncillaryInterface_ProvidingFunctionalResource();
+
+	/**
+	 * Returns the meta object for the reference '{@link ccsds.FunctionalResourceModel.AncillaryInterface#getRequiringFunctionalResource <em>Requiring Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Requiring Functional Resource</em>'.
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface#getRequiringFunctionalResource()
+	 * @see #getAncillaryInterface()
+	 * @generated
+	 */
+	EReference getAncillaryInterface_RequiringFunctionalResource();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet <em>Functional Resource Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Functional Resource Set</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceSet
+	 * @generated
+	 */
+	EClass getFunctionalResourceSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceSet#getName()
+	 * @see #getFunctionalResourceSet()
+	 * @generated
+	 */
+	EAttribute getFunctionalResourceSet_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getFunctionalResource <em>Functional Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Functional Resource</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceSet#getFunctionalResource()
+	 * @see #getFunctionalResourceSet()
+	 * @generated
+	 */
+	EReference getFunctionalResourceSet_FunctionalResource();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1647,6 +2062,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FUNCTIONAL_RESOURCE_MODEL__ROOT_OID = eINSTANCE.getFunctionalResourceModel_RootOid();
+
+		/**
+		 * The meta object literal for the '<em><b>Functional Resource Set</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET = eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet();
 
 		/**
 		 * The meta object literal for the '<em><b>Functional Resource</b></em>' containment reference list feature.
@@ -1799,6 +2222,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EReference FUNCTIONAL_RESOURCE__PARAMETER = eINSTANCE.getFunctionalResource_Parameter();
 
 		/**
+		 * The meta object literal for the '<em><b>Service Accesspoint</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT = eINSTANCE.getFunctionalResource_ServiceAccesspoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Provided Ancillary Interface</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE = eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface();
+
+		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.EventImpl <em>Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1937,6 +2376,132 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPED_ELEMENT__EXTERNAL_TYPE_OID = eINSTANCE.getTypedElement_ExternalTypeOid();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl <em>Service Access Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getServiceAccessPoint()
+		 * @generated
+		 */
+		EClass SERVICE_ACCESS_POINT = eINSTANCE.getServiceAccessPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_ACCESS_POINT__NAME = eINSTANCE.getServiceAccessPoint_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Accessor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_ACCESS_POINT__MIN_ACCESSOR = eINSTANCE.getServiceAccessPoint_MinAccessor();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Accessor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_ACCESS_POINT__MAX_ACCESSOR = eINSTANCE.getServiceAccessPoint_MaxAccessor();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Accessed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_ACCESS_POINT__MIN_ACCESSED = eINSTANCE.getServiceAccessPoint_MinAccessed();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Accessed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVICE_ACCESS_POINT__MAX_ACCESSED = eINSTANCE.getServiceAccessPoint_MaxAccessed();
+
+		/**
+		 * The meta object literal for the '<em><b>Accessing Functional Resource</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE = eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Accessed Functional Resource</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE = eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl <em>Ancillary Interface</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAncillaryInterface()
+		 * @generated
+		 */
+		EClass ANCILLARY_INTERFACE = eINSTANCE.getAncillaryInterface();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANCILLARY_INTERFACE__NAME = eINSTANCE.getAncillaryInterface_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Providing Functional Resource</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANCILLARY_INTERFACE__PROVIDING_FUNCTIONAL_RESOURCE = eINSTANCE.getAncillaryInterface_ProvidingFunctionalResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Requiring Functional Resource</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE = eINSTANCE.getAncillaryInterface_RequiringFunctionalResource();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl <em>Functional Resource Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResourceSet()
+		 * @generated
+		 */
+		EClass FUNCTIONAL_RESOURCE_SET = eINSTANCE.getFunctionalResourceSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FUNCTIONAL_RESOURCE_SET__NAME = eINSTANCE.getFunctionalResourceSet_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Functional Resource</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE = eINSTANCE.getFunctionalResourceSet_FunctionalResource();
 
 	}
 

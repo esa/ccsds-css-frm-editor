@@ -57,6 +57,7 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL: return createFunctionalResourceModel();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET: return createFunctionalResourceSet();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT: return createFrModelElement();
 			case FunctionalResourceModelPackage.OID: return createOid();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE: return createFunctionalResource();
@@ -66,6 +67,8 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 			case FunctionalResourceModelPackage.VALUE: return createValue();
 			case FunctionalResourceModelPackage.QUALIFIER: return createQualifier();
 			case FunctionalResourceModelPackage.TYPED_ELEMENT: return createTypedElement();
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT: return createServiceAccessPoint();
+			case FunctionalResourceModelPackage.ANCILLARY_INTERFACE: return createAncillaryInterface();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -169,6 +172,36 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public TypedElement createTypedElement() {
 		TypedElementImpl typedElement = new TypedElementImpl();
 		return typedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceAccessPoint createServiceAccessPoint() {
+		ServiceAccessPointImpl serviceAccessPoint = new ServiceAccessPointImpl();
+		return serviceAccessPoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AncillaryInterface createAncillaryInterface() {
+		AncillaryInterfaceImpl ancillaryInterface = new AncillaryInterfaceImpl();
+		return ancillaryInterface;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FunctionalResourceSet createFunctionalResourceSet() {
+		FunctionalResourceSetImpl functionalResourceSet = new FunctionalResourceSetImpl();
+		return functionalResourceSet;
 	}
 
 	/**

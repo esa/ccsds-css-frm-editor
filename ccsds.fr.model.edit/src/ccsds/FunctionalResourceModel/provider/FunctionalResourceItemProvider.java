@@ -69,6 +69,8 @@ public class FunctionalResourceItemProvider
 			super.getPropertyDescriptors(object);
 
 			addUsesPropertyDescriptor(object);
+			addServiceAccesspointPropertyDescriptor(object);
+			addProvidedAncillaryInterfacePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -96,6 +98,50 @@ public class FunctionalResourceItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Service Accesspoint feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addServiceAccesspointPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FunctionalResource_serviceAccesspoint_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalResource_serviceAccesspoint_feature", "_UI_FunctionalResource_type"),
+				 FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Provided Ancillary Interface feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProvidedAncillaryInterfacePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FunctionalResource_providedAncillaryInterface_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalResource_providedAncillaryInterface_feature", "_UI_FunctionalResource_type"),
+				 FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -110,6 +156,8 @@ public class FunctionalResourceItemProvider
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENT);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DIRECTIVES);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
 		}
 		return childrenFeatures;
 	}
@@ -212,6 +260,16 @@ public class FunctionalResourceItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER,
 				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT,
+				 FunctionalResourceModelFactory.eINSTANCE.createServiceAccessPoint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE,
+				 FunctionalResourceModelFactory.eINSTANCE.createAncillaryInterface()));
 	}
 	
 	class ChangeListener implements INotifyChangedListener {

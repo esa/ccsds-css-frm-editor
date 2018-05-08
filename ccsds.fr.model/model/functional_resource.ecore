@@ -12,6 +12,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootOid" lowerBound="1"
         eType="#//Oid" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResourceSet"
+        upperBound="-1" eType="#//FunctionalResourceSet" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResource" upperBound="-1"
+        eType="#//FunctionalResource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResource" upperBound="-1"
         eType="#//FunctionalResource" containment="true"/>
   </eClassifiers>
@@ -48,6 +55,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//FunctionalResource"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceAccesspoint" upperBound="-1"
+        eType="#//ServiceAccessPoint" containment="true" eOpposite="#//ServiceAccessPoint/accessingFunctionalResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedAncillaryInterface"
+        upperBound="-1" eType="#//AncillaryInterface" containment="true" eOpposite="#//AncillaryInterface/providingFunctionalResource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//FrModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalOid" eType="#//Oid"
@@ -82,5 +93,28 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="engineeringUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalTypeOid" eType="#//Oid"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceAccessPoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="newSAP"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minAccessor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAccessor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minAccessed" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAccessed" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accessingFunctionalResource"
+        lowerBound="1" eType="#//FunctionalResource" eOpposite="#//FunctionalResource/serviceAccesspoint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accessedFunctionalResource"
+        lowerBound="1" eType="#//FunctionalResource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AncillaryInterface">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providingFunctionalResource"
+        lowerBound="1" eType="#//FunctionalResource" eOpposite="#//FunctionalResource/providedAncillaryInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiringFunctionalResource"
+        lowerBound="1" eType="#//FunctionalResource"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -28,7 +28,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -59,6 +59,9 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, FunctionalResourceModelPropertiesEditionPart {
 
+	protected ReferencesTable functionalResourceSet;
+	protected List<ViewerFilter> functionalResourceSetBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> functionalResourceSetFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable functionalResource;
 	protected List<ViewerFilter> functionalResourceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> functionalResourceFilters = new ArrayList<ViewerFilter>();
@@ -106,9 +109,9 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence functionalResourceModel_Step = new BindingCompositionSequence(propertiesEditionComponent);
-		functionalResourceModel_Step
-			.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.class)
-			.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource);
+		CompositionStep propertiesStep = functionalResourceModel_Step.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.class);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource);
 		
 		
 		composer = new PartComposer(functionalResourceModel_Step) {
@@ -117,6 +120,9 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 			public Composite addToPart(Composite parent, Object key) {
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet) {
+					return createFunctionalResourceSetTableComposition(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource) {
 					return createFunctionalResourceTableComposition(widgetFactory, parent);
@@ -141,6 +147,57 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		propertiesSection.setClient(propertiesGroup);
 		return propertiesGroup;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createFunctionalResourceSetTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.functionalResourceSet = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, FunctionalResourceModelMessages.FunctionalResourceModelPropertiesEditionPart_FunctionalResourceSetLabel), new ReferencesTableListener() {
+			public void handleAdd() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				functionalResourceSet.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				functionalResourceSet.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				functionalResourceSet.refresh();
+			}
+			public void handleRemove(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				functionalResourceSet.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.functionalResourceSetFilters) {
+			this.functionalResourceSet.addFilter(filter);
+		}
+		this.functionalResourceSet.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.functionalResourceSet.createControls(parent, widgetFactory);
+		this.functionalResourceSet.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData functionalResourceSetData = new GridData(GridData.FILL_HORIZONTAL);
+		functionalResourceSetData.horizontalSpan = 3;
+		this.functionalResourceSet.setLayoutData(functionalResourceSetData);
+		this.functionalResourceSet.setLowerBound(0);
+		this.functionalResourceSet.setUpperBound(-1);
+		functionalResourceSet.setID(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet);
+		functionalResourceSet.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createFunctionalResourceSetTableComposition
+
+		// End of user code
+		return parent;
 	}
 
 	/**
@@ -205,6 +262,72 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 		// Start of user code for tab synchronization
 		
 		// End of user code
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#initFunctionalResourceSet(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initFunctionalResourceSet(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		functionalResourceSet.setContentProvider(contentProvider);
+		functionalResourceSet.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet);
+		if (eefElementEditorReadOnlyState && functionalResourceSet.isEnabled()) {
+			functionalResourceSet.setEnabled(false);
+			functionalResourceSet.setToolTipText(FunctionalResourceModelMessages.FunctionalResourceModel_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !functionalResourceSet.isEnabled()) {
+			functionalResourceSet.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#updateFunctionalResourceSet()
+	 * 
+	 */
+	public void updateFunctionalResourceSet() {
+	functionalResourceSet.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addFilterFunctionalResourceSet(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToFunctionalResourceSet(ViewerFilter filter) {
+		functionalResourceSetFilters.add(filter);
+		if (this.functionalResourceSet != null) {
+			this.functionalResourceSet.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addBusinessFilterFunctionalResourceSet(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToFunctionalResourceSet(ViewerFilter filter) {
+		functionalResourceSetBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#isContainedInFunctionalResourceSetTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInFunctionalResourceSetTable(EObject element) {
+		return ((ReferencesTableSettings)functionalResourceSet.getInput()).contains(element);
 	}
 
 

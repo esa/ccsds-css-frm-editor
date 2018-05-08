@@ -2,6 +2,7 @@
  */
 package ccsds.FunctionalResourceModel.impl;
 
+import ccsds.FunctionalResourceModel.AncillaryInterface;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FrModelElement;
@@ -9,9 +10,11 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
+import ccsds.FunctionalResourceModel.FunctionalResourceSet;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
+import ccsds.FunctionalResourceModel.ServiceAccessPoint;
 import ccsds.FunctionalResourceModel.TypedElement;
 import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.util.FunctionalResourceModelValidator;
@@ -98,6 +101,27 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass typedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceAccessPointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ancillaryInterfaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionalResourceSetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -192,8 +216,17 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResourceModel_FunctionalResource() {
+	public EReference getFunctionalResourceModel_FunctionalResourceSet() {
 		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResourceModel_FunctionalResource() {
+		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -354,6 +387,24 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFunctionalResource_ServiceAccesspoint() {
+		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResource_ProvidedAncillaryInterface() {
+		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEvent() {
 		return eventEClass;
 	}
@@ -498,6 +549,141 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getServiceAccessPoint() {
+		return serviceAccessPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceAccessPoint_Name() {
+		return (EAttribute)serviceAccessPointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceAccessPoint_MinAccessor() {
+		return (EAttribute)serviceAccessPointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceAccessPoint_MaxAccessor() {
+		return (EAttribute)serviceAccessPointEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceAccessPoint_MinAccessed() {
+		return (EAttribute)serviceAccessPointEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceAccessPoint_MaxAccessed() {
+		return (EAttribute)serviceAccessPointEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServiceAccessPoint_AccessingFunctionalResource() {
+		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServiceAccessPoint_AccessedFunctionalResource() {
+		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAncillaryInterface() {
+		return ancillaryInterfaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAncillaryInterface_Name() {
+		return (EAttribute)ancillaryInterfaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAncillaryInterface_ProvidingFunctionalResource() {
+		return (EReference)ancillaryInterfaceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAncillaryInterface_RequiringFunctionalResource() {
+		return (EReference)ancillaryInterfaceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFunctionalResourceSet() {
+		return functionalResourceSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionalResourceSet_Name() {
+		return (EAttribute)functionalResourceSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResourceSet_FunctionalResource() {
+		return (EReference)functionalResourceSetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FunctionalResourceModelFactory getFunctionalResourceModelFactory() {
 		return (FunctionalResourceModelFactory)getEFactoryInstance();
 	}
@@ -523,7 +709,12 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		// Create classes and their features
 		functionalResourceModelEClass = createEClass(FUNCTIONAL_RESOURCE_MODEL);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
+		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
+
+		functionalResourceSetEClass = createEClass(FUNCTIONAL_RESOURCE_SET);
+		createEAttribute(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__NAME);
+		createEReference(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE);
 
 		frModelElementEClass = createEClass(FR_MODEL_ELEMENT);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SEMANTIC_DEFINITION);
@@ -544,6 +735,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__DIRECTIVES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__USES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
+		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
+		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
 
 		eventEClass = createEClass(EVENT);
 		createEReference(eventEClass, EVENT__EXTERNAL_OID);
@@ -566,6 +759,20 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(typedElementEClass, TYPED_ELEMENT__TYPE_DEFINITION);
 		createEAttribute(typedElementEClass, TYPED_ELEMENT__ENGINEERING_UNIT);
 		createEReference(typedElementEClass, TYPED_ELEMENT__EXTERNAL_TYPE_OID);
+
+		serviceAccessPointEClass = createEClass(SERVICE_ACCESS_POINT);
+		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__NAME);
+		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MIN_ACCESSOR);
+		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MAX_ACCESSOR);
+		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MIN_ACCESSED);
+		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MAX_ACCESSED);
+		createEReference(serviceAccessPointEClass, SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE);
+		createEReference(serviceAccessPointEClass, SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE);
+
+		ancillaryInterfaceEClass = createEClass(ANCILLARY_INTERFACE);
+		createEAttribute(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__NAME);
+		createEReference(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__PROVIDING_FUNCTIONAL_RESOURCE);
+		createEReference(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE);
 	}
 
 	/**
@@ -607,7 +814,12 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(functionalResourceModelEClass, FunctionalResourceModel.class, "FunctionalResourceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFunctionalResourceModel_RootOid(), this.getOid(), null, "rootOid", null, 1, 1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResourceModel_FunctionalResourceSet(), this.getFunctionalResourceSet(), null, "functionalResourceSet", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_FunctionalResource(), this.getFunctionalResource(), null, "functionalResource", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(functionalResourceSetEClass, FunctionalResourceSet.class, "FunctionalResourceSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFunctionalResourceSet_Name(), ecorePackage.getEString(), "name", null, 1, 1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResourceSet_FunctionalResource(), this.getFunctionalResource(), null, "functionalResource", null, 0, -1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(frModelElementEClass, FrModelElement.class, "FrModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrModelElement_SemanticDefinition(), ecorePackage.getEString(), "SemanticDefinition", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -628,6 +840,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Directives(), this.getDirective(), null, "directives", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Uses(), this.getFunctionalResource(), null, "uses", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResource_ServiceAccesspoint(), this.getServiceAccessPoint(), this.getServiceAccessPoint_AccessingFunctionalResource(), "serviceAccesspoint", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResource_ProvidedAncillaryInterface(), this.getAncillaryInterface(), this.getAncillaryInterface_ProvidingFunctionalResource(), "providedAncillaryInterface", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvent_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -650,6 +864,20 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getTypedElement_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedElement_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedElement_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serviceAccessPointEClass, ServiceAccessPoint.class, "ServiceAccessPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceAccessPoint_Name(), ecorePackage.getEString(), "name", "newSAP", 0, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceAccessPoint_MinAccessor(), ecorePackage.getEInt(), "minAccessor", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceAccessPoint_MaxAccessor(), ecorePackage.getEInt(), "maxAccessor", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceAccessPoint_MinAccessed(), ecorePackage.getEInt(), "minAccessed", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceAccessPoint_MaxAccessed(), ecorePackage.getEInt(), "maxAccessed", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceAccessPoint_AccessingFunctionalResource(), this.getFunctionalResource(), this.getFunctionalResource_ServiceAccesspoint(), "accessingFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceAccessPoint_AccessedFunctionalResource(), this.getFunctionalResource(), null, "accessedFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ancillaryInterfaceEClass, AncillaryInterface.class, "AncillaryInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAncillaryInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAncillaryInterface_ProvidingFunctionalResource(), this.getFunctionalResource(), this.getFunctionalResource_ProvidedAncillaryInterface(), "providingFunctionalResource", null, 1, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAncillaryInterface_RequiringFunctionalResource(), this.getFunctionalResource(), null, "requiringFunctionalResource", null, 1, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

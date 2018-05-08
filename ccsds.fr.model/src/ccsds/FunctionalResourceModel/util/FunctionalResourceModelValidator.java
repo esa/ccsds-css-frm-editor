@@ -88,6 +88,8 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 		switch (classifierID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL:
 				return validateFunctionalResourceModel((FunctionalResourceModel)value, diagnostics, context);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET:
+				return validateFunctionalResourceSet((FunctionalResourceSet)value, diagnostics, context);
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT:
 				return validateFrModelElement((FrModelElement)value, diagnostics, context);
 			case FunctionalResourceModelPackage.OID:
@@ -106,6 +108,10 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 				return validateQualifier((Qualifier)value, diagnostics, context);
 			case FunctionalResourceModelPackage.TYPED_ELEMENT:
 				return validateTypedElement((TypedElement)value, diagnostics, context);
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT:
+				return validateServiceAccessPoint((ServiceAccessPoint)value, diagnostics, context);
+			case FunctionalResourceModelPackage.ANCILLARY_INTERFACE:
+				return validateAncillaryInterface((AncillaryInterface)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -238,6 +244,33 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 	 */
 	public boolean validateTypedElement(TypedElement typedElement, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(typedElement, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceAccessPoint(ServiceAccessPoint serviceAccessPoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(serviceAccessPoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAncillaryInterface(AncillaryInterface ancillaryInterface, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(ancillaryInterface, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFunctionalResourceSet(FunctionalResourceSet functionalResourceSet, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(functionalResourceSet, diagnostics, context);
 	}
 
 	/**

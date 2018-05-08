@@ -72,6 +72,10 @@ public class FunctionalResourceModelAdapterFactory extends AdapterFactoryImpl {
 				return createFunctionalResourceModelAdapter();
 			}
 			@Override
+			public Adapter caseFunctionalResourceSet(FunctionalResourceSet object) {
+				return createFunctionalResourceSetAdapter();
+			}
+			@Override
 			public Adapter caseFrModelElement(FrModelElement object) {
 				return createFrModelElementAdapter();
 			}
@@ -106,6 +110,14 @@ public class FunctionalResourceModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
+			}
+			@Override
+			public Adapter caseServiceAccessPoint(ServiceAccessPoint object) {
+				return createServiceAccessPointAdapter();
+			}
+			@Override
+			public Adapter caseAncillaryInterface(AncillaryInterface object) {
+				return createAncillaryInterfaceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -264,6 +276,48 @@ public class FunctionalResourceModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint <em>Service Access Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint
+	 * @generated
+	 */
+	public Adapter createServiceAccessPointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.FunctionalResourceModel.AncillaryInterface <em>Ancillary Interface</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.FunctionalResourceModel.AncillaryInterface
+	 * @generated
+	 */
+	public Adapter createAncillaryInterfaceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet <em>Functional Resource Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceSet
+	 * @generated
+	 */
+	public Adapter createFunctionalResourceSetAdapter() {
 		return null;
 	}
 

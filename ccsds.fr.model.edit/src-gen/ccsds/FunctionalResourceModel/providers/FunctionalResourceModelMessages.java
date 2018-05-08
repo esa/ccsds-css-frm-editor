@@ -17,6 +17,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourceModelPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String FunctionalResourceSetPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String FrModelElementPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -43,12 +46,24 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String TypedElementPropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String ServiceAccessPointPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String AncillaryInterfacePropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String FunctionalResourceModel_ReadOnly;
 
 	
 	public static String FunctionalResourceModel_Part_Title;
+
+	
+	public static String FunctionalResourceSet_ReadOnly;
+
+	
+	public static String FunctionalResourceSet_Part_Title;
 
 	
 	public static String FrModelElement_ReadOnly;
@@ -104,9 +119,30 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String TypedElement_Part_Title;
 
+	
+	public static String ServiceAccessPoint_ReadOnly;
+
+	
+	public static String ServiceAccessPoint_Part_Title;
+
+	
+	public static String AncillaryInterface_ReadOnly;
+
+	
+	public static String AncillaryInterface_Part_Title;
+
+
+	
+	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceSetLabel;
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceLabel;
+
+	
+	public static String FunctionalResourceSetPropertiesEditionPart_NameLabel;
+
+	
+	public static String FunctionalResourceSetPropertiesEditionPart_FunctionalResourceLabel;
 
 	
 	public static String FrModelElementPropertiesEditionPart_SemanticDefinitionLabel;
@@ -170,6 +206,12 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_ParameterLabel;
+
+	
+	public static String FunctionalResourcePropertiesEditionPart_ServiceAccesspointLabel;
+
+	
+	public static String FunctionalResourcePropertiesEditionPart_ProvidedAncillaryInterfaceLabel;
 
 	
 	public static String EventPropertiesEditionPart_SemanticDefinitionLabel;
@@ -353,6 +395,36 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String TypedElementPropertiesEditionPart_EngineeringUnitLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_NameLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_MinAccessorLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_MaxAccessorLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_MinAccessedLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_MaxAccessedLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_AccessingFunctionalResourceLabel;
+
+	
+	public static String ServiceAccessPointPropertiesEditionPart_AccessedFunctionalResourceLabel;
+
+	
+	public static String AncillaryInterfacePropertiesEditionPart_NameLabel;
+
+	
+	public static String AncillaryInterfacePropertiesEditionPart_ProvidingFunctionalResourceLabel;
+
+	
+	public static String AncillaryInterfacePropertiesEditionPart_RequiringFunctionalResourceLabel;
 
 
 	

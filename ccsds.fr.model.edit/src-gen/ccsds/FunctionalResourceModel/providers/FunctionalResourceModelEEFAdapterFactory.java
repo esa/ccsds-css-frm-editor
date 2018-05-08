@@ -23,6 +23,14 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createFunctionalResourceSetAdapter()
+	 * 
+	 */
+	public Adapter createFunctionalResourceSetAdapter() {
+		return new FunctionalResourceSetPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createFrModelElementAdapter()
 	 * 
 	 */
@@ -92,6 +100,22 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	 */
 	public Adapter createQualifierAdapter() {
 		return new QualifierPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createServiceAccessPointAdapter()
+	 * 
+	 */
+	public Adapter createServiceAccessPointAdapter() {
+		return new ServiceAccessPointPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createAncillaryInterfaceAdapter()
+	 * 
+	 */
+	public Adapter createAncillaryInterfaceAdapter() {
+		return new AncillaryInterfacePropertiesEditionProvider();
 	}
 
 }

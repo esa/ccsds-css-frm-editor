@@ -78,6 +78,7 @@ public class FunctionalResourceModelItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
 		}
 		return childrenFeatures;
@@ -131,6 +132,7 @@ public class FunctionalResourceModelItemProvider
 
 		switch (notification.getFeatureID(FunctionalResourceModel.class)) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -153,6 +155,11 @@ public class FunctionalResourceModelItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET,
+				 FunctionalResourceModelFactory.eINSTANCE.createFunctionalResourceSet()));
 
 		newChildDescriptors.add
 			(createChildParameter

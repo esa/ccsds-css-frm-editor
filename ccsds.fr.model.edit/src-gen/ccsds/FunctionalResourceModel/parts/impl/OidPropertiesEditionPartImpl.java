@@ -160,8 +160,8 @@ public class OidPropertiesEditionPartImpl extends CompositePropertiesEditionPart
 //		EditingUtils.setID(editOidBit, FunctionalResourceModelViewsRepository.Oid.Properties.oidBit);
 //		EditingUtils.setEEFtype(editOidBit, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
 //		// Start of user code for createOidBitMultiValuedEditor
-////
-////		// End of user code
+////////////////////
+////////////////////		// End of user code
 //		return parent;
 //	}
 

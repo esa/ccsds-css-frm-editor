@@ -64,7 +64,6 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OidPropertiesEditionPart {
 
-	protected static final String OID_SEP_STRING = ".";
 	protected Text oidBit;
 	protected Button editOidBit;
 	protected EList oidBitList;
@@ -346,7 +345,7 @@ public class OidPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 				for(int idx=0; idx<e.text.length(); idx++) {
 					String oidTest = new StringBuilder().append(e.text.charAt(idx)).toString();
 					
-					if(oidTest.equals(OID_SEP_STRING) == false && isInteger(e.text.charAt(idx)) == false) {
+					if(oidTest.equals(".") == false && isInteger(e.text.charAt(idx)) == false) {
 						e.doit = false;
 						return;
 					}

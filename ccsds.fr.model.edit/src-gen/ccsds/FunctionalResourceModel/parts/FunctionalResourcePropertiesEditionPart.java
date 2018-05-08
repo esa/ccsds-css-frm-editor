@@ -307,6 +307,94 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 
+	/**
+	 * Init the serviceAccesspoint
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initServiceAccesspoint(ReferencesTableSettings settings);
+
+	/**
+	 * Update the serviceAccesspoint
+	 * @param newValue the serviceAccesspoint to update
+	 * 
+	 */
+	public void updateServiceAccesspoint();
+
+	/**
+	 * Adds the given filter to the serviceAccesspoint edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToServiceAccesspoint(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the serviceAccesspoint edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToServiceAccesspoint(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the serviceAccesspoint table
+	 * 
+	 */
+	public boolean isContainedInServiceAccesspointTable(EObject element);
+
+
+
+
+	/**
+	 * Init the providedAncillaryInterface
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initProvidedAncillaryInterface(ReferencesTableSettings settings);
+
+	/**
+	 * Update the providedAncillaryInterface
+	 * @param newValue the providedAncillaryInterface to update
+	 * 
+	 */
+	public void updateProvidedAncillaryInterface();
+
+	/**
+	 * Adds the given filter to the providedAncillaryInterface edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToProvidedAncillaryInterface(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the providedAncillaryInterface edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToProvidedAncillaryInterface(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the providedAncillaryInterface table
+	 * 
+	 */
+	public boolean isContainedInProvidedAncillaryInterfaceTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.
