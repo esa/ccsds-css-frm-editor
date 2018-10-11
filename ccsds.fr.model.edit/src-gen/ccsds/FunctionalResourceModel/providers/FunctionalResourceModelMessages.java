@@ -412,10 +412,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ServiceAccessPointPropertiesEditionPart_MaxAccessedLabel;
 
 	
-	public static String ServiceAccessPointPropertiesEditionPart_AccessingFunctionalResourceLabel;
+	public static String ServiceAccessPointPropertiesEditionPart_AccessedFunctionalResourceLabel;
 
 	
-	public static String ServiceAccessPointPropertiesEditionPart_AccessedFunctionalResourceLabel;
+	public static String ServiceAccessPointPropertiesEditionPart_AccessingFunctionalResourceLabel;
 
 	
 	public static String AncillaryInterfacePropertiesEditionPart_NameLabel;

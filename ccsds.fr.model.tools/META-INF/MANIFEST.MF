@@ -2,14 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Functional_Resource_Transformation
 Bundle-SymbolicName: ccsds.fr.model.tools;singleton:=true
-Bundle-Version: 3.0.5.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: ccsds.fr.model.tools.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  ccsds.fr.model.edit;bundle-version="1.0.0",
  org.eclipse.emf.ecore,
  ccsds.fr.model.editor,
- org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.0"
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.0",
+ org.eclipse.core.resources
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: ccsds.FunctionalResourceModel.provider,
@@ -20,3 +21,4 @@ Import-Package: ccsds.FunctionalResourceModel.provider,
  org.eclipse.emf.edit.provider,
  org.eclipse.emf.edit.provider.resource
 Bundle-Vendor: esa.esoc.int
+Export-Package: ccsds.fr.model.tools

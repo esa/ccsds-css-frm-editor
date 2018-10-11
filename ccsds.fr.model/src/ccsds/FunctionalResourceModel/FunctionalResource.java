@@ -93,7 +93,7 @@ public interface FunctionalResource extends FrModelElement {
 	/**
 	 * Returns the value of the '<em><b>Service Accesspoint</b></em>' containment reference list.
 	 * The list contents are of type {@link ccsds.FunctionalResourceModel.ServiceAccessPoint}.
-	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}'.
+	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Service Accesspoint</em>' containment reference list isn't clear,
@@ -102,8 +102,8 @@ public interface FunctionalResource extends FrModelElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Service Accesspoint</em>' containment reference list.
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_ServiceAccesspoint()
-	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource
-	 * @model opposite="accessingFunctionalResource" containment="true"
+	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource
+	 * @model opposite="accessedFunctionalResource" containment="true"
 	 * @generated
 	 */
 	EList<ServiceAccessPoint> getServiceAccesspoint();

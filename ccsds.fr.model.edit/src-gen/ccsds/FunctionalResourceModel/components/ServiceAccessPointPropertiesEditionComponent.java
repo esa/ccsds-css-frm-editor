@@ -71,14 +71,14 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 
 	
 	/**
-	 * Settings for accessingFunctionalResource EObjectFlatComboViewer
-	 */
-	private EObjectFlatComboSettings accessingFunctionalResourceSettings;
-	
-	/**
 	 * Settings for accessedFunctionalResource EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings accessedFunctionalResourceSettings;
+	
+	/**
+	 * Settings for accessingFunctionalResource EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings accessingFunctionalResourceSettings;
 	
 	
 	/**
@@ -126,13 +126,6 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 				basePart.setMaxAccessed(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, serviceAccessPoint.getMaxAccessed()));
 			}
 			
-			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource)) {
-				// init part
-				accessingFunctionalResourceSettings = new EObjectFlatComboSettings(serviceAccessPoint, FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource());
-				basePart.initAccessingFunctionalResource(accessingFunctionalResourceSettings);
-				// set the button mode
-				basePart.setAccessingFunctionalResourceButtonMode(ButtonsModeEnum.BROWSE);
-			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource)) {
 				// init part
 				accessedFunctionalResourceSettings = new EObjectFlatComboSettings(serviceAccessPoint, FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource());
@@ -140,28 +133,19 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 				// set the button mode
 				basePart.setAccessedFunctionalResourceButtonMode(ButtonsModeEnum.BROWSE);
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource)) {
+				// init part
+				accessingFunctionalResourceSettings = new EObjectFlatComboSettings(serviceAccessPoint, FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource());
+				basePart.initAccessingFunctionalResource(accessingFunctionalResourceSettings);
+				// set the button mode
+				basePart.setAccessingFunctionalResourceButtonMode(ButtonsModeEnum.BROWSE);
+			}
 			// init filters
 			
 			
 			
 			
 			
-			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource)) {
-				basePart.addFilterToAccessingFunctionalResource(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof FunctionalResource);
-					}
-					
-				});
-				// Start of user code for additional businessfilters for accessingFunctionalResource
-				// End of user code
-			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource)) {
 				basePart.addFilterToAccessedFunctionalResource(new ViewerFilter() {
 				
@@ -176,6 +160,22 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 					
 				});
 				// Start of user code for additional businessfilters for accessedFunctionalResource
+				// End of user code
+			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource)) {
+				basePart.addFilterToAccessingFunctionalResource(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof FunctionalResource);
+					}
+					
+				});
+				// Start of user code for additional businessfilters for accessingFunctionalResource
 				// End of user code
 			}
 			// init values for referenced views
@@ -215,11 +215,11 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 		if (editorKey == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed) {
 			return FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_MaxAccessed();
 		}
-		if (editorKey == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource) {
-			return FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource();
-		}
 		if (editorKey == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource) {
 			return FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource) {
+			return FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -246,22 +246,6 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 		if (FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed == event.getAffectedEditor()) {
 			serviceAccessPoint.setMaxAccessed((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
 		}
-		if (FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				accessingFunctionalResourceSettings.setToReference((FunctionalResource)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				FunctionalResource eObject = FunctionalResourceModelFactory.eINSTANCE.createFunctionalResource();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				accessingFunctionalResourceSettings.setToReference(eObject);
-			}
-		}
 		if (FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				accessedFunctionalResourceSettings.setToReference((FunctionalResource)event.getNewValue());
@@ -276,6 +260,22 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 					}
 				}
 				accessedFunctionalResourceSettings.setToReference(eObject);
+			}
+		}
+		if (FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				accessingFunctionalResourceSettings.setToReference((FunctionalResource)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				FunctionalResource eObject = FunctionalResourceModelFactory.eINSTANCE.createFunctionalResource();
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				accessingFunctionalResourceSettings.setToReference(eObject);
 			}
 		}
 	}
@@ -323,10 +323,10 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 					basePart.setMaxAccessed("");
 				}
 			}
-			if (FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource().equals(msg.getFeature()) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource))
-				basePart.setAccessingFunctionalResource((EObject)msg.getNewValue());
 			if (FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource().equals(msg.getFeature()) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource))
 				basePart.setAccessedFunctionalResource((EObject)msg.getNewValue());
+			if (FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource().equals(msg.getFeature()) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource))
+				basePart.setAccessingFunctionalResource((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -344,8 +344,8 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_MaxAccessor(),
 			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_MinAccessed(),
 			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_MaxAccessed(),
-			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource(),
-			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource()		);
+			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessedFunctionalResource(),
+			FunctionalResourceModelPackage.eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -357,7 +357,7 @@ public class ServiceAccessPointPropertiesEditionComponent extends SinglePartProp
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.minAccessor || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessor || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.minAccessed || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource;
+		return key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.minAccessor || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessor || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.minAccessed || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource || key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource;
 	}
 
 	/**

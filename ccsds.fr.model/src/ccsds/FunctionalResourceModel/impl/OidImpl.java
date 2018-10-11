@@ -126,18 +126,21 @@ public class OidImpl extends MinimalEObjectImpl.Container implements Oid {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * Returns the OID in dotted notation and numeric form.
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (oidBit: ");
-		result.append(oidBit);
-		result.append(')');
+		StringBuffer result = new StringBuffer();
+		for(Integer oidBit : this.oidBit) {
+			if(result.length() > 0) {
+				result.append(".");
+			}
+			result.append(oidBit);
+		}
+		
 		return result.toString();
 	}
 

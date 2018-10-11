@@ -1,3 +1,7 @@
+Version 4.0.0 from 09.05.2018
+- Added support for Functional Resource Sets, Service Access Points and Ancillary Interfaces.
+- Graphical support for the above features has been added, including a detailed FR diagram for documentation purposes.
+
 Version 3.0.7 from 08.11.2017
 - Edit OIDs in a simple text field.
 

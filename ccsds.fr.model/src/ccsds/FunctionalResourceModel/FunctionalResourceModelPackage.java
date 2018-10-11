@@ -1349,22 +1349,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int SERVICE_ACCESS_POINT__MAX_ACCESSED = 4;
 
 	/**
-	 * The feature id for the '<em><b>Accessing Functional Resource</b></em>' container reference.
+	 * The feature id for the '<em><b>Accessed Functional Resource</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE = 5;
+	int SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Accessed Functional Resource</b></em>' reference.
+	 * The feature id for the '<em><b>Accessing Functional Resource</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE = 6;
+	int SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE = 6;
 
 	/**
 	 * The number of structural features of the '<em>Service Access Point</em>' class.
@@ -1926,10 +1926,10 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getServiceAccessPoint_MaxAccessed();
 
 	/**
-	 * Returns the meta object for the container reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}'.
+	 * Returns the meta object for the reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Accessing Functional Resource</em>'.
+	 * @return the meta object for the reference '<em>Accessing Functional Resource</em>'.
 	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource()
 	 * @see #getServiceAccessPoint()
 	 * @generated
@@ -1937,10 +1937,10 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getServiceAccessPoint_AccessingFunctionalResource();
 
 	/**
-	 * Returns the meta object for the reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}'.
+	 * Returns the meta object for the container reference '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Accessed Functional Resource</em>'.
+	 * @return the meta object for the container reference '<em>Accessed Functional Resource</em>'.
 	 * @see ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource()
 	 * @see #getServiceAccessPoint()
 	 * @generated
@@ -2428,7 +2428,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EAttribute SERVICE_ACCESS_POINT__MAX_ACCESSED = eINSTANCE.getServiceAccessPoint_MaxAccessed();
 
 		/**
-		 * The meta object literal for the '<em><b>Accessing Functional Resource</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Accessing Functional Resource</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2436,7 +2436,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EReference SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE = eINSTANCE.getServiceAccessPoint_AccessingFunctionalResource();
 
 		/**
-		 * The meta object literal for the '<em><b>Accessed Functional Resource</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Accessed Functional Resource</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

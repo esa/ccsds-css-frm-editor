@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getMaxAccessor <em>Max Accessor</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getMinAccessed <em>Min Accessed</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getMaxAccessed <em>Max Accessed</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}</li>
  * </ul>
  *
  * @generated
@@ -135,14 +135,14 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	protected int maxAccessed = MAX_ACCESSED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAccessedFunctionalResource() <em>Accessed Functional Resource</em>}' reference.
+	 * The cached value of the '{@link #getAccessingFunctionalResource() <em>Accessing Functional Resource</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAccessedFunctionalResource()
+	 * @see #getAccessingFunctionalResource()
 	 * @generated
 	 * @ordered
 	 */
-	protected FunctionalResource accessedFunctionalResource;
+	protected FunctionalResource accessingFunctionalResource;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -274,8 +274,15 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public FunctionalResource getAccessingFunctionalResource() {
-		if (eContainerFeatureID() != FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE) return null;
-		return (FunctionalResource)eInternalContainer();
+		if (accessingFunctionalResource != null && accessingFunctionalResource.eIsProxy()) {
+			InternalEObject oldAccessingFunctionalResource = (InternalEObject)accessingFunctionalResource;
+			accessingFunctionalResource = (FunctionalResource)eResolveProxy(oldAccessingFunctionalResource);
+			if (accessingFunctionalResource != oldAccessingFunctionalResource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE, oldAccessingFunctionalResource, accessingFunctionalResource));
+			}
+		}
+		return accessingFunctionalResource;
 	}
 
 	/**
@@ -283,9 +290,8 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAccessingFunctionalResource(FunctionalResource newAccessingFunctionalResource, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newAccessingFunctionalResource, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE, msgs);
-		return msgs;
+	public FunctionalResource basicGetAccessingFunctionalResource() {
+		return accessingFunctionalResource;
 	}
 
 	/**
@@ -294,19 +300,10 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public void setAccessingFunctionalResource(FunctionalResource newAccessingFunctionalResource) {
-		if (newAccessingFunctionalResource != eInternalContainer() || (eContainerFeatureID() != FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE && newAccessingFunctionalResource != null)) {
-			if (EcoreUtil.isAncestor(this, newAccessingFunctionalResource))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newAccessingFunctionalResource != null)
-				msgs = ((InternalEObject)newAccessingFunctionalResource).eInverseAdd(this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResource.class, msgs);
-			msgs = basicSetAccessingFunctionalResource(newAccessingFunctionalResource, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE, newAccessingFunctionalResource, newAccessingFunctionalResource));
+		FunctionalResource oldAccessingFunctionalResource = accessingFunctionalResource;
+		accessingFunctionalResource = newAccessingFunctionalResource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE, oldAccessingFunctionalResource, accessingFunctionalResource));
 	}
 
 	/**
@@ -315,15 +312,8 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public FunctionalResource getAccessedFunctionalResource() {
-		if (accessedFunctionalResource != null && accessedFunctionalResource.eIsProxy()) {
-			InternalEObject oldAccessedFunctionalResource = (InternalEObject)accessedFunctionalResource;
-			accessedFunctionalResource = (FunctionalResource)eResolveProxy(oldAccessedFunctionalResource);
-			if (accessedFunctionalResource != oldAccessedFunctionalResource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE, oldAccessedFunctionalResource, accessedFunctionalResource));
-			}
-		}
-		return accessedFunctionalResource;
+		if (eContainerFeatureID() != FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE) return null;
+		return (FunctionalResource)eInternalContainer();
 	}
 
 	/**
@@ -331,8 +321,9 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FunctionalResource basicGetAccessedFunctionalResource() {
-		return accessedFunctionalResource;
+	public NotificationChain basicSetAccessedFunctionalResource(FunctionalResource newAccessedFunctionalResource, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newAccessedFunctionalResource, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -341,10 +332,19 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public void setAccessedFunctionalResource(FunctionalResource newAccessedFunctionalResource) {
-		FunctionalResource oldAccessedFunctionalResource = accessedFunctionalResource;
-		accessedFunctionalResource = newAccessedFunctionalResource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE, oldAccessedFunctionalResource, accessedFunctionalResource));
+		if (newAccessedFunctionalResource != eInternalContainer() || (eContainerFeatureID() != FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE && newAccessedFunctionalResource != null)) {
+			if (EcoreUtil.isAncestor(this, newAccessedFunctionalResource))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newAccessedFunctionalResource != null)
+				msgs = ((InternalEObject)newAccessedFunctionalResource).eInverseAdd(this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResource.class, msgs);
+			msgs = basicSetAccessedFunctionalResource(newAccessedFunctionalResource, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE, newAccessedFunctionalResource, newAccessedFunctionalResource));
 	}
 
 	/**
@@ -355,10 +355,10 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetAccessingFunctionalResource((FunctionalResource)otherEnd, msgs);
+				return basicSetAccessedFunctionalResource((FunctionalResource)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -371,8 +371,8 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
-				return basicSetAccessingFunctionalResource(null, msgs);
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
+				return basicSetAccessedFunctionalResource(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -385,7 +385,7 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
 				return eInternalContainer().eInverseRemove(this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResource.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -409,11 +409,11 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 				return getMinAccessed();
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__MAX_ACCESSED:
 				return getMaxAccessed();
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
-				return getAccessingFunctionalResource();
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
-				if (resolve) return getAccessedFunctionalResource();
-				return basicGetAccessedFunctionalResource();
+				return getAccessedFunctionalResource();
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+				if (resolve) return getAccessingFunctionalResource();
+				return basicGetAccessingFunctionalResource();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -442,11 +442,11 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__MAX_ACCESSED:
 				setMaxAccessed((Integer)newValue);
 				return;
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
-				setAccessingFunctionalResource((FunctionalResource)newValue);
-				return;
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
 				setAccessedFunctionalResource((FunctionalResource)newValue);
+				return;
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+				setAccessingFunctionalResource((FunctionalResource)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -475,11 +475,11 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__MAX_ACCESSED:
 				setMaxAccessed(MAX_ACCESSED_EDEFAULT);
 				return;
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
-				setAccessingFunctionalResource((FunctionalResource)null);
-				return;
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
 				setAccessedFunctionalResource((FunctionalResource)null);
+				return;
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+				setAccessingFunctionalResource((FunctionalResource)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -503,10 +503,10 @@ public class ServiceAccessPointImpl extends MinimalEObjectImpl.Container impleme
 				return minAccessed != MIN_ACCESSED_EDEFAULT;
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__MAX_ACCESSED:
 				return maxAccessed != MAX_ACCESSED_EDEFAULT;
-			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
-				return getAccessingFunctionalResource() != null;
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE:
-				return accessedFunctionalResource != null;
+				return getAccessedFunctionalResource() != null;
+			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE:
+				return accessingFunctionalResource != null;
 		}
 		return super.eIsSet(featureID);
 	}

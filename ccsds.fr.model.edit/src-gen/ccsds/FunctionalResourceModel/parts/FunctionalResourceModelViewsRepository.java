@@ -433,10 +433,10 @@ public class FunctionalResourceModelViewsRepository {
 			public static String maxAccessed = "FunctionalResourceModel::ServiceAccessPoint::properties::maxAccessed";
 			
 			
-			public static String accessingFunctionalResource = "FunctionalResourceModel::ServiceAccessPoint::properties::accessingFunctionalResource";
-			
-			
 			public static String accessedFunctionalResource = "FunctionalResourceModel::ServiceAccessPoint::properties::accessedFunctionalResource";
+			
+			
+			public static String accessingFunctionalResource = "FunctionalResourceModel::ServiceAccessPoint::properties::accessingFunctionalResource";
 			
 	
 		}

@@ -172,7 +172,7 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 */
 	public EList<ServiceAccessPoint> getServiceAccesspoint() {
 		if (serviceAccesspoint == null) {
-			serviceAccesspoint = new EObjectContainmentWithInverseEList<ServiceAccessPoint>(ServiceAccessPoint.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE);
+			serviceAccesspoint = new EObjectContainmentWithInverseEList<ServiceAccessPoint>(ServiceAccessPoint.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT, FunctionalResourceModelPackage.SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE);
 		}
 		return serviceAccesspoint;
 	}

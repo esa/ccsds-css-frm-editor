@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessor <em>Max Accessor</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMinAccessed <em>Min Accessed</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getMaxAccessed <em>Max Accessed</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getServiceAccessPoint()
@@ -163,54 +163,54 @@ public interface ServiceAccessPoint extends EObject {
 	void setMaxAccessed(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Accessing Functional Resource</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint <em>Service Accesspoint</em>}'.
+	 * Returns the value of the '<em><b>Accessing Functional Resource</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Accessing Functional Resource</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Accessing Functional Resource</em>' container reference.
+	 * @return the value of the '<em>Accessing Functional Resource</em>' reference.
 	 * @see #setAccessingFunctionalResource(FunctionalResource)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getServiceAccessPoint_AccessingFunctionalResource()
-	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint
-	 * @model opposite="serviceAccesspoint" required="true" transient="false"
+	 * @model required="true"
 	 * @generated
 	 */
 	FunctionalResource getAccessingFunctionalResource();
 
 	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}' container reference.
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessingFunctionalResource <em>Accessing Functional Resource</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Accessing Functional Resource</em>' container reference.
+	 * @param value the new value of the '<em>Accessing Functional Resource</em>' reference.
 	 * @see #getAccessingFunctionalResource()
 	 * @generated
 	 */
 	void setAccessingFunctionalResource(FunctionalResource value);
 
 	/**
-	 * Returns the value of the '<em><b>Accessed Functional Resource</b></em>' reference.
+	 * Returns the value of the '<em><b>Accessed Functional Resource</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint <em>Service Accesspoint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Accessed Functional Resource</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Accessed Functional Resource</em>' reference.
+	 * @return the value of the '<em>Accessed Functional Resource</em>' container reference.
 	 * @see #setAccessedFunctionalResource(FunctionalResource)
 	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getServiceAccessPoint_AccessedFunctionalResource()
-	 * @model required="true"
+	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint
+	 * @model opposite="serviceAccesspoint" required="true" transient="false"
 	 * @generated
 	 */
 	FunctionalResource getAccessedFunctionalResource();
 
 	/**
-	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}' reference.
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint#getAccessedFunctionalResource <em>Accessed Functional Resource</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Accessed Functional Resource</em>' reference.
+	 * @param value the new value of the '<em>Accessed Functional Resource</em>' container reference.
 	 * @see #getAccessedFunctionalResource()
 	 * @generated
 	 */

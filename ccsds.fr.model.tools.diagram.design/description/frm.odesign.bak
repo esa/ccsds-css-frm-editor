@@ -19,16 +19,16 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="functional.resource.sap.relation" label="SAP" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:accessedFunctionalResource" sourceFinderExpression="feature:accessingFunctionalResource" domainClass="FunctionalResourceModel::ServiceAccessPoint" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.source']">
+        <edgeMappings name="functional.resource.sap.relation" label="SAP" documentation="Begin Label simple:&#xA;&#xA;aql:self.minAccessor + '..' + self.maxAccessor&#xA;&#xA;Begin Label summarizin 1..1 to 1&#xA;aql:if self.minAccessor = self.maxAccessor then self.minAccessor else self.minAccessor + '..' + self.maxAccessor endif&#xA;" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:accessedFunctionalResource" sourceFinderExpression="feature:accessingFunctionalResource" domainClass="FunctionalResourceModel::ServiceAccessPoint" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect']">
           <style sourceArrow="InputArrow" targetArrow="FillDiamond" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <beginLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessor = self.maxAccessor then self.minAccessor else self.minAccessor + '..' + if self.maxAccessor = -1 then '*' else self.maxAccessor endif endif">
+            <beginLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessor = self.maxAccessor then self.minAccessor else self.minAccessor + '..' + self.maxAccessor endif">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessed = self.maxAccessed then self.minAccessed else self.minAccessed + '..' + self.maxAccessed endif">
+            <endLabelStyleDescription showIcon="false" labelExpression="aql:self.minAccessed + '..' + if self.maxAccessed = -1 then '*' else self.maxAccessed endif">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -78,8 +78,8 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalResourceModel::ServiceAccessPoint" referenceName="serviceAccesspoint" variableName="sap">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:target"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessedFunctionalResource" valueExpression="var:source"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessedFunctionalResource" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:source"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -95,7 +95,34 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect.target" label="Reconnect SAP Target">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.uses.reconnect" label="Reconnect Uses">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="uses" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="uses" elementExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect" label="Reconnect SAP Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect" label="Reconnect SAP Target">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -104,19 +131,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="accessedFunctionalResource" valueExpression="var:target"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect.source" label="Reconnect SAP Source" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -130,20 +144,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringFunctionalResource" valueExpression="var:target"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.uses.reconnect" label="Reconnect Uses">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="uses" valueExpression="var:target"/>
-                <subModelOperations xsi:type="tool_1:Unset" featureName="uses" elementExpression="var:source"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -176,7 +176,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="functional.resources.diagram.details" titleExpression="aql:'Details of '+self.classifier" domainClass="FunctionalResourceModel::FunctionalResource" enablePopupBars="true">
       <defaultLayer name="Default">
-        <containerMappings name="functional.resource.container" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="HorizontalStack">
+        <containerMappings name="functional.resource.container" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="VerticalStack">
           <subContainerMappings name="functional.resource.container.parameters" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="List">
             <subNodeMappings name="functional.resource.container.parameter.node" semanticCandidatesExpression="feature:parameter" domainClass="FunctionalResourceModel::Parameter">
               <style xsi:type="style:SquareDescription" labelExpression="feature:classifier" labelAlignment="LEFT" resizeKind="NSEW">

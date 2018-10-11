@@ -1,11 +1,20 @@
 package ccsds.fr.model.tools;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
 
 /**
  * Helper class for FR related functions 
@@ -38,5 +47,35 @@ public class FrUtility {
 		}
 		
 		return frList.toArray(new FunctionalResource[0]);
-	}	
+	}
+
+	/**
+	 * Loads a Functional Resource model from a file
+	 * @param uri the URI denoting the FRM file
+	 * @return	The loaded Functional Resource Model
+	 * @throws IOException Thrown when loading the FRM from the file has an IO problem.
+	 */
+	public static FunctionalResourceModel loadFrm(String uri) throws IOException {
+		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		adapterFactory
+				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		adapterFactory
+				.addAdapterFactory(new FunctionalResourceModelItemProviderAdapterFactory());
+		adapterFactory
+				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+
+		AdapterFactoryEditingDomain domain = new AdapterFactoryEditingDomain(
+				adapterFactory, new BasicCommandStack() /* we will not need the cmd stack... */ );
+
+		Resource resource = domain.createResource(uri);
+		try {
+			resource.load(null);
+			return (FunctionalResourceModel)resource.getContents().get(0);		
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw e;
+		}	
+	}
 }

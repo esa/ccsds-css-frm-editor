@@ -2,10 +2,10 @@ package ccsds.tranform;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -20,18 +20,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Parameter;
-import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
+import ccsds.FunctionalResourceModel.ServiceAccessPoint;
 import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.model.tools.NameTool;
 
@@ -41,6 +36,8 @@ import ccsds.fr.model.tools.NameTool;
  */
 public class FrModelTransformation {
 	
+	private static final String FRI = "fri";
+	private static final String HTTP_ISO_ORG_DOD_CCSDS_FRI = "http://iso.org.dod.ccsds.fri";
 	private EcoreFactory theCoreFactory;
 	private EClass functionalresourceInstanceClass;
 	private EPackage friTopPackage;
@@ -59,32 +56,10 @@ public class FrModelTransformation {
 	 * @return
 	 */
 	public boolean transformFrModel(IFile frModelFile) {
-		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
-				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-
-		adapterFactory
-				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new FunctionalResourceModelItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-
-		AdapterFactoryEditingDomain domain = new AdapterFactoryEditingDomain(
-				adapterFactory, new BasicCommandStack() /* we will not need the cmd stack... */ );
-
-		Resource resource = domain.createResource(frModelFile.getFullPath()
-				.toString());
 		try {
-			resource.load(null);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-		try {
-			FunctionalResourceModel frm = (FunctionalResourceModel)resource.getContents().get(0);
+			FunctionalResourceModel frm = FrUtility.loadFrm(frModelFile.getFullPath().toString());
 			
-			friTopPackage = createEPackage("FunctionalResourceModelInstance", "fri", "http://iso.org.dod.ccsds.fri");
+			friTopPackage = createEPackage("FunctionalResourceModelInstance", FRI, HTTP_ISO_ORG_DOD_CCSDS_FRI);
 			
 			// create globally needed classes and make them available to the ecore package and the transformation
 			functionalresourceInstanceClass = createFunctionalResourceInstance();
@@ -105,13 +80,15 @@ public class FrModelTransformation {
 //			createNetworkClass(complexClass);
 			
 			// iterate over the functional resource model and map to target ecore elements (classes)
+			
 			FunctionalResource[] frArray = FrUtility.getFunctionalResources(frm);
 			for(FunctionalResource fr : frArray) {
 				//createDerivedFrInstance(fr, complexClass);
 				createDerivedFrInstance(fr, null);
 			}
 		
-			createDependencyForUse(frm);
+			//createDependencyForUse(FrUtility.getFunctionalResources(frm));
+			createDependencyForSap(FrUtility.getFunctionalResources(frm));
 			
 			// save the new ecore model
 			ResourceSet metaResourceSet = new ResourceSetImpl();
@@ -429,7 +406,7 @@ public class FrModelTransformation {
 					ref.setUpperBound(1);
 					ref.setEType(referenceTarget);
 					ref.setContainment(true);
-					System.out.println("Add reference " + ref.getName() + " for " + theClass.getName());
+					//System.out.println("Add reference " + ref.getName() + " for " + theClass.getName());
 					theClass.getEStructuralFeatures().add(ref);	
 			}									
 			catch(Exception e) {
@@ -443,8 +420,9 @@ public class FrModelTransformation {
 	 * for the created FunctionalresourceInstanceClasses
 	 * @param frm
 	 */
-	private void createDependencyForUse(FunctionalResourceModel frm) {
-		for(FunctionalResource fr : frm.getFunctionalResource()) {
+	@SuppressWarnings("unused")
+	private void createDependencyForUse(FunctionalResource[] frList) {
+		for(FunctionalResource fr : frList) {
 			EClass refSource = getClassByName(deriveClassName(fr), friTopPackage);
 			for(FunctionalResource usedFr : fr.getUses()) {
 				try {
@@ -466,6 +444,41 @@ public class FrModelTransformation {
 		}
 	}
 
+	/**
+	 * Create the a dependency for each ServiceAccessPoint relation as expressed in the frm 
+	 * for the created FunctionalresourceInstanceClasses
+	 * @param frList The array of Functional Resources
+	 */
+	private void createDependencyForSap(FunctionalResource[] frList) {
+		for(FunctionalResource fr : frList) {
+			EClass refSource = getClassByName(deriveClassName(fr), friTopPackage);
+			List<String> sapNames = new LinkedList<String>();
+			for(ServiceAccessPoint sap : fr.getServiceAccesspoint()) {
+				try {
+					EClass refTarget = getClassByName(deriveClassName(sap.getAccessedFunctionalResource()), friTopPackage);
+					if(refSource != null && refTarget != null) {
+						EReference sapRef = theCoreFactory.createEReference();
+						String sapName = "sap" + NameTool.wellFormed(sap.getName());
+						if(sapNames.contains(sapName)) {
+							sapName = sapName + sapNames.size();
+						}
+						sapRef.setName(sapName); 
+						sapNames.add(sapName);
+						sapRef.setLowerBound(sap.getMinAccessed());
+						sapRef.setUpperBound(sap.getMaxAccessed());
+						sapRef.setEType(refTarget);
+						sapRef.setContainment(false);
+						refSource.getEStructuralFeatures().add(sapRef);			
+						System.out.println("Added SAP " + sapName + " to FRI " + refSource.getName());
+					}											
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}	
+	
 	/**
 	 * Construct a class name out of the short name or
 	 * the name of the element.

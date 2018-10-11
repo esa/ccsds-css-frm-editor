@@ -94,53 +94,6 @@ public interface ServiceAccessPointPropertiesEditionPart {
 
 
 	/**
-	 * @return the accessingFunctionalResource
-	 * 
-	 */
-	public EObject getAccessingFunctionalResource();
-
-	/**
-	 * Init the accessingFunctionalResource
-	 * @param settings the combo setting
-	 */
-	public void initAccessingFunctionalResource(EObjectFlatComboSettings settings);
-
-	/**
-	 * Defines a new accessingFunctionalResource
-	 * @param newValue the new accessingFunctionalResource to set
-	 * 
-	 */
-	public void setAccessingFunctionalResource(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * 
-	 */
-	public void setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the accessingFunctionalResource edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToAccessingFunctionalResource(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the accessingFunctionalResource edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToAccessingFunctionalResource(ViewerFilter filter);
-
-
-	/**
 	 * @return the accessedFunctionalResource
 	 * 
 	 */
@@ -185,6 +138,53 @@ public interface ServiceAccessPointPropertiesEditionPart {
 	 * 
 	 */
 	public void addBusinessFilterToAccessedFunctionalResource(ViewerFilter filter);
+
+
+	/**
+	 * @return the accessingFunctionalResource
+	 * 
+	 */
+	public EObject getAccessingFunctionalResource();
+
+	/**
+	 * Init the accessingFunctionalResource
+	 * @param settings the combo setting
+	 */
+	public void initAccessingFunctionalResource(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new accessingFunctionalResource
+	 * @param newValue the new accessingFunctionalResource to set
+	 * 
+	 */
+	public void setAccessingFunctionalResource(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * 
+	 */
+	public void setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the accessingFunctionalResource edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToAccessingFunctionalResource(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the accessingFunctionalResource edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToAccessingFunctionalResource(ViewerFilter filter);
 
 
 

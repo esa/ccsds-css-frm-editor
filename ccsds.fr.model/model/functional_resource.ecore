@@ -56,7 +56,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="serviceAccesspoint" upperBound="-1"
-        eType="#//ServiceAccessPoint" containment="true" eOpposite="#//ServiceAccessPoint/accessingFunctionalResource"/>
+        eType="#//ServiceAccessPoint" containment="true" eOpposite="#//ServiceAccessPoint/accessedFunctionalResource"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedAncillaryInterface"
         upperBound="-1" eType="#//AncillaryInterface" containment="true" eOpposite="#//AncillaryInterface/providingFunctionalResource"/>
   </eClassifiers>
@@ -105,9 +105,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAccessed" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="accessingFunctionalResource"
-        lowerBound="1" eType="#//FunctionalResource" eOpposite="#//FunctionalResource/serviceAccesspoint"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="accessedFunctionalResource"
+        lowerBound="1" eType="#//FunctionalResource" eOpposite="#//FunctionalResource/serviceAccesspoint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accessingFunctionalResource"
         lowerBound="1" eType="#//FunctionalResource"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AncillaryInterface">

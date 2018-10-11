@@ -80,8 +80,8 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 	protected Text maxAccessor;
 	protected Text minAccessed;
 	protected Text maxAccessed;
-	protected EObjectFlatComboViewer accessingFunctionalResource;
 	protected EObjectFlatComboViewer accessedFunctionalResource;
+	protected EObjectFlatComboViewer accessingFunctionalResource;
 
 
 
@@ -125,8 +125,8 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessor);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.minAccessed);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
 		
 		
 		composer = new PartComposer(serviceAccessPointStep) {
@@ -151,11 +151,11 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 				if (key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.maxAccessed) {
 					return createMaxAccessedText(parent);
 				}
-				if (key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource) {
-					return createAccessingFunctionalResourceFlatComboViewer(parent);
-				}
 				if (key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource) {
 					return createAccessedFunctionalResourceFlatComboViewer(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource) {
+					return createAccessingFunctionalResourceFlatComboViewer(parent);
 				}
 				return parent;
 			}
@@ -427,32 +427,6 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 	 * @param parent the parent composite
 	 * 
 	 */
-	protected Composite createAccessingFunctionalResourceFlatComboViewer(Composite parent) {
-		createDescription(parent, FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelMessages.ServiceAccessPointPropertiesEditionPart_AccessingFunctionalResourceLabel);
-		accessingFunctionalResource = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND));
-		accessingFunctionalResource.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-		accessingFunctionalResource.addSelectionChangedListener(new ISelectionChangedListener() {
-
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServiceAccessPointPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAccessingFunctionalResource()));
-			}
-
-		});
-		GridData accessingFunctionalResourceData = new GridData(GridData.FILL_HORIZONTAL);
-		accessingFunctionalResource.setLayoutData(accessingFunctionalResourceData);
-		accessingFunctionalResource.setID(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createAccessingFunctionalResourceFlatComboViewer
-
-		// End of user code
-		return parent;
-	}
-
-	/**
-	 * @param parent the parent composite
-	 * 
-	 */
 	protected Composite createAccessedFunctionalResourceFlatComboViewer(Composite parent) {
 		createDescription(parent, FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource, FunctionalResourceModelMessages.ServiceAccessPointPropertiesEditionPart_AccessedFunctionalResourceLabel);
 		accessedFunctionalResource = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND));
@@ -470,6 +444,32 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 		accessedFunctionalResource.setID(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource);
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessedFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createAccessedFunctionalResourceFlatComboViewer
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param parent the parent composite
+	 * 
+	 */
+	protected Composite createAccessingFunctionalResourceFlatComboViewer(Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelMessages.ServiceAccessPointPropertiesEditionPart_AccessingFunctionalResourceLabel);
+		accessingFunctionalResource = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND));
+		accessingFunctionalResource.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+
+		accessingFunctionalResource.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			public void selectionChanged(SelectionChangedEvent event) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ServiceAccessPointPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAccessingFunctionalResource()));
+			}
+
+		});
+		GridData accessingFunctionalResourceData = new GridData(GridData.FILL_HORIZONTAL);
+		accessingFunctionalResource.setLayoutData(accessingFunctionalResourceData);
+		accessingFunctionalResource.setID(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createAccessingFunctionalResourceFlatComboViewer
 
 		// End of user code
 		return parent;
@@ -651,92 +651,6 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#getAccessingFunctionalResource()
-	 * 
-	 */
-	public EObject getAccessingFunctionalResource() {
-		if (accessingFunctionalResource.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) accessingFunctionalResource.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#initAccessingFunctionalResource(EObjectFlatComboSettings)
-	 */
-	public void initAccessingFunctionalResource(EObjectFlatComboSettings settings) {
-		accessingFunctionalResource.setInput(settings);
-		if (current != null) {
-			accessingFunctionalResource.setSelection(new StructuredSelection(settings.getValue()));
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
-		if (eefElementEditorReadOnlyState && accessingFunctionalResource.isEnabled()) {
-			accessingFunctionalResource.setEnabled(false);
-			accessingFunctionalResource.setToolTipText(FunctionalResourceModelMessages.ServiceAccessPoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !accessingFunctionalResource.isEnabled()) {
-			accessingFunctionalResource.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#setAccessingFunctionalResource(EObject newValue)
-	 * 
-	 */
-	public void setAccessingFunctionalResource(EObject newValue) {
-		if (newValue != null) {
-			accessingFunctionalResource.setSelection(new StructuredSelection(newValue));
-		} else {
-			accessingFunctionalResource.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
-		if (eefElementEditorReadOnlyState && accessingFunctionalResource.isEnabled()) {
-			accessingFunctionalResource.setEnabled(false);
-			accessingFunctionalResource.setToolTipText(FunctionalResourceModelMessages.ServiceAccessPoint_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !accessingFunctionalResource.isEnabled()) {
-			accessingFunctionalResource.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue) {
-		accessingFunctionalResource.setButtonMode(newValue);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#addFilterAccessingFunctionalResource(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToAccessingFunctionalResource(ViewerFilter filter) {
-		accessingFunctionalResource.addFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#addBusinessFilterAccessingFunctionalResource(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToAccessingFunctionalResource(ViewerFilter filter) {
-		accessingFunctionalResource.addBusinessRuleFilter(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#getAccessedFunctionalResource()
 	 * 
 	 */
@@ -818,6 +732,92 @@ public class ServiceAccessPointPropertiesEditionPartImpl extends CompositeProper
 	 */
 	public void addBusinessFilterToAccessedFunctionalResource(ViewerFilter filter) {
 		accessedFunctionalResource.addBusinessRuleFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#getAccessingFunctionalResource()
+	 * 
+	 */
+	public EObject getAccessingFunctionalResource() {
+		if (accessingFunctionalResource.getSelection() instanceof StructuredSelection) {
+			Object firstElement = ((StructuredSelection) accessingFunctionalResource.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject)
+				return (EObject) firstElement;
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#initAccessingFunctionalResource(EObjectFlatComboSettings)
+	 */
+	public void initAccessingFunctionalResource(EObjectFlatComboSettings settings) {
+		accessingFunctionalResource.setInput(settings);
+		if (current != null) {
+			accessingFunctionalResource.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
+		if (eefElementEditorReadOnlyState && accessingFunctionalResource.isEnabled()) {
+			accessingFunctionalResource.setEnabled(false);
+			accessingFunctionalResource.setToolTipText(FunctionalResourceModelMessages.ServiceAccessPoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !accessingFunctionalResource.isEnabled()) {
+			accessingFunctionalResource.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#setAccessingFunctionalResource(EObject newValue)
+	 * 
+	 */
+	public void setAccessingFunctionalResource(EObject newValue) {
+		if (newValue != null) {
+			accessingFunctionalResource.setSelection(new StructuredSelection(newValue));
+		} else {
+			accessingFunctionalResource.setSelection(new StructuredSelection()); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.ServiceAccessPoint.Properties.accessingFunctionalResource);
+		if (eefElementEditorReadOnlyState && accessingFunctionalResource.isEnabled()) {
+			accessingFunctionalResource.setEnabled(false);
+			accessingFunctionalResource.setToolTipText(FunctionalResourceModelMessages.ServiceAccessPoint_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !accessingFunctionalResource.isEnabled()) {
+			accessingFunctionalResource.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setAccessingFunctionalResourceButtonMode(ButtonsModeEnum newValue) {
+		accessingFunctionalResource.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#addFilterAccessingFunctionalResource(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAccessingFunctionalResource(ViewerFilter filter) {
+		accessingFunctionalResource.addFilter(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ServiceAccessPointPropertiesEditionPart#addBusinessFilterAccessingFunctionalResource(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAccessingFunctionalResource(ViewerFilter filter) {
+		accessingFunctionalResource.addBusinessRuleFilter(filter);
 	}
 
 

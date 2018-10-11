@@ -604,7 +604,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getServiceAccessPoint_AccessingFunctionalResource() {
-		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(5);
+		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -613,7 +613,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getServiceAccessPoint_AccessedFunctionalResource() {
-		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(6);
+		return (EReference)serviceAccessPointEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -766,8 +766,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MAX_ACCESSOR);
 		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MIN_ACCESSED);
 		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__MAX_ACCESSED);
-		createEReference(serviceAccessPointEClass, SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE);
 		createEReference(serviceAccessPointEClass, SERVICE_ACCESS_POINT__ACCESSED_FUNCTIONAL_RESOURCE);
+		createEReference(serviceAccessPointEClass, SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE);
 
 		ancillaryInterfaceEClass = createEClass(ANCILLARY_INTERFACE);
 		createEAttribute(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__NAME);
@@ -840,7 +840,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Directives(), this.getDirective(), null, "directives", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Uses(), this.getFunctionalResource(), null, "uses", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFunctionalResource_ServiceAccesspoint(), this.getServiceAccessPoint(), this.getServiceAccessPoint_AccessingFunctionalResource(), "serviceAccesspoint", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResource_ServiceAccesspoint(), this.getServiceAccessPoint(), this.getServiceAccessPoint_AccessedFunctionalResource(), "serviceAccesspoint", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_ProvidedAncillaryInterface(), this.getAncillaryInterface(), this.getAncillaryInterface_ProvidingFunctionalResource(), "providedAncillaryInterface", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -871,8 +871,8 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getServiceAccessPoint_MaxAccessor(), ecorePackage.getEInt(), "maxAccessor", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceAccessPoint_MinAccessed(), ecorePackage.getEInt(), "minAccessed", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceAccessPoint_MaxAccessed(), ecorePackage.getEInt(), "maxAccessed", "1", 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServiceAccessPoint_AccessingFunctionalResource(), this.getFunctionalResource(), this.getFunctionalResource_ServiceAccesspoint(), "accessingFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServiceAccessPoint_AccessedFunctionalResource(), this.getFunctionalResource(), null, "accessedFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceAccessPoint_AccessedFunctionalResource(), this.getFunctionalResource(), this.getFunctionalResource_ServiceAccesspoint(), "accessedFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceAccessPoint_AccessingFunctionalResource(), this.getFunctionalResource(), null, "accessingFunctionalResource", null, 1, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ancillaryInterfaceEClass, AncillaryInterface.class, "AncillaryInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAncillaryInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
