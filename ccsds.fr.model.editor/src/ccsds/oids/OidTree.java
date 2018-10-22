@@ -85,7 +85,7 @@ public class OidTree {
 		OidNode crossSupprtResources = css.addChildNode(2, "crossSupportResources");
 		css.addChildNode(3, "abstractServiceComponents");
 		
-		// Where did I functionalResourcesGenericIdentifiers(3) from? A presentation?
+		// Where did I get functionalResourcesGenericIdentifiers(3) from? A presentation? - the SFW!
 //		OidNode functionalResourcesGenericIdentifiers = crossSupprtResources.addChildNode(3, "functionalResourcesGenericIdentifiers");
 
 		OidNode crossSupportFunctionalities = crossSupprtResources.addChildNode(1, "crossSupportFunctionalities");
@@ -93,9 +93,9 @@ public class OidTree {
 //			addChildNode(OidNode.OID_WILDCARD, "version");
 		OidNode fr = crossSupportFunctionalities.addChildNode(OidNode.OID_WILDCARD, "fr");
 		
-		fr.addChildNode(1, "parameter-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
-		fr.addChildNode(2, "event-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
-		fr.addChildNode(3, "directive-type").addChildNode(OidNode.OID_WILDCARD, "number").addChildNode(OidNode.OID_WILDCARD, "version");
+		fr.addChildNode(1, "parameter-type").addChildNode(OidNode.OID_WILDCARD, "Parameter ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+		fr.addChildNode(2, "event-type").addChildNode(OidNode.OID_WILDCARD, "Event ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+		fr.addChildNode(3, "directive-type").addChildNode(OidNode.OID_WILDCARD, "Directive ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
 		
 		// System.out.println(this.toString());
 	}

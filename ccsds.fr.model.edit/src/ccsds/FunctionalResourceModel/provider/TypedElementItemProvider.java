@@ -111,6 +111,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID);
 		}
 		return childrenFeatures;
 	}
@@ -171,6 +172,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -192,6 +194,11 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID,
+				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
 	}
 
 	/**
@@ -207,7 +214,8 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 
 		boolean qualify =
 			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
-			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID;
 
 		if (qualify) {
 			return getString

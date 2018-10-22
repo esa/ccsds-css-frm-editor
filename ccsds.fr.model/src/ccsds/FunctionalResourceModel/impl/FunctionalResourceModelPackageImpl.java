@@ -549,6 +549,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTypedElement_TypeOid() {
+		return (EReference)typedElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getServiceAccessPoint() {
 		return serviceAccessPointEClass;
 	}
@@ -759,6 +768,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(typedElementEClass, TYPED_ELEMENT__TYPE_DEFINITION);
 		createEAttribute(typedElementEClass, TYPED_ELEMENT__ENGINEERING_UNIT);
 		createEReference(typedElementEClass, TYPED_ELEMENT__EXTERNAL_TYPE_OID);
+		createEReference(typedElementEClass, TYPED_ELEMENT__TYPE_OID);
 
 		serviceAccessPointEClass = createEClass(SERVICE_ACCESS_POINT);
 		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__NAME);
@@ -864,6 +874,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getTypedElement_TypeDefinition(), ecorePackage.getEString(), "typeDefinition", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedElement_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedElement_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypedElement_TypeOid(), this.getOid(), null, "typeOid", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceAccessPointEClass, ServiceAccessPoint.class, "ServiceAccessPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceAccessPoint_Name(), ecorePackage.getEString(), "name", "newSAP", 0, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

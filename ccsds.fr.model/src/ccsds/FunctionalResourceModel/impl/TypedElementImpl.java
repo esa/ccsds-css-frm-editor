@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getTypeOid <em>Type Oid</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +80,16 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 	 * @ordered
 	 */
 	protected Oid externalTypeOid;
+
+	/**
+	 * The cached value of the '{@link #getTypeOid() <em>Type Oid</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeOid()
+	 * @generated
+	 * @ordered
+	 */
+	protected Oid typeOid;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,11 +200,56 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Oid getTypeOid() {
+		return typeOid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTypeOid(Oid newTypeOid, NotificationChain msgs) {
+		Oid oldTypeOid = typeOid;
+		typeOid = newTypeOid;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID, oldTypeOid, newTypeOid);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeOid(Oid newTypeOid) {
+		if (newTypeOid != typeOid) {
+			NotificationChain msgs = null;
+			if (typeOid != null)
+				msgs = ((InternalEObject)typeOid).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID, null, msgs);
+			if (newTypeOid != null)
+				msgs = ((InternalEObject)newTypeOid).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID, null, msgs);
+			msgs = basicSetTypeOid(newTypeOid, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID, newTypeOid, newTypeOid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 				return basicSetExternalTypeOid(null, msgs);
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+				return basicSetTypeOid(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -212,6 +268,8 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return getEngineeringUnit();
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 				return getExternalTypeOid();
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+				return getTypeOid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -232,6 +290,9 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return;
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)newValue);
+				return;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+				setTypeOid((Oid)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -254,6 +315,9 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 				setExternalTypeOid((Oid)null);
 				return;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+				setTypeOid((Oid)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -272,6 +336,8 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return ENGINEERING_UNIT_EDEFAULT == null ? engineeringUnit != null : !ENGINEERING_UNIT_EDEFAULT.equals(engineeringUnit);
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 				return externalTypeOid != null;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+				return typeOid != null;
 		}
 		return super.eIsSet(featureID);
 	}

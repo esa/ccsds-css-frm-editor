@@ -881,13 +881,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int TYPED_ELEMENT__EXTERNAL_TYPE_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__TYPE_OID = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Typed Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_ELEMENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int TYPED_ELEMENT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Typed Element</em>' class.
@@ -1005,6 +1014,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+
+	/**
+	 * The feature id for the '<em><b>Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TYPE_OID = TYPED_ELEMENT__TYPE_OID;
 
 	/**
 	 * The feature id for the '<em><b>Configured</b></em>' attribute.
@@ -1160,6 +1178,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int VALUE__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
 
 	/**
+	 * The feature id for the '<em><b>Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__TYPE_OID = TYPED_ELEMENT__TYPE_OID;
+
+	/**
 	 * The number of structural features of the '<em>Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1284,6 +1311,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALIFIER__EXTERNAL_TYPE_OID = TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+
+	/**
+	 * The feature id for the '<em><b>Type Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__TYPE_OID = TYPED_ELEMENT__TYPE_OID;
 
 	/**
 	 * The number of structural features of the '<em>Qualifier</em>' class.
@@ -1861,6 +1897,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getTypedElement_ExternalTypeOid();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link ccsds.FunctionalResourceModel.TypedElement#getTypeOid <em>Type Oid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type Oid</em>'.
+	 * @see ccsds.FunctionalResourceModel.TypedElement#getTypeOid()
+	 * @see #getTypedElement()
+	 * @generated
+	 */
+	EReference getTypedElement_TypeOid();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.ServiceAccessPoint <em>Service Access Point</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2376,6 +2423,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPED_ELEMENT__EXTERNAL_TYPE_OID = eINSTANCE.getTypedElement_ExternalTypeOid();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Oid</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED_ELEMENT__TYPE_OID = eINSTANCE.getTypedElement_TypeOid();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl <em>Service Access Point</em>}' class.

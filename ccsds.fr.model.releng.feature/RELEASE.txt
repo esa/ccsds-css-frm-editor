@@ -1,3 +1,6 @@
+Version 4.1.0 from October 2018
+- added type OID for P/E/D, Event/Values and Directive/Qualifiers 
+
 Version 4.0.0 from 09.05.2018
 - Added support for Functional Resource Sets, Service Access Points and Ancillary Interfaces.
 - Graphical support for the above features has been added, including a detailed FR diagram for documentation purposes.

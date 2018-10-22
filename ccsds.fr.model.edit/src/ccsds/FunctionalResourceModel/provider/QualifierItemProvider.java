@@ -110,7 +110,8 @@ public class QualifierItemProvider extends TypedElementItemProvider {
 
 		boolean qualify =
 			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
-			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID;
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID;
 
 		if (qualify) {
 			return getString

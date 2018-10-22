@@ -12,6 +12,7 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -31,6 +32,8 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
+import ccsds.FunctionalResourceModel.Qualifier;
+import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.FunctionalResourceModel.provider.OidItemProvider;
 import ccsds.fr.model.tools.Activator;
@@ -159,7 +162,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 
 	/**
 	 * Update the OIDs of the child parameters for the given model element
-	 * use a sorted map with all parameters and adjust versions for parameters with same name (and oidbit?)  
+	 * use a sorted map with all parameters and adjust versions for parameters with same classifier (and oidbit?)  
 	 * @param domain				the EMF editing domain
 	 * @param parentName			the name of the parent element
 	 * @param FrModelElement[] 		the model elements for which the OIDs shall be updated. Must be all of the same type!
@@ -191,6 +194,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 				for(FrModelElement mElement : mElementVersions) {
 					version = mElement.getVersion(); // this destroys automatic version numbering, but takes into account the user specified version
 					// for logging, determine the type
+					int oidFeatureId = FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID; // FR OID feature ID
 					if(mElement instanceof FunctionalResource) {
 						type = "Functional Resource";
 					} else if(mElement instanceof Event) {
@@ -199,47 +203,51 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 						type = "Directive";
 					} else if(mElement instanceof Parameter) {
 						type = "Parameter";
-					} else {
-						continue; // no need for an OID for Directive/Qualifier and Event/Value
+					} else if(mElement instanceof Qualifier || mElement instanceof Value) {
+						type = mElement.getClass().getSimpleName();
+						oidFeatureId = FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID;
 					}
 					
 					Oid mElementOid = cloneOid(parentOid);
-					if(elementType != ModelElementType.FR_OID_TYPE.getValue()) // TODO: to keep the model extensible the FRs should have a type!
-						mElementOid.getOidBit().add(elementType);
-					mElementOid.getOidBit().add(mElementIndex);
-					if(mElement instanceof FunctionalResource == false) // not for FRs themselves!
-						mElementOid.getOidBit().add(version); // add the version as a suffix to the OID.				
-					boolean oidUpdate = false;
+
+//					if(elementType != ModelElementType.FR_OID_TYPE.getValue()) // TODO: to keep the model extensible the FRs should have a type!
+//						mElementOid.getOidBit().add(elementType);
 					
-					if(mElement.getOid() == null) {
-						oidUpdate = true;
-						Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
-								"Created OID for " + type + " "
-										+ parentName + " / " + mElement.getStringIdentifier() + ": " + OidItemProvider.getOidStr(mElementOid)));					
+					// add type for P/E/D 
+					if(isPED(mElement)) {
+						mElementOid.getOidBit().add(elementType);
 					}
-					if(mElement.getOid() != null && EcoreUtil.equals(mElement.getOid(), mElementOid) == false) {
-						oidUpdate = true;
-						Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID,
-								"Upated OID for " + type + " " 
-										+ parentName + " / " + mElement.getStringIdentifier() + " from " + OidItemProvider.getOidStr(mElement.getOid())
-										+ " to " + OidItemProvider.getOidStr(mElementOid)));					
-					}
+
+					// add the index as the actual ID of the element
+					mElementOid.getOidBit().add(mElementIndex);
+					
+					// version type for P/E/D 
+					if(isPED(mElement)) {
+						mElementOid.getOidBit().add(version); // add the version as a suffix to the OID.
+					}					
+					
+					// check if the element OID or the type OID require an update
+					boolean oidUpdate = requiresOidUpdate(parentName, type, mElement, oidFeatureId, mElementOid);
+					
+					// handle the parameter typeOid
+					setParameterTypeOid(domain, parentName, mElement, mElementOid, setOids);
 					
 					if(oidUpdate == true) {
-						SetCommand setParameterOidCmd = new SetCommand(domain, mElement, 
-								mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID),
-								mElementOid);
-						setOids.append(setParameterOidCmd);
 						
-						SetCommand setParameterOidBitCmd = new SetCommand(domain, mElement, 
+						SetCommand setOidCmd = new SetCommand(domain, mElement, 
+								mElement.eClass().getEStructuralFeature(oidFeatureId),
+								mElementOid);
+						setOids.append(setOidCmd);
+						
+						SetCommand setOidBitCmd = new SetCommand(domain, mElement, 
 								mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT),
 								mElementIndex);
-						setOids.append(setParameterOidBitCmd);
+						setOids.append(setOidBitCmd);
 						
-						SetCommand setParameterVersionCmd = new SetCommand(domain, mElement, 
+						SetCommand setVersionCmd = new SetCommand(domain, mElement, 
 								mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__VERSION),
 								version);
-						setOids.append(setParameterVersionCmd);
+						setOids.append(setVersionCmd);
 					}
 					
 					// update the children of functional resources directives and events
@@ -265,6 +273,131 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 				mElementIndex++; // next element index
 			}
 		}
+	}
+
+	/**
+	 * Return true if this element has an external type OID
+	 * @param mElement
+	 * @return
+	 */
+	private boolean hasExternalTypeOid(FrModelElement mElement) {
+		try {
+			EStructuralFeature f = mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID);
+			if(mElement != null && f != null && mElement.eGet(f) != null) {
+				return true;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	/**
+	 * Sets the element type OID for this parameter if necessary into the setOids command
+	 * @param domain		the editing domain for the mElement
+	 * @param parent		the parent of mElement, used for logging
+	 * @param mElement		the parameter 
+	 * @param mElementOid	the element OID of the parameter
+	 * @param setOids		the command finally performing the set
+	 */
+	private void setParameterTypeOid(EditingDomain domain, String  parentName, FrModelElement mElement, Oid mElementOid, CompoundCommand setOids) {
+		if(mElement == null || mElement instanceof Parameter == false) {
+			return;
+		}		
+		
+		// no type OID if external type OID is there
+		if(hasExternalTypeOid(mElement) == true) {
+			return;
+		}
+		
+		Oid parameterTypeOid = EcoreUtil.copy(mElementOid);
+		parameterTypeOid.getOidBit().add(1);
+		
+		Oid currentTypeOid = ((Parameter)mElement).getTypeOid();
+		
+		if(currentTypeOid == null || 
+				EcoreUtil.equals(currentTypeOid, parameterTypeOid) == false) {
+			
+			if(currentTypeOid != null) {
+				Activator.getDefault().getLog().log(
+						new Status(Status.INFO, Activator.PLUGIN_ID, "Update 'Type OID' from " + OidItemProvider.getOidStr(currentTypeOid)
+						+ " to " + OidItemProvider.getOidStr(parameterTypeOid) 
+						+ " for " + parentName + " / parameter " + mElement.getClassifier()));				
+			} else {
+				Activator.getDefault().getLog().log(
+						new Status(Status.INFO, Activator.PLUGIN_ID, "Create 'Type OID' " + OidItemProvider.getOidStr(parameterTypeOid)
+						+ " for " + parentName + " / parameter " + mElement.getClassifier()));
+			}
+			
+			EStructuralFeature typeOidFeature = mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID);
+			
+			SetCommand setTypeOidCmd = new SetCommand(domain, mElement, 
+					typeOidFeature,
+					parameterTypeOid);
+			setOids.append(setTypeOidCmd);
+		}
+	}
+
+
+	/**
+	 * Check if the model element is a P/E/D
+	 * @param mElement
+	 * @return true if the element is a P/E/D
+	 */
+	private boolean isPED(FrModelElement mElement) {
+		if(mElement instanceof Parameter 
+		|| mElement instanceof Directive
+		|| mElement instanceof Event) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Check if the OID for the given feature must be updated
+	 * @param mElement
+	 * @param oidFeatureId
+	 * @param newOidValue
+	 * @return true if the element OID is not set or different. true if this is type OID and there is no external type OID and the 
+	 * type OID is not set of different.
+	 */
+	private boolean requiresOidUpdate(String parentName, String type, FrModelElement mElement, int oidFeatureId, Oid newOidValue) {
+		try {
+			String oidType = "'Element OID' (" + oidFeatureId + ")";
+			
+			// get the current OID for the give OID feature (element OID or type OID)
+			Oid currentOid = (Oid) mElement.eGet(mElement.eClass().getEStructuralFeature(oidFeatureId));
+			
+			// typeOid are not added if there is an external typeOid
+			if(oidFeatureId == FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID) {
+				Object extTypeOid = mElement.eGet(mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID));
+				if(extTypeOid != null) {
+					return false;
+				}
+				oidType = "'Type OID' (" + oidFeatureId + ")";
+			}
+			
+			if (currentOid == null) {
+				Activator.getDefault().getLog().log(
+						new Status(Status.INFO, Activator.PLUGIN_ID, "Create " + oidType + " for " + type + " " + parentName + " / "
+								+ mElement.getStringIdentifier() + ": " + OidItemProvider.getOidStr(newOidValue)));
+	
+				return true;
+			} else if (EcoreUtil.equals(currentOid, newOidValue) == false) {
+				Activator.getDefault().getLog()
+						.log(new Status(Status.INFO, Activator.PLUGIN_ID,
+								"Upated " + oidType + " for " + type + " " + parentName + " / " + mElement.getStringIdentifier()
+										+ " from " + OidItemProvider.getOidStr(mElement.getOid()) + " to "
+										+ OidItemProvider.getOidStr(newOidValue)));
+				return true;
+	
+			}		
+		} catch(Exception e) {
+			Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, "Failed to get OID feature using ID " +
+					oidFeatureId + " from " + mElement));
+		}
+		return false;
 	}
 	
 	/**

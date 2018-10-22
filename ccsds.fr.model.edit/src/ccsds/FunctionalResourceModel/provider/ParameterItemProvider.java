@@ -214,6 +214,7 @@ public class ParameterItemProvider extends TypedElementItemProvider {
 		boolean qualify =
 			childFeature == FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID ||
 			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID ||
+			childFeature == FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID ||
 			childFeature == FunctionalResourceModelPackage.Literals.PARAMETER__EXTERNAL_OID;
 
 		if (qualify) {
