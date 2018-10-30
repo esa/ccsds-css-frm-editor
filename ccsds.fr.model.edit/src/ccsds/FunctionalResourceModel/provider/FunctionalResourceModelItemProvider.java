@@ -7,6 +7,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 
+import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import java.util.Collection;
 import java.util.List;
 
@@ -78,6 +79,7 @@ public class FunctionalResourceModelItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
 		}
@@ -132,6 +134,7 @@ public class FunctionalResourceModelItemProvider
 
 		switch (notification.getFeatureID(FunctionalResourceModel.class)) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -155,6 +158,11 @@ public class FunctionalResourceModelItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE,
+				 FrtypesFactory.eINSTANCE.createModule()));
 
 		newChildDescriptors.add
 			(createChildParameter

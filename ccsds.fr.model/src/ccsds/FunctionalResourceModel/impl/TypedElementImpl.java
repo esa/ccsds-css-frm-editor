@@ -6,6 +6,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.TypedElement;
 
+import ccsds.fr.type.model.frtypes.TypeDefinition;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getTypeOid <em>Type Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl#getTypeDef <em>Type Def</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +92,16 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 	 * @ordered
 	 */
 	protected Oid typeOid;
+
+	/**
+	 * The cached value of the '{@link #getTypeDef() <em>Type Def</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypeDef()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeDefinition typeDef;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +255,49 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TypeDefinition getTypeDef() {
+		return typeDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTypeDef(TypeDefinition newTypeDef, NotificationChain msgs) {
+		TypeDefinition oldTypeDef = typeDef;
+		typeDef = newTypeDef;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF, oldTypeDef, newTypeDef);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypeDef(TypeDefinition newTypeDef) {
+		if (newTypeDef != typeDef) {
+			NotificationChain msgs = null;
+			if (typeDef != null)
+				msgs = ((InternalEObject)typeDef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF, null, msgs);
+			if (newTypeDef != null)
+				msgs = ((InternalEObject)newTypeDef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF, null, msgs);
+			msgs = basicSetTypeDef(newTypeDef, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF, newTypeDef, newTypeDef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -250,6 +305,8 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return basicSetExternalTypeOid(null, msgs);
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				return basicSetTypeOid(null, msgs);
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
+				return basicSetTypeDef(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -270,6 +327,8 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return getExternalTypeOid();
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				return getTypeOid();
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
+				return getTypeDef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +352,9 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return;
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				setTypeOid((Oid)newValue);
+				return;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
+				setTypeDef((TypeDefinition)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -318,6 +380,9 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				setTypeOid((Oid)null);
 				return;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
+				setTypeDef((TypeDefinition)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,6 +403,8 @@ public class TypedElementImpl extends FrModelElementImpl implements TypedElement
 				return externalTypeOid != null;
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
 				return typeOid != null;
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
+				return typeDef != null;
 		}
 		return super.eIsSet(featureID);
 	}

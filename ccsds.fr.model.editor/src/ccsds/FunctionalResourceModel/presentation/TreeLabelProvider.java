@@ -5,9 +5,12 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.window.ToolTip;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
 import ccsds.FunctionalResourceModel.Oid;
+import ccsds.fr.type.model.frtypes.Asn1Writer;
 import ccsds.oids.OidTree;
 
 /**
@@ -17,6 +20,8 @@ import ccsds.oids.OidTree;
 public class TreeLabelProvider extends ColumnLabelProvider {
 
 	AdapterFactoryLabelProvider adapterFactory;
+
+	private final Font tooltipFont = new Font(null,"Courier New",12, SWT.NONE);
 	
 	public TreeLabelProvider(AdapterFactoryLabelProvider af, ColumnViewer selectionViewer) {
 		adapterFactory = af;
@@ -31,6 +36,11 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+		} else if(element instanceof Asn1Writer) {
+			StringBuffer asn1Buffer = new StringBuffer();
+			((Asn1Writer)element).writeAsn1(0, asn1Buffer);
+			
+			return asn1Buffer.toString();
 		}
 		return null;
 	}
@@ -45,4 +55,8 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 		return adapterFactory.getImage(element);
 	}
 	
+	@Override
+	public Font getToolTipFont(Object object) {
+		return this.tooltipFont;
+	}
 }

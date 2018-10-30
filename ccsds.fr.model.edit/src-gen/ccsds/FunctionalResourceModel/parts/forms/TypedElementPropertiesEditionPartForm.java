@@ -180,7 +180,7 @@ public class TypedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.heightHint=190;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -676,7 +676,7 @@ public class TypedElementPropertiesEditionPartForm extends SectionPropertiesEdit
 		typeDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData typeDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		typeDefinitionData.horizontalSpan = 2;
-		typeDefinitionData.heightHint=160;
+		typeDefinitionData.heightHint=190;
 		typeDefinitionData.widthHint = 200;
 		typeDefinition.setLayoutData(typeDefinitionData);
 		typeDefinition.addFocusListener(new FocusAdapter() {

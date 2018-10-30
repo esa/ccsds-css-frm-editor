@@ -170,7 +170,7 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint=160;
+		semanticDefinitionData.heightHint=190;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {

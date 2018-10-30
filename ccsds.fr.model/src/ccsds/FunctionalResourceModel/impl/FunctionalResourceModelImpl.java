@@ -8,6 +8,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
 import ccsds.FunctionalResourceModel.Oid;
 
+import ccsds.fr.type.model.frtypes.Module;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getRootOid <em>Root Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getAsnTypeModule <em>Asn Type Module</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
@@ -49,6 +51,16 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected Oid rootOid;
+
+	/**
+	 * The cached value of the '{@link #getAsnTypeModule() <em>Asn Type Module</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAsnTypeModule()
+	 * @generated
+	 * @ordered
+	 */
+	protected Module asnTypeModule;
 
 	/**
 	 * The cached value of the '{@link #getFunctionalResourceSet() <em>Functional Resource Set</em>}' containment reference list.
@@ -137,6 +149,49 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module getAsnTypeModule() {
+		return asnTypeModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAsnTypeModule(Module newAsnTypeModule, NotificationChain msgs) {
+		Module oldAsnTypeModule = asnTypeModule;
+		asnTypeModule = newAsnTypeModule;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE, oldAsnTypeModule, newAsnTypeModule);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAsnTypeModule(Module newAsnTypeModule) {
+		if (newAsnTypeModule != asnTypeModule) {
+			NotificationChain msgs = null;
+			if (asnTypeModule != null)
+				msgs = ((InternalEObject)asnTypeModule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE, null, msgs);
+			if (newAsnTypeModule != null)
+				msgs = ((InternalEObject)newAsnTypeModule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE, null, msgs);
+			msgs = basicSetAsnTypeModule(newAsnTypeModule, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE, newAsnTypeModule, newAsnTypeModule));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<FunctionalResourceSet> getFunctionalResourceSet() {
 		if (functionalResourceSet == null) {
 			functionalResourceSet = new EObjectContainmentEList<FunctionalResourceSet>(FunctionalResourceSet.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
@@ -166,6 +221,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return basicSetRootOid(null, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+				return basicSetAsnTypeModule(null, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return ((InternalEList<?>)getFunctionalResourceSet()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
@@ -184,6 +241,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return getRootOid();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+				return getAsnTypeModule();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return getFunctionalResourceSet();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
@@ -203,6 +262,9 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				setRootOid((Oid)newValue);
+				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+				setAsnTypeModule((Module)newValue);
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				getFunctionalResourceSet().clear();
@@ -227,6 +289,9 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				setRootOid((Oid)null);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+				setAsnTypeModule((Module)null);
+				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				getFunctionalResourceSet().clear();
 				return;
@@ -247,6 +312,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 				return rootOid != null;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+				return asnTypeModule != null;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return functionalResourceSet != null && !functionalResourceSet.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:

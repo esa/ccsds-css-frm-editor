@@ -7,6 +7,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.TypedElement;
 
+import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import java.util.Collection;
 import java.util.List;
 
@@ -112,6 +113,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__EXTERNAL_TYPE_OID);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_DEF);
 		}
 		return childrenFeatures;
 	}
@@ -173,6 +175,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 				return;
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__EXTERNAL_TYPE_OID:
 			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_OID:
+			case FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEF:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -199,6 +202,11 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.TYPED_ELEMENT__TYPE_DEF,
+				 FrtypesFactory.eINSTANCE.createTypeDefinition()));
 	}
 
 	/**

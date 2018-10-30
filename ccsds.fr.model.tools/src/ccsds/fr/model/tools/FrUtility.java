@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
@@ -22,7 +26,7 @@ import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProvide
 public class FrUtility {
 
 	/**
-	 * Returns an ordered array of FRs as they appear in teh model,
+	 * Returns an ordered array of FRs as they appear in the model,
 	 * no matter if they are directly under the model or within a
 	 * FunctionalResourceSet
 	 * @param frm
@@ -78,4 +82,21 @@ public class FrUtility {
 			throw e;
 		}	
 	}
+	
+	/**
+	 * Returns the current Project Explorer Selection as a file or null.
+	 * @return
+	 */
+	public static IFile getProjectExplorerSelection() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		try {
+			IStructuredSelection structured = (IStructuredSelection)window.getSelectionService().getSelection();
+			IFile file = (IFile) structured.getFirstElement();
+			return file;
+			
+		} catch(Exception e) { 
+		}
+		
+		return null;
+	}	
 }

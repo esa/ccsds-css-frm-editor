@@ -2,6 +2,7 @@
  */
 package ccsds.FunctionalResourceModel;
 
+import ccsds.fr.type.model.frtypes.Module;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getRootOid <em>Root Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getAsnTypeModule <em>Asn Type Module</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
@@ -50,6 +52,32 @@ public interface FunctionalResourceModel extends EObject {
 	 * @generated
 	 */
 	void setRootOid(Oid value);
+
+	/**
+	 * Returns the value of the '<em><b>Asn Type Module</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Asn Type Module</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Asn Type Module</em>' containment reference.
+	 * @see #setAsnTypeModule(Module)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceModel_AsnTypeModule()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Module getAsnTypeModule();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getAsnTypeModule <em>Asn Type Module</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Asn Type Module</em>' containment reference.
+	 * @see #getAsnTypeModule()
+	 * @generated
+	 */
+	void setAsnTypeModule(Module value);
 
 	/**
 	 * Returns the value of the '<em><b>Functional Resource Set</b></em>' containment reference list.

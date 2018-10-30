@@ -3,7 +3,6 @@
  */
 package ccsds.FunctionalResourceModel.components;
 
-
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.AncillaryInterface;
 import ccsds.FunctionalResourceModel.Directive;

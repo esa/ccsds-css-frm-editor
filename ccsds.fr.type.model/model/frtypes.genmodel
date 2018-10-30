@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/ccsds.fr.type.model/src-gen" creationIcons="false"
+    editDirectory="/ccsds.fr.type.model.edit/src-gen" editorDirectory="/ccsds.fr.type.model.editor/src-gen"
+    modelPluginID="ccsds.fr.type.model" modelName="Frtypes" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" language="" operationReflection="true" importOrganizing="true">
+  <foreignModel>frtypes.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Frtypes" basePackage="ccsds.fr.type.model" disposableProviderFactory="true"
+      multipleEditorPages="false" ecorePackage="frtypes.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="frtypes.ecore#//StringType">
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/BMPString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/IA5String"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/GeneralString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/GraphicString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/NumericString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/PrintableString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/TeletexString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/UnivarsalString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/UTF8String"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/VideotexString"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//StringType/VisibleString"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="frtypes.ecore#//ConstraintType">
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//ConstraintType/RANGE"/>
+      <genEnumLiterals ecoreEnumLiteral="frtypes.ecore#//ConstraintType/OR"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="frtypes.ecore#//StringBuffer"/>
+    <genClasses ecoreClass="frtypes.ecore#//TypeDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//TypeDefinition/type"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//Type">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Type/singleValueConstraint"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//SimpleType"/>
+    <genClasses ecoreClass="frtypes.ecore#//StructuredType"/>
+    <genClasses ecoreClass="frtypes.ecore#//Boolean"/>
+    <genClasses ecoreClass="frtypes.ecore#//IntegerType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//IntegerType/namedValues"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//BitString"/>
+    <genClasses ecoreClass="frtypes.ecore#//OctetString"/>
+    <genClasses ecoreClass="frtypes.ecore#//Real"/>
+    <genClasses ecoreClass="frtypes.ecore#//Enumerated">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Enumerated/values"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//CharacterString">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//CharacterString/permittedAlphabetConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//CharacterString/type"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//Sequence"/>
+    <genClasses ecoreClass="frtypes.ecore#//SequenceOf"/>
+    <genClasses ecoreClass="frtypes.ecore#//Set"/>
+    <genClasses ecoreClass="frtypes.ecore#//SetOf"/>
+    <genClasses ecoreClass="frtypes.ecore#//Constraint"/>
+    <genClasses ecoreClass="frtypes.ecore#//SizeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SizeConstraint/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SizeConstraint/max"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//ValueRangeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ValueRangeConstraint/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ValueRangeConstraint/max"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//SimpleRangeType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//SimpleRangeType/rangeConstraint"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//SimpleSizeConstrainedType"/>
+    <genClasses ecoreClass="frtypes.ecore#//NamedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//NamedValue/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//NamedValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//StructuredSizeConstrainedType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredSizeConstrainedType/components"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//Choice"/>
+    <genClasses ecoreClass="frtypes.ecore#//TypeReferenceLocal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference frtypes.ecore#//TypeReferenceLocal/typeDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//SingleValueConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SingleValueConstraint/values"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//PermittedAlphabetConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//PermittedAlphabetConstraint/values"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//PermittedAlphabetConstraint/type"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Module/typeDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/oid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/imports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/exports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/name"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//ObjectIdentifier"/>
+    <genClasses ecoreClass="frtypes.ecore#//ComponentValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//ComponentValue/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//TypeReferenceExternal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/name"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//Null"/>
+    <genClasses image="false" ecoreClass="frtypes.ecore#//Asn1Writer">
+      <genOperations ecoreOperation="frtypes.ecore#//Asn1Writer/writeAsn1">
+        <genParameters ecoreParameter="frtypes.ecore#//Asn1Writer/writeAsn1/indentLevel"/>
+        <genParameters ecoreParameter="frtypes.ecore#//Asn1Writer/writeAsn1/output"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="frtypes.ecore#//SizeConstrainedType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//StructuredDifferentType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredDifferentType/components"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

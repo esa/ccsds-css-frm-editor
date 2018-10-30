@@ -70,6 +70,28 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="fr.create.asn1"
+               icon="icons/asn_module.png"
+               label="Create ASN.1 Type Module"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -138,6 +160,28 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="fr.create.asn1"
+               icon="icons/asn_module.png"
+               label="Create ASN.1 Type Module"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -175,6 +219,10 @@
       <handler
             class="ccsds.handlers.CreateAuthEntities"
             commandId="fr.create.auth.entity">
+      </handler>
+      <handler
+            class="ccsds.handlers.CreateFrAsnHandler"
+            commandId="fr.create.asn1">
       </handler>
    </extension>
    <extension

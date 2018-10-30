@@ -18,6 +18,7 @@ import ccsds.FunctionalResourceModel.ServiceAccessPoint;
 import ccsds.FunctionalResourceModel.TypedElement;
 import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.util.FunctionalResourceModelValidator;
+import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -169,6 +170,9 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		FrtypesPackage.eINSTANCE.eClass();
+
 		// Create package meta-data objects
 		theFunctionalResourceModelPackage.createPackageContents();
 
@@ -216,7 +220,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResourceModel_FunctionalResourceSet() {
+	public EReference getFunctionalResourceModel_AsnTypeModule() {
 		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -225,8 +229,17 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResourceModel_FunctionalResource() {
+	public EReference getFunctionalResourceModel_FunctionalResourceSet() {
 		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResourceModel_FunctionalResource() {
+		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -558,6 +571,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTypedElement_TypeDef() {
+		return (EReference)typedElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getServiceAccessPoint() {
 		return serviceAccessPointEClass;
 	}
@@ -718,6 +740,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		// Create classes and their features
 		functionalResourceModelEClass = createEClass(FUNCTIONAL_RESOURCE_MODEL);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
+		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
 
@@ -769,6 +792,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(typedElementEClass, TYPED_ELEMENT__ENGINEERING_UNIT);
 		createEReference(typedElementEClass, TYPED_ELEMENT__EXTERNAL_TYPE_OID);
 		createEReference(typedElementEClass, TYPED_ELEMENT__TYPE_OID);
+		createEReference(typedElementEClass, TYPED_ELEMENT__TYPE_DEF);
 
 		serviceAccessPointEClass = createEClass(SERVICE_ACCESS_POINT);
 		createEAttribute(serviceAccessPointEClass, SERVICE_ACCESS_POINT__NAME);
@@ -808,6 +832,9 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		FrtypesPackage theFrtypesPackage = (FrtypesPackage)EPackage.Registry.INSTANCE.getEPackage(FrtypesPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -824,6 +851,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(functionalResourceModelEClass, FunctionalResourceModel.class, "FunctionalResourceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFunctionalResourceModel_RootOid(), this.getOid(), null, "rootOid", null, 1, 1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResourceModel_AsnTypeModule(), theFrtypesPackage.getModule(), null, "asnTypeModule", null, 1, 1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_FunctionalResourceSet(), this.getFunctionalResourceSet(), null, "functionalResourceSet", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_FunctionalResource(), this.getFunctionalResource(), null, "functionalResource", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -875,6 +903,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getTypedElement_EngineeringUnit(), ecorePackage.getEString(), "engineeringUnit", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedElement_ExternalTypeOid(), this.getOid(), null, "externalTypeOid", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypedElement_TypeOid(), this.getOid(), null, "typeOid", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypedElement_TypeDef(), theFrtypesPackage.getTypeDefinition(), null, "typeDef", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceAccessPointEClass, ServiceAccessPoint.class, "ServiceAccessPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceAccessPoint_Name(), ecorePackage.getEString(), "name", "newSAP", 0, 1, ServiceAccessPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

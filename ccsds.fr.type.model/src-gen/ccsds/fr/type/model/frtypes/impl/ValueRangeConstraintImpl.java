@@ -1,0 +1,233 @@
+/**
+ */
+package ccsds.fr.type.model.frtypes.impl;
+
+import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ValueRangeConstraint;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Value Range Constraint</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.ValueRangeConstraintImpl#getMin <em>Min</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.ValueRangeConstraintImpl#getMax <em>Max</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRangeConstraint {
+	/**
+	 * The default value of the '{@link #getMin() <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long MIN_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected long min = MIN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long MAX_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected long max = MAX_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValueRangeConstraintImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return FrtypesPackage.Literals.VALUE_RANGE_CONSTRAINT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long getMin() {
+		return min;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMin(long newMin) {
+		long oldMin = min;
+		min = newMin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN, oldMin,
+					min));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long getMax() {
+		return max;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMax(long newMax) {
+		long oldMax = max;
+		max = newMax;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX, oldMax,
+					max));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
+			return getMin();
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
+			return getMax();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
+			setMin((Long) newValue);
+			return;
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
+			setMax((Long) newValue);
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
+			setMin(MIN_EDEFAULT);
+			return;
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
+			setMax(MAX_EDEFAULT);
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
+			return min != MIN_EDEFAULT;
+		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
+			return max != MAX_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (min: ");
+		result.append(min);
+		result.append(", max: ");
+		result.append(max);
+		result.append(')');
+		return result.toString();
+	}
+
+	/**
+	 * Write the value range constraint
+	 * @generated NOT
+	 */
+	@Override
+	public void writeAsn1(int indentLevel, StringBuffer output) {
+		if (getMin() != getMax()) {
+			output.append(
+					Asn1Writer.BLANK + Asn1Writer.LPAREN + getMin() + Asn1Writer.UNTIL + getMax() + Asn1Writer.RPAREN);
+		} else {
+			output.append(Asn1Writer.BLANK + Asn1Writer.LPAREN + getMin() + Asn1Writer.RPAREN);
+		}
+		output.append(Asn1Writer.BLANK);
+	}
+
+} //ValueRangeConstraintImpl

@@ -2,6 +2,7 @@
  */
 package ccsds.FunctionalResourceModel.presentation;
 
+import ccsds.fr.type.model.frtypes.provider.FrtypesEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -40,6 +41,7 @@ public final class Functional_resourceEditorPlugin extends EMFPlugin {
 	public Functional_resourceEditorPlugin() {
 		super
 			(new ResourceLocator [] {
+				FrtypesEditPlugin.INSTANCE,
 			});
 	}
 

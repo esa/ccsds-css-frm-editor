@@ -2,6 +2,8 @@
  */
 package ccsds.FunctionalResourceModel;
 
+import ccsds.fr.type.model.frtypes.TypeDefinition;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +18,7 @@ package ccsds.FunctionalResourceModel;
  *   <li>{@link ccsds.FunctionalResourceModel.TypedElement#getEngineeringUnit <em>Engineering Unit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.TypedElement#getExternalTypeOid <em>External Type Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.TypedElement#getTypeOid <em>Type Oid</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.TypedElement#getTypeDef <em>Type Def</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getTypedElement()
@@ -127,5 +130,31 @@ public interface TypedElement extends FrModelElement {
 	 * @generated
 	 */
 	void setTypeOid(Oid value);
+
+	/**
+	 * Returns the value of the '<em><b>Type Def</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type Def</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Def</em>' containment reference.
+	 * @see #setTypeDef(TypeDefinition)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getTypedElement_TypeDef()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	TypeDefinition getTypeDef();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.TypedElement#getTypeDef <em>Type Def</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type Def</em>' containment reference.
+	 * @see #getTypeDef()
+	 * @generated
+	 */
+	void setTypeDef(TypeDefinition value);
 
 } // TypedElement

@@ -12,6 +12,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootOid" lowerBound="1"
         eType="#//Oid" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="asnTypeModule" lowerBound="1"
+        eType="ecore:EClass ../../ccsds.fr.type.model/model/frtypes.ecore#//Module"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResourceSet"
         upperBound="-1" eType="#//FunctionalResourceSet" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResource" upperBound="-1"
@@ -99,6 +102,9 @@
         <details key="documentation" value="CSTS WG decided to have a dedicated type OID to denote the OID of the ASN.1 type definition used for encoding.&#xA;&#xA;The type OID is constructed by using the OID of the P/E/D and add a digit. This is necessary for Event/Vaues and Directive/Qualifiers which have a 1 - 0..n relationship."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeDef" lowerBound="1"
+        eType="ecore:EClass ../../ccsds.fr.type.model/model/frtypes.ecore#//TypeDefinition"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceAccessPoint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

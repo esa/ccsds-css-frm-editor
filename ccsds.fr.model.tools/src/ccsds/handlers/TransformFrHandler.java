@@ -5,10 +5,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-
+import ccsds.fr.model.tools.FrUtility;
 import ccsds.tranform.FrModelTransformation;
 
 public class TransformFrHandler extends AbstractHandler implements IHandler {
@@ -19,7 +16,7 @@ public class TransformFrHandler extends AbstractHandler implements IHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IFile file = getProjectExplorerSelection();
+		IFile file = FrUtility.getProjectExplorerSelection();
 		if(file != null) {
 			System.out.println("Transform " + file.getLocation().toPortableString());
 			FrModelTransformation frTrans = new FrModelTransformation();
@@ -32,22 +29,4 @@ public class TransformFrHandler extends AbstractHandler implements IHandler {
 	public boolean isEnabled() {
 		return true;
 	}
-
-	/**
-	 * Returns the current Project Explorer Selection as a file or null.
-	 * @return
-	 */
-	private IFile getProjectExplorerSelection() {
-		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		try {
-			IStructuredSelection structured = (IStructuredSelection)window.getSelectionService().getSelection();
-			IFile file = (IFile) structured.getFirstElement();
-			return file;
-			
-		} catch(Exception e) { 
-		}
-		
-		return null;
-	}
-	
 }

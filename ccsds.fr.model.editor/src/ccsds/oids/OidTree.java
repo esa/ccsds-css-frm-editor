@@ -7,7 +7,7 @@ import ccsds.FunctionalResourceModel.Oid;
  *  OIDs with labels attached to the numeric OID bits.
  */
 public class OidTree {
-	private static final char OID_SEP = '.';
+	private static final char OID_SEP = ' ';
 	private static OidTree instance;
 	private OidNode rootNode;
 	

@@ -3,7 +3,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ccsds.fr.model/src" editDirectory="/ccsds.fr.model.edit/src"
     editorDirectory="/ccsds.fr.model.editor/src" modelPluginID="ccsds.fr.model" modelName="Functional_resource"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../ccsds.fr.type.model/model/frtypes.genmodel#//frtypes"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>functional_resource.ecore</foreignModel>
   <genPackages prefix="FunctionalResourceModel" basePackage="ccsds" resource="XML"
       disposableProviderFactory="true" contentTypeIdentifier="" fileExtensions="frm"
@@ -66,6 +67,8 @@
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/typeDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/engineeringUnit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/externalTypeOid"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/typeOid"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/typeDef"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//ServiceAccessPoint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/name"/>
@@ -73,8 +76,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/maxAccessor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/minAccessed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/maxAccessed"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessingFunctionalResource"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessedFunctionalResource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessingFunctionalResource"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//AncillaryInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//AncillaryInterface/name"/>
