@@ -387,7 +387,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		}
 
 		if (this.optional == true) {
-			output.append(Asn1Writer.OPTIONAL);
+			output.append(Asn1Writer.BLANK + Asn1Writer.OPTIONAL);
 		}
 	}
 
