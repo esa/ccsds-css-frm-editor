@@ -211,13 +211,13 @@ public interface FrtypesFactory extends EFactory {
 	ObjectIdentifier createObjectIdentifier();
 
 	/**
-	 * Returns a new object of class '<em>Component Value</em>'.
+	 * Returns a new object of class '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Value</em>'.
+	 * @return a new object of class '<em>Element</em>'.
 	 * @generated
 	 */
-	ComponentValue createComponentValue();
+	Element createElement();
 
 	/**
 	 * Returns a new object of class '<em>Type Reference External</em>'.
@@ -229,6 +229,15 @@ public interface FrtypesFactory extends EFactory {
 	TypeReferenceExternal createTypeReferenceExternal();
 
 	/**
+	 * Returns a new object of class '<em>Sub Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Element</em>'.
+	 * @generated
+	 */
+	SubElement createSubElement();
+
+	/**
 	 * Returns a new object of class '<em>Null</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -236,6 +245,15 @@ public interface FrtypesFactory extends EFactory {
 	 * @generated
 	 */
 	Null createNull();
+
+	/**
+	 * Returns a new object of class '<em>From Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>From Module</em>'.
+	 * @generated
+	 */
+	FromModule createFromModule();
 
 	/**
 	 * Returns the package supported by this factory.

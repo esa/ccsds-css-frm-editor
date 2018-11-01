@@ -4,10 +4,10 @@
 package ccsds.fr.type.model.frtypes.components;
 
 // Start of user code for imports
-import ccsds.fr.type.model.frtypes.ComponentValue;
+import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
-import ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart;
+import ccsds.fr.type.model.frtypes.parts.ElementPropertiesEditionPart;
 import ccsds.fr.type.model.frtypes.parts.FrtypesViewsRepository;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -42,7 +42,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
  * 
  * 
  */
-public class ComponentValuePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
@@ -53,11 +53,11 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	 * Default constructor
 	 * 
 	 */
-	public ComponentValuePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject componentValue, String editing_mode) {
-		super(editingContext, componentValue, editing_mode);
+	public ElementPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject element, String editing_mode) {
+		super(editingContext, element, editing_mode);
 		parts = new String[] { BASE_PART };
 		repositoryKey = FrtypesViewsRepository.class;
-		partKey = FrtypesViewsRepository.ComponentValue.class;
+		partKey = FrtypesViewsRepository.Element.class;
 	}
 
 	/**
@@ -72,17 +72,17 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			
-			final ComponentValue componentValue = (ComponentValue)elt;
-			final ComponentValuePropertiesEditionPart basePart = (ComponentValuePropertiesEditionPart)editingPart;
+			final Element element = (Element)elt;
+			final ElementPropertiesEditionPart basePart = (ElementPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(FrtypesViewsRepository.ComponentValue.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, componentValue.getName()));
+			if (isAccessible(FrtypesViewsRepository.Element.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, element.getName()));
 			
-			if (isAccessible(FrtypesViewsRepository.ComponentValue.Properties.tag))
-				basePart.setTag(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, componentValue.getTag()));
+			if (isAccessible(FrtypesViewsRepository.Element.Properties.tag))
+				basePart.setTag(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, element.getTag()));
 			
-			if (isAccessible(FrtypesViewsRepository.ComponentValue.Properties.optional)) {
-				basePart.setOptional(componentValue.isOptional());
+			if (isAccessible(FrtypesViewsRepository.Element.Properties.optional)) {
+				basePart.setOptional(element.isOptional());
 			}
 			// init filters
 			
@@ -106,14 +106,14 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == FrtypesViewsRepository.ComponentValue.Properties.name) {
-			return FrtypesPackage.eINSTANCE.getComponentValue_Name();
+		if (editorKey == FrtypesViewsRepository.Element.Properties.name) {
+			return FrtypesPackage.eINSTANCE.getElement_Name();
 		}
-		if (editorKey == FrtypesViewsRepository.ComponentValue.Properties.tag) {
-			return FrtypesPackage.eINSTANCE.getComponentValue_Tag();
+		if (editorKey == FrtypesViewsRepository.Element.Properties.tag) {
+			return FrtypesPackage.eINSTANCE.getElement_Tag();
 		}
-		if (editorKey == FrtypesViewsRepository.ComponentValue.Properties.optional) {
-			return FrtypesPackage.eINSTANCE.getComponentValue_Optional();
+		if (editorKey == FrtypesViewsRepository.Element.Properties.optional) {
+			return FrtypesPackage.eINSTANCE.getElement_Optional();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -124,15 +124,15 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ComponentValue componentValue = (ComponentValue)semanticObject;
-		if (FrtypesViewsRepository.ComponentValue.Properties.name == event.getAffectedEditor()) {
-			componentValue.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		Element element = (Element)semanticObject;
+		if (FrtypesViewsRepository.Element.Properties.name == event.getAffectedEditor()) {
+			element.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (FrtypesViewsRepository.ComponentValue.Properties.tag == event.getAffectedEditor()) {
-			componentValue.setTag((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		if (FrtypesViewsRepository.Element.Properties.tag == event.getAffectedEditor()) {
+			element.setTag((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (FrtypesViewsRepository.ComponentValue.Properties.optional == event.getAffectedEditor()) {
-			componentValue.setOptional((Boolean)event.getNewValue());
+		if (FrtypesViewsRepository.Element.Properties.optional == event.getAffectedEditor()) {
+			element.setOptional((Boolean)event.getNewValue());
 		}
 	}
 
@@ -143,22 +143,22 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	public void updatePart(Notification msg) {
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
-			ComponentValuePropertiesEditionPart basePart = (ComponentValuePropertiesEditionPart)editingPart;
-			if (FrtypesPackage.eINSTANCE.getComponentValue_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.ComponentValue.Properties.name)) {
+			ElementPropertiesEditionPart basePart = (ElementPropertiesEditionPart)editingPart;
+			if (FrtypesPackage.eINSTANCE.getElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Element.Properties.name)) {
 				if (msg.getNewValue() != null) {
 					basePart.setName(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (FrtypesPackage.eINSTANCE.getComponentValue_Tag().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.ComponentValue.Properties.tag)) {
+			if (FrtypesPackage.eINSTANCE.getElement_Tag().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Element.Properties.tag)) {
 				if (msg.getNewValue() != null) {
 					basePart.setTag(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setTag("");
 				}
 			}
-			if (FrtypesPackage.eINSTANCE.getComponentValue_Optional().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.ComponentValue.Properties.optional))
+			if (FrtypesPackage.eINSTANCE.getElement_Optional().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Element.Properties.optional))
 				basePart.setOptional((Boolean)msg.getNewValue());
 			
 			
@@ -173,9 +173,9 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			FrtypesPackage.eINSTANCE.getComponentValue_Name(),
-			FrtypesPackage.eINSTANCE.getComponentValue_Tag(),
-			FrtypesPackage.eINSTANCE.getComponentValue_Optional()		);
+			FrtypesPackage.eINSTANCE.getElement_Name(),
+			FrtypesPackage.eINSTANCE.getElement_Tag(),
+			FrtypesPackage.eINSTANCE.getElement_Optional()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -187,7 +187,7 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == FrtypesViewsRepository.ComponentValue.Properties.name;
+		return key == FrtypesViewsRepository.Element.Properties.name;
 	}
 
 	/**
@@ -200,26 +200,26 @@ public class ComponentValuePropertiesEditionComponent extends SinglePartProperti
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
 		if (event.getNewValue() != null) {
 			try {
-				if (FrtypesViewsRepository.ComponentValue.Properties.name == event.getAffectedEditor()) {
+				if (FrtypesViewsRepository.Element.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getComponentValue_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getElement_Name().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getComponentValue_Name().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getElement_Name().getEAttributeType(), newValue);
 				}
-				if (FrtypesViewsRepository.ComponentValue.Properties.tag == event.getAffectedEditor()) {
+				if (FrtypesViewsRepository.Element.Properties.tag == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getComponentValue_Tag().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getElement_Tag().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getComponentValue_Tag().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getElement_Tag().getEAttributeType(), newValue);
 				}
-				if (FrtypesViewsRepository.ComponentValue.Properties.optional == event.getAffectedEditor()) {
+				if (FrtypesViewsRepository.Element.Properties.optional == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getComponentValue_Optional().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getElement_Optional().getEAttributeType(), (String)newValue);
 					}
-					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getComponentValue_Optional().getEAttributeType(), newValue);
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getElement_Optional().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

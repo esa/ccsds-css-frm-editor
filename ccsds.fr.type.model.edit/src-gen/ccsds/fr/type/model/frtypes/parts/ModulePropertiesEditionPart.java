@@ -80,32 +80,6 @@ public interface ModulePropertiesEditionPart {
 
 
 	/**
-	 * @return the imports
-	 * 
-	 */
-	public EList getImports();
-
-	/**
-	 * Defines a new imports
-	 * @param newValue the new imports to set
-	 * 
-	 */
-	public void setImports(EList newValue);
-
-	/**
-	 * Add a value to the imports multivalued attribute.
-	 * @param newValue the value to add
-	 */
-	public void addToImports(Object newValue);
-
-	/**
-	 * Remove a value to the imports multivalued attribute.
-	 * @param newValue the value to remove
-	 */
-	public void removeToImports(Object newValue);
-
-
-	/**
 	 * @return the exports
 	 * 
 	 */
@@ -143,6 +117,50 @@ public interface ModulePropertiesEditionPart {
 	 * 
 	 */
 	public void setName(String newValue);
+
+
+
+
+	/**
+	 * Init the imports
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initImports(ReferencesTableSettings settings);
+
+	/**
+	 * Update the imports
+	 * @param newValue the imports to update
+	 * 
+	 */
+	public void updateImports();
+
+	/**
+	 * Adds the given filter to the imports edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToImports(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the imports edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToImports(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the imports table
+	 * 
+	 */
+	public boolean isContainedInImportsTable(EObject element);
 
 
 

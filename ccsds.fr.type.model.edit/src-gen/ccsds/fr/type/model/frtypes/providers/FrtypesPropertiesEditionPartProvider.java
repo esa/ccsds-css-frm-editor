@@ -9,8 +9,9 @@ import ccsds.fr.type.model.frtypes.parts.forms.BitStringPropertiesEditionPartFor
 import ccsds.fr.type.model.frtypes.parts.forms.Boolean_PropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.CharacterStringPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.ChoicePropertiesEditionPartForm;
-import ccsds.fr.type.model.frtypes.parts.forms.ComponentValuePropertiesEditionPartForm;
+import ccsds.fr.type.model.frtypes.parts.forms.ElementPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.EnumeratedPropertiesEditionPartForm;
+import ccsds.fr.type.model.frtypes.parts.forms.FromModulePropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.IntegerTypePropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.ModulePropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.NamedValuePropertiesEditionPartForm;
@@ -25,6 +26,7 @@ import ccsds.fr.type.model.frtypes.parts.forms.SetOfPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SetPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SingleValueConstraintPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SizeConstraintPropertiesEditionPartForm;
+import ccsds.fr.type.model.frtypes.parts.forms.SubElementPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeDefinitionPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceExternalPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceLocalPropertiesEditionPartForm;
@@ -34,8 +36,9 @@ import ccsds.fr.type.model.frtypes.parts.impl.BitStringPropertiesEditionPartImpl
 import ccsds.fr.type.model.frtypes.parts.impl.Boolean_PropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.CharacterStringPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.ChoicePropertiesEditionPartImpl;
-import ccsds.fr.type.model.frtypes.parts.impl.ComponentValuePropertiesEditionPartImpl;
+import ccsds.fr.type.model.frtypes.parts.impl.ElementPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.EnumeratedPropertiesEditionPartImpl;
+import ccsds.fr.type.model.frtypes.parts.impl.FromModulePropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.IntegerTypePropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.ModulePropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.NamedValuePropertiesEditionPartImpl;
@@ -50,6 +53,7 @@ import ccsds.fr.type.model.frtypes.parts.impl.SetOfPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SetPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SingleValueConstraintPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SizeConstraintPropertiesEditionPartImpl;
+import ccsds.fr.type.model.frtypes.parts.impl.SubElementPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeDefinitionPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeReferenceExternalPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeReferenceLocalPropertiesEditionPartImpl;
@@ -208,11 +212,11 @@ public class FrtypesPropertiesEditionPartProvider implements IPropertiesEditionP
 			if (kind == FrtypesViewsRepository.FORM_KIND)
 				return new ObjectIdentifierPropertiesEditionPartForm(component);
 		}
-		if (key == FrtypesViewsRepository.ComponentValue.class) {
+		if (key == FrtypesViewsRepository.Element.class) {
 			if (kind == FrtypesViewsRepository.SWT_KIND)
-				return new ComponentValuePropertiesEditionPartImpl(component);
+				return new ElementPropertiesEditionPartImpl(component);
 			if (kind == FrtypesViewsRepository.FORM_KIND)
-				return new ComponentValuePropertiesEditionPartForm(component);
+				return new ElementPropertiesEditionPartForm(component);
 		}
 		if (key == FrtypesViewsRepository.TypeReferenceExternal.class) {
 			if (kind == FrtypesViewsRepository.SWT_KIND)
@@ -220,11 +224,23 @@ public class FrtypesPropertiesEditionPartProvider implements IPropertiesEditionP
 			if (kind == FrtypesViewsRepository.FORM_KIND)
 				return new TypeReferenceExternalPropertiesEditionPartForm(component);
 		}
+		if (key == FrtypesViewsRepository.SubElement.class) {
+			if (kind == FrtypesViewsRepository.SWT_KIND)
+				return new SubElementPropertiesEditionPartImpl(component);
+			if (kind == FrtypesViewsRepository.FORM_KIND)
+				return new SubElementPropertiesEditionPartForm(component);
+		}
 		if (key == FrtypesViewsRepository.Null.class) {
 			if (kind == FrtypesViewsRepository.SWT_KIND)
 				return new NullPropertiesEditionPartImpl(component);
 			if (kind == FrtypesViewsRepository.FORM_KIND)
 				return new NullPropertiesEditionPartForm(component);
+		}
+		if (key == FrtypesViewsRepository.FromModule.class) {
+			if (kind == FrtypesViewsRepository.SWT_KIND)
+				return new FromModulePropertiesEditionPartImpl(component);
+			if (kind == FrtypesViewsRepository.FORM_KIND)
+				return new FromModulePropertiesEditionPartForm(component);
 		}
 		return null;
 	}

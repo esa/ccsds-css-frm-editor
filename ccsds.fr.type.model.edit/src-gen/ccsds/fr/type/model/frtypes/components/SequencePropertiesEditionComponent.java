@@ -64,9 +64,9 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 
 	
 	/**
-	 * Settings for components ReferencesTable
+	 * Settings for elements ReferencesTable
 	 */
-	protected ReferencesTableSettings componentsSettings;
+	protected ReferencesTableSettings elementsSettings;
 	
 	
 	/**
@@ -95,13 +95,13 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 			final Sequence sequence = (Sequence)elt;
 			final SequencePropertiesEditionPart basePart = (SequencePropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(FrtypesViewsRepository.Sequence.Properties.components)) {
-				componentsSettings = new ReferencesTableSettings(sequence, FrtypesPackage.eINSTANCE.getStructuredDifferentType_Components());
-				basePart.initComponents(componentsSettings);
+			if (isAccessible(FrtypesViewsRepository.Sequence.Properties.elements)) {
+				elementsSettings = new ReferencesTableSettings(sequence, FrtypesPackage.eINSTANCE.getStructuredDifferentType_Elements());
+				basePart.initElements(elementsSettings);
 			}
 			// init filters
-			if (isAccessible(FrtypesViewsRepository.Sequence.Properties.components)) {
-				basePart.addFilterToComponents(new ViewerFilter() {
+			if (isAccessible(FrtypesViewsRepository.Sequence.Properties.elements)) {
+				basePart.addFilterToElements(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -112,7 +112,7 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 					}
 			
 				});
-				// Start of user code for additional businessfilters for components
+				// Start of user code for additional businessfilters for elements
 				// End of user code
 			}
 			// init values for referenced views
@@ -131,8 +131,8 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
 	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == FrtypesViewsRepository.Sequence.Properties.components) {
-			return FrtypesPackage.eINSTANCE.getStructuredDifferentType_Components();
+		if (editorKey == FrtypesViewsRepository.Sequence.Properties.elements) {
+			return FrtypesPackage.eINSTANCE.getStructuredDifferentType_Elements();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -144,9 +144,9 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Sequence sequence = (Sequence)semanticObject;
-		if (FrtypesViewsRepository.Sequence.Properties.components == event.getAffectedEditor()) {
+		if (FrtypesViewsRepository.Sequence.Properties.elements == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, componentsSettings, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, elementsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -164,9 +164,9 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 					}
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				componentsSettings.removeFromReference((EObject) event.getNewValue());
+				elementsSettings.removeFromReference((EObject) event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				componentsSettings.move(event.getNewIndex(), (Type) event.getNewValue());
+				elementsSettings.move(event.getNewIndex(), (Type) event.getNewValue());
 			}
 		}
 	}
@@ -179,8 +179,8 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 		super.updatePart(msg);
 		if (editingPart.isVisible()) {
 			SequencePropertiesEditionPart basePart = (SequencePropertiesEditionPart)editingPart;
-			if (FrtypesPackage.eINSTANCE.getStructuredDifferentType_Components().equals(msg.getFeature()) && isAccessible(FrtypesViewsRepository.Sequence.Properties.components))
-				basePart.updateComponents();
+			if (FrtypesPackage.eINSTANCE.getStructuredDifferentType_Elements().equals(msg.getFeature()) && isAccessible(FrtypesViewsRepository.Sequence.Properties.elements))
+				basePart.updateElements();
 			
 		}
 	}
@@ -193,7 +193,7 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			FrtypesPackage.eINSTANCE.getStructuredDifferentType_Components()		);
+			FrtypesPackage.eINSTANCE.getStructuredDifferentType_Elements()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -205,7 +205,7 @@ public class SequencePropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * 
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == FrtypesViewsRepository.Sequence.Properties.components;
+		return key == FrtypesViewsRepository.Sequence.Properties.elements;
 	}
 
 	/**

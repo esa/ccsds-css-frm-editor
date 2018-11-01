@@ -3,10 +3,10 @@
  */
 package ccsds.fr.type.model.frtypes.providers;
 
-import ccsds.fr.type.model.frtypes.ComponentValue;
+import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
-import ccsds.fr.type.model.frtypes.components.ComponentValuePropertiesEditionComponent;
+import ccsds.fr.type.model.frtypes.components.ElementPropertiesEditionComponent;
 
 import java.util.List;
 
@@ -28,12 +28,12 @@ import org.eclipse.jface.viewers.IFilter;
  * 
  * 
  */
-public class ComponentValuePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class ElementPropertiesEditionProvider extends PropertiesEditingProviderImpl {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public ComponentValuePropertiesEditionProvider() {
+	public ElementPropertiesEditionProvider() {
 		super();
 	}
 
@@ -41,7 +41,7 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public ComponentValuePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public ElementPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -51,8 +51,8 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ComponentValue) 
-					&& (FrtypesPackage.Literals.COMPONENT_VALUE == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof Element) 
+					&& (FrtypesPackage.Literals.ELEMENT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 * 
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ComponentValue) && (ComponentValuePropertiesEditionComponent.BASE_PART.equals(part));
+		return (editingContext.getEObject() instanceof Element) && (ElementPropertiesEditionComponent.BASE_PART.equals(part));
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ComponentValue) && (refinement == ComponentValuePropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Element) && (refinement == ElementPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ComponentValue) && ((ComponentValuePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ComponentValuePropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Element) && ((ElementPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ElementPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ComponentValue) {
-			return new ComponentValuePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof Element) {
+			return new ElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -102,9 +102,9 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 * 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ComponentValue) {
-			if (ComponentValuePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ComponentValuePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof Element) {
+			if (ElementPropertiesEditionComponent.BASE_PART.equals(part))
+				return new ElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -115,10 +115,10 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof ComponentValue) {
-			if (ComponentValuePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == ComponentValuePropertiesEditionComponent.class)
-				return new ComponentValuePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof Element) {
+			if (ElementPropertiesEditionComponent.BASE_PART.equals(part)
+				&& refinement == ElementPropertiesEditionComponent.class)
+				return new ElementPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
@@ -135,7 +135,7 @@ public class ComponentValuePropertiesEditionProvider extends PropertiesEditingPr
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && FrtypesPackage.Literals.COMPONENT_VALUE == eObj.eClass();
+			return eObj != null && FrtypesPackage.Literals.ELEMENT == eObj.eClass();
 		}
 		
 	}

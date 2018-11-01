@@ -77,13 +77,19 @@ public class FrtypesMessages extends NLS {
 	public static String ObjectIdentifierPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String ComponentValuePropertiesEditionPart_PropertiesGroupLabel;
+	public static String ElementPropertiesEditionPart_PropertiesGroupLabel;
 
 	
 	public static String TypeReferenceExternalPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String SubElementPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String NullPropertiesEditionPart_PropertiesGroupLabel;
+
+	
+	public static String FromModulePropertiesEditionPart_PropertiesGroupLabel;
 
 
 	
@@ -213,10 +219,10 @@ public class FrtypesMessages extends NLS {
 	public static String ObjectIdentifier_Part_Title;
 
 	
-	public static String ComponentValue_ReadOnly;
+	public static String Element_ReadOnly;
 
 	
-	public static String ComponentValue_Part_Title;
+	public static String Element_Part_Title;
 
 	
 	public static String TypeReferenceExternal_ReadOnly;
@@ -225,10 +231,22 @@ public class FrtypesMessages extends NLS {
 	public static String TypeReferenceExternal_Part_Title;
 
 	
+	public static String SubElement_ReadOnly;
+
+	
+	public static String SubElement_Part_Title;
+
+	
 	public static String Null_ReadOnly;
 
 	
 	public static String Null_Part_Title;
+
+	
+	public static String FromModule_ReadOnly;
+
+	
+	public static String FromModule_Part_Title;
 
 
 	
@@ -259,13 +277,13 @@ public class FrtypesMessages extends NLS {
 	public static String CharacterStringPropertiesEditionPart_TypeLabel;
 
 	
-	public static String SequencePropertiesEditionPart_ComponentsLabel;
+	public static String SequencePropertiesEditionPart_ElementsLabel;
 
 	
 	public static String SequenceOfPropertiesEditionPart_SizeConstraintLabel;
 
 	
-	public static String SetPropertiesEditionPart_ComponentsLabel;
+	public static String SetPropertiesEditionPart_ElementsLabel;
 
 	
 	public static String SetOfPropertiesEditionPart_SizeConstraintLabel;
@@ -289,7 +307,7 @@ public class FrtypesMessages extends NLS {
 	public static String NamedValuePropertiesEditionPart_ValueLabel;
 
 	
-	public static String ChoicePropertiesEditionPart_ComponentsLabel;
+	public static String ChoicePropertiesEditionPart_ElementsLabel;
 
 	
 	public static String TypeReferenceLocalPropertiesEditionPart_TypeDefinitionLabel;
@@ -310,25 +328,40 @@ public class FrtypesMessages extends NLS {
 	public static String ModulePropertiesEditionPart_OidLabel;
 
 	
-	public static String ModulePropertiesEditionPart_ImportsLabel;
-
-	
 	public static String ModulePropertiesEditionPart_ExportsLabel;
 
 	
 	public static String ModulePropertiesEditionPart_NameLabel;
 
 	
-	public static String ComponentValuePropertiesEditionPart_NameLabel;
+	public static String ModulePropertiesEditionPart_ImportsLabel;
 
 	
-	public static String ComponentValuePropertiesEditionPart_TagLabel;
+	public static String ElementPropertiesEditionPart_NameLabel;
 
 	
-	public static String ComponentValuePropertiesEditionPart_OptionalLabel;
+	public static String ElementPropertiesEditionPart_TagLabel;
+
+	
+	public static String ElementPropertiesEditionPart_OptionalLabel;
 
 	
 	public static String TypeReferenceExternalPropertiesEditionPart_NameLabel;
+
+	
+	public static String SubElementPropertiesEditionPart_NameLabel;
+
+	
+	public static String SubElementPropertiesEditionPart_TagLabel;
+
+	
+	public static String SubElementPropertiesEditionPart_OptionalLabel;
+
+	
+	public static String FromModulePropertiesEditionPart_NameLabel;
+
+	
+	public static String FromModulePropertiesEditionPart_ImportedTypesLabel;
 
 
 	

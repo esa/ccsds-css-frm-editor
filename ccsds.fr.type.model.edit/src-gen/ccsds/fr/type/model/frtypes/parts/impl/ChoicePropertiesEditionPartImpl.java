@@ -57,9 +57,9 @@ import org.eclipse.swt.widgets.Group;
  */
 public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ChoicePropertiesEditionPart {
 
-	protected ReferencesTable components;
-	protected List<ViewerFilter> componentsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> componentsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable elements;
+	protected List<ViewerFilter> elementsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> elementsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -99,7 +99,7 @@ public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		CompositionSequence choiceStep = new BindingCompositionSequence(propertiesEditionComponent);
 		choiceStep
 			.addStep(FrtypesViewsRepository.Choice.Properties.class)
-			.addStep(FrtypesViewsRepository.Choice.Properties.components);
+			.addStep(FrtypesViewsRepository.Choice.Properties.elements);
 		
 		
 		composer = new PartComposer(choiceStep) {
@@ -109,8 +109,8 @@ public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionP
 				if (key == FrtypesViewsRepository.Choice.Properties.class) {
 					return createPropertiesGroup(parent);
 				}
-				if (key == FrtypesViewsRepository.Choice.Properties.components) {
-					return createComponentsAdvancedTableComposition(parent);
+				if (key == FrtypesViewsRepository.Choice.Properties.elements) {
+					return createElementsAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -137,48 +137,48 @@ public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	 * @param container
 	 * 
 	 */
-	protected Composite createComponentsAdvancedTableComposition(Composite parent) {
-		this.components = new ReferencesTable(getDescription(FrtypesViewsRepository.Choice.Properties.components, FrtypesMessages.ChoicePropertiesEditionPart_ComponentsLabel), new ReferencesTableListener() {
+	protected Composite createElementsAdvancedTableComposition(Composite parent) {
+		this.elements = new ReferencesTable(getDescription(FrtypesViewsRepository.Choice.Properties.elements, FrtypesMessages.ChoicePropertiesEditionPart_ElementsLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				elements.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				elements.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				elements.refresh();
 			}
 			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				elements.refresh();
 			}
 			public void navigateTo(EObject element) { }
 		});
-		for (ViewerFilter filter : this.componentsFilters) {
-			this.components.addFilter(filter);
+		for (ViewerFilter filter : this.elementsFilters) {
+			this.elements.addFilter(filter);
 		}
-		this.components.setHelpText(propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Choice.Properties.components, FrtypesViewsRepository.SWT_KIND));
-		this.components.createControls(parent);
-		this.components.addSelectionListener(new SelectionAdapter() {
+		this.elements.setHelpText(propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Choice.Properties.elements, FrtypesViewsRepository.SWT_KIND));
+		this.elements.createControls(parent);
+		this.elements.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.components, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ChoicePropertiesEditionPartImpl.this, FrtypesViewsRepository.Choice.Properties.elements, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
 		});
-		GridData componentsData = new GridData(GridData.FILL_HORIZONTAL);
-		componentsData.horizontalSpan = 3;
-		this.components.setLayoutData(componentsData);
-		this.components.setLowerBound(1);
-		this.components.setUpperBound(-1);
-		components.setID(FrtypesViewsRepository.Choice.Properties.components);
-		components.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createComponentsAdvancedTableComposition
+		GridData elementsData = new GridData(GridData.FILL_HORIZONTAL);
+		elementsData.horizontalSpan = 3;
+		this.elements.setLayoutData(elementsData);
+		this.elements.setLowerBound(1);
+		this.elements.setUpperBound(-1);
+		elements.setID(FrtypesViewsRepository.Choice.Properties.elements);
+		elements.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createElementsAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -202,20 +202,20 @@ public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#initComponents(EObject current, EReference containingFeature, EReference feature)
+	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#initElements(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initComponents(ReferencesTableSettings settings) {
+	public void initElements(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		components.setContentProvider(contentProvider);
-		components.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Choice.Properties.components);
-		if (eefElementEditorReadOnlyState && components.isEnabled()) {
-			components.setEnabled(false);
-			components.setToolTipText(FrtypesMessages.Choice_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !components.isEnabled()) {
-			components.setEnabled(true);
+		elements.setContentProvider(contentProvider);
+		elements.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Choice.Properties.elements);
+		if (eefElementEditorReadOnlyState && elements.isEnabled()) {
+			elements.setEnabled(false);
+			elements.setToolTipText(FrtypesMessages.Choice_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !elements.isEnabled()) {
+			elements.setEnabled(true);
 		}	
 		
 	}
@@ -223,44 +223,44 @@ public class ChoicePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#updateComponents()
+	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#updateElements()
 	 * 
 	 */
-	public void updateComponents() {
-	components.refresh();
+	public void updateElements() {
+	elements.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#addFilterComponents(ViewerFilter filter)
+	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#addFilterElements(ViewerFilter filter)
 	 * 
 	 */
-	public void addFilterToComponents(ViewerFilter filter) {
-		componentsFilters.add(filter);
-		if (this.components != null) {
-			this.components.addFilter(filter);
+	public void addFilterToElements(ViewerFilter filter) {
+		elementsFilters.add(filter);
+		if (this.elements != null) {
+			this.elements.addFilter(filter);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#addBusinessFilterComponents(ViewerFilter filter)
+	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#addBusinessFilterElements(ViewerFilter filter)
 	 * 
 	 */
-	public void addBusinessFilterToComponents(ViewerFilter filter) {
-		componentsBusinessFilters.add(filter);
+	public void addBusinessFilterToElements(ViewerFilter filter) {
+		elementsBusinessFilters.add(filter);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#isContainedInComponentsTable(EObject element)
+	 * @see ccsds.fr.type.model.frtypes.parts.ChoicePropertiesEditionPart#isContainedInElementsTable(EObject element)
 	 * 
 	 */
-	public boolean isContainedInComponentsTable(EObject element) {
-		return ((ReferencesTableSettings)components.getInput()).contains(element);
+	public boolean isContainedInElementsTable(EObject element) {
+		return ((ReferencesTableSettings)elements.getInput()).contains(element);
 	}
 
 

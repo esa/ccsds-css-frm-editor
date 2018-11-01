@@ -4,6 +4,7 @@
 package ccsds.fr.type.model.frtypes.components;
 
 // Start of user code for imports
+import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
@@ -75,6 +76,11 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 	 */
 	protected ReferencesTableSettings typeDefinitionSettings;
 	
+	/**
+	 * Settings for imports ReferencesTable
+	 */
+	protected ReferencesTableSettings importsSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -109,15 +115,16 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 			if (isAccessible(FrtypesViewsRepository.Module.Properties.oid))
 				basePart.setOid(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, module.getOid()));
 			
-			if (isAccessible(FrtypesViewsRepository.Module.Properties.imports))
-				basePart.setImports(module.getImports());
-			
 			if (isAccessible(FrtypesViewsRepository.Module.Properties.exports))
 				basePart.setExports(module.getExports());
 			
 			if (isAccessible(FrtypesViewsRepository.Module.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, module.getName()));
 			
+			if (isAccessible(FrtypesViewsRepository.Module.Properties.imports)) {
+				importsSettings = new ReferencesTableSettings(module, FrtypesPackage.eINSTANCE.getModule_Imports());
+				basePart.initImports(importsSettings);
+			}
 			// init filters
 			if (isAccessible(FrtypesViewsRepository.Module.Properties.typeDefinition)) {
 				basePart.addFilterToTypeDefinition(new ViewerFilter() {
@@ -137,7 +144,21 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 			
 			
 			
+			if (isAccessible(FrtypesViewsRepository.Module.Properties.imports)) {
+				basePart.addFilterToImports(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof FromModule); //$NON-NLS-1$ 
+					}
 			
+				});
+				// Start of user code for additional businessfilters for imports
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -164,14 +185,14 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 		if (editorKey == FrtypesViewsRepository.Module.Properties.oid) {
 			return FrtypesPackage.eINSTANCE.getModule_Oid();
 		}
-		if (editorKey == FrtypesViewsRepository.Module.Properties.imports) {
-			return FrtypesPackage.eINSTANCE.getModule_Imports();
-		}
 		if (editorKey == FrtypesViewsRepository.Module.Properties.exports) {
 			return FrtypesPackage.eINSTANCE.getModule_Exports();
 		}
 		if (editorKey == FrtypesViewsRepository.Module.Properties.name) {
 			return FrtypesPackage.eINSTANCE.getModule_Name();
+		}
+		if (editorKey == FrtypesViewsRepository.Module.Properties.imports) {
+			return FrtypesPackage.eINSTANCE.getModule_Imports();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -211,12 +232,6 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 		if (FrtypesViewsRepository.Module.Properties.oid == event.getAffectedEditor()) {
 			module.setOid((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
-		if (FrtypesViewsRepository.Module.Properties.imports == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				module.getImports().clear();
-				module.getImports().addAll(((EList) event.getNewValue()));
-			}
-		}
 		if (FrtypesViewsRepository.Module.Properties.exports == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				module.getExports().clear();
@@ -225,6 +240,31 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 		}
 		if (FrtypesViewsRepository.Module.Properties.name == event.getAffectedEditor()) {
 			module.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (FrtypesViewsRepository.Module.Properties.imports == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importsSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				importsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				importsSettings.move(event.getNewIndex(), (FromModule) event.getNewValue());
+			}
 		}
 	}
 
@@ -245,18 +285,6 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 					basePart.setOid("");
 				}
 			}
-			if (FrtypesPackage.eINSTANCE.getModule_Imports().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Module.Properties.imports)) {
-				if (msg.getNewValue() instanceof EList<?>) {
-					basePart.setImports((EList<?>)msg.getNewValue());
-				} else if (msg.getNewValue() == null) {
-					basePart.setImports(new BasicEList<Object>());
-				} else {
-					BasicEList<Object> newValueAsList = new BasicEList<Object>();
-					newValueAsList.add(msg.getNewValue());
-					basePart.setImports(newValueAsList);
-				}
-			}
-			
 			if (FrtypesPackage.eINSTANCE.getModule_Exports().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Module.Properties.exports)) {
 				if (msg.getNewValue() instanceof EList<?>) {
 					basePart.setExports((EList<?>)msg.getNewValue());
@@ -276,6 +304,8 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 					basePart.setName("");
 				}
 			}
+			if (FrtypesPackage.eINSTANCE.getModule_Imports().equals(msg.getFeature()) && isAccessible(FrtypesViewsRepository.Module.Properties.imports))
+				basePart.updateImports();
 			
 		}
 	}
@@ -290,9 +320,9 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FrtypesPackage.eINSTANCE.getModule_TypeDefinition(),
 			FrtypesPackage.eINSTANCE.getModule_Oid(),
-			FrtypesPackage.eINSTANCE.getModule_Imports(),
 			FrtypesPackage.eINSTANCE.getModule_Exports(),
-			FrtypesPackage.eINSTANCE.getModule_Name()		);
+			FrtypesPackage.eINSTANCE.getModule_Name(),
+			FrtypesPackage.eINSTANCE.getModule_Imports()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -323,13 +353,6 @@ public class ModulePropertiesEditionComponent extends SinglePartPropertiesEditin
 						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getModule_Oid().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getModule_Oid().getEAttributeType(), newValue);
-				}
-				if (FrtypesViewsRepository.Module.Properties.imports == event.getAffectedEditor()) {
-					BasicDiagnostic chain = new BasicDiagnostic();
-					for (Iterator iterator = ((List)event.getNewValue()).iterator(); iterator.hasNext();) {
-						chain.add(Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getModule_Imports().getEAttributeType(), iterator.next()));
-					}
-					ret = chain;
 				}
 				if (FrtypesViewsRepository.Module.Properties.exports == event.getAffectedEditor()) {
 					BasicDiagnostic chain = new BasicDiagnostic();

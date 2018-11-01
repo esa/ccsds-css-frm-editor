@@ -57,9 +57,9 @@ public class ModuleItemProvider extends ItemProviderAdapter implements IEditingD
 			super.getPropertyDescriptors(object);
 
 			addOidPropertyDescriptor(object);
-			addImportsPropertyDescriptor(object);
 			addExportsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addImportsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,8 +91,7 @@ public class ModuleItemProvider extends ItemProviderAdapter implements IEditingD
 						getResourceLocator(), getString("_UI_Module_imports_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Module_imports_feature",
 								"_UI_Module_type"),
-						FrtypesPackage.Literals.MODULE__IMPORTS, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						FrtypesPackage.Literals.MODULE__IMPORTS, true, false, false, null, null, null));
 	}
 
 	/**
@@ -203,9 +202,9 @@ public class ModuleItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(Module.class)) {
 		case FrtypesPackage.MODULE__OID:
-		case FrtypesPackage.MODULE__IMPORTS:
 		case FrtypesPackage.MODULE__EXPORTS:
 		case FrtypesPackage.MODULE__NAME:
+		case FrtypesPackage.MODULE__IMPORTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case FrtypesPackage.MODULE__TYPE_DEFINITION:

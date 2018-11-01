@@ -82,13 +82,13 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	protected List<ViewerFilter> typeDefinitionBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> typeDefinitionFilters = new ArrayList<ViewerFilter>();
 	protected Text oid;
-	protected Text imports;
-	protected Button editImports;
-	protected EList importsList;
 	protected Text exports;
 	protected Button editExports;
 	protected EList exportsList;
 	protected Text name;
+	protected ReferencesTable imports;
+	protected List<ViewerFilter> importsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> importsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -129,9 +129,9 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		CompositionStep propertiesStep = moduleStep.addStep(FrtypesViewsRepository.Module.Properties.class);
 		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.typeDefinition);
 		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.oid);
-		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.imports);
 		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.exports);
 		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.name);
+		propertiesStep.addStep(FrtypesViewsRepository.Module.Properties.imports);
 		
 		
 		composer = new PartComposer(moduleStep) {
@@ -147,14 +147,14 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 				if (key == FrtypesViewsRepository.Module.Properties.oid) {
 					return createOidText(parent);
 				}
-				if (key == FrtypesViewsRepository.Module.Properties.imports) {
-					return createImportsMultiValuedEditor(parent);
-				}
 				if (key == FrtypesViewsRepository.Module.Properties.exports) {
 					return createExportsMultiValuedEditor(parent);
 				}
 				if (key == FrtypesViewsRepository.Module.Properties.name) {
 					return createNameText(parent);
+				}
+				if (key == FrtypesViewsRepository.Module.Properties.imports) {
+					return createImportsAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -277,49 +277,6 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		return parent;
 	}
 
-	protected Composite createImportsMultiValuedEditor(Composite parent) {
-		imports = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
-		GridData importsData = new GridData(GridData.FILL_HORIZONTAL);
-		importsData.horizontalSpan = 2;
-		imports.setLayoutData(importsData);
-		EditingUtils.setID(imports, FrtypesViewsRepository.Module.Properties.imports);
-		EditingUtils.setEEFtype(imports, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editImports = new Button(parent, SWT.NONE);
-		editImports.setText(getDescription(FrtypesViewsRepository.Module.Properties.imports, FrtypesMessages.ModulePropertiesEditionPart_ImportsLabel));
-		GridData editImportsData = new GridData();
-		editImports.setLayoutData(editImportsData);
-		editImports.addSelectionListener(new SelectionAdapter() {
-
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
-						imports.getShell(), "Module", new AdapterFactoryLabelProvider(adapterFactory), //$NON-NLS-1$
-						importsList, FrtypesPackage.eINSTANCE.getModule_Imports().getEType(), null,
-						false, true, 
-						null, null);
-				if (dialog.open() == Window.OK) {
-					importsList = dialog.getResult();
-					if (importsList == null) {
-						importsList = new BasicEList();
-					}
-					imports.setText(importsList.toString());
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new BasicEList(importsList)));
-					setHasChanged(true);
-				}
-			}
-		});
-		EditingUtils.setID(editImports, FrtypesViewsRepository.Module.Properties.imports);
-		EditingUtils.setEEFtype(editImports, "eef::MultiValuedEditor::browsebutton"); //$NON-NLS-1$
-		// Start of user code for createImportsMultiValuedEditor
-
-		// End of user code
-		return parent;
-	}
-
 	protected Composite createExportsMultiValuedEditor(Composite parent) {
 		exports = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.READ_ONLY);
 		GridData exportsData = new GridData(GridData.FILL_HORIZONTAL);
@@ -407,6 +364,57 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Module.Properties.name, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createImportsAdvancedTableComposition(Composite parent) {
+		this.imports = new ReferencesTable(getDescription(FrtypesViewsRepository.Module.Properties.imports, FrtypesMessages.ModulePropertiesEditionPart_ImportsLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				imports.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				imports.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				imports.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				imports.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.importsFilters) {
+			this.imports.addFilter(filter);
+		}
+		this.imports.setHelpText(propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Module.Properties.imports, FrtypesViewsRepository.SWT_KIND));
+		this.imports.createControls(parent);
+		this.imports.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ModulePropertiesEditionPartImpl.this, FrtypesViewsRepository.Module.Properties.imports, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData importsData = new GridData(GridData.FILL_HORIZONTAL);
+		importsData.horizontalSpan = 3;
+		this.imports.setLayoutData(importsData);
+		this.imports.setLowerBound(0);
+		this.imports.setUpperBound(-1);
+		imports.setID(FrtypesViewsRepository.Module.Properties.imports);
+		imports.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createImportsAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -526,57 +534,6 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#getImports()
-	 * 
-	 */
-	public EList getImports() {
-		return importsList;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#setImports(EList newValue)
-	 * 
-	 */
-	public void setImports(EList newValue) {
-		importsList = newValue;
-		if (newValue != null) {
-			imports.setText(importsList.toString());
-		} else {
-			imports.setText(""); //$NON-NLS-1$
-		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Module.Properties.imports);
-		if (eefElementEditorReadOnlyState && imports.isEnabled()) {
-			imports.setEnabled(false);
-			imports.setToolTipText(FrtypesMessages.Module_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !imports.isEnabled()) {
-			imports.setEnabled(true);
-		}	
-		
-	}
-
-	public void addToImports(Object newValue) {
-		importsList.add(newValue);
-		if (newValue != null) {
-			imports.setText(importsList.toString());
-		} else {
-			imports.setText(""); //$NON-NLS-1$
-		}
-	}
-
-	public void removeToImports(Object newValue) {
-		importsList.remove(newValue);
-		if (newValue != null) {
-			imports.setText(importsList.toString());
-		} else {
-			imports.setText(""); //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#getExports()
 	 * 
 	 */
@@ -655,6 +612,72 @@ public class ModulePropertiesEditionPartImpl extends CompositePropertiesEditionP
 			name.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#initImports(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initImports(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		imports.setContentProvider(contentProvider);
+		imports.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Module.Properties.imports);
+		if (eefElementEditorReadOnlyState && imports.isEnabled()) {
+			imports.setEnabled(false);
+			imports.setToolTipText(FrtypesMessages.Module_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !imports.isEnabled()) {
+			imports.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#updateImports()
+	 * 
+	 */
+	public void updateImports() {
+	imports.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#addFilterImports(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToImports(ViewerFilter filter) {
+		importsFilters.add(filter);
+		if (this.imports != null) {
+			this.imports.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#addBusinessFilterImports(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToImports(ViewerFilter filter) {
+		importsBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ModulePropertiesEditionPart#isContainedInImportsTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInImportsTable(EObject element) {
+		return ((ReferencesTableSettings)imports.getInput()).contains(element);
 	}
 
 

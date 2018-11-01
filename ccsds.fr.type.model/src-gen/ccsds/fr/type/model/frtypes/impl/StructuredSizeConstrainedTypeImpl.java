@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.StructuredSizeConstrainedTypeImpl#getSizeConstraint <em>Size Constraint</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.StructuredSizeConstrainedTypeImpl#getComponents <em>Components</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.StructuredSizeConstrainedTypeImpl#getElements <em>Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,14 +50,14 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	protected EList<SizeConstraint> sizeConstraint;
 
 	/**
-	 * The cached value of the '{@link #getComponents() <em>Components</em>}' containment reference.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComponents()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected Type components;
+	protected Type elements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,8 +96,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Type getComponents() {
-		return components;
+	public Type getElements() {
+		return elements;
 	}
 
 	/**
@@ -105,12 +105,12 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetComponents(Type newComponents, NotificationChain msgs) {
-		Type oldComponents = components;
-		components = newComponents;
+	public NotificationChain basicSetElements(Type newElements, NotificationChain msgs) {
+		Type oldElements = elements;
+		elements = newElements;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS, oldComponents, newComponents);
+					FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS, oldElements, newElements);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -124,23 +124,21 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setComponents(Type newComponents) {
-		if (newComponents != components) {
+	public void setElements(Type newElements) {
+		if (newElements != elements) {
 			NotificationChain msgs = null;
-			if (components != null)
-				msgs = ((InternalEObject) components).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS, null,
-						msgs);
-			if (newComponents != null)
-				msgs = ((InternalEObject) newComponents).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS, null,
-						msgs);
-			msgs = basicSetComponents(newComponents, msgs);
+			if (elements != null)
+				msgs = ((InternalEObject) elements).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS, null, msgs);
+			if (newElements != null)
+				msgs = ((InternalEObject) newElements).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS, null, msgs);
+			msgs = basicSetElements(newElements, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS, newComponents, newComponents));
+					FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS, newElements, newElements));
 	}
 
 	/**
@@ -153,8 +151,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 		switch (featureID) {
 		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT:
 			return ((InternalEList<?>) getSizeConstraint()).basicRemove(otherEnd, msgs);
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
-			return basicSetComponents(null, msgs);
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
+			return basicSetElements(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -169,8 +167,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 		switch (featureID) {
 		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT:
 			return getSizeConstraint();
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
-			return getComponents();
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
+			return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -188,8 +186,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 			getSizeConstraint().clear();
 			getSizeConstraint().addAll((Collection<? extends SizeConstraint>) newValue);
 			return;
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
-			setComponents((Type) newValue);
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
+			setElements((Type) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -206,8 +204,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT:
 			getSizeConstraint().clear();
 			return;
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
-			setComponents((Type) null);
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
+			setElements((Type) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -223,8 +221,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 		switch (featureID) {
 		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT:
 			return sizeConstraint != null && !sizeConstraint.isEmpty();
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
-			return components != null;
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
+			return elements != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -271,8 +269,8 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		if (getComponents() != null) {
-			getComponents().writeAsn1(indentLevel + 1, output);
+		if (getElements() != null) {
+			getElements().writeAsn1(indentLevel + 1, output);
 		} else {
 			output.append("no component set");
 		}

@@ -6,9 +6,10 @@ import ccsds.fr.type.model.frtypes.Asn1Writer;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.Choice;
-import ccsds.fr.type.model.frtypes.ComponentValue;
 import ccsds.fr.type.model.frtypes.Constraint;
+import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.Enumerated;
+import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.IntegerType;
 import ccsds.fr.type.model.frtypes.Module;
@@ -31,6 +32,7 @@ import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StructuredDifferentType;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.StructuredType;
+import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
@@ -239,13 +241,18 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseComponentValue(ComponentValue object) {
-			return createComponentValueAdapter();
+		public Adapter caseElement(Element object) {
+			return createElementAdapter();
 		}
 
 		@Override
 		public Adapter caseTypeReferenceExternal(TypeReferenceExternal object) {
 			return createTypeReferenceExternalAdapter();
+		}
+
+		@Override
+		public Adapter caseSubElement(SubElement object) {
+			return createSubElementAdapter();
 		}
 
 		@Override
@@ -266,6 +273,11 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseStructuredDifferentType(StructuredDifferentType object) {
 			return createStructuredDifferentTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseFromModule(FromModule object) {
+			return createFromModuleAdapter();
 		}
 
 		@Override
@@ -680,16 +692,16 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.ComponentValue <em>Component Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue
+	 * @see ccsds.fr.type.model.frtypes.Element
 	 * @generated
 	 */
-	public Adapter createComponentValueAdapter() {
+	public Adapter createElementAdapter() {
 		return null;
 	}
 
@@ -704,6 +716,20 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypeReferenceExternalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.SubElement <em>Sub Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.fr.type.model.frtypes.SubElement
+	 * @generated
+	 */
+	public Adapter createSubElementAdapter() {
 		return null;
 	}
 
@@ -760,6 +786,20 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStructuredDifferentTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.FromModule <em>From Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.fr.type.model.frtypes.FromModule
+	 * @generated
+	 */
+	public Adapter createFromModuleAdapter() {
 		return null;
 	}
 

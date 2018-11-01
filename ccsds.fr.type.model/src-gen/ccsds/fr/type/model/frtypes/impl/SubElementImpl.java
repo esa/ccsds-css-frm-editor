@@ -2,14 +2,15 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
-import ccsds.fr.type.model.frtypes.ComponentValue;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.Type;
 
 import java.lang.Boolean;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -17,21 +18,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Component Value</b></em>'.
+ * An implementation of the model object '<em><b>Sub Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl#getName <em>Name</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl#getType <em>Type</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl#getType <em>Type</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl#isOptional <em>Optional</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ComponentValueImpl extends TypeImpl implements ComponentValue {
+public class SubElementImpl extends TypeImpl implements SubElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -107,7 +108,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentValueImpl() {
+	protected SubElementImpl() {
 		super();
 	}
 
@@ -118,7 +119,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return FrtypesPackage.Literals.COMPONENT_VALUE;
+		return FrtypesPackage.Literals.SUB_ELEMENT;
 	}
 
 	/**
@@ -139,7 +140,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.COMPONENT_VALUE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.SUB_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -161,7 +162,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					FrtypesPackage.COMPONENT_VALUE__TYPE, oldType, newType);
+					FrtypesPackage.SUB_ELEMENT__TYPE, oldType, newType);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -180,16 +181,15 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 			NotificationChain msgs = null;
 			if (type != null)
 				msgs = ((InternalEObject) type).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - FrtypesPackage.COMPONENT_VALUE__TYPE, null, msgs);
+						EOPPOSITE_FEATURE_BASE - FrtypesPackage.SUB_ELEMENT__TYPE, null, msgs);
 			if (newType != null)
 				msgs = ((InternalEObject) newType).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - FrtypesPackage.COMPONENT_VALUE__TYPE, null, msgs);
+						EOPPOSITE_FEATURE_BASE - FrtypesPackage.SUB_ELEMENT__TYPE, null, msgs);
 			msgs = basicSetType(newType, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.COMPONENT_VALUE__TYPE, newType,
-					newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.SUB_ELEMENT__TYPE, newType, newType));
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		String oldTag = tag;
 		tag = newTag;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.COMPONENT_VALUE__TAG, oldTag, tag));
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.SUB_ELEMENT__TAG, oldTag, tag));
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		boolean oldOptional = optional;
 		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.COMPONENT_VALUE__OPTIONAL, oldOptional,
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.SUB_ELEMENT__OPTIONAL, oldOptional,
 					optional));
 	}
 
@@ -243,7 +243,7 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.SUB_ELEMENT__TYPE:
 			return basicSetType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -257,13 +257,13 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case FrtypesPackage.COMPONENT_VALUE__NAME:
+		case FrtypesPackage.SUB_ELEMENT__NAME:
 			return getName();
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.SUB_ELEMENT__TYPE:
 			return getType();
-		case FrtypesPackage.COMPONENT_VALUE__TAG:
+		case FrtypesPackage.SUB_ELEMENT__TAG:
 			return getTag();
-		case FrtypesPackage.COMPONENT_VALUE__OPTIONAL:
+		case FrtypesPackage.SUB_ELEMENT__OPTIONAL:
 			return isOptional();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -277,16 +277,16 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case FrtypesPackage.COMPONENT_VALUE__NAME:
+		case FrtypesPackage.SUB_ELEMENT__NAME:
 			setName((String) newValue);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.SUB_ELEMENT__TYPE:
 			setType((Type) newValue);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__TAG:
+		case FrtypesPackage.SUB_ELEMENT__TAG:
 			setTag((String) newValue);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__OPTIONAL:
+		case FrtypesPackage.SUB_ELEMENT__OPTIONAL:
 			setOptional((Boolean) newValue);
 			return;
 		}
@@ -301,16 +301,16 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case FrtypesPackage.COMPONENT_VALUE__NAME:
+		case FrtypesPackage.SUB_ELEMENT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.SUB_ELEMENT__TYPE:
 			setType((Type) null);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__TAG:
+		case FrtypesPackage.SUB_ELEMENT__TAG:
 			setTag(TAG_EDEFAULT);
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__OPTIONAL:
+		case FrtypesPackage.SUB_ELEMENT__OPTIONAL:
 			setOptional(OPTIONAL_EDEFAULT);
 			return;
 		}
@@ -325,13 +325,13 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case FrtypesPackage.COMPONENT_VALUE__NAME:
+		case FrtypesPackage.SUB_ELEMENT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.SUB_ELEMENT__TYPE:
 			return type != null;
-		case FrtypesPackage.COMPONENT_VALUE__TAG:
+		case FrtypesPackage.SUB_ELEMENT__TAG:
 			return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
-		case FrtypesPackage.COMPONENT_VALUE__OPTIONAL:
+		case FrtypesPackage.SUB_ELEMENT__OPTIONAL:
 			return optional != OPTIONAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -358,37 +358,4 @@ public class ComponentValueImpl extends TypeImpl implements ComponentValue {
 		return result.toString();
 	}
 
-	/**
-	 * Write the component of a structured type
-	 * @generated NOT
-	 */
-	@Override
-	public void writeAsn1(int indentLevel, StringBuffer output) {
-		super.writeAsn1(indentLevel, output);
-
-		indent(indentLevel, output);
-
-		if (this.getName() != null) {
-			output.append(String.format("%1$-20s", getName()));
-			//output.append(getName());
-		} else {
-			output.append("name not set for component");
-		}
-
-		if (getTag() != null) {
-			output.append(Asn1Writer.INDENT + Asn1Writer.LBRACKET + getTag() + Asn1Writer.RBRACKET + Asn1Writer.INDENT);
-		}
-
-		if (getType() != null) {
-			output.append(Asn1Writer.INDENT);
-			getType().writeAsn1(indentLevel, output);
-		} else {
-			output.append("no type set for component");
-		}
-
-		if (this.optional == true) {
-			output.append(Asn1Writer.BLANK + Asn1Writer.OPTIONAL);
-		}
-	}
-
-} //ComponentValueImpl
+} //SubElementImpl

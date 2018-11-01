@@ -62,7 +62,7 @@ public class StructuredSizeConstrainedTypeItemProvider extends StructuredTypeIte
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FrtypesPackage.Literals.SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT);
-			childrenFeatures.add(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS);
+			childrenFeatures.add(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -125,7 +125,7 @@ public class StructuredSizeConstrainedTypeItemProvider extends StructuredTypeIte
 
 		switch (notification.getFeatureID(StructuredSizeConstrainedType.class)) {
 		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT:
-		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS:
+		case FrtypesPackage.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -146,73 +146,59 @@ public class StructuredSizeConstrainedTypeItemProvider extends StructuredTypeIte
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT,
 				FrtypesFactory.eINSTANCE.createSizeConstraint()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createBoolean()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createBoolean()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createIntegerType()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createIntegerType()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createBitString()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createBitString()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createOctetString()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createOctetString()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createReal()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createReal()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createEnumerated()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createEnumerated()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createCharacterString()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createCharacterString()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createSequence()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSequence()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createSequenceOf()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSequenceOf()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createSet()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSet()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createSetOf()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSetOf()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createChoice()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createChoice()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createTypeReferenceLocal()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createTypeReferenceLocal()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createObjectIdentifier()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createObjectIdentifier()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createComponentValue()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createElement()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
-		newChildDescriptors
-				.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS,
-						FrtypesFactory.eINSTANCE.createNull()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSubElement()));
+
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createNull()));
 	}
 
 }

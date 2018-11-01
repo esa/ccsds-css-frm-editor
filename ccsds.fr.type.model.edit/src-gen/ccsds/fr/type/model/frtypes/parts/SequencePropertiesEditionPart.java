@@ -22,45 +22,45 @@ public interface SequencePropertiesEditionPart {
 
 
 	/**
-	 * Init the components
+	 * Init the elements
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initComponents(ReferencesTableSettings settings);
+	public void initElements(ReferencesTableSettings settings);
 
 	/**
-	 * Update the components
-	 * @param newValue the components to update
+	 * Update the elements
+	 * @param newValue the elements to update
 	 * 
 	 */
-	public void updateComponents();
+	public void updateElements();
 
 	/**
-	 * Adds the given filter to the components edition editor.
+	 * Adds the given filter to the elements edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToComponents(ViewerFilter filter);
+	public void addFilterToElements(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the components edition editor.
+	 * Adds the given filter to the elements edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToComponents(ViewerFilter filter);
+	public void addBusinessFilterToElements(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the components table
+	 * @return true if the given element is contained inside the elements table
 	 * 
 	 */
-	public boolean isContainedInComponentsTable(EObject element);
+	public boolean isContainedInElementsTable(EObject element);
 
 
 

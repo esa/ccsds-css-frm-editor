@@ -61,7 +61,7 @@ public class StructuredDifferentTypeItemProvider extends StructuredTypeItemProvi
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS);
+			childrenFeatures.add(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -123,7 +123,7 @@ public class StructuredDifferentTypeItemProvider extends StructuredTypeItemProvi
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StructuredDifferentType.class)) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -141,55 +141,58 @@ public class StructuredDifferentTypeItemProvider extends StructuredTypeItemProvi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createBoolean()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createIntegerType()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createBitString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createOctetString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createReal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createEnumerated()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createCharacterString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createSequence()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createSequenceOf()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createSet()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createSetOf()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createChoice()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createTypeReferenceLocal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createObjectIdentifier()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
-				FrtypesFactory.eINSTANCE.createComponentValue()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createElement()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__COMPONENTS,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
+				FrtypesFactory.eINSTANCE.createSubElement()));
+
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createNull()));
 	}
 

@@ -3,6 +3,7 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
@@ -34,9 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getOid <em>Oid</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getExports <em>Exports</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.ModuleImpl#getImports <em>Imports</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,16 +74,6 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	protected String oid = OID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getImports() <em>Imports</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImports()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> imports;
-
-	/**
 	 * The cached value of the '{@link #getExports() <em>Exports</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,6 +102,16 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FromModule> imports;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,9 +171,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getImports() {
+	public EList<FromModule> getImports() {
 		if (imports == null) {
-			imports = new EDataTypeUniqueEList<String>(String.class, this, FrtypesPackage.MODULE__IMPORTS);
+			imports = new EObjectContainmentEList<FromModule>(FromModule.class, this, FrtypesPackage.MODULE__IMPORTS);
 		}
 		return imports;
 	}
@@ -216,55 +217,56 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @generated NOT
 	 */
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		if(getName() != null) {
+		if (getName() != null) {
 			output.append(getName());
 		} else {
 			output.append("module name not set");
 		}
-		
+
 		output.append(System.lineSeparator());
-		if(getOid() != null) {
-			output.append(Asn1Writer.LCBRACE + Asn1Writer.BLANK + getOid() + System.lineSeparator() + Asn1Writer.RCBRACE);			
+		if (getOid() != null) {
+			output.append(
+					Asn1Writer.LCBRACE + Asn1Writer.BLANK + getOid() + System.lineSeparator() + Asn1Writer.RCBRACE);
 		} else {
-			output.append(Asn1Writer.LCBRACE + Asn1Writer.BLANK + "iso(1) identified-organization(3) standards-producing-organization(112)\n" + 
-					"	ccsds(4) css(4) crossSuppportResources(2)" + System.lineSeparator() + Asn1Writer.RCBRACE);
+			output.append(Asn1Writer.LCBRACE + Asn1Writer.BLANK
+					+ "iso(1) identified-organization(3) standards-producing-organization(112)\n"
+					+ "	ccsds(4) css(4) crossSuppportResources(2)" + System.lineSeparator() + Asn1Writer.RCBRACE);
 		}
 
-		output.append(System.lineSeparator() + System.lineSeparator() + Asn1Writer.DEFINITIONS + System.lineSeparator());
+		output.append(
+				System.lineSeparator() + System.lineSeparator() + Asn1Writer.DEFINITIONS + System.lineSeparator());
 		output.append(Asn1Writer.IMPLICIT + Asn1Writer.BLANK + Asn1Writer.TAGS + System.lineSeparator());
 		output.append(Asn1Writer.ASSIGN + Asn1Writer.BLANK + Asn1Writer.BEGIN + System.lineSeparator());
 
 		// EXPORTS - there should be always exports, basically all types of this module are exported
 		output.append(System.lineSeparator() + Asn1Writer.EXPORTS + System.lineSeparator());
 		int idx = 0;
-		for(String export : getExports()) {
+		for (String export : getExports()) {
 			output.append(Asn1Writer.INDENT + Asn1Writer.INDENT + export);
-			
+
 			idx++;
-			if(idx < getExports().size()) {
+			if (idx < getExports().size()) {
 				output.append(System.lineSeparator() + Asn1Writer.SEP);
 			}
 		}
 		output.append(System.lineSeparator() + Asn1Writer.SEMI_COLON + System.lineSeparator() + System.lineSeparator());
-		
+
 		// IMPORTS
-		if(getImports().size() > 0) {
-			output.append(System.lineSeparator() + Asn1Writer.IMPORTS + System.lineSeparator());
-			for(String imp : getImports()) {
-				output.append(imp + System.lineSeparator()); // every import contains the type and the module from which it is imported
-			}
-			output.append(Asn1Writer.SEMI_COLON + System.lineSeparator());
+		if (getImports().size() > 0) {
+			for (FromModule fromModuleImport : getImports()) {
+				fromModuleImport.writeAsn1(indentLevel, output);
+			}			
 		}
-		
+
 		// all type definitions
-		for(TypeDefinition td : getTypeDefinition()) {
+		for (TypeDefinition td : getTypeDefinition()) {
 			td.writeAsn1(indentLevel, output);
 			output.append(System.lineSeparator());
 		}
-		
+
 		//output.append(System.lineSeparator() + Asn1Writer.RCBRACE);
 		output.append(System.lineSeparator() + Asn1Writer.END);
-		
+
 	}
 
 	/**
@@ -277,6 +279,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		switch (featureID) {
 		case FrtypesPackage.MODULE__TYPE_DEFINITION:
 			return ((InternalEList<?>) getTypeDefinition()).basicRemove(otherEnd, msgs);
+		case FrtypesPackage.MODULE__IMPORTS:
+			return ((InternalEList<?>) getImports()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -293,12 +297,12 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			return getTypeDefinition();
 		case FrtypesPackage.MODULE__OID:
 			return getOid();
-		case FrtypesPackage.MODULE__IMPORTS:
-			return getImports();
 		case FrtypesPackage.MODULE__EXPORTS:
 			return getExports();
 		case FrtypesPackage.MODULE__NAME:
 			return getName();
+		case FrtypesPackage.MODULE__IMPORTS:
+			return getImports();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,16 +323,16 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		case FrtypesPackage.MODULE__OID:
 			setOid((String) newValue);
 			return;
-		case FrtypesPackage.MODULE__IMPORTS:
-			getImports().clear();
-			getImports().addAll((Collection<? extends String>) newValue);
-			return;
 		case FrtypesPackage.MODULE__EXPORTS:
 			getExports().clear();
 			getExports().addAll((Collection<? extends String>) newValue);
 			return;
 		case FrtypesPackage.MODULE__NAME:
 			setName((String) newValue);
+			return;
+		case FrtypesPackage.MODULE__IMPORTS:
+			getImports().clear();
+			getImports().addAll((Collection<? extends FromModule>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -348,14 +352,14 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		case FrtypesPackage.MODULE__OID:
 			setOid(OID_EDEFAULT);
 			return;
-		case FrtypesPackage.MODULE__IMPORTS:
-			getImports().clear();
-			return;
 		case FrtypesPackage.MODULE__EXPORTS:
 			getExports().clear();
 			return;
 		case FrtypesPackage.MODULE__NAME:
 			setName(NAME_EDEFAULT);
+			return;
+		case FrtypesPackage.MODULE__IMPORTS:
+			getImports().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -373,12 +377,12 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			return typeDefinition != null && !typeDefinition.isEmpty();
 		case FrtypesPackage.MODULE__OID:
 			return OID_EDEFAULT == null ? oid != null : !OID_EDEFAULT.equals(oid);
-		case FrtypesPackage.MODULE__IMPORTS:
-			return imports != null && !imports.isEmpty();
 		case FrtypesPackage.MODULE__EXPORTS:
 			return exports != null && !exports.isEmpty();
 		case FrtypesPackage.MODULE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case FrtypesPackage.MODULE__IMPORTS:
+			return imports != null && !imports.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -411,8 +415,6 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (oid: ");
 		result.append(oid);
-		result.append(", imports: ");
-		result.append(imports);
 		result.append(", exports: ");
 		result.append(exports);
 		result.append(", name: ");

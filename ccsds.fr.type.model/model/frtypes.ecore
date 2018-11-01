@@ -59,7 +59,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructuredSizeConstrainedType" abstract="true"
       eSuperTypes="#//StructuredType #//SizeConstrainedType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="components" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
         eType="#//Type" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//StructuredDifferentType"/>
@@ -81,11 +81,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeDefinition" upperBound="-1"
         eType="#//TypeDefinition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imports" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exports" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//FromModule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectIdentifier" eSuperTypes="#//SimpleType"/>
   <eClassifiers xsi:type="ecore:EEnum" name="StringType">
@@ -101,7 +101,7 @@
     <eLiterals name="VideotexString" value="9"/>
     <eLiterals name="VisibleString" value="10"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentValue" eSuperTypes="#//Type">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
         containment="true"/>
@@ -111,6 +111,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeReferenceExternal" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubElement" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Null" eSuperTypes="#//SimpleType"/>
   <eClassifiers xsi:type="ecore:EDataType" name="StringBuffer" instanceClassName="java.lang.StringBuffer"/>
@@ -131,7 +138,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructuredDifferentType" abstract="true"
       eSuperTypes="#//StructuredType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="components" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
         upperBound="-1" eType="#//Type" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FromModule" eSuperTypes="#//Asn1Writer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedTypes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -49,7 +49,7 @@ public class SequenceOfImpl extends StructuredSizeConstrainedTypeImpl implements
 		}
 
 		output.append(Asn1Writer.BLANK + Asn1Writer.OF + Asn1Writer.INDENT);
-		
+
 		super.writeAsn1(indentLevel, output);
 	}
 

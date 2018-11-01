@@ -145,7 +145,7 @@ public class FrtypesViewsRepository {
 		public static class Properties {
 	
 			
-			public static String components = "frtypes::Sequence::properties::components";
+			public static String elements = "frtypes::Sequence::properties::elements";
 			
 	
 		}
@@ -175,7 +175,7 @@ public class FrtypesViewsRepository {
 		public static class Properties {
 	
 			
-			public static String components = "frtypes::Set::properties::components";
+			public static String elements = "frtypes::Set::properties::elements";
 			
 	
 		}
@@ -259,7 +259,7 @@ public class FrtypesViewsRepository {
 		public static class Properties {
 	
 			
-			public static String components = "frtypes::Choice::properties::components";
+			public static String elements = "frtypes::Choice::properties::elements";
 			
 	
 		}
@@ -328,13 +328,13 @@ public class FrtypesViewsRepository {
 			public static String oid = "frtypes::Module::properties::oid";
 			
 			
-			public static String imports = "frtypes::Module::properties::imports";
-			
-			
 			public static String exports = "frtypes::Module::properties::exports";
 			
 			
 			public static String name = "frtypes::Module::properties::name";
+			
+			
+			public static String imports = "frtypes::Module::properties::imports";
 			
 	
 		}
@@ -354,20 +354,20 @@ public class FrtypesViewsRepository {
 	}
 
 	/**
-	 * ComponentValue view descriptor
+	 * Element view descriptor
 	 * 
 	 */
-	public static class ComponentValue {
+	public static class Element {
 		public static class Properties {
 	
 			
-			public static String name = "frtypes::ComponentValue::properties::name";
+			public static String name = "frtypes::Element::properties::name";
 			
 			
-			public static String tag = "frtypes::ComponentValue::properties::tag";
+			public static String tag = "frtypes::Element::properties::tag";
 			
 			
-			public static String optional = "frtypes::ComponentValue::properties::optional";
+			public static String optional = "frtypes::Element::properties::optional";
 			
 	
 		}
@@ -390,12 +390,51 @@ public class FrtypesViewsRepository {
 	}
 
 	/**
+	 * SubElement view descriptor
+	 * 
+	 */
+	public static class SubElement {
+		public static class Properties {
+	
+			
+			public static String name = "frtypes::SubElement::properties::name";
+			
+			
+			public static String tag = "frtypes::SubElement::properties::tag";
+			
+			
+			public static String optional = "frtypes::SubElement::properties::optional";
+			
+	
+		}
+	
+	}
+
+	/**
 	 * Null view descriptor
 	 * 
 	 */
 	public static class Null {
 		public static class Properties {
 	
+	
+		}
+	
+	}
+
+	/**
+	 * FromModule view descriptor
+	 * 
+	 */
+	public static class FromModule {
+		public static class Properties {
+	
+			
+			public static String name = "frtypes::FromModule::properties::name";
+			
+			
+			public static String importedTypes = "frtypes::FromModule::properties::importedTypes";
+			
 	
 		}
 	

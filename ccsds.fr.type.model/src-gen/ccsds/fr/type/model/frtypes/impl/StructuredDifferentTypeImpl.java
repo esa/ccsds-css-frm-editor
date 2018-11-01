@@ -27,21 +27,21 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ccsds.fr.type.model.frtypes.impl.StructuredDifferentTypeImpl#getComponents <em>Components</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.StructuredDifferentTypeImpl#getElements <em>Elements</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl implements StructuredDifferentType {
 	/**
-	 * The cached value of the '{@link #getComponents() <em>Components</em>}' containment reference list.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComponents()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Type> components;
+	protected EList<Type> elements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,12 +67,12 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Type> getComponents() {
-		if (components == null) {
-			components = new EObjectContainmentEList<Type>(Type.class, this,
-					FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS);
+	public EList<Type> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentEList<Type>(Type.class, this,
+					FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS);
 		}
-		return components;
+		return elements;
 	}
 
 	/**
@@ -83,8 +83,8 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
-			return ((InternalEList<?>) getComponents()).basicRemove(otherEnd, msgs);
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -97,8 +97,8 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
-			return getComponents();
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
+			return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,9 +112,9 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
-			getComponents().clear();
-			getComponents().addAll((Collection<? extends Type>) newValue);
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
+			getElements().clear();
+			getElements().addAll((Collection<? extends Type>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,8 +128,8 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
-			getComponents().clear();
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
+			getElements().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -143,8 +143,8 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__COMPONENTS:
-			return components != null && !components.isEmpty();
+		case FrtypesPackage.STRUCTURED_DIFFERENT_TYPE__ELEMENTS:
+			return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -156,23 +156,23 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 
-		if (getComponents().size() > 0) {
+		if (getElements().size() > 0) {
 			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.LCBRACE);
 			output.append(System.lineSeparator());
 		}
 
 		int idx = 0;
-		for (Type t : getComponents()) {
+		for (Type t : getElements()) {
 			indent(indentLevel + 1, output);
 			t.writeAsn1(indentLevel + 1, output);
 			idx++;
 
-			if (idx < getComponents().size()) {
+			if (idx < getElements().size()) {
 				output.append(System.lineSeparator() + Asn1Writer.SEP);
 			}
 		}
 
-		if (getComponents().size() > 0) {
+		if (getElements().size() > 0) {
 			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.RCBRACE);
 			output.append(System.lineSeparator());
 		}

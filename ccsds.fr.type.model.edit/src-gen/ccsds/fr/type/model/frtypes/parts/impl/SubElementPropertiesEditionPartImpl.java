@@ -4,8 +4,8 @@
 package ccsds.fr.type.model.frtypes.parts.impl;
 
 // Start of user code for imports
-import ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart;
 import ccsds.fr.type.model.frtypes.parts.FrtypesViewsRepository;
+import ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart;
 
 import ccsds.fr.type.model.frtypes.providers.FrtypesMessages;
 
@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.Text;
  * 
  * 
  */
-public class ComponentValuePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ComponentValuePropertiesEditionPart {
+public class SubElementPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SubElementPropertiesEditionPart {
 
 	protected Text name;
 	protected Text tag;
@@ -65,7 +65,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
 	 * 
 	 */
-	public ComponentValuePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+	public SubElementPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
 	}
 
@@ -93,27 +93,27 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence componentValueStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = componentValueStep.addStep(FrtypesViewsRepository.ComponentValue.Properties.class);
-		propertiesStep.addStep(FrtypesViewsRepository.ComponentValue.Properties.name);
-		propertiesStep.addStep(FrtypesViewsRepository.ComponentValue.Properties.tag);
-		propertiesStep.addStep(FrtypesViewsRepository.ComponentValue.Properties.optional);
+		CompositionSequence subElementStep = new BindingCompositionSequence(propertiesEditionComponent);
+		CompositionStep propertiesStep = subElementStep.addStep(FrtypesViewsRepository.SubElement.Properties.class);
+		propertiesStep.addStep(FrtypesViewsRepository.SubElement.Properties.name);
+		propertiesStep.addStep(FrtypesViewsRepository.SubElement.Properties.tag);
+		propertiesStep.addStep(FrtypesViewsRepository.SubElement.Properties.optional);
 		
 		
-		composer = new PartComposer(componentValueStep) {
+		composer = new PartComposer(subElementStep) {
 
 			@Override
 			public Composite addToPart(Composite parent, Object key) {
-				if (key == FrtypesViewsRepository.ComponentValue.Properties.class) {
+				if (key == FrtypesViewsRepository.SubElement.Properties.class) {
 					return createPropertiesGroup(parent);
 				}
-				if (key == FrtypesViewsRepository.ComponentValue.Properties.name) {
+				if (key == FrtypesViewsRepository.SubElement.Properties.name) {
 					return createNameText(parent);
 				}
-				if (key == FrtypesViewsRepository.ComponentValue.Properties.tag) {
+				if (key == FrtypesViewsRepository.SubElement.Properties.tag) {
 					return createTagText(parent);
 				}
-				if (key == FrtypesViewsRepository.ComponentValue.Properties.optional) {
+				if (key == FrtypesViewsRepository.SubElement.Properties.optional) {
 					return createOptionalCheckbox(parent);
 				}
 				return parent;
@@ -127,7 +127,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(FrtypesMessages.ComponentValuePropertiesEditionPart_PropertiesGroupLabel);
+		propertiesGroup.setText(FrtypesMessages.SubElementPropertiesEditionPart_PropertiesGroupLabel);
 		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
 		propertiesGroupData.horizontalSpan = 3;
 		propertiesGroup.setLayoutData(propertiesGroupData);
@@ -139,7 +139,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createNameText(Composite parent) {
-		createDescription(parent, FrtypesViewsRepository.ComponentValue.Properties.name, FrtypesMessages.ComponentValuePropertiesEditionPart_NameLabel);
+		createDescription(parent, FrtypesViewsRepository.SubElement.Properties.name, FrtypesMessages.SubElementPropertiesEditionPart_NameLabel);
 		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
@@ -155,7 +155,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComponentValuePropertiesEditionPartImpl.this, FrtypesViewsRepository.ComponentValue.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SubElementPropertiesEditionPartImpl.this, FrtypesViewsRepository.SubElement.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 			}
 
 		});
@@ -172,14 +172,14 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComponentValuePropertiesEditionPartImpl.this, FrtypesViewsRepository.ComponentValue.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SubElementPropertiesEditionPartImpl.this, FrtypesViewsRepository.SubElement.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(name, FrtypesViewsRepository.ComponentValue.Properties.name);
+		EditingUtils.setID(name, FrtypesViewsRepository.SubElement.Properties.name);
 		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.ComponentValue.Properties.name, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.SubElement.Properties.name, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createNameText
 
 		// End of user code
@@ -188,7 +188,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 
 	
 	protected Composite createTagText(Composite parent) {
-		createDescription(parent, FrtypesViewsRepository.ComponentValue.Properties.tag, FrtypesMessages.ComponentValuePropertiesEditionPart_TagLabel);
+		createDescription(parent, FrtypesViewsRepository.SubElement.Properties.tag, FrtypesMessages.SubElementPropertiesEditionPart_TagLabel);
 		tag = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData tagData = new GridData(GridData.FILL_HORIZONTAL);
 		tag.setLayoutData(tagData);
@@ -204,7 +204,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComponentValuePropertiesEditionPartImpl.this, FrtypesViewsRepository.ComponentValue.Properties.tag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, tag.getText()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SubElementPropertiesEditionPartImpl.this, FrtypesViewsRepository.SubElement.Properties.tag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, tag.getText()));
 			}
 
 		});
@@ -221,14 +221,14 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 			public void keyPressed(KeyEvent e) {
 				if (e.character == SWT.CR) {
 					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComponentValuePropertiesEditionPartImpl.this, FrtypesViewsRepository.ComponentValue.Properties.tag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, tag.getText()));
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SubElementPropertiesEditionPartImpl.this, FrtypesViewsRepository.SubElement.Properties.tag, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, tag.getText()));
 				}
 			}
 
 		});
-		EditingUtils.setID(tag, FrtypesViewsRepository.ComponentValue.Properties.tag);
+		EditingUtils.setID(tag, FrtypesViewsRepository.SubElement.Properties.tag);
 		EditingUtils.setEEFtype(tag, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.ComponentValue.Properties.tag, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.SubElement.Properties.tag, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createTagText
 
 		// End of user code
@@ -238,7 +238,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	
 	protected Composite createOptionalCheckbox(Composite parent) {
 		optional = new Button(parent, SWT.CHECK);
-		optional.setText(getDescription(FrtypesViewsRepository.ComponentValue.Properties.optional, FrtypesMessages.ComponentValuePropertiesEditionPart_OptionalLabel));
+		optional.setText(getDescription(FrtypesViewsRepository.SubElement.Properties.optional, FrtypesMessages.SubElementPropertiesEditionPart_OptionalLabel));
 		optional.addSelectionListener(new SelectionAdapter() {
 
 			/**
@@ -249,16 +249,16 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ComponentValuePropertiesEditionPartImpl.this, FrtypesViewsRepository.ComponentValue.Properties.optional, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(optional.getSelection())));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SubElementPropertiesEditionPartImpl.this, FrtypesViewsRepository.SubElement.Properties.optional, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(optional.getSelection())));
 			}
 
 		});
 		GridData optionalData = new GridData(GridData.FILL_HORIZONTAL);
 		optionalData.horizontalSpan = 2;
 		optional.setLayoutData(optionalData);
-		EditingUtils.setID(optional, FrtypesViewsRepository.ComponentValue.Properties.optional);
+		EditingUtils.setID(optional, FrtypesViewsRepository.SubElement.Properties.optional);
 		EditingUtils.setEEFtype(optional, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.ComponentValue.Properties.optional, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.SubElement.Properties.optional, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createOptionalCheckbox
 
 		// End of user code
@@ -281,7 +281,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#getName()
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#getName()
 	 * 
 	 */
 	public String getName() {
@@ -291,7 +291,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#setName(String newValue)
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#setName(String newValue)
 	 * 
 	 */
 	public void setName(String newValue) {
@@ -300,10 +300,10 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.ComponentValue.Properties.name);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.SubElement.Properties.name);
 		if (eefElementEditorReadOnlyState && name.isEnabled()) {
 			name.setEnabled(false);
-			name.setToolTipText(FrtypesMessages.ComponentValue_ReadOnly);
+			name.setToolTipText(FrtypesMessages.SubElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
 		}	
@@ -313,7 +313,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#getTag()
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#getTag()
 	 * 
 	 */
 	public String getTag() {
@@ -323,7 +323,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#setTag(String newValue)
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#setTag(String newValue)
 	 * 
 	 */
 	public void setTag(String newValue) {
@@ -332,10 +332,10 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			tag.setText(""); //$NON-NLS-1$
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.ComponentValue.Properties.tag);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.SubElement.Properties.tag);
 		if (eefElementEditorReadOnlyState && tag.isEnabled()) {
 			tag.setEnabled(false);
-			tag.setToolTipText(FrtypesMessages.ComponentValue_ReadOnly);
+			tag.setToolTipText(FrtypesMessages.SubElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !tag.isEnabled()) {
 			tag.setEnabled(true);
 		}	
@@ -345,7 +345,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#getOptional()
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#getOptional()
 	 * 
 	 */
 	public Boolean getOptional() {
@@ -355,7 +355,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.ComponentValuePropertiesEditionPart#setOptional(Boolean newValue)
+	 * @see ccsds.fr.type.model.frtypes.parts.SubElementPropertiesEditionPart#setOptional(Boolean newValue)
 	 * 
 	 */
 	public void setOptional(Boolean newValue) {
@@ -364,10 +364,10 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			optional.setSelection(false);
 		}
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.ComponentValue.Properties.optional);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.SubElement.Properties.optional);
 		if (eefElementEditorReadOnlyState && optional.isEnabled()) {
 			optional.setEnabled(false);
-			optional.setToolTipText(FrtypesMessages.ComponentValue_ReadOnly);
+			optional.setToolTipText(FrtypesMessages.SubElement_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !optional.isEnabled()) {
 			optional.setEnabled(true);
 		}	
@@ -386,7 +386,7 @@ public class ComponentValuePropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 */
 	public String getTitle() {
-		return FrtypesMessages.ComponentValue_Part_Title;
+		return FrtypesMessages.SubElement_Part_Title;
 	}
 
 	// Start of user code additional methods

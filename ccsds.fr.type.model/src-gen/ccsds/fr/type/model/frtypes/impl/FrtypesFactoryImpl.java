@@ -5,9 +5,10 @@ package ccsds.fr.type.model.frtypes.impl;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.Choice;
-import ccsds.fr.type.model.frtypes.ComponentValue;
 import ccsds.fr.type.model.frtypes.ConstraintType;
+import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.Enumerated;
+import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.IntegerType;
@@ -25,6 +26,7 @@ import ccsds.fr.type.model.frtypes.SetOf;
 import ccsds.fr.type.model.frtypes.SingleValueConstraint;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StringType;
+import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
@@ -124,12 +126,16 @@ public class FrtypesFactoryImpl extends EFactoryImpl implements FrtypesFactory {
 			return createModule();
 		case FrtypesPackage.OBJECT_IDENTIFIER:
 			return createObjectIdentifier();
-		case FrtypesPackage.COMPONENT_VALUE:
-			return createComponentValue();
+		case FrtypesPackage.ELEMENT:
+			return createElement();
 		case FrtypesPackage.TYPE_REFERENCE_EXTERNAL:
 			return createTypeReferenceExternal();
+		case FrtypesPackage.SUB_ELEMENT:
+			return createSubElement();
 		case FrtypesPackage.NULL:
 			return createNull();
+		case FrtypesPackage.FROM_MODULE:
+			return createFromModule();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -388,9 +394,9 @@ public class FrtypesFactoryImpl extends EFactoryImpl implements FrtypesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentValue createComponentValue() {
-		ComponentValueImpl componentValue = new ComponentValueImpl();
-		return componentValue;
+	public Element createElement() {
+		ElementImpl element = new ElementImpl();
+		return element;
 	}
 
 	/**
@@ -408,9 +414,29 @@ public class FrtypesFactoryImpl extends EFactoryImpl implements FrtypesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SubElement createSubElement() {
+		SubElementImpl subElement = new SubElementImpl();
+		return subElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Null createNull() {
 		NullImpl null_ = new NullImpl();
 		return null_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FromModule createFromModule() {
+		FromModuleImpl fromModule = new FromModuleImpl();
+		return fromModule;
 	}
 
 	/**

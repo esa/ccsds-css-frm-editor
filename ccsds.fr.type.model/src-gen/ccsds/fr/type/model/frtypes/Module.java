@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ccsds.fr.type.model.frtypes.Module#getTypeDefinition <em>Type Definition</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.Module#getOid <em>Oid</em>}</li>
- *   <li>{@link ccsds.fr.type.model.frtypes.Module#getImports <em>Imports</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.Module#getExports <em>Exports</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.Module#getName <em>Name</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.Module#getImports <em>Imports</em>}</li>
  * </ul>
  *
  * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getModule()
@@ -68,20 +68,20 @@ public interface Module extends Asn1Writer {
 	void setOid(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Imports</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.fr.type.model.frtypes.FromModule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Imports</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Imports</em>' attribute list.
+	 * @return the value of the '<em>Imports</em>' containment reference list.
 	 * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getModule_Imports()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<String> getImports();
+	EList<FromModule> getImports();
 
 	/**
 	 * Returns the value of the '<em><b>Exports</b></em>' attribute list.

@@ -73,7 +73,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//NamedValue/value"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//StructuredSizeConstrainedType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredSizeConstrainedType/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredSizeConstrainedType/elements"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//Choice"/>
     <genClasses ecoreClass="frtypes.ecore#//TypeReferenceLocal">
@@ -89,19 +89,25 @@
     <genClasses ecoreClass="frtypes.ecore#//Module">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Module/typeDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/oid"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/imports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/exports"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Module/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference frtypes.ecore#//Module/imports"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//ObjectIdentifier"/>
-    <genClasses ecoreClass="frtypes.ecore#//ComponentValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//ComponentValue/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//ComponentValue/optional"/>
+    <genClasses ecoreClass="frtypes.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Element/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/optional"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//TypeReferenceExternal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/name"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//SubElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//SubElement/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/optional"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//Null"/>
     <genClasses image="false" ecoreClass="frtypes.ecore#//Asn1Writer">
@@ -114,7 +120,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//StructuredDifferentType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredDifferentType/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//StructuredDifferentType/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="frtypes.ecore#//FromModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//FromModule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//FromModule/importedTypes"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

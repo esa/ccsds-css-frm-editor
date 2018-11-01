@@ -556,26 +556,26 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.ComponentValue} instances.
+	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.Element} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentValueItemProvider componentValueItemProvider;
+	protected ElementItemProvider elementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link ccsds.fr.type.model.frtypes.ComponentValue}.
+	 * This creates an adapter for a {@link ccsds.fr.type.model.frtypes.Element}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentValueAdapter() {
-		if (componentValueItemProvider == null) {
-			componentValueItemProvider = new ComponentValueItemProvider(this);
+	public Adapter createElementAdapter() {
+		if (elementItemProvider == null) {
+			elementItemProvider = new ElementItemProvider(this);
 		}
 
-		return componentValueItemProvider;
+		return elementItemProvider;
 	}
 
 	/**
@@ -602,6 +602,29 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.SubElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubElementItemProvider subElementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.fr.type.model.frtypes.SubElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubElementAdapter() {
+		if (subElementItemProvider == null) {
+			subElementItemProvider = new SubElementItemProvider(this);
+		}
+
+		return subElementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.Null} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -622,6 +645,29 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 		}
 
 		return nullItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.FromModule} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FromModuleItemProvider fromModuleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.fr.type.model.frtypes.FromModule}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFromModuleAdapter() {
+		if (fromModuleItemProvider == null) {
+			fromModuleItemProvider = new FromModuleItemProvider(this);
+		}
+
+		return fromModuleItemProvider;
 	}
 
 	/**
@@ -765,12 +811,16 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 			moduleItemProvider.dispose();
 		if (objectIdentifierItemProvider != null)
 			objectIdentifierItemProvider.dispose();
-		if (componentValueItemProvider != null)
-			componentValueItemProvider.dispose();
+		if (elementItemProvider != null)
+			elementItemProvider.dispose();
 		if (typeReferenceExternalItemProvider != null)
 			typeReferenceExternalItemProvider.dispose();
+		if (subElementItemProvider != null)
+			subElementItemProvider.dispose();
 		if (nullItemProvider != null)
 			nullItemProvider.dispose();
+		if (fromModuleItemProvider != null)
+			fromModuleItemProvider.dispose();
 	}
 
 }

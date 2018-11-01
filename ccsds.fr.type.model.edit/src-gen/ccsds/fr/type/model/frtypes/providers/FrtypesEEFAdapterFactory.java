@@ -167,11 +167,11 @@ public class FrtypesEEFAdapterFactory extends FrtypesAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createComponentValueAdapter()
+	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createElementAdapter()
 	 * 
 	 */
-	public Adapter createComponentValueAdapter() {
-		return new ComponentValuePropertiesEditionProvider();
+	public Adapter createElementAdapter() {
+		return new ElementPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -180,6 +180,22 @@ public class FrtypesEEFAdapterFactory extends FrtypesAdapterFactory {
 	 */
 	public Adapter createTypeReferenceExternalAdapter() {
 		return new TypeReferenceExternalPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createSubElementAdapter()
+	 * 
+	 */
+	public Adapter createSubElementAdapter() {
+		return new SubElementPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createFromModuleAdapter()
+	 * 
+	 */
+	public Adapter createFromModuleAdapter() {
+		return new FromModulePropertiesEditionProvider();
 	}
 
 }

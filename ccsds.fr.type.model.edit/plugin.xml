@@ -166,15 +166,21 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="ccsds.fr.type.model.frtypes.parts.forms.ComponentValuePropertiesEditionPartForm"
-               filter="ccsds.fr.type.model.frtypes.providers.ComponentValuePropertiesEditionProvider$EditionFilter"
-               id="ccsds.fr.type.model.frtypes.section.ComponentValue"
+               class="ccsds.fr.type.model.frtypes.parts.forms.ElementPropertiesEditionPartForm"
+               filter="ccsds.fr.type.model.frtypes.providers.ElementPropertiesEditionProvider$EditionFilter"
+               id="ccsds.fr.type.model.frtypes.section.Element"
                tab="Base">
          </propertySection>
          <propertySection
                class="ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceExternalPropertiesEditionPartForm"
                filter="ccsds.fr.type.model.frtypes.providers.TypeReferenceExternalPropertiesEditionProvider$EditionFilter"
                id="ccsds.fr.type.model.frtypes.section.TypeReferenceExternal"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.fr.type.model.frtypes.parts.forms.FromModulePropertiesEditionPartForm"
+               filter="ccsds.fr.type.model.frtypes.providers.FromModulePropertiesEditionProvider$EditionFilter"
+               id="ccsds.fr.type.model.frtypes.section.FromModule"
                tab="Base">
          </propertySection>
       </propertySections>
@@ -291,15 +297,21 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="ccsds.fr.type.model.frtypes.parts.forms.ComponentValuePropertiesEditionPartForm"
-               filter="ccsds.fr.type.model.frtypes.providers.ComponentValuePropertiesEditionProvider$EditionFilter"
-               id="ccsds.fr.type.model.frtypes.section.ComponentValue"
+               class="ccsds.fr.type.model.frtypes.parts.forms.ElementPropertiesEditionPartForm"
+               filter="ccsds.fr.type.model.frtypes.providers.ElementPropertiesEditionProvider$EditionFilter"
+               id="ccsds.fr.type.model.frtypes.section.Element"
                tab="Base">
          </propertySection>
          <propertySection
                class="ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceExternalPropertiesEditionPartForm"
                filter="ccsds.fr.type.model.frtypes.providers.TypeReferenceExternalPropertiesEditionProvider$EditionFilter"
                id="ccsds.fr.type.model.frtypes.section.TypeReferenceExternal"
+               tab="Base">
+         </propertySection>
+          <propertySection
+               class="ccsds.fr.type.model.frtypes.parts.forms.FromModulePropertiesEditionPartForm"
+               filter="ccsds.fr.type.model.frtypes.providers.FromModulePropertiesEditionProvider$EditionFilter"
+               id="ccsds.fr.type.model.frtypes.section.FromModule"
                tab="Base">
          </propertySection>
       </propertySections>

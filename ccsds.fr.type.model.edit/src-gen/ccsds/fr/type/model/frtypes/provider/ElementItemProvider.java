@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.provider;
 
-import ccsds.fr.type.model.frtypes.ComponentValue;
+import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -19,19 +20,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link ccsds.fr.type.model.frtypes.ComponentValue} object.
+ * This is the item provider adapter for a {@link ccsds.fr.type.model.frtypes.Element} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ComponentValueItemProvider extends TypeItemProvider {
+public class ElementItemProvider extends TypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentValueItemProvider(AdapterFactory adapterFactory) {
+	public ElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,10 +63,9 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ComponentValue_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ComponentValue_name_feature",
-								"_UI_ComponentValue_type"),
-						FrtypesPackage.Literals.COMPONENT_VALUE__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_Element_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Element_name_feature", "_UI_Element_type"),
+						FrtypesPackage.Literals.ELEMENT__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -78,10 +78,9 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	protected void addTagPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ComponentValue_tag_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ComponentValue_tag_feature",
-								"_UI_ComponentValue_type"),
-						FrtypesPackage.Literals.COMPONENT_VALUE__TAG, true, false, false,
+						getResourceLocator(), getString("_UI_Element_tag_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Element_tag_feature", "_UI_Element_type"),
+						FrtypesPackage.Literals.ELEMENT__TAG, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -94,10 +93,10 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	protected void addOptionalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ComponentValue_optional_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ComponentValue_optional_feature",
-								"_UI_ComponentValue_type"),
-						FrtypesPackage.Literals.COMPONENT_VALUE__OPTIONAL, true, false, false,
+						getResourceLocator(), getString("_UI_Element_optional_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Element_optional_feature",
+								"_UI_Element_type"),
+						FrtypesPackage.Literals.ELEMENT__OPTIONAL, true, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -113,7 +112,7 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE);
+			childrenFeatures.add(FrtypesPackage.Literals.ELEMENT__TYPE);
 		}
 		return childrenFeatures;
 	}
@@ -132,14 +131,14 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	}
 
 	/**
-	 * This returns ComponentValue.gif.
+	 * This returns Element.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ComponentValue"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Element"));
 	}
 
 	/**
@@ -160,9 +159,9 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ComponentValue) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ComponentValue_type")
-				: getString("_UI_ComponentValue_type") + " " + label;
+		String label = ((Element) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Element_type")
+				: getString("_UI_Element_type") + " " + label;
 	}
 
 	/**
@@ -176,13 +175,13 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ComponentValue.class)) {
-		case FrtypesPackage.COMPONENT_VALUE__NAME:
-		case FrtypesPackage.COMPONENT_VALUE__TAG:
-		case FrtypesPackage.COMPONENT_VALUE__OPTIONAL:
+		switch (notification.getFeatureID(Element.class)) {
+		case FrtypesPackage.ELEMENT__NAME:
+		case FrtypesPackage.ELEMENT__TAG:
+		case FrtypesPackage.ELEMENT__OPTIONAL:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case FrtypesPackage.COMPONENT_VALUE__TYPE:
+		case FrtypesPackage.ELEMENT__TYPE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -200,56 +199,59 @@ public class ComponentValueItemProvider extends TypeItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createBoolean()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createBoolean()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createIntegerType()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createBitString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createOctetString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createReal()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createReal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createEnumerated()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createCharacterString()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createSequence()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createSequence()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createSequenceOf()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createSet()));
+		newChildDescriptors
+				.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createSet()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createSetOf()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createSetOf()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createChoice()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createChoice()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createTypeReferenceLocal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createObjectIdentifier()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createComponentValue()));
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createElement()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.COMPONENT_VALUE__TYPE,
-				FrtypesFactory.eINSTANCE.createNull()));
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
+				FrtypesFactory.eINSTANCE.createSubElement()));
+
+		newChildDescriptors.add(
+				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createNull()));
 	}
 
 }

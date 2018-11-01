@@ -67,7 +67,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getAsn1Writer()
 	 * @generated
 	 */
-	int ASN1_WRITER = 31;
+	int ASN1_WRITER = 32;
 
 	/**
 	 * The number of structural features of the '<em>Asn1 Writer</em>' class.
@@ -810,7 +810,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStructuredDifferentType()
 	 * @generated
 	 */
-	int STRUCTURED_DIFFERENT_TYPE = 33;
+	int STRUCTURED_DIFFERENT_TYPE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
@@ -822,13 +822,13 @@ public interface FrtypesPackage extends EPackage {
 	int STRUCTURED_DIFFERENT_TYPE__SINGLE_VALUE_CONSTRAINT = STRUCTURED_TYPE__SINGLE_VALUE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_DIFFERENT_TYPE__COMPONENTS = STRUCTURED_TYPE_FEATURE_COUNT + 0;
+	int STRUCTURED_DIFFERENT_TYPE__ELEMENTS = STRUCTURED_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Structured Different Type</em>' class.
@@ -877,13 +877,13 @@ public interface FrtypesPackage extends EPackage {
 	int SEQUENCE__SINGLE_VALUE_CONSTRAINT = STRUCTURED_DIFFERENT_TYPE__SINGLE_VALUE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__COMPONENTS = STRUCTURED_DIFFERENT_TYPE__COMPONENTS;
+	int SEQUENCE__ELEMENTS = STRUCTURED_DIFFERENT_TYPE__ELEMENTS;
 
 	/**
 	 * The number of structural features of the '<em>Sequence</em>' class.
@@ -941,13 +941,13 @@ public interface FrtypesPackage extends EPackage {
 	int STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT = STRUCTURED_TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS = STRUCTURED_TYPE_FEATURE_COUNT + 1;
+	int STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS = STRUCTURED_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Structured Size Constrained Type</em>' class.
@@ -1005,13 +1005,13 @@ public interface FrtypesPackage extends EPackage {
 	int SEQUENCE_OF__SIZE_CONSTRAINT = STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_OF__COMPONENTS = STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS;
+	int SEQUENCE_OF__ELEMENTS = STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS;
 
 	/**
 	 * The number of structural features of the '<em>Sequence Of</em>' class.
@@ -1060,13 +1060,13 @@ public interface FrtypesPackage extends EPackage {
 	int SET__SINGLE_VALUE_CONSTRAINT = STRUCTURED_DIFFERENT_TYPE__SINGLE_VALUE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET__COMPONENTS = STRUCTURED_DIFFERENT_TYPE__COMPONENTS;
+	int SET__ELEMENTS = STRUCTURED_DIFFERENT_TYPE__ELEMENTS;
 
 	/**
 	 * The number of structural features of the '<em>Set</em>' class.
@@ -1124,13 +1124,13 @@ public interface FrtypesPackage extends EPackage {
 	int SET_OF__SIZE_CONSTRAINT = STRUCTURED_SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_OF__COMPONENTS = STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS;
+	int SET_OF__ELEMENTS = STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS;
 
 	/**
 	 * The number of structural features of the '<em>Set Of</em>' class.
@@ -1381,13 +1381,13 @@ public interface FrtypesPackage extends EPackage {
 	int CHOICE__SINGLE_VALUE_CONSTRAINT = STRUCTURED_DIFFERENT_TYPE__SINGLE_VALUE_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Components</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE__COMPONENTS = STRUCTURED_DIFFERENT_TYPE__COMPONENTS;
+	int CHOICE__ELEMENTS = STRUCTURED_DIFFERENT_TYPE__ELEMENTS;
 
 	/**
 	 * The number of structural features of the '<em>Choice</em>' class.
@@ -1601,22 +1601,13 @@ public interface FrtypesPackage extends EPackage {
 	int MODULE__OID = ASN1_WRITER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Imports</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__IMPORTS = ASN1_WRITER_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Exports</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__EXPORTS = ASN1_WRITER_FEATURE_COUNT + 3;
+	int MODULE__EXPORTS = ASN1_WRITER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1625,7 +1616,16 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__NAME = ASN1_WRITER_FEATURE_COUNT + 4;
+	int MODULE__NAME = ASN1_WRITER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__IMPORTS = ASN1_WRITER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -1701,14 +1701,14 @@ public interface FrtypesPackage extends EPackage {
 	int OBJECT_IDENTIFIER_OPERATION_COUNT = SIMPLE_TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl <em>Component Value</em>}' class.
+	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.ElementImpl <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ccsds.fr.type.model.frtypes.impl.ComponentValueImpl
-	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getComponentValue()
+	 * @see ccsds.fr.type.model.frtypes.impl.ElementImpl
+	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getElement()
 	 * @generated
 	 */
-	int COMPONENT_VALUE = 28;
+	int ELEMENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
@@ -1717,7 +1717,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE__SINGLE_VALUE_CONSTRAINT = TYPE__SINGLE_VALUE_CONSTRAINT;
+	int ELEMENT__SINGLE_VALUE_CONSTRAINT = TYPE__SINGLE_VALUE_CONSTRAINT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1726,7 +1726,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE__NAME = TYPE_FEATURE_COUNT + 0;
+	int ELEMENT__NAME = TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1735,7 +1735,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE__TYPE = TYPE_FEATURE_COUNT + 1;
+	int ELEMENT__TYPE = TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Tag</b></em>' attribute.
@@ -1744,7 +1744,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE__TAG = TYPE_FEATURE_COUNT + 2;
+	int ELEMENT__TAG = TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Optional</b></em>' attribute.
@@ -1753,16 +1753,16 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE__OPTIONAL = TYPE_FEATURE_COUNT + 3;
+	int ELEMENT__OPTIONAL = TYPE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Component Value</em>' class.
+	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
+	int ELEMENT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1771,16 +1771,16 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+	int ELEMENT___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
-	 * The number of operations of the '<em>Component Value</em>' class.
+	 * The number of operations of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_VALUE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+	int ELEMENT_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.TypeReferenceExternalImpl <em>Type Reference External</em>}' class.
@@ -1838,6 +1838,88 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_REFERENCE_EXTERNAL_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl <em>Sub Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.fr.type.model.frtypes.impl.SubElementImpl
+	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSubElement()
+	 * @generated
+	 */
+	int SUB_ELEMENT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT__SINGLE_VALUE_CONSTRAINT = TYPE__SINGLE_VALUE_CONSTRAINT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT__NAME = TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT__TYPE = TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT__TAG = TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT__OPTIONAL = TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Sub Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Write Asn1</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The number of operations of the '<em>Sub Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_ELEMENT_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.NullImpl <em>Null</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1845,7 +1927,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getNull()
 	 * @generated
 	 */
-	int NULL = 30;
+	int NULL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
@@ -1891,7 +1973,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSizeConstrainedType()
 	 * @generated
 	 */
-	int SIZE_CONSTRAINED_TYPE = 32;
+	int SIZE_CONSTRAINED_TYPE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Size Constraint</b></em>' containment reference list.
@@ -1930,6 +2012,61 @@ public interface FrtypesPackage extends EPackage {
 	int SIZE_CONSTRAINED_TYPE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.FromModuleImpl <em>From Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.fr.type.model.frtypes.impl.FromModuleImpl
+	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getFromModule()
+	 * @generated
+	 */
+	int FROM_MODULE = 35;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE__NAME = ASN1_WRITER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Imported Types</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE__IMPORTED_TYPES = ASN1_WRITER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>From Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Write Asn1</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The number of operations of the '<em>From Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.StringType <em>String Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1937,7 +2074,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStringType()
 	 * @generated
 	 */
-	int STRING_TYPE = 34;
+	int STRING_TYPE = 36;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.ConstraintType <em>Constraint Type</em>}' enum.
@@ -1947,7 +2084,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getConstraintType()
 	 * @generated
 	 */
-	int CONSTRAINT_TYPE = 35;
+	int CONSTRAINT_TYPE = 37;
 
 	/**
 	 * The meta object id for the '<em>String Buffer</em>' data type.
@@ -1957,7 +2094,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStringBuffer()
 	 * @generated
 	 */
-	int STRING_BUFFER = 36;
+	int STRING_BUFFER = 38;
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.TypeDefinition <em>Type Definition</em>}'.
@@ -2334,15 +2471,15 @@ public interface FrtypesPackage extends EPackage {
 	EClass getStructuredSizeConstrainedType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType#getComponents <em>Components</em>}'.
+	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Components</em>'.
-	 * @see ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType#getComponents()
+	 * @return the meta object for the containment reference '<em>Elements</em>'.
+	 * @see ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType#getElements()
 	 * @see #getStructuredSizeConstrainedType()
 	 * @generated
 	 */
-	EReference getStructuredSizeConstrainedType_Components();
+	EReference getStructuredSizeConstrainedType_Elements();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Choice <em>Choice</em>}'.
@@ -2461,15 +2598,15 @@ public interface FrtypesPackage extends EPackage {
 	EAttribute getModule_Oid();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link ccsds.fr.type.model.frtypes.Module#getImports <em>Imports</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ccsds.fr.type.model.frtypes.Module#getImports <em>Imports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Imports</em>'.
+	 * @return the meta object for the containment reference list '<em>Imports</em>'.
 	 * @see ccsds.fr.type.model.frtypes.Module#getImports()
 	 * @see #getModule()
 	 * @generated
 	 */
-	EAttribute getModule_Imports();
+	EReference getModule_Imports();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link ccsds.fr.type.model.frtypes.Module#getExports <em>Exports</em>}'.
@@ -2504,58 +2641,58 @@ public interface FrtypesPackage extends EPackage {
 	EClass getObjectIdentifier();
 
 	/**
-	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.ComponentValue <em>Component Value</em>}'.
+	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Value</em>'.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue
+	 * @return the meta object for class '<em>Element</em>'.
+	 * @see ccsds.fr.type.model.frtypes.Element
 	 * @generated
 	 */
-	EClass getComponentValue();
+	EClass getElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.ComponentValue#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.Element#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue#getName()
-	 * @see #getComponentValue()
+	 * @see ccsds.fr.type.model.frtypes.Element#getName()
+	 * @see #getElement()
 	 * @generated
 	 */
-	EAttribute getComponentValue_Name();
+	EAttribute getElement_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.ComponentValue#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.Element#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue#getType()
-	 * @see #getComponentValue()
+	 * @see ccsds.fr.type.model.frtypes.Element#getType()
+	 * @see #getElement()
 	 * @generated
 	 */
-	EReference getComponentValue_Type();
+	EReference getElement_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.ComponentValue#getTag <em>Tag</em>}'.
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.Element#getTag <em>Tag</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Tag</em>'.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue#getTag()
-	 * @see #getComponentValue()
+	 * @see ccsds.fr.type.model.frtypes.Element#getTag()
+	 * @see #getElement()
 	 * @generated
 	 */
-	EAttribute getComponentValue_Tag();
+	EAttribute getElement_Tag();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.ComponentValue#isOptional <em>Optional</em>}'.
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.Element#isOptional <em>Optional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Optional</em>'.
-	 * @see ccsds.fr.type.model.frtypes.ComponentValue#isOptional()
-	 * @see #getComponentValue()
+	 * @see ccsds.fr.type.model.frtypes.Element#isOptional()
+	 * @see #getElement()
 	 * @generated
 	 */
-	EAttribute getComponentValue_Optional();
+	EAttribute getElement_Optional();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.TypeReferenceExternal <em>Type Reference External</em>}'.
@@ -2577,6 +2714,60 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTypeReferenceExternal_Name();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.SubElement <em>Sub Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sub Element</em>'.
+	 * @see ccsds.fr.type.model.frtypes.SubElement
+	 * @generated
+	 */
+	EClass getSubElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.fr.type.model.frtypes.SubElement#getName()
+	 * @see #getSubElement()
+	 * @generated
+	 */
+	EAttribute getSubElement_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.SubElement#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see ccsds.fr.type.model.frtypes.SubElement#getType()
+	 * @see #getSubElement()
+	 * @generated
+	 */
+	EReference getSubElement_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#getTag <em>Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tag</em>'.
+	 * @see ccsds.fr.type.model.frtypes.SubElement#getTag()
+	 * @see #getSubElement()
+	 * @generated
+	 */
+	EAttribute getSubElement_Tag();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#isOptional <em>Optional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optional</em>'.
+	 * @see ccsds.fr.type.model.frtypes.SubElement#isOptional()
+	 * @see #getSubElement()
+	 * @generated
+	 */
+	EAttribute getSubElement_Optional();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Null <em>Null</em>}'.
@@ -2640,15 +2831,47 @@ public interface FrtypesPackage extends EPackage {
 	EClass getStructuredDifferentType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ccsds.fr.type.model.frtypes.StructuredDifferentType#getComponents <em>Components</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ccsds.fr.type.model.frtypes.StructuredDifferentType#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Components</em>'.
-	 * @see ccsds.fr.type.model.frtypes.StructuredDifferentType#getComponents()
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see ccsds.fr.type.model.frtypes.StructuredDifferentType#getElements()
 	 * @see #getStructuredDifferentType()
 	 * @generated
 	 */
-	EReference getStructuredDifferentType_Components();
+	EReference getStructuredDifferentType_Elements();
+
+	/**
+	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.FromModule <em>From Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>From Module</em>'.
+	 * @see ccsds.fr.type.model.frtypes.FromModule
+	 * @generated
+	 */
+	EClass getFromModule();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.FromModule#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.fr.type.model.frtypes.FromModule#getName()
+	 * @see #getFromModule()
+	 * @generated
+	 */
+	EAttribute getFromModule_Name();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link ccsds.fr.type.model.frtypes.FromModule#getImportedTypes <em>Imported Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Imported Types</em>'.
+	 * @see ccsds.fr.type.model.frtypes.FromModule#getImportedTypes()
+	 * @see #getFromModule()
+	 * @generated
+	 */
+	EAttribute getFromModule_ImportedTypes();
 
 	/**
 	 * Returns the meta object for enum '{@link ccsds.fr.type.model.frtypes.StringType <em>String Type</em>}'.
@@ -3038,13 +3261,12 @@ public interface FrtypesPackage extends EPackage {
 		EClass STRUCTURED_SIZE_CONSTRAINED_TYPE = eINSTANCE.getStructuredSizeConstrainedType();
 
 		/**
-		 * The meta object literal for the '<em><b>Components</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STRUCTURED_SIZE_CONSTRAINED_TYPE__COMPONENTS = eINSTANCE
-				.getStructuredSizeConstrainedType_Components();
+		EReference STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS = eINSTANCE.getStructuredSizeConstrainedType_Elements();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.ChoiceImpl <em>Choice</em>}' class.
@@ -3145,12 +3367,12 @@ public interface FrtypesPackage extends EPackage {
 		EAttribute MODULE__OID = eINSTANCE.getModule_Oid();
 
 		/**
-		 * The meta object literal for the '<em><b>Imports</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODULE__IMPORTS = eINSTANCE.getModule_Imports();
+		EReference MODULE__IMPORTS = eINSTANCE.getModule_Imports();
 
 		/**
 		 * The meta object literal for the '<em><b>Exports</b></em>' attribute list feature.
@@ -3179,14 +3401,14 @@ public interface FrtypesPackage extends EPackage {
 		EClass OBJECT_IDENTIFIER = eINSTANCE.getObjectIdentifier();
 
 		/**
-		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.ComponentValueImpl <em>Component Value</em>}' class.
+		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ccsds.fr.type.model.frtypes.impl.ComponentValueImpl
-		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getComponentValue()
+		 * @see ccsds.fr.type.model.frtypes.impl.ElementImpl
+		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getElement()
 		 * @generated
 		 */
-		EClass COMPONENT_VALUE = eINSTANCE.getComponentValue();
+		EClass ELEMENT = eINSTANCE.getElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -3194,7 +3416,7 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT_VALUE__NAME = eINSTANCE.getComponentValue_Name();
+		EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -3202,7 +3424,7 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_VALUE__TYPE = eINSTANCE.getComponentValue_Type();
+		EReference ELEMENT__TYPE = eINSTANCE.getElement_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
@@ -3210,7 +3432,7 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT_VALUE__TAG = eINSTANCE.getComponentValue_Tag();
+		EAttribute ELEMENT__TAG = eINSTANCE.getElement_Tag();
 
 		/**
 		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
@@ -3218,7 +3440,7 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMPONENT_VALUE__OPTIONAL = eINSTANCE.getComponentValue_Optional();
+		EAttribute ELEMENT__OPTIONAL = eINSTANCE.getElement_Optional();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.TypeReferenceExternalImpl <em>Type Reference External</em>}' class.
@@ -3237,6 +3459,48 @@ public interface FrtypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE_REFERENCE_EXTERNAL__NAME = eINSTANCE.getTypeReferenceExternal_Name();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl <em>Sub Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.fr.type.model.frtypes.impl.SubElementImpl
+		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSubElement()
+		 * @generated
+		 */
+		EClass SUB_ELEMENT = eINSTANCE.getSubElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_ELEMENT__NAME = eINSTANCE.getSubElement_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUB_ELEMENT__TYPE = eINSTANCE.getSubElement_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_ELEMENT__TAG = eINSTANCE.getSubElement_Tag();
+
+		/**
+		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUB_ELEMENT__OPTIONAL = eINSTANCE.getSubElement_Optional();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.NullImpl <em>Null</em>}' class.
@@ -3295,12 +3559,38 @@ public interface FrtypesPackage extends EPackage {
 		EClass STRUCTURED_DIFFERENT_TYPE = eINSTANCE.getStructuredDifferentType();
 
 		/**
-		 * The meta object literal for the '<em><b>Components</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STRUCTURED_DIFFERENT_TYPE__COMPONENTS = eINSTANCE.getStructuredDifferentType_Components();
+		EReference STRUCTURED_DIFFERENT_TYPE__ELEMENTS = eINSTANCE.getStructuredDifferentType_Elements();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.FromModuleImpl <em>From Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.fr.type.model.frtypes.impl.FromModuleImpl
+		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getFromModule()
+		 * @generated
+		 */
+		EClass FROM_MODULE = eINSTANCE.getFromModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FROM_MODULE__NAME = eINSTANCE.getFromModule_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Types</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FROM_MODULE__IMPORTED_TYPES = eINSTANCE.getFromModule_ImportedTypes();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.StringType <em>String Type</em>}' enum.

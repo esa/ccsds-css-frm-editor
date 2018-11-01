@@ -59,9 +59,9 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, SetPropertiesEditionPart {
 
-	protected ReferencesTable components;
-	protected List<ViewerFilter> componentsBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> componentsFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable elements;
+	protected List<ViewerFilter> elementsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> elementsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -108,7 +108,7 @@ public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 		CompositionSequence setStep = new BindingCompositionSequence(propertiesEditionComponent);
 		setStep
 			.addStep(FrtypesViewsRepository.Set.Properties.class)
-			.addStep(FrtypesViewsRepository.Set.Properties.components);
+			.addStep(FrtypesViewsRepository.Set.Properties.elements);
 		
 		
 		composer = new PartComposer(setStep) {
@@ -118,8 +118,8 @@ public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 				if (key == FrtypesViewsRepository.Set.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
-				if (key == FrtypesViewsRepository.Set.Properties.components) {
-					return createComponentsTableComposition(widgetFactory, parent);
+				if (key == FrtypesViewsRepository.Set.Properties.elements) {
+					return createElementsTableComposition(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -147,48 +147,48 @@ public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 	 * @param container
 	 * 
 	 */
-	protected Composite createComponentsTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.components = new ReferencesTable(getDescription(FrtypesViewsRepository.Set.Properties.components, FrtypesMessages.SetPropertiesEditionPart_ComponentsLabel), new ReferencesTableListener() {
+	protected Composite createElementsTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.elements = new ReferencesTable(getDescription(FrtypesViewsRepository.Set.Properties.elements, FrtypesMessages.SetPropertiesEditionPart_ElementsLabel), new ReferencesTableListener() {
 			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				elements.refresh();
 			}
 			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				elements.refresh();
 			}
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				elements.refresh();
 			}
 			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.components, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				components.refresh();
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.elements, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				elements.refresh();
 			}
 			public void navigateTo(EObject element) { }
 		});
-		for (ViewerFilter filter : this.componentsFilters) {
-			this.components.addFilter(filter);
+		for (ViewerFilter filter : this.elementsFilters) {
+			this.elements.addFilter(filter);
 		}
-		this.components.setHelpText(propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Set.Properties.components, FrtypesViewsRepository.FORM_KIND));
-		this.components.createControls(parent, widgetFactory);
-		this.components.addSelectionListener(new SelectionAdapter() {
+		this.elements.setHelpText(propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Set.Properties.elements, FrtypesViewsRepository.FORM_KIND));
+		this.elements.createControls(parent, widgetFactory);
+		this.elements.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
 				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.components, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SetPropertiesEditionPartForm.this, FrtypesViewsRepository.Set.Properties.elements, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
 				}
 			}
 			
 		});
-		GridData componentsData = new GridData(GridData.FILL_HORIZONTAL);
-		componentsData.horizontalSpan = 3;
-		this.components.setLayoutData(componentsData);
-		this.components.setLowerBound(1);
-		this.components.setUpperBound(-1);
-		components.setID(FrtypesViewsRepository.Set.Properties.components);
-		components.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createComponentsTableComposition
+		GridData elementsData = new GridData(GridData.FILL_HORIZONTAL);
+		elementsData.horizontalSpan = 3;
+		this.elements.setLayoutData(elementsData);
+		this.elements.setLowerBound(1);
+		this.elements.setUpperBound(-1);
+		elements.setID(FrtypesViewsRepository.Set.Properties.elements);
+		elements.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createElementsTableComposition
 
 		// End of user code
 		return parent;
@@ -212,20 +212,20 @@ public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#initComponents(EObject current, EReference containingFeature, EReference feature)
+	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#initElements(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public void initComponents(ReferencesTableSettings settings) {
+	public void initElements(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		components.setContentProvider(contentProvider);
-		components.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Set.Properties.components);
-		if (eefElementEditorReadOnlyState && components.isEnabled()) {
-			components.setEnabled(false);
-			components.setToolTipText(FrtypesMessages.Set_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !components.isEnabled()) {
-			components.setEnabled(true);
+		elements.setContentProvider(contentProvider);
+		elements.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Set.Properties.elements);
+		if (eefElementEditorReadOnlyState && elements.isEnabled()) {
+			elements.setEnabled(false);
+			elements.setToolTipText(FrtypesMessages.Set_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !elements.isEnabled()) {
+			elements.setEnabled(true);
 		}	
 		
 	}
@@ -233,44 +233,44 @@ public class SetPropertiesEditionPartForm extends SectionPropertiesEditingPart i
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#updateComponents()
+	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#updateElements()
 	 * 
 	 */
-	public void updateComponents() {
-	components.refresh();
+	public void updateElements() {
+	elements.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#addFilterComponents(ViewerFilter filter)
+	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#addFilterElements(ViewerFilter filter)
 	 * 
 	 */
-	public void addFilterToComponents(ViewerFilter filter) {
-		componentsFilters.add(filter);
-		if (this.components != null) {
-			this.components.addFilter(filter);
+	public void addFilterToElements(ViewerFilter filter) {
+		elementsFilters.add(filter);
+		if (this.elements != null) {
+			this.elements.addFilter(filter);
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#addBusinessFilterComponents(ViewerFilter filter)
+	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#addBusinessFilterElements(ViewerFilter filter)
 	 * 
 	 */
-	public void addBusinessFilterToComponents(ViewerFilter filter) {
-		componentsBusinessFilters.add(filter);
+	public void addBusinessFilterToElements(ViewerFilter filter) {
+		elementsBusinessFilters.add(filter);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#isContainedInComponentsTable(EObject element)
+	 * @see ccsds.fr.type.model.frtypes.parts.SetPropertiesEditionPart#isContainedInElementsTable(EObject element)
 	 * 
 	 */
-	public boolean isContainedInComponentsTable(EObject element) {
-		return ((ReferencesTableSettings)components.getInput()).contains(element);
+	public boolean isContainedInElementsTable(EObject element) {
+		return ((ReferencesTableSettings)elements.getInput()).contains(element);
 	}
 
 

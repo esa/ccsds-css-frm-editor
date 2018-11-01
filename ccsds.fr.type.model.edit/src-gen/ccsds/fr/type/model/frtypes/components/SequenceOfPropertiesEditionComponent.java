@@ -7,7 +7,6 @@ package ccsds.fr.type.model.frtypes.components;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SequenceOf;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
-import ccsds.fr.type.model.frtypes.Type;
 
 import ccsds.fr.type.model.frtypes.parts.FrtypesViewsRepository;
 import ccsds.fr.type.model.frtypes.parts.SequenceOfPropertiesEditionPart;

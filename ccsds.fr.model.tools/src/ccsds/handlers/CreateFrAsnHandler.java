@@ -209,7 +209,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		public
 		void writeAsn1(int indentLevel, StringBuffer output) {
 			if(this.comment != null) {
-				output.append(this.comment);
+				output.append(System.lineSeparator() + System.lineSeparator() + this.comment);
 			}
 			
 			output.append(System.lineSeparator());

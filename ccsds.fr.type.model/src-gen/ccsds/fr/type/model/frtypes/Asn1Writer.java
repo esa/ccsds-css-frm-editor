@@ -85,8 +85,7 @@ public interface Asn1Writer extends EObject {
 	 * @generated NOT
 	 */
 	public static final String RBRACKET = "]";
-	
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -96,7 +95,7 @@ public interface Asn1Writer extends EObject {
 	 * @generated NOT
 	 */
 	public static final String SEMI_COLON = ";";
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -125,13 +124,13 @@ public interface Asn1Writer extends EObject {
 	/**
 	 * @generated NOT
 	 */
-	public static final String IMPLICIT = "IMPLICIT";	
+	public static final String IMPLICIT = "IMPLICIT";
 
 	/**
 	 * @generated NOT
 	 */
-	public static final String TAGS = "TAGS";	
-	
+	public static final String TAGS = "TAGS";
+
 	/**
 	 * @generated NOT
 	 */

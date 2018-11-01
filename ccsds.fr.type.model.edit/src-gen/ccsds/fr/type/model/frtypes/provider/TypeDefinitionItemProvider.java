@@ -217,10 +217,13 @@ public class TypeDefinitionItemProvider extends ItemProviderAdapter implements I
 				FrtypesFactory.eINSTANCE.createObjectIdentifier()));
 
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.TYPE_DEFINITION__TYPE,
-				FrtypesFactory.eINSTANCE.createComponentValue()));
+				FrtypesFactory.eINSTANCE.createElement()));
 
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.TYPE_DEFINITION__TYPE,
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
+
+		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.TYPE_DEFINITION__TYPE,
+				FrtypesFactory.eINSTANCE.createSubElement()));
 
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.TYPE_DEFINITION__TYPE,
 				FrtypesFactory.eINSTANCE.createNull()));
