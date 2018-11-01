@@ -116,13 +116,28 @@ public class FromModuleItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FromModule) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_FromModule_type")
-				: getString("_UI_FromModule_type") + " " + label;
+		String label = ""; 
+		
+		if(((FromModule) object).getImportedTypes().size() > 0) {
+			int idx = 0;
+			for(String importedType : ((FromModule) object).getImportedTypes()) {
+				label += importedType;
+				idx++;
+				if(idx < ((FromModule) object).getImportedTypes().size()) {
+					label += ", ";
+				} else {
+					label += " ";
+				}
+			}
+		}
+		
+		label += getString("_UI_FromModule_type") + " " + ((FromModule) object).getName();
+		
+		return label;
 	}
 
 	/**

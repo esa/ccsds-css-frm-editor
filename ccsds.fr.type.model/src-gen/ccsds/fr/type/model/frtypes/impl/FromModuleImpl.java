@@ -136,7 +136,7 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 			output.append(importedType);
 			idx++;
 			if(idx < getImportedTypes().size()) {
-				output.append(System.lineSeparator() + Asn1Writer.INDENT + Asn1Writer.SEP);
+				output.append(System.lineSeparator() + Asn1Writer.SEP + Asn1Writer.INDENT);
 			}
 		}
 		
