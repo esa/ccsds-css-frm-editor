@@ -21,3 +21,17 @@ cp $RESULT $INPUT
 rm $RESULT
 
 echo updated $INPUT
+
+# wok also on frtypes.xsd
+INPUT=frtypes.xsd
+RESULT=frtypes_clean.xsd
+
+java org.apache.xalan.xslt.Process -IN "$INPUT" -XSL remove_ecore.xsl -OUT "$RESULT" 
+if [ "$?" != "0" ] ; then
+	echo "XSLT returned $?"
+	exit -1;
+fi
+
+cp $RESULT $INPUT
+rm $RESULT
+echo updated $INPUT

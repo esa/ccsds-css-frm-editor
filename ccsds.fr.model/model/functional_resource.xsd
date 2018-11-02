@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:fr="http://iso.org.dod.ccsds" xmlns:org.eclipse.emf._2002.ecore.ocl.pivot="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" xmlns:org.eclipse.ocl.import="http://www.eclipse.org/OCL/Import" org.eclipse.ocl.import:ecore="http://www.eclipse.org/emf/2002/Ecore" targetNamespace="http://iso.org.dod.ccsds">
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:fr="http://iso.org.dod.ccsds" xmlns:frtypes="http://ccsds.fr/types" xmlns:org.eclipse.emf._2002.ecore.ocl.pivot="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot" xmlns:org.eclipse.ocl.import="http://www.eclipse.org/OCL/Import" org.eclipse.ocl.import:ecore="http://www.eclipse.org/emf/2002/Ecore" targetNamespace="http://iso.org.dod.ccsds">
   <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:import namespace="http://ccsds.fr/types" schemaLocation="frtypes.xsd"/>
   <xsd:element name="FunctionalResourceModel" type="fr:FunctionalResourceModel"/>
-  
-  
-  
-  
-  
-  
-  
-  
   
   <xsd:complexType name="FunctionalResourceModel">
     <xsd:sequence>
       <xsd:element name="rootOid" type="fr:Oid"/>
+      <xsd:element name="asnTypeModule" type="frtypes:Module"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="functionalResourceSet" type="fr:FunctionalResourceSet"/>
       <xsd:element maxOccurs="unbounded" minOccurs="0" name="functionalResource" type="fr:FunctionalResource"/>
     </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FunctionalResourceSet">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="functionalResource" type="fr:FunctionalResource"/>
+    </xsd:sequence>
+    <xsd:attribute name="name" type="ecore:EString" use="required"/>
   </xsd:complexType>
   <xsd:complexType name="FrModelElement">
     <xsd:sequence>
@@ -45,6 +46,8 @@
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="event" type="fr:Event"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="directives" type="fr:Directive"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="fr:Parameter"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="serviceAccesspoint" type="fr:ServiceAccessPoint"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="providedAncillaryInterface" type="fr:AncillaryInterface"/>
         </xsd:sequence>
         <xsd:attribute name="uses">
           <xsd:simpleType>
@@ -58,8 +61,8 @@
     <xsd:complexContent>
       <xsd:extension base="fr:FrModelElement">
         <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="value" type="fr:Value"/>
           <xsd:element minOccurs="0" name="externalOid" type="fr:Oid"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="value" type="fr:Value"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -100,10 +103,32 @@
       <xsd:extension base="fr:FrModelElement">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="externalTypeOid" type="fr:Oid"/>
+          <xsd:element name="typeOid" type="fr:Oid">
+            <xsd:annotation>
+              <xsd:documentation>CSTS WG decided to have a dedicated type OID to denote the OID of the ASN.1 type definition used for encoding.
+
+The type OID is constructed by using the OID of the P/E/D and add a digit. This is necessary for Event/Vaues and Directive/Qualifiers which have a 1 - 0..n relationship.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="typeDef" type="frtypes:TypeDefinition"/>
         </xsd:sequence>
         <xsd:attribute name="typeDefinition" type="ecore:EString" use="required"/>
         <xsd:attribute name="engineeringUnit" type="ecore:EString"/>
       </xsd:extension>
     </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceAccessPoint">
+    <xsd:attribute default="newSAP" name="name" type="ecore:EString"/>
+    <xsd:attribute name="minAccessor" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="maxAccessor" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="minAccessed" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="maxAccessed" type="ecore:EInt" use="required"/>
+    <xsd:attribute name="accessedFunctionalResource" type="xsd:anyURI" use="required"/>
+    <xsd:attribute name="accessingFunctionalResource" type="xsd:anyURI" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="AncillaryInterface">
+    <xsd:attribute name="name" type="ecore:EString"/>
+    <xsd:attribute name="providingFunctionalResource" type="xsd:anyURI" use="required"/>
+    <xsd:attribute name="requiringFunctionalResource" type="xsd:anyURI" use="required"/>
   </xsd:complexType>
 </xsd:schema>

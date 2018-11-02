@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:frtypes="http://ccsds.fr/types" targetNamespace="http://ccsds.fr/types">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  
+  <xsd:complexType name="TypeDefinition">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:sequence>
+          <xsd:element name="type" type="frtypes:Type"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Type">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="singleValueConstraint" type="frtypes:SingleValueConstraint"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="SimpleType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="StructuredType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Boolean">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IntegerType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleRangeType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="namedValues" type="frtypes:NamedValue"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BitString">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleSizeConstrainedType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OctetString">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleSizeConstrainedType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Real">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleRangeType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Enumerated">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="values" type="frtypes:NamedValue"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CharacterString">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleSizeConstrainedType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="permittedAlphabetConstraint" type="frtypes:PermittedAlphabetConstraint"/>
+        </xsd:sequence>
+        <xsd:attribute default="VisibleString" name="type" type="frtypes:StringType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Sequence">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredDifferentType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SequenceOf">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredSizeConstrainedType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Set">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredDifferentType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SetOf">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredSizeConstrainedType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Constraint">
+    <xsd:annotation>
+      <xsd:documentation>Constraints: This is drastically simplified approach compared to what ASn.1 allows.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SizeConstraint">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Constraint">
+        <xsd:attribute name="min" type="ecore:ELong" use="required"/>
+        <xsd:attribute name="max" type="ecore:ELong" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ValueRangeConstraint">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Constraint">
+        <xsd:attribute name="min" type="ecore:ELong" use="required"/>
+        <xsd:attribute name="max" type="ecore:ELong" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="SimpleRangeType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="rangeConstraint" type="frtypes:ValueRangeConstraint"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="SimpleSizeConstrainedType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="NamedValue">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:attribute name="name" type="ecore:EString"/>
+        <xsd:attribute name="value" type="ecore:EInt"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="StructuredSizeConstrainedType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredType">
+        <xsd:sequence>
+          <xsd:element name="elements" type="frtypes:Type"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Choice">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredDifferentType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TypeReferenceLocal">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type">
+        <xsd:attribute name="typeDefinition" type="xsd:anyURI" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SingleValueConstraint">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Constraint">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="values" nillable="true" type="ecore:EString"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PermittedAlphabetConstraint">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Constraint">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="values" nillable="true" type="ecore:EString"/>
+        </xsd:sequence>
+        <xsd:attribute default="RANGE" name="type" type="frtypes:ConstraintType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Module">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="typeDefinition" type="frtypes:TypeDefinition"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="exports" nillable="true" type="ecore:EString"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="imports" type="frtypes:FromModule"/>
+        </xsd:sequence>
+        <xsd:attribute name="oid" type="ecore:EString"/>
+        <xsd:attribute name="name" type="ecore:EString" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ObjectIdentifier">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="StringType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BMPString"/>
+      <xsd:enumeration value="IA5String"/>
+      <xsd:enumeration value="GeneralString"/>
+      <xsd:enumeration value="GraphicString"/>
+      <xsd:enumeration value="NumericString"/>
+      <xsd:enumeration value="PrintableString"/>
+      <xsd:enumeration value="TeletexString"/>
+      <xsd:enumeration value="UnivarsalString"/>
+      <xsd:enumeration value="UTF8String"/>
+      <xsd:enumeration value="VideotexString"/>
+      <xsd:enumeration value="VisibleString"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Element">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type">
+        <xsd:sequence>
+          <xsd:element name="type" type="frtypes:Type"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="ecore:EString" use="required"/>
+        <xsd:attribute name="tag" type="ecore:EString"/>
+        <xsd:attribute default="false" name="optional" type="ecore:EBoolean"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TypeReferenceExternal">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type">
+        <xsd:attribute name="name" type="ecore:EString" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SubElement">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Type">
+        <xsd:sequence>
+          <xsd:element name="type" type="frtypes:Type"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="ecore:EString" use="required"/>
+        <xsd:attribute name="tag" type="ecore:EString"/>
+        <xsd:attribute name="optional" type="ecore:EBoolean"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Null">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:SimpleType"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="StringBuffer">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:complexType abstract="true" name="Asn1Writer">
+    <xsd:annotation>
+      <xsd:appinfo source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation name="writeAsn1">
+          <parameter name="indentLevel" type="ecore:EInt"/>
+          <parameter name="output" type="frtypes:StringBuffer"/>
+        </operation>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="SizeConstrainedType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="sizeConstraint" type="frtypes:SizeConstraint"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="ConstraintType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="RANGE"/>
+      <xsd:enumeration value="OR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType abstract="true" name="StructuredDifferentType">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:StructuredType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="elements" type="frtypes:Type"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FromModule">
+    <xsd:complexContent>
+      <xsd:extension base="frtypes:Asn1Writer">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="importedTypes" nillable="true" type="ecore:EString"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>
