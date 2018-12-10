@@ -83,9 +83,6 @@ public class FrtypesMessages extends NLS {
 	public static String TypeReferenceExternalPropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String SubElementPropertiesEditionPart_PropertiesGroupLabel;
-
-	
 	public static String NullPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -231,12 +228,6 @@ public class FrtypesMessages extends NLS {
 	public static String TypeReferenceExternal_Part_Title;
 
 	
-	public static String SubElement_ReadOnly;
-
-	
-	public static String SubElement_Part_Title;
-
-	
 	public static String Null_ReadOnly;
 
 	
@@ -347,15 +338,6 @@ public class FrtypesMessages extends NLS {
 
 	
 	public static String TypeReferenceExternalPropertiesEditionPart_NameLabel;
-
-	
-	public static String SubElementPropertiesEditionPart_NameLabel;
-
-	
-	public static String SubElementPropertiesEditionPart_TagLabel;
-
-	
-	public static String SubElementPropertiesEditionPart_OptionalLabel;
 
 	
 	public static String FromModulePropertiesEditionPart_NameLabel;

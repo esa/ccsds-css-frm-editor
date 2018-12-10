@@ -75,13 +75,11 @@ public class ValueRangeConstraintPropertiesEditionComponent extends SinglePartPr
 			final ValueRangeConstraint valueRangeConstraint = (ValueRangeConstraint)elt;
 			final ValueRangeConstraintPropertiesEditionPart basePart = (ValueRangeConstraintPropertiesEditionPart)editingPart;
 			// init values
-			if (isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.min)) {
-				basePart.setMin(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, valueRangeConstraint.getMin()));
-			}
+			if (isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.min))
+				basePart.setMin(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, valueRangeConstraint.getMin()));
 			
-			if (isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.max)) {
-				basePart.setMax(EEFConverterUtil.convertToString(EcorePackage.Literals.ELONG, valueRangeConstraint.getMax()));
-			}
+			if (isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.max))
+				basePart.setMax(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, valueRangeConstraint.getMax()));
 			
 			// init filters
 			
@@ -120,10 +118,10 @@ public class ValueRangeConstraintPropertiesEditionComponent extends SinglePartPr
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ValueRangeConstraint valueRangeConstraint = (ValueRangeConstraint)semanticObject;
 		if (FrtypesViewsRepository.ValueRangeConstraint.Properties.min == event.getAffectedEditor()) {
-			valueRangeConstraint.setMin((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			valueRangeConstraint.setMin((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 		if (FrtypesViewsRepository.ValueRangeConstraint.Properties.max == event.getAffectedEditor()) {
-			valueRangeConstraint.setMax((EEFConverterUtil.createLongFromString(EcorePackage.Literals.ELONG, (String)event.getNewValue())));
+			valueRangeConstraint.setMax((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -137,14 +135,14 @@ public class ValueRangeConstraintPropertiesEditionComponent extends SinglePartPr
 			ValueRangeConstraintPropertiesEditionPart basePart = (ValueRangeConstraintPropertiesEditionPart)editingPart;
 			if (FrtypesPackage.eINSTANCE.getValueRangeConstraint_Min().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.min)) {
 				if (msg.getNewValue() != null) {
-					basePart.setMin(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
+					basePart.setMin(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setMin("");
 				}
 			}
 			if (FrtypesPackage.eINSTANCE.getValueRangeConstraint_Max().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.ValueRangeConstraint.Properties.max)) {
 				if (msg.getNewValue() != null) {
-					basePart.setMax(EcoreUtil.convertToString(EcorePackage.Literals.ELONG, msg.getNewValue()));
+					basePart.setMax(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
 				} else {
 					basePart.setMax("");
 				}

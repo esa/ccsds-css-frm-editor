@@ -10,6 +10,13 @@ Win64:		https://www.eclipse.org/downloads/download.php?file=/technology/epp/down
 Mac64:		https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/3a/eclipse-modeling-oxygen-3a-macosx-cocoa-x86_64.dmg		
 Linux64:	https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/3a/eclipse-modeling-oxygen-3a-linux-gtk-x86_64.tar.gz	
 
+Installation Prerequisite:
+If you have already installed the FRM editor in an old version it needs to be uninstalled before:
+1) Help -> Install New Software -> What is already installed
+2) Select 'ccsds.fr.model' and press the 'Uninstall...' button, then follow the instructions incl. restart
+
+Installation
+
 1) Installation with local archive ccsds.fr.feature.zip
 	- Help -> Install New Software
 	- Available Software Sites -> Add -> Archive: point to ccsds.fr.feature.zip

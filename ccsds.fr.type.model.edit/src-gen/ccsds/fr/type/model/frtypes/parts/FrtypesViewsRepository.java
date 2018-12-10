@@ -390,27 +390,6 @@ public class FrtypesViewsRepository {
 	}
 
 	/**
-	 * SubElement view descriptor
-	 * 
-	 */
-	public static class SubElement {
-		public static class Properties {
-	
-			
-			public static String name = "frtypes::SubElement::properties::name";
-			
-			
-			public static String tag = "frtypes::SubElement::properties::tag";
-			
-			
-			public static String optional = "frtypes::SubElement::properties::optional";
-			
-	
-		}
-	
-	}
-
-	/**
 	 * Null view descriptor
 	 * 
 	 */

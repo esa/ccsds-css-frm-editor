@@ -602,29 +602,6 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.SubElement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SubElementItemProvider subElementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link ccsds.fr.type.model.frtypes.SubElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSubElementAdapter() {
-		if (subElementItemProvider == null) {
-			subElementItemProvider = new SubElementItemProvider(this);
-		}
-
-		return subElementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link ccsds.fr.type.model.frtypes.Null} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -815,8 +792,6 @@ public class FrtypesItemProviderAdapterFactory extends FrtypesAdapterFactory
 			elementItemProvider.dispose();
 		if (typeReferenceExternalItemProvider != null)
 			typeReferenceExternalItemProvider.dispose();
-		if (subElementItemProvider != null)
-			subElementItemProvider.dispose();
 		if (nullItemProvider != null)
 			nullItemProvider.dispose();
 		if (fromModuleItemProvider != null)

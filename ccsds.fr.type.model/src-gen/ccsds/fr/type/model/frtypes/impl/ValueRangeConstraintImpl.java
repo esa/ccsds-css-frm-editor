@@ -33,7 +33,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long MIN_EDEFAULT = 0L;
+	protected static final String MIN_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
@@ -43,7 +43,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * @generated
 	 * @ordered
 	 */
-	protected long min = MIN_EDEFAULT;
+	protected String min = MIN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -53,7 +53,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long MAX_EDEFAULT = 0L;
+	protected static final String MAX_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
@@ -63,7 +63,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * @generated
 	 * @ordered
 	 */
-	protected long max = MAX_EDEFAULT;
+	protected String max = MAX_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,7 +89,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getMin() {
+	public String getMin() {
 		return min;
 	}
 
@@ -98,8 +98,8 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMin(long newMin) {
-		long oldMin = min;
+	public void setMin(String newMin) {
+		String oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN, oldMin,
@@ -111,7 +111,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getMax() {
+	public String getMax() {
 		return max;
 	}
 
@@ -120,8 +120,8 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMax(long newMax) {
-		long oldMax = max;
+	public void setMax(String newMax) {
+		String oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX, oldMax,
@@ -153,10 +153,10 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
-			setMin((Long) newValue);
+			setMin((String) newValue);
 			return;
 		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
-			setMax((Long) newValue);
+			setMax((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -189,9 +189,9 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MIN:
-			return min != MIN_EDEFAULT;
+			return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
 		case FrtypesPackage.VALUE_RANGE_CONSTRAINT__MAX:
-			return max != MAX_EDEFAULT;
+			return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -227,7 +227,7 @@ public class ValueRangeConstraintImpl extends ConstraintImpl implements ValueRan
 		} else {
 			output.append(Asn1Writer.BLANK + Asn1Writer.LPAREN + getMin() + Asn1Writer.RPAREN);
 		}
-		output.append(Asn1Writer.BLANK);
+		//output.append(Asn1Writer.BLANK);
 	}
 
 } //ValueRangeConstraintImpl

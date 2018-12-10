@@ -195,9 +195,6 @@ public class StructuredSizeConstrainedTypeItemProvider extends StructuredTypeIte
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
-				FrtypesFactory.eINSTANCE.createSubElement()));
-
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_SIZE_CONSTRAINED_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createNull()));
 	}
 

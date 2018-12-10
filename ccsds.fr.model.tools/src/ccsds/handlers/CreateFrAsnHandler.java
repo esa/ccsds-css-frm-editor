@@ -33,6 +33,7 @@ import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.impl.ObjectIdentifierImpl;
@@ -58,8 +59,14 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			
 			FunctionalResourceModelEditor editor = (FunctionalResourceModelEditor)ep;
 			FunctionalResourceModel frm = editor.getModel();
-		
-			createAsn1Module(EcoreUtil.copy(frm.getAsnTypeModule()), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection());
+
+			Module module = frm.getAsnTypeModule();
+			
+			if(module == null) {
+				module = FrtypesFactory.eINSTANCE.createModule(); // some models may not have a module
+			}
+						
+			createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection());
 		}
 		
 		return null;
@@ -71,6 +78,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 * @param frmFile					The file containing the FRM	
 	 */
 	private void createAsn1Module(Module module, FunctionalResource[] functionalResources, IFile frmFile) {
+		
 		StringBuffer asn1ModuleStr = new StringBuffer();
 		List<String> exports = new LinkedList<String>();
 		

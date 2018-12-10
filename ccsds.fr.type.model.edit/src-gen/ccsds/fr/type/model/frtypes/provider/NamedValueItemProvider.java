@@ -116,11 +116,11 @@ public class NamedValueItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((NamedValue) object).getName();
+		String label = ((NamedValue) object).getName() + "\t\t(" + ((NamedValue) object).getValue() + ")";
 		return label == null || label.length() == 0 ? getString("_UI_NamedValue_type")
 				: getString("_UI_NamedValue_type") + " " + label;
 	}

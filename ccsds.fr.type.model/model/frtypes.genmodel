@@ -103,12 +103,6 @@
     <genClasses ecoreClass="frtypes.ecore#//TypeReferenceExternal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/name"/>
     </genClasses>
-    <genClasses ecoreClass="frtypes.ecore#//SubElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//SubElement/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/tag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//SubElement/optional"/>
-    </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//Null"/>
     <genClasses image="false" ecoreClass="frtypes.ecore#//Asn1Writer">
       <genOperations ecoreOperation="frtypes.ecore#//Asn1Writer/writeAsn1">

@@ -177,12 +177,6 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="ccsds.fr.type.model.frtypes.parts.forms.SubElementPropertiesEditionPartForm"
-               filter="ccsds.fr.type.model.frtypes.providers.SubElementPropertiesEditionProvider$EditionFilter"
-               id="ccsds.fr.type.model.frtypes.section.SubElement"
-               tab="Base">
-         </propertySection>
-         <propertySection
                class="ccsds.fr.type.model.frtypes.parts.forms.FromModulePropertiesEditionPartForm"
                filter="ccsds.fr.type.model.frtypes.providers.FromModulePropertiesEditionProvider$EditionFilter"
                id="ccsds.fr.type.model.frtypes.section.FromModule"

@@ -247,9 +247,6 @@ public class ElementItemProvider extends TypeItemProvider {
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE,
-				FrtypesFactory.eINSTANCE.createSubElement()));
-
 		newChildDescriptors.add(
 				createChildParameter(FrtypesPackage.Literals.ELEMENT__TYPE, FrtypesFactory.eINSTANCE.createNull()));
 	}

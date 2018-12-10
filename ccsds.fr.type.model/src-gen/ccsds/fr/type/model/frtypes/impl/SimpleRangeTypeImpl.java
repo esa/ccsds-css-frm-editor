@@ -155,7 +155,7 @@ public abstract class SimpleRangeTypeImpl extends SimpleTypeImpl implements Simp
 
 		super.writeAsn1(0, output); // single value constraint ?
 
-		if (numSingleValueConstraint() > 0) {
+		if (numSingleValueConstraint() > 0 && getRangeConstraint().size() > 0) {
 			output.append(Asn1Writer.OR);
 		}
 
@@ -174,7 +174,6 @@ public abstract class SimpleRangeTypeImpl extends SimpleTypeImpl implements Simp
 		if (numSingleValueConstraint() > 0 && getRangeConstraint() != null && getRangeConstraint().size() > 0) {
 			output.append(Asn1Writer.RPAREN);
 		}
-
 	}
 
 } //SimpleRangeTypeImpl

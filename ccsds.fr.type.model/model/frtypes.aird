@@ -1650,7 +1650,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_TQh5ENXoEeibgIpvJyUtnA" name="min : ELong" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_TQh5ENXoEeibgIpvJyUtnA" name="min : EString" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="frtypes.ecore#//ValueRangeConstraint/min"/>
         <semanticElements xmi:type="ecore:EAttribute" href="frtypes.ecore#//ValueRangeConstraint/min"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_vuYa8NYCEeibgIpvJyUtnA" labelAlignment="LEFT" description="_zDugwNXvEeibgIpvJyUtnA">
@@ -1658,7 +1658,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_TQigINXoEeibgIpvJyUtnA" name="max : ELong" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_TQigINXoEeibgIpvJyUtnA" name="max : EString" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="frtypes.ecore#//ValueRangeConstraint/max"/>
         <semanticElements xmi:type="ecore:EAttribute" href="frtypes.ecore#//ValueRangeConstraint/max"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_wVca8NYCEeibgIpvJyUtnA" labelAlignment="LEFT" description="_zDugwNXvEeibgIpvJyUtnA">

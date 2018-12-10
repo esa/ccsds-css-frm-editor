@@ -190,9 +190,6 @@ public class StructuredDifferentTypeItemProvider extends StructuredTypeItemProvi
 				FrtypesFactory.eINSTANCE.createTypeReferenceExternal()));
 
 		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
-				FrtypesFactory.eINSTANCE.createSubElement()));
-
-		newChildDescriptors.add(createChildParameter(FrtypesPackage.Literals.STRUCTURED_DIFFERENT_TYPE__ELEMENTS,
 				FrtypesFactory.eINSTANCE.createNull()));
 	}
 

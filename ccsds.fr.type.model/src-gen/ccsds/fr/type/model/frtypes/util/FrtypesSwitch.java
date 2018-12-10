@@ -32,7 +32,6 @@ import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StructuredDifferentType;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.StructuredType;
-import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
@@ -482,17 +481,6 @@ public class FrtypesSwitch<T> extends Switch<T> {
 				result = caseType(typeReferenceExternal);
 			if (result == null)
 				result = caseAsn1Writer(typeReferenceExternal);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case FrtypesPackage.SUB_ELEMENT: {
-			SubElement subElement = (SubElement) theEObject;
-			T result = caseSubElement(subElement);
-			if (result == null)
-				result = caseType(subElement);
-			if (result == null)
-				result = caseAsn1Writer(subElement);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1000,21 +988,6 @@ public class FrtypesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTypeReferenceExternal(TypeReferenceExternal object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Sub Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Sub Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSubElement(SubElement object) {
 		return null;
 	}
 

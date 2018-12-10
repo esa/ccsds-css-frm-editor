@@ -63,7 +63,7 @@ public class ValueRangeConstraintItemProvider extends ConstraintItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_ValueRangeConstraint_min_feature",
 								"_UI_ValueRangeConstraint_type"),
 						FrtypesPackage.Literals.VALUE_RANGE_CONSTRAINT__MIN, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ValueRangeConstraintItemProvider extends ConstraintItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_ValueRangeConstraint_max_feature",
 								"_UI_ValueRangeConstraint_type"),
 						FrtypesPackage.Literals.VALUE_RANGE_CONSTRAINT__MAX, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

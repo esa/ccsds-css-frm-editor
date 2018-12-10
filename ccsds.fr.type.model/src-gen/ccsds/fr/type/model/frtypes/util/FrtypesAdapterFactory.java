@@ -32,7 +32,6 @@ import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StructuredDifferentType;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.StructuredType;
-import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
@@ -248,11 +247,6 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseTypeReferenceExternal(TypeReferenceExternal object) {
 			return createTypeReferenceExternalAdapter();
-		}
-
-		@Override
-		public Adapter caseSubElement(SubElement object) {
-			return createSubElementAdapter();
 		}
 
 		@Override
@@ -716,20 +710,6 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypeReferenceExternalAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.SubElement <em>Sub Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see ccsds.fr.type.model.frtypes.SubElement
-	 * @generated
-	 */
-	public Adapter createSubElementAdapter() {
 		return null;
 	}
 

@@ -153,6 +153,7 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		output.append(Asn1Writer.INTEGER);
+		output.append(Asn1Writer.BLANK);
 		super.writeAsn1(indentLevel, output); // write constraints
 
 		if (getNamedValues().size() > 0) {

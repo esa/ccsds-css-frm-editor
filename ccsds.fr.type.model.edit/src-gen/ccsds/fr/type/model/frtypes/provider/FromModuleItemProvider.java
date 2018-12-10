@@ -120,23 +120,23 @@ public class FromModuleItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ""; 
-		
-		if(((FromModule) object).getImportedTypes().size() > 0) {
+		String label = "";
+
+		if (((FromModule) object).getImportedTypes().size() > 0) {
 			int idx = 0;
-			for(String importedType : ((FromModule) object).getImportedTypes()) {
+			for (String importedType : ((FromModule) object).getImportedTypes()) {
 				label += importedType;
 				idx++;
-				if(idx < ((FromModule) object).getImportedTypes().size()) {
+				if (idx < ((FromModule) object).getImportedTypes().size()) {
 					label += ", ";
 				} else {
 					label += " ";
 				}
 			}
 		}
-		
+
 		label += getString("_UI_FromModule_type") + " " + ((FromModule) object).getName();
-		
+
 		return label;
 	}
 

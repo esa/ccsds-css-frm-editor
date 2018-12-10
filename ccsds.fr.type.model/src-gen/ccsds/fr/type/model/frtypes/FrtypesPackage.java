@@ -67,7 +67,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getAsn1Writer()
 	 * @generated
 	 */
-	int ASN1_WRITER = 32;
+	int ASN1_WRITER = 31;
 
 	/**
 	 * The number of structural features of the '<em>Asn1 Writer</em>' class.
@@ -810,7 +810,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStructuredDifferentType()
 	 * @generated
 	 */
-	int STRUCTURED_DIFFERENT_TYPE = 34;
+	int STRUCTURED_DIFFERENT_TYPE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
@@ -1838,88 +1838,6 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_REFERENCE_EXTERNAL_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl <em>Sub Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.fr.type.model.frtypes.impl.SubElementImpl
-	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSubElement()
-	 * @generated
-	 */
-	int SUB_ELEMENT = 30;
-
-	/**
-	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT__SINGLE_VALUE_CONSTRAINT = TYPE__SINGLE_VALUE_CONSTRAINT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT__NAME = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT__TYPE = TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Tag</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT__TAG = TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Optional</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT__OPTIONAL = TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Sub Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Write Asn1</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
-
-	/**
-	 * The number of operations of the '<em>Sub Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_ELEMENT_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.NullImpl <em>Null</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1927,7 +1845,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getNull()
 	 * @generated
 	 */
-	int NULL = 31;
+	int NULL = 30;
 
 	/**
 	 * The feature id for the '<em><b>Single Value Constraint</b></em>' containment reference.
@@ -1973,7 +1891,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSizeConstrainedType()
 	 * @generated
 	 */
-	int SIZE_CONSTRAINED_TYPE = 33;
+	int SIZE_CONSTRAINED_TYPE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Size Constraint</b></em>' containment reference list.
@@ -2019,7 +1937,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getFromModule()
 	 * @generated
 	 */
-	int FROM_MODULE = 35;
+	int FROM_MODULE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2074,7 +1992,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStringType()
 	 * @generated
 	 */
-	int STRING_TYPE = 36;
+	int STRING_TYPE = 35;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.ConstraintType <em>Constraint Type</em>}' enum.
@@ -2084,7 +2002,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getConstraintType()
 	 * @generated
 	 */
-	int CONSTRAINT_TYPE = 37;
+	int CONSTRAINT_TYPE = 36;
 
 	/**
 	 * The meta object id for the '<em>String Buffer</em>' data type.
@@ -2094,7 +2012,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getStringBuffer()
 	 * @generated
 	 */
-	int STRING_BUFFER = 38;
+	int STRING_BUFFER = 37;
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.TypeDefinition <em>Type Definition</em>}'.
@@ -2714,60 +2632,6 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTypeReferenceExternal_Name();
-
-	/**
-	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.SubElement <em>Sub Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Sub Element</em>'.
-	 * @see ccsds.fr.type.model.frtypes.SubElement
-	 * @generated
-	 */
-	EClass getSubElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see ccsds.fr.type.model.frtypes.SubElement#getName()
-	 * @see #getSubElement()
-	 * @generated
-	 */
-	EAttribute getSubElement_Name();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ccsds.fr.type.model.frtypes.SubElement#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see ccsds.fr.type.model.frtypes.SubElement#getType()
-	 * @see #getSubElement()
-	 * @generated
-	 */
-	EReference getSubElement_Type();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#getTag <em>Tag</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tag</em>'.
-	 * @see ccsds.fr.type.model.frtypes.SubElement#getTag()
-	 * @see #getSubElement()
-	 * @generated
-	 */
-	EAttribute getSubElement_Tag();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.SubElement#isOptional <em>Optional</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Optional</em>'.
-	 * @see ccsds.fr.type.model.frtypes.SubElement#isOptional()
-	 * @see #getSubElement()
-	 * @generated
-	 */
-	EAttribute getSubElement_Optional();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Null <em>Null</em>}'.
@@ -3459,48 +3323,6 @@ public interface FrtypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE_REFERENCE_EXTERNAL__NAME = eINSTANCE.getTypeReferenceExternal_Name();
-
-		/**
-		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.SubElementImpl <em>Sub Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ccsds.fr.type.model.frtypes.impl.SubElementImpl
-		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getSubElement()
-		 * @generated
-		 */
-		EClass SUB_ELEMENT = eINSTANCE.getSubElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUB_ELEMENT__NAME = eINSTANCE.getSubElement_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SUB_ELEMENT__TYPE = eINSTANCE.getSubElement_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Tag</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUB_ELEMENT__TAG = eINSTANCE.getSubElement_Tag();
-
-		/**
-		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUB_ELEMENT__OPTIONAL = eINSTANCE.getSubElement_Optional();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.NullImpl <em>Null</em>}' class.

@@ -125,21 +125,21 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 	 * @generated NOT
 	 */
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		if(getImportedTypes().size() == 0) {
+		if (getImportedTypes().size() == 0) {
 			return;
 		}
-		
+
 		output.append(System.lineSeparator() + Asn1Writer.IMPORTS + Asn1Writer.INDENT);
-		
+
 		int idx = 0;
-		for(String importedType : getImportedTypes()) {
+		for (String importedType : getImportedTypes()) {
 			output.append(importedType);
 			idx++;
-			if(idx < getImportedTypes().size()) {
+			if (idx < getImportedTypes().size()) {
 				output.append(System.lineSeparator() + Asn1Writer.SEP + Asn1Writer.INDENT);
 			}
 		}
-		
+
 		output.append(System.lineSeparator() + Asn1Writer.INDENT + Asn1Writer.FROM + Asn1Writer.BLANK + getName());
 		output.append(System.lineSeparator() + Asn1Writer.SEMI_COLON + System.lineSeparator());
 	}

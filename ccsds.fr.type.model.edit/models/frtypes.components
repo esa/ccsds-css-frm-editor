@@ -1,195 +1,183 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
-  <eef-components:PropertiesEditionContext xmi:id="_CmbFEN2wEeiHVtaFbWCl2Q" documentation="Edition Context for frtypes GenPackage">
-    <categories xmi:id="_CmbFEd2wEeiHVtaFbWCl2Q" name="frtypes">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFEt2wEeiHVtaFbWCl2Q" name="TypeDefinition" views="_CmbFVN2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFE92wEeiHVtaFbWCl2Q" name="name" views="_CmbFVt2wEeiHVtaFbWCl2Q">
+  <eef-components:PropertiesEditionContext xmi:id="_PaqcAOjGEeiHVtaFbWCl2Q" documentation="Edition Context for frtypes GenPackage">
+    <categories xmi:id="_PaqcAejGEeiHVtaFbWCl2Q" name="frtypes">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcAujGEeiHVtaFbWCl2Q" name="TypeDefinition" views="_PaqcQOjGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcA-jGEeiHVtaFbWCl2Q" name="name" views="_PaqcQujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeDefinition/name"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeDefinition"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFFN2wEeiHVtaFbWCl2Q" name="Boolean" views="_CmbFV92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcBOjGEeiHVtaFbWCl2Q" name="Boolean" views="_PaqcQ-jGEeiHVtaFbWCl2Q">
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Boolean"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFFd2wEeiHVtaFbWCl2Q" name="IntegerType" views="_CmbFWd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFFt2wEeiHVtaFbWCl2Q" name="rangeConstraint" views="_CmbFW92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcBejGEeiHVtaFbWCl2Q" name="IntegerType" views="_PaqcRejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcBujGEeiHVtaFbWCl2Q" name="rangeConstraint" views="_PaqcR-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SimpleRangeType/rangeConstraint"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFF92wEeiHVtaFbWCl2Q" name="namedValues" views="_CmbFXN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcB-jGEeiHVtaFbWCl2Q" name="namedValues" views="_PaqcSOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//IntegerType/namedValues"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//IntegerType"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFGN2wEeiHVtaFbWCl2Q" name="BitString" views="_CmbFXd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFGd2wEeiHVtaFbWCl2Q" name="sizeConstraint" views="_CmbFX92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcCOjGEeiHVtaFbWCl2Q" name="BitString" views="_PaqcSejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcCejGEeiHVtaFbWCl2Q" name="sizeConstraint" views="_PaqcS-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//BitString"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFGt2wEeiHVtaFbWCl2Q" name="OctetString" views="_CmbFYN2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFG92wEeiHVtaFbWCl2Q" name="sizeConstraint" views="_CmbFYt2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcCujGEeiHVtaFbWCl2Q" name="OctetString" views="_PaqcTOjGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcC-jGEeiHVtaFbWCl2Q" name="sizeConstraint" views="_PaqcTujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//OctetString"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFHN2wEeiHVtaFbWCl2Q" name="Real" views="_CmbFY92wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFHd2wEeiHVtaFbWCl2Q" name="rangeConstraint" views="_CmbFZd2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcDOjGEeiHVtaFbWCl2Q" name="Real" views="_PaqcT-jGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcDejGEeiHVtaFbWCl2Q" name="rangeConstraint" views="_PaqcUejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SimpleRangeType/rangeConstraint"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Real"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFHt2wEeiHVtaFbWCl2Q" name="Enumerated" views="_CmbFZt2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFH92wEeiHVtaFbWCl2Q" name="values" views="_CmbFaN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcDujGEeiHVtaFbWCl2Q" name="Enumerated" views="_PaqcUujGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcD-jGEeiHVtaFbWCl2Q" name="values" views="_PaqcVOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Enumerated/values"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Enumerated"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFIN2wEeiHVtaFbWCl2Q" name="CharacterString" views="_CmbFad2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFId2wEeiHVtaFbWCl2Q" name="sizeConstraint" views="_CmbFa92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcEOjGEeiHVtaFbWCl2Q" name="CharacterString" views="_PaqcVejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcEejGEeiHVtaFbWCl2Q" name="sizeConstraint" views="_PaqcV-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFIt2wEeiHVtaFbWCl2Q" name="type" views="_CmbFbN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcEujGEeiHVtaFbWCl2Q" name="type" views="_PaqcWOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//CharacterString/type"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//CharacterString"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFI92wEeiHVtaFbWCl2Q" name="Sequence" views="_CmbFbd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFJN2wEeiHVtaFbWCl2Q" name="elements" views="_CmbFb92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcE-jGEeiHVtaFbWCl2Q" name="Sequence" views="_PaqcWejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcFOjGEeiHVtaFbWCl2Q" name="elements" views="_PaqcW-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//StructuredDifferentType/elements"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Sequence"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFJd2wEeiHVtaFbWCl2Q" name="SequenceOf" views="_CmbFcN2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFJt2wEeiHVtaFbWCl2Q" name="sizeConstraint" views="_CmbFct2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcFejGEeiHVtaFbWCl2Q" name="SequenceOf" views="_PaqcXOjGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcFujGEeiHVtaFbWCl2Q" name="sizeConstraint" views="_PaqcXujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SequenceOf"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFJ92wEeiHVtaFbWCl2Q" name="Set" views="_CmbFc92wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFKN2wEeiHVtaFbWCl2Q" name="elements" views="_CmbFdd2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcF-jGEeiHVtaFbWCl2Q" name="Set" views="_PaqcX-jGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcGOjGEeiHVtaFbWCl2Q" name="elements" views="_PaqcYejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//StructuredDifferentType/elements"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Set"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFKd2wEeiHVtaFbWCl2Q" name="SetOf" views="_CmbFdt2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFKt2wEeiHVtaFbWCl2Q" name="sizeConstraint" views="_CmbFeN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcGejGEeiHVtaFbWCl2Q" name="SetOf" views="_PaqcYujGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcGujGEeiHVtaFbWCl2Q" name="sizeConstraint" views="_PaqcZOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstrainedType/sizeConstraint"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SetOf"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFK92wEeiHVtaFbWCl2Q" name="SizeConstraint" views="_CmbFed2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFLN2wEeiHVtaFbWCl2Q" name="min" views="_CmbFe92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcG-jGEeiHVtaFbWCl2Q" name="SizeConstraint" views="_PaqcZejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcHOjGEeiHVtaFbWCl2Q" name="min" views="_PaqcZ-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstraint/min"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFLd2wEeiHVtaFbWCl2Q" name="max" views="_CmbFfN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcHejGEeiHVtaFbWCl2Q" name="max" views="_PaqcaOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstraint/max"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SizeConstraint"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFLt2wEeiHVtaFbWCl2Q" name="ValueRangeConstraint" views="_CmbFfd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFL92wEeiHVtaFbWCl2Q" name="min" views="_CmbFf92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcHujGEeiHVtaFbWCl2Q" name="ValueRangeConstraint" views="_PaqcaejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcH-jGEeiHVtaFbWCl2Q" name="min" views="_Paqca-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//ValueRangeConstraint/min"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFMN2wEeiHVtaFbWCl2Q" name="max" views="_CmbFgN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcIOjGEeiHVtaFbWCl2Q" name="max" views="_PaqcbOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//ValueRangeConstraint/max"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//ValueRangeConstraint"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFMd2wEeiHVtaFbWCl2Q" name="NamedValue" views="_CmbFgd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFMt2wEeiHVtaFbWCl2Q" name="name" views="_CmbFg92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcIejGEeiHVtaFbWCl2Q" name="NamedValue" views="_PaqcbejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcIujGEeiHVtaFbWCl2Q" name="name" views="_Paqcb-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//NamedValue/name"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFM92wEeiHVtaFbWCl2Q" name="value" views="_CmbFhN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcI-jGEeiHVtaFbWCl2Q" name="value" views="_PaqccOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//NamedValue/value"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//NamedValue"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFNN2wEeiHVtaFbWCl2Q" name="Choice" views="_CmbFhd2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFNd2wEeiHVtaFbWCl2Q" name="elements" views="_CmbFh92wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcJOjGEeiHVtaFbWCl2Q" name="Choice" views="_PaqccejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcJejGEeiHVtaFbWCl2Q" name="elements" views="_Paqcc-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//StructuredDifferentType/elements"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Choice"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFNt2wEeiHVtaFbWCl2Q" name="TypeReferenceLocal" views="_CmbFiN2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFN92wEeiHVtaFbWCl2Q" name="typeDefinition" views="_CmbFit2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcJujGEeiHVtaFbWCl2Q" name="TypeReferenceLocal" views="_PaqcdOjGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcJ-jGEeiHVtaFbWCl2Q" name="typeDefinition" views="_PaqcdujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeReferenceLocal/typeDefinition"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeReferenceLocal"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFON2wEeiHVtaFbWCl2Q" name="SingleValueConstraint" views="_CmbFi92wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFOd2wEeiHVtaFbWCl2Q" name="values" views="_CmbFjd2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcKOjGEeiHVtaFbWCl2Q" name="SingleValueConstraint" views="_Paqcd-jGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcKejGEeiHVtaFbWCl2Q" name="values" views="_PaqceejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SingleValueConstraint/values"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SingleValueConstraint"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFOt2wEeiHVtaFbWCl2Q" name="PermittedAlphabetConstraint" views="_CmbFjt2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFO92wEeiHVtaFbWCl2Q" name="values" views="_CmbFkN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcKujGEeiHVtaFbWCl2Q" name="PermittedAlphabetConstraint" views="_PaqceujGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcK-jGEeiHVtaFbWCl2Q" name="values" views="_PaqcfOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//PermittedAlphabetConstraint/values"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFPN2wEeiHVtaFbWCl2Q" name="type" views="_CmbFkd2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcLOjGEeiHVtaFbWCl2Q" name="type" views="_PaqcfejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//PermittedAlphabetConstraint/type"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//PermittedAlphabetConstraint"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFPd2wEeiHVtaFbWCl2Q" name="Module" views="_CmbFkt2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFPt2wEeiHVtaFbWCl2Q" name="typeDefinition" views="_CmbFlN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcLejGEeiHVtaFbWCl2Q" name="Module" views="_PaqcfujGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcLujGEeiHVtaFbWCl2Q" name="typeDefinition" views="_PaqcgOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module/typeDefinition"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFP92wEeiHVtaFbWCl2Q" name="oid" views="_CmbFld2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcL-jGEeiHVtaFbWCl2Q" name="oid" views="_PaqcgejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module/oid"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFQN2wEeiHVtaFbWCl2Q" name="exports" views="_CmbFlt2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcMOjGEeiHVtaFbWCl2Q" name="exports" views="_PaqcgujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module/exports"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFQd2wEeiHVtaFbWCl2Q" name="name" views="_CmbFl92wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcMejGEeiHVtaFbWCl2Q" name="name" views="_Paqcg-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module/name"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFQt2wEeiHVtaFbWCl2Q" name="imports" views="_CmbFmN2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcMujGEeiHVtaFbWCl2Q" name="imports" views="_PaqchOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EReference" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module/imports"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Module"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFQ92wEeiHVtaFbWCl2Q" name="ObjectIdentifier" views="_CmbFmd2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcM-jGEeiHVtaFbWCl2Q" name="ObjectIdentifier" views="_PaqchejGEeiHVtaFbWCl2Q">
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//ObjectIdentifier"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFRN2wEeiHVtaFbWCl2Q" name="Element" views="_CmbFm92wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFRd2wEeiHVtaFbWCl2Q" name="name" views="_CmbFnd2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcNOjGEeiHVtaFbWCl2Q" name="Element" views="_Paqch-jGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcNejGEeiHVtaFbWCl2Q" name="name" views="_PaqciejGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Element/name"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFRt2wEeiHVtaFbWCl2Q" name="tag" views="_CmbFnt2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcNujGEeiHVtaFbWCl2Q" name="tag" views="_PaqciujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Element/tag"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFR92wEeiHVtaFbWCl2Q" name="optional" views="_CmbFn92wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcN-jGEeiHVtaFbWCl2Q" name="optional" views="_Paqci-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Element/optional"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Element"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFSN2wEeiHVtaFbWCl2Q" name="TypeReferenceExternal" views="_CmbFoN2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFSd2wEeiHVtaFbWCl2Q" name="name" views="_CmbFot2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcOOjGEeiHVtaFbWCl2Q" name="TypeReferenceExternal" views="_PaqcjOjGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcOejGEeiHVtaFbWCl2Q" name="name" views="_PaqcjujGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeReferenceExternal/name"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//TypeReferenceExternal"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFSt2wEeiHVtaFbWCl2Q" name="SubElement" views="_CmbFo92wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFS92wEeiHVtaFbWCl2Q" name="name" views="_CmbFpd2wEeiHVtaFbWCl2Q">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SubElement/name"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFTN2wEeiHVtaFbWCl2Q" name="tag" views="_CmbFpt2wEeiHVtaFbWCl2Q">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SubElement/tag"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFTd2wEeiHVtaFbWCl2Q" name="optional" views="_CmbFp92wEeiHVtaFbWCl2Q">
-          <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SubElement/optional"/>
-        </properties>
-        <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//SubElement"/>
-      </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFTt2wEeiHVtaFbWCl2Q" name="Null" views="_CmbFqN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcOujGEeiHVtaFbWCl2Q" name="Null" views="_Paqcj-jGEeiHVtaFbWCl2Q">
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//Null"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_CmbFT92wEeiHVtaFbWCl2Q" name="FromModule" views="_CmbFqt2wEeiHVtaFbWCl2Q">
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFUN2wEeiHVtaFbWCl2Q" name="name" views="_CmbFrN2wEeiHVtaFbWCl2Q">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PaqcO-jGEeiHVtaFbWCl2Q" name="FromModule" views="_PaqckejGEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcPOjGEeiHVtaFbWCl2Q" name="name" views="_Paqck-jGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//FromModule/name"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CmbFUd2wEeiHVtaFbWCl2Q" name="importedTypes" views="_CmbFrd2wEeiHVtaFbWCl2Q">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_PaqcPejGEeiHVtaFbWCl2Q" name="importedTypes" views="_PaqclOjGEeiHVtaFbWCl2Q">
           <model xsi:type="ecore:EAttribute" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//FromModule/importedTypes"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/resource/ccsds.fr.type.model/model/frtypes.ecore#//FromModule"/>
@@ -197,250 +185,236 @@
     </categories>
     <model href="platform:/resource/ccsds.fr.type.model/model/frtypes.genmodel#//frtypes"/>
   </eef-components:PropertiesEditionContext>
-  <eef-views:ViewsRepository xmi:id="_CmbFUt2wEeiHVtaFbWCl2Q" documentation="Views repository for frtypes GenPackage" name="frtypes">
+  <eef-views:ViewsRepository xmi:id="_PaqcPujGEeiHVtaFbWCl2Q" documentation="Views repository for frtypes GenPackage" name="frtypes">
     <RepositoryKind>SWT</RepositoryKind>
     <RepositoryKind>Form</RepositoryKind>
-    <categories xmi:id="_CmbFU92wEeiHVtaFbWCl2Q" name="frtypes">
-      <views xmi:id="_CmbFVN2wEeiHVtaFbWCl2Q" name="TypeDefinition">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFVd2wEeiHVtaFbWCl2Q" name="properties">
+    <categories xmi:id="_PaqcP-jGEeiHVtaFbWCl2Q" name="frtypes">
+      <views xmi:id="_PaqcQOjGEeiHVtaFbWCl2Q" name="TypeDefinition">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcQejGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFVt2wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcQujGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFV92wEeiHVtaFbWCl2Q" name="Boolean">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFWN2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcQ-jGEeiHVtaFbWCl2Q" name="Boolean">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcROjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
         </elements>
       </views>
-      <views xmi:id="_CmbFWd2wEeiHVtaFbWCl2Q" name="IntegerType">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFWt2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcRejGEeiHVtaFbWCl2Q" name="IntegerType">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcRujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFW92wEeiHVtaFbWCl2Q" name="rangeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcR-jGEeiHVtaFbWCl2Q" name="rangeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFXN2wEeiHVtaFbWCl2Q" name="namedValues">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-          </elements>
-        </elements>
-      </views>
-      <views xmi:id="_CmbFXd2wEeiHVtaFbWCl2Q" name="BitString">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFXt2wEeiHVtaFbWCl2Q" name="properties">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFX92wEeiHVtaFbWCl2Q" name="sizeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcSOjGEeiHVtaFbWCl2Q" name="namedValues">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFYN2wEeiHVtaFbWCl2Q" name="OctetString">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFYd2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcSejGEeiHVtaFbWCl2Q" name="BitString">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcSujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFYt2wEeiHVtaFbWCl2Q" name="sizeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcS-jGEeiHVtaFbWCl2Q" name="sizeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFY92wEeiHVtaFbWCl2Q" name="Real">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFZN2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcTOjGEeiHVtaFbWCl2Q" name="OctetString">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcTejGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFZd2wEeiHVtaFbWCl2Q" name="rangeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcTujGEeiHVtaFbWCl2Q" name="sizeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFZt2wEeiHVtaFbWCl2Q" name="Enumerated">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFZ92wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcT-jGEeiHVtaFbWCl2Q" name="Real">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcUOjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFaN2wEeiHVtaFbWCl2Q" name="values">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcUejGEeiHVtaFbWCl2Q" name="rangeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFad2wEeiHVtaFbWCl2Q" name="CharacterString">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFat2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcUujGEeiHVtaFbWCl2Q" name="Enumerated">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcU-jGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFa92wEeiHVtaFbWCl2Q" name="sizeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcVOjGEeiHVtaFbWCl2Q" name="values">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFbN2wEeiHVtaFbWCl2Q" name="type">
+        </elements>
+      </views>
+      <views xmi:id="_PaqcVejGEeiHVtaFbWCl2Q" name="CharacterString">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcVujGEeiHVtaFbWCl2Q" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcV-jGEeiHVtaFbWCl2Q" name="sizeConstraint">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcWOjGEeiHVtaFbWCl2Q" name="type">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFbd2wEeiHVtaFbWCl2Q" name="Sequence">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFbt2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcWejGEeiHVtaFbWCl2Q" name="Sequence">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcWujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFb92wEeiHVtaFbWCl2Q" name="elements">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcW-jGEeiHVtaFbWCl2Q" name="elements">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFcN2wEeiHVtaFbWCl2Q" name="SequenceOf">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFcd2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcXOjGEeiHVtaFbWCl2Q" name="SequenceOf">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcXejGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFct2wEeiHVtaFbWCl2Q" name="sizeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcXujGEeiHVtaFbWCl2Q" name="sizeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFc92wEeiHVtaFbWCl2Q" name="Set">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFdN2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcX-jGEeiHVtaFbWCl2Q" name="Set">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcYOjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFdd2wEeiHVtaFbWCl2Q" name="elements">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcYejGEeiHVtaFbWCl2Q" name="elements">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFdt2wEeiHVtaFbWCl2Q" name="SetOf">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFd92wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcYujGEeiHVtaFbWCl2Q" name="SetOf">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcY-jGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFeN2wEeiHVtaFbWCl2Q" name="sizeConstraint">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcZOjGEeiHVtaFbWCl2Q" name="sizeConstraint">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFed2wEeiHVtaFbWCl2Q" name="SizeConstraint">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFet2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcZejGEeiHVtaFbWCl2Q" name="SizeConstraint">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcZujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFe92wEeiHVtaFbWCl2Q" name="min">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcZ-jGEeiHVtaFbWCl2Q" name="min">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFfN2wEeiHVtaFbWCl2Q" name="max">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcaOjGEeiHVtaFbWCl2Q" name="max">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFfd2wEeiHVtaFbWCl2Q" name="ValueRangeConstraint">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFft2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcaejGEeiHVtaFbWCl2Q" name="ValueRangeConstraint">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcaujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFf92wEeiHVtaFbWCl2Q" name="min">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqca-jGEeiHVtaFbWCl2Q" name="min">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFgN2wEeiHVtaFbWCl2Q" name="max">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcbOjGEeiHVtaFbWCl2Q" name="max">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFgd2wEeiHVtaFbWCl2Q" name="NamedValue">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFgt2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcbejGEeiHVtaFbWCl2Q" name="NamedValue">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcbujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFg92wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqcb-jGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFhN2wEeiHVtaFbWCl2Q" name="value">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqccOjGEeiHVtaFbWCl2Q" name="value">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFhd2wEeiHVtaFbWCl2Q" name="Choice">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFht2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqccejGEeiHVtaFbWCl2Q" name="Choice">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqccujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFh92wEeiHVtaFbWCl2Q" name="elements">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqcc-jGEeiHVtaFbWCl2Q" name="elements">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFiN2wEeiHVtaFbWCl2Q" name="TypeReferenceLocal">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFid2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcdOjGEeiHVtaFbWCl2Q" name="TypeReferenceLocal">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcdejGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFit2wEeiHVtaFbWCl2Q" name="typeDefinition">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcdujGEeiHVtaFbWCl2Q" name="typeDefinition">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFi92wEeiHVtaFbWCl2Q" name="SingleValueConstraint">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFjN2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_Paqcd-jGEeiHVtaFbWCl2Q" name="SingleValueConstraint">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqceOjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFjd2wEeiHVtaFbWCl2Q" name="values">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqceejGEeiHVtaFbWCl2Q" name="values">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFjt2wEeiHVtaFbWCl2Q" name="PermittedAlphabetConstraint">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFj92wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqceujGEeiHVtaFbWCl2Q" name="PermittedAlphabetConstraint">
+        <elements xsi:type="eef-views:Container" xmi:id="_Paqce-jGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFkN2wEeiHVtaFbWCl2Q" name="values">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcfOjGEeiHVtaFbWCl2Q" name="values">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFkd2wEeiHVtaFbWCl2Q" name="type">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcfejGEeiHVtaFbWCl2Q" name="type">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFkt2wEeiHVtaFbWCl2Q" name="Module">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFk92wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcfujGEeiHVtaFbWCl2Q" name="Module">
+        <elements xsi:type="eef-views:Container" xmi:id="_Paqcf-jGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFlN2wEeiHVtaFbWCl2Q" name="typeDefinition">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcgOjGEeiHVtaFbWCl2Q" name="typeDefinition">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFld2wEeiHVtaFbWCl2Q" name="oid">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcgejGEeiHVtaFbWCl2Q" name="oid">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFlt2wEeiHVtaFbWCl2Q" name="exports">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcgujGEeiHVtaFbWCl2Q" name="exports">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFl92wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqcg-jGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFmN2wEeiHVtaFbWCl2Q" name="imports">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqchOjGEeiHVtaFbWCl2Q" name="imports">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFmd2wEeiHVtaFbWCl2Q" name="ObjectIdentifier">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFmt2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqchejGEeiHVtaFbWCl2Q" name="ObjectIdentifier">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqchujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
         </elements>
       </views>
-      <views xmi:id="_CmbFm92wEeiHVtaFbWCl2Q" name="Element">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFnN2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_Paqch-jGEeiHVtaFbWCl2Q" name="Element">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqciOjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFnd2wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqciejGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFnt2wEeiHVtaFbWCl2Q" name="tag">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqciujGEeiHVtaFbWCl2Q" name="tag">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFn92wEeiHVtaFbWCl2Q" name="optional">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqci-jGEeiHVtaFbWCl2Q" name="optional">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFoN2wEeiHVtaFbWCl2Q" name="TypeReferenceExternal">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFod2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqcjOjGEeiHVtaFbWCl2Q" name="TypeReferenceExternal">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqcjejGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFot2wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqcjujGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
         </elements>
       </views>
-      <views xmi:id="_CmbFo92wEeiHVtaFbWCl2Q" name="SubElement">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFpN2wEeiHVtaFbWCl2Q" name="properties">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFpd2wEeiHVtaFbWCl2Q" name="name">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFpt2wEeiHVtaFbWCl2Q" name="tag">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFp92wEeiHVtaFbWCl2Q" name="optional">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-        </elements>
-      </views>
-      <views xmi:id="_CmbFqN2wEeiHVtaFbWCl2Q" name="Null">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFqd2wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_Paqcj-jGEeiHVtaFbWCl2Q" name="Null">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqckOjGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
         </elements>
       </views>
-      <views xmi:id="_CmbFqt2wEeiHVtaFbWCl2Q" name="FromModule">
-        <elements xsi:type="eef-views:Container" xmi:id="_CmbFq92wEeiHVtaFbWCl2Q" name="properties">
+      <views xmi:id="_PaqckejGEeiHVtaFbWCl2Q" name="FromModule">
+        <elements xsi:type="eef-views:Container" xmi:id="_PaqckujGEeiHVtaFbWCl2Q" name="properties">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFrN2wEeiHVtaFbWCl2Q" name="name">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Paqck-jGEeiHVtaFbWCl2Q" name="name">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
           </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CmbFrd2wEeiHVtaFbWCl2Q" name="importedTypes">
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PaqclOjGEeiHVtaFbWCl2Q" name="importedTypes">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.3"/>
           </elements>
         </elements>

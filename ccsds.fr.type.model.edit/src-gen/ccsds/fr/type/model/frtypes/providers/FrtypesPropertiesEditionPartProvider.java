@@ -26,7 +26,6 @@ import ccsds.fr.type.model.frtypes.parts.forms.SetOfPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SetPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SingleValueConstraintPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.SizeConstraintPropertiesEditionPartForm;
-import ccsds.fr.type.model.frtypes.parts.forms.SubElementPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeDefinitionPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceExternalPropertiesEditionPartForm;
 import ccsds.fr.type.model.frtypes.parts.forms.TypeReferenceLocalPropertiesEditionPartForm;
@@ -53,7 +52,6 @@ import ccsds.fr.type.model.frtypes.parts.impl.SetOfPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SetPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SingleValueConstraintPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.SizeConstraintPropertiesEditionPartImpl;
-import ccsds.fr.type.model.frtypes.parts.impl.SubElementPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeDefinitionPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeReferenceExternalPropertiesEditionPartImpl;
 import ccsds.fr.type.model.frtypes.parts.impl.TypeReferenceLocalPropertiesEditionPartImpl;
@@ -223,12 +221,6 @@ public class FrtypesPropertiesEditionPartProvider implements IPropertiesEditionP
 				return new TypeReferenceExternalPropertiesEditionPartImpl(component);
 			if (kind == FrtypesViewsRepository.FORM_KIND)
 				return new TypeReferenceExternalPropertiesEditionPartForm(component);
-		}
-		if (key == FrtypesViewsRepository.SubElement.class) {
-			if (kind == FrtypesViewsRepository.SWT_KIND)
-				return new SubElementPropertiesEditionPartImpl(component);
-			if (kind == FrtypesViewsRepository.FORM_KIND)
-				return new SubElementPropertiesEditionPartForm(component);
 		}
 		if (key == FrtypesViewsRepository.Null.class) {
 			if (kind == FrtypesViewsRepository.SWT_KIND)

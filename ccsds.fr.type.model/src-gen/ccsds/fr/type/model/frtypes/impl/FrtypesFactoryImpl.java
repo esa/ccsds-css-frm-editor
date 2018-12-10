@@ -26,7 +26,6 @@ import ccsds.fr.type.model.frtypes.SetOf;
 import ccsds.fr.type.model.frtypes.SingleValueConstraint;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StringType;
-import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
@@ -130,8 +129,6 @@ public class FrtypesFactoryImpl extends EFactoryImpl implements FrtypesFactory {
 			return createElement();
 		case FrtypesPackage.TYPE_REFERENCE_EXTERNAL:
 			return createTypeReferenceExternal();
-		case FrtypesPackage.SUB_ELEMENT:
-			return createSubElement();
 		case FrtypesPackage.NULL:
 			return createNull();
 		case FrtypesPackage.FROM_MODULE:
@@ -407,16 +404,6 @@ public class FrtypesFactoryImpl extends EFactoryImpl implements FrtypesFactory {
 	public TypeReferenceExternal createTypeReferenceExternal() {
 		TypeReferenceExternalImpl typeReferenceExternal = new TypeReferenceExternalImpl();
 		return typeReferenceExternal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SubElement createSubElement() {
-		SubElementImpl subElement = new SubElementImpl();
-		return subElement;
 	}
 
 	/**

@@ -183,14 +183,6 @@ public class FrtypesEEFAdapterFactory extends FrtypesAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createSubElementAdapter()
-	 * 
-	 */
-	public Adapter createSubElementAdapter() {
-		return new SubElementPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see ccsds.fr.type.model.frtypes.util.FrtypesAdapterFactory#createFromModuleAdapter()
 	 * 
 	 */

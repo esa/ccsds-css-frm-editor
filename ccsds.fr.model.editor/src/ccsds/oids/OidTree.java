@@ -7,6 +7,7 @@ import ccsds.FunctionalResourceModel.Oid;
  *  OIDs with labels attached to the numeric OID bits.
  */
 public class OidTree {
+	private static final String DOT = ".";
 	private static final char OID_SEP = ' ';
 	private static OidTree instance;
 	private OidNode rootNode;
@@ -64,7 +65,9 @@ public class OidTree {
 				node = node.getChildNode(oidBit);
 			}
 			
-			oidStr.append(".");			 			 			
+			if(index < oid.getOidBit().size()) {
+				oidStr.append(DOT);			 
+			}
 		} while(index < oid.getOidBit().size());
 		
 		// cut off the last . 

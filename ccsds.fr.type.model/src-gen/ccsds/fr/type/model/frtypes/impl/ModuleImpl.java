@@ -255,7 +255,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		if (getImports().size() > 0) {
 			for (FromModule fromModuleImport : getImports()) {
 				fromModuleImport.writeAsn1(indentLevel, output);
-			}			
+			}
 		}
 
 		// all type definitions

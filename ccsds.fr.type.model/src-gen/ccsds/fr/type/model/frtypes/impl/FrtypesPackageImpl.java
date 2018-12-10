@@ -35,7 +35,6 @@ import ccsds.fr.type.model.frtypes.StringType;
 import ccsds.fr.type.model.frtypes.StructuredDifferentType;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.StructuredType;
-import ccsds.fr.type.model.frtypes.SubElement;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
@@ -267,13 +266,6 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * @generated
 	 */
 	private EClass typeReferenceExternalEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass subElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -930,51 +922,6 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSubElement() {
-		return subElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSubElement_Name() {
-		return (EAttribute) subElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSubElement_Type() {
-		return (EReference) subElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSubElement_Tag() {
-		return (EAttribute) subElementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSubElement_Optional() {
-		return (EAttribute) subElementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getNull() {
 		return nullEClass;
 	}
@@ -1205,12 +1152,6 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		typeReferenceExternalEClass = createEClass(TYPE_REFERENCE_EXTERNAL);
 		createEAttribute(typeReferenceExternalEClass, TYPE_REFERENCE_EXTERNAL__NAME);
 
-		subElementEClass = createEClass(SUB_ELEMENT);
-		createEAttribute(subElementEClass, SUB_ELEMENT__NAME);
-		createEReference(subElementEClass, SUB_ELEMENT__TYPE);
-		createEAttribute(subElementEClass, SUB_ELEMENT__TAG);
-		createEAttribute(subElementEClass, SUB_ELEMENT__OPTIONAL);
-
 		nullEClass = createEClass(NULL);
 
 		asn1WriterEClass = createEClass(ASN1_WRITER);
@@ -1295,7 +1236,6 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		objectIdentifierEClass.getESuperTypes().add(this.getSimpleType());
 		elementEClass.getESuperTypes().add(this.getType());
 		typeReferenceExternalEClass.getESuperTypes().add(this.getType());
-		subElementEClass.getESuperTypes().add(this.getType());
 		nullEClass.getESuperTypes().add(this.getSimpleType());
 		sizeConstrainedTypeEClass.getESuperTypes().add(this.getAsn1Writer());
 		structuredDifferentTypeEClass.getESuperTypes().add(this.getStructuredType());
@@ -1375,10 +1315,10 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		initEClass(valueRangeConstraintEClass, ValueRangeConstraint.class, "ValueRangeConstraint", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getValueRangeConstraint_Min(), ecorePackage.getELong(), "min", null, 1, 1,
+		initEAttribute(getValueRangeConstraint_Min(), ecorePackage.getEString(), "min", null, 1, 1,
 				ValueRangeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getValueRangeConstraint_Max(), ecorePackage.getELong(), "max", null, 1, 1,
+		initEAttribute(getValueRangeConstraint_Max(), ecorePackage.getEString(), "max", null, 1, 1,
 				ValueRangeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1461,18 +1401,6 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		initEAttribute(getTypeReferenceExternal_Name(), ecorePackage.getEString(), "name", null, 1, 1,
 				TypeReferenceExternal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(subElementEClass, SubElement.class, "SubElement", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSubElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, SubElement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSubElement_Type(), this.getType(), null, "type", null, 1, 1, SubElement.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getSubElement_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, SubElement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSubElement_Optional(), ecorePackage.getEBoolean(), "optional", null, 0, 1, SubElement.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nullEClass, Null.class, "Null", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

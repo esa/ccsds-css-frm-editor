@@ -229,15 +229,6 @@ public interface FrtypesFactory extends EFactory {
 	TypeReferenceExternal createTypeReferenceExternal();
 
 	/**
-	 * Returns a new object of class '<em>Sub Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Sub Element</em>'.
-	 * @generated
-	 */
-	SubElement createSubElement();
-
-	/**
 	 * Returns a new object of class '<em>Null</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

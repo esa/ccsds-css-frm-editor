@@ -959,7 +959,7 @@ public class FunctionalResourceModelEditor
 	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void createModel() {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain.getResourceSet().getURIConverter());
@@ -980,6 +980,13 @@ public class FunctionalResourceModelEditor
 			resourceToDiagnosticMap.put(resource,  analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
+		
+		// add a change adapter to handle new literals for enums
+		try {
+			getModel().eAdapters().add(new FrmChangeAdapter());
+		} catch(Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 	/**

@@ -29,12 +29,12 @@ public interface ValueRangeConstraint extends Constraint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min</em>' attribute.
-	 * @see #setMin(long)
+	 * @see #setMin(String)
 	 * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getValueRangeConstraint_Min()
 	 * @model required="true"
 	 * @generated
 	 */
-	long getMin();
+	String getMin();
 
 	/**
 	 * Sets the value of the '{@link ccsds.fr.type.model.frtypes.ValueRangeConstraint#getMin <em>Min</em>}' attribute.
@@ -44,7 +44,7 @@ public interface ValueRangeConstraint extends Constraint {
 	 * @see #getMin()
 	 * @generated
 	 */
-	void setMin(long value);
+	void setMin(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Max</b></em>' attribute.
@@ -55,12 +55,12 @@ public interface ValueRangeConstraint extends Constraint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max</em>' attribute.
-	 * @see #setMax(long)
+	 * @see #setMax(String)
 	 * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getValueRangeConstraint_Max()
 	 * @model required="true"
 	 * @generated
 	 */
-	long getMax();
+	String getMax();
 
 	/**
 	 * Sets the value of the '{@link ccsds.fr.type.model.frtypes.ValueRangeConstraint#getMax <em>Max</em>}' attribute.
@@ -70,6 +70,6 @@ public interface ValueRangeConstraint extends Constraint {
 	 * @see #getMax()
 	 * @generated
 	 */
-	void setMax(long value);
+	void setMax(String value);
 
 } // ValueRangeConstraint
