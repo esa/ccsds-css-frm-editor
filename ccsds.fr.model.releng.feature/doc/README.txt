@@ -34,7 +34,7 @@ Open with -> FunctionalResourceModel Model Editor
 
 5) Graphical FRM Modelling of Uses relations - Experimental
 5.1.1) install Sirius integration with EEF from update site (Help -> Install New Software) Modeling Package Updates for Eclipse Oxygen
-5.1.2) Switch to the Modeling Perspective: Window -> Open Perspective -> Modeling
+5.1.2) Switch to the Modeling Perspective: Window -> Perspective -> Open Perspective -> Other -> Modeling
 5.2) If your project from 5) is not a modelling project convert it to be a Modeling project: right click the project -> Configure -> Convert to Modeling Project 
 5.3) Right click the project -> View Point Selection -> Functional Resources.  Your project has now an representation.aird file
 5.4) Right click the project -> Create representation. Select Functional Resource Diagram -> Next

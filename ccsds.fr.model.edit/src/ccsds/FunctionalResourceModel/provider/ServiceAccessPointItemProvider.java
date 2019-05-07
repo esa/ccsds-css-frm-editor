@@ -66,6 +66,7 @@ public class ServiceAccessPointItemProvider
 			addMinAccessedPropertyDescriptor(object);
 			addMaxAccessedPropertyDescriptor(object);
 			addAccessedFunctionalResourcePropertyDescriptor(object);
+			addAccessingFunctionalResourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -197,6 +198,28 @@ public class ServiceAccessPointItemProvider
 				 true,
 				 false,
 				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Accessing Functional Resource feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAccessingFunctionalResourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ServiceAccessPoint_accessingFunctionalResource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceAccessPoint_accessingFunctionalResource_feature", "_UI_ServiceAccessPoint_type"),
+				 FunctionalResourceModelPackage.Literals.SERVICE_ACCESS_POINT__ACCESSING_FUNCTIONAL_RESOURCE,
+				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 				 null));

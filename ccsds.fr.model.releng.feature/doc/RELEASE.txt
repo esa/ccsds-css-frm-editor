@@ -1,5 +1,6 @@
 Version 4.1.2 from TBD
 - Corrected pre-setting the TypeDefinition name for FRM files opened at eclipse start 
+- Adding of SAPs and Ancillary Interfaces corrected for Functional Resources for the Tree Editor 
 
 Version 4.1.1 from November 2018
 - Changed Range Constraints to accept Strings as min / max to support something like (1E-5 .. 1E-4)

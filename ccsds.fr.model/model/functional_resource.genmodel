@@ -18,6 +18,7 @@
     </genAnnotations>
     <genClasses ecoreClass="functional_resource.ecore#//FunctionalResourceModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/rootOid"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/asnTypeModule"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/functionalResourceSet"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceModel/functionalResource"/>
     </genClasses>
@@ -25,7 +26,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FunctionalResourceSet/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceSet/functionalResource"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//FrModelElement">
+    <genClasses ecoreClass="functional_resource.ecore#//FrModelElement" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/SemanticDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/classifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/stringIdentifier"/>
@@ -39,7 +40,7 @@
     <genClasses ecoreClass="functional_resource.ecore#//Oid">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Oid/oidBit"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//FunctionalResource">
+    <genClasses ecoreClass="functional_resource.ecore#//FunctionalResource" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/event"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/directives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/uses"/>
@@ -47,23 +48,23 @@
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/serviceAccesspoint"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/providedAncillaryInterface"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//Event">
+    <genClasses ecoreClass="functional_resource.ecore#//Event" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/externalOid"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Event/value"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//Directive">
+    <genClasses ecoreClass="functional_resource.ecore#//Directive" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Directive/qualifier"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Directive/guardCondition"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//Parameter">
+    <genClasses ecoreClass="functional_resource.ecore#//Parameter" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/configured"/>
       <genFeatures createChild="false" propertyCategory="" propertyDescription=""
           propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Parameter/guardCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//Parameter/externalOid"/>
     </genClasses>
-    <genClasses ecoreClass="functional_resource.ecore#//Value"/>
-    <genClasses ecoreClass="functional_resource.ecore#//Qualifier"/>
-    <genClasses ecoreClass="functional_resource.ecore#//TypedElement">
+    <genClasses ecoreClass="functional_resource.ecore#//Value" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier"/>
+    <genClasses ecoreClass="functional_resource.ecore#//Qualifier" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier"/>
+    <genClasses ecoreClass="functional_resource.ecore#//TypedElement" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/typeDefinition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//TypedElement/engineeringUnit"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//TypedElement/externalTypeOid"/>
@@ -77,7 +78,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/minAccessed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//ServiceAccessPoint/maxAccessed"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessedFunctionalResource"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessingFunctionalResource"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference functional_resource.ecore#//ServiceAccessPoint/accessingFunctionalResource"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//AncillaryInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//AncillaryInterface/name"/>

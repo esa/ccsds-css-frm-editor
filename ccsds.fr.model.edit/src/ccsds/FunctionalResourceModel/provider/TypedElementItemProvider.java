@@ -150,7 +150,7 @@ public class TypedElementItemProvider extends FrModelElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((TypedElement)object).getSemanticDefinition());
+		String label = ((TypedElement)object).getClassifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TypedElement_type") :
 			getString("_UI_TypedElement_type") + " " + label;

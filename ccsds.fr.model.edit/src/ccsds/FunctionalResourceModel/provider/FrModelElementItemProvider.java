@@ -12,21 +12,25 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+
 
 /**
  * This is the item provider adapter for a {@link ccsds.FunctionalResourceModel.FrModelElement} object.
@@ -42,14 +46,60 @@ public class FrModelElementItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	private ChangeListener changeListener;
+
+	/**
+	 * #hd# see https://wiki.eclipse.org/EMF/Recipes#Recipe:_Custom_Labels 
+	 */
+	class ChangeListener implements INotifyChangedListener {
+
+		@Override
+		public void notifyChanged(Notification notification) {
+			if(notification.getNotifier() != null && getTarget() != null 
+					&& notification.getNotifier()  == ((FrModelElement)getTarget()).getOid() ) {
+				((IChangeNotifier) getAdapterFactory()).removeListener(this);
+				fireNotifyChanged(new ViewerNotification(notification, getTarget(), false, true));
+				((IChangeNotifier) getAdapterFactory()).addListener(this);
+			}
+			// other targets
+			if(targets != null) {
+				for (Notifier target : targets){
+					if(notification.getNotifier() != null && target != null 
+							&& notification.getNotifier()  == ((FrModelElement)target).getOid() ) {
+						((IChangeNotifier) getAdapterFactory()).removeListener(this);
+						fireNotifyChanged(new ViewerNotification(notification, target, false, true));
+						((IChangeNotifier) getAdapterFactory()).addListener(this);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#dispose()
+	 */
+	public void dispose() {
+		super.dispose();
+		if(changeListener != null) {
+			((IChangeNotifier)getAdapterFactory()).removeListener(changeListener);
+		}
+	}
+	
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public FrModelElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+		
+		if(adapterFactory instanceof IChangeNotifier) {
+			IChangeNotifier cn = (IChangeNotifier) adapterFactory;
+			changeListener = new ChangeListener();
+			cn.addListener(changeListener);
+		}		
 	}
 
 	/**
@@ -296,11 +346,16 @@ public class FrModelElementItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((FrModelElement)object).getSemanticDefinition());
+		String label = crop(((FrModelElement)object).getClassifier());
+		
+		if(((FrModelElement)object).getOid() != null) {
+			label += " " + OidItemProvider.getOidStr(((FrModelElement)object).getOid());
+		}
+		
 		return label == null || label.length() == 0 ?
 			getString("_UI_FrModelElement_type") :
 			getString("_UI_FrModelElement_type") + " " + label;

@@ -3,6 +3,7 @@
 package ccsds.FunctionalResourceModel.provider;
 
 
+import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
@@ -216,7 +217,7 @@ public class FunctionalResourceItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -225,11 +226,10 @@ public class FunctionalResourceItemProvider
 		switch (notification.getFeatureID(FunctionalResource.class)) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:			
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__OID: // #hd#
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
 				return;
 		}
 		super.notifyChanged(notification);
