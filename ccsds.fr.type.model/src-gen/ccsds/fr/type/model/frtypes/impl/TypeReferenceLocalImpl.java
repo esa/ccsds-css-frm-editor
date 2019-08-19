@@ -163,6 +163,9 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 
 		if (getTypeDefinition() != null && getTypeDefinition().getName() != null) {
 			output.append(getTypeDefinition().getName());
+			if (this.getSingleValueConstraint() != null && this.getSingleValueConstraint().getValues().size() > 0) {
+				this.getSingleValueConstraint().writeAsn1(indentLevel, output);
+			}
 		} else {
 			output.append("local type reference: name not set");
 		}
