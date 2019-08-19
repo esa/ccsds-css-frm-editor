@@ -78,7 +78,11 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 			if (isAccessible(FrtypesViewsRepository.TypeDefinition.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typeDefinition.getName()));
 			
+			if (isAccessible(FrtypesViewsRepository.TypeDefinition.Properties.comment))
+				basePart.setComment(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typeDefinition.getComment()));
+			
 			// init filters
+			
 			
 			// init values for referenced views
 			
@@ -91,6 +95,7 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -98,6 +103,9 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == FrtypesViewsRepository.TypeDefinition.Properties.name) {
 			return FrtypesPackage.eINSTANCE.getTypeDefinition_Name();
+		}
+		if (editorKey == FrtypesViewsRepository.TypeDefinition.Properties.comment) {
+			return FrtypesPackage.eINSTANCE.getTypeDefinition_Comment();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -111,6 +119,9 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 		TypeDefinition typeDefinition = (TypeDefinition)semanticObject;
 		if (FrtypesViewsRepository.TypeDefinition.Properties.name == event.getAffectedEditor()) {
 			typeDefinition.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (FrtypesViewsRepository.TypeDefinition.Properties.comment == event.getAffectedEditor()) {
+			typeDefinition.setComment((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -129,6 +140,13 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 					basePart.setName("");
 				}
 			}
+			if (FrtypesPackage.eINSTANCE.getTypeDefinition_Comment().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.TypeDefinition.Properties.comment)) {
+				if (msg.getNewValue() != null) {
+					basePart.setComment(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setComment("");
+				}
+			}
 			
 		}
 	}
@@ -141,7 +159,8 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			FrtypesPackage.eINSTANCE.getTypeDefinition_Name()		);
+			FrtypesPackage.eINSTANCE.getTypeDefinition_Name(),
+			FrtypesPackage.eINSTANCE.getTypeDefinition_Comment()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -162,6 +181,13 @@ public class TypeDefinitionPropertiesEditionComponent extends SinglePartProperti
 						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getTypeDefinition_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getTypeDefinition_Name().getEAttributeType(), newValue);
+				}
+				if (FrtypesViewsRepository.TypeDefinition.Properties.comment == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getTypeDefinition_Comment().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getTypeDefinition_Comment().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

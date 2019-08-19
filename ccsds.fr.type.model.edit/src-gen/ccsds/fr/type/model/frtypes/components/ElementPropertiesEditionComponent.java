@@ -84,7 +84,11 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 			if (isAccessible(FrtypesViewsRepository.Element.Properties.optional)) {
 				basePart.setOptional(element.isOptional());
 			}
+			if (isAccessible(FrtypesViewsRepository.Element.Properties.comment))
+				basePart.setComment(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, element.getComment()));
+			
 			// init filters
+			
 			
 			
 			
@@ -95,6 +99,7 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -115,6 +120,9 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 		if (editorKey == FrtypesViewsRepository.Element.Properties.optional) {
 			return FrtypesPackage.eINSTANCE.getElement_Optional();
 		}
+		if (editorKey == FrtypesViewsRepository.Element.Properties.comment) {
+			return FrtypesPackage.eINSTANCE.getElement_Comment();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -133,6 +141,9 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 		}
 		if (FrtypesViewsRepository.Element.Properties.optional == event.getAffectedEditor()) {
 			element.setOptional((Boolean)event.getNewValue());
+		}
+		if (FrtypesViewsRepository.Element.Properties.comment == event.getAffectedEditor()) {
+			element.setComment((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
 		}
 	}
 
@@ -161,6 +172,13 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 			if (FrtypesPackage.eINSTANCE.getElement_Optional().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Element.Properties.optional))
 				basePart.setOptional((Boolean)msg.getNewValue());
 			
+			if (FrtypesPackage.eINSTANCE.getElement_Comment().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.Element.Properties.comment)) {
+				if (msg.getNewValue() != null) {
+					basePart.setComment(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
+				} else {
+					basePart.setComment("");
+				}
+			}
 			
 		}
 	}
@@ -175,7 +193,8 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FrtypesPackage.eINSTANCE.getElement_Name(),
 			FrtypesPackage.eINSTANCE.getElement_Tag(),
-			FrtypesPackage.eINSTANCE.getElement_Optional()		);
+			FrtypesPackage.eINSTANCE.getElement_Optional(),
+			FrtypesPackage.eINSTANCE.getElement_Comment()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -220,6 +239,13 @@ public class ElementPropertiesEditionComponent extends SinglePartPropertiesEditi
 						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getElement_Optional().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getElement_Optional().getEAttributeType(), newValue);
+				}
+				if (FrtypesViewsRepository.Element.Properties.comment == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getElement_Comment().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getElement_Comment().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -61,6 +61,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected Text name;
 	protected Text tag;
 	protected Button optional;
+	protected Text comment;
 
 
 
@@ -109,6 +110,7 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		propertiesStep.addStep(FrtypesViewsRepository.Element.Properties.name);
 		propertiesStep.addStep(FrtypesViewsRepository.Element.Properties.tag);
 		propertiesStep.addStep(FrtypesViewsRepository.Element.Properties.optional);
+		propertiesStep.addStep(FrtypesViewsRepository.Element.Properties.comment);
 		
 		
 		composer = new PartComposer(elementStep) {
@@ -126,6 +128,9 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 				}
 				if (key == FrtypesViewsRepository.Element.Properties.optional) {
 					return createOptionalCheckbox(widgetFactory, parent);
+				}
+				if (key == FrtypesViewsRepository.Element.Properties.comment) {
+					return createCommentText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -314,6 +319,74 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 		return parent;
 	}
 
+	
+	protected Composite createCommentText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FrtypesViewsRepository.Element.Properties.comment, FrtypesMessages.ElementPropertiesEditionPart_CommentLabel);
+		comment = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		comment.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData commentData = new GridData(GridData.FILL_HORIZONTAL);
+		comment.setLayoutData(commentData);
+		comment.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							ElementPropertiesEditionPartForm.this,
+							FrtypesViewsRepository.Element.Properties.comment,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, comment.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ElementPropertiesEditionPartForm.this,
+									FrtypesViewsRepository.Element.Properties.comment,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, comment.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									ElementPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		comment.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementPropertiesEditionPartForm.this, FrtypesViewsRepository.Element.Properties.comment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, comment.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(comment, FrtypesViewsRepository.Element.Properties.comment);
+		EditingUtils.setEEFtype(comment, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.Element.Properties.comment, FrtypesViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCommentText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -419,6 +492,38 @@ public class ElementPropertiesEditionPartForm extends SectionPropertiesEditingPa
 			optional.setToolTipText(FrtypesMessages.Element_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !optional.isEnabled()) {
 			optional.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ElementPropertiesEditionPart#getComment()
+	 * 
+	 */
+	public String getComment() {
+		return comment.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.ElementPropertiesEditionPart#setComment(String newValue)
+	 * 
+	 */
+	public void setComment(String newValue) {
+		if (newValue != null) {
+			comment.setText(newValue);
+		} else {
+			comment.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.Element.Properties.comment);
+		if (eefElementEditorReadOnlyState && comment.isEnabled()) {
+			comment.setEnabled(false);
+			comment.setToolTipText(FrtypesMessages.Element_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !comment.isEnabled()) {
+			comment.setEnabled(true);
 		}	
 		
 	}

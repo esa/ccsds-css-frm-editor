@@ -50,6 +50,7 @@ public class ElementItemProvider extends TypeItemProvider {
 			addNamePropertyDescriptor(object);
 			addTagPropertyDescriptor(object);
 			addOptionalPropertyDescriptor(object);
+			addCommentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -98,6 +99,22 @@ public class ElementItemProvider extends TypeItemProvider {
 								"_UI_Element_type"),
 						FrtypesPackage.Literals.ELEMENT__OPTIONAL, true, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Comment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCommentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Element_comment_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Element_comment_feature",
+								"_UI_Element_type"),
+						FrtypesPackage.Literals.ELEMENT__COMMENT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -179,6 +196,7 @@ public class ElementItemProvider extends TypeItemProvider {
 		case FrtypesPackage.ELEMENT__NAME:
 		case FrtypesPackage.ELEMENT__TAG:
 		case FrtypesPackage.ELEMENT__OPTIONAL:
+		case FrtypesPackage.ELEMENT__COMMENT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case FrtypesPackage.ELEMENT__TYPE:

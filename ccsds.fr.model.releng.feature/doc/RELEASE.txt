@@ -1,3 +1,7 @@
+Version 4.1.3 from 19.8.2019
+- Corrected missing single value constraints for local type reference
+- added comment field for element definition and type definition
+
 Version 4.1.2 from TBD
 - Corrected pre-setting the TypeDefinition name for FRM files opened at eclipse start 
 - Adding of SAPs and Ancillary Interfaces corrected for Functional Resources for the Tree Editor 

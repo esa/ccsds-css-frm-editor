@@ -23,7 +23,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -51,6 +51,7 @@ import org.eclipse.swt.widgets.Text;
 public class TypeDefinitionPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TypeDefinitionPropertiesEditionPart {
 
 	protected Text name;
+	protected Text comment;
 
 
 
@@ -88,9 +89,9 @@ public class TypeDefinitionPropertiesEditionPartImpl extends CompositeProperties
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence typeDefinitionStep = new BindingCompositionSequence(propertiesEditionComponent);
-		typeDefinitionStep
-			.addStep(FrtypesViewsRepository.TypeDefinition.Properties.class)
-			.addStep(FrtypesViewsRepository.TypeDefinition.Properties.name);
+		CompositionStep propertiesStep = typeDefinitionStep.addStep(FrtypesViewsRepository.TypeDefinition.Properties.class);
+		propertiesStep.addStep(FrtypesViewsRepository.TypeDefinition.Properties.name);
+		propertiesStep.addStep(FrtypesViewsRepository.TypeDefinition.Properties.comment);
 		
 		
 		composer = new PartComposer(typeDefinitionStep) {
@@ -102,6 +103,9 @@ public class TypeDefinitionPropertiesEditionPartImpl extends CompositeProperties
 				}
 				if (key == FrtypesViewsRepository.TypeDefinition.Properties.name) {
 					return createNameText(parent);
+				}
+				if (key == FrtypesViewsRepository.TypeDefinition.Properties.comment) {
+					return createCommentText(parent);
 				}
 				return parent;
 			}
@@ -173,6 +177,55 @@ public class TypeDefinitionPropertiesEditionPartImpl extends CompositeProperties
 		return parent;
 	}
 
+	
+	protected Composite createCommentText(Composite parent) {
+		createDescription(parent, FrtypesViewsRepository.TypeDefinition.Properties.comment, FrtypesMessages.TypeDefinitionPropertiesEditionPart_CommentLabel);
+		comment = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData commentData = new GridData(GridData.FILL_HORIZONTAL);
+		comment.setLayoutData(commentData);
+		comment.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypeDefinitionPropertiesEditionPartImpl.this, FrtypesViewsRepository.TypeDefinition.Properties.comment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, comment.getText()));
+			}
+
+		});
+		comment.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypeDefinitionPropertiesEditionPartImpl.this, FrtypesViewsRepository.TypeDefinition.Properties.comment, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, comment.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(comment, FrtypesViewsRepository.TypeDefinition.Properties.comment);
+		EditingUtils.setEEFtype(comment, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.TypeDefinition.Properties.comment, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createCommentText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -214,6 +267,38 @@ public class TypeDefinitionPropertiesEditionPartImpl extends CompositeProperties
 			name.setToolTipText(FrtypesMessages.TypeDefinition_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.TypeDefinitionPropertiesEditionPart#getComment()
+	 * 
+	 */
+	public String getComment() {
+		return comment.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.TypeDefinitionPropertiesEditionPart#setComment(String newValue)
+	 * 
+	 */
+	public void setComment(String newValue) {
+		if (newValue != null) {
+			comment.setText(newValue);
+		} else {
+			comment.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.TypeDefinition.Properties.comment);
+		if (eefElementEditorReadOnlyState && comment.isEnabled()) {
+			comment.setEnabled(false);
+			comment.setToolTipText(FrtypesMessages.TypeDefinition_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !comment.isEnabled()) {
+			comment.setEnabled(true);
 		}	
 		
 	}

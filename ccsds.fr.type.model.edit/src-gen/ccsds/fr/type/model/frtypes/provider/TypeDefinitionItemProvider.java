@@ -57,6 +57,7 @@ public class TypeDefinitionItemProvider extends ItemProviderAdapter implements I
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addCommentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,6 +75,22 @@ public class TypeDefinitionItemProvider extends ItemProviderAdapter implements I
 						getString("_UI_PropertyDescriptor_description", "_UI_TypeDefinition_name_feature",
 								"_UI_TypeDefinition_type"),
 						FrtypesPackage.Literals.TYPE_DEFINITION__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Comment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCommentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_TypeDefinition_comment_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_TypeDefinition_comment_feature",
+								"_UI_TypeDefinition_type"),
+						FrtypesPackage.Literals.TYPE_DEFINITION__COMMENT, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -154,6 +171,7 @@ public class TypeDefinitionItemProvider extends ItemProviderAdapter implements I
 
 		switch (notification.getFeatureID(TypeDefinition.class)) {
 		case FrtypesPackage.TYPE_DEFINITION__NAME:
+		case FrtypesPackage.TYPE_DEFINITION__COMMENT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case FrtypesPackage.TYPE_DEFINITION__TYPE:

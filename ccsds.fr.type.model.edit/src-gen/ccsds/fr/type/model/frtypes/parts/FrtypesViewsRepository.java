@@ -24,6 +24,9 @@ public class FrtypesViewsRepository {
 			
 			public static String name = "frtypes::TypeDefinition::properties::name";
 			
+			
+			public static String comment = "frtypes::TypeDefinition::properties::comment";
+			
 	
 		}
 	
@@ -368,6 +371,9 @@ public class FrtypesViewsRepository {
 			
 			
 			public static String optional = "frtypes::Element::properties::optional";
+			
+			
+			public static String comment = "frtypes::Element::properties::comment";
 			
 	
 		}

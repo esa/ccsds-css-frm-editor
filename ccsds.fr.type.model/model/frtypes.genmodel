@@ -31,6 +31,7 @@
     <genClasses ecoreClass="frtypes.ecore#//TypeDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//TypeDefinition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeDefinition/comment"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//Type">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Type/singleValueConstraint"/>
@@ -99,6 +100,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference frtypes.ecore#//Element/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/tag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/optional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//Element/comment"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//TypeReferenceExternal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/name"/>

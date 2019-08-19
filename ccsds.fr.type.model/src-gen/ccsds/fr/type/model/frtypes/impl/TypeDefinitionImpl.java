@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,6 +63,26 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected Type type;
+
+	/**
+	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COMMENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected String comment = COMMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,10 +177,38 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setComment(String newComment) {
+		String oldComment = comment;
+		comment = newComment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.TYPE_DEFINITION__COMMENT, oldComment,
+					comment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
+		if(this.comment != null && this.comment.length() > 0) {
+			indent(indentLevel, output);
+			output.append(Asn1Writer.COMMENT + " " + this.comment + System.lineSeparator());
+			indent(indentLevel, output);
+		}
+		
 		indent(indentLevel, output);
 
 		if (getName() != null) {
@@ -174,7 +223,7 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 			this.type.writeAsn1(indentLevel, output);
 		} else {
 			output.append("no type set for type definition");
-		}
+		}		
 	}
 
 	/**
@@ -203,6 +252,8 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 			return getName();
 		case FrtypesPackage.TYPE_DEFINITION__TYPE:
 			return getType();
+		case FrtypesPackage.TYPE_DEFINITION__COMMENT:
+			return getComment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -220,6 +271,9 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 			return;
 		case FrtypesPackage.TYPE_DEFINITION__TYPE:
 			setType((Type) newValue);
+			return;
+		case FrtypesPackage.TYPE_DEFINITION__COMMENT:
+			setComment((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -239,6 +293,9 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 		case FrtypesPackage.TYPE_DEFINITION__TYPE:
 			setType((Type) null);
 			return;
+		case FrtypesPackage.TYPE_DEFINITION__COMMENT:
+			setComment(COMMENT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,6 +312,8 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case FrtypesPackage.TYPE_DEFINITION__TYPE:
 			return type != null;
+		case FrtypesPackage.TYPE_DEFINITION__COMMENT:
+			return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -287,6 +346,8 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", comment: ");
+		result.append(comment);
 		result.append(')');
 		return result.toString();
 	}

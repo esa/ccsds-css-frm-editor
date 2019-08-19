@@ -244,6 +244,9 @@ public class FrtypesMessages extends NLS {
 	public static String TypeDefinitionPropertiesEditionPart_NameLabel;
 
 	
+	public static String TypeDefinitionPropertiesEditionPart_CommentLabel;
+
+	
 	public static String IntegerTypePropertiesEditionPart_RangeConstraintLabel;
 
 	
@@ -335,6 +338,9 @@ public class FrtypesMessages extends NLS {
 
 	
 	public static String ElementPropertiesEditionPart_OptionalLabel;
+
+	
+	public static String ElementPropertiesEditionPart_CommentLabel;
 
 	
 	public static String TypeReferenceExternalPropertiesEditionPart_NameLabel;

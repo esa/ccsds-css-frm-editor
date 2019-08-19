@@ -15,6 +15,7 @@ package ccsds.fr.type.model.frtypes;
  *   <li>{@link ccsds.fr.type.model.frtypes.Element#getType <em>Type</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.Element#getTag <em>Tag</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.Element#isOptional <em>Optional</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.Element#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getElement()
@@ -126,5 +127,31 @@ public interface Element extends Type {
 	 * @generated
 	 */
 	void setOptional(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comment</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment</em>' attribute.
+	 * @see #setComment(String)
+	 * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getElement_Comment()
+	 * @model
+	 * @generated
+	 */
+	String getComment();
+
+	/**
+	 * Sets the value of the '{@link ccsds.fr.type.model.frtypes.Element#getComment <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Comment</em>' attribute.
+	 * @see #getComment()
+	 * @generated
+	 */
+	void setComment(String value);
 
 } // Element

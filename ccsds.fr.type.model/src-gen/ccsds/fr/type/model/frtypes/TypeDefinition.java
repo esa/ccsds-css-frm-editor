@@ -13,6 +13,7 @@ package ccsds.fr.type.model.frtypes;
  * <ul>
  *   <li>{@link ccsds.fr.type.model.frtypes.TypeDefinition#getName <em>Name</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.TypeDefinition#getType <em>Type</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.TypeDefinition#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getTypeDefinition()
@@ -71,5 +72,31 @@ public interface TypeDefinition extends Asn1Writer {
 	 * @generated
 	 */
 	void setType(Type value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comment</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment</em>' attribute.
+	 * @see #setComment(String)
+	 * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getTypeDefinition_Comment()
+	 * @model
+	 * @generated
+	 */
+	String getComment();
+
+	/**
+	 * Sets the value of the '{@link ccsds.fr.type.model.frtypes.TypeDefinition#getComment <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Comment</em>' attribute.
+	 * @see #getComment()
+	 * @generated
+	 */
+	void setComment(String value);
 
 } // TypeDefinition

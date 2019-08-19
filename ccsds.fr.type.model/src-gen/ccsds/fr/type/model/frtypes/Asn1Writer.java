@@ -221,6 +221,7 @@ public interface Asn1Writer extends EObject {
 	 */
 	public static final String CHOICE = "CHOICE";
 
+	
 	/**
 	 * Returns a string for the given indentation level
 	 * @generated NOT 

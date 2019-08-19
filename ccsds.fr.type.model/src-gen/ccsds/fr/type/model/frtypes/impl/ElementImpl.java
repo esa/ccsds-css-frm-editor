@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ElementImpl#getType <em>Type</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ElementImpl#getTag <em>Tag</em>}</li>
  *   <li>{@link ccsds.fr.type.model.frtypes.impl.ElementImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link ccsds.fr.type.model.frtypes.impl.ElementImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
@@ -103,6 +104,26 @@ public class ElementImpl extends TypeImpl implements Element {
 	 * @ordered
 	 */
 	protected boolean optional = OPTIONAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COMMENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected String comment = COMMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,6 +262,28 @@ public class ElementImpl extends TypeImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setComment(String newComment) {
+		String oldComment = comment;
+		comment = newComment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.ELEMENT__COMMENT, oldComment,
+					comment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -266,6 +309,8 @@ public class ElementImpl extends TypeImpl implements Element {
 			return getTag();
 		case FrtypesPackage.ELEMENT__OPTIONAL:
 			return isOptional();
+		case FrtypesPackage.ELEMENT__COMMENT:
+			return getComment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -289,6 +334,9 @@ public class ElementImpl extends TypeImpl implements Element {
 			return;
 		case FrtypesPackage.ELEMENT__OPTIONAL:
 			setOptional((Boolean) newValue);
+			return;
+		case FrtypesPackage.ELEMENT__COMMENT:
+			setComment((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -314,6 +362,9 @@ public class ElementImpl extends TypeImpl implements Element {
 		case FrtypesPackage.ELEMENT__OPTIONAL:
 			setOptional(OPTIONAL_EDEFAULT);
 			return;
+		case FrtypesPackage.ELEMENT__COMMENT:
+			setComment(COMMENT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -334,6 +385,8 @@ public class ElementImpl extends TypeImpl implements Element {
 			return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
 		case FrtypesPackage.ELEMENT__OPTIONAL:
 			return optional != OPTIONAL_EDEFAULT;
+		case FrtypesPackage.ELEMENT__COMMENT:
+			return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -355,6 +408,8 @@ public class ElementImpl extends TypeImpl implements Element {
 		result.append(tag);
 		result.append(", optional: ");
 		result.append(optional);
+		result.append(", comment: ");
+		result.append(comment);
 		result.append(')');
 		return result.toString();
 	}
@@ -365,8 +420,14 @@ public class ElementImpl extends TypeImpl implements Element {
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
+		if(this.comment != null && this.comment.length() > 0) {
+			indent(indentLevel, output);
+			output.append(Asn1Writer.COMMENT + " " + this.comment + System.lineSeparator());
+			indent(indentLevel, output);
+		}
+		
 		super.writeAsn1(indentLevel, output);
-
+		
 		indent(indentLevel, output);
 
 		if (this.getName() != null) {
@@ -389,7 +450,7 @@ public class ElementImpl extends TypeImpl implements Element {
 
 		if (this.optional == true) {
 			output.append(Asn1Writer.BLANK + Asn1Writer.OPTIONAL);
-		}
+		}		
 	}
 
 } //ElementImpl

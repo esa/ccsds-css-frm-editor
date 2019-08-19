@@ -125,13 +125,22 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_DEFINITION__TYPE = ASN1_WRITER_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION__COMMENT = ASN1_WRITER_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 2;
+	int TYPE_DEFINITION_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1756,13 +1765,22 @@ public interface FrtypesPackage extends EPackage {
 	int ELEMENT__OPTIONAL = TYPE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__COMMENT = TYPE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 4;
+	int ELEMENT_FEATURE_COUNT = TYPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -2045,6 +2063,17 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTypeDefinition_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.TypeDefinition#getComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comment</em>'.
+	 * @see ccsds.fr.type.model.frtypes.TypeDefinition#getComment()
+	 * @see #getTypeDefinition()
+	 * @generated
+	 */
+	EAttribute getTypeDefinition_Comment();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Type <em>Type</em>}'.
@@ -2613,6 +2642,17 @@ public interface FrtypesPackage extends EPackage {
 	EAttribute getElement_Optional();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.Element#getComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comment</em>'.
+	 * @see ccsds.fr.type.model.frtypes.Element#getComment()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Comment();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.TypeReferenceExternal <em>Type Reference External</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2816,6 +2856,14 @@ public interface FrtypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPE_DEFINITION__TYPE = eINSTANCE.getTypeDefinition_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_DEFINITION__COMMENT = eINSTANCE.getTypeDefinition_Comment();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.TypeImpl <em>Type</em>}' class.
@@ -3305,6 +3353,14 @@ public interface FrtypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ELEMENT__OPTIONAL = eINSTANCE.getElement_Optional();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__COMMENT = eINSTANCE.getElement_Comment();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.TypeReferenceExternalImpl <em>Type Reference External</em>}' class.

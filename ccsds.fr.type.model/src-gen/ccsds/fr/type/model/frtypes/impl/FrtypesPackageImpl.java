@@ -418,6 +418,15 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTypeDefinition_Comment() {
+		return (EAttribute) typeDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getType() {
 		return typeEClass;
 	}
@@ -904,6 +913,15 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getElement_Comment() {
+		return (EAttribute) elementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTypeReferenceExternal() {
 		return typeReferenceExternalEClass;
 	}
@@ -1066,6 +1084,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		typeDefinitionEClass = createEClass(TYPE_DEFINITION);
 		createEAttribute(typeDefinitionEClass, TYPE_DEFINITION__NAME);
 		createEReference(typeDefinitionEClass, TYPE_DEFINITION__TYPE);
+		createEAttribute(typeDefinitionEClass, TYPE_DEFINITION__COMMENT);
 
 		typeEClass = createEClass(TYPE);
 		createEReference(typeEClass, TYPE__SINGLE_VALUE_CONSTRAINT);
@@ -1148,6 +1167,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		createEReference(elementEClass, ELEMENT__TYPE);
 		createEAttribute(elementEClass, ELEMENT__TAG);
 		createEAttribute(elementEClass, ELEMENT__OPTIONAL);
+		createEAttribute(elementEClass, ELEMENT__COMMENT);
 
 		typeReferenceExternalEClass = createEClass(TYPE_REFERENCE_EXTERNAL);
 		createEAttribute(typeReferenceExternalEClass, TYPE_REFERENCE_EXTERNAL__NAME);
@@ -1249,6 +1269,9 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		initEReference(getTypeDefinition_Type(), this.getType(), null, "type", null, 1, 1, TypeDefinition.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeDefinition_Comment(), ecorePackage.getEString(), "comment", null, 0, 1,
+				TypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeEClass, Type.class, "Type", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getType_SingleValueConstraint(), this.getSingleValueConstraint(), null, "singleValueConstraint",
@@ -1394,6 +1417,8 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		initEAttribute(getElement_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, Element.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Optional(), ecorePackage.getEBoolean(), "optional", "false", 0, 1, Element.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Comment(), ecorePackage.getEString(), "comment", null, 0, 1, Element.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeReferenceExternalEClass, TypeReferenceExternal.class, "TypeReferenceExternal", !IS_ABSTRACT,
