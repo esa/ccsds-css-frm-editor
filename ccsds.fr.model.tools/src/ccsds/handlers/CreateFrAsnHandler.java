@@ -14,8 +14,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -25,9 +28,11 @@ import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
+import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
+import ccsds.FunctionalResourceModel.TypedElement;
 import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
@@ -66,7 +71,9 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				module = FrtypesFactory.eINSTANCE.createModule(); // some models may not have a module
 			}
 						
-			createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection());
+			CompoundCommand setTypeDefinitions = new MyCompoundCommand();
+			createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), setTypeDefinitions, editor.getEditingDomain());
+			editor.getEditingDomain().getCommandStack().execute(setTypeDefinitions);
 		}
 		
 		return null;
@@ -76,16 +83,17 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 * Creates an ASN.1 module from the FRM
 	 * @param functionalResources		The frM to use
 	 * @param frmFile					The file containing the FRM	
+	 * @param editingDomain 
 	 */
-	private void createAsn1Module(Module module, FunctionalResource[] functionalResources, IFile frmFile) {
+	private void createAsn1Module(Module module, FunctionalResource[] functionalResources, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {
 		
 		StringBuffer asn1ModuleStr = new StringBuffer();
 		List<String> exports = new LinkedList<String>();
 		
 		for(FunctionalResource fr : functionalResources) {
-			addParamTypesAndOids(module, fr.getParameter(), exports);
-			addEventTypesAndOids(module, fr.getEvent(), exports);
-			addDirectiveTypesAndOids(module, fr.getDirectives(), exports);
+			addParamTypesAndOids(module, fr.getParameter(), exports, cmdUpdateTypeDefinition, editingDomain);
+			addEventTypesAndOids(module, fr.getEvent(), exports, cmdUpdateTypeDefinition, editingDomain);
+			addDirectiveTypesAndOids(module, fr.getDirectives(), exports, cmdUpdateTypeDefinition, editingDomain);
 		}
 		
 		if(module.getName() == null || module.getName().length() == 0) {
@@ -124,11 +132,14 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 * Adds ASN.1 type definitions for parameter types and the corresponding OID to the ASN.1 module
 	 * @param module			The module to which the definitions are added
 	 * @param frmParameters		The parameters for which the definitions are added to the module
+	 * @param editingDomain 
+	 * @param cmdUpdatetypeDefinition 
 	 */
-	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports) {
+	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
 				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
+				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
 	}	
@@ -136,13 +147,16 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	/**
 	 * Adds ASN.1 type definitions for directive/qualifier types and the corresponding OID to the ASN.1 module
 	 * @param module			The module to which the definitions are added
+	 * @param editingDomain 
+	 * @param cmdUpdatetypeDefinition 
 	 * @param frmParameters		The directives for which the definitions are added to the module
 	 */
-	private void addDirectiveTypesAndOids(Module module, EList<Directive> frmDirectives, List<String> exports) {
+	private void addDirectiveTypesAndOids(Module module, EList<Directive> frmDirectives, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Directive directive : frmDirectives) {
 			for(Qualifier qualifier : directive.getQualifier()) {
 				if(qualifier.getTypeDef() != null) {
 					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
+					updateTypeDefinitionString(qualifier, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
 		}
@@ -151,13 +165,16 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	/**
 	 * Adds ASN.1 type definitions for events/values types and the corresponding OID to the ASN.1 module
 	 * @param module			The module to which the definitions are added
+	 * @param editingDomain 
+	 * @param cmdUpdatetypeDefinition 
 	 * @param frmParameters		The directives for which the definitions are added to the module
 	 */
-	private void addEventTypesAndOids(Module module, EList<Event> frmEvents, List<String> exports) {
+	private void addEventTypesAndOids(Module module, EList<Event> frmEvents, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Event event : frmEvents) {
 			for(Value value : event.getValue()) {
 				if(value.getTypeDef() != null) {
 					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
+					updateTypeDefinitionString(value, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
 		}
@@ -171,6 +188,29 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		}
 		return false;
 	}	
+	
+	/**
+	 * Adds a command to set the type definition property to the given compound command according to the ASN.1 generated from the
+	 * given element if the type definition is empty.
+	 * @param element					The element providing the ASN.1 
+	 * @param cmdUpdateTypeDefinitions	The command to which the set command is eventually added
+	 * @param editingDomain				The editing domain required to generate the set command
+	 */
+	private void updateTypeDefinitionString(TypedElement element, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
+		if(element.getTypeDef() != null && element.getTypeDefinition() == null ||
+				element.getTypeDefinition().length() == 0) {
+			// create the ASN.1
+			StringBuffer output = new StringBuffer();
+			element.getTypeDef().writeAsn1(0, output);
+			
+			SetCommand setTypeDefinition = new SetCommand(editingDomain, element,
+					element.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEFINITION),
+					output.toString());
+			
+			cmdUpdateTypeDefinitions.append(setTypeDefinition);					
+			
+		}
+	}
 	
 	/**
 	 * helper class to generate ASN.1 from the FRM.

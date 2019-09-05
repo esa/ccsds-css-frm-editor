@@ -133,6 +133,10 @@ public class OidImpl extends MinimalEObjectImpl.Container implements Oid {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
+		if(this.oidBit == null) {
+			return "";
+		}
+		
 		StringBuffer result = new StringBuffer();
 		for(Integer oidBit : this.oidBit) {
 			if(result.length() > 0) {
