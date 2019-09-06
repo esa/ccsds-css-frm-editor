@@ -51,13 +51,13 @@
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionalResource" eSuperTypes="#//FrModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
         eType="#//Event" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="directives" upperBound="-1"
         eType="#//Directive" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//FunctionalResource"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
-        eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="serviceAccesspoint" upperBound="-1"
         eType="#//ServiceAccessPoint" containment="true" eOpposite="#//ServiceAccessPoint/accessedFunctionalResource"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedAncillaryInterface"

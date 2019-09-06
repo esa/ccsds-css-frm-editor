@@ -1,4 +1,7 @@
 Version 4.1.4 from 5.9.2019
+- Corrected the order of shown Parameter, Directives and Events for an FR. Now they are shown in PED order.
+
+Version 4.1.4 from 5.9.2019
 - Corrected setting the Type Definition from the generated ASN.1 for empty Type Definitions
 
 Version 4.1.3 from 19.8.2019

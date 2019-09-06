@@ -3,7 +3,6 @@
 package ccsds.FunctionalResourceModel.provider;
 
 
-import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
@@ -154,9 +153,9 @@ public class FunctionalResourceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENT);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DIRECTIVES);
-			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
 		}
@@ -224,9 +223,9 @@ public class FunctionalResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(FunctionalResource.class)) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -248,6 +247,11 @@ public class FunctionalResourceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER,
+				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__EVENT,
 				 FunctionalResourceModelFactory.eINSTANCE.createEvent()));
 
@@ -255,11 +259,6 @@ public class FunctionalResourceItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DIRECTIVES,
 				 FunctionalResourceModelFactory.eINSTANCE.createDirective()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PARAMETER,
-				 FunctionalResourceModelFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter

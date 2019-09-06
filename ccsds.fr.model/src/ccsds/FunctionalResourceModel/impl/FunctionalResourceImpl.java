@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getUses <em>Uses</em>}</li>
- *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getServiceAccesspoint <em>Service Accesspoint</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}</li>
  * </ul>
@@ -38,6 +38,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class FunctionalResourceImpl extends FrModelElementImpl implements FunctionalResource {
+	/**
+	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Parameter> parameter;
+
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -67,16 +77,6 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * @ordered
 	 */
 	protected EList<FunctionalResource> uses;
-
-	/**
-	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameter()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameter;
 
 	/**
 	 * The cached value of the '{@link #getServiceAccesspoint() <em>Service Accesspoint</em>}' containment reference list.
@@ -214,12 +214,12 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+				return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 				return ((InternalEList<?>)getEvent()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return ((InternalEList<?>)getDirectives()).basicRemove(otherEnd, msgs);
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
-				return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 				return ((InternalEList<?>)getServiceAccesspoint()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
@@ -236,14 +236,14 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+				return getParameter();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 				return getEvent();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return getDirectives();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:
 				return getUses();
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
-				return getParameter();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 				return getServiceAccesspoint();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
@@ -261,6 +261,10 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+				getParameter().clear();
+				getParameter().addAll((Collection<? extends Parameter>)newValue);
+				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 				getEvent().clear();
 				getEvent().addAll((Collection<? extends Event>)newValue);
@@ -272,10 +276,6 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:
 				getUses().clear();
 				getUses().addAll((Collection<? extends FunctionalResource>)newValue);
-				return;
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
-				getParameter().clear();
-				getParameter().addAll((Collection<? extends Parameter>)newValue);
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 				getServiceAccesspoint().clear();
@@ -297,6 +297,9 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+				getParameter().clear();
+				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 				getEvent().clear();
 				return;
@@ -305,9 +308,6 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:
 				getUses().clear();
-				return;
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
-				getParameter().clear();
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 				getServiceAccesspoint().clear();
@@ -327,14 +327,14 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
+				return parameter != null && !parameter.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__EVENT:
 				return event != null && !event.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 				return directives != null && !directives.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__USES:
 				return uses != null && !uses.isEmpty();
-			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PARAMETER:
-				return parameter != null && !parameter.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 				return serviceAccesspoint != null && !serviceAccesspoint.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:

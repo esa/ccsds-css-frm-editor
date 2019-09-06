@@ -365,15 +365,6 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getFunctionalResource_Event() {
-		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFunctionalResource_Directives() {
 		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -382,7 +373,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResource_Uses() {
+	public EReference getFunctionalResource_Directives() {
 		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -391,8 +382,17 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFunctionalResource_Parameter() {
+	public EReference getFunctionalResource_Uses() {
 		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResource_Parameter() {
+		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -763,10 +763,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(oidEClass, OID__OID_BIT);
 
 		functionalResourceEClass = createEClass(FUNCTIONAL_RESOURCE);
+		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__EVENT);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__DIRECTIVES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__USES);
-		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PARAMETER);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
 
@@ -874,10 +874,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getOid_OidBit(), ecorePackage.getEInt(), "oidBit", null, 0, -1, Oid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(functionalResourceEClass, FunctionalResource.class, "FunctionalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Event(), this.getEvent(), null, "event", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Directives(), this.getDirective(), null, "directives", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_Uses(), this.getFunctionalResource(), null, "uses", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFunctionalResource_Parameter(), this.getParameter(), null, "parameter", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_ServiceAccesspoint(), this.getServiceAccessPoint(), this.getServiceAccessPoint_AccessedFunctionalResource(), "serviceAccesspoint", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_ProvidedAncillaryInterface(), this.getAncillaryInterface(), this.getAncillaryInterface_ProvidingFunctionalResource(), "providedAncillaryInterface", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

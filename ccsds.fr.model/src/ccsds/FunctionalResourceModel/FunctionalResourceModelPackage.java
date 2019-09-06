@@ -476,13 +476,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Event</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__EVENT = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int FUNCTIONAL_RESOURCE__EVENT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Directives</b></em>' containment reference list.
@@ -491,7 +500,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__DIRECTIVES = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int FUNCTIONAL_RESOURCE__DIRECTIVES = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Uses</b></em>' reference list.
@@ -500,16 +509,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE__USES = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_RESOURCE__PARAMETER = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int FUNCTIONAL_RESOURCE__USES = FR_MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Service Accesspoint</b></em>' containment reference list.
