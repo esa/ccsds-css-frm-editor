@@ -197,8 +197,8 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 * @param editingDomain				The editing domain required to generate the set command
 	 */
 	private void updateTypeDefinitionString(TypedElement element, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
-		if(element.getTypeDef() != null && element.getTypeDefinition() == null ||
-				element.getTypeDefinition().length() == 0) {
+		// update the type definition string unconditionally (overwrite)
+		if(element.getTypeDef() != null) {
 			// create the ASN.1
 			StringBuffer output = new StringBuffer();
 			element.getTypeDef().writeAsn1(0, output);
