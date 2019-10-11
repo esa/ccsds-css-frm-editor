@@ -194,6 +194,7 @@ public abstract class SimpleSizeConstrainedTypeImpl extends SimpleTypeImpl imple
 		for (SizeConstraint c : getSizeConstraint()) {
 			c.writeAsn1(indentLevel, output);
 		}
+		super.writeAsn1(indentLevel, output); // enable single value constraints
 	}
 
 } //SimpleSizeConstrainedTypeImpl

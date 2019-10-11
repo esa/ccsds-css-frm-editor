@@ -121,6 +121,7 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (numSingleValueConstraint() > 0) {
 
+			output.append(Asn1Writer.BLANK);
 			output.append(Asn1Writer.LPAREN);
 
 			int idx = 0;
