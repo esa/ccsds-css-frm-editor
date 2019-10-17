@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:fr="http://iso.org.dod.ccsds" xmlns:frtypes="http://ccsds.fr/types">
+
+<!--
+	Firefox: If you do not see the 'good' HTML version:
+	
+	Toggle the value of the about:config setting privacy.file_unique_origin
+	https://support.mozilla.org/en-US/questions/1264318
+	
+	Newer versions of firefox require to toggle:
+	security.data_uri.unique_opaque_origin
+-->
 
 <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
 
