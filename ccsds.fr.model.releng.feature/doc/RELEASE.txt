@@ -2,7 +2,7 @@ Version 4.1.7 from TBD
 - Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
 
 Version 4.1.6 from 10.9.2019
-- When generating ASN.1, update teh type definition field unconditionally, i.e. overwrite what's there
+- When generating ASN.1, update the type definition field unconditionally, i.e. overwrite what's there
 
 Version 4.1.5 from 6.9.2019
 - Corrected the order of shown Parameter, Directives and Events for an FR. Now they are shown in PED order.
