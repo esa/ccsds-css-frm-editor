@@ -162,12 +162,13 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 		}
 
 		int idx = 0;
-		for (Type t : getElements()) {
-			indent(indentLevel + 1, output);
-			t.writeAsn1(indentLevel + 1, output);
+		int elementIndent = indentLevel + 1;
+		for (Type t : getElements()) {			
+			t.writeAsn1(elementIndent, output);
 			idx++;
 
 			if (idx < getElements().size()) {
+				//output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.SEP);
 				output.append(System.lineSeparator() + Asn1Writer.SEP);
 			}
 		}

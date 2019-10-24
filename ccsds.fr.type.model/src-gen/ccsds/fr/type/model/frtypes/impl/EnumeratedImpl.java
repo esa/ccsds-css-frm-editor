@@ -157,22 +157,23 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 		if (getValues().size() > 0) {
 			//			output.append(System.lineSeparator());
 			//			indent(indentLevel, output);
-			output.append(System.lineSeparator() + Asn1Writer.LCBRACE + System.lineSeparator());
+			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.LCBRACE + System.lineSeparator());
 
 			int idx = 0;
+			int nvIndent = indentLevel + 1;
 			for (NamedValue v : getValues()) {
-				indent(indentLevel + 1, output);
-				v.writeAsn1(indentLevel + 1, output);
+				v.writeAsn1(nvIndent, output);
 				idx++;
 
 				output.append(System.lineSeparator());
 
 				if (idx < getValues().size()) {
-					output.append(Asn1Writer.SEP);
+					output.append(getIndent(indentLevel) + Asn1Writer.SEP);
+					nvIndent = 1;
 				}
 			}
 
-			output.append(Asn1Writer.RCBRACE + System.lineSeparator());
+			output.append(getIndent(indentLevel) + Asn1Writer.RCBRACE + System.lineSeparator());
 
 		}
 	}

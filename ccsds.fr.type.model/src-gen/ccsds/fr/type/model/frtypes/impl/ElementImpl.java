@@ -423,7 +423,7 @@ public class ElementImpl extends TypeImpl implements Element {
 		if(this.comment != null && this.comment.length() > 0) {
 			indent(indentLevel, output);
 			output.append(Asn1Writer.COMMENT + " " + this.comment + System.lineSeparator());
-			indent(indentLevel, output);
+			//indent(indentLevel, output);
 		}
 		
 		super.writeAsn1(indentLevel, output);
