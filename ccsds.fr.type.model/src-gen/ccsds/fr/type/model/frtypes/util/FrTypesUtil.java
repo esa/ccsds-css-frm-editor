@@ -14,6 +14,8 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
  */
 public class FrTypesUtil {
 
+	private static String[] invalidChars  = {"\\", "_", "/"};
+	
 	/**
 	 * Get the editing domain for the given EObject
 	 * @param object
@@ -45,5 +47,38 @@ public class FrTypesUtil {
 		}
 
 		return null;
+	}
+	
+	/**
+	 * Constructs a valid type name of the given type name by:
+	 * 1) making first character lower case
+	 * 2) remove invalid characters from the given typeName
+	 * 
+	 * @param typeName	The type name to be made valid
+	 * 
+	 * @return The validated type name
+	 */
+	static public String getValidElementName(String typeName) {
+		if(typeName == null) {
+			return null;
+		}
+		
+		StringBuilder validName = new StringBuilder(typeName);		
+		
+		// delete any invalid character
+		for(int idx=0; idx<invalidChars.length; idx++) {
+			int chIdx = validName.indexOf(invalidChars[idx]);
+			if(chIdx != -1) {
+				validName.deleteCharAt(chIdx);
+			}
+		}
+		
+		// convert first character to lower case
+		if(Character.isUpperCase(validName.charAt(0))) {
+			validName.setCharAt(0, Character.toLowerCase(validName.charAt(0)));
+		}
+		
+		
+		return validName.toString();
 	}
 }

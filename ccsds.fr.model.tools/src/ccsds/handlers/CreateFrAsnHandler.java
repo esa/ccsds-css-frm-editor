@@ -43,6 +43,7 @@ import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.impl.ObjectIdentifierImpl;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
+import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 /**
  * Handler to create an ASN.1 module file from an FRM model active in an FRM editor. 
@@ -359,7 +360,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		@Override
 		public
 		void writeAsn1(int indentLevel, StringBuffer output) {
-			output.append(this.name + Asn1Writer.INDENT);
+			output.append(getName() + Asn1Writer.INDENT);
 			super.writeAsn1(indentLevel, output); // writes OBJECT IDENTIFIER
 			output.append(Asn1Writer.BLANK + Asn1Writer.ASSIGN + Asn1Writer.BLANK + this.getOidValue());
 		}
@@ -376,7 +377,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 * @return The name of the OID
 		 */
 		public String getName() {
-			return this.name;
+			return FrTypesUtil.getValidElementName(this.name); // make sure it's first character lowercase and no special characters
 		}
 	}
 

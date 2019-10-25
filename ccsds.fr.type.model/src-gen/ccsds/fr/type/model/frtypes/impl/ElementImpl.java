@@ -6,6 +6,7 @@ import ccsds.fr.type.model.frtypes.Asn1Writer;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Type;
+import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.Boolean;
 
@@ -431,7 +432,7 @@ public class ElementImpl extends TypeImpl implements Element {
 		indent(indentLevel, output);
 
 		if (this.getName() != null) {
-			output.append(String.format("%1$-20s", getName()));
+			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));
 			//output.append(getName());
 		} else {
 			output.append("name not set for component");
