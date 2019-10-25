@@ -3,13 +3,19 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.Enumerated;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.NamedValue;
 import ccsds.fr.type.model.frtypes.SingleValueConstraint;
+import ccsds.fr.type.model.frtypes.Type;
+import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
@@ -146,6 +152,49 @@ public class SingleValueConstraintImpl extends ConstraintImpl implements SingleV
 	}
 
 	/**
+	 * Writes the given value to the given output.
+	 * For parent objects referencing Enumerated, a conversion of 
+	 * numeric enum values to enum literals is performed
+
+	 * @param output 	The output to which the (converted) value is written
+	 * @param value		The value written to the output. For enums in numeric form this is converted to enum literal
+
+	 * @generated NOT
+	 */
+	private void writeValue(StringBuffer output, String value) {
+		EList<NamedValue> namedValues = null;
+		// Check if parent is an local type reference to an enum - translate eventually numeric values to enum literals		
+		EObject parent = eContainer();
+		if(parent instanceof TypeReferenceLocal) {
+			TypeReferenceLocal trl = (TypeReferenceLocal)parent;
+			try {
+				Type t = trl.getTypeDefinition().getType();
+				if(t instanceof Enumerated) {
+					Enumerated e = (Enumerated) t;
+					namedValues = e.getValues();
+				}
+			} catch(Exception e) {
+				// OK
+			}
+		}
+		
+		try {
+			int numericValue = Integer.parseInt(value);
+			for(int idx=0; idx<namedValues.size(); idx++) {
+				if(namedValues.get(idx).getValue() == numericValue) {
+					value = namedValues.get(idx).getName();
+					break;
+				}
+			}
+			
+		} catch (Exception e ) {
+			// OK, may happen
+		}
+		
+		output.append(value);
+	}
+	
+	/**
 	 * Write the value range constraint
 	 * @generated NOT
 	 */
@@ -159,7 +208,9 @@ public class SingleValueConstraintImpl extends ConstraintImpl implements SingleV
 
 		int idx = 0;
 		for (String v : getValues()) {
-			output.append(v);
+			
+			//output.append(v);
+			writeValue(output, v);
 			idx++;
 
 			if (idx < getValues().size()) {
