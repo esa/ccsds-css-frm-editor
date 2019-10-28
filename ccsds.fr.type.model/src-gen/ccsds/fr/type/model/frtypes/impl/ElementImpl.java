@@ -5,6 +5,7 @@ package ccsds.fr.type.model.frtypes.impl;
 import ccsds.fr.type.model.frtypes.Asn1Writer;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.SetOf;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
@@ -414,6 +415,25 @@ public class ElementImpl extends TypeImpl implements Element {
 		result.append(')');
 		return result.toString();
 	}
+	
+	/**
+	 * Returns true if element name generation should be suppressed.
+	 * this is a workaround addressing limitaiton of jASN.1 (up to at least 11.2):
+	 * Elements of SET OF / SEQUENCE OF cannot have a name and a following type definition. 
+	 * @return true if the element name should be suppressed
+	 */
+	private boolean suppressElementName() {
+		try {
+			if(eContainer() instanceof SetOf && getType() != null) {
+				FrTypesUtil.log("ASN.1 generation: Suppress element name generation for " + getName() + " below SET OF ");
+				return true;
+			}
+		} catch(Exception e) {
+			// OK
+		}
+		
+		return false;
+	}
 
 	/**
 	 * Write the component of a structured type
@@ -431,11 +451,10 @@ public class ElementImpl extends TypeImpl implements Element {
 		
 		indent(indentLevel, output);
 
-		if (this.getName() != null) {
-			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));
-			//output.append(getName());
-		} else {
-			output.append("name not set for component");
+		if (this.getName() != null && suppressElementName() == false) {
+			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));			
+		} else if(suppressElementName() == false) {
+			output.append("name not set for element");
 		}
 
 		if (getTag() != null) {

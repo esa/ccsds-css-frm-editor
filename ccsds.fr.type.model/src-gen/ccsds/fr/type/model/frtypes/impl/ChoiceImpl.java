@@ -58,8 +58,10 @@ public class ChoiceImpl extends StructuredDifferentTypeImpl implements Choice {
 						SetCommand setTag = new SetCommand(ed, element, 
 								element.eClass().getEStructuralFeature(FrtypesPackage.ELEMENT__TAG), Integer.toString(lastTag + 1));
 						ed.getCommandStack().execute(setTag); // TODO think about a compound command for ASN.1 generation
+						FrTypesUtil.log("ASN.1 generation: Added CHOICE element tag " + (lastTag+1) + " for " + element.getName());
 					} else {
 						element.setTag(Integer.toString(lastTag + 1));
+						FrTypesUtil.log("ASN.1 generation: Added CHOICE element tag " + (lastTag+1) + " for " + element.getName());
 					}						
 					lastTag++;
 				} else {
