@@ -71,6 +71,11 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 
 	
 	/**
+	 * Settings for parameter ReferencesTable
+	 */
+	protected ReferencesTableSettings parameterSettings;
+	
+	/**
 	 * Settings for event ReferencesTable
 	 */
 	protected ReferencesTableSettings eventSettings;
@@ -84,11 +89,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 	 * Settings for uses ReferencesTable
 	 */
 	private ReferencesTableSettings usesSettings;
-	
-	/**
-	 * Settings for parameter ReferencesTable
-	 */
-	protected ReferencesTableSettings parameterSettings;
 	
 	/**
 	 * Settings for serviceAccesspoint ReferencesTable
@@ -152,6 +152,10 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated)) {
 				basePart.setDeprecated(functionalResource.isDeprecated());
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter)) {
+				parameterSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter());
+				basePart.initParameter(parameterSettings);
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event)) {
 				eventSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Event());
 				basePart.initEvent(eventSettings);
@@ -163,10 +167,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses)) {
 				usesSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Uses());
 				basePart.initUses(usesSettings);
-			}
-			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter)) {
-				parameterSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter());
-				basePart.initParameter(parameterSettings);
 			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint)) {
 				serviceAccesspointSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ServiceAccesspoint());
@@ -185,6 +185,21 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			
 			
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter)) {
+				basePart.addFilterToParameter(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Parameter); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for parameter
+				// End of user code
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event)) {
 				basePart.addFilterToEvent(new ViewerFilter() {
 					/**
@@ -218,21 +233,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses)) {
 				basePart.addFilterToUses(new EObjectFilter(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE));
 				// Start of user code for additional businessfilters for uses
-				// End of user code
-			}
-			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter)) {
-				basePart.addFilterToParameter(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Parameter); //$NON-NLS-1$ 
-					}
-			
-				});
-				// Start of user code for additional businessfilters for parameter
 				// End of user code
 			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint)) {
@@ -318,6 +318,9 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated();
 		}
+		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter();
+		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Event();
 		}
@@ -326,9 +329,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Uses();
-		}
-		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter) {
-			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter();
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ServiceAccesspoint();
@@ -369,6 +369,31 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 		}
 		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated == event.getAffectedEditor()) {
 			functionalResource.setDeprecated((Boolean)event.getNewValue());
+		}
+		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameterSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				parameterSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				parameterSettings.move(event.getNewIndex(), (Parameter) event.getNewValue());
+			}
 		}
 		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -429,31 +454,6 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 				usesSettings.removeFromReference((EObject) event.getNewValue());
 			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
 				usesSettings.move(event.getNewIndex(), (FunctionalResource) event.getNewValue());
-			}
-		}
-		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameterSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				parameterSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				parameterSettings.move(event.getNewIndex(), (Parameter) event.getNewValue());
 			}
 		}
 		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint == event.getAffectedEditor()) {
@@ -568,14 +568,14 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
+			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter))
+				basePart.updateParameter();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Event().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event))
 				basePart.updateEvent();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Directives().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.directives))
 				basePart.updateDirectives();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Uses().equals(msg.getFeature())  && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses))
 				basePart.updateUses();
-			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter))
-				basePart.updateParameter();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ServiceAccesspoint().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint))
 				basePart.updateServiceAccesspoint();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface))
@@ -600,10 +600,10 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_AuthorizingEntity(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_OidBit(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated(),
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Event(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Directives(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Uses(),
-			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Parameter(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ServiceAccesspoint(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface()		);
 		return new NotificationFilter[] {filter,};

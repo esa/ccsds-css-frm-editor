@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl#getName <em>Name</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl#getFunctionalResource <em>Functional Resource</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl#getOidOffset <em>Oid Offset</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +67,26 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected EList<FunctionalResource> functionalResource;
+
+	/**
+	 * The default value of the '{@link #getOidOffset() <em>Oid Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOidOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int OID_OFFSET_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getOidOffset() <em>Oid Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOidOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected int oidOffset = OID_OFFSET_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +145,27 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getOidOffset() {
+		return oidOffset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOidOffset(int newOidOffset) {
+		int oldOidOffset = oidOffset;
+		oidOffset = newOidOffset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET, oldOidOffset, oidOffset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -145,6 +187,8 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 				return getName();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE:
 				return getFunctionalResource();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET:
+				return getOidOffset();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +209,9 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 				getFunctionalResource().clear();
 				getFunctionalResource().addAll((Collection<? extends FunctionalResource>)newValue);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET:
+				setOidOffset((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +230,9 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE:
 				getFunctionalResource().clear();
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET:
+				setOidOffset(OID_OFFSET_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +249,8 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE:
 				return functionalResource != null && !functionalResource.isEmpty();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET:
+				return oidOffset != OID_OFFSET_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -215,6 +267,8 @@ public class FunctionalResourceSetImpl extends MinimalEObjectImpl.Container impl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", oidOffset: ");
+		result.append(oidOffset);
 		result.append(')');
 		return result.toString();
 	}

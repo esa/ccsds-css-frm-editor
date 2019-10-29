@@ -145,6 +145,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourceSetPropertiesEditionPart_FunctionalResourceLabel;
 
 	
+	public static String FunctionalResourceSetPropertiesEditionPart_OidOffsetLabel;
+
+	
 	public static String FrModelElementPropertiesEditionPart_SemanticDefinitionLabel;
 
 	
@@ -196,6 +199,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourcePropertiesEditionPart_DeprecatedLabel;
 
 	
+	public static String FunctionalResourcePropertiesEditionPart_ParameterLabel;
+
+	
 	public static String FunctionalResourcePropertiesEditionPart_EventLabel;
 
 	
@@ -203,9 +209,6 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_UsesLabel;
-
-	
-	public static String FunctionalResourcePropertiesEditionPart_ParameterLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_ServiceAccesspointLabel;

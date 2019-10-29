@@ -71,6 +71,7 @@ public class FunctionalResourceSetPropertiesEditionPartImpl extends CompositePro
 	protected ReferencesTable functionalResource;
 	protected List<ViewerFilter> functionalResourceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> functionalResourceFilters = new ArrayList<ViewerFilter>();
+	protected Text oidOffset;
 
 
 
@@ -111,6 +112,7 @@ public class FunctionalResourceSetPropertiesEditionPartImpl extends CompositePro
 		CompositionStep propertiesStep = functionalResourceSetStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.class);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
 		
 		
 		composer = new PartComposer(functionalResourceSetStep) {
@@ -125,6 +127,9 @@ public class FunctionalResourceSetPropertiesEditionPartImpl extends CompositePro
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource) {
 					return createFunctionalResourceAdvancedTableComposition(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset) {
+					return createOidOffsetText(parent);
 				}
 				return parent;
 			}
@@ -247,6 +252,55 @@ public class FunctionalResourceSetPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
+	
+	protected Composite createOidOffsetText(Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, FunctionalResourceModelMessages.FunctionalResourceSetPropertiesEditionPart_OidOffsetLabel);
+		oidOffset = SWTUtils.createScrollableText(parent, SWT.BORDER);
+		GridData oidOffsetData = new GridData(GridData.FILL_HORIZONTAL);
+		oidOffset.setLayoutData(oidOffsetData);
+		oidOffset.addFocusListener(new FocusAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceSetPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oidOffset.getText()));
+			}
+
+		});
+		oidOffset.addKeyListener(new KeyAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceSetPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oidOffset.getText()));
+				}
+			}
+
+		});
+		EditingUtils.setID(oidOffset, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
+		EditingUtils.setEEFtype(oidOffset, "eef::Text"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOidOffsetText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -356,6 +410,38 @@ public class FunctionalResourceSetPropertiesEditionPartImpl extends CompositePro
 	 */
 	public boolean isContainedInFunctionalResourceTable(EObject element) {
 		return ((ReferencesTableSettings)functionalResource.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceSetPropertiesEditionPart#getOidOffset()
+	 * 
+	 */
+	public String getOidOffset() {
+		return oidOffset.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceSetPropertiesEditionPart#setOidOffset(String newValue)
+	 * 
+	 */
+	public void setOidOffset(String newValue) {
+		if (newValue != null) {
+			oidOffset.setText(newValue);
+		} else {
+			oidOffset.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
+		if (eefElementEditorReadOnlyState && oidOffset.isEnabled()) {
+			oidOffset.setEnabled(false);
+			oidOffset.setToolTipText(FunctionalResourceModelMessages.FunctionalResourceSet_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !oidOffset.isEnabled()) {
+			oidOffset.setEnabled(true);
+		}	
+		
 	}
 
 

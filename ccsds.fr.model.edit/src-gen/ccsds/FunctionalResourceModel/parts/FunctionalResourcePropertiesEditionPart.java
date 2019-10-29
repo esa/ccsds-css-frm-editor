@@ -134,6 +134,50 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 	/**
+	 * Init the parameter
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initParameter(ReferencesTableSettings settings);
+
+	/**
+	 * Update the parameter
+	 * @param newValue the parameter to update
+	 * 
+	 */
+	public void updateParameter();
+
+	/**
+	 * Adds the given filter to the parameter edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToParameter(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the parameter edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToParameter(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the parameter table
+	 * 
+	 */
+	public boolean isContainedInParameterTable(EObject element);
+
+
+
+
+	/**
 	 * Init the event
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
@@ -259,50 +303,6 @@ public interface FunctionalResourcePropertiesEditionPart {
 	 * 
 	 */
 	public boolean isContainedInUsesTable(EObject element);
-
-
-
-
-	/**
-	 * Init the parameter
-	 * @param current the current value
-	 * @param containgFeature the feature where to navigate if necessary
-	 * @param feature the feature to manage
-	 */
-	public void initParameter(ReferencesTableSettings settings);
-
-	/**
-	 * Update the parameter
-	 * @param newValue the parameter to update
-	 * 
-	 */
-	public void updateParameter();
-
-	/**
-	 * Adds the given filter to the parameter edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addFilterToParameter(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the parameter edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
-	 */
-	public void addBusinessFilterToParameter(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the parameter table
-	 * 
-	 */
-	public boolean isContainedInParameterTable(EObject element);
 
 
 

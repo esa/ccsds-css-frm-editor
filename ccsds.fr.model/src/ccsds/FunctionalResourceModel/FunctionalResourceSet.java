@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getName <em>Name</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getFunctionalResource <em>Functional Resource</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getOidOffset <em>Oid Offset</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceSet()
@@ -65,5 +66,32 @@ public interface FunctionalResourceSet extends EObject {
 	 * @generated
 	 */
 	EList<FunctionalResource> getFunctionalResource();
+
+	/**
+	 * Returns the value of the '<em><b>Oid Offset</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oid Offset</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Oid Offset</em>' attribute.
+	 * @see #setOidOffset(int)
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceSet_OidOffset()
+	 * @model default="0"
+	 * @generated
+	 */
+	int getOidOffset();
+
+	/**
+	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getOidOffset <em>Oid Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oid Offset</em>' attribute.
+	 * @see #getOidOffset()
+	 * @generated
+	 */
+	void setOidOffset(int value);
 
 } // FunctionalResourceSet

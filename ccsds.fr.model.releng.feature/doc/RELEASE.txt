@@ -1,5 +1,9 @@
 Version 4.1.7 from TBD
 - Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
+- ASN.1 generation: remove _, /, an\ from names
+- ASN.1 generation: Add tags to choices to avoid ambiguity
+- ASN.1 generation suppress element names for children of SET OF if the elements have a type specification (jASN.1 limitation)
+- OID offset for FR Sets
 
 Version 4.1.6 from 10.9.2019
 - When generating ASN.1, update the type definition field unconditionally, i.e. overwrite what's there

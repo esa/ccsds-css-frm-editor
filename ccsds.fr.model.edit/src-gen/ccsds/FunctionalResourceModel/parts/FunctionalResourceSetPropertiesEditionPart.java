@@ -77,6 +77,20 @@ public interface FunctionalResourceSetPropertiesEditionPart {
 	public boolean isContainedInFunctionalResourceTable(EObject element);
 
 
+	/**
+	 * @return the oidOffset
+	 * 
+	 */
+	public String getOidOffset();
+
+	/**
+	 * Defines a new oidOffset
+	 * @param newValue the new oidOffset to set
+	 * 
+	 */
+	public void setOidOffset(String newValue);
+
+
 
 
 

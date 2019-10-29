@@ -74,6 +74,7 @@ public class FunctionalResourceSetPropertiesEditionPartForm extends SectionPrope
 	protected ReferencesTable functionalResource;
 	protected List<ViewerFilter> functionalResourceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> functionalResourceFilters = new ArrayList<ViewerFilter>();
+	protected Text oidOffset;
 
 
 
@@ -121,6 +122,7 @@ public class FunctionalResourceSetPropertiesEditionPartForm extends SectionPrope
 		CompositionStep propertiesStep = functionalResourceSetStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.class);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.name);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
 		
 		
 		composer = new PartComposer(functionalResourceSetStep) {
@@ -135,6 +137,9 @@ public class FunctionalResourceSetPropertiesEditionPartForm extends SectionPrope
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource) {
 					return createFunctionalResourceTableComposition(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset) {
+					return createOidOffsetText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -277,6 +282,74 @@ public class FunctionalResourceSetPropertiesEditionPartForm extends SectionPrope
 		return parent;
 	}
 
+	
+	protected Composite createOidOffsetText(FormToolkit widgetFactory, Composite parent) {
+		createDescription(parent, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, FunctionalResourceModelMessages.FunctionalResourceSetPropertiesEditionPart_OidOffsetLabel);
+		oidOffset = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+		oidOffset.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+		widgetFactory.paintBordersFor(parent);
+		GridData oidOffsetData = new GridData(GridData.FILL_HORIZONTAL);
+		oidOffset.setLayoutData(oidOffsetData);
+		oidOffset.addFocusListener(new FocusAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void focusLost(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							FunctionalResourceSetPropertiesEditionPartForm.this,
+							FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oidOffset.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									FunctionalResourceSetPropertiesEditionPartForm.this,
+									FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, oidOffset.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									FunctionalResourceSetPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
+			}
+		});
+		oidOffset.addKeyListener(new KeyAdapter() {
+			/**
+			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+			 * 
+			 */
+			@Override
+			@SuppressWarnings("synthetic-access")
+			public void keyPressed(KeyEvent e) {
+				if (e.character == SWT.CR) {
+					if (propertiesEditionComponent != null)
+						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceSetPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, oidOffset.getText()));
+				}
+			}
+		});
+		EditingUtils.setID(oidOffset, FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
+		EditingUtils.setEEFtype(oidOffset, "eef::Text"); //$NON-NLS-1$
+		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset, FunctionalResourceModelViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+		// Start of user code for createOidOffsetText
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -386,6 +459,38 @@ public class FunctionalResourceSetPropertiesEditionPartForm extends SectionPrope
 	 */
 	public boolean isContainedInFunctionalResourceTable(EObject element) {
 		return ((ReferencesTableSettings)functionalResource.getInput()).contains(element);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceSetPropertiesEditionPart#getOidOffset()
+	 * 
+	 */
+	public String getOidOffset() {
+		return oidOffset.getText();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceSetPropertiesEditionPart#setOidOffset(String newValue)
+	 * 
+	 */
+	public void setOidOffset(String newValue) {
+		if (newValue != null) {
+			oidOffset.setText(newValue);
+		} else {
+			oidOffset.setText(""); //$NON-NLS-1$
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset);
+		if (eefElementEditorReadOnlyState && oidOffset.isEnabled()) {
+			oidOffset.setEnabled(false);
+			oidOffset.setToolTipText(FunctionalResourceModelMessages.FunctionalResourceSet_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !oidOffset.isEnabled()) {
+			oidOffset.setEnabled(true);
+		}	
+		
 	}
 
 

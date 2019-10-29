@@ -104,6 +104,10 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 				functionalResourceSettings = new ReferencesTableSettings(functionalResourceSet, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_FunctionalResource());
 				basePart.initFunctionalResource(functionalResourceSettings);
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset)) {
+				basePart.setOidOffset(EEFConverterUtil.convertToString(EcorePackage.Literals.EINT, functionalResourceSet.getOidOffset()));
+			}
+			
 			// init filters
 			
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource)) {
@@ -121,6 +125,7 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 				// Start of user code for additional businessfilters for functionalResource
 				// End of user code
 			}
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -128,6 +133,7 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -143,6 +149,9 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_FunctionalResource();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_OidOffset();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -182,6 +191,9 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 				functionalResourceSettings.move(event.getNewIndex(), (FunctionalResource) event.getNewValue());
 			}
 		}
+		if (FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset == event.getAffectedEditor()) {
+			functionalResourceSet.setOidOffset((EEFConverterUtil.createIntFromString(EcorePackage.Literals.EINT, (String)event.getNewValue())));
+		}
 	}
 
 	/**
@@ -201,6 +213,13 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 			}
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_FunctionalResource().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.functionalResource))
 				basePart.updateFunctionalResource();
+			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_OidOffset().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset)) {
+				if (msg.getNewValue() != null) {
+					basePart.setOidOffset(EcoreUtil.convertToString(EcorePackage.Literals.EINT, msg.getNewValue()));
+				} else {
+					basePart.setOidOffset("");
+				}
+			}
 			
 		}
 	}
@@ -214,7 +233,8 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_Name(),
-			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_FunctionalResource()		);
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_FunctionalResource(),
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_OidOffset()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -245,6 +265,13 @@ public class FunctionalResourceSetPropertiesEditionComponent extends SinglePartP
 						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_Name().getEAttributeType(), newValue);
+				}
+				if (FunctionalResourceModelViewsRepository.FunctionalResourceSet.Properties.oidOffset == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_OidOffset().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceSet_OidOffset().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

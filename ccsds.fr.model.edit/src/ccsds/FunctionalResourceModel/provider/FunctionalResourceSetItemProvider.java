@@ -64,6 +64,7 @@ public class FunctionalResourceSetItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addOidOffsetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -86,6 +87,28 @@ public class FunctionalResourceSetItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Oid Offset feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOidOffsetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FunctionalResourceSet_oidOffset_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalResourceSet_oidOffset_feature", "_UI_FunctionalResourceSet_type"),
+				 FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_SET__OID_OFFSET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -159,6 +182,7 @@ public class FunctionalResourceSetItemProvider
 
 		switch (notification.getFeatureID(FunctionalResourceSet.class)) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__NAME:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE:

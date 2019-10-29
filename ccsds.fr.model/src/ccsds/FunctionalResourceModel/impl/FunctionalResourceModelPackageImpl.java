@@ -715,6 +715,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFunctionalResourceSet_OidOffset() {
+		return (EAttribute)functionalResourceSetEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FunctionalResourceModelFactory getFunctionalResourceModelFactory() {
 		return (FunctionalResourceModelFactory)getEFactoryInstance();
 	}
@@ -747,6 +756,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		functionalResourceSetEClass = createEClass(FUNCTIONAL_RESOURCE_SET);
 		createEAttribute(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__NAME);
 		createEReference(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE);
+		createEAttribute(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__OID_OFFSET);
 
 		frModelElementEClass = createEClass(FR_MODEL_ELEMENT);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__SEMANTIC_DEFINITION);
@@ -858,6 +868,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEClass(functionalResourceSetEClass, FunctionalResourceSet.class, "FunctionalResourceSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFunctionalResourceSet_Name(), ecorePackage.getEString(), "name", null, 1, 1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceSet_FunctionalResource(), this.getFunctionalResource(), null, "functionalResource", null, 0, -1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFunctionalResourceSet_OidOffset(), ecorePackage.getEInt(), "oidOffset", "0", 0, 1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(frModelElementEClass, FrModelElement.class, "FrModelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFrModelElement_SemanticDefinition(), ecorePackage.getEString(), "SemanticDefinition", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

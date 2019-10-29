@@ -251,13 +251,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Oid Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_SET__OID_OFFSET = 2;
+
+	/**
 	 * The number of structural features of the '<em>Functional Resource Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_SET_FEATURE_COUNT = 2;
+	int FUNCTIONAL_RESOURCE_SET_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Functional Resource Set</em>' class.
@@ -2137,6 +2146,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getFunctionalResourceSet_FunctionalResource();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet#getOidOffset <em>Oid Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Oid Offset</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceSet#getOidOffset()
+	 * @see #getFunctionalResourceSet()
+	 * @generated
+	 */
+	EAttribute getFunctionalResourceSet_OidOffset();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2640,6 +2660,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FUNCTIONAL_RESOURCE_SET__FUNCTIONAL_RESOURCE = eINSTANCE.getFunctionalResourceSet_FunctionalResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Oid Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FUNCTIONAL_RESOURCE_SET__OID_OFFSET = eINSTANCE.getFunctionalResourceSet_OidOffset();
 
 	}
 

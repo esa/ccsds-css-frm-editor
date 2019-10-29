@@ -25,6 +25,7 @@
     <genClasses ecoreClass="functional_resource.ecore#//FunctionalResourceSet">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FunctionalResourceSet/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResourceSet/functionalResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FunctionalResourceSet/oidOffset"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//FrModelElement" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute functional_resource.ecore#//FrModelElement/SemanticDefinition"/>
@@ -41,10 +42,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute functional_resource.ecore#//Oid/oidBit"/>
     </genClasses>
     <genClasses ecoreClass="functional_resource.ecore#//FunctionalResource" labelFeature="#//FunctionalResourceModel/FrModelElement/classifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/parameter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/event"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/directives"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/uses"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/parameter"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/serviceAccesspoint"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference functional_resource.ecore#//FunctionalResource/providedAncillaryInterface"/>
     </genClasses>

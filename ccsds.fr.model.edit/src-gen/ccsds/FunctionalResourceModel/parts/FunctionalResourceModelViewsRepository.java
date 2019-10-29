@@ -45,6 +45,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String functionalResource = "FunctionalResourceModel::FunctionalResourceSet::properties::functionalResource";
 			
+			
+			public static String oidOffset = "FunctionalResourceModel::FunctionalResourceSet::properties::oidOffset";
+			
 	
 		}
 	
@@ -133,6 +136,9 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::FunctionalResource::properties::deprecated";
 			
 			
+			public static String parameter = "FunctionalResourceModel::FunctionalResource::properties::parameter";
+			
+			
 			public static String event = "FunctionalResourceModel::FunctionalResource::properties::event";
 			
 			
@@ -140,9 +146,6 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String uses = "FunctionalResourceModel::FunctionalResource::properties::uses";
-			
-			
-			public static String parameter = "FunctionalResourceModel::FunctionalResource::properties::parameter";
 			
 			
 			public static String serviceAccesspoint = "FunctionalResourceModel::FunctionalResource::properties::serviceAccesspoint";

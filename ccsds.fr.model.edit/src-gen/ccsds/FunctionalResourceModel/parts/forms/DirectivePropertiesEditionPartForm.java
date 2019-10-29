@@ -191,7 +191,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		semanticDefinition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData semanticDefinitionData = new GridData(GridData.FILL_HORIZONTAL);
 		semanticDefinitionData.horizontalSpan = 2;
-		semanticDefinitionData.heightHint=190;
+		semanticDefinitionData.heightHint=240;
 		semanticDefinitionData.widthHint = 200;
 		semanticDefinition.setLayoutData(semanticDefinitionData);
 		semanticDefinition.addFocusListener(new FocusAdapter() {
@@ -738,7 +738,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		guardCondition = widgetFactory.createText(parent, "", SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL); //$NON-NLS-1$
 		GridData guardConditionData = new GridData(GridData.FILL_HORIZONTAL);
 		guardConditionData.horizontalSpan = 2;
-		guardConditionData.heightHint=190;
+		guardConditionData.heightHint=240;
 		guardConditionData.widthHint = 200;
 		guardCondition.setLayoutData(guardConditionData);
 		guardCondition.addFocusListener(new FocusAdapter() {

@@ -11,6 +11,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -30,6 +31,7 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
+import ccsds.FunctionalResourceModel.FunctionalResourceSet;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
@@ -37,7 +39,6 @@ import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.FunctionalResourceModel.provider.OidItemProvider;
 import ccsds.fr.model.tools.Activator;
-import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.model.tools.NameTool;
 
 enum ModelElementType {
@@ -58,6 +59,10 @@ enum ModelElementType {
 }
 
 public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
+
+	private final int OID_OFFSET_STEP = 1000;
+	private final int OID_INITIAL = 1;
+
 
 	/**
 	 * Creates Parameter OIDs from the root OID and the 
@@ -156,21 +161,73 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			return;
 		}
 		
-		updateOids(domain, "", FrUtility.getFunctionalResources(frm), 
+		// offset the FR Sets
+		CompoundCommand setOidOffsets = new MyCompoundCommand();
+		setOidOffsets.setLabel("Automatic FR Set OID offsets");
+		offsetFrSets(domain, setOidOffsets, frm.getFunctionalResourceSet());
+		domain.getCommandStack().execute(setOidOffsets); // do this before using the OID offsets
+		
+		// Iterate over the FR Sets and update the OIDs
+		for(FunctionalResourceSet frs : frm.getFunctionalResourceSet()) {
+			updateOids(domain, "", frs.getOidOffset(), frs.getFunctionalResource().toArray(new FunctionalResource[0]),
+					rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
+		}
+		
+		// update FRs not contained in an FR set
+		final int zeroOidOffset = 0;
+		updateOids(domain, "", zeroOidOffset, frm.getFunctionalResource().toArray(new FunctionalResource[0]), 
 				rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
 	}
+
+	/**
+	 * Computes an OID offset to each of the given FR Sets in case the offset is still the default.
+	 * The offset is computed by the position in the model and the highest already used offset.  
+	 * @param domain					The editing domain to create commands
+	 * @param setAll					The compound set command for all model actions
+	 * @param functionalResourceSets	The FR Sets for whic the offset shall be computed
+	 */
+	private void offsetFrSets(EditingDomain editingDomain, CompoundCommand setAll,
+			EList<FunctionalResourceSet> functionalResourceSets) {		
+		int maxOidOffset = 0;
+		
+		// get the maximum used oid offset
+		for(FunctionalResourceSet frs : functionalResourceSets) {
+			if(frs.getOidOffset() > maxOidOffset) {
+				maxOidOffset = frs.getOidOffset();
+			}
+		}
+		
+		// add oid offsets for FR Sets not having a valid (non default) oid offset
+		int oidOffset = maxOidOffset + OID_OFFSET_STEP;
+		for(FunctionalResourceSet frs : functionalResourceSets) {
+			if(frs.getOidOffset() == 0 /* the default */) {
+				SetCommand setCmd = new SetCommand(editingDomain, frs,
+						frs.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET__OID_OFFSET),
+						oidOffset);
+				
+				Activator.getDefault().getLog().log(
+						new Status(Status.INFO, Activator.PLUGIN_ID, "Update OID offset of FR Set " + frs.getName()
+						+ " from " + frs.getOidOffset() + " to " + frs.getOidOffset()));
+				
+				oidOffset += OID_OFFSET_STEP;		
+				setAll.append(setCmd);												
+			}
+		}
+	}
+
 
 	/**
 	 * Update the OIDs of the child parameters for the given model element
 	 * use a sorted map with all parameters and adjust versions for parameters with same classifier (and oidbit?)  
 	 * @param domain				the EMF editing domain
 	 * @param parentName			the name of the parent element
+	 * @param oidOffset 
 	 * @param FrModelElement[] 		the model elements for which the OIDs shall be updated. Must be all of the same type!
 	 * @param parentOid				the OID of the parent model element. May differ from m.getOid()!
 	 * @param elementType			the type of the model elements (1: parameter, 2: event, 3: directive)
 	 * @param setOids				the set command which will finally set the OIDs
 	 */
-	private void updateOids(EditingDomain domain, String parentName, FrModelElement[] modelElements, Oid parentOid, int elementType,  CompoundCommand setOids) {
+	private void updateOids(EditingDomain domain, String parentName, int oidOffset, FrModelElement[] modelElements, Oid parentOid, int elementType,  CompoundCommand setOids) {
 		String type = "Unknown Type";
 			
 		if(modelElements != null) {
@@ -186,7 +243,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			
 			filterExternalOids(mElementMap); // filter out external OIDs
 			
-			int mElementIndex = 1;	// first parameter index in the OID to be used		
+			int mElementIndex = oidOffset;	// first parameter index in the OID to be used		
 			Iterator<String> paramIt = mElementMap.keySet().iterator();
 			while(paramIt.hasNext()) {
 				List<FrModelElement> mElementVersions = mElementMap.get(paramIt.next());
@@ -253,18 +310,18 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 					// update the children of functional resources directives and events
 					if(mElement instanceof FunctionalResource) {
 						FunctionalResource fr = (FunctionalResource)mElement;
-						updateOids(domain, fr.getClassifier(), fr.getParameter().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), OID_INITIAL, fr.getParameter().toArray(new FrModelElement[0]), 
 								mElementOid,ModelElementType.PARAMETER_OID_TYPE.getValue(), setOids);
-						updateOids(domain, fr.getClassifier(), fr.getEvent().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), OID_INITIAL, fr.getEvent().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
-						updateOids(domain, fr.getClassifier(), fr.getDirectives().toArray(new FrModelElement[0]), 
+						updateOids(domain, fr.getClassifier(), OID_INITIAL, fr.getDirectives().toArray(new FrModelElement[0]), 
 								mElementOid, ModelElementType.DIRECTIVE_OID_TYPE.getValue(), setOids);
 						
 					} else if(mElement instanceof Directive) {
-						updateOids(domain, mElement.getClassifier(), ((Directive)mElement).getQualifier().toArray(new FrModelElement[0]) ,
+						updateOids(domain, mElement.getClassifier(), OID_INITIAL, ((Directive)mElement).getQualifier().toArray(new FrModelElement[0]) ,
 								mElementOid, ModelElementType.DIRECTIVE_OID_TYPE.getValue(), setOids);
 					} else if(mElement instanceof Event) {
-						updateOids(domain, mElement.getClassifier(), ((Event)mElement).getValue().toArray(new FrModelElement[0]) ,
+						updateOids(domain, mElement.getClassifier(), OID_INITIAL, ((Event)mElement).getValue().toArray(new FrModelElement[0]) ,
 								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
 					}
 					
