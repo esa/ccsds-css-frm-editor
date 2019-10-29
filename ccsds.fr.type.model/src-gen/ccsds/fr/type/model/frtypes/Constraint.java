@@ -16,6 +16,6 @@ package ccsds.fr.type.model.frtypes;
  * @model abstract="true"
  * @generated
  */
-public interface Constraint extends Asn1Writer {
+public interface Constraint extends ExportWriter {
 
 } // Constraint

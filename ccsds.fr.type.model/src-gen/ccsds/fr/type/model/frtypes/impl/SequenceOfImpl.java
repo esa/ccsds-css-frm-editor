@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SequenceOf;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
@@ -42,13 +42,13 @@ public class SequenceOfImpl extends StructuredSizeConstrainedTypeImpl implements
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.SEQUENCE + Asn1Writer.BLANK);
+		output.append(ExportWriter.SEQUENCE + ExportWriter.BLANK);
 
 		for (SizeConstraint c : getSizeConstraint()) {
 			c.writeAsn1(indentLevel, output);
 		}
 
-		output.append(Asn1Writer.BLANK + Asn1Writer.OF + Asn1Writer.INDENT);
+		output.append(ExportWriter.BLANK + ExportWriter.OF + ExportWriter.INDENT);
 
 		super.writeAsn1(indentLevel, output);
 	}

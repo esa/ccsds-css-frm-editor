@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import org.eclipse.emf.ecore.EClass;
 
@@ -39,7 +39,7 @@ public class BooleanImpl extends SimpleTypeImpl implements ccsds.fr.type.model.f
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.BOOLEAN);
+		output.append(ExportWriter.BOOLEAN);
 		super.writeAsn1(indentLevel, output); // write constraints
 	}
 

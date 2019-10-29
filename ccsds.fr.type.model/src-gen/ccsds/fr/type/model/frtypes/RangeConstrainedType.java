@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface RangeConstrainedType extends Asn1Writer {
+public interface RangeConstrainedType extends ExportWriter {
 	/**
 	 * Returns the value of the '<em><b>Range Constraint</b></em>' containment reference list.
 	 * The list contents are of type {@link ccsds.fr.type.model.frtypes.ValueRangeConstraint}.

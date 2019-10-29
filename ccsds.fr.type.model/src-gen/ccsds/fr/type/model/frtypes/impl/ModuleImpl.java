@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Module;
@@ -225,31 +225,32 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		output.append(System.lineSeparator());
 		if (getOid() != null) {
-			output.append(
-					Asn1Writer.LCBRACE + Asn1Writer.BLANK + getOid() + System.lineSeparator() + Asn1Writer.RCBRACE);
+			output.append(ExportWriter.LCBRACE + ExportWriter.BLANK + getOid() + System.lineSeparator()
+					+ ExportWriter.RCBRACE);
 		} else {
-			output.append(Asn1Writer.LCBRACE + Asn1Writer.BLANK
+			output.append(ExportWriter.LCBRACE + ExportWriter.BLANK
 					+ "iso(1) identified-organization(3) standards-producing-organization(112)\n"
-					+ "	ccsds(4) css(4) crossSuppportResources(2)" + System.lineSeparator() + Asn1Writer.RCBRACE);
+					+ "	ccsds(4) css(4) crossSuppportResources(2)" + System.lineSeparator() + ExportWriter.RCBRACE);
 		}
 
 		output.append(
-				System.lineSeparator() + System.lineSeparator() + Asn1Writer.DEFINITIONS + System.lineSeparator());
-		output.append(Asn1Writer.IMPLICIT + Asn1Writer.BLANK + Asn1Writer.TAGS + System.lineSeparator());
-		output.append(Asn1Writer.ASSIGN + Asn1Writer.BLANK + Asn1Writer.BEGIN + System.lineSeparator());
+				System.lineSeparator() + System.lineSeparator() + ExportWriter.DEFINITIONS + System.lineSeparator());
+		output.append(ExportWriter.IMPLICIT + ExportWriter.BLANK + ExportWriter.TAGS + System.lineSeparator());
+		output.append(ExportWriter.ASSIGN + ExportWriter.BLANK + ExportWriter.BEGIN + System.lineSeparator());
 
 		// EXPORTS - there should be always exports, basically all types of this module are exported
-		output.append(System.lineSeparator() + Asn1Writer.EXPORTS + System.lineSeparator());
+		output.append(System.lineSeparator() + ExportWriter.EXPORTS + System.lineSeparator());
 		int idx = 0;
 		for (String export : getExports()) {
-			output.append(Asn1Writer.INDENT + Asn1Writer.INDENT + export);
+			output.append(ExportWriter.INDENT + ExportWriter.INDENT + export);
 
 			idx++;
 			if (idx < getExports().size()) {
-				output.append(System.lineSeparator() + Asn1Writer.SEP);
+				output.append(System.lineSeparator() + ExportWriter.SEP);
 			}
 		}
-		output.append(System.lineSeparator() + Asn1Writer.SEMI_COLON + System.lineSeparator() + System.lineSeparator());
+		output.append(
+				System.lineSeparator() + ExportWriter.SEMI_COLON + System.lineSeparator() + System.lineSeparator());
 
 		// IMPORTS
 		if (getImports().size() > 0) {
@@ -265,7 +266,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		}
 
 		//output.append(System.lineSeparator() + Asn1Writer.RCBRACE);
-		output.append(System.lineSeparator() + Asn1Writer.END);
+		output.append(System.lineSeparator() + ExportWriter.END);
 
 	}
 

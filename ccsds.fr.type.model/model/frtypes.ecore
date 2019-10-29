@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="frtypes" nsURI="http://ccsds.fr/types" nsPrefix="frtypes">
-  <eClassifiers xsi:type="ecore:EClass" name="TypeDefinition" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeDefinition" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="singleValueConstraint"
         eType="#//SingleValueConstraint" containment="true"/>
   </eClassifiers>
@@ -35,7 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SequenceOf" eSuperTypes="#//StructuredSizeConstrainedType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Set" eSuperTypes="#//StructuredDifferentType"/>
   <eClassifiers xsi:type="ecore:EClass" name="SetOf" eSuperTypes="#//StructuredSizeConstrainedType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//ExportWriter">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Constraints: This is drastically simplified approach compared to what ASn.1 allows."/>
     </eAnnotations>
@@ -54,7 +54,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleSizeConstrainedType" abstract="true"
       eSuperTypes="#//SimpleType #//SizeConstrainedType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedValue" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedValue" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
@@ -78,7 +78,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ConstraintType"
         defaultValueLiteral="RANGE"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeDefinition" upperBound="-1"
         eType="#//TypeDefinition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -116,14 +116,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Null" eSuperTypes="#//SimpleType"/>
   <eClassifiers xsi:type="ecore:EDataType" name="StringBuffer" instanceClassName="java.lang.StringBuffer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Asn1Writer" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="ExportWriter" abstract="true" interface="true">
     <eOperations name="writeAsn1">
       <eParameters name="indentLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="output" eType="#//StringBuffer"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SizeConstrainedType" abstract="true"
-      interface="true" eSuperTypes="#//Asn1Writer">
+      interface="true" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sizeConstraint" upperBound="-1"
         eType="#//SizeConstraint" containment="true"/>
   </eClassifiers>
@@ -136,7 +136,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
         upperBound="-1" eType="#//Type" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FromModule" eSuperTypes="#//Asn1Writer">
+  <eClassifiers xsi:type="ecore:EClass" name="FromModule" eSuperTypes="#//ExportWriter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedTypes" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

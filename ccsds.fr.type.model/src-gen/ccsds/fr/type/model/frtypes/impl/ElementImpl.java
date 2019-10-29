@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SetOf;
@@ -415,7 +415,7 @@ public class ElementImpl extends TypeImpl implements Element {
 		result.append(')');
 		return result.toString();
 	}
-	
+
 	/**
 	 * Returns true if element name generation should be suppressed.
 	 * this is a workaround addressing limitaiton of jASN.1 (up to at least 11.2):
@@ -424,14 +424,15 @@ public class ElementImpl extends TypeImpl implements Element {
 	 */
 	private boolean suppressElementName() {
 		try {
-			if(eContainer() instanceof SetOf && getType() != null) {
-				FrTypesUtil.log("ASN.1 generation: Suppress element name generation for " + getName() + " below SET OF ");
+			if (eContainer() instanceof SetOf && getType() != null) {
+				FrTypesUtil
+						.log("ASN.1 generation: Suppress element name generation for " + getName() + " below SET OF ");
 				return true;
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			// OK
 		}
-		
+
 		return false;
 	}
 
@@ -441,36 +442,37 @@ public class ElementImpl extends TypeImpl implements Element {
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		if(this.comment != null && this.comment.length() > 0) {
+		if (this.comment != null && this.comment.length() > 0) {
 			indent(indentLevel, output);
-			output.append(Asn1Writer.COMMENT + " " + this.comment + System.lineSeparator());
+			output.append(ExportWriter.COMMENT + " " + this.comment + System.lineSeparator());
 			//indent(indentLevel, output);
 		}
-		
+
 		super.writeAsn1(indentLevel, output);
-		
+
 		indent(indentLevel, output);
 
 		if (this.getName() != null && suppressElementName() == false) {
-			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));			
-		} else if(suppressElementName() == false) {
+			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));
+		} else if (suppressElementName() == false) {
 			output.append("name not set for element");
 		}
 
 		if (getTag() != null) {
-			output.append(Asn1Writer.INDENT + Asn1Writer.LBRACKET + getTag() + Asn1Writer.RBRACKET + Asn1Writer.INDENT);
+			output.append(ExportWriter.INDENT + ExportWriter.LBRACKET + getTag() + ExportWriter.RBRACKET
+					+ ExportWriter.INDENT);
 		}
 
 		if (getType() != null) {
-			output.append(Asn1Writer.INDENT);
+			output.append(ExportWriter.INDENT);
 			getType().writeAsn1(indentLevel, output);
 		} else {
 			output.append("no type set for component");
 		}
 
 		if (this.optional == true) {
-			output.append(Asn1Writer.BLANK + Asn1Writer.OPTIONAL);
-		}		
+			output.append(ExportWriter.BLANK + ExportWriter.OPTIONAL);
+		}
 	}
 
 } //ElementImpl

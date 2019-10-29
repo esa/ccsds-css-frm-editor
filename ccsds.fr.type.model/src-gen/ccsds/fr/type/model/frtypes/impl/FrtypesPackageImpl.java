@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.Choice;
@@ -279,7 +279,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass asn1WriterEClass = null;
+	private EClass exportWriterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -949,8 +949,8 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAsn1Writer() {
-		return asn1WriterEClass;
+	public EClass getExportWriter() {
+		return exportWriterEClass;
 	}
 
 	/**
@@ -958,8 +958,8 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAsn1Writer__WriteAsn1__int_StringBuffer() {
-		return asn1WriterEClass.getEOperations().get(0);
+	public EOperation getExportWriter__WriteAsn1__int_StringBuffer() {
+		return exportWriterEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1174,8 +1174,8 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		nullEClass = createEClass(NULL);
 
-		asn1WriterEClass = createEClass(ASN1_WRITER);
-		createEOperation(asn1WriterEClass, ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER);
+		exportWriterEClass = createEClass(EXPORT_WRITER);
+		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER);
 
 		sizeConstrainedTypeEClass = createEClass(SIZE_CONSTRAINED_TYPE);
 		createEReference(sizeConstrainedTypeEClass, SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT);
@@ -1224,8 +1224,8 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		typeDefinitionEClass.getESuperTypes().add(this.getAsn1Writer());
-		typeEClass.getESuperTypes().add(this.getAsn1Writer());
+		typeDefinitionEClass.getESuperTypes().add(this.getExportWriter());
+		typeEClass.getESuperTypes().add(this.getExportWriter());
 		simpleTypeEClass.getESuperTypes().add(this.getType());
 		structuredTypeEClass.getESuperTypes().add(this.getType());
 		booleanEClass.getESuperTypes().add(this.getSimpleType());
@@ -1239,27 +1239,27 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		sequenceOfEClass.getESuperTypes().add(this.getStructuredSizeConstrainedType());
 		setEClass.getESuperTypes().add(this.getStructuredDifferentType());
 		setOfEClass.getESuperTypes().add(this.getStructuredSizeConstrainedType());
-		constraintEClass.getESuperTypes().add(this.getAsn1Writer());
+		constraintEClass.getESuperTypes().add(this.getExportWriter());
 		sizeConstraintEClass.getESuperTypes().add(this.getConstraint());
 		valueRangeConstraintEClass.getESuperTypes().add(this.getConstraint());
 		simpleRangeTypeEClass.getESuperTypes().add(this.getSimpleType());
 		simpleSizeConstrainedTypeEClass.getESuperTypes().add(this.getSimpleType());
 		simpleSizeConstrainedTypeEClass.getESuperTypes().add(this.getSizeConstrainedType());
-		namedValueEClass.getESuperTypes().add(this.getAsn1Writer());
+		namedValueEClass.getESuperTypes().add(this.getExportWriter());
 		structuredSizeConstrainedTypeEClass.getESuperTypes().add(this.getStructuredType());
 		structuredSizeConstrainedTypeEClass.getESuperTypes().add(this.getSizeConstrainedType());
 		choiceEClass.getESuperTypes().add(this.getStructuredDifferentType());
 		typeReferenceLocalEClass.getESuperTypes().add(this.getType());
 		singleValueConstraintEClass.getESuperTypes().add(this.getConstraint());
 		permittedAlphabetConstraintEClass.getESuperTypes().add(this.getConstraint());
-		moduleEClass.getESuperTypes().add(this.getAsn1Writer());
+		moduleEClass.getESuperTypes().add(this.getExportWriter());
 		objectIdentifierEClass.getESuperTypes().add(this.getSimpleType());
 		elementEClass.getESuperTypes().add(this.getType());
 		typeReferenceExternalEClass.getESuperTypes().add(this.getType());
 		nullEClass.getESuperTypes().add(this.getSimpleType());
-		sizeConstrainedTypeEClass.getESuperTypes().add(this.getAsn1Writer());
+		sizeConstrainedTypeEClass.getESuperTypes().add(this.getExportWriter());
 		structuredDifferentTypeEClass.getESuperTypes().add(this.getStructuredType());
-		fromModuleEClass.getESuperTypes().add(this.getAsn1Writer());
+		fromModuleEClass.getESuperTypes().add(this.getExportWriter());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(typeDefinitionEClass, TypeDefinition.class, "TypeDefinition", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1429,11 +1429,11 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		initEClass(nullEClass, Null.class, "Null", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(asn1WriterEClass, Asn1Writer.class, "Asn1Writer", IS_ABSTRACT, IS_INTERFACE,
+		initEClass(exportWriterEClass, ExportWriter.class, "ExportWriter", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = initEOperation(getAsn1Writer__WriteAsn1__int_StringBuffer(), null, "writeAsn1", 0, 1, IS_UNIQUE,
-				IS_ORDERED);
+		EOperation op = initEOperation(getExportWriter__WriteAsn1__int_StringBuffer(), null, "writeAsn1", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "indentLevel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStringBuffer(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
 

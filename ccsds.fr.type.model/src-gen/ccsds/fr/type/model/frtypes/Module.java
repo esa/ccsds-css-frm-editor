@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Module extends Asn1Writer {
+public interface Module extends ExportWriter {
 	/**
 	 * Returns the value of the '<em><b>Type Definition</b></em>' containment reference list.
 	 * The list contents are of type {@link ccsds.fr.type.model.frtypes.TypeDefinition}.

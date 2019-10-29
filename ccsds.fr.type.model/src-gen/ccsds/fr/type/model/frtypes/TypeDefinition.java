@@ -20,7 +20,7 @@ package ccsds.fr.type.model.frtypes;
  * @model
  * @generated
  */
-public interface TypeDefinition extends Asn1Writer {
+public interface TypeDefinition extends ExportWriter {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

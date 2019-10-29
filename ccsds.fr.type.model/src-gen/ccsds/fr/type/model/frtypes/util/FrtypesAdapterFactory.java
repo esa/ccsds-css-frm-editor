@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.util;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.Choice;
@@ -255,8 +255,8 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAsn1Writer(Asn1Writer object) {
-			return createAsn1WriterAdapter();
+		public Adapter caseExportWriter(ExportWriter object) {
+			return createExportWriterAdapter();
 		}
 
 		@Override
@@ -728,16 +728,16 @@ public class FrtypesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.Asn1Writer <em>Asn1 Writer</em>}'.
+	 * Creates a new adapter for an object of class '{@link ccsds.fr.type.model.frtypes.ExportWriter <em>Export Writer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see ccsds.fr.type.model.frtypes.Asn1Writer
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter
 	 * @generated
 	 */
-	public Adapter createAsn1WriterAdapter() {
+	public Adapter createExportWriterAdapter() {
 		return null;
 	}
 

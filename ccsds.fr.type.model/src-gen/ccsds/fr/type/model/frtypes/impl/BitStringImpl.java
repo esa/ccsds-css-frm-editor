@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import org.eclipse.emf.ecore.EClass;
@@ -40,7 +40,7 @@ public class BitStringImpl extends SimpleSizeConstrainedTypeImpl implements BitS
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.BIT_STRING);
+		output.append(ExportWriter.BIT_STRING);
 		super.writeAsn1(indentLevel, output); // write constraints		
 
 	}

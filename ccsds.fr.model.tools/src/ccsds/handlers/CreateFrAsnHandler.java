@@ -37,7 +37,7 @@ import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.FrUtility;
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
@@ -266,7 +266,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			if(this.typeOid != null) { 
 				typeOid.writeAsn1(indentLevel, output);
 			} else {
-				output.append(Asn1Writer.COMMENT + " no type OID available");
+				output.append(ExportWriter.COMMENT + " no type OID available");
 			}
 			
 			output.append(System.lineSeparator() + System.lineSeparator());
@@ -274,7 +274,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			if(this.definition != null) {
 				this.definition.writeAsn1(indentLevel, output);
 			} else {
-				output.append(Asn1Writer.COMMENT + " no type defintion available");
+				output.append(ExportWriter.COMMENT + " no type defintion available");
 			}
 		}
 
@@ -316,9 +316,9 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			
 			// prepend comments
 			String comment = asnComment.toString().replaceAll("\r\n", "\n"); // DOS2UNIX
-			comment = comment.replaceAll("\n", "\n" + Asn1Writer.COMMENT + Asn1Writer.BLANK);
+			comment = comment.replaceAll("\n", "\n" + ExportWriter.COMMENT + ExportWriter.BLANK);
 			
-			return Asn1Writer.COMMENT + Asn1Writer.BLANK + comment;
+			return ExportWriter.COMMENT + ExportWriter.BLANK + comment;
 		}
 		
 		/**
@@ -354,15 +354,15 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 */
 		public OidValue(String name, Oid value) {
 			this.name = name;
-			this.oidValue = Asn1Writer.LCBRACE + Asn1Writer.BLANK + value.toString().replace(".", " ") + Asn1Writer.BLANK + Asn1Writer.RCBRACE;
+			this.oidValue = ExportWriter.LCBRACE + ExportWriter.BLANK + value.toString().replace(".", " ") + ExportWriter.BLANK + ExportWriter.RCBRACE;
 		}
 		
 		@Override
 		public
 		void writeAsn1(int indentLevel, StringBuffer output) {
-			output.append(getName() + Asn1Writer.INDENT);
+			output.append(getName() + ExportWriter.INDENT);
 			super.writeAsn1(indentLevel, output); // writes OBJECT IDENTIFIER
-			output.append(Asn1Writer.BLANK + Asn1Writer.ASSIGN + Asn1Writer.BLANK + this.getOidValue());
+			output.append(ExportWriter.BLANK + ExportWriter.ASSIGN + ExportWriter.BLANK + this.getOidValue());
 		}
 
 		/**

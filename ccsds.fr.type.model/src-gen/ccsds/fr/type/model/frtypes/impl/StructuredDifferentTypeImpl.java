@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.StructuredDifferentType;
 import ccsds.fr.type.model.frtypes.Type;
@@ -157,24 +157,24 @@ public abstract class StructuredDifferentTypeImpl extends StructuredTypeImpl imp
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 
 		if (getElements().size() > 0) {
-			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.LCBRACE);
+			output.append(System.lineSeparator() + getIndent(indentLevel) + ExportWriter.LCBRACE);
 			output.append(System.lineSeparator());
 		}
 
 		int idx = 0;
 		int elementIndent = indentLevel + 1;
-		for (Type t : getElements()) {			
+		for (Type t : getElements()) {
 			t.writeAsn1(elementIndent, output);
 			idx++;
 
 			if (idx < getElements().size()) {
 				//output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.SEP);
-				output.append(System.lineSeparator() + Asn1Writer.SEP);
+				output.append(System.lineSeparator() + ExportWriter.SEP);
 			}
 		}
 
 		if (getElements().size() > 0) {
-			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.RCBRACE);
+			output.append(System.lineSeparator() + getIndent(indentLevel) + ExportWriter.RCBRACE);
 			output.append(System.lineSeparator());
 		}
 	}

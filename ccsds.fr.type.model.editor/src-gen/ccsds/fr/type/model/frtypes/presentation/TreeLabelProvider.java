@@ -9,7 +9,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 
 /**
  *  A simple wrapper of the emf class to provide tooltips for some 
@@ -28,9 +28,9 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public String getToolTipText(Object element) {		
-		if(element instanceof Asn1Writer) {
+		if(element instanceof ExportWriter) {
 			StringBuffer asn1Buffer = new StringBuffer();
-			((Asn1Writer)element).writeAsn1(0, asn1Buffer);
+			((ExportWriter)element).writeAsn1(0, asn1Buffer);
 			
 			return asn1Buffer.toString();
 		}

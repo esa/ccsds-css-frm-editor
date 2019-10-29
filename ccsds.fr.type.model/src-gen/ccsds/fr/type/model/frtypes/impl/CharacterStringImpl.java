@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.PermittedAlphabetConstraint;
@@ -264,7 +264,7 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		output.append(getType().toString());
 
 		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-			output.append(Asn1Writer.LPAREN);
+			output.append(ExportWriter.LPAREN);
 		}
 
 		super.writeAsn1(indentLevel, output); // size constraints
@@ -274,9 +274,9 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		}
 
 		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-			output.append(Asn1Writer.AND);
+			output.append(ExportWriter.AND);
 			getPermittedAlphabetConstraint().writeAsn1(indentLevel, output);
-			output.append(Asn1Writer.RPAREN);
+			output.append(ExportWriter.RPAREN);
 		}
 
 	}

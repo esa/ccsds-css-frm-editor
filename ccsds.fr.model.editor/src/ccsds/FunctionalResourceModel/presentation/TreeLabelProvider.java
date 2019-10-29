@@ -10,7 +10,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
 import ccsds.FunctionalResourceModel.Oid;
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.oids.OidTree;
 
 /**
@@ -36,9 +36,9 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		} else if(element instanceof Asn1Writer) {
+		} else if(element instanceof ExportWriter) {
 			StringBuffer asn1Buffer = new StringBuffer();
-			((Asn1Writer)element).writeAsn1(0, asn1Buffer);
+			((ExportWriter)element).writeAsn1(0, asn1Buffer);
 			
 			return asn1Buffer.toString();
 		}

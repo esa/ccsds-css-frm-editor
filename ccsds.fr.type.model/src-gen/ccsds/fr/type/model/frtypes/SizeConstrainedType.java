@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface SizeConstrainedType extends Asn1Writer {
+public interface SizeConstrainedType extends ExportWriter {
 	/**
 	 * Returns the value of the '<em><b>Size Constraint</b></em>' containment reference list.
 	 * The list contents are of type {@link ccsds.fr.type.model.frtypes.SizeConstraint}.

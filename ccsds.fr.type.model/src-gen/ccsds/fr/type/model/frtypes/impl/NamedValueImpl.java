@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.NamedValue;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
@@ -141,8 +141,8 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 	 */
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		indent(indentLevel, output);
-		output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())) + Asn1Writer.INDENT + Asn1Writer.INDENT + Asn1Writer.LPAREN
-				+ value + Asn1Writer.RPAREN);
+		output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())) + ExportWriter.INDENT
+				+ ExportWriter.INDENT + ExportWriter.LPAREN + value + ExportWriter.RPAREN);
 	}
 
 	/**

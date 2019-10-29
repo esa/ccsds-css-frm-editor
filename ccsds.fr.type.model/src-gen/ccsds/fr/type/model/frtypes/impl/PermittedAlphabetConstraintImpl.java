@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.ConstraintType;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.PermittedAlphabetConstraint;
@@ -212,13 +212,13 @@ public class PermittedAlphabetConstraintImpl extends ConstraintImpl implements P
 			return;
 		}
 
-		output.append(Asn1Writer.BLANK + Asn1Writer.FROM + Asn1Writer.LPAREN);
+		output.append(ExportWriter.BLANK + ExportWriter.FROM + ExportWriter.LPAREN);
 
 		if (getType() == ConstraintType.RANGE && getValues().size() == 2) {
-			output.append(
-					Asn1Writer.LPAREN + getValues().get(0) + Asn1Writer.UNTIL + getValues().get(1) + Asn1Writer.RPAREN);
+			output.append(ExportWriter.LPAREN + getValues().get(0) + ExportWriter.UNTIL + getValues().get(1)
+					+ ExportWriter.RPAREN);
 		} else { // OR
-			output.append(Asn1Writer.LPAREN);
+			output.append(ExportWriter.LPAREN);
 
 			int idx = 0;
 			for (String value : getValues()) {
@@ -226,14 +226,14 @@ public class PermittedAlphabetConstraintImpl extends ConstraintImpl implements P
 				idx++;
 
 				if (idx < getValues().size()) {
-					output.append(Asn1Writer.OR);
+					output.append(ExportWriter.OR);
 				}
 			}
 
-			output.append(Asn1Writer.RPAREN);
+			output.append(ExportWriter.RPAREN);
 		}
 
-		output.append(Asn1Writer.RPAREN);
+		output.append(ExportWriter.RPAREN);
 
 	}
 

@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
@@ -203,12 +203,12 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		if(this.comment != null && this.comment.length() > 0) {
+		if (this.comment != null && this.comment.length() > 0) {
 			indent(indentLevel, output);
-			output.append(Asn1Writer.COMMENT + " " + this.comment + System.lineSeparator());
+			output.append(ExportWriter.COMMENT + " " + this.comment + System.lineSeparator());
 			indent(indentLevel, output);
 		}
-		
+
 		indent(indentLevel, output);
 
 		if (getName() != null) {
@@ -217,13 +217,13 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 			output.append("no type definion name set");
 		}
 
-		output.append(Asn1Writer.INDENT + Asn1Writer.ASSIGN + Asn1Writer.BLANK);
+		output.append(ExportWriter.INDENT + ExportWriter.ASSIGN + ExportWriter.BLANK);
 
 		if (this.type != null) {
 			this.type.writeAsn1(indentLevel, output);
 		} else {
 			output.append("no type set for type definition");
-		}		
+		}
 	}
 
 	/**

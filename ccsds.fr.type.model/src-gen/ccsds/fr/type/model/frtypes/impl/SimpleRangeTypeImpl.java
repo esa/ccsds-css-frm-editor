@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SimpleRangeType;
 import ccsds.fr.type.model.frtypes.ValueRangeConstraint;
@@ -150,13 +150,13 @@ public abstract class SimpleRangeTypeImpl extends SimpleTypeImpl implements Simp
 	 */
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (numSingleValueConstraint() > 0 && getRangeConstraint() != null && getRangeConstraint().size() > 0) {
-			output.append(Asn1Writer.INDENT + Asn1Writer.LPAREN);
+			output.append(ExportWriter.INDENT + ExportWriter.LPAREN);
 		}
 
 		super.writeAsn1(0, output); // single value constraint ?
 
 		if (numSingleValueConstraint() > 0 && getRangeConstraint().size() > 0) {
-			output.append(Asn1Writer.OR);
+			output.append(ExportWriter.OR);
 		}
 
 		if (getRangeConstraint().size() > 0) {
@@ -166,13 +166,13 @@ public abstract class SimpleRangeTypeImpl extends SimpleTypeImpl implements Simp
 				idx++;
 
 				if (idx < getRangeConstraint().size()) {
-					output.append(Asn1Writer.OR);
+					output.append(ExportWriter.OR);
 				}
 			}
 		}
 
 		if (numSingleValueConstraint() > 0 && getRangeConstraint() != null && getRangeConstraint().size() > 0) {
-			output.append(Asn1Writer.RPAREN);
+			output.append(ExportWriter.RPAREN);
 		}
 	}
 

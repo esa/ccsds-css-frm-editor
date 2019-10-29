@@ -10,11 +10,11 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getAsn1Writer()
+ * @see ccsds.fr.type.model.frtypes.FrtypesPackage#getExportWriter()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface Asn1Writer extends EObject {
+public interface ExportWriter extends EObject {
 
 	/**
 	 * @generated NOT
@@ -221,7 +221,6 @@ public interface Asn1Writer extends EObject {
 	 */
 	public static final String CHOICE = "CHOICE";
 
-	
 	/**
 	 * Returns a string for the given indentation level
 	 * @generated NOT 

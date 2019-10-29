@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
@@ -129,19 +129,20 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 			return;
 		}
 
-		output.append(System.lineSeparator() + Asn1Writer.IMPORTS + Asn1Writer.INDENT);
+		output.append(System.lineSeparator() + ExportWriter.IMPORTS + ExportWriter.INDENT);
 
 		int idx = 0;
 		for (String importedType : getImportedTypes()) {
 			output.append(importedType);
 			idx++;
 			if (idx < getImportedTypes().size()) {
-				output.append(System.lineSeparator() + Asn1Writer.SEP + Asn1Writer.INDENT);
+				output.append(System.lineSeparator() + ExportWriter.SEP + ExportWriter.INDENT);
 			}
 		}
 
-		output.append(System.lineSeparator() + Asn1Writer.INDENT + Asn1Writer.FROM + Asn1Writer.BLANK + getName());
-		output.append(System.lineSeparator() + Asn1Writer.SEMI_COLON + System.lineSeparator());
+		output.append(
+				System.lineSeparator() + ExportWriter.INDENT + ExportWriter.FROM + ExportWriter.BLANK + getName());
+		output.append(System.lineSeparator() + ExportWriter.SEMI_COLON + System.lineSeparator());
 	}
 
 	/**

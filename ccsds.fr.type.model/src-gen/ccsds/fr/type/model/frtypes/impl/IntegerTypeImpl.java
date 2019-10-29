@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.IntegerType;
 import ccsds.fr.type.model.frtypes.NamedValue;
@@ -152,14 +152,14 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.INTEGER);
-		output.append(Asn1Writer.BLANK);
+		output.append(ExportWriter.INTEGER);
+		output.append(ExportWriter.BLANK);
 		super.writeAsn1(indentLevel, output); // write constraints
 
 		if (getNamedValues().size() > 0) {
 			//			output.append(System.lineSeparator());
 			//			indent(indentLevel, output);
-			output.append(System.lineSeparator() + Asn1Writer.LCBRACE + System.lineSeparator());
+			output.append(System.lineSeparator() + ExportWriter.LCBRACE + System.lineSeparator());
 
 			int idx = 0;
 			for (NamedValue v : getNamedValues()) {
@@ -170,11 +170,11 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 				output.append(System.lineSeparator());
 
 				if (idx < getNamedValues().size()) {
-					output.append(Asn1Writer.SEP);
+					output.append(ExportWriter.SEP);
 				}
 			}
 
-			output.append(Asn1Writer.RCBRACE + System.lineSeparator());
+			output.append(ExportWriter.RCBRACE + System.lineSeparator());
 
 		}
 	}

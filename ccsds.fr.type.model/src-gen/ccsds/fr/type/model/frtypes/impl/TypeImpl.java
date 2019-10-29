@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SingleValueConstraint;
 import ccsds.fr.type.model.frtypes.Type;
@@ -121,8 +121,8 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (numSingleValueConstraint() > 0) {
 
-			output.append(Asn1Writer.BLANK);
-			output.append(Asn1Writer.LPAREN);
+			output.append(ExportWriter.BLANK);
+			output.append(ExportWriter.LPAREN);
 
 			int idx = 0;
 			for (String c : getSingleValueConstraint().getValues()) {
@@ -130,11 +130,11 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
 				idx++;
 
 				if (idx < getSingleValueConstraint().getValues().size()) {
-					output.append(Asn1Writer.OR);
+					output.append(ExportWriter.OR);
 				}
 			}
 
-			output.append(Asn1Writer.RPAREN);
+			output.append(ExportWriter.RPAREN);
 		}
 	}
 

@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
 import org.eclipse.emf.common.notify.Notification;
@@ -220,13 +220,13 @@ public class SizeConstraintImpl extends ConstraintImpl implements SizeConstraint
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (getMin() != getMax()) {
-			output.append(Asn1Writer.BLANK + Asn1Writer.LPAREN + Asn1Writer.SIZE + Asn1Writer.LPAREN + " " + getMin()
-					+ Asn1Writer.UNTIL + getMax() + Asn1Writer.RPAREN + Asn1Writer.RPAREN);
+			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN + " "
+					+ getMin() + ExportWriter.UNTIL + getMax() + ExportWriter.RPAREN + ExportWriter.RPAREN);
 		} else {
-			output.append(Asn1Writer.BLANK + Asn1Writer.LPAREN + Asn1Writer.SIZE + Asn1Writer.LPAREN + " " + getMin()
-					+ Asn1Writer.RPAREN + Asn1Writer.RPAREN);
+			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN + " "
+					+ getMin() + ExportWriter.RPAREN + ExportWriter.RPAREN);
 		}
-		output.append(Asn1Writer.BLANK);
+		output.append(ExportWriter.BLANK);
 	}
 
 } //SizeConstraintImpl

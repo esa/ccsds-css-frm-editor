@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.util;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.CharacterString;
 import ccsds.fr.type.model.frtypes.Choice;
@@ -103,7 +103,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			TypeDefinition typeDefinition = (TypeDefinition) theEObject;
 			T result = caseTypeDefinition(typeDefinition);
 			if (result == null)
-				result = caseAsn1Writer(typeDefinition);
+				result = caseExportWriter(typeDefinition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -112,7 +112,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			Type type = (Type) theEObject;
 			T result = caseType(type);
 			if (result == null)
-				result = caseAsn1Writer(type);
+				result = caseExportWriter(type);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -123,7 +123,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(simpleType);
 			if (result == null)
-				result = caseAsn1Writer(simpleType);
+				result = caseExportWriter(simpleType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -134,7 +134,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(structuredType);
 			if (result == null)
-				result = caseAsn1Writer(structuredType);
+				result = caseExportWriter(structuredType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -147,7 +147,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(boolean_);
 			if (result == null)
-				result = caseAsn1Writer(boolean_);
+				result = caseExportWriter(boolean_);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -162,7 +162,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(integerType);
 			if (result == null)
-				result = caseAsn1Writer(integerType);
+				result = caseExportWriter(integerType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -179,7 +179,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(bitString);
 			if (result == null)
-				result = caseAsn1Writer(bitString);
+				result = caseExportWriter(bitString);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -196,7 +196,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(octetString);
 			if (result == null)
-				result = caseAsn1Writer(octetString);
+				result = caseExportWriter(octetString);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -211,7 +211,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(real);
 			if (result == null)
-				result = caseAsn1Writer(real);
+				result = caseExportWriter(real);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -224,7 +224,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(enumerated);
 			if (result == null)
-				result = caseAsn1Writer(enumerated);
+				result = caseExportWriter(enumerated);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -241,7 +241,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(characterString);
 			if (result == null)
-				result = caseAsn1Writer(characterString);
+				result = caseExportWriter(characterString);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -256,7 +256,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(sequence);
 			if (result == null)
-				result = caseAsn1Writer(sequence);
+				result = caseExportWriter(sequence);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -273,7 +273,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(sequenceOf);
 			if (result == null)
-				result = caseAsn1Writer(sequenceOf);
+				result = caseExportWriter(sequenceOf);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -288,7 +288,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(set);
 			if (result == null)
-				result = caseAsn1Writer(set);
+				result = caseExportWriter(set);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -305,7 +305,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(setOf);
 			if (result == null)
-				result = caseAsn1Writer(setOf);
+				result = caseExportWriter(setOf);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -314,7 +314,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			Constraint constraint = (Constraint) theEObject;
 			T result = caseConstraint(constraint);
 			if (result == null)
-				result = caseAsn1Writer(constraint);
+				result = caseExportWriter(constraint);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -325,7 +325,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseConstraint(sizeConstraint);
 			if (result == null)
-				result = caseAsn1Writer(sizeConstraint);
+				result = caseExportWriter(sizeConstraint);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -336,7 +336,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseConstraint(valueRangeConstraint);
 			if (result == null)
-				result = caseAsn1Writer(valueRangeConstraint);
+				result = caseExportWriter(valueRangeConstraint);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -349,7 +349,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(simpleRangeType);
 			if (result == null)
-				result = caseAsn1Writer(simpleRangeType);
+				result = caseExportWriter(simpleRangeType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -364,7 +364,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(simpleSizeConstrainedType);
 			if (result == null)
-				result = caseAsn1Writer(simpleSizeConstrainedType);
+				result = caseExportWriter(simpleSizeConstrainedType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -373,7 +373,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			NamedValue namedValue = (NamedValue) theEObject;
 			T result = caseNamedValue(namedValue);
 			if (result == null)
-				result = caseAsn1Writer(namedValue);
+				result = caseExportWriter(namedValue);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -388,7 +388,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(structuredSizeConstrainedType);
 			if (result == null)
-				result = caseAsn1Writer(structuredSizeConstrainedType);
+				result = caseExportWriter(structuredSizeConstrainedType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -403,7 +403,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(choice);
 			if (result == null)
-				result = caseAsn1Writer(choice);
+				result = caseExportWriter(choice);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -414,7 +414,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(typeReferenceLocal);
 			if (result == null)
-				result = caseAsn1Writer(typeReferenceLocal);
+				result = caseExportWriter(typeReferenceLocal);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -425,7 +425,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseConstraint(singleValueConstraint);
 			if (result == null)
-				result = caseAsn1Writer(singleValueConstraint);
+				result = caseExportWriter(singleValueConstraint);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -436,7 +436,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseConstraint(permittedAlphabetConstraint);
 			if (result == null)
-				result = caseAsn1Writer(permittedAlphabetConstraint);
+				result = caseExportWriter(permittedAlphabetConstraint);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -445,7 +445,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			Module module = (Module) theEObject;
 			T result = caseModule(module);
 			if (result == null)
-				result = caseAsn1Writer(module);
+				result = caseExportWriter(module);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -458,7 +458,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(objectIdentifier);
 			if (result == null)
-				result = caseAsn1Writer(objectIdentifier);
+				result = caseExportWriter(objectIdentifier);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -469,7 +469,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(element);
 			if (result == null)
-				result = caseAsn1Writer(element);
+				result = caseExportWriter(element);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -480,7 +480,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(typeReferenceExternal);
 			if (result == null)
-				result = caseAsn1Writer(typeReferenceExternal);
+				result = caseExportWriter(typeReferenceExternal);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -493,14 +493,14 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(null_);
 			if (result == null)
-				result = caseAsn1Writer(null_);
+				result = caseExportWriter(null_);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case FrtypesPackage.ASN1_WRITER: {
-			Asn1Writer asn1Writer = (Asn1Writer) theEObject;
-			T result = caseAsn1Writer(asn1Writer);
+		case FrtypesPackage.EXPORT_WRITER: {
+			ExportWriter exportWriter = (ExportWriter) theEObject;
+			T result = caseExportWriter(exportWriter);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -509,7 +509,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			SizeConstrainedType sizeConstrainedType = (SizeConstrainedType) theEObject;
 			T result = caseSizeConstrainedType(sizeConstrainedType);
 			if (result == null)
-				result = caseAsn1Writer(sizeConstrainedType);
+				result = caseExportWriter(sizeConstrainedType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -522,7 +522,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseType(structuredDifferentType);
 			if (result == null)
-				result = caseAsn1Writer(structuredDifferentType);
+				result = caseExportWriter(structuredDifferentType);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -531,7 +531,7 @@ public class FrtypesSwitch<T> extends Switch<T> {
 			FromModule fromModule = (FromModule) theEObject;
 			T result = caseFromModule(fromModule);
 			if (result == null)
-				result = caseAsn1Writer(fromModule);
+				result = caseExportWriter(fromModule);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1007,17 +1007,17 @@ public class FrtypesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Asn1 Writer</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Export Writer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Asn1 Writer</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Export Writer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAsn1Writer(Asn1Writer object) {
+	public T caseExportWriter(ExportWriter object) {
 		return null;
 	}
 

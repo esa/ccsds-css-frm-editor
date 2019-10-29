@@ -60,23 +60,23 @@ public interface FrtypesPackage extends EPackage {
 	FrtypesPackage eINSTANCE = ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.Asn1Writer <em>Asn1 Writer</em>}' class.
+	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.ExportWriter <em>Export Writer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see ccsds.fr.type.model.frtypes.Asn1Writer
-	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getAsn1Writer()
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter
+	 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getExportWriter()
 	 * @generated
 	 */
-	int ASN1_WRITER = 31;
+	int EXPORT_WRITER = 31;
 
 	/**
-	 * The number of structural features of the '<em>Asn1 Writer</em>' class.
+	 * The number of structural features of the '<em>Export Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASN1_WRITER_FEATURE_COUNT = 0;
+	int EXPORT_WRITER_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -85,16 +85,16 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER = 0;
+	int EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER = 0;
 
 	/**
-	 * The number of operations of the '<em>Asn1 Writer</em>' class.
+	 * The number of operations of the '<em>Export Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASN1_WRITER_OPERATION_COUNT = 1;
+	int EXPORT_WRITER_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl <em>Type Definition</em>}' class.
@@ -113,7 +113,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION__NAME = ASN1_WRITER_FEATURE_COUNT + 0;
+	int TYPE_DEFINITION__NAME = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -122,7 +122,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION__TYPE = ASN1_WRITER_FEATURE_COUNT + 1;
+	int TYPE_DEFINITION__TYPE = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Comment</b></em>' attribute.
@@ -131,7 +131,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION__COMMENT = ASN1_WRITER_FEATURE_COUNT + 2;
+	int TYPE_DEFINITION__COMMENT = EXPORT_WRITER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Type Definition</em>' class.
@@ -140,7 +140,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 3;
+	int TYPE_DEFINITION_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -149,7 +149,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int TYPE_DEFINITION___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Type Definition</em>' class.
@@ -158,7 +158,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int TYPE_DEFINITION_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.TypeImpl <em>Type</em>}' class.
@@ -177,7 +177,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE__SINGLE_VALUE_CONSTRAINT = ASN1_WRITER_FEATURE_COUNT + 0;
+	int TYPE__SINGLE_VALUE_CONSTRAINT = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Type</em>' class.
@@ -186,7 +186,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 1;
+	int TYPE_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -195,7 +195,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int TYPE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -204,7 +204,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int TYPE_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.SimpleTypeImpl <em>Simple Type</em>}' class.
@@ -1185,7 +1185,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 0;
+	int CONSTRAINT_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1194,7 +1194,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -1203,7 +1203,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int CONSTRAINT_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.SizeConstraintImpl <em>Size Constraint</em>}' class.
@@ -1332,7 +1332,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE__NAME = ASN1_WRITER_FEATURE_COUNT + 0;
+	int NAMED_VALUE__NAME = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1341,7 +1341,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE__VALUE = ASN1_WRITER_FEATURE_COUNT + 1;
+	int NAMED_VALUE__VALUE = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Named Value</em>' class.
@@ -1350,7 +1350,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 2;
+	int NAMED_VALUE_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1359,7 +1359,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int NAMED_VALUE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Named Value</em>' class.
@@ -1368,7 +1368,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int NAMED_VALUE_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.ChoiceImpl <em>Choice</em>}' class.
@@ -1598,7 +1598,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__TYPE_DEFINITION = ASN1_WRITER_FEATURE_COUNT + 0;
+	int MODULE__TYPE_DEFINITION = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Oid</b></em>' attribute.
@@ -1607,7 +1607,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__OID = ASN1_WRITER_FEATURE_COUNT + 1;
+	int MODULE__OID = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Exports</b></em>' attribute list.
@@ -1616,7 +1616,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__EXPORTS = ASN1_WRITER_FEATURE_COUNT + 2;
+	int MODULE__EXPORTS = EXPORT_WRITER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1625,7 +1625,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__NAME = ASN1_WRITER_FEATURE_COUNT + 3;
+	int MODULE__NAME = EXPORT_WRITER_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -1634,7 +1634,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__IMPORTS = ASN1_WRITER_FEATURE_COUNT + 4;
+	int MODULE__IMPORTS = EXPORT_WRITER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -1643,7 +1643,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 5;
+	int MODULE_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1652,7 +1652,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int MODULE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class.
@@ -1661,7 +1661,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int MODULE_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.ObjectIdentifierImpl <em>Object Identifier</em>}' class.
@@ -1918,7 +1918,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT = ASN1_WRITER_FEATURE_COUNT + 0;
+	int SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Size Constrained Type</em>' class.
@@ -1927,7 +1927,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINED_TYPE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 1;
+	int SIZE_CONSTRAINED_TYPE_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1936,7 +1936,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>Size Constrained Type</em>' class.
@@ -1945,7 +1945,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINED_TYPE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int SIZE_CONSTRAINED_TYPE_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.FromModuleImpl <em>From Module</em>}' class.
@@ -1964,7 +1964,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE__NAME = ASN1_WRITER_FEATURE_COUNT + 0;
+	int FROM_MODULE__NAME = EXPORT_WRITER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Imported Types</b></em>' attribute list.
@@ -1973,7 +1973,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE__IMPORTED_TYPES = ASN1_WRITER_FEATURE_COUNT + 1;
+	int FROM_MODULE__IMPORTED_TYPES = EXPORT_WRITER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>From Module</em>' class.
@@ -1982,7 +1982,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE_FEATURE_COUNT = ASN1_WRITER_FEATURE_COUNT + 2;
+	int FROM_MODULE_FEATURE_COUNT = EXPORT_WRITER_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -1991,7 +1991,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE___WRITE_ASN1__INT_STRINGBUFFER = ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+	int FROM_MODULE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
 	 * The number of operations of the '<em>From Module</em>' class.
@@ -2000,7 +2000,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE_OPERATION_COUNT = ASN1_WRITER_OPERATION_COUNT + 0;
+	int FROM_MODULE_OPERATION_COUNT = EXPORT_WRITER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.StringType <em>String Type</em>}' enum.
@@ -2684,24 +2684,24 @@ public interface FrtypesPackage extends EPackage {
 	EClass getNull();
 
 	/**
-	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Asn1Writer <em>Asn1 Writer</em>}'.
+	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.ExportWriter <em>Export Writer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Asn1 Writer</em>'.
-	 * @see ccsds.fr.type.model.frtypes.Asn1Writer
+	 * @return the meta object for class '<em>Export Writer</em>'.
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter
 	 * @generated
 	 */
-	EClass getAsn1Writer();
+	EClass getExportWriter();
 
 	/**
-	 * Returns the meta object for the '{@link ccsds.fr.type.model.frtypes.Asn1Writer#writeAsn1(int, java.lang.StringBuffer) <em>Write Asn1</em>}' operation.
+	 * Returns the meta object for the '{@link ccsds.fr.type.model.frtypes.ExportWriter#writeAsn1(int, java.lang.StringBuffer) <em>Write Asn1</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Write Asn1</em>' operation.
-	 * @see ccsds.fr.type.model.frtypes.Asn1Writer#writeAsn1(int, java.lang.StringBuffer)
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter#writeAsn1(int, java.lang.StringBuffer)
 	 * @generated
 	 */
-	EOperation getAsn1Writer__WriteAsn1__int_StringBuffer();
+	EOperation getExportWriter__WriteAsn1__int_StringBuffer();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}'.
@@ -3391,14 +3391,14 @@ public interface FrtypesPackage extends EPackage {
 		EClass NULL = eINSTANCE.getNull();
 
 		/**
-		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.Asn1Writer <em>Asn1 Writer</em>}' class.
+		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.ExportWriter <em>Export Writer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see ccsds.fr.type.model.frtypes.Asn1Writer
-		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getAsn1Writer()
+		 * @see ccsds.fr.type.model.frtypes.ExportWriter
+		 * @see ccsds.fr.type.model.frtypes.impl.FrtypesPackageImpl#getExportWriter()
 		 * @generated
 		 */
-		EClass ASN1_WRITER = eINSTANCE.getAsn1Writer();
+		EClass EXPORT_WRITER = eINSTANCE.getExportWriter();
 
 		/**
 		 * The meta object literal for the '<em><b>Write Asn1</b></em>' operation.
@@ -3406,7 +3406,8 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ASN1_WRITER___WRITE_ASN1__INT_STRINGBUFFER = eINSTANCE.getAsn1Writer__WriteAsn1__int_StringBuffer();
+		EOperation EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER = eINSTANCE
+				.getExportWriter__WriteAsn1__int_StringBuffer();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}' class.

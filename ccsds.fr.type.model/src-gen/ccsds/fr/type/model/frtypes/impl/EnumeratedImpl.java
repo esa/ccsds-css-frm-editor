@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.Enumerated;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.NamedValue;
@@ -151,13 +151,14 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.ENUMERATED);
+		output.append(ExportWriter.ENUMERATED);
 		super.writeAsn1(indentLevel, output); // write constraints
 
 		if (getValues().size() > 0) {
 			//			output.append(System.lineSeparator());
 			//			indent(indentLevel, output);
-			output.append(System.lineSeparator() + getIndent(indentLevel) + Asn1Writer.LCBRACE + System.lineSeparator());
+			output.append(
+					System.lineSeparator() + getIndent(indentLevel) + ExportWriter.LCBRACE + System.lineSeparator());
 
 			int idx = 0;
 			int nvIndent = indentLevel + 1;
@@ -168,12 +169,12 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 				output.append(System.lineSeparator());
 
 				if (idx < getValues().size()) {
-					output.append(getIndent(indentLevel) + Asn1Writer.SEP);
+					output.append(getIndent(indentLevel) + ExportWriter.SEP);
 					nvIndent = 1;
 				}
 			}
 
-			output.append(getIndent(indentLevel) + Asn1Writer.RCBRACE + System.lineSeparator());
+			output.append(getIndent(indentLevel) + ExportWriter.RCBRACE + System.lineSeparator());
 
 		}
 	}

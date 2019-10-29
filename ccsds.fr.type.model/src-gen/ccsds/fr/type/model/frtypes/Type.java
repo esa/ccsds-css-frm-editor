@@ -18,7 +18,7 @@ package ccsds.fr.type.model.frtypes;
  * @model abstract="true"
  * @generated
  */
-public interface Type extends Asn1Writer {
+public interface Type extends ExportWriter {
 
 	/**
 	 * Returns the value of the '<em><b>Single Value Constraint</b></em>' containment reference.

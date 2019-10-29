@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.frtypes.Asn1Writer;
+import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import org.eclipse.emf.ecore.EClass;
@@ -40,7 +40,7 @@ public class ObjectIdentifierImpl extends SimpleTypeImpl implements ObjectIdenti
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
-		output.append(Asn1Writer.OBJECT_IDENTIFIER);
+		output.append(ExportWriter.OBJECT_IDENTIFIER);
 		super.writeAsn1(indentLevel, output); // write constraints
 	}
 
