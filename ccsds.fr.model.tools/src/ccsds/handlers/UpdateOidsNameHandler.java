@@ -90,11 +90,18 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			CompoundCommand setAll = new MyCompoundCommand();
 			updateFrmOids(frm, editor.getEditingDomain(), setAll);
 			updateShortNames(frm, editor.getEditingDomain(), setAll);
+
+			if(setAll.isEmpty() == false){
+				// There are two issues with the command:
+				// 1) after applying all items in the tree are selected and all nodes are expanded
+				// 2) undo is extremely slow if all items are selected and the tree is expanded
+				editor.getEditingDomain().getCommandStack().execute(setAll);
+			} else {
+				Activator.getDefault().getLog().log(
+						new Status(Status.INFO, Activator.PLUGIN_ID, "No OID or name updates found for " + 
+				editor.getEditorInput().getName()));
+			}
 			
-			// There are two issues with the command:
-			// 1) after applying all items in the tree are selected and all nodes are expanded
-			// 2) undo is extremely slow if all items are selected and the tree is expanded
-			editor.getEditingDomain().getCommandStack().execute(setAll);			
 		}
 		
 		return null;
@@ -207,7 +214,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 				
 				Activator.getDefault().getLog().log(
 						new Status(Status.INFO, Activator.PLUGIN_ID, "Update OID offset of FR Set " + frs.getName()
-						+ " from " + frs.getOidOffset() + " to " + frs.getOidOffset()));
+						+ " from " + frs.getOidOffset() + " to " + oidOffset));
 				
 				oidOffset += OID_OFFSET_STEP;		
 				setAll.append(setCmd);												
@@ -445,7 +452,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 				Activator.getDefault().getLog()
 						.log(new Status(Status.INFO, Activator.PLUGIN_ID,
 								"Upated " + oidType + " for " + type + " " + parentName + " / " + mElement.getStringIdentifier()
-										+ " from " + OidItemProvider.getOidStr(mElement.getOid()) + " to "
+										+ " from " + OidItemProvider.getOidStr(currentOid) + " to "
 										+ OidItemProvider.getOidStr(newOidValue)));
 				return true;
 	
