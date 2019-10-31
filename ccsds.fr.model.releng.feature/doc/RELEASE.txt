@@ -1,4 +1,4 @@
-Version 4.1.7 from TBD
+Version 4.1.7 from 31.10.2019
 - Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
 - ASN.1 generation: remove _, /, an\ from names
 - ASN.1 generation: Add tags to choices to avoid ambiguity
