@@ -1,3 +1,6 @@
+Version 4.1.8 from 5.11.2019
+- Increased ccsds.fr.model.editor manifest version to support correct installation on top of older versions 
+
 Version 4.1.7 from 31.10.2019
 - Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
 - ASN.1 generation: remove _, /, an\ from names
