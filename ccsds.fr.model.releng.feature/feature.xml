@@ -8,45 +8,65 @@
 
    <description url="http://www.esa.int/ESA">
       CCSDS Functional Resource Model Editor
+Version 4.1.8 from 5.11.2019
+- Increased ccsds.fr.model.editor manifest version to support correct installation on top of older versions 
 
+Version 4.1.7 from 31.10.2019
+- Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
+- ASN.1 generation: remove _, /, an\ from names
+- ASN.1 generation: Add tags to choices to avoid ambiguity
+- ASN.1 generation suppress element names for children of SET OF if the elements have a type specification (jASN.1 limitation)
+- OID offset for FR Sets
+
+Version 4.1.6 from 10.9.2019
+- When generating ASN.1, update the type definition field unconditionally, i.e. overwrite what&apos;s there
+
+Version 4.1.5 from 6.9.2019
+- Corrected the order of shown Parameter, Directives and Events for an FR. Now they are shown in PED order.
+
+Version 4.1.4 from 5.9.2019
+- Corrected setting the Type Definition from the generated ASN.1 for empty Type Definitions
+
+Version 4.1.3 from 19.8.2019
+- Corrected missing single value constraints for local type reference
+- added comment field for element definition and type definition
+
+Version 4.1.2 from TBD
+- Corrected pre-setting the TypeDefinition name for FRM files opened at eclipse start 
+- Adding of SAPs and Ancillary Interfaces corrected for Functional Resources for the Tree Editor 
+
+Version 4.1.1 from November 2018
+- Changed Range Constraints to accept Strings as min / max to support something like (1E-5 .. 1E-4)
+- Preset the new Named Value children of Enums with the next number
+- Preset the name of new TypeDefinitions with the classifier of the parent with a capitalised first letter
 Version 4.1.0 from October 2018
 - added type OID for P/E/D, Event/Values and Directive/Qualifiers
 - added type model and FRM ASN.1 type module generation 
-
-
 Version 4.0.0 from 09.05.2018
 - Added support for Functional Resource Sets, Service Access
 Points and Ancillary Interfaces.
 - Graphical support for the above features has been added, including
 a detailed FR diagram for documentation purposes.
-
 Version 3.0.7 from 08.11.2017
 - Edit OIDs in a simple text field.
-
 Version 3.0.6 from 01.11.2016
 - Added search for functional resource tree. Use a simplified
 regular expression syntax for search, e.g. *Cfdp
-
 Version 3.0.5 from 09.03.2016
 - remove the version OID bit for FRs
-
 Version 3.0.4 from 03.03.2016
 - optional OID for all FRM elements
-
 Version 3.0.3 from 16.02.2016
 - Classifier is now mandatory, String Identifier optional
 - the Classifier is used as label in the navigation tree
 - the Classifier is used in the model transformation
-
 Version 3.0.2 from 02.02.2016
 Changed Directives to have a Qualifier
 Changed Events to have 0..* Values
 name -&gt; String Identifier
 outstanding: uses -&gt; data flow
-
 Version 3.0.1 from 16.11.2015
 - removed the monitored attribute from Parameter
-
 Version 3.0.0 from 13.11.2015
 - added 0..1 Qualifier for Directives and Events
 - 0..1 Guard Condition for Directives and Configured Parameters
