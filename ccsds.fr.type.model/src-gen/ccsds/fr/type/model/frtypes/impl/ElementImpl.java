@@ -5,6 +5,7 @@ package ccsds.fr.type.model.frtypes.impl;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.SequenceOf;
 import ccsds.fr.type.model.frtypes.SetOf;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
@@ -424,9 +425,10 @@ public class ElementImpl extends TypeImpl implements Element {
 	 */
 	private boolean suppressElementName() {
 		try {
-			if (eContainer() instanceof SetOf && getType() != null) {
+			if ( (eContainer() instanceof SetOf || eContainer() instanceof SequenceOf ) && getType() != null) {
 				FrTypesUtil
-						.log("ASN.1 generation: Suppress element name generation for " + getName() + " below SET OF ");
+						.log("ASN.1 generation: Suppress element name generation for " + getName() + " below " +
+				eContainer().eClass().getName());
 				return true;
 			}
 		} catch (Exception e) {
@@ -443,8 +445,9 @@ public class ElementImpl extends TypeImpl implements Element {
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (this.comment != null && this.comment.length() > 0) {
+			output.append(System.lineSeparator());
 			indent(indentLevel, output);
-			output.append(ExportWriter.COMMENT + " " + this.comment + System.lineSeparator());
+			output.append(FrTypesUtil.createAsnComment(this.comment, indentLevel) + System.lineSeparator());
 			//indent(indentLevel, output);
 		}
 

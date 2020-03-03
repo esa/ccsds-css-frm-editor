@@ -12,6 +12,8 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import ccsds.fr.type.model.frtypes.ExportWriter;
+
 /**
  * Collection of utility functions for the FR Type Model
  * 
@@ -102,4 +104,54 @@ public class FrTypesUtil {
 		
 		return validName.toString();
 	}
+	
+	/**
+	 * Create a comment string which has the ASN.1 comment -- prepended for each line.
+	 * In addition the comment is broken down into lines of length 80.
+	 * @param commentString
+	 * @param indentLevel 	The level of indentation when the comment has line breaks
+	 * @return the ASN.1 comment string
+	 */
+	public static String createAsnComment(String commentString, int indentlevel) {
+		if(commentString == null) {
+			return null;
+		}
+		String indent = new String();
+		for(int idx=0; idx<indentlevel; idx++) {
+			indent += ExportWriter.INDENT;
+		}
+		
+		StringBuffer asnComment = new StringBuffer();
+		
+		// break in several lines
+		final int lineLength = 80;
+		int idx = 0;
+		while(idx < commentString.length() && commentString.length() > 0) {
+			int endIndex = idx + lineLength;
+											
+			if(endIndex >= commentString.length()) {
+				endIndex = commentString.length();
+			} else {
+				endIndex = commentString.indexOf(" ", endIndex); // break the line at the next blank
+				if(endIndex == -1 && commentString.length() > 0) {
+					endIndex = commentString.length();
+				}
+			}
+			
+			asnComment.append(commentString.substring(idx, endIndex));
+			
+			if(endIndex != commentString.length()) {
+				asnComment.append(System.lineSeparator());
+			}
+			idx = endIndex;
+		}
+		
+		// prepend comments
+		String comment = asnComment.toString().replace("\r\n", "\n"); // DOS2UNIX
+		comment = comment.replace("\r", "\n"); // MAC
+		comment = comment.replace("\n", "\n" + indent + ExportWriter.COMMENT + ExportWriter.BLANK); // UNIX
+		
+		
+		return ExportWriter.COMMENT + ExportWriter.BLANK + comment;
+	}	
 }

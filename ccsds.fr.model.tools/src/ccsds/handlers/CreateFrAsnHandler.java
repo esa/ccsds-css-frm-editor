@@ -51,6 +51,13 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  */
 public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 
+	private static final String VALUE = "Value";
+	private static final String QUALIFIER = "Qualifier";
+	private static final String EVENT = "Event";
+	private static final String DIRECTIVE = "Directive";
+	private static final String PARAM = "Param";
+	private static final String FR = "Fr";
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		final IEditorPart ep = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -92,6 +99,9 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		List<String> exports = new LinkedList<String>();
 		
 		for(FunctionalResource fr : functionalResources) {
+			// add an OID for the RF itslef
+			module.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), fr.getSemanticDefinition(), exports));
+			
 			addParamTypesAndOids(module, fr.getParameter(), exports, cmdUpdateTypeDefinition, editingDomain);
 			addEventTypesAndOids(module, fr.getEvent(), exports, cmdUpdateTypeDefinition, editingDomain);
 			addDirectiveTypesAndOids(module, fr.getDirectives(), exports, cmdUpdateTypeDefinition, editingDomain);
@@ -139,7 +149,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
-				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
+				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier() + PARAM, param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
@@ -154,9 +164,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addDirectiveTypesAndOids(Module module, EList<Directive> frmDirectives, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Directive directive : frmDirectives) {
+			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier() + DIRECTIVE, null, directive.getOid(), directive.getSemanticDefinition(), exports));
 			for(Qualifier qualifier : directive.getQualifier()) {
 				if(qualifier.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier() + QUALIFIER, qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(qualifier, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -172,9 +183,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addEventTypesAndOids(Module module, EList<Event> frmEvents, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Event event : frmEvents) {
+			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier() + EVENT, null, event.getOid(), event.getSemanticDefinition(), exports));
 			for(Value value : event.getValue()) {
 				if(value.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier() + VALUE, value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(value, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -219,6 +231,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	class TypeDefinitionProxy extends TypeDefinitionImpl {
 
 		private static final String TYPE_SUFFIX = "Type";
+		private static final String OID_SUFFIX = "Oid";
 		private final TypeDefinition definition;
 		private final String comment;
 		private final OidValue typeOid;
@@ -230,15 +243,28 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 * @param comment
 		 */
 		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String comment, List<String> exports) {
-			this.definition = EcoreUtil.copy(def);
-			
-			if(this.definition.getName() == null || this.definition.getName().length() == 0) {
-				this.definition.setName(createTypeName(typeName, true));
+			if(def != null) {
+				this.definition = EcoreUtil.copy(def);
+				
+				// #hd# always use the given type name to be consistent with the OID name
+				//if(this.definition.getName() == null || this.definition.getName().length() == 0) {
+					this.definition.setName(createTypeName(typeName, true, TYPE_SUFFIX));
+				//}
+				if(exports.contains(this.definition.getName()) == true) {
+					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Duplicated type definition " + this.definition.getName()));
+				}
+				exports.add(this.definition.getName());
+			} else {
+				this.definition = null;
 			}
-			exports.add(this.definition.getName());
 			
 			if(typeOid != null) {
-				this.typeOid = new OidValue(createTypeName(typeName, false), typeOid);
+				this.typeOid = new OidValue(createTypeName(typeName, false, OID_SUFFIX), typeOid);
+
+				if(exports.contains(this.typeOid.getName()) == true) {
+					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Duplicated type OID definition " + this.typeOid.getName()));
+				}	
+				
 				exports.add(this.typeOid.getName());
 				
 			} else {
@@ -248,7 +274,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			
 			
 			if(comment != null) {
-				this.comment = createAsnComment(comment);
+				this.comment = FrTypesUtil.createAsnComment(comment, 0);
 			} else {
 				this.comment = null;
 			}
@@ -274,69 +300,27 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			if(this.definition != null) {
 				this.definition.writeAsn1(indentLevel, output);
 			} else {
-				output.append(ExportWriter.COMMENT + " no type defintion available");
+				//output.append(ExportWriter.COMMENT + " no type definition available" );
 			}
 		}
 
 		/**
-		 * Create a comment string which has the ASN.1 comment -- prepended for each line.
-		 * In addition the comment is broken down into lines of length 80.
-		 * @param commentString
-		 * @return the ASN.1 comment string
-		 */
-		private String createAsnComment(String commentString) {
-			if(commentString == null) {
-				return null;
-			}
-			
-			StringBuffer asnComment = new StringBuffer();
-			
-			// break in several lines
-			final int lineLength = 80;
-			int idx = 0;
-			while(idx < commentString.length() && commentString.length() > 0) {
-				int endIndex = idx + lineLength;
-												
-				if(endIndex >= commentString.length()) {
-					endIndex = commentString.length();
-				} else {
-					endIndex = commentString.indexOf(" ", endIndex); // break the line at the next blank
-					if(endIndex == -1 && commentString.length() > 0) {
-						endIndex = commentString.length();
-					}
-				}
-				
-				asnComment.append(commentString.substring(idx, endIndex));
-				
-				if(endIndex != commentString.length()) {
-					asnComment.append(System.lineSeparator());
-				}
-				idx = endIndex;
-			}
-			
-			// prepend comments
-			String comment = asnComment.toString().replaceAll("\r\n", "\n"); // DOS2UNIX
-			comment = comment.replaceAll("\n", "\n" + ExportWriter.COMMENT + ExportWriter.BLANK);
-			
-			return ExportWriter.COMMENT + ExportWriter.BLANK + comment;
-		}
-		
-		/**
 		 * Returns a constructed type name for the given FRM name.
 		 * @param frmTypeName		The FRM type name
 		 * @param startUpperCase	If true, the first character is converted to upper case
+		 * @param suffix			The appended suffix
 		 * @return
 		 */
-		private String createTypeName(String frmTypeName, boolean startUpperCase) {
+		private String createTypeName(String frmTypeName, boolean startUpperCase, String suffix) {
 			if(frmTypeName == null) {
 				return "type name not set";
 			}
 			
 			if(startUpperCase == true && frmTypeName.length() > 1) {
-				return frmTypeName.substring(0, 1).toUpperCase() + frmTypeName.substring(1)  + TYPE_SUFFIX; 
+				return frmTypeName.substring(0, 1).toUpperCase() + frmTypeName.substring(1)  + suffix; 
 			}
 			
-			return frmTypeName + TYPE_SUFFIX;
+			return frmTypeName + suffix;
 		}		
 	}
 	

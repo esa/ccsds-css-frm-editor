@@ -6,6 +6,7 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
+import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
@@ -205,7 +206,7 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (this.comment != null && this.comment.length() > 0) {
 			indent(indentLevel, output);
-			output.append(ExportWriter.COMMENT + " " + this.comment + System.lineSeparator());
+			output.append(FrTypesUtil.createAsnComment(this.comment, indentLevel) + System.lineSeparator());
 			indent(indentLevel, output);
 		}
 

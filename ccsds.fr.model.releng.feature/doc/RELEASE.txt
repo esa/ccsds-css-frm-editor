@@ -1,3 +1,6 @@
+Version 4.1.9 from TBD
+- Corrected ASN.1 generation of Permitted Alphabet constraint
+
 Version 4.1.8 from 5.11.2019
 - Increased ccsds.fr.model.editor manifest version to support correct installation on top of older versions 
 
@@ -5,7 +8,7 @@ Version 4.1.7 from 31.10.2019
 - Generate single value constraints from SimpleSizeConstrainedType (e.g. OctetString) 
 - ASN.1 generation: remove _, /, an\ from names
 - ASN.1 generation: Add tags to choices to avoid ambiguity
-- ASN.1 generation suppress element names for children of SET OF if the elements have a type specification (jASN.1 limitation)
+- ASN.1 generation suppresses element names for children of SET OF if the elements have a type specification (jASN.1 limitation)
 - OID offset for FR Sets
 
 Version 4.1.6 from 10.9.2019

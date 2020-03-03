@@ -212,7 +212,7 @@ public class PermittedAlphabetConstraintImpl extends ConstraintImpl implements P
 			return;
 		}
 
-		output.append(ExportWriter.BLANK + ExportWriter.FROM + ExportWriter.LPAREN);
+		output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.FROM + ExportWriter.BLANK);
 
 		if (getType() == ConstraintType.RANGE && getValues().size() == 2) {
 			output.append(ExportWriter.LPAREN + getValues().get(0) + ExportWriter.UNTIL + getValues().get(1)
