@@ -263,9 +263,9 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		output.append(getType().toString());
 
-		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-			output.append(ExportWriter.LPAREN);
-		}
+//		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
+//			output.append(ExportWriter.LPAREN);
+//		}
 
 		super.writeAsn1(indentLevel, output); // size constraints
 
@@ -274,9 +274,10 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		}
 
 		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-			output.append(ExportWriter.AND);
+			//output.append(ExportWriter.AND);
+			output.append(ExportWriter.BLANK);
 			getPermittedAlphabetConstraint().writeAsn1(indentLevel, output);
-			output.append(ExportWriter.RPAREN);
+			//output.append(ExportWriter.RPAREN);
 		}
 
 	}
