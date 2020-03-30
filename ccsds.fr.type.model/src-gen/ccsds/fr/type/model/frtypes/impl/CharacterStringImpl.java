@@ -264,21 +264,19 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		output.append(getType().toString());
 
 //		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-//			output.append(ExportWriter.LPAREN);
+//			output.append(ExportWriter.BLANK + ExportWriter.LPAREN);
 //		}
 
+
+		if (getPermittedAlphabetConstraint() != null) {
+			getPermittedAlphabetConstraint().writeAsn1(indentLevel, output);
+		}
+
 		super.writeAsn1(indentLevel, output); // size constraints
-
-		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() == 0) {
-			getPermittedAlphabetConstraint().writeAsn1(indentLevel, output);
-		}
-
-		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
-			//output.append(ExportWriter.AND);
-			output.append(ExportWriter.BLANK);
-			getPermittedAlphabetConstraint().writeAsn1(indentLevel, output);
-			//output.append(ExportWriter.RPAREN);
-		}
-
+		
+//		if (getPermittedAlphabetConstraint() != null && getSizeConstraint().size() > 0) {
+//			output.append(ExportWriter.RPAREN);
+//		}
+		
 	}
 } //CharacterStringImpl

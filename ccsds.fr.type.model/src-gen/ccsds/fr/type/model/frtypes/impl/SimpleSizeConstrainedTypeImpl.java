@@ -191,10 +191,10 @@ public abstract class SimpleSizeConstrainedTypeImpl extends SimpleTypeImpl imple
 	 */
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
+		super.writeAsn1(indentLevel, output); // enable single value constraints
 		for (SizeConstraint c : getSizeConstraint()) {
 			c.writeAsn1(indentLevel, output);
 		}
-		super.writeAsn1(indentLevel, output); // enable single value constraints
 	}
 
 } //SimpleSizeConstrainedTypeImpl

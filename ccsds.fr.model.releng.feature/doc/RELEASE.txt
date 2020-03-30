@@ -1,4 +1,4 @@
-Version 4.1.9 from TBD
+Version 4.1.9 from 30.03.2020
 - Corrected ASN.1 generation of Permitted Alphabet constraint
 
 Version 4.1.8 from 5.11.2019
