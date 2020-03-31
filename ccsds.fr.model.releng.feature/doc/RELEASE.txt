@@ -1,5 +1,5 @@
 Version 4.1.10 from 31.03.2020
-- removed ValueType suffix in ASN.1 in order not to break types declatred in FR generla module.
+- Removed ValueType suffix in ASN.1 in order not to break types declared in FR general module.
 
 Version 4.1.9 from 30.03.2020
 - Corrected ASN.1 generation of Permitted Alphabet constraint
