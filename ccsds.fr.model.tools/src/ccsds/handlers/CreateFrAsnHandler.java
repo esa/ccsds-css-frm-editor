@@ -149,7 +149,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
-				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier() + PARAM, param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
+				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
@@ -164,10 +164,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addDirectiveTypesAndOids(Module module, EList<Directive> frmDirectives, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Directive directive : frmDirectives) {
-			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier() + DIRECTIVE, null, directive.getOid(), directive.getSemanticDefinition(), exports));
+			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier(), null, directive.getOid(), directive.getSemanticDefinition(), exports));
 			for(Qualifier qualifier : directive.getQualifier()) {
 				if(qualifier.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier() + QUALIFIER, qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(qualifier, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -183,10 +183,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addEventTypesAndOids(Module module, EList<Event> frmEvents, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Event event : frmEvents) {
-			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier() + EVENT, null, event.getOid(), event.getSemanticDefinition(), exports));
+			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier(), null, event.getOid(), event.getSemanticDefinition(), exports));
 			for(Value value : event.getValue()) {
 				if(value.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier() + VALUE, value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(value, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -230,7 +230,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	class TypeDefinitionProxy extends TypeDefinitionImpl {
 
-		private static final String TYPE_SUFFIX = "Type";
+		//private static final String TYPE_SUFFIX = "Type";
 		private static final String OID_SUFFIX = "Oid";
 		private final TypeDefinition definition;
 		private final String comment;
@@ -248,7 +248,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				
 				// #hd# always use the given type name to be consistent with the OID name
 				//if(this.definition.getName() == null || this.definition.getName().length() == 0) {
-					this.definition.setName(createTypeName(typeName, true, TYPE_SUFFIX));
+					this.definition.setName(createTypeName(typeName, true));
 				//}
 				if(exports.contains(this.definition.getName()) == true) {
 					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Duplicated type definition " + this.definition.getName()));
@@ -303,7 +303,17 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				//output.append(ExportWriter.COMMENT + " no type definition available" );
 			}
 		}
-
+		
+		/**
+		 * Returns a constructed type name for the given FRM name.
+		 * @param frmTypeName		The FRM type name
+		 * @param startUpperCase	If true, the first character is converted to upper case		 
+		 * @return
+		 */
+		private String createTypeName(String frmTypeName, boolean startUpperCase) {
+			return createTypeName(frmTypeName, startUpperCase, "");
+		}
+		
 		/**
 		 * Returns a constructed type name for the given FRM name.
 		 * @param frmTypeName		The FRM type name
