@@ -12,6 +12,7 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import ccsds.fr.type.model.Asn1GenContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 
 /**
@@ -32,6 +33,15 @@ public class FrTypesUtil {
 	public static void log(String msg) {
 		LOGGER.log(new Status(Status.INFO, BUNDLE.getSymbolicName(), msg));
 	}
+	
+	/**
+	 * warning to the eclipse platform
+	 * @param msg
+	 */
+	public static void warn(String msg) {
+		LOGGER.log(new Status(Status.WARNING, BUNDLE.getSymbolicName(), msg));
+	}
+	
 	
 	/**
 	 * Get the editing domain for the given EObject
@@ -72,13 +82,30 @@ public class FrTypesUtil {
 	 * 2) remove invalid characters from the given typeName
 	 * 
 	 * @param typeName	The type name to be made valid
+	 * @param logChange	If true, changed names are sent to the logger
 	 * 
 	 * @return The validated type name
 	 */
-	static public String getValidElementName(String typeName) {
+	static public String getValidElementName(String typeName, boolean logChange) {
 		if(typeName == null) {
 			return null;
 		}
+		String orgTypeName = typeName;
+		
+		typeName = typeName.replace("/", "Over");
+		typeName = typeName.replace(".", "Dot");
+		typeName = typeName.replace("_", "-");
+//		typeName = typeName.replace("1", "One");
+//		typeName = typeName.replace("2", "Two");
+//		typeName = typeName.replace("3", "Three");
+//		typeName = typeName.replace("4", "Four");
+//		typeName = typeName.replace("5", "Five");
+//		typeName = typeName.replace("6", "Six");
+//		typeName = typeName.replace("7", "Seven");
+//		typeName = typeName.replace("8", "Eight");
+//		typeName = typeName.replace("9", "Nine");
+//		typeName = typeName.replace("0", "Zero");		
+		
 		
 		StringBuilder validName = new StringBuilder(typeName);		
 		
@@ -98,8 +125,9 @@ public class FrTypesUtil {
 			validName.setCharAt(0, Character.toLowerCase(validName.charAt(0)));
 		}
 		
-		if(validName.toString().equals(typeName) == false) {
-			FrTypesUtil.log("ASN.1 generation: Changed " + typeName + " to " + validName);
+		if(logChange == true && Asn1GenContext.instance().getGenerating() == true && 
+				validName.toString().equals(orgTypeName) == false) {
+			FrTypesUtil.log("ASN.1 generation: Changed " + orgTypeName + " to " + validName);
 		}
 		
 		return validName.toString();

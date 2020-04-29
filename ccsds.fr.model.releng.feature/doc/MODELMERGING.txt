@@ -1,0 +1,38 @@
+Recipe tested with -JP-T1Plus-2020-03-17:
+1) Order the types in the general module of the two FRM files to have the same common order as far as possible (at the beginning)
+Insert in the source dummy type until all types of the source FRM, but not in the target FRM, get a 'new' index, i.e. the last target type index + 1.
+
+2) Copy with drag and drop the types from the target to the source FRM
+
+3) Load the source FRM in the target FRM (context menu 'Load Resource')
+
+4) drag and drop the FR Sets of the source FRM tot he target FRM
+
+Do the search and replace as described below to correct the type refernces from the source FRM file to the target FRM file.
+
+If SAP references need to be updated (still point to the source FRM), it is suggested to add all FR sets from the source to the target 
+at index 1 and replace similar like below the references for types.
+
+
+Problem: When dragging FRs form one FRM file to another, local references will become a reference to the source FRM file in the target FRM file.
+
+Wrong:
+          <type xsi:type="frtypes:TypeReferenceLocal">
+            <typeDefinition href="functionalResources-JP-T1Plus-2020-03-17-HD.frm#//@asnTypeModule/@typeDefinition.0"/>
+          </type>
+          
+Correct:
+		
+		<type xsi:type="frtypes:TypeReferenceLocal" typeDefinition="//@asnTypeModule/@typeDefinition.0"/>          
+
+Solution: Search and Replace with eclipse regular expression search in the FRM XML file:
+
+Type references:
+
+Search:
+>\R[\s]*<typeDefinition href="[\S]*\.frm#//@asnTypeModule/@typeDefinition.(\d+)*"/>\R[\s]*</type>
+
+Replace with, attention, a space at the beginning:
+ typeDefinition="//@asnTypeModule/@typeDefinition.$1"/>
+ 
+ 

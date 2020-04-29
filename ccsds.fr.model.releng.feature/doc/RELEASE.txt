@@ -1,3 +1,9 @@
+Version 4.1.11 from 29.04.2020
+- ASN.1 name generation changes '_' to '-' and . to Dot for names
+- When an FR is dragged from one FRM file to another, the type references are updated
+  to the ASN.1 module of the target FRM file. The matching of type definitions is done by name
+
+
 Version 4.1.10 from 31.03.2020
 - Removed ValueType suffix in ASN.1 in order not to break types declared in FR general module.
 
