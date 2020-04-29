@@ -222,8 +222,10 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 
 		if (this.type != null) {
 			this.type.writeAsn1(indentLevel, output);
+		} else if(getName() != null) {
+			output.append("no-type-set-for-type-definition-" + getName());
 		} else {
-			output.append("no type set for type definition");
+			output.append("no-type-set-for-type-definition");
 		}
 	}
 

@@ -254,7 +254,7 @@
             commandId="fr.find"
             contextId="ccsds.fr.model.tools.context.fr"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+ W">
+            sequence="M1+W">
       </key>
    </extension>
    <extension

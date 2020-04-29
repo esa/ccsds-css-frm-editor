@@ -3,6 +3,7 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.type.model.Asn1GenContext;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SequenceOf;
@@ -456,7 +457,12 @@ public class ElementImpl extends TypeImpl implements Element {
 		indent(indentLevel, output);
 
 		if (this.getName() != null && suppressElementName() == false) {
-			output.append(String.format("%1$-20s", FrTypesUtil.getValidElementName(getName())));
+			String validName = FrTypesUtil.getValidElementName(getName(), Asn1GenContext.instance().getGenerating());
+			if(validName.equals(getName()) == false) {
+				Asn1GenContext.instance().updateElementName(this, validName);
+			}
+			
+			output.append(String.format("%1$-20s", validName));
 		} else if (suppressElementName() == false) {
 			output.append("name not set for element");
 		}
@@ -469,8 +475,10 @@ public class ElementImpl extends TypeImpl implements Element {
 		if (getType() != null) {
 			output.append(ExportWriter.INDENT);
 			getType().writeAsn1(indentLevel, output);
+		} else if(getName() != null) {
+			output.append("error no-type-set-for-component-" + getName());
 		} else {
-			output.append("no type set for component");
+			output.append("error no-type-set-for-component");
 		}
 
 		if (this.optional == true) {

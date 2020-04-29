@@ -72,6 +72,60 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 		return typeDefinition;
 	}
 
+//	/**
+//	 * To support drag and drop of TypeDefinitions between FRM files,
+//	 * we try first to resolve the this.typeDefinition within the module
+//	 * of this FRM file 
+//	 * @generated NOT
+//	 */
+//	@Override
+//	public EObject eResolveProxy(InternalEObject proxy) {
+//
+//		// try to resolve types from foreign modules within the module of this file
+//		// we do not want references to another FRM file
+//		try {
+//			if (proxy != null && proxy.eIsProxy()) {
+//				
+//				TypeDefinition proxiedDefinition = (TypeDefinition) super.eResolveProxy(proxy);		// resolve to get the name etc.
+//				
+//				EObject obj = null;
+//				EObject container = this.eContainer();
+//				while(container != null && container.eClass() != null) {
+//					if(container.eContainer() == null /*FRM*/) { 
+//						//Object obj = container.eGet(container.eClass().getEStructuralFeature(FrtypesPackage.MODULE));
+//						TreeIterator<EObject> contentIter = container.eAllContents();
+//						while(contentIter.hasNext()) {
+//							obj = contentIter.next();
+//							if(obj instanceof Module) {
+//								System.out.println("Found module of this FRM");
+//								Module generalModule = (Module)obj;
+//								int idx = 0;
+//								for(TypeDefinition td : generalModule.getTypeDefinition()) {
+//									//System.out.println("Compare " + td.getName() + " with " + typeDefinition.getName());
+//									if(td != null && td.getName().equals(proxiedDefinition.getName())) {
+//										String proxyUri = "?";
+//										if(proxy.eProxyURI() != null) {
+//											proxyUri = proxy.eProxyURI().toString();
+//										}
+//										
+//										System.out.println("Replace type proxied (" + proxyUri
+//												+ ") definition reference " + td.getName() + " with local one at index " + idx);
+//										return td;
+//									}
+//									idx++;
+//								}
+//							}
+//						}
+//					}
+//					container = container.eContainer();					
+//				}
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return super.eResolveProxy(proxy);
+//	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,7 +141,7 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 	 * @generated
 	 */
 	public void setTypeDefinition(TypeDefinition newTypeDefinition) {
-		TypeDefinition oldTypeDefinition = typeDefinition;
+		TypeDefinition oldTypeDefinition = typeDefinition;		
 		typeDefinition = newTypeDefinition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.TYPE_REFERENCE_LOCAL__TYPE_DEFINITION,

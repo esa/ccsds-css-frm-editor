@@ -3,8 +3,10 @@ package ccsds.handlers;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -23,7 +25,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
@@ -37,6 +38,7 @@ import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.FrUtility;
+import ccsds.fr.type.model.Asn1GenContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.Module;
@@ -56,7 +58,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	private static final String EVENT = "Event";
 	private static final String DIRECTIVE = "Directive";
 	private static final String PARAM = "Param";
-	private static final String FR = "Fr";
+	private static final String FR = "Fr";	
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -80,8 +82,21 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			}
 						
 			CompoundCommand setTypeDefinitions = new MyCompoundCommand();
-			createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), setTypeDefinitions, editor.getEditingDomain());
-			editor.getEditingDomain().getCommandStack().execute(setTypeDefinitions);
+
+			Asn1GenContext.instance().setGeneration(true);
+			Asn1GenContext.instance().setEditingDomain(editor.getEditingDomain());
+			Asn1GenContext.instance().setCompoundCommand(setTypeDefinitions);
+			try {
+				// to correct names in the module write it to a temporary output...
+				module.writeAsn1(0, new StringBuffer());
+				
+				createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), setTypeDefinitions, editor.getEditingDomain());
+				editor.getEditingDomain().getCommandStack().execute(setTypeDefinitions);
+			} finally {
+				Asn1GenContext.instance().setGeneration(false);
+				Asn1GenContext.instance().setEditingDomain(null);
+				Asn1GenContext.instance().setCompoundCommand(null);
+			}
 		}
 		
 		return null;
@@ -98,9 +113,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		StringBuffer asn1ModuleStr = new StringBuffer();
 		List<String> exports = new LinkedList<String>();
 		
+		
 		for(FunctionalResource fr : functionalResources) {
 			// add an OID for the RF itslef
-			module.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), fr.getSemanticDefinition(), exports));
+			module.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), exports));
 			
 			addParamTypesAndOids(module, fr.getParameter(), exports, cmdUpdateTypeDefinition, editingDomain);
 			addEventTypesAndOids(module, fr.getEvent(), exports, cmdUpdateTypeDefinition, editingDomain);
@@ -110,6 +126,8 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		if(module.getName() == null || module.getName().length() == 0) {
 			module.setName("CSTS-FUNCTIONAL-RESOURCE-TYPES");
 		}
+		
+		checkDuplicates(exports);
 		
 		module.getExports().addAll(exports);
 		module.writeAsn1(0, asn1ModuleStr);
@@ -136,9 +154,26 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			frmFile.getProject().refreshLocal(IResource.DEPTH_ONE, null);
 		} catch (CoreException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 
+	/**
+	 * Checks the duplicates in the given list and creates a warning for each duplicate
+	 * @param l	The list to check
+	 */
+	private <T> void checkDuplicates(List<T> l) {	    
+	    Set<T> uniques = new HashSet<T>();
+
+	    for(T t : l) {
+	        if(!uniques.add(t)) {
+	        	warn("Duplicated type definition of " + t); 
+	        }
+	    }
+
+	  
+	}
+	
+	
 	/**
 	 * Adds ASN.1 type definitions for parameter types and the corresponding OID to the ASN.1 module
 	 * @param module			The module to which the definitions are added
@@ -149,7 +184,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
-				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), param.getSemanticDefinition(), exports));
+				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), PARAM, param.getSemanticDefinition(), exports));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
@@ -164,10 +199,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addDirectiveTypesAndOids(Module module, EList<Directive> frmDirectives, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Directive directive : frmDirectives) {
-			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier(), null, directive.getOid(), directive.getSemanticDefinition(), exports));
+			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier(), null, directive.getOid(), DIRECTIVE, directive.getSemanticDefinition(), exports));
 			for(Qualifier qualifier : directive.getQualifier()) {
 				if(qualifier.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), qualifier.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), QUALIFIER, qualifier.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(qualifier, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -183,10 +218,10 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	 */
 	private void addEventTypesAndOids(Module module, EList<Event> frmEvents, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Event event : frmEvents) {
-			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier(), null, event.getOid(), event.getSemanticDefinition(), exports));
+			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier(), null, event.getOid(), EVENT, event.getSemanticDefinition(), exports));
 			for(Value value : event.getValue()) {
 				if(value.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(), value.getSemanticDefinition(), exports));
+					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(),VALUE, value.getSemanticDefinition(), exports));
 					updateTypeDefinitionString(value, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -216,12 +251,14 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			StringBuffer output = new StringBuffer();
 			element.getTypeDef().writeAsn1(0, output);
 			
-			SetCommand setTypeDefinition = new SetCommand(editingDomain, element,
-					element.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEFINITION),
-					output.toString());
-			
-			cmdUpdateTypeDefinitions.append(setTypeDefinition);					
-			
+			if(element.getTypeDefinition() == null || element.getTypeDefinition().equals(output.toString()) == false) {
+				
+				SetCommand setTypeDefinition = new SetCommand(editingDomain, element,
+						element.eClass().getEStructuralFeature(FunctionalResourceModelPackage.TYPED_ELEMENT__TYPE_DEFINITION),
+						output.toString());
+				
+				cmdUpdateTypeDefinitions.append(setTypeDefinition);					
+			}
 		}
 	}
 	
@@ -242,16 +279,18 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 * @param typeOid
 		 * @param comment
 		 */
-		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String comment, List<String> exports) {
+		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String oidSuffix, String comment, List<String> exports) {
 			if(def != null) {
-				this.definition = EcoreUtil.copy(def);
+				//this.definition = EcoreUtil.copy(def); // why a copy?
+				this.definition = def; 
 				
 				// #hd# always use the given type name to be consistent with the OID name
 				//if(this.definition.getName() == null || this.definition.getName().length() == 0) {
+					Asn1GenContext.instance().updateName(def, createTypeName(typeName, true));
 					this.definition.setName(createTypeName(typeName, true));
 				//}
 				if(exports.contains(this.definition.getName()) == true) {
-					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Duplicated type definition " + this.definition.getName()));
+					warn("Duplicated type definition " + this.definition.getName());					
 				}
 				exports.add(this.definition.getName());
 			} else {
@@ -259,10 +298,14 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			}
 			
 			if(typeOid != null) {
-				this.typeOid = new OidValue(createTypeName(typeName, false, OID_SUFFIX), typeOid);
+				StringBuilder typeOidName = new StringBuilder(typeName);
+				if(Character.isUpperCase(typeOidName.charAt(0))) {
+					typeOidName.setCharAt(0, Character.toLowerCase(typeOidName.charAt(0)));
+				}
+				this.typeOid = new OidValue(createTypeName(typeOidName.toString(), false, oidSuffix + OID_SUFFIX), typeOid);
 
 				if(exports.contains(this.typeOid.getName()) == true) {
-					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Duplicated type OID definition " + this.typeOid.getName()));
+					warn("Duplicated type OID definition " + this.typeOid.getName());
 				}	
 				
 				exports.add(this.typeOid.getName());
@@ -347,7 +390,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 * @param value
 		 */
 		public OidValue(String name, Oid value) {
-			this.name = name;
+			this.name = FrTypesUtil.getValidElementName(name, true);
 			this.oidValue = ExportWriter.LCBRACE + ExportWriter.BLANK + value.toString().replace(".", " ") + ExportWriter.BLANK + ExportWriter.RCBRACE;
 		}
 		
@@ -371,8 +414,16 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 * @return The name of the OID
 		 */
 		public String getName() {
-			return FrTypesUtil.getValidElementName(this.name); // make sure it's first character lowercase and no special characters
+			return this.name;
 		}
+	}
+
+	/**
+	 * warning to the eclipse platform
+	 * @param msg
+	 */
+	private void warn(String msg) {
+		Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, msg));		
 	}
 
 }
