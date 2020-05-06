@@ -1,4 +1,7 @@
 Version 4.1.11 from 29.04.2020
+- increased all MANIFEST versions, apparently ASN.1 generation does not work because of method not found exception
+
+Version 4.1.11 from 29.04.2020
 - ASN.1 name generation changes '_' to '-' and . to Dot for names
 - When an FR is dragged from one FRM file to another, the type references are updated
   to the ASN.1 module of the target FRM file. The matching of type definitions is done by name
