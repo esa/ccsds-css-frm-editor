@@ -2,7 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
-import ccsds.fr.type.model.Asn1GenContext;
+import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.NamedValue;
@@ -144,7 +144,7 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 		indent(indentLevel, output);
 		String validName = FrTypesUtil.getValidElementName(getName(), true);
 		if(validName != null && validName.equals(getName()) == false) {
-			Asn1GenContext.instance().updateName(this, validName);
+			ExportWriterContext.instance().updateName(this, validName);
 		}
 		
 		output.append(String.format("%1$-20s", validName) + ExportWriter.INDENT

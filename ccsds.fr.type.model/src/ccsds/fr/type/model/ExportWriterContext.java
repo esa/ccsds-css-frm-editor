@@ -12,11 +12,11 @@ import ccsds.fr.type.model.frtypes.TypeDefinition;
 /**
  * Provide some context for ASN.1 generation 
  */
-public class Asn1GenContext {
+public class ExportWriterContext {
 
 	private boolean generating = false;
 	
-	private static Asn1GenContext instance;
+	private static ExportWriterContext instance;
 	
 	private CompoundCommand compoundCommand;
 	
@@ -25,13 +25,13 @@ public class Asn1GenContext {
 	/**
 	 * Private constructor to prevent instantiation
 	 */
-	private Asn1GenContext() {
+	private ExportWriterContext() {
 		
 	}
 	
-	public static Asn1GenContext instance() {
+	public static ExportWriterContext instance() {
 		if(instance == null) {
-			instance = new Asn1GenContext();
+			instance = new ExportWriterContext();
 		}
 		
 		return instance;

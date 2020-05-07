@@ -12,7 +12,7 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
-import ccsds.fr.type.model.Asn1GenContext;
+import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 
 /**
@@ -125,7 +125,7 @@ public class FrTypesUtil {
 			validName.setCharAt(0, Character.toLowerCase(validName.charAt(0)));
 		}
 		
-		if(logChange == true && Asn1GenContext.instance().getGenerating() == true && 
+		if(logChange == true && ExportWriterContext.instance().getGenerating() == true && 
 				validName.toString().equals(orgTypeName) == false) {
 			FrTypesUtil.log("ASN.1 generation: Changed " + orgTypeName + " to " + validName);
 		}

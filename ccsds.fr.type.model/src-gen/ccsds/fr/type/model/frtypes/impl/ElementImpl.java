@@ -3,7 +3,7 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
-import ccsds.fr.type.model.Asn1GenContext;
+import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.SequenceOf;
@@ -457,9 +457,9 @@ public class ElementImpl extends TypeImpl implements Element {
 		indent(indentLevel, output);
 
 		if (this.getName() != null && suppressElementName() == false) {
-			String validName = FrTypesUtil.getValidElementName(getName(), Asn1GenContext.instance().getGenerating());
+			String validName = FrTypesUtil.getValidElementName(getName(), ExportWriterContext.instance().getGenerating());
 			if(validName.equals(getName()) == false) {
-				Asn1GenContext.instance().updateElementName(this, validName);
+				ExportWriterContext.instance().updateElementName(this, validName);
 			}
 			
 			output.append(String.format("%1$-20s", validName));

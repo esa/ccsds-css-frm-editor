@@ -38,7 +38,7 @@ import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.FrUtility;
-import ccsds.fr.type.model.Asn1GenContext;
+import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.Module;
@@ -83,9 +83,9 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 						
 			CompoundCommand setTypeDefinitions = new MyCompoundCommand();
 
-			Asn1GenContext.instance().setGeneration(true);
-			Asn1GenContext.instance().setEditingDomain(editor.getEditingDomain());
-			Asn1GenContext.instance().setCompoundCommand(setTypeDefinitions);
+			ExportWriterContext.instance().setGeneration(true);
+			ExportWriterContext.instance().setEditingDomain(editor.getEditingDomain());
+			ExportWriterContext.instance().setCompoundCommand(setTypeDefinitions);
 			try {
 				// to correct names in the module write it to a temporary output...
 				module.writeAsn1(0, new StringBuffer());
@@ -93,9 +93,9 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), setTypeDefinitions, editor.getEditingDomain());
 				editor.getEditingDomain().getCommandStack().execute(setTypeDefinitions);
 			} finally {
-				Asn1GenContext.instance().setGeneration(false);
-				Asn1GenContext.instance().setEditingDomain(null);
-				Asn1GenContext.instance().setCompoundCommand(null);
+				ExportWriterContext.instance().setGeneration(false);
+				ExportWriterContext.instance().setEditingDomain(null);
+				ExportWriterContext.instance().setCompoundCommand(null);
 			}
 		}
 		
@@ -286,7 +286,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				
 				// #hd# always use the given type name to be consistent with the OID name
 				//if(this.definition.getName() == null || this.definition.getName().length() == 0) {
-					Asn1GenContext.instance().updateName(def, createTypeName(typeName, true));
+					ExportWriterContext.instance().updateName(def, createTypeName(typeName, true));
 					this.definition.setName(createTypeName(typeName, true));
 				//}
 				if(exports.contains(this.definition.getName()) == true) {
