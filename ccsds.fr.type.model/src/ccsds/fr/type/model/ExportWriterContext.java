@@ -105,6 +105,10 @@ public class ExportWriterContext {
 			return false;
 		}
 		
+		if(nv == null) {
+			return false;
+		}
+		
 		if(nv.getName().equals(name) == false) {
 			SetCommand setName = new SetCommand(editingDomain, nv,
 					nv.eClass().getEStructuralFeature(FrtypesPackage.NAMED_VALUE__NAME),
@@ -133,7 +137,11 @@ public class ExportWriterContext {
 			return false;
 		}
 		
-		if(td.getName().equals(name) == false) {
+		if(td == null) {
+			return false;
+		}
+		
+		if(td.getName() == null || td.getName() == null && td.getName().equals(name) == false) {
 			SetCommand setName = new SetCommand(editingDomain, td,
 					td.eClass().getEStructuralFeature(FrtypesPackage.TYPE_DEFINITION__NAME),
 					name);

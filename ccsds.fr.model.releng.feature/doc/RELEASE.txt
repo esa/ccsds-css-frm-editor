@@ -1,4 +1,11 @@
-Version 4.1.11 from 29.04.2020
+Version 4.1.14 from 25.05.2020
+- forced feature version into plug-ins
+
+Version 4.1.13 from 25.05.2020
+- generate valid choice values for added elements
+- correct exception resulting in not generated ASN.1 file
+
+Version 4.1.12 from 29.04.2020
 - increased all MANIFEST versions, apparently ASN.1 generation does not work because of method not found exception
 
 Version 4.1.11 from 29.04.2020

@@ -27,19 +27,45 @@
 			</head>
 			<body bgcolor="white" style="font-family:Times; font-size:15px; color:black">
 				<h1>Functional Resource Model</h1>
-				<table align="center" width="100%" border="0">
+
+				<table align="left" width="35%" border="1">
 					<h2 align="left"></h2>
 					<a name="{TOC-ID}"></a>
-					<xsl:for-each select="//functionalResource">
+					
+					<tr>
+						<th>Functional Resource Set</th><th>Functional Resource</th>
+					</tr>
+					
+					<xsl:for-each select="//functionalResourceSet">
 						<tr>
 							<td>
-								<a href="#{generate-id(.)}">
-									<xsl:value-of select="@classifier" />
+								<a>
+									<xsl:value-of select="@name" />			
+								</a>
+							</td>
+						
+							<td>
+								<a>			
+									<table align="center" width="100%" border="0">
+										<h2 align="left"></h2>
+										<a name="{TOC-ID}"></a>
+										<xsl:for-each select="functionalResource">
+											<tr>
+												<td>
+													<a href="#{generate-id(.)}">
+														<xsl:value-of select="@classifier" />									
+													</a>
+												</td>
+											</tr>
+										</xsl:for-each>
+									</table>
 								</a>
 							</td>
 						</tr>
 					</xsl:for-each>
 				</table>
+
+
 				<p />
 				<table align="center" width="100%" border="1">
 					<tr>
@@ -68,6 +94,8 @@
 								</xsl:attribute>
 							Functional Resource
 							<xsl:value-of select="@classifier" />
+							<xsl:text> FR Set: </xsl:text>
+							<xsl:value-of select="../@name" />
 							<xsl:text> </xsl:text>
 						</xsl:element>
 					</b>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Functional_Resource_Tools_Diagram.design
 Bundle-SymbolicName: ccsds.fr.model.tools.diagram.design;singleton:=true
-Bundle-Version: 4.0.1.qualifier
+Bundle-Version: 4.1.14.qualifier
 Bundle-Activator: Functional_Resource_Tools_Diagram.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

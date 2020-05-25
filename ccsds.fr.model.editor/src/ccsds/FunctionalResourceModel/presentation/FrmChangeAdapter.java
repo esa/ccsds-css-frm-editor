@@ -8,10 +8,12 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.TypedElement;
+import ccsds.fr.type.model.frtypes.Choice;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.Enumerated;
 import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.NamedValue;
+import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
@@ -34,10 +36,14 @@ public class FrmChangeAdapter extends EContentAdapter {
 		if(notification.getNotifier() instanceof TypedElement && notification.getNewValue() instanceof TypeDefinition) {
 			handleNewTypeDefinition((TypedElement)notification.getNotifier(), (TypeDefinition)notification.getNewValue());
 		}
-		
+
 		if(notification.getNewValue() instanceof FunctionalResource) {
 			FunctionalResource fr = (FunctionalResource)notification.getNewValue();				
 			adjustLocalTypeReferences(fr);
+		}
+
+		if(notification.getNotifier() instanceof Choice && notification.getNewValue() instanceof Element) {
+			handleNewChoiceElement((Choice)notification.getNotifier(), (Element)notification.getNewValue());
 		}
 		
 		super.notifyChanged(notification);
@@ -157,4 +163,31 @@ public class FrmChangeAdapter extends EContentAdapter {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	/**
+	 * Handles a new element under a choice. Sets the tag to Choice#size - 1 
+	 * @param choice
+	 * @param newElement
+	 */
+	private void handleNewChoiceElement(Choice choice, Element newElement) {
+		try {
+			if(choice != null && choice.getElements() != null) {
+				int idx = 0;
+				for(Type childElement : choice.getElements()) {
+					if(childElement instanceof Element && childElement == newElement) {
+						newElement.setTag(Integer.toString(idx));
+						
+					} else if(childElement instanceof Element && ((Element)childElement).getTag() != null) {
+						idx = Integer.parseInt(((Element)childElement).getTag());
+					}
+					idx++;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
