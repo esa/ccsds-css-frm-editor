@@ -1,3 +1,6 @@
+Version 4.2.0 from TBD
+- create XSD from FRM
+
 Version 4.1.14 from 25.05.2020
 - forced feature version into plug-ins
 

@@ -3,9 +3,11 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.Choice;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import org.eclipse.emf.ecore.EClass;
@@ -80,5 +82,12 @@ public class ChoiceImpl extends StructuredDifferentTypeImpl implements Choice {
 
 		super.writeAsn1(indentLevel, output);
 	}
-
+	/**
+	 * Write the  sequence to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.CHOICE, this, getElements(), oid);
+	}
 } //ChoiceImpl

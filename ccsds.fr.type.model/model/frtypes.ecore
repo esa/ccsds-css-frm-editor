@@ -121,6 +121,11 @@
       <eParameters name="indentLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="output" eType="#//StringBuffer"/>
     </eOperations>
+    <eOperations name="writeXsd">
+      <eParameters name="indentLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="output" eType="#//StringBuffer"/>
+      <eParameters name="oid" eType="#//ObjectIdentifier"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SizeConstrainedType" abstract="true"
       interface="true" eSuperTypes="#//ExportWriter">

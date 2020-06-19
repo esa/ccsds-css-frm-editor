@@ -967,6 +967,15 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier() {
+		return exportWriterEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSizeConstrainedType() {
 		return sizeConstrainedTypeEClass;
 	}
@@ -1176,6 +1185,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		exportWriterEClass = createEClass(EXPORT_WRITER);
 		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER);
+		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER);
 
 		sizeConstrainedTypeEClass = createEClass(SIZE_CONSTRAINED_TYPE);
 		createEReference(sizeConstrainedTypeEClass, SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT);
@@ -1436,6 +1446,12 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 				IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "indentLevel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStringBuffer(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier(), null, "writeXsd", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "indentLevel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStringBuffer(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getObjectIdentifier(), "oid", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sizeConstrainedTypeEClass, SizeConstrainedType.class, "SizeConstrainedType", IS_ABSTRACT,
 				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

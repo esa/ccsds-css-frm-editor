@@ -22,6 +22,8 @@ public class ExportWriterContext {
 	
 	private EditingDomain editingDomain;
 	
+	private String currentFrClassifier;
+	
 	/**
 	 * Private constructor to prevent instantiation
 	 */
@@ -151,6 +153,14 @@ public class ExportWriterContext {
 		}
 		
 		return false;
+	}
+
+	public String getCurrentFrClassifier() {
+		return currentFrClassifier;
+	}
+
+	public void setCurrentFrClassifier(String currentFrName) {
+		this.currentFrClassifier = currentFrName;
 	}		
 	
 }

@@ -2,9 +2,14 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
+import ccsds.fr.type.model.frtypes.SimpleType;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -72,60 +77,60 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 		return typeDefinition;
 	}
 
-//	/**
-//	 * To support drag and drop of TypeDefinitions between FRM files,
-//	 * we try first to resolve the this.typeDefinition within the module
-//	 * of this FRM file 
-//	 * @generated NOT
-//	 */
-//	@Override
-//	public EObject eResolveProxy(InternalEObject proxy) {
-//
-//		// try to resolve types from foreign modules within the module of this file
-//		// we do not want references to another FRM file
-//		try {
-//			if (proxy != null && proxy.eIsProxy()) {
-//				
-//				TypeDefinition proxiedDefinition = (TypeDefinition) super.eResolveProxy(proxy);		// resolve to get the name etc.
-//				
-//				EObject obj = null;
-//				EObject container = this.eContainer();
-//				while(container != null && container.eClass() != null) {
-//					if(container.eContainer() == null /*FRM*/) { 
-//						//Object obj = container.eGet(container.eClass().getEStructuralFeature(FrtypesPackage.MODULE));
-//						TreeIterator<EObject> contentIter = container.eAllContents();
-//						while(contentIter.hasNext()) {
-//							obj = contentIter.next();
-//							if(obj instanceof Module) {
-//								System.out.println("Found module of this FRM");
-//								Module generalModule = (Module)obj;
-//								int idx = 0;
-//								for(TypeDefinition td : generalModule.getTypeDefinition()) {
-//									//System.out.println("Compare " + td.getName() + " with " + typeDefinition.getName());
-//									if(td != null && td.getName().equals(proxiedDefinition.getName())) {
-//										String proxyUri = "?";
-//										if(proxy.eProxyURI() != null) {
-//											proxyUri = proxy.eProxyURI().toString();
-//										}
-//										
-//										System.out.println("Replace type proxied (" + proxyUri
-//												+ ") definition reference " + td.getName() + " with local one at index " + idx);
-//										return td;
-//									}
-//									idx++;
-//								}
-//							}
-//						}
-//					}
-//					container = container.eContainer();					
-//				}
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return super.eResolveProxy(proxy);
-//	}
-	
+	//	/**
+	//	 * To support drag and drop of TypeDefinitions between FRM files,
+	//	 * we try first to resolve the this.typeDefinition within the module
+	//	 * of this FRM file 
+	//	 * @generated NOT
+	//	 */
+	//	@Override
+	//	public EObject eResolveProxy(InternalEObject proxy) {
+	//
+	//		// try to resolve types from foreign modules within the module of this file
+	//		// we do not want references to another FRM file
+	//		try {
+	//			if (proxy != null && proxy.eIsProxy()) {
+	//				
+	//				TypeDefinition proxiedDefinition = (TypeDefinition) super.eResolveProxy(proxy);		// resolve to get the name etc.
+	//				
+	//				EObject obj = null;
+	//				EObject container = this.eContainer();
+	//				while(container != null && container.eClass() != null) {
+	//					if(container.eContainer() == null /*FRM*/) { 
+	//						//Object obj = container.eGet(container.eClass().getEStructuralFeature(FrtypesPackage.MODULE));
+	//						TreeIterator<EObject> contentIter = container.eAllContents();
+	//						while(contentIter.hasNext()) {
+	//							obj = contentIter.next();
+	//							if(obj instanceof Module) {
+	//								System.out.println("Found module of this FRM");
+	//								Module generalModule = (Module)obj;
+	//								int idx = 0;
+	//								for(TypeDefinition td : generalModule.getTypeDefinition()) {
+	//									//System.out.println("Compare " + td.getName() + " with " + typeDefinition.getName());
+	//									if(td != null && td.getName().equals(proxiedDefinition.getName())) {
+	//										String proxyUri = "?";
+	//										if(proxy.eProxyURI() != null) {
+	//											proxyUri = proxy.eProxyURI().toString();
+	//										}
+	//										
+	//										System.out.println("Replace type proxied (" + proxyUri
+	//												+ ") definition reference " + td.getName() + " with local one at index " + idx);
+	//										return td;
+	//									}
+	//									idx++;
+	//								}
+	//							}
+	//						}
+	//					}
+	//					container = container.eContainer();					
+	//				}
+	//			}
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//		return super.eResolveProxy(proxy);
+	//	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,7 +146,7 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 	 * @generated
 	 */
 	public void setTypeDefinition(TypeDefinition newTypeDefinition) {
-		TypeDefinition oldTypeDefinition = typeDefinition;		
+		TypeDefinition oldTypeDefinition = typeDefinition;
 		typeDefinition = newTypeDefinition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FrtypesPackage.TYPE_REFERENCE_LOCAL__TYPE_DEFINITION,
@@ -224,5 +229,42 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 			output.append("local type reference: name not set");
 		}
 	}
-
+	
+	/**
+	 * Write the  local type reference to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		int typeIndent = indentLevel;
+		StringBuffer typeOutput = new StringBuffer();	
+		
+		// write a type without value and oid attributes, which can again be referenced 		
+		if(XmlHelper.isSimpleType(getTypeDefinition().getType())) {
+			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
+			XmlHelper.writeElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
+			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
+		} else {
+			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE, XmlHelper.getTypeNameAttr(this));
+			XmlHelper.writeStartElement(typeOutput, typeIndent+1, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeStartElement(typeOutput, typeIndent+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
+			XmlHelper.writeEndElement(typeOutput, typeIndent+2, XmlHelper.EXTENSION);
+			XmlHelper.writeEndElement(typeOutput, typeIndent+1, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
+		}
+		
+		
+		// write a named element
+		if(oid != null) {
+			
+			if(XmlHelper.isSimpleType(getTypeDefinition().getType())) {
+				XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this), oid, this);
+			} else {
+				XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this),  oid, this);
+			}
+						
+		}
+		
+		output.append(typeOutput);
+	}
 } //TypeReferenceLocalImpl

@@ -88,13 +88,22 @@ public interface FrtypesPackage extends EPackage {
 	int EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER = 0;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = 1;
+
+	/**
 	 * The number of operations of the '<em>Export Writer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORT_WRITER_OPERATION_COUNT = 1;
+	int EXPORT_WRITER_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl <em>Type Definition</em>}' class.
@@ -152,6 +161,15 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_DEFINITION___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,6 +214,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -244,6 +271,15 @@ public interface FrtypesPackage extends EPackage {
 	int SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Simple Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +326,15 @@ public interface FrtypesPackage extends EPackage {
 	int STRUCTURED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Structured Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -334,6 +379,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Boolean</em>' class.
@@ -389,6 +443,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIMPLE_RANGE_TYPE___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Simple Range Type</em>' class.
@@ -455,6 +518,15 @@ public interface FrtypesPackage extends EPackage {
 	int INTEGER_TYPE___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_RANGE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Integer Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -508,6 +580,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Simple Size Constrained Type</em>' class.
@@ -565,6 +646,15 @@ public interface FrtypesPackage extends EPackage {
 	int BIT_STRING___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BIT_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Bit String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -618,6 +708,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int OCTET_STRING___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCTET_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Octet String</em>' class.
@@ -675,6 +774,15 @@ public interface FrtypesPackage extends EPackage {
 	int REAL___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_RANGE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Real</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -728,6 +836,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATED___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATED___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Enumerated</em>' class.
@@ -803,6 +920,15 @@ public interface FrtypesPackage extends EPackage {
 	int CHARACTER_STRING___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Character String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -858,6 +984,15 @@ public interface FrtypesPackage extends EPackage {
 	int STRUCTURED_DIFFERENT_TYPE___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Structured Different Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -911,6 +1046,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_DIFFERENT_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Sequence</em>' class.
@@ -977,6 +1121,15 @@ public interface FrtypesPackage extends EPackage {
 	int STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Structured Size Constrained Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1041,6 +1194,15 @@ public interface FrtypesPackage extends EPackage {
 	int SEQUENCE_OF___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Sequence Of</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1094,6 +1256,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SET___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_DIFFERENT_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Set</em>' class.
@@ -1160,6 +1331,15 @@ public interface FrtypesPackage extends EPackage {
 	int SET_OF___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Set Of</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1195,6 +1375,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -1252,6 +1441,15 @@ public interface FrtypesPackage extends EPackage {
 	int SIZE_CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIZE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Size Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1305,6 +1503,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_RANGE_CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_RANGE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Value Range Constraint</em>' class.
@@ -1362,6 +1569,15 @@ public interface FrtypesPackage extends EPackage {
 	int NAMED_VALUE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Named Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1415,6 +1631,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE___WRITE_ASN1__INT_STRINGBUFFER = STRUCTURED_DIFFERENT_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -1472,6 +1697,15 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_REFERENCE_LOCAL___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE_LOCAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Type Reference Local</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1516,6 +1750,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLE_VALUE_CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_VALUE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Single Value Constraint</em>' class.
@@ -1571,6 +1814,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERMITTED_ALPHABET_CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER = CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERMITTED_ALPHABET_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Permitted Alphabet Constraint</em>' class.
@@ -1655,6 +1907,15 @@ public interface FrtypesPackage extends EPackage {
 	int MODULE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1699,6 +1960,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_IDENTIFIER___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_IDENTIFIER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Object Identifier</em>' class.
@@ -1792,6 +2062,15 @@ public interface FrtypesPackage extends EPackage {
 	int ELEMENT___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1847,6 +2126,15 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_REFERENCE_EXTERNAL___WRITE_ASN1__INT_STRINGBUFFER = TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE_EXTERNAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Type Reference External</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1893,6 +2181,15 @@ public interface FrtypesPackage extends EPackage {
 	int NULL___WRITE_ASN1__INT_STRINGBUFFER = SIMPLE_TYPE___WRITE_ASN1__INT_STRINGBUFFER;
 
 	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+
+	/**
 	 * The number of operations of the '<em>Null</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1937,6 +2234,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIZE_CONSTRAINED_TYPE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>Size Constrained Type</em>' class.
@@ -1992,6 +2298,15 @@ public interface FrtypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FROM_MODULE___WRITE_ASN1__INT_STRINGBUFFER = EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER;
+
+	/**
+	 * The operation id for the '<em>Write Xsd</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FROM_MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
 
 	/**
 	 * The number of operations of the '<em>From Module</em>' class.
@@ -2704,6 +3019,16 @@ public interface FrtypesPackage extends EPackage {
 	EOperation getExportWriter__WriteAsn1__int_StringBuffer();
 
 	/**
+	 * Returns the meta object for the '{@link ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier) <em>Write Xsd</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Write Xsd</em>' operation.
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier)
+	 * @generated
+	 */
+	EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3408,6 +3733,15 @@ public interface FrtypesPackage extends EPackage {
 		 */
 		EOperation EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER = eINSTANCE
 				.getExportWriter__WriteAsn1__int_StringBuffer();
+
+		/**
+		 * The meta object literal for the '<em><b>Write Xsd</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = eINSTANCE
+				.getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}' class.

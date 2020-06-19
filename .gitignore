@@ -16,6 +16,7 @@ sw-delivery
 **/.DS_Store
 .DS_Store
 ASN1EditorPluginE3
+ASN1EditorPluginE3.feature
 ccsds.css.oid.model
 ccsds.css.oid.presentation
 ccsds.css.oid.tool

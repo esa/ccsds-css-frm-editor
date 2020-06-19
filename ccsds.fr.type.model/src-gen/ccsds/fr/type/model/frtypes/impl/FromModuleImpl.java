@@ -6,6 +6,7 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
@@ -150,6 +151,17 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		//throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -225,6 +237,9 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 		switch (operationID) {
 		case FrtypesPackage.FROM_MODULE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.FROM_MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

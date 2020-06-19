@@ -2,10 +2,14 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.ExportWriterContext;
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.Module;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -273,6 +277,100 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private void writeBuiltInTypes(int indentLevel, StringBuffer output) {
+		XmlHelper.doBreakIndent(output, indentLevel);
+		
+		// NULL		
+		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, ExportWriter.NULL));
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.MIN_LENGTH, new XmlAttribute(XmlHelper.VALUE, Integer.toString(0)));
+		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SIMPLE_TYPE);
+				
+		XmlHelper.doBreakIndent(output, indentLevel);
+		
+		// ObjectIdentifier
+		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.OBJECT_IDENTIFIER));
+		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
+		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, "[0-2]((\\.[1-3]?[0-9])(\\.\\d+)*)?"));
+		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE);
+		
+		// BitString
+		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.BIT_STRING));
+		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
+		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, "[0-1]{0,}"));
+		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE);
+
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		
+		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
+				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
+				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
+				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
+				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
+				new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
+				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
+				new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
+
+		
+		if(getImports().size() > 0 && getImports().get(0) != null &&
+				XmlHelper.GENERAL_XSD.equals(getImports().get(0).getName())) {
+			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE, 					
+					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.GENERAL_XSD));
+			
+			// generate an FR Specific base type 
+			if(ExportWriterContext.instance().getCurrentFrClassifier() != null) {
+				XmlHelper.doBreakIndent(output, indentLevel);
+				String frClassifier = ExportWriterContext.instance().getCurrentFrClassifier();				
+				
+				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.ELEMENT, 
+						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
+						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
+						new XmlAttribute(XmlHelper.ABSTRACT, "true"));				
+				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE, 
+						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
+			}
+			
+		} else {
+			// write the built in types only for the general XSD
+			writeBuiltInTypes(indentLevel, output);
+		}
+		
+		indentLevel += 1;
+		// all type definitions
+		for (TypeDefinition td : getTypeDefinition()) {
+			try {
+				td.writeXsd(indentLevel, output, oid);
+			} catch (Exception e) {
+				if (td != null && td.getName() != null) {
+					//FrTypesUtil.log("Exception creating type definition " + td.getName() + ": " + e);
+				} else {
+					//FrTypesUtil.log("Exception creating type definition: " + e);
+				}
+			}
+			//output.append(System.lineSeparator());
+		}
+
+		output.append(System.lineSeparator());
+		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SCHEMA);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -398,6 +496,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		switch (operationID) {
 		case FrtypesPackage.MODULE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

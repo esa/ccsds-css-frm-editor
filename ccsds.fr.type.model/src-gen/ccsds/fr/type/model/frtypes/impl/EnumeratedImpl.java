@@ -3,9 +3,12 @@
 package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.Enumerated;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.NamedValue;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
+
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -177,6 +180,29 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 			output.append(getIndent(indentLevel) + ExportWriter.RCBRACE + System.lineSeparator());
 
 		}
+	}
+	
+	/**
+	 * Write the ENUMERATED to XSD
+	 * @generated NOT
+	 */
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		XmlHelper.writeComment(output, indentLevel, this);
+		
+		int typeIndent = indentLevel;
+		StringBuffer typeOutput = new StringBuffer();	
+		//XmlHelper.doBreakIndent(typeOutput, indentLevel);
+		
+		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
+		XmlHelper.writeEnumRestrictions(typeOutput, typeIndent, getValues());
+		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
+		
+		if(oid != null) {		
+			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this), oid, this);
+		}
+		
+		output.append(typeOutput);		
 	}
 
 } //EnumeratedImpl

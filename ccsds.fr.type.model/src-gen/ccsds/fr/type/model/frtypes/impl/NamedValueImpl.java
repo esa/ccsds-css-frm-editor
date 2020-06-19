@@ -6,6 +6,7 @@ import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.NamedValue;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.reflect.InvocationTargetException;
@@ -143,12 +144,23 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		indent(indentLevel, output);
 		String validName = FrTypesUtil.getValidElementName(getName(), true);
-		if(validName != null && validName.equals(getName()) == false) {
+		if (validName != null && validName.equals(getName()) == false) {
 			ExportWriterContext.instance().updateName(this, validName);
 		}
-		
-		output.append(String.format("%1$-20s", validName) + ExportWriter.INDENT
-				+ ExportWriter.INDENT + ExportWriter.LPAREN + value + ExportWriter.RPAREN);
+
+		output.append(String.format("%1$-20s", validName) + ExportWriter.INDENT + ExportWriter.INDENT
+				+ ExportWriter.LPAREN + value + ExportWriter.RPAREN);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -229,6 +241,9 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 		switch (operationID) {
 		case FrtypesPackage.NAMED_VALUE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

@@ -2,8 +2,11 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.OctetString;
 import org.eclipse.emf.ecore.EClass;
 
@@ -44,4 +47,42 @@ public class OctetStringImpl extends SimpleSizeConstrainedTypeImpl implements Oc
 		super.writeAsn1(indentLevel, output); // write constraints		
 
 	}
+	
+	/**
+	 * Write the  bit string to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		XmlHelper.writeComment(output, indentLevel, this);
+
+		boolean hasConstraints = false;
+		StringBuffer typeOutput = new StringBuffer();
+		int typeIndent = indentLevel;
+		
+		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
+		
+		if(getSizeConstraint() != null && getSizeConstraint().size() > 0) {	
+			hasConstraints = true;
+			
+			XmlHelper.writeSizeConstraint(typeOutput, typeIndent, XmlHelper.HEX_BINARY, getSizeConstraint());
+		} else {
+			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.HEX_BINARY));
+		}
+		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);				
+		
+		if(oid != null) {					
+			XmlAttribute typeAttr = XmlHelper.getTypeNameAttr(this);
+			if(hasConstraints == false) {
+				typeAttr = new XmlAttribute(XmlHelper.NAME, XmlHelper.HEX_BINARY);
+			}
+			
+			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid, this);
+		}
+		
+		if(typeOutput.length() > 0){		
+			XmlHelper.doBreakIndent(output, indentLevel);
+			output.append(typeOutput);
+		}
+	}	
 } //OctetStringImpl

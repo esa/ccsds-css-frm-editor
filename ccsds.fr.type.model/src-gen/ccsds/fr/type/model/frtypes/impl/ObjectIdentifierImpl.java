@@ -2,6 +2,8 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
@@ -43,5 +45,4 @@ public class ObjectIdentifierImpl extends SimpleTypeImpl implements ObjectIdenti
 		output.append(ExportWriter.OBJECT_IDENTIFIER);
 		super.writeAsn1(indentLevel, output); // write constraints
 	}
-
 } //ObjectIdentifierImpl

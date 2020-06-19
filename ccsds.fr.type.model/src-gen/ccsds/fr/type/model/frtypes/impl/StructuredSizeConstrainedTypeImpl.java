@@ -2,7 +2,9 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.SizeConstrainedType;
 import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
@@ -274,5 +276,15 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 		} else {
 			output.append("no component set");
 		}
+	}
+	
+	
+	/**
+	 * Write the  sequence of / set of to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		XmlHelper.writeStructuredSameType(indentLevel, output, this, getElements(), oid);
 	}
 } //StructuredSizeConstrainedTypeImpl

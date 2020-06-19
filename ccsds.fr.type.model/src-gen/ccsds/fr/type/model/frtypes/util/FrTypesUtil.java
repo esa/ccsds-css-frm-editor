@@ -13,6 +13,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import ccsds.fr.type.model.ExportWriterContext;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
 
 /**
@@ -182,4 +183,47 @@ public class FrTypesUtil {
 		
 		return ExportWriter.COMMENT + ExportWriter.BLANK + comment;
 	}	
+	
+	/**
+	 * Create a comment string which has the XML comment
+	 * In addition the comment is broken down into lines of length 80.
+	 * @param commentString
+	 * @param indentLevel 	The level of indentation when the comment has line breaks
+	 * @return the XML comment string
+	 */
+	public static String createXmlComment(String commentString, int indentlevel) {
+		if(commentString == null) {
+			return null;
+		}
+				
+		StringBuffer xmlComment = new StringBuffer(XmlHelper.COMMENT_START);
+		xmlComment.append(System.lineSeparator());
+		
+		// break in several lines
+		final int lineLength = 80;
+		int idx = 0;
+		while(idx < commentString.length() && commentString.length() > 0) {
+			int endIndex = idx + lineLength;
+											
+			if(endIndex >= commentString.length()) {
+				endIndex = commentString.length();
+			} else {
+				endIndex = commentString.indexOf(" ", endIndex); // break the line at the next blank
+				if(endIndex == -1 && commentString.length() > 0) {
+					endIndex = commentString.length();
+				}
+			}
+			
+			xmlComment.append(commentString.substring(idx, endIndex));
+			
+			if(endIndex != commentString.length()) {
+				xmlComment.append(System.lineSeparator());
+			}
+			idx = endIndex;
+		}
+		
+		xmlComment.append(System.lineSeparator());
+		return xmlComment.toString() + XmlHelper.COMMENT_END;
+	}		
+	
 }

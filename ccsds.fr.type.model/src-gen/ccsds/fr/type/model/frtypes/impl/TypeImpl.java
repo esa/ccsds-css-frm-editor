@@ -4,6 +4,7 @@ package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.SingleValueConstraint;
 import ccsds.fr.type.model.frtypes.Type;
 
@@ -143,6 +144,17 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -220,6 +232,9 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
 		switch (operationID) {
 		case FrtypesPackage.TYPE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

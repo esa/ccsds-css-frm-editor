@@ -73,7 +73,7 @@
          <command
                commandId="fr.create.asn1"
                icon="icons/asn_module.png"
-               label="Create ASN.1 Type Module"
+               label="Create ASN.1 / XSD Types"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -163,7 +163,7 @@
          <command
                commandId="fr.create.asn1"
                icon="icons/asn_module.png"
-               label="Create ASN.1 Type Module"
+               label="Create ASN.1 / XSD Types"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -221,7 +221,7 @@
             commandId="fr.create.auth.entity">
       </handler>
       <handler
-            class="ccsds.handlers.CreateFrAsnHandler"
+            class="ccsds.handlers.CreateFrAsnXsdHandler"
             commandId="fr.create.asn1">
       </handler>
    </extension>

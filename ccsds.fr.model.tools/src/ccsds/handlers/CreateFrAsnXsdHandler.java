@@ -1,6 +1,7 @@
 package ccsds.handlers;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
@@ -39,9 +41,13 @@ import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.type.model.ExportWriterContext;
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.type.model.frtypes.FromModule;
 import ccsds.fr.type.model.frtypes.FrtypesFactory;
 import ccsds.fr.type.model.frtypes.Module;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.impl.ObjectIdentifierImpl;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
@@ -51,7 +57,7 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  * Handler to create an ASN.1 module file from an FRM model active in an FRM editor. 
  *
  */
-public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
+public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 
 	private static final String VALUE = "Value";
 	private static final String QUALIFIER = "Qualifier";
@@ -81,17 +87,17 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 				module = FrtypesFactory.eINSTANCE.createModule(); // some models may not have a module
 			}
 						
-			CompoundCommand setTypeDefinitions = new MyCompoundCommand();
+			CompoundCommand frmUpdateCompoundCmd = new MyCompoundCommand();
 
 			ExportWriterContext.instance().setGeneration(true);
 			ExportWriterContext.instance().setEditingDomain(editor.getEditingDomain());
-			ExportWriterContext.instance().setCompoundCommand(setTypeDefinitions);
+			ExportWriterContext.instance().setCompoundCommand(frmUpdateCompoundCmd);
 			try {
 				// to correct names in the module write it to a temporary output...
 				module.writeAsn1(0, new StringBuffer());
 				
-				createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), setTypeDefinitions, editor.getEditingDomain());
-				editor.getEditingDomain().getCommandStack().execute(setTypeDefinitions);
+				createAsn1XsdModule(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), frmUpdateCompoundCmd, editor.getEditingDomain());
+				editor.getEditingDomain().getCommandStack().execute(frmUpdateCompoundCmd);
 			} finally {
 				ExportWriterContext.instance().setGeneration(false);
 				ExportWriterContext.instance().setEditingDomain(null);
@@ -103,17 +109,91 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	}
 
 	/**
-	 * Creates an ASN.1 module from the FRM
+	 * Gets and creates the XSD directory for the given FR
+	 * @param frmFile
+	 * @return The name of the XSD directory
+	 */
+	private String getXsdDirectory(IFile frmFile) {
+		String xsdDir = frmFile.getLocation().removeFileExtension().toString();
+		IFolder dir = frmFile.getProject().getFolder(frmFile.getProjectRelativePath().removeFileExtension());
+		
+		if(dir.exists() == false) {
+			try {
+				dir.create(IResource.NONE, true, null);
+			} catch (CoreException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return xsdDir;
+	}
+	
+	/**
+	 * Write the given XSD module to the given file name
+	 * @param fileName	The file name to write to 
+	 * @param module	The module to be written
+	 */
+	private void writeXsdModule(String fileName, Module module) {
+		BufferedWriter writer = null;
+		try {
+			StringBuffer xsdModuleStr = new StringBuffer();
+			module.writeXsd(0, xsdModuleStr, null);
+			writer = new BufferedWriter(new FileWriter(fileName));
+		    writer.write(xsdModuleStr.toString());
+		} catch(Exception e) {
+			System.err.println("Error writing XSD file " + e);
+		} finally {
+			if(writer != null) {
+				try {
+					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM XSD file " + fileName));
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}							
+	}
+	
+	/**
+	 * Creates an ASN.1 module and an XSD from the FRM
 	 * @param functionalResources		The frM to use
 	 * @param frmFile					The file containing the FRM	
 	 * @param editingDomain 
 	 */
-	private void createAsn1Module(Module module, FunctionalResource[] functionalResources, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {
+	private void createAsn1XsdModule(Module module, FunctionalResource[] functionalResources, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {		
+		List<String> xsdExports = new LinkedList<String>();
+
+		// write the general CSD type module
+		ExportWriterContext.instance().setCurrentFrClassifier(null);
+		writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + XmlHelper.GENERAL_XSD, module);
 		
-		StringBuffer asn1ModuleStr = new StringBuffer();
+		// write one module / XSD per FR
+		for(FunctionalResource fr : functionalResources) {
+			try {
+				Module frModule = FrtypesFactory.eINSTANCE.createModule();
+				FromModule importGenerlalXsd = FrtypesFactory.eINSTANCE.createFromModule();
+				importGenerlalXsd.setName(XmlHelper.GENERAL_XSD);
+				frModule.getImports().add(importGenerlalXsd);
+
+				// set the FR into the export context for XSD generation purposes
+				ExportWriterContext.instance().setCurrentFrClassifier(fr.getClassifier());
+				
+				// add an OID for the RF itslef
+				frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
+				
+				addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+				addEventTypesAndOids(frModule, fr.getEvent(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+				addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+				
+				writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + fr.getClassifier() + ".xsd", frModule);				
+			} catch(Exception e) {
+				Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Exception creating XSD for FR " 
+						+ fr.getClassifier() + " " + e));
+			}
+		}
+		
+		// prepare an ASN.1 module containing all type definitions of all FRs
 		List<String> exports = new LinkedList<String>();
-		
-		
 		for(FunctionalResource fr : functionalResources) {
 			// add an OID for the RF itslef
 			module.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), exports));
@@ -128,13 +208,15 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		}
 		
 		checkDuplicates(exports);
-		
-		module.getExports().addAll(exports);
-		module.writeAsn1(0, asn1ModuleStr);
-		
+
+		// write ASN.1
 		BufferedWriter writer = null;
+		String fileName = "";
 		try {
-			String fileName = frmFile.getLocation().removeFileExtension().toString() + ".asn";
+			StringBuffer asn1ModuleStr = new StringBuffer();
+			module.getExports().addAll(exports);
+			module.writeAsn1(0, asn1ModuleStr);
+			fileName = frmFile.getLocation().removeFileExtension().toString() + ".asn";
 			writer = new BufferedWriter(new FileWriter(fileName));
 		    writer.write(asn1ModuleStr.toString());
 		} catch(Exception e) {
@@ -142,7 +224,7 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		} finally {
 			if(writer != null) {
 				try {
-					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM ASN.1 module in file " + frmFile.getName()));
+					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM ASN.1 module in file " + fileName));
 					writer.close();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -150,11 +232,32 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			}
 		}
 		
-		try {
-			frmFile.getProject().refreshLocal(IResource.DEPTH_ONE, null);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		} 
+		// now XSD
+//		writer = null;
+//		try {
+//			StringBuffer xsdModuleStr = new StringBuffer();
+//			module.writeXsd(0, xsdModuleStr, null);
+//			fileName = frmFile.getLocation().removeFileExtension().toString() + ".xsd";
+//			writer = new BufferedWriter(new FileWriter(fileName));
+//		    writer.write(xsdModuleStr.toString());
+//		} catch(Exception e) {
+//			System.err.println("Error writing XSD file " + e);
+//		} finally {
+//			if(writer != null) {
+//				try {
+//					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM XSD file " + fileName));
+//					writer.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}		
+//		
+//		try {
+//			frmFile.getProject().refreshLocal(IResource.DEPTH_ONE, null);
+//		} catch (CoreException e) {
+//			e.printStackTrace();
+//		} 
 	}
 
 	/**
@@ -263,15 +366,18 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 	}
 	
 	/**
-	 * helper class to generate ASN.1 from the FRM.
+	 * Helper class to generate ASN.1 and XSD from the FRM.
+	 * The TypeDefinitionProxy combines the type definition with the corresponding OID
 	 */
 	class TypeDefinitionProxy extends TypeDefinitionImpl {
 
 		//private static final String TYPE_SUFFIX = "Type";
 		private static final String OID_SUFFIX = "Oid";
 		private final TypeDefinition definition;
-		private final String comment;
+		private final String asn1Comment;
+		private String xmlComment;
 		private final OidValue typeOid;
+		
 
 		/**
 		 * Create a TypeDefinition proxy object with a type OID and a comment
@@ -317,17 +423,18 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			
 			
 			if(comment != null) {
-				this.comment = FrTypesUtil.createAsnComment(comment, 0);
+				this.asn1Comment = FrTypesUtil.createAsnComment(comment, 0);
+				this.xmlComment = FrTypesUtil.createXmlComment(comment, 0);
 			} else {
-				this.comment = null;
+				this.asn1Comment = null;
 			}
 		}		
 
 		@Override
 		public
 		void writeAsn1(int indentLevel, StringBuffer output) {
-			if(this.comment != null) {
-				output.append(System.lineSeparator() + System.lineSeparator() + this.comment);
+			if(this.asn1Comment != null) {
+				output.append(System.lineSeparator() + System.lineSeparator() + this.asn1Comment);
 			}
 			
 			output.append(System.lineSeparator());
@@ -345,6 +452,37 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 			} else {
 				//output.append(ExportWriter.COMMENT + " no type definition available" );
 			}
+		}
+		
+		@Override
+		public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {			
+			OidValue oidForGeneration = this.typeOid;
+			
+			// suppress named element generation for non-configuraton parameter
+			try {
+				if(this.definition.eContainer() instanceof Parameter) {
+					if(((Parameter)this.definition.eContainer()).isConfigured() == false) {
+						oidForGeneration = null; // no generation of named element, only the potentially referenced type
+					} 
+				} else {
+					oidForGeneration = null; // no generation of named element, only the potentially referenced type
+				}
+				
+			} catch(Exception e) {
+				
+			}
+			
+			if(this.xmlComment != null) {
+				output.append(System.lineSeparator() + System.lineSeparator() + this.xmlComment);
+			}
+			
+			//output.append(System.lineSeparator() + System.lineSeparator());
+			
+			if(this.definition != null) {
+				this.definition.writeXsd(indentLevel, output, oidForGeneration); // write type definition and OID together
+			} else {
+				//output.append(ExportWriter.COMMENT + " no type definition available" );
+			}						
 		}
 		
 		/**
@@ -391,23 +529,25 @@ public class CreateFrAsnHandler extends AbstractHandler implements IHandler {
 		 */
 		public OidValue(String name, Oid value) {
 			this.name = FrTypesUtil.getValidElementName(name, true);
-			this.oidValue = ExportWriter.LCBRACE + ExportWriter.BLANK + value.toString().replace(".", " ") + ExportWriter.BLANK + ExportWriter.RCBRACE;
+			this.oidValue = value.toString();
 		}
 		
 		@Override
 		public
 		void writeAsn1(int indentLevel, StringBuffer output) {
+			String asnOidString = this.oidValue.replace(".", " ");
 			output.append(getName() + ExportWriter.INDENT);
 			super.writeAsn1(indentLevel, output); // writes OBJECT IDENTIFIER
-			output.append(ExportWriter.BLANK + ExportWriter.ASSIGN + ExportWriter.BLANK + this.getOidValue());
+			String asn1OidValue = ExportWriter.LCBRACE + ExportWriter.BLANK + asnOidString + ExportWriter.BLANK + ExportWriter.RCBRACE;
+			output.append(ExportWriter.BLANK + ExportWriter.ASSIGN + ExportWriter.BLANK + asn1OidValue);
 		}
 
-		/**
-		 * Returns the OID value
-		 * @return
-		 */
-		public String getOidValue() {
-			return oidValue;
+		@Override
+		public void writeXsd(int indent, StringBuffer output, ObjectIdentifier oid) {
+			XmlHelper.writeElement(output, indent, XmlHelper.ATTRIBUTE, 
+					new XmlAttribute(XmlHelper.NAME, "oid"),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.OBJECT_IDENTIFIER),
+					new XmlAttribute(XmlHelper.FIXED, oidValue));
 		}
 		
 		/**

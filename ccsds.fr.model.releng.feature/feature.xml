@@ -2,7 +2,7 @@
 <feature
       id="ccsds.fr.model.feature"
       label="ccsds.fr.model"
-      version="4.1.14.qualifier"
+      version="4.2.0.qualifier"
       provider-name="esa.esoc.int"
       os="linux,macosx,win32">
 
@@ -118,56 +118,56 @@ plug-ins before installation!!!
          id="ccsds.fr.model"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.edit"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.editor"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools.diagram.design"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model.edit"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model.editor"
          download-size="0"
          install-size="0"
-         version="4.1.14.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
 </feature>

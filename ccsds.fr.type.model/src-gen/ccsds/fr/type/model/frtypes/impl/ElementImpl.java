@@ -4,14 +4,21 @@ package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.ExportWriterContext;
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.SequenceOf;
 import ccsds.fr.type.model.frtypes.SetOf;
+import ccsds.fr.type.model.frtypes.StructuredType;
 import ccsds.fr.type.model.frtypes.Type;
+import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.Boolean;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -426,10 +433,9 @@ public class ElementImpl extends TypeImpl implements Element {
 	 */
 	private boolean suppressElementName() {
 		try {
-			if ( (eContainer() instanceof SetOf || eContainer() instanceof SequenceOf ) && getType() != null) {
-				FrTypesUtil
-						.log("ASN.1 generation: Suppress element name generation for " + getName() + " below " +
-				eContainer().eClass().getName());
+			if ((eContainer() instanceof SetOf || eContainer() instanceof SequenceOf) && getType() != null) {
+				FrTypesUtil.log("ASN.1 generation: Suppress element name generation for " + getName() + " below "
+						+ eContainer().eClass().getName());
 				return true;
 			}
 		} catch (Exception e) {
@@ -457,11 +463,12 @@ public class ElementImpl extends TypeImpl implements Element {
 		indent(indentLevel, output);
 
 		if (this.getName() != null && suppressElementName() == false) {
-			String validName = FrTypesUtil.getValidElementName(getName(), ExportWriterContext.instance().getGenerating());
-			if(validName.equals(getName()) == false) {
+			String validName = FrTypesUtil.getValidElementName(getName(),
+					ExportWriterContext.instance().getGenerating());
+			if (validName.equals(getName()) == false) {
 				ExportWriterContext.instance().updateElementName(this, validName);
 			}
-			
+
 			output.append(String.format("%1$-20s", validName));
 		} else if (suppressElementName() == false) {
 			output.append("name not set for element");
@@ -475,7 +482,7 @@ public class ElementImpl extends TypeImpl implements Element {
 		if (getType() != null) {
 			output.append(ExportWriter.INDENT);
 			getType().writeAsn1(indentLevel, output);
-		} else if(getName() != null) {
+		} else if (getName() != null) {
 			output.append("error no-type-set-for-component-" + getName());
 		} else {
 			output.append("error no-type-set-for-component");
@@ -485,5 +492,54 @@ public class ElementImpl extends TypeImpl implements Element {
 			output.append(ExportWriter.BLANK + ExportWriter.OPTIONAL);
 		}
 	}
+	
+	/**
+	 * Write the  sequence to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		StringBuffer typeOutput = new StringBuffer();
+		int typeIndent = indentLevel + 1;
 
+		XmlHelper.writeComment(output, indentLevel, this);
+		
+		List<XmlAttribute> attributes = new LinkedList<XmlAttribute>();
+		attributes.add(new XmlAttribute(XmlHelper.NAME, getName()));
+		if(this.optional == true) {
+			attributes.add(new XmlAttribute(XmlHelper.MIN_OCCURS, Integer.toString(0)));
+		}
+		
+		try {		
+			if(getType() instanceof TypeReferenceLocal) {					
+				TypeReferenceLocal tr = (TypeReferenceLocal)getType();			
+				if(XmlHelper.isSimpleType(tr.getTypeDefinition().getType())) {
+					XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);					
+					XmlHelper.writeAttributeSpec(typeOutput, typeIndent+1, XmlHelper.VALUE, tr.getTypeDefinition().getName(), XmlHelper.REQUIRED);
+					XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
+				} else if(tr.getTypeDefinition().getType() instanceof StructuredType) {
+					attributes.add(new XmlAttribute(XmlHelper.TYPE, tr.getTypeDefinition().getName()));
+				}				
+			} else if(XmlHelper.isSimpleType(getType())) {
+				XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
+				XmlHelper.writeAttributeStart(typeOutput, typeIndent+1, XmlHelper.VALUE, XmlHelper.REQUIRED);
+				getType().writeXsd(typeIndent+2, typeOutput, null);
+				XmlHelper.writeAttributeEnd(typeOutput, typeIndent+1);
+				XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
+			} else if(getType() instanceof StructuredType) {
+				getType().writeXsd(indentLevel, typeOutput, null);
+			}
+		} catch(Exception e) {
+			FrTypesUtil.warn("Failed to construct type from local type referecen for element " + getName() + ": " + e);
+			e.printStackTrace();
+		}
+		
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.ELEMENT, attributes.toArray(new XmlAttribute[0]));
+		if(typeOutput != null) {
+			output.append(typeOutput);
+		}
+		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.ELEMENT);
+	
+	}
+		
 } //ElementImpl

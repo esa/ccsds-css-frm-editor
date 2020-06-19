@@ -251,4 +251,12 @@ public interface ExportWriter extends EObject {
 	 */
 	void writeAsn1(int indentLevel, StringBuffer output);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model outputDataType="ccsds.fr.type.model.frtypes.StringBuffer"
+	 * @generated
+	 */
+	void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid);
+
 } // Asn1Writer

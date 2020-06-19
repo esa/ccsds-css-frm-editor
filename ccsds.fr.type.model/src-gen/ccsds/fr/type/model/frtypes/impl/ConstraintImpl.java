@@ -5,6 +5,7 @@ package ccsds.fr.type.model.frtypes.impl;
 import ccsds.fr.type.model.frtypes.Constraint;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -54,11 +55,25 @@ public abstract class ConstraintImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 		case FrtypesPackage.CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

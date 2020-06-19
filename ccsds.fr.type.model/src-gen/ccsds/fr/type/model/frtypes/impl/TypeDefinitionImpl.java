@@ -4,6 +4,7 @@ package ccsds.fr.type.model.frtypes.impl;
 
 import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
@@ -222,10 +223,21 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 
 		if (this.type != null) {
 			this.type.writeAsn1(indentLevel, output);
-		} else if(getName() != null) {
+		} else if (getName() != null) {
 			output.append("no-type-set-for-type-definition-" + getName());
 		} else {
 			output.append("no-type-set-for-type-definition");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		if(getType() != null) {
+			getType().writeXsd(indentLevel, output, oid);
 		}
 	}
 
@@ -331,6 +343,9 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 		switch (operationID) {
 		case FrtypesPackage.TYPE_DEFINITION___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
+			return null;
+		case FrtypesPackage.TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);
