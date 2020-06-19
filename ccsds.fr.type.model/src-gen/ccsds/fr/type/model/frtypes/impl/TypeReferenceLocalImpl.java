@@ -6,7 +6,6 @@ import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
-import ccsds.fr.type.model.frtypes.SimpleType;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
 

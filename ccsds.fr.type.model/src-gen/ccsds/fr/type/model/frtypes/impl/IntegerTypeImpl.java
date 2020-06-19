@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
+@SuppressWarnings("unused")
 public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType {
 	/**
 	 * The cached value of the '{@link #getNamedValues() <em>Named Values</em>}' containment reference list.
