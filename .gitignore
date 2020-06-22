@@ -1,6 +1,7 @@
 *.class
 *.zip
 *.old
+~*.docx
 RemoteSystemsTempFiles/*
 org.eclipse.*
 sw-delivery
