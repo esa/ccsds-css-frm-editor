@@ -8,6 +8,7 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 
@@ -22,8 +23,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
@@ -36,8 +35,6 @@ import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionConte
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-
-import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
@@ -72,6 +69,11 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 	 * Settings for functionalResource ReferencesTable
 	 */
 	protected ReferencesTableSettings functionalResourceSettings;
+	
+	/**
+	 * Settings for functionalResouceStratum ReferencesTable
+	 */
+	protected ReferencesTableSettings functionalResouceStratumSettings;
 	
 	
 	/**
@@ -108,6 +110,10 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 				functionalResourceSettings = new ReferencesTableSettings(functionalResourceModel, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource());
 				basePart.initFunctionalResource(functionalResourceSettings);
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum)) {
+				functionalResouceStratumSettings = new ReferencesTableSettings(functionalResourceModel, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum());
+				basePart.initFunctionalResouceStratum(functionalResouceStratumSettings);
+			}
 			// init filters
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet)) {
 				basePart.addFilterToFunctionalResourceSet(new ViewerFilter() {
@@ -139,6 +145,21 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 				// Start of user code for additional businessfilters for functionalResource
 				// End of user code
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum)) {
+				basePart.addFilterToFunctionalResouceStratum(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof FunctionalResourceStratum); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for functionalResouceStratum
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -146,6 +167,7 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -161,6 +183,9 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -222,6 +247,31 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 				functionalResourceSettings.move(event.getNewIndex(), (FunctionalResource) event.getNewValue());
 			}
 		}
+		if (FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, functionalResouceStratumSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				functionalResouceStratumSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				functionalResouceStratumSettings.move(event.getNewIndex(), (FunctionalResourceStratum) event.getNewValue());
+			}
+		}
 	}
 
 	/**
@@ -236,6 +286,8 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 				basePart.updateFunctionalResourceSet();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource))
 				basePart.updateFunctionalResource();
+			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum))
+				basePart.updateFunctionalResouceStratum();
 			
 		}
 	}
@@ -249,7 +301,8 @@ public class FunctionalResourceModelPropertiesEditionComponent extends SinglePar
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResourceSet(),
-			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource()		);
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResource(),
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum()		);
 		return new NotificationFilter[] {filter,};
 	}
 

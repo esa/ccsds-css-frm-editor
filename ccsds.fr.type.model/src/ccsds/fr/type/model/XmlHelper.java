@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 
 import ccsds.fr.type.model.frtypes.Element;
 import ccsds.fr.type.model.frtypes.ExportWriter;
-import ccsds.fr.type.model.frtypes.Module;
 import ccsds.fr.type.model.frtypes.NamedValue;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.SimpleType;
@@ -591,14 +590,14 @@ public class XmlHelper {
 		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
 				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
 				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
-				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentFrClassifier())));
+				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
-				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentFrClassifier())));
+				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeAttributeSpec(output, indentLevel+3, XmlHelper.VALUE, typeName.getValue(), XmlHelper.REQUIRED);
 		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
@@ -622,13 +621,13 @@ public class XmlHelper {
 		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
 				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
 				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
-				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentFrClassifier())));
+				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
-				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentFrClassifier())));
+				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeStartElement(output, indentLevel+3, XmlHelper.SEQUENCE);
 		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ELEMENT, 

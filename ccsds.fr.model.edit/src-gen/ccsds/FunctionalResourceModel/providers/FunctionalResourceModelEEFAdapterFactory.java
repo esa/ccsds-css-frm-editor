@@ -117,5 +117,13 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	public Adapter createAncillaryInterfaceAdapter() {
 		return new AncillaryInterfacePropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createFunctionalResourceStratumAdapter()
+	 * 
+	 */
+	public Adapter createFunctionalResourceStratumAdapter() {
+		return new FunctionalResourceStratumPropertiesEditionProvider();
+	}
 
 }

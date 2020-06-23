@@ -80,6 +80,7 @@ public class FunctionalResourceModelItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
 		}
@@ -135,6 +136,7 @@ public class FunctionalResourceModelItemProvider
 		switch (notification.getFeatureID(FunctionalResourceModel.class)) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ROOT_OID:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -163,6 +165,11 @@ public class FunctionalResourceModelItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE,
 				 FrtypesFactory.eINSTANCE.createModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM,
+				 FunctionalResourceModelFactory.eINSTANCE.createFunctionalResourceStratum()));
 
 		newChildDescriptors.add
 			(createChildParameter

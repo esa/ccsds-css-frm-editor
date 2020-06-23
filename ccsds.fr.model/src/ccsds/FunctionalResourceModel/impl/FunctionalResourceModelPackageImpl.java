@@ -11,6 +11,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
@@ -116,6 +117,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass ancillaryInterfaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass functionalResourceStratumEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,7 +238,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getFunctionalResourceModel_FunctionalResourceSet() {
-		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(2);
+		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -239,7 +247,16 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EReference getFunctionalResourceModel_FunctionalResource() {
-		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(3);
+		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResourceModel_FunctionalResouceStratum() {
+		return (EReference)functionalResourceModelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -688,6 +705,33 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFunctionalResourceStratum() {
+		return functionalResourceStratumEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFunctionalResourceStratum_Name() {
+		return (EAttribute)functionalResourceStratumEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFunctionalResourceStratum_FunctionalResourceSet() {
+		return (EReference)functionalResourceStratumEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFunctionalResourceSet() {
 		return functionalResourceSetEClass;
 	}
@@ -750,8 +794,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		functionalResourceModelEClass = createEClass(FUNCTIONAL_RESOURCE_MODEL);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__ROOT_OID);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE);
+		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET);
 		createEReference(functionalResourceModelEClass, FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE);
+
+		functionalResourceStratumEClass = createEClass(FUNCTIONAL_RESOURCE_STRATUM);
+		createEAttribute(functionalResourceStratumEClass, FUNCTIONAL_RESOURCE_STRATUM__NAME);
+		createEReference(functionalResourceStratumEClass, FUNCTIONAL_RESOURCE_STRATUM__FUNCTIONAL_RESOURCE_SET);
 
 		functionalResourceSetEClass = createEClass(FUNCTIONAL_RESOURCE_SET);
 		createEAttribute(functionalResourceSetEClass, FUNCTIONAL_RESOURCE_SET__NAME);
@@ -862,8 +911,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEClass(functionalResourceModelEClass, FunctionalResourceModel.class, "FunctionalResourceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFunctionalResourceModel_RootOid(), this.getOid(), null, "rootOid", null, 1, 1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_AsnTypeModule(), theFrtypesPackage.getModule(), null, "asnTypeModule", null, 1, 1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResourceModel_FunctionalResouceStratum(), this.getFunctionalResourceStratum(), null, "functionalResouceStratum", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_FunctionalResourceSet(), this.getFunctionalResourceSet(), null, "functionalResourceSet", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResourceModel_FunctionalResource(), this.getFunctionalResource(), null, "functionalResource", null, 0, -1, FunctionalResourceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(functionalResourceStratumEClass, FunctionalResourceStratum.class, "FunctionalResourceStratum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFunctionalResourceStratum_Name(), ecorePackage.getEString(), "name", null, 1, 1, FunctionalResourceStratum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResourceStratum_FunctionalResourceSet(), this.getFunctionalResourceSet(), null, "functionalResourceSet", null, 0, -1, FunctionalResourceStratum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(functionalResourceSetEClass, FunctionalResourceSet.class, "FunctionalResourceSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFunctionalResourceSet_Name(), ecorePackage.getEString(), "name", null, 1, 1, FunctionalResourceSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

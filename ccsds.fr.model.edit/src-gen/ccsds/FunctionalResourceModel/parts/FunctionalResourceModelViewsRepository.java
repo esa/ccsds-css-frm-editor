@@ -27,6 +27,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String functionalResource = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResource";
 			
+			
+			public static String functionalResouceStratum = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResouceStratum";
+			
 	
 		}
 	
@@ -461,6 +464,24 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String requiringFunctionalResource = "FunctionalResourceModel::AncillaryInterface::properties::requiringFunctionalResource";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * FunctionalResourceStratum view descriptor
+	 * 
+	 */
+	public static class FunctionalResourceStratum {
+		public static class Properties {
+	
+			
+			public static String name = "FunctionalResourceModel::FunctionalResourceStratum::properties::name";
+			
+			
+			public static String functionalResourceSet = "FunctionalResourceModel::FunctionalResourceStratum::properties::functionalResourceSet";
 			
 	
 		}

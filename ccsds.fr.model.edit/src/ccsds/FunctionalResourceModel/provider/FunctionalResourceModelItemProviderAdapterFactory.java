@@ -348,6 +348,29 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.FunctionalResourceStratum} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalResourceStratumItemProvider functionalResourceStratumItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.FunctionalResourceStratum}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalResourceStratumAdapter() {
+		if (functionalResourceStratumItemProvider == null) {
+			functionalResourceStratumItemProvider = new FunctionalResourceStratumItemProvider(this);
+		}
+
+		return functionalResourceStratumItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.FunctionalResourceSet} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +493,7 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	 */
 	public void dispose() {
 		if (functionalResourceModelItemProvider != null) functionalResourceModelItemProvider.dispose();
+		if (functionalResourceStratumItemProvider != null) functionalResourceStratumItemProvider.dispose();
 		if (functionalResourceSetItemProvider != null) functionalResourceSetItemProvider.dispose();
 		if (frModelElementItemProvider != null) frModelElementItemProvider.dispose();
 		if (oidItemProvider != null) oidItemProvider.dispose();

@@ -87,13 +87,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Functional Resouce Stratum</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM = 2;
+
+	/**
 	 * The feature id for the '<em><b>Functional Resource Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET = 2;
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET = 3;
 
 	/**
 	 * The feature id for the '<em><b>Functional Resource</b></em>' containment reference list.
@@ -102,7 +111,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = 3;
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Functional Resource Model</em>' class.
@@ -111,7 +120,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL_FEATURE_COUNT = 4;
+	int FUNCTIONAL_RESOURCE_MODEL_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Functional Resource Model</em>' class.
@@ -130,7 +139,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFrModelElement()
 	 * @generated
 	 */
-	int FR_MODEL_ELEMENT = 2;
+	int FR_MODEL_ELEMENT = 3;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.OidImpl <em>Oid</em>}' class.
@@ -140,7 +149,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getOid()
 	 * @generated
 	 */
-	int OID = 3;
+	int OID = 4;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl <em>Functional Resource</em>}' class.
@@ -150,7 +159,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResource()
 	 * @generated
 	 */
-	int FUNCTIONAL_RESOURCE = 4;
+	int FUNCTIONAL_RESOURCE = 5;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.EventImpl <em>Event</em>}' class.
@@ -160,7 +169,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 5;
+	int EVENT = 6;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.DirectiveImpl <em>Directive</em>}' class.
@@ -170,7 +179,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getDirective()
 	 * @generated
 	 */
-	int DIRECTIVE = 6;
+	int DIRECTIVE = 7;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.TypedElementImpl <em>Typed Element</em>}' class.
@@ -180,7 +189,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getTypedElement()
 	 * @generated
 	 */
-	int TYPED_ELEMENT = 10;
+	int TYPED_ELEMENT = 11;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -190,7 +199,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 7;
+	int PARAMETER = 8;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ValueImpl <em>Value</em>}' class.
@@ -200,7 +209,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 8;
+	int VALUE = 9;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.QualifierImpl <em>Qualifier</em>}' class.
@@ -210,7 +219,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getQualifier()
 	 * @generated
 	 */
-	int QUALIFIER = 9;
+	int QUALIFIER = 10;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.ServiceAccessPointImpl <em>Service Access Point</em>}' class.
@@ -220,7 +229,7 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getServiceAccessPoint()
 	 * @generated
 	 */
-	int SERVICE_ACCESS_POINT = 11;
+	int SERVICE_ACCESS_POINT = 12;
 
 	/**
 	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl <em>Functional Resource Set</em>}' class.
@@ -230,7 +239,63 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResourceSet()
 	 * @generated
 	 */
-	int FUNCTIONAL_RESOURCE_SET = 1;
+	int FUNCTIONAL_RESOURCE_SET = 2;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl <em>Ancillary Interface</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAncillaryInterface()
+	 * @generated
+	 */
+	int ANCILLARY_INTERFACE = 13;
+
+	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl <em>Functional Resource Stratum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResourceStratum()
+	 * @generated
+	 */
+	int FUNCTIONAL_RESOURCE_STRATUM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_STRATUM__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Functional Resource Set</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_STRATUM__FUNCTIONAL_RESOURCE_SET = 1;
+
+	/**
+	 * The number of structural features of the '<em>Functional Resource Stratum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_STRATUM_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Functional Resource Stratum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE_STRATUM_OPERATION_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1474,17 +1539,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 */
 	int SERVICE_ACCESS_POINT_OPERATION_COUNT = 0;
 
-
-	/**
-	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl <em>Ancillary Interface</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ccsds.FunctionalResourceModel.impl.AncillaryInterfaceImpl
-	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAncillaryInterface()
-	 * @generated
-	 */
-	int ANCILLARY_INTERFACE = 12;
-
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -1584,6 +1638,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionalResourceModel_FunctionalResource();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResouceStratum <em>Functional Resouce Stratum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Functional Resouce Stratum</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResouceStratum()
+	 * @see #getFunctionalResourceModel()
+	 * @generated
+	 */
+	EReference getFunctionalResourceModel_FunctionalResouceStratum();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FrModelElement <em>Fr Model Element</em>}'.
@@ -2114,6 +2179,38 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getAncillaryInterface_RequiringFunctionalResource();
 
 	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum <em>Functional Resource Stratum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Functional Resource Stratum</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceStratum
+	 * @generated
+	 */
+	EClass getFunctionalResourceStratum();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceStratum#getName()
+	 * @see #getFunctionalResourceStratum()
+	 * @generated
+	 */
+	EAttribute getFunctionalResourceStratum_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum#getFunctionalResourceSet <em>Functional Resource Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Functional Resource Set</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceStratum#getFunctionalResourceSet()
+	 * @see #getFunctionalResourceStratum()
+	 * @generated
+	 */
+	EReference getFunctionalResourceStratum_FunctionalResourceSet();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceSet <em>Functional Resource Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2220,6 +2317,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = eINSTANCE.getFunctionalResourceModel_FunctionalResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Functional Resouce Stratum</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM = eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl <em>Fr Model Element</em>}' class.
@@ -2634,6 +2739,32 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE = eINSTANCE.getAncillaryInterface_RequiringFunctionalResource();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl <em>Functional Resource Stratum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getFunctionalResourceStratum()
+		 * @generated
+		 */
+		EClass FUNCTIONAL_RESOURCE_STRATUM = eINSTANCE.getFunctionalResourceStratum();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FUNCTIONAL_RESOURCE_STRATUM__NAME = eINSTANCE.getFunctionalResourceStratum_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Functional Resource Set</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE_STRATUM__FUNCTIONAL_RESOURCE_SET = eINSTANCE.getFunctionalResourceStratum_FunctionalResourceSet();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceSetImpl <em>Functional Resource Set</em>}' class.

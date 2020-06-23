@@ -15,10 +15,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="asnTypeModule" lowerBound="1"
         eType="ecore:EClass ../../ccsds.fr.type.model/model/frtypes.ecore#//Module"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResouceStratum"
+        upperBound="-1" eType="#//FunctionalResourceStratum" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResourceSet"
         upperBound="-1" eType="#//FunctionalResourceSet" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResource" upperBound="-1"
         eType="#//FunctionalResource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceStratum">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionalResourceSet"
+        upperBound="-1" eType="#//FunctionalResourceSet" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionalResourceSet">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

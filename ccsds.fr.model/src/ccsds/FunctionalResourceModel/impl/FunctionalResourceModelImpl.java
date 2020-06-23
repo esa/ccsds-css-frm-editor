@@ -6,6 +6,7 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.Oid;
 
 import ccsds.fr.type.model.frtypes.Module;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getRootOid <em>Root Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getAsnTypeModule <em>Asn Type Module</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResouceStratum <em>Functional Resouce Stratum</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceModelImpl#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
@@ -61,6 +63,16 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected Module asnTypeModule;
+
+	/**
+	 * The cached value of the '{@link #getFunctionalResouceStratum() <em>Functional Resouce Stratum</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFunctionalResouceStratum()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<FunctionalResourceStratum> functionalResouceStratum;
 
 	/**
 	 * The cached value of the '{@link #getFunctionalResourceSet() <em>Functional Resource Set</em>}' containment reference list.
@@ -216,6 +228,18 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<FunctionalResourceStratum> getFunctionalResouceStratum() {
+		if (functionalResouceStratum == null) {
+			functionalResouceStratum = new EObjectContainmentEList<FunctionalResourceStratum>(FunctionalResourceStratum.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM);
+		}
+		return functionalResouceStratum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -223,6 +247,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 				return basicSetRootOid(null, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 				return basicSetAsnTypeModule(null, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
+				return ((InternalEList<?>)getFunctionalResouceStratum()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return ((InternalEList<?>)getFunctionalResourceSet()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
@@ -243,6 +269,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 				return getRootOid();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 				return getAsnTypeModule();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
+				return getFunctionalResouceStratum();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return getFunctionalResourceSet();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:
@@ -265,6 +293,10 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 				setAsnTypeModule((Module)newValue);
+				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
+				getFunctionalResouceStratum().clear();
+				getFunctionalResouceStratum().addAll((Collection<? extends FunctionalResourceStratum>)newValue);
 				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				getFunctionalResourceSet().clear();
@@ -292,6 +324,9 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 				setAsnTypeModule((Module)null);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
+				getFunctionalResouceStratum().clear();
+				return;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				getFunctionalResourceSet().clear();
 				return;
@@ -314,6 +349,8 @@ public class FunctionalResourceModelImpl extends MinimalEObjectImpl.Container im
 				return rootOid != null;
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE:
 				return asnTypeModule != null;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM:
+				return functionalResouceStratum != null && !functionalResouceStratum.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_SET:
 				return functionalResourceSet != null && !functionalResourceSet.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE:

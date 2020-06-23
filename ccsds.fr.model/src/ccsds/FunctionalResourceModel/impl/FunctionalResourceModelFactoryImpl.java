@@ -57,6 +57,7 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL: return createFunctionalResourceModel();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_STRATUM: return createFunctionalResourceStratum();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET: return createFunctionalResourceSet();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT: return createFrModelElement();
 			case FunctionalResourceModelPackage.OID: return createOid();
@@ -192,6 +193,16 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public AncillaryInterface createAncillaryInterface() {
 		AncillaryInterfaceImpl ancillaryInterface = new AncillaryInterfaceImpl();
 		return ancillaryInterface;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FunctionalResourceStratum createFunctionalResourceStratum() {
+		FunctionalResourceStratumImpl functionalResourceStratum = new FunctionalResourceStratumImpl();
+		return functionalResourceStratum;
 	}
 
 	/**

@@ -32,6 +32,8 @@ import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
+import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
@@ -96,7 +98,9 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 				// to correct names in the module write it to a temporary output...
 				module.writeAsn1(0, new StringBuffer());
 				
-				createAsn1XsdModule(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), frmUpdateCompoundCmd, editor.getEditingDomain());
+				createXsdModule(EcoreUtil.copy(module), frm, FrUtility.getProjectExplorerSelection(), frmUpdateCompoundCmd, editor.getEditingDomain());
+				createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), frmUpdateCompoundCmd, editor.getEditingDomain());
+				
 				editor.getEditingDomain().getCommandStack().execute(frmUpdateCompoundCmd);
 			} finally {
 				ExportWriterContext.instance().setGeneration(false);
@@ -155,43 +159,102 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	}
 	
 	/**
+	 * Returns the base type for the FR. the base type is
+	 * either the FR classifier or the name of the FR Stratum the FR is contained within
+	 * @param fr	The FR for whcih the base type is queried
+	 * @return		The base type t use for this FR
+	 */
+	private String getXsdBaseType(FunctionalResource fr) {
+		if(fr.eContainer() instanceof FunctionalResourceSet) {
+			if(fr.eContainer().eContainer() instanceof FunctionalResourceStratum) {
+				String name = ((FunctionalResourceStratum)fr.eContainer().eContainer()).getName();
+				if(name != null && name.length() > 0) {
+					return name;
+				}				
+			}
+		}
+		
+		return fr.getClassifier();
+	}
+	
+	/**
+	 * Returns true if the givel FR is contained in a FR Stratum
+	 * @param fr
+	 * @return
+	 */
+	private boolean isInStratum(FunctionalResource fr) {
+		try {
+			if(fr.eContainer().eContainer() instanceof FunctionalResourceStratum) {
+				return true;
+			}
+		} catch(Exception e) {
+		}
+		
+		return false;
+	}
+	/**
+	 * Create XSD type modules for the FRM
+	 * @param module						The general type module of the FRM
+	 * @param frm							The FRM
+	 * @param frmFile						The file containing the FRM
+	 * @param cmdUpdateTypeDefinition		A compound command to perform updates to the FRM
+	 * @param editingDomain					The editing domain of the FRM
+	 */
+	private void createXsdModule(Module module, FunctionalResourceModel frm, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {
+		List<String> xsdExports = new LinkedList<String>();
+
+		try {
+			// create abstract types for each stratum
+			for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+				ExportWriterContext.instance().getAbstractTypes().add(stratum.getName());
+			}		
+			
+			// write the general XSD type module
+			ExportWriterContext.instance().setCurrentBaseType(null);
+			writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + XmlHelper.GENERAL_XSD, module);
+			
+			FunctionalResource[] functionalResources = FrUtility.getFunctionalResources(frm);		
+			// write one module / XSD per FR
+			for(FunctionalResource fr : functionalResources) {
+				try {
+					Module frModule = FrtypesFactory.eINSTANCE.createModule();
+					FromModule importGeneralXsd = FrtypesFactory.eINSTANCE.createFromModule();
+					importGeneralXsd.setName(XmlHelper.GENERAL_XSD);
+					frModule.getImports().add(importGeneralXsd);
+	
+					// set the FR into the export context for XSD generation purposes				
+					ExportWriterContext.instance().setInStratum(isInStratum(fr));
+					ExportWriterContext.instance().setCurrentBaseType(getXsdBaseType(fr));
+					
+					// add an OID for the RF itself
+					frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
+					
+					addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+					addEventTypesAndOids(frModule, fr.getEvent(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+					addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+					
+					writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + fr.getClassifier() + ".xsd", frModule);				
+				} catch(Exception e) {
+					Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Exception creating XSD for FR " 
+							+ fr.getClassifier() + " " + e));
+				}
+			}		
+		} catch(Exception e) {
+			Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Exception creating XSD:" 
+					+ " " + e));			
+		} finally {
+			ExportWriterContext.instance().getAbstractTypes().clear();
+		}
+	}
+	
+	
+	/**
 	 * Creates an ASN.1 module and an XSD from the FRM
 	 * @param functionalResources		The frM to use
 	 * @param frmFile					The file containing the FRM	
 	 * @param editingDomain 
 	 */
-	private void createAsn1XsdModule(Module module, FunctionalResource[] functionalResources, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {		
-		List<String> xsdExports = new LinkedList<String>();
-
-		// write the general CSD type module
-		ExportWriterContext.instance().setCurrentFrClassifier(null);
-		writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + XmlHelper.GENERAL_XSD, module);
-		
-		// write one module / XSD per FR
-		for(FunctionalResource fr : functionalResources) {
-			try {
-				Module frModule = FrtypesFactory.eINSTANCE.createModule();
-				FromModule importGenerlalXsd = FrtypesFactory.eINSTANCE.createFromModule();
-				importGenerlalXsd.setName(XmlHelper.GENERAL_XSD);
-				frModule.getImports().add(importGenerlalXsd);
-
-				// set the FR into the export context for XSD generation purposes
-				ExportWriterContext.instance().setCurrentFrClassifier(fr.getClassifier());
-				
-				// add an OID for the RF itslef
-				frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
-				
-				addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
-				addEventTypesAndOids(frModule, fr.getEvent(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
-				addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
-				
-				writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + fr.getClassifier() + ".xsd", frModule);				
-			} catch(Exception e) {
-				Activator.getDefault().getLog().log(new Status(Status.WARNING, Activator.PLUGIN_ID, "Exception creating XSD for FR " 
-						+ fr.getClassifier() + " " + e));
-			}
-		}
-		
+	private void createAsn1Module(Module module, FunctionalResource[] functionalResources, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {		
 		// prepare an ASN.1 module containing all type definitions of all FRs
 		List<String> exports = new LinkedList<String>();
 		for(FunctionalResource fr : functionalResources) {
@@ -231,33 +294,6 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 				}
 			}
 		}
-		
-		// now XSD
-//		writer = null;
-//		try {
-//			StringBuffer xsdModuleStr = new StringBuffer();
-//			module.writeXsd(0, xsdModuleStr, null);
-//			fileName = frmFile.getLocation().removeFileExtension().toString() + ".xsd";
-//			writer = new BufferedWriter(new FileWriter(fileName));
-//		    writer.write(xsdModuleStr.toString());
-//		} catch(Exception e) {
-//			System.err.println("Error writing XSD file " + e);
-//		} finally {
-//			if(writer != null) {
-//				try {
-//					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM XSD file " + fileName));
-//					writer.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}		
-//		
-//		try {
-//			frmFile.getProject().refreshLocal(IResource.DEPTH_ONE, null);
-//		} catch (CoreException e) {
-//			e.printStackTrace();
-//		} 
 	}
 
 	/**

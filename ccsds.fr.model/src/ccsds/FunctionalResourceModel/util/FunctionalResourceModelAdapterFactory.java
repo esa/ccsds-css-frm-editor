@@ -72,6 +72,10 @@ public class FunctionalResourceModelAdapterFactory extends AdapterFactoryImpl {
 				return createFunctionalResourceModelAdapter();
 			}
 			@Override
+			public Adapter caseFunctionalResourceStratum(FunctionalResourceStratum object) {
+				return createFunctionalResourceStratumAdapter();
+			}
+			@Override
 			public Adapter caseFunctionalResourceSet(FunctionalResourceSet object) {
 				return createFunctionalResourceSetAdapter();
 			}
@@ -304,6 +308,20 @@ public class FunctionalResourceModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAncillaryInterfaceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum <em>Functional Resource Stratum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceStratum
+	 * @generated
+	 */
+	public Adapter createFunctionalResourceStratumAdapter() {
 		return null;
 	}
 

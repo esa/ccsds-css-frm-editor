@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getRootOid <em>Root Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getAsnTypeModule <em>Asn Type Module</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResouceStratum <em>Functional Resouce Stratum</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet <em>Functional Resource Set</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResource <em>Functional Resource</em>}</li>
  * </ul>
@@ -110,5 +111,21 @@ public interface FunctionalResourceModel extends EObject {
 	 * @generated
 	 */
 	EList<FunctionalResource> getFunctionalResource();
+
+	/**
+	 * Returns the value of the '<em><b>Functional Resouce Stratum</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.FunctionalResourceStratum}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Functional Resouce Stratum</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Functional Resouce Stratum</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResourceModel_FunctionalResouceStratum()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<FunctionalResourceStratum> getFunctionalResouceStratum();
 
 } // FunctionalResourceModel

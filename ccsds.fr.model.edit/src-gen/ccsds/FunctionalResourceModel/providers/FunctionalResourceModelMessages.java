@@ -52,6 +52,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String AncillaryInterfacePropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String FunctionalResourceStratumPropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String FunctionalResourceModel_ReadOnly;
@@ -131,12 +134,21 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String AncillaryInterface_Part_Title;
 
+	
+	public static String FunctionalResourceStratum_ReadOnly;
+
+	
+	public static String FunctionalResourceStratum_Part_Title;
+
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceSetLabel;
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceLabel;
+
+	
+	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResouceStratumLabel;
 
 	
 	public static String FunctionalResourceSetPropertiesEditionPart_NameLabel;
@@ -428,6 +440,12 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String AncillaryInterfacePropertiesEditionPart_RequiringFunctionalResourceLabel;
+
+	
+	public static String FunctionalResourceStratumPropertiesEditionPart_NameLabel;
+
+	
+	public static String FunctionalResourceStratumPropertiesEditionPart_FunctionalResourceSetLabel;
 
 
 	

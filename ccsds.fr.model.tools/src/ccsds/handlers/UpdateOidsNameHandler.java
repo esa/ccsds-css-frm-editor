@@ -32,6 +32,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.Qualifier;
@@ -174,13 +175,21 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 		offsetFrSets(domain, setOidOffsets, frm.getFunctionalResourceSet());
 		domain.getCommandStack().execute(setOidOffsets); // do this before using the OID offsets
 		
-		// Iterate over the FR Sets and update the OIDs
+		// Iterate over the FR Sets hanging under FRM and update the OIDs
+		for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+			for(FunctionalResourceSet frs : stratum.getFunctionalResourceSet()) {
+				updateOids(domain, "", frs.getOidOffset(), frs.getFunctionalResource().toArray(new FunctionalResource[0]),
+						rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
+			}
+		}
+		
+		// Iterate over the FR Sets hanging under FRM and update the OIDs
 		for(FunctionalResourceSet frs : frm.getFunctionalResourceSet()) {
 			updateOids(domain, "", frs.getOidOffset(), frs.getFunctionalResource().toArray(new FunctionalResource[0]),
 					rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);
 		}
 		
-		// update FRs not contained in an FR set
+		// update FRs hanging under FRM
 		final int zeroOidOffset = 0;
 		updateOids(domain, "", zeroOidOffset, frm.getFunctionalResource().toArray(new FunctionalResource[0]), 
 				rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);

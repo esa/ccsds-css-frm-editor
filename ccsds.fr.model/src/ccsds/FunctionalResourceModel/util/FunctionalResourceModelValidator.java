@@ -88,6 +88,8 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 		switch (classifierID) {
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_MODEL:
 				return validateFunctionalResourceModel((FunctionalResourceModel)value, diagnostics, context);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_STRATUM:
+				return validateFunctionalResourceStratum((FunctionalResourceStratum)value, diagnostics, context);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET:
 				return validateFunctionalResourceSet((FunctionalResourceSet)value, diagnostics, context);
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT:
@@ -262,6 +264,15 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 	 */
 	public boolean validateAncillaryInterface(AncillaryInterface ancillaryInterface, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(ancillaryInterface, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateFunctionalResourceStratum(FunctionalResourceStratum functionalResourceStratum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(functionalResourceStratum, diagnostics, context);
 	}
 
 	/**

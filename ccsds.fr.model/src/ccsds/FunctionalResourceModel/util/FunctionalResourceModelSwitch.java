@@ -72,6 +72,12 @@ public class FunctionalResourceModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_STRATUM: {
+				FunctionalResourceStratum functionalResourceStratum = (FunctionalResourceStratum)theEObject;
+				T result = caseFunctionalResourceStratum(functionalResourceStratum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE_SET: {
 				FunctionalResourceSet functionalResourceSet = (FunctionalResourceSet)theEObject;
 				T result = caseFunctionalResourceSet(functionalResourceSet);
@@ -335,6 +341,21 @@ public class FunctionalResourceModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAncillaryInterface(AncillaryInterface object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Functional Resource Stratum</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Functional Resource Stratum</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFunctionalResourceStratum(FunctionalResourceStratum object) {
 		return null;
 	}
 

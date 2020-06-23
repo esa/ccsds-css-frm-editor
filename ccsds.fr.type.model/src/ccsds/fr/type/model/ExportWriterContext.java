@@ -1,5 +1,8 @@
 package ccsds.fr.type.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -22,7 +25,11 @@ public class ExportWriterContext {
 	
 	private EditingDomain editingDomain;
 	
-	private String currentFrClassifier;
+	private String currentBaseType;
+	
+	private boolean isInStratum;
+	
+	private final List<String> abstractTypes = new LinkedList<String>();
 	
 	/**
 	 * Private constructor to prevent instantiation
@@ -155,12 +162,24 @@ public class ExportWriterContext {
 		return false;
 	}
 
-	public String getCurrentFrClassifier() {
-		return currentFrClassifier;
+	public String getCurrentBaseType() {
+		return currentBaseType;
 	}
 
-	public void setCurrentFrClassifier(String currentFrName) {
-		this.currentFrClassifier = currentFrName;
+	public void setCurrentBaseType(String currentBaseType) {
+		this.currentBaseType = currentBaseType;
 	}		
+	
+	public List<String> getAbstractTypes() {
+		return abstractTypes;
+	}
+
+	public boolean isInStratum() {
+		return isInStratum;
+	}
+
+	public void setInStratum(boolean isInStratum) {
+		this.isInStratum = isInStratum;
+	}
 	
 }

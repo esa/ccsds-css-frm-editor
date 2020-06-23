@@ -130,6 +130,15 @@ public interface FunctionalResourceModelFactory extends EFactory {
 	AncillaryInterface createAncillaryInterface();
 
 	/**
+	 * Returns a new object of class '<em>Functional Resource Stratum</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Functional Resource Stratum</em>'.
+	 * @generated
+	 */
+	FunctionalResourceStratum createFunctionalResourceStratum();
+
+	/**
 	 * Returns a new object of class '<em>Functional Resource Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

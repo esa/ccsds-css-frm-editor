@@ -2,7 +2,10 @@
  */
 package ccsds.fr.type.model.frtypes.impl;
 
+import ccsds.fr.type.model.XmlAttribute;
+import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
+import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -170,6 +173,30 @@ public class TypeReferenceExternalImpl extends TypeImpl implements TypeReference
 		} else {
 			output.append("external type reference: name not set");
 		}
+	}
+	
+	/**
+	 * Write the  external type reference to XSD
+	 * @generated NOT
+	 */	
+	@Override
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+		// we do not know if a complex or a simple type?! for the moment go for a complex type
+		XmlHelper.writeComment(output, indentLevel, this);
+		
+		int typeIndent = indentLevel;
+		StringBuffer typeOutput = new StringBuffer();	
+		//XmlHelper.doBreakIndent(typeOutput, indentLevel);
+		
+		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE, XmlHelper.getTypeNameAttr(this));
+		XmlHelper.writeElement(typeOutput, indentLevel, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, getName()));
+		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
+		
+		if(oid != null) {		
+			XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this), oid, this);
+		}
+		
+		output.append(typeOutput);		
 	}
 
 } //TypeReferenceExternalImpl

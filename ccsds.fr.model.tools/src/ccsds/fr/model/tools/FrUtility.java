@@ -18,6 +18,7 @@ import org.eclipse.ui.PlatformUI;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.FunctionalResourceSet;
+import ccsds.FunctionalResourceModel.FunctionalResourceStratum;
 import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
 
 /**
@@ -37,18 +38,28 @@ public class FrUtility {
 		
 		if(frm != null) {
 			
-			// add first the FRs in FR Sets
+			// add first the FRs in FR Strata
+			for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+				for(FunctionalResourceSet frs : stratum.getFunctionalResourceSet()) {
+					for(FunctionalResource fr : frs.getFunctionalResource()) {
+						frList.add(fr);
+					}
+				}
+			}
+			
+			// add first the FRs in FR Sets hanging under FRM
 			for(FunctionalResourceSet frs : frm.getFunctionalResourceSet()) {
 				for(FunctionalResource fr : frs.getFunctionalResource()) {
 					frList.add(fr);
 				}
 			}
+
+			// Add second the FRs directly contained in the FRM under FRM
+			for(FunctionalResource fr : frm.getFunctionalResource()) {
+				frList.add(fr);
+			}
 		}
 		
-		// Add second the FRs directly contained in the FRM
-		for(FunctionalResource fr : frm.getFunctionalResource()) {
-			frList.add(fr);
-		}
 		
 		return frList.toArray(new FunctionalResource[0]);
 	}

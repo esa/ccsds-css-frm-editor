@@ -12,6 +12,7 @@ import ccsds.FunctionalResourceModel.parts.forms.FrModelElementPropertiesEdition
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceModelPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourcePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceStratumPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.OidPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.QualifierPropertiesEditionPartForm;
@@ -26,6 +27,7 @@ import ccsds.FunctionalResourceModel.parts.impl.FrModelElementPropertiesEditionP
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceModelPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourcePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceSetPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.FunctionalResourceStratumPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.OidPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.ParameterPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.QualifierPropertiesEditionPartImpl;
@@ -137,6 +139,12 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new AncillaryInterfacePropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new AncillaryInterfacePropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.FunctionalResourceStratum.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new FunctionalResourceStratumPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new FunctionalResourceStratumPropertiesEditionPartForm(component);
 		}
 		return null;
 	}
