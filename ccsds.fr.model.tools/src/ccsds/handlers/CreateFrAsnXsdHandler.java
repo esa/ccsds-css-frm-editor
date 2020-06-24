@@ -205,7 +205,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 
 		try {
 			// create abstract types for each stratum
-			for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+			for(FunctionalResourceStratum stratum : frm.getFunctionalResourceStratum()) {
 				ExportWriterContext.instance().getAbstractTypes().add(XmlHelper.removeBlanks(stratum.getName()));
 			}		
 			

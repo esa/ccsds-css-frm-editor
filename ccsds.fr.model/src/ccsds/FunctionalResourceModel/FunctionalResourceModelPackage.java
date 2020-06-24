@@ -87,13 +87,13 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Functional Resouce Stratum</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Functional Resource Stratum</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM = 2;
+	int FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_STRATUM = 2;
 
 	/**
 	 * The feature id for the '<em><b>Functional Resource Set</b></em>' containment reference list.
@@ -1618,6 +1618,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getFunctionalResourceModel_AsnTypeModule();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceStratum <em>Functional Resource Stratum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Functional Resource Stratum</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceStratum()
+	 * @see #getFunctionalResourceModel()
+	 * @generated
+	 */
+	EReference getFunctionalResourceModel_FunctionalResourceStratum();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResourceSet <em>Functional Resource Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1638,17 +1649,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionalResourceModel_FunctionalResource();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResouceStratum <em>Functional Resouce Stratum</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Functional Resouce Stratum</em>'.
-	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModel#getFunctionalResouceStratum()
-	 * @see #getFunctionalResourceModel()
-	 * @generated
-	 */
-	EReference getFunctionalResourceModel_FunctionalResouceStratum();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FrModelElement <em>Fr Model Element</em>}'.
@@ -2303,6 +2303,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EReference FUNCTIONAL_RESOURCE_MODEL__ASN_TYPE_MODULE = eINSTANCE.getFunctionalResourceModel_AsnTypeModule();
 
 		/**
+		 * The meta object literal for the '<em><b>Functional Resource Stratum</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE_STRATUM = eINSTANCE.getFunctionalResourceModel_FunctionalResourceStratum();
+
+		/**
 		 * The meta object literal for the '<em><b>Functional Resource Set</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2317,14 +2325,6 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOURCE = eINSTANCE.getFunctionalResourceModel_FunctionalResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Functional Resouce Stratum</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FUNCTIONAL_RESOURCE_MODEL__FUNCTIONAL_RESOUCE_STRATUM = eINSTANCE.getFunctionalResourceModel_FunctionalResouceStratum();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl <em>Fr Model Element</em>}' class.

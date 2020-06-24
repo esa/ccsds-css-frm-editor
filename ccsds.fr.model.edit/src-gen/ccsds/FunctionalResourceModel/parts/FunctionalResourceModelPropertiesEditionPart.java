@@ -22,45 +22,45 @@ public interface FunctionalResourceModelPropertiesEditionPart {
 
 
 	/**
-	 * Init the functionalResouceStratum
+	 * Init the functionalResourceStratum
 	 * @param current the current value
 	 * @param containgFeature the feature where to navigate if necessary
 	 * @param feature the feature to manage
 	 */
-	public void initFunctionalResouceStratum(ReferencesTableSettings settings);
+	public void initFunctionalResourceStratum(ReferencesTableSettings settings);
 
 	/**
-	 * Update the functionalResouceStratum
-	 * @param newValue the functionalResouceStratum to update
+	 * Update the functionalResourceStratum
+	 * @param newValue the functionalResourceStratum to update
 	 * 
 	 */
-	public void updateFunctionalResouceStratum();
+	public void updateFunctionalResourceStratum();
 
 	/**
-	 * Adds the given filter to the functionalResouceStratum edition editor.
+	 * Adds the given filter to the functionalResourceStratum edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addFilterToFunctionalResouceStratum(ViewerFilter filter);
+	public void addFilterToFunctionalResourceStratum(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the functionalResouceStratum edition editor.
+	 * Adds the given filter to the functionalResourceStratum edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * 
 	 */
-	public void addBusinessFilterToFunctionalResouceStratum(ViewerFilter filter);
+	public void addBusinessFilterToFunctionalResourceStratum(ViewerFilter filter);
 
 	/**
-	 * @return true if the given element is contained inside the functionalResouceStratum table
+	 * @return true if the given element is contained inside the functionalResourceStratum table
 	 * 
 	 */
-	public boolean isContainedInFunctionalResouceStratumTable(EObject element);
+	public boolean isContainedInFunctionalResourceStratumTable(EObject element);
 
 
 

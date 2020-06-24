@@ -176,7 +176,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 		domain.getCommandStack().execute(setOidOffsets); // do this before using the OID offsets
 		
 		// Iterate over the FR Sets hanging under FRM and update the OIDs
-		for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+		for(FunctionalResourceStratum stratum : frm.getFunctionalResourceStratum()) {
 			for(FunctionalResourceSet frs : stratum.getFunctionalResourceSet()) {
 				updateOids(domain, "", frs.getOidOffset(), frs.getFunctionalResource().toArray(new FunctionalResource[0]),
 						rootOid, ModelElementType.FR_OID_TYPE.getValue(), setAll);

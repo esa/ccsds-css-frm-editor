@@ -39,7 +39,7 @@ public class FrUtility {
 		if(frm != null) {
 			
 			// add first the FRs in FR Strata
-			for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
+			for(FunctionalResourceStratum stratum : frm.getFunctionalResourceStratum()) {
 				for(FunctionalResourceSet frs : stratum.getFunctionalResourceSet()) {
 					for(FunctionalResource fr : frs.getFunctionalResource()) {
 						frList.add(fr);
