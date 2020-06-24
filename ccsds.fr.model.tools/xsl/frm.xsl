@@ -28,16 +28,23 @@
 			<body bgcolor="white" style="font-family:Times; font-size:15px; color:black">
 				<h1>Functional Resource Model</h1>
 
-				<table align="left" width="35%" border="1">
+
+
+				<table align="left" width="55%" border="1">
 					<h2 align="left"></h2>
 					<a name="{TOC-ID}"></a>
 					
 					<tr>
-						<th>Functional Resource Set</th><th>Functional Resource</th>
+						<th>Functional Resource Stratum</th><th>Functional Resource Set</th><th>Functional Resource</th>
 					</tr>
-					
+
 					<xsl:for-each select="//functionalResourceSet">
 						<tr>
+							
+							<td>
+    							<xsl:value-of select="../@name" /> 
+							</td>
+							
 							<td>
 								<a>
 									<xsl:value-of select="@name" />			
@@ -64,7 +71,6 @@
 						</tr>
 					</xsl:for-each>
 				</table>
-
 
 				<p />
 				<table align="center" width="100%" border="1">
@@ -290,6 +296,10 @@
 
 	<xsl:template match="oidBit">
 		<xsl:text>.</xsl:text><xsl:value-of select="."/>
+	</xsl:template>
+
+	<xsl:template match="asnTypeModule">
+		
 	</xsl:template>
 
 </xsl:stylesheet>
