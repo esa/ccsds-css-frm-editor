@@ -45,6 +45,7 @@ public class TypeReferenceExternalItemProvider extends TypeItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addComplexTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -63,6 +64,22 @@ public class TypeReferenceExternalItemProvider extends TypeItemProvider {
 						"_UI_TypeReferenceExternal_type"),
 				FrtypesPackage.Literals.TYPE_REFERENCE_EXTERNAL__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Complex Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addComplexTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_TypeReferenceExternal_complexType_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_TypeReferenceExternal_complexType_feature",
+								"_UI_TypeReferenceExternal_type"),
+						FrtypesPackage.Literals.TYPE_REFERENCE_EXTERNAL__COMPLEX_TYPE, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -112,6 +129,7 @@ public class TypeReferenceExternalItemProvider extends TypeItemProvider {
 
 		switch (notification.getFeatureID(TypeReferenceExternal.class)) {
 		case FrtypesPackage.TYPE_REFERENCE_EXTERNAL__NAME:
+		case FrtypesPackage.TYPE_REFERENCE_EXTERNAL__COMPLEX_TYPE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

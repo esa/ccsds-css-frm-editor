@@ -184,11 +184,11 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 
 		}
 	}
-	
+
 	/**
 	 * Write the integer to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeComment(output, indentLevel, this);
@@ -198,37 +198,39 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 		StringBuffer typeOutput = new StringBuffer();
 
 		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
-		
-		if(getNamedValues() != null && getNamedValues().size() > 0) {
+
+		if (getNamedValues() != null && getNamedValues().size() > 0) {
 			hasConstraints = true;
 			XmlHelper.doBreakIndent(output, indentLevel);
-			
+
 			XmlHelper.writeEnumRestrictions(typeOutput, typeIndent, getNamedValues());
-			
-		} else if(getSingleValueConstraint() != null && 
-				getSingleValueConstraint().getValues() != null && getSingleValueConstraint().getValues().size() > 0) {			
+
+		} else if (getSingleValueConstraint() != null && getSingleValueConstraint().getValues() != null
+				&& getSingleValueConstraint().getValues().size() > 0) {
 			hasConstraints = true;
-			XmlHelper.writeSingleValueRestrictions(typeOutput, typeIndent, XmlHelper.INTEGER, getSingleValueConstraint().getValues());
-			
-		} else if(getRangeConstraint() != null && getRangeConstraint().size() > 0) {			
+			XmlHelper.writeSingleValueRestrictions(typeOutput, typeIndent, XmlHelper.INTEGER,
+					getSingleValueConstraint().getValues());
+
+		} else if (getRangeConstraint() != null && getRangeConstraint().size() > 0) {
 			hasConstraints = true;
 			XmlHelper.writeRangeConstraint(typeOutput, typeIndent, XmlHelper.INTEGER, getRangeConstraint());
 		} else {
-			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.INTEGER));
+			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION,
+					new XmlAttribute(XmlHelper.BASE, XmlHelper.INTEGER));
 		}
-		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);			
+		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
 
-		
-		if(oid != null) {
+		if (oid != null) {
 			XmlAttribute typeAttr = XmlHelper.getTypeNameAttr(this);
-			if(hasConstraints == false) {
+			if (hasConstraints == false) {
 				typeAttr = new XmlAttribute(XmlHelper.NAME, XmlHelper.INTEGER);
 			}
-			
-			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid, this);
+
+			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
+					this);
 		}
-		
+
 		XmlHelper.doBreakIndent(output, indentLevel);
-		output.append(typeOutput);			
+		output.append(typeOutput);
 	}
 } //IntegerTypeImpl

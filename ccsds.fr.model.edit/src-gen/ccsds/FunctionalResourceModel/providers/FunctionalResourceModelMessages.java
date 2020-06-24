@@ -142,13 +142,13 @@ public class FunctionalResourceModelMessages extends NLS {
 
 
 	
+	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResouceStratumLabel;
+
+	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceSetLabel;
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceLabel;
-
-	
-	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResouceStratumLabel;
 
 	
 	public static String FunctionalResourceSetPropertiesEditionPart_NameLabel;

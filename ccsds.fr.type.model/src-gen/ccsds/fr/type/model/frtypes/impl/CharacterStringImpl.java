@@ -285,11 +285,11 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		//		}
 
 	}
-	
+
 	/**
 	 * Write the  bit string to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeComment(output, indentLevel, this);
@@ -297,68 +297,72 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 		boolean hasConstraints = false;
 		int typeIndent = indentLevel;
 		StringBuffer typeOutput = new StringBuffer();
-				
+
 		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
-		if(getPermittedAlphabetConstraint() != null && getPermittedAlphabetConstraint().getValues() != null && 
-				getPermittedAlphabetConstraint().getValues().size() > 0) {
+		if (getPermittedAlphabetConstraint() != null && getPermittedAlphabetConstraint().getValues() != null
+				&& getPermittedAlphabetConstraint().getValues().size() > 0) {
 			hasConstraints = true;
-			
-			XmlHelper.writeStartElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
-			
+
+			XmlHelper.writeStartElement(typeOutput, typeIndent + 1, XmlHelper.RESTRICTION,
+					new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
+
 			String pattern = new String();
 			Iterator<String> iter = getPermittedAlphabetConstraint().getValues().iterator();
-			while(iter.hasNext()) {		
+			while (iter.hasNext()) {
 				String constraint = iter.next();
-				
+
 				// handling of ALL EXCEPT
-				if(constraint.startsWith(XmlHelper.ALL_EXCEPT)) {
+				if (constraint.startsWith(XmlHelper.ALL_EXCEPT)) {
 					try {
-						String exceptions = getPermittedAlphabetConstraint().getValues().get(0).substring(XmlHelper.ALL_EXCEPT.length());
-						exceptions = exceptions.replace("\" \"", "\\s");	// replace " " with \s
-						exceptions = exceptions.replace("\"\\t\"", "\\t");	// replace tab in quotes "	" with \t 
-						exceptions = exceptions.replace("\"", "");			// replace " with nothing
-						exceptions = exceptions.replace(" ", "");			// replace blank with nothing
+						String exceptions = getPermittedAlphabetConstraint().getValues().get(0)
+								.substring(XmlHelper.ALL_EXCEPT.length());
+						exceptions = exceptions.replace("\" \"", "\\s"); // replace " " with \s
+						exceptions = exceptions.replace("\"\\t\"", "\\t"); // replace tab in quotes "	" with \t 
+						exceptions = exceptions.replace("\"", ""); // replace " with nothing
+						exceptions = exceptions.replace(" ", ""); // replace blank with nothing
 						constraint = "[^" + exceptions + "]*";
-					} catch(Exception e) {
+					} catch (Exception e) {
 						FrTypesUtil.warn("Bad ALL EXCEPT on " + XmlHelper.getTypeNameAttr(this).getValue());
 					}
 				}
-				
+
 				pattern += constraint;
-				if(iter.hasNext()) {
-					if(getPermittedAlphabetConstraint().getType() == ConstraintType.OR) {
+				if (iter.hasNext()) {
+					if (getPermittedAlphabetConstraint().getType() == ConstraintType.OR) {
 						pattern += ExportWriter.OR;
 					}
 				}
 			}
-			
-			XmlHelper.writeElement(typeOutput, typeIndent+2, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, pattern));	
-			
-			if(getSizeConstraint() != null && getSizeConstraint().size() > 0) {
+
+			XmlHelper.writeElement(typeOutput, typeIndent + 2, XmlHelper.PATTERN,
+					new XmlAttribute(XmlHelper.VALUE, pattern));
+
+			if (getSizeConstraint() != null && getSizeConstraint().size() > 0) {
 				XmlHelper.writeSizeConstraintContent(typeOutput, typeIndent, XmlHelper.STRING, getSizeConstraint());
 			}
-			
-			XmlHelper.writeEndElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION);
-		}  
-		else if(getSizeConstraint() != null && getSizeConstraint().size() > 0) {
+
+			XmlHelper.writeEndElement(typeOutput, typeIndent + 1, XmlHelper.RESTRICTION);
+		} else if (getSizeConstraint() != null && getSizeConstraint().size() > 0) {
 			hasConstraints = true;
 			XmlHelper.writeSizeConstraint(typeOutput, typeIndent, XmlHelper.STRING, getSizeConstraint());
 		} else {
-			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
+			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION,
+					new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
 		}
 		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
-		
-		if(oid != null) {		
+
+		if (oid != null) {
 			XmlAttribute typeAttr = XmlHelper.getTypeNameAttr(this);
-			if(hasConstraints == false) {
+			if (hasConstraints == false) {
 				typeAttr = new XmlAttribute(XmlHelper.NAME, XmlHelper.STRING);
 			}
-			
-			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid, this);
-		}		
-		
+
+			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
+					this);
+		}
+
 		XmlHelper.doBreakIndent(output, indentLevel);
 		output.append(typeOutput);
-		
-	}		
+
+	}
 } //CharacterStringImpl

@@ -78,7 +78,11 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 			if (isAccessible(FrtypesViewsRepository.TypeReferenceExternal.Properties.name))
 				basePart.setName(EEFConverterUtil.convertToString(EcorePackage.Literals.ESTRING, typeReferenceExternal.getName()));
 			
+			if (isAccessible(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType)) {
+				basePart.setComplexType(typeReferenceExternal.isComplexType());
+			}
 			// init filters
+			
 			
 			// init values for referenced views
 			
@@ -91,6 +95,7 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 
 
 
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -98,6 +103,9 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == FrtypesViewsRepository.TypeReferenceExternal.Properties.name) {
 			return FrtypesPackage.eINSTANCE.getTypeReferenceExternal_Name();
+		}
+		if (editorKey == FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType) {
+			return FrtypesPackage.eINSTANCE.getTypeReferenceExternal_ComplexType();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -111,6 +119,9 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 		TypeReferenceExternal typeReferenceExternal = (TypeReferenceExternal)semanticObject;
 		if (FrtypesViewsRepository.TypeReferenceExternal.Properties.name == event.getAffectedEditor()) {
 			typeReferenceExternal.setName((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
+		}
+		if (FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType == event.getAffectedEditor()) {
+			typeReferenceExternal.setComplexType((Boolean)event.getNewValue());
 		}
 	}
 
@@ -129,6 +140,9 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 					basePart.setName("");
 				}
 			}
+			if (FrtypesPackage.eINSTANCE.getTypeReferenceExternal_ComplexType().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType))
+				basePart.setComplexType((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -141,7 +155,8 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			FrtypesPackage.eINSTANCE.getTypeReferenceExternal_Name()		);
+			FrtypesPackage.eINSTANCE.getTypeReferenceExternal_Name(),
+			FrtypesPackage.eINSTANCE.getTypeReferenceExternal_ComplexType()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -172,6 +187,13 @@ public class TypeReferenceExternalPropertiesEditionComponent extends SinglePartP
 						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getTypeReferenceExternal_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getTypeReferenceExternal_Name().getEAttributeType(), newValue);
+				}
+				if (FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(FrtypesPackage.eINSTANCE.getTypeReferenceExternal_ComplexType().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(FrtypesPackage.eINSTANCE.getTypeReferenceExternal_ComplexType().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

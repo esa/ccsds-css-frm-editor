@@ -82,10 +82,11 @@ public class ChoiceImpl extends StructuredDifferentTypeImpl implements Choice {
 
 		super.writeAsn1(indentLevel, output);
 	}
+
 	/**
 	 * Write the  sequence to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.CHOICE, this, getElements(), oid);

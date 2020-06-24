@@ -346,6 +346,9 @@ public class FrtypesMessages extends NLS {
 	public static String TypeReferenceExternalPropertiesEditionPart_NameLabel;
 
 	
+	public static String TypeReferenceExternalPropertiesEditionPart_ComplexTypeLabel;
+
+	
 	public static String FromModulePropertiesEditionPart_NameLabel;
 
 	

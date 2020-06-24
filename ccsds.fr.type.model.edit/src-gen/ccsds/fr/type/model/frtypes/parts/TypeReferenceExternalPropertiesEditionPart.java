@@ -29,6 +29,20 @@ public interface TypeReferenceExternalPropertiesEditionPart {
 	public void setName(String newValue);
 
 
+	/**
+	 * @return the complexType
+	 * 
+	 */
+	public Boolean getComplexType();
+
+	/**
+	 * Defines a new complexType
+	 * @param newValue the new complexType to set
+	 * 
+	 */
+	public void setComplexType(Boolean newValue);
+
+
 
 
 

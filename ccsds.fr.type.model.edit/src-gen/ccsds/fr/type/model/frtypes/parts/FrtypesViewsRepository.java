@@ -390,6 +390,9 @@ public class FrtypesViewsRepository {
 			
 			public static String name = "frtypes::TypeReferenceExternal::properties::name";
 			
+			
+			public static String complexType = "frtypes::TypeReferenceExternal::properties::complexType";
+			
 	
 		}
 	

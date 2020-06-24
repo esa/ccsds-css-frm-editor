@@ -59,15 +59,15 @@ import org.eclipse.ui.forms.widgets.Section;
  */
 public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, FunctionalResourceModelPropertiesEditionPart {
 
+	protected ReferencesTable functionalResouceStratum;
+	protected List<ViewerFilter> functionalResouceStratumBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> functionalResouceStratumFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable functionalResourceSet;
 	protected List<ViewerFilter> functionalResourceSetBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> functionalResourceSetFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable functionalResource;
 	protected List<ViewerFilter> functionalResourceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> functionalResourceFilters = new ArrayList<ViewerFilter>();
-	protected ReferencesTable functionalResouceStratum;
-	protected List<ViewerFilter> functionalResouceStratumBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> functionalResouceStratumFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -113,9 +113,9 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence functionalResourceModel_Step = new BindingCompositionSequence(propertiesEditionComponent);
 		CompositionStep propertiesStep = functionalResourceModel_Step.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.class);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource);
-		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
 		
 		
 		composer = new PartComposer(functionalResourceModel_Step) {
@@ -125,14 +125,14 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.class) {
 					return createPropertiesGroup(widgetFactory, parent);
 				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum) {
+					return createFunctionalResouceStratumTableComposition(widgetFactory, parent);
+				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResourceSet) {
 					return createFunctionalResourceSetTableComposition(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResource) {
 					return createFunctionalResourceTableComposition(widgetFactory, parent);
-				}
-				if (key == FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum) {
-					return createFunctionalResouceStratumTableComposition(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -154,6 +154,57 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 		propertiesGroup.setLayout(propertiesGroupLayout);
 		propertiesSection.setClient(propertiesGroup);
 		return propertiesGroup;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createFunctionalResouceStratumTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.functionalResouceStratum = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, FunctionalResourceModelMessages.FunctionalResourceModelPropertiesEditionPart_FunctionalResouceStratumLabel), new ReferencesTableListener() {
+			public void handleAdd() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				functionalResouceStratum.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				functionalResouceStratum.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				functionalResouceStratum.refresh();
+			}
+			public void handleRemove(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				functionalResouceStratum.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.functionalResouceStratumFilters) {
+			this.functionalResouceStratum.addFilter(filter);
+		}
+		this.functionalResouceStratum.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.functionalResouceStratum.createControls(parent, widgetFactory);
+		this.functionalResouceStratum.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData functionalResouceStratumData = new GridData(GridData.FILL_HORIZONTAL);
+		functionalResouceStratumData.horizontalSpan = 3;
+		this.functionalResouceStratum.setLayoutData(functionalResouceStratumData);
+		this.functionalResouceStratum.setLowerBound(0);
+		this.functionalResouceStratum.setUpperBound(-1);
+		functionalResouceStratum.setID(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
+		functionalResouceStratum.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createFunctionalResouceStratumTableComposition
+
+		// End of user code
+		return parent;
 	}
 
 	/**
@@ -258,57 +309,6 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 		return parent;
 	}
 
-	/**
-	 * @param container
-	 * 
-	 */
-	protected Composite createFunctionalResouceStratumTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.functionalResouceStratum = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, FunctionalResourceModelMessages.FunctionalResourceModelPropertiesEditionPart_FunctionalResouceStratumLabel), new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				functionalResouceStratum.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				functionalResouceStratum.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				functionalResouceStratum.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				functionalResouceStratum.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.functionalResouceStratumFilters) {
-			this.functionalResouceStratum.addFilter(filter);
-		}
-		this.functionalResouceStratum.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, FunctionalResourceModelViewsRepository.FORM_KIND));
-		this.functionalResouceStratum.createControls(parent, widgetFactory);
-		this.functionalResouceStratum.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourceModelPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData functionalResouceStratumData = new GridData(GridData.FILL_HORIZONTAL);
-		functionalResouceStratumData.horizontalSpan = 3;
-		this.functionalResouceStratum.setLayoutData(functionalResouceStratumData);
-		this.functionalResouceStratum.setLowerBound(0);
-		this.functionalResouceStratum.setUpperBound(-1);
-		functionalResouceStratum.setID(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
-		functionalResouceStratum.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createFunctionalResouceStratumTableComposition
-
-		// End of user code
-		return parent;
-	}
-
 
 	/**
 	 * {@inheritDoc}
@@ -320,6 +320,72 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 		// Start of user code for tab synchronization
 		
 		// End of user code
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#initFunctionalResouceStratum(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initFunctionalResouceStratum(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		functionalResouceStratum.setContentProvider(contentProvider);
+		functionalResouceStratum.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
+		if (eefElementEditorReadOnlyState && functionalResouceStratum.isEnabled()) {
+			functionalResouceStratum.setEnabled(false);
+			functionalResouceStratum.setToolTipText(FunctionalResourceModelMessages.FunctionalResourceModel_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !functionalResouceStratum.isEnabled()) {
+			functionalResouceStratum.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#updateFunctionalResouceStratum()
+	 * 
+	 */
+	public void updateFunctionalResouceStratum() {
+	functionalResouceStratum.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addFilterFunctionalResouceStratum(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToFunctionalResouceStratum(ViewerFilter filter) {
+		functionalResouceStratumFilters.add(filter);
+		if (this.functionalResouceStratum != null) {
+			this.functionalResouceStratum.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addBusinessFilterFunctionalResouceStratum(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToFunctionalResouceStratum(ViewerFilter filter) {
+		functionalResouceStratumBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#isContainedInFunctionalResouceStratumTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInFunctionalResouceStratumTable(EObject element) {
+		return ((ReferencesTableSettings)functionalResouceStratum.getInput()).contains(element);
 	}
 
 
@@ -452,72 +518,6 @@ public class FunctionalResourceModelPropertiesEditionPartForm extends SectionPro
 	 */
 	public boolean isContainedInFunctionalResourceTable(EObject element) {
 		return ((ReferencesTableSettings)functionalResource.getInput()).contains(element);
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#initFunctionalResouceStratum(EObject current, EReference containingFeature, EReference feature)
-	 */
-	public void initFunctionalResouceStratum(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		functionalResouceStratum.setContentProvider(contentProvider);
-		functionalResouceStratum.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResourceModel_.Properties.functionalResouceStratum);
-		if (eefElementEditorReadOnlyState && functionalResouceStratum.isEnabled()) {
-			functionalResouceStratum.setEnabled(false);
-			functionalResouceStratum.setToolTipText(FunctionalResourceModelMessages.FunctionalResourceModel_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !functionalResouceStratum.isEnabled()) {
-			functionalResouceStratum.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#updateFunctionalResouceStratum()
-	 * 
-	 */
-	public void updateFunctionalResouceStratum() {
-	functionalResouceStratum.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addFilterFunctionalResouceStratum(ViewerFilter filter)
-	 * 
-	 */
-	public void addFilterToFunctionalResouceStratum(ViewerFilter filter) {
-		functionalResouceStratumFilters.add(filter);
-		if (this.functionalResouceStratum != null) {
-			this.functionalResouceStratum.addFilter(filter);
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#addBusinessFilterFunctionalResouceStratum(ViewerFilter filter)
-	 * 
-	 */
-	public void addBusinessFilterToFunctionalResouceStratum(ViewerFilter filter) {
-		functionalResouceStratumBusinessFilters.add(filter);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourceModelPropertiesEditionPart#isContainedInFunctionalResouceStratumTable(EObject element)
-	 * 
-	 */
-	public boolean isContainedInFunctionalResouceStratumTable(EObject element) {
-		return ((ReferencesTableSettings)functionalResouceStratum.getInput()).contains(element);
 	}
 
 

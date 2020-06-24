@@ -154,7 +154,7 @@ public class FromModuleImpl extends MinimalEObjectImpl.Container implements From
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		//throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();
 	}
 
 	/**

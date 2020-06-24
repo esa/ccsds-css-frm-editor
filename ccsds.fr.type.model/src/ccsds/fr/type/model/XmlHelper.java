@@ -16,6 +16,7 @@ import ccsds.fr.type.model.frtypes.SizeConstraint;
 import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.Type;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
+import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
 import ccsds.fr.type.model.frtypes.ValueRangeConstraint;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
@@ -575,6 +576,10 @@ public class XmlHelper {
 			}
 		}
 		
+		if(t instanceof TypeReferenceExternal && ((TypeReferenceExternal)t).isComplexType() == false) {
+			return true;
+		}
+		
 		return false;
 	}
 	
@@ -674,5 +679,18 @@ public class XmlHelper {
 	 */
 	public static String getFrBaseElement(String frClassifier) {
 		return frClassifier + "Element";
+	}
+	
+	/**
+	 * Removes blanks from the given string
+	 * @param s
+	 * @return The string without blanks
+	 */
+	public static String removeBlanks(String s) {
+		if(s != null) {
+			return s.replace(" ", "");
+		}
+		
+		return s;
 	}
 }

@@ -2108,13 +2108,22 @@ public interface FrtypesPackage extends EPackage {
 	int TYPE_REFERENCE_EXTERNAL__NAME = TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Complex Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE_EXTERNAL__COMPLEX_TYPE = TYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Type Reference External</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REFERENCE_EXTERNAL_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+	int TYPE_REFERENCE_EXTERNAL_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Write Asn1</em>' operation.
@@ -2989,6 +2998,17 @@ public interface FrtypesPackage extends EPackage {
 	EAttribute getTypeReferenceExternal_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ccsds.fr.type.model.frtypes.TypeReferenceExternal#isComplexType <em>Complex Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Complex Type</em>'.
+	 * @see ccsds.fr.type.model.frtypes.TypeReferenceExternal#isComplexType()
+	 * @see #getTypeReferenceExternal()
+	 * @generated
+	 */
+	EAttribute getTypeReferenceExternal_ComplexType();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.Null <em>Null</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3704,6 +3724,14 @@ public interface FrtypesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE_REFERENCE_EXTERNAL__NAME = eINSTANCE.getTypeReferenceExternal_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Complex Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REFERENCE_EXTERNAL__COMPLEX_TYPE = eINSTANCE.getTypeReferenceExternal_ComplexType();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.impl.NullImpl <em>Null</em>}' class.

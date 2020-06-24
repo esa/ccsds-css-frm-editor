@@ -281,53 +281,67 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 */
 	private void writeBuiltInTypes(int indentLevel, StringBuffer output) {
 		XmlHelper.doBreakIndent(output, indentLevel);
-		
+
 		// NULL		
-		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, ExportWriter.NULL));
-		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
-		XmlHelper.writeElement(output, indentLevel, XmlHelper.MIN_LENGTH, new XmlAttribute(XmlHelper.VALUE, Integer.toString(0)));
+		XmlHelper.writeStartElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE,
+				new XmlAttribute(XmlHelper.NAME, ExportWriter.NULL));
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.RESTRICTION,
+				new XmlAttribute(XmlHelper.BASE, XmlHelper.STRING));
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.MIN_LENGTH,
+				new XmlAttribute(XmlHelper.VALUE, Integer.toString(0)));
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.RESTRICTION);
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SIMPLE_TYPE);
-				
+
 		XmlHelper.doBreakIndent(output, indentLevel);
-		
+
 		// ObjectIdentifier
-		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.OBJECT_IDENTIFIER));
-		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, "[0-2]((\\.[1-3]?[0-9])(\\.\\d+)*)?"));
-		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.RESTRICTION);
-		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE);
-		
+		XmlHelper.writeStartElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.OBJECT_IDENTIFIER));
+		XmlHelper.writeStartElement(output, indentLevel + 2, XmlHelper.RESTRICTION,
+				new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.PATTERN,
+				new XmlAttribute(XmlHelper.VALUE, "[0-2]((\\.[1-3]?[0-9])(\\.\\d+)*)?"));
+		XmlHelper.writeEndElement(output, indentLevel + 2, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE);
+
 		// BitString
-		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.BIT_STRING));
-		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, "[0-1]{0,}"));
-		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.RESTRICTION);
-		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE);
-		
+		XmlHelper.writeStartElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.BIT_STRING));
+		XmlHelper.writeStartElement(output, indentLevel + 2, XmlHelper.RESTRICTION,
+				new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.PATTERN,
+				new XmlAttribute(XmlHelper.VALUE, "[0-1]{0,}"));
+		XmlHelper.writeEndElement(output, indentLevel + 2, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE);
+
 		// SvcProductionStatusVersion1 - this is from ASN.1 of SFW B-1. TODO: shift B-1 types to preferences
-		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE, new XmlAttribute(XmlHelper.NAME, "SvcProductionStatusVersion1"));
-		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ENUMERATION, new XmlAttribute(XmlHelper.VALUE, "configured"));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ENUMERATION, new XmlAttribute(XmlHelper.VALUE, "operational"));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ENUMERATION, new XmlAttribute(XmlHelper.VALUE, "interrupted"));
-		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ENUMERATION, new XmlAttribute(XmlHelper.VALUE, "halted"));
-		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.RESTRICTION);
-		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.SIMPLE_TYPE);
-		
-		
-		for(String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
-			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
+		XmlHelper.writeStartElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE,
+				new XmlAttribute(XmlHelper.NAME, "SvcProductionStatusVersion1"));
+		XmlHelper.writeStartElement(output, indentLevel + 2, XmlHelper.RESTRICTION,
+				new XmlAttribute(XmlHelper.BASE, XmlHelper.TOKEN));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.ENUMERATION,
+				new XmlAttribute(XmlHelper.VALUE, "configured"));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.ENUMERATION,
+				new XmlAttribute(XmlHelper.VALUE, "operational"));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.ENUMERATION,
+				new XmlAttribute(XmlHelper.VALUE, "interrupted"));
+		XmlHelper.writeElement(output, indentLevel + 3, XmlHelper.ENUMERATION,
+				new XmlAttribute(XmlHelper.VALUE, "halted"));
+		XmlHelper.writeEndElement(output, indentLevel + 2, XmlHelper.RESTRICTION);
+		XmlHelper.writeEndElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE);
+
+		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
+			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
 					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
 					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(abstractType)),
 					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
-			
-			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, 
-					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(abstractType)));			
+
+			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(abstractType)));
 		}
 
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,7 +349,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		
+
 		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
 				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
@@ -346,31 +360,30 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
 				new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
 
-		
-		if(getImports().size() > 0 && getImports().get(0) != null &&
-				XmlHelper.GENERAL_XSD.equals(getImports().get(0).getName())) {
-			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE, 					
+		if (getImports().size() > 0 && getImports().get(0) != null
+				&& XmlHelper.GENERAL_XSD.equals(getImports().get(0).getName())) {
+			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE,
 					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.GENERAL_XSD));
-			
+
 			// generate an FR Specific base type 
-			if(ExportWriterContext.instance().getCurrentBaseType() != null &&
-					ExportWriterContext.instance().isInStratum() == false) {
+			if (ExportWriterContext.instance().getCurrentBaseType() != null
+					&& ExportWriterContext.instance().isInStratum() == false) {
 				XmlHelper.doBreakIndent(output, indentLevel);
-				String frClassifier = ExportWriterContext.instance().getCurrentBaseType();				
-				
-				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.ELEMENT, 
+				String frClassifier = ExportWriterContext.instance().getCurrentBaseType();
+
+				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.ELEMENT,
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
 						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
-						new XmlAttribute(XmlHelper.ABSTRACT, "true"));				
-				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE, 
+						new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.COMPLEX_TYPE,
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
 			}
-			
+
 		} else {
 			// write the built in types only for the general XSD
 			writeBuiltInTypes(indentLevel, output);
 		}
-		
+
 		indentLevel += 1;
 		// all type definitions
 		for (TypeDefinition td : getTypeDefinition()) {

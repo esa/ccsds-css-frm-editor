@@ -23,7 +23,7 @@ import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-
+import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
@@ -34,10 +34,11 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -51,6 +52,7 @@ import org.eclipse.swt.widgets.Text;
 public class TypeReferenceExternalPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TypeReferenceExternalPropertiesEditionPart {
 
 	protected Text name;
+	protected Button complexType;
 
 
 
@@ -88,9 +90,9 @@ public class TypeReferenceExternalPropertiesEditionPartImpl extends CompositePro
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence typeReferenceExternalStep = new BindingCompositionSequence(propertiesEditionComponent);
-		typeReferenceExternalStep
-			.addStep(FrtypesViewsRepository.TypeReferenceExternal.Properties.class)
-			.addStep(FrtypesViewsRepository.TypeReferenceExternal.Properties.name);
+		CompositionStep propertiesStep = typeReferenceExternalStep.addStep(FrtypesViewsRepository.TypeReferenceExternal.Properties.class);
+		propertiesStep.addStep(FrtypesViewsRepository.TypeReferenceExternal.Properties.name);
+		propertiesStep.addStep(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType);
 		
 		
 		composer = new PartComposer(typeReferenceExternalStep) {
@@ -102,6 +104,9 @@ public class TypeReferenceExternalPropertiesEditionPartImpl extends CompositePro
 				}
 				if (key == FrtypesViewsRepository.TypeReferenceExternal.Properties.name) {
 					return createNameText(parent);
+				}
+				if (key == FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType) {
+					return createComplexTypeCheckbox(parent);
 				}
 				return parent;
 			}
@@ -173,6 +178,36 @@ public class TypeReferenceExternalPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
+	
+	protected Composite createComplexTypeCheckbox(Composite parent) {
+		complexType = new Button(parent, SWT.CHECK);
+		complexType.setText(getDescription(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType, FrtypesMessages.TypeReferenceExternalPropertiesEditionPart_ComplexTypeLabel));
+		complexType.addSelectionListener(new SelectionAdapter() {
+
+			/**
+			 * {@inheritDoc}
+			 *
+			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+			 * 	
+			 */
+			public void widgetSelected(SelectionEvent e) {
+				if (propertiesEditionComponent != null)
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TypeReferenceExternalPropertiesEditionPartImpl.this, FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(complexType.getSelection())));
+			}
+
+		});
+		GridData complexTypeData = new GridData(GridData.FILL_HORIZONTAL);
+		complexTypeData.horizontalSpan = 2;
+		complexType.setLayoutData(complexTypeData);
+		EditingUtils.setID(complexType, FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType);
+		EditingUtils.setEEFtype(complexType, "eef::Checkbox"); //$NON-NLS-1$
+		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType, FrtypesViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+		// Start of user code for createComplexTypeCheckbox
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -214,6 +249,38 @@ public class TypeReferenceExternalPropertiesEditionPartImpl extends CompositePro
 			name.setToolTipText(FrtypesMessages.TypeReferenceExternal_ReadOnly);
 		} else if (!eefElementEditorReadOnlyState && !name.isEnabled()) {
 			name.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.TypeReferenceExternalPropertiesEditionPart#getComplexType()
+	 * 
+	 */
+	public Boolean getComplexType() {
+		return Boolean.valueOf(complexType.getSelection());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.fr.type.model.frtypes.parts.TypeReferenceExternalPropertiesEditionPart#setComplexType(Boolean newValue)
+	 * 
+	 */
+	public void setComplexType(Boolean newValue) {
+		if (newValue != null) {
+			complexType.setSelection(newValue.booleanValue());
+		} else {
+			complexType.setSelection(false);
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(FrtypesViewsRepository.TypeReferenceExternal.Properties.complexType);
+		if (eefElementEditorReadOnlyState && complexType.isEnabled()) {
+			complexType.setEnabled(false);
+			complexType.setToolTipText(FrtypesMessages.TypeReferenceExternal_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !complexType.isEnabled()) {
+			complexType.setEnabled(true);
 		}	
 		
 	}

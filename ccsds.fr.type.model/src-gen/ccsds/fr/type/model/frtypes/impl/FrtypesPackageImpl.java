@@ -940,6 +940,15 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTypeReferenceExternal_ComplexType() {
+		return (EAttribute) typeReferenceExternalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNull() {
 		return nullEClass;
 	}
@@ -1180,6 +1189,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		typeReferenceExternalEClass = createEClass(TYPE_REFERENCE_EXTERNAL);
 		createEAttribute(typeReferenceExternalEClass, TYPE_REFERENCE_EXTERNAL__NAME);
+		createEAttribute(typeReferenceExternalEClass, TYPE_REFERENCE_EXTERNAL__COMPLEX_TYPE);
 
 		nullEClass = createEClass(NULL);
 
@@ -1434,6 +1444,9 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		initEClass(typeReferenceExternalEClass, TypeReferenceExternal.class, "TypeReferenceExternal", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeReferenceExternal_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				TypeReferenceExternal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeReferenceExternal_ComplexType(), ecorePackage.getEBoolean(), "complexType", "false", 0, 1,
 				TypeReferenceExternal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

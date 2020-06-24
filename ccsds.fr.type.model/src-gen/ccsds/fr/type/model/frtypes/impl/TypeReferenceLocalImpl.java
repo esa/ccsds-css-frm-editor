@@ -228,42 +228,46 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 			output.append("local type reference: name not set");
 		}
 	}
-	
+
 	/**
 	 * Write the  local type reference to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		int typeIndent = indentLevel;
-		StringBuffer typeOutput = new StringBuffer();	
+		StringBuffer typeOutput = new StringBuffer();
 		
 		// write a type without value and oid attributes, which can again be referenced 		
-		if(XmlHelper.isSimpleType(getTypeDefinition().getType())) {
+		if (XmlHelper.isSimpleType(getTypeDefinition().getType())) {
 			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
-			XmlHelper.writeElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION, new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
+			XmlHelper.writeElement(typeOutput, typeIndent + 1, XmlHelper.RESTRICTION,
+					new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
 			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
 		} else {
-			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE, XmlHelper.getTypeNameAttr(this));
-			XmlHelper.writeStartElement(typeOutput, typeIndent+1, XmlHelper.COMPLEX_CONTENT);
-			XmlHelper.writeStartElement(typeOutput, typeIndent+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
-			XmlHelper.writeEndElement(typeOutput, typeIndent+2, XmlHelper.EXTENSION);
-			XmlHelper.writeEndElement(typeOutput, typeIndent+1, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE,
+					XmlHelper.getTypeNameAttr(this));
+			XmlHelper.writeStartElement(typeOutput, typeIndent + 1, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeStartElement(typeOutput, typeIndent + 2, XmlHelper.EXTENSION,
+					new XmlAttribute(XmlHelper.BASE, getTypeDefinition().getName()));
+			XmlHelper.writeEndElement(typeOutput, typeIndent + 2, XmlHelper.EXTENSION);
+			XmlHelper.writeEndElement(typeOutput, typeIndent + 1, XmlHelper.COMPLEX_CONTENT);
 			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
 		}
-		
-		
+
 		// write a named element
-		if(oid != null) {
-			
-			if(XmlHelper.isSimpleType(getTypeDefinition().getType())) {
-				XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this), oid, this);
+		if (oid != null) {
+
+			if (XmlHelper.isSimpleType(getTypeDefinition().getType())) {
+				XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
+						XmlHelper.getTypeNameAttr(this), oid, this);
 			} else {
-				XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this),  oid, this);
+				XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
+						XmlHelper.getTypeNameAttr(this), oid, this);
 			}
-						
+
 		}
-		
+
 		output.append(typeOutput);
 	}
 } //TypeReferenceLocalImpl

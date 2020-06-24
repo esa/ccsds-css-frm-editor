@@ -181,7 +181,7 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 
 		}
 	}
-	
+
 	/**
 	 * Write the ENUMERATED to XSD
 	 * @generated NOT
@@ -189,20 +189,21 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeComment(output, indentLevel, this);
-		
+
 		int typeIndent = indentLevel;
-		StringBuffer typeOutput = new StringBuffer();	
+		StringBuffer typeOutput = new StringBuffer();
 		//XmlHelper.doBreakIndent(typeOutput, indentLevel);
-		
+
 		XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
 		XmlHelper.writeEnumRestrictions(typeOutput, typeIndent, getValues());
 		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
-		
-		if(oid != null) {		
-			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), XmlHelper.getTypeNameAttr(this), oid, this);
+
+		if (oid != null) {
+			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
+					XmlHelper.getTypeNameAttr(this), oid, this);
 		}
-		
-		output.append(typeOutput);		
+
+		output.append(typeOutput);
 	}
 
 } //EnumeratedImpl

@@ -49,7 +49,7 @@ public class SequenceImpl extends StructuredDifferentTypeImpl implements Sequenc
 	/**
 	 * Write the  sequence to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.SEQUENCE, this, getElements(), oid);

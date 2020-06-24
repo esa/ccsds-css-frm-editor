@@ -169,7 +169,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			if(fr.eContainer().eContainer() instanceof FunctionalResourceStratum) {
 				String name = ((FunctionalResourceStratum)fr.eContainer().eContainer()).getName();
 				if(name != null && name.length() > 0) {
-					return name;
+					return XmlHelper.removeBlanks(name); // remove blanks					
 				}				
 			}
 		}
@@ -206,7 +206,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		try {
 			// create abstract types for each stratum
 			for(FunctionalResourceStratum stratum : frm.getFunctionalResouceStratum()) {
-				ExportWriterContext.instance().getAbstractTypes().add(stratum.getName());
+				ExportWriterContext.instance().getAbstractTypes().add(XmlHelper.removeBlanks(stratum.getName()));
 			}		
 			
 			// write the general XSD type module

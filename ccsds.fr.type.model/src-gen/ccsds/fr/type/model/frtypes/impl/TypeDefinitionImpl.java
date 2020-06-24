@@ -236,7 +236,7 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated NOT
 	 */
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		if(getType() != null) {
+		if (getType() != null) {
 			getType().writeXsd(indentLevel, output, oid);
 		}
 	}

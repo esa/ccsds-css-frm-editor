@@ -277,12 +277,11 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 			output.append("no component set");
 		}
 	}
-	
-	
+
 	/**
 	 * Write the  sequence of / set of to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeStructuredSameType(indentLevel, output, this, getElements(), oid);

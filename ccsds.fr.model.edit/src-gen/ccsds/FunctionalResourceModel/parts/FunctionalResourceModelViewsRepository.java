@@ -22,13 +22,13 @@ public class FunctionalResourceModelViewsRepository {
 		public static class Properties {
 	
 			
+			public static String functionalResouceStratum = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResouceStratum";
+			
+			
 			public static String functionalResourceSet = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResourceSet";
 			
 			
 			public static String functionalResource = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResource";
-			
-			
-			public static String functionalResouceStratum = "FunctionalResourceModel::FunctionalResourceModel_::properties::functionalResouceStratum";
 			
 	
 		}

@@ -45,11 +45,11 @@ public class SetImpl extends StructuredDifferentTypeImpl implements Set {
 		output.append(ExportWriter.SET);
 		super.writeAsn1(indentLevel, output);
 	}
-	
+
 	/**
 	 * Write the  sequence to XSD
 	 * @generated NOT
-	 */	
+	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.ALL, this, getElements(), oid);

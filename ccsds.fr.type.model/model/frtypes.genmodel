@@ -104,12 +104,18 @@
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//TypeReferenceExternal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute frtypes.ecore#//TypeReferenceExternal/complexType"/>
     </genClasses>
     <genClasses ecoreClass="frtypes.ecore#//Null"/>
     <genClasses image="false" ecoreClass="frtypes.ecore#//ExportWriter">
       <genOperations ecoreOperation="frtypes.ecore#//ExportWriter/writeAsn1">
         <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeAsn1/indentLevel"/>
         <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeAsn1/output"/>
+      </genOperations>
+      <genOperations ecoreOperation="frtypes.ecore#//ExportWriter/writeXsd">
+        <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/indentLevel"/>
+        <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/output"/>
+        <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/oid"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="frtypes.ecore#//SizeConstrainedType">
