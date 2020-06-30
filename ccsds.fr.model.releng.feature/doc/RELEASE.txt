@@ -1,5 +1,6 @@
-Version 4.2.0 from TBD
+Version 4.2.0 from 30.06.2020
 - create XSD from FRM
+- Support Functional Resource Strata
 
 Version 4.1.14 from 25.05.2020
 - forced feature version into plug-ins

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:frtypes="http://ccsds.fr/types" targetNamespace="http://ccsds.fr/types">
   <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
-  
+
   <xsd:complexType name="TypeDefinition">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:sequence>
           <xsd:element name="type" type="frtypes:Type"/>
         </xsd:sequence>
         <xsd:attribute name="name" type="ecore:EString"/>
+        <xsd:attribute name="comment" type="ecore:EString"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="Type">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="singleValueConstraint" type="frtypes:SingleValueConstraint"/>
         </xsd:sequence>
@@ -103,7 +104,7 @@
       <xsd:documentation>Constraints: This is drastically simplified approach compared to what ASn.1 allows.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer"/>
+      <xsd:extension base="frtypes:ExportWriter"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="SizeConstraint">
@@ -117,8 +118,8 @@
   <xsd:complexType name="ValueRangeConstraint">
     <xsd:complexContent>
       <xsd:extension base="frtypes:Constraint">
-        <xsd:attribute name="min" type="ecore:ELong" use="required"/>
-        <xsd:attribute name="max" type="ecore:ELong" use="required"/>
+        <xsd:attribute name="min" type="ecore:EString" use="required"/>
+        <xsd:attribute name="max" type="ecore:EString" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -138,7 +139,7 @@
   </xsd:complexType>
   <xsd:complexType name="NamedValue">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:attribute name="name" type="ecore:EString"/>
         <xsd:attribute name="value" type="ecore:EInt"/>
       </xsd:extension>
@@ -186,7 +187,7 @@
   </xsd:complexType>
   <xsd:complexType name="Module">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="typeDefinition" type="frtypes:TypeDefinition"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="exports" nillable="true" type="ecore:EString"/>
@@ -226,6 +227,7 @@
         <xsd:attribute name="name" type="ecore:EString" use="required"/>
         <xsd:attribute name="tag" type="ecore:EString"/>
         <xsd:attribute default="false" name="optional" type="ecore:EBoolean"/>
+        <xsd:attribute name="comment" type="ecore:EString"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -233,18 +235,7 @@
     <xsd:complexContent>
       <xsd:extension base="frtypes:Type">
         <xsd:attribute name="name" type="ecore:EString" use="required"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="SubElement">
-    <xsd:complexContent>
-      <xsd:extension base="frtypes:Type">
-        <xsd:sequence>
-          <xsd:element name="type" type="frtypes:Type"/>
-        </xsd:sequence>
-        <xsd:attribute name="name" type="ecore:EString" use="required"/>
-        <xsd:attribute name="tag" type="ecore:EString"/>
-        <xsd:attribute name="optional" type="ecore:EBoolean"/>
+        <xsd:attribute default="false" name="complexType" type="ecore:EBoolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -256,19 +247,24 @@
   <xsd:simpleType name="StringBuffer">
     <xsd:restriction base="xsd:string"/>
   </xsd:simpleType>
-  <xsd:complexType abstract="true" name="Asn1Writer">
+  <xsd:complexType abstract="true" name="ExportWriter">
     <xsd:annotation>
       <xsd:appinfo source="http://www.eclipse.org/emf/2002/Ecore">
         <operation name="writeAsn1">
           <parameter name="indentLevel" type="ecore:EInt"/>
           <parameter name="output" type="frtypes:StringBuffer"/>
         </operation>
+        <operation name="writeXsd">
+          <parameter name="indentLevel" type="ecore:EInt"/>
+          <parameter name="output" type="frtypes:StringBuffer"/>
+          <parameter name="oid" type="frtypes:ObjectIdentifier"/>
+        </operation>
       </xsd:appinfo>
     </xsd:annotation>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="SizeConstrainedType">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="sizeConstraint" type="frtypes:SizeConstraint"/>
         </xsd:sequence>
@@ -292,7 +288,7 @@
   </xsd:complexType>
   <xsd:complexType name="FromModule">
     <xsd:complexContent>
-      <xsd:extension base="frtypes:Asn1Writer">
+      <xsd:extension base="frtypes:ExportWriter">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="importedTypes" nillable="true" type="ecore:EString"/>
         </xsd:sequence>
