@@ -9,8 +9,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
+import ccsds.FunctionalResourceModel.FunctionalResource;
+import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.utility.FrUtility;
 import ccsds.oids.OidTree;
 
 /**
@@ -41,6 +44,15 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			((ExportWriter)element).writeAsn1(0, asn1Buffer);
 			
 			return asn1Buffer.toString();
+		} else if(element instanceof FunctionalResourceModel) {
+			FunctionalResource[] frArray = FrUtility.getFunctionalResources((FunctionalResourceModel)element);
+			StringBuffer frStringList = new StringBuffer(frArray.length + " Functional Resources" + System.lineSeparator());
+			frStringList.append("-----------------------------" + System.lineSeparator() + System.lineSeparator());
+			for(FunctionalResource fr: frArray) {
+				frStringList.append(fr.getClassifier() + System.lineSeparator());
+			}
+			
+			return frStringList.toString();
 		}
 		return null;
 	}
