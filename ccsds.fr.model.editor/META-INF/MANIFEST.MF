@@ -8,7 +8,8 @@ Bundle-Activator: ccsds.FunctionalResourceModel.presentation.Functional_resource
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: ccsds.FunctionalResourceModel.presentation
+Export-Package: ccsds.FunctionalResourceModel.presentation,
+ ccsds.fr.utility
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  ccsds.fr.model.edit;visibility:=reexport,

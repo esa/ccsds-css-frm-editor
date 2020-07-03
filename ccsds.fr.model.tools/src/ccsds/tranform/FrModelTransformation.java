@@ -27,8 +27,8 @@ import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.ServiceAccessPoint;
-import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.model.tools.NameTool;
+import ccsds.fr.utility.FrUtility;
 
 /**
  * Transforms a Functional Resource Model to the corresponding ecore model for instances

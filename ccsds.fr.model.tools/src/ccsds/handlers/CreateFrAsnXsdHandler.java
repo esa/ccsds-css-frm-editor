@@ -41,7 +41,6 @@ import ccsds.FunctionalResourceModel.TypedElement;
 import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
-import ccsds.fr.model.tools.FrUtility;
 import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
@@ -54,6 +53,7 @@ import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.impl.ObjectIdentifierImpl;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
+import ccsds.fr.utility.FrUtility;
 
 /**
  * Handler to create an ASN.1 module file from an FRM model active in an FRM editor. 

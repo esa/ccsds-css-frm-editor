@@ -5,7 +5,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
-import ccsds.fr.model.tools.FrUtility;
+
+import ccsds.fr.utility.FrUtility;
 import ccsds.tranform.FrModelTransformation;
 
 public class TransformFrHandler extends AbstractHandler implements IHandler {
