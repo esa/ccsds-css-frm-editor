@@ -1,3 +1,7 @@
+Version 4.2.0 from TBD
+- adapted frm.xsl to have nice ASN.1 formatting in Word imported HTML
+- Added tooltip for the FunctionalResourceModel node to list the contained FRs
+
 Version 4.2.0 from 30.06.2020
 - create XSD from FRM
 - Support Functional Resource Strata
