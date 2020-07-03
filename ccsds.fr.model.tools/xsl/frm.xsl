@@ -27,12 +27,11 @@
 			</head>
 			<body bgcolor="white" style="font-family:Times; font-size:15px; color:black">
 				<h1>Functional Resource Model</h1>
+				<a name="toc"></a>
 
-
-
-				<table align="left" width="55%" border="1">
+				<p style="float:left;">
+				<table width="55%" border="1">
 					<h2 align="left"></h2>
-					<a name="{TOC-ID}"></a>
 					
 					<tr>
 						<th>Functional Resource Stratum</th><th>Functional Resource Set</th><th>Functional Resource</th>
@@ -71,24 +70,34 @@
 						</tr>
 					</xsl:for-each>
 				</table>
-
+				</p>
+				
 				<p />
-				<table align="center" width="100%" border="1">
-					<tr>
+				<br/>
+				<p style="float:left;">
+<!-- 				<table align="center" width="100%" border="1"> -->
+<!-- 					<tr> -->
 						<xsl:apply-templates />
-					</tr>
-				</table>
-
+<!-- 					</tr> -->
+<!-- 				</table> -->
+				</p>
 			</body>
 		</html>
 	</xsl:template>
 
 	<xsl:template match="functionalResource">
-		<table align="center" width="100%" border="3">
+		<h1>Functional Resource
+			<xsl:text>'</xsl:text>
+			<xsl:value-of select="@classifier" />
+			<xsl:text>'</xsl:text>
 			<a name="{generate-id(.)}"></a>
+			<xsl:text> </xsl:text>
+			<a href="#toc">(back to top)</a>
+		</h1>
+		<table align="center" width="100%" border="1">
+			
 			<tr>
 				<td style="font-size:18px">
-					<b>
 						<xsl:element name="a">
 								<xsl:attribute name="title">					
 									<xsl:text>Authorizing Entity </xsl:text>
@@ -98,20 +107,23 @@
 									<xsl:text> Version '</xsl:text><xsl:value-of select="@version" />
 									<xsl:text>' </xsl:text>
 								</xsl:attribute>
-							Functional Resource
-							<xsl:value-of select="@classifier" />
-							<xsl:text> FR Set: </xsl:text>
+							
+							<span style="white-space: pre-wrap; font-family:Times New Roman; font-size: 12pt">
+							<xsl:text>FR Stratum: '</xsl:text>
+							<xsl:value-of select="../../@name" />
+							<xsl:text>' </xsl:text>
+							
+							<xsl:text>FR Set: '</xsl:text>
 							<xsl:value-of select="../@name" />
-							<xsl:text> </xsl:text>
+							<xsl:text>' </xsl:text>
+							</span>
 						</xsl:element>
-					</b>
-					<a href="{TOC-ID}">(back to top)</a>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Definition:
-					<xsl:value-of select="@SemanticDefinition" />
+					<b>Definition: </b>
+						<xsl:value-of select="@SemanticDefinition" />
 				</td>
 			</tr>
 			<tr>
@@ -205,11 +217,13 @@
 
 	<xsl:template match="@SemanticDefinition">
 			<tr>
-				<td>
-					<b>Definition: </b>
-					<span style="white-space: pre-wrap; ">
-					<i><xsl:value-of select="." /></i>
-					</span>
+				<td>					
+					<pre>
+						<span style="white-space: pre-wrap; font-family:Times New Roman; font-size: 12pt">
+						<b>Definition: </b>
+						<xsl:value-of select="." />
+						</span>
+					</pre>
 				</td>
 			</tr>	
 	</xsl:template>
@@ -228,10 +242,12 @@
 	<xsl:template match="@guardCondition">
 			<tr>
 				<td>
-					<b>Guard Condition: </b>
-					<span style="white-space: pre-wrap;">
-					<xsl:value-of select="." />
-					</span>
+					<pre>
+						<span style="white-space: pre-wrap; font-family:Times New Roman; font-size: 12pt">
+						<b>Guard Condition: </b>
+						<xsl:value-of select="." />
+						</span>
+					</pre>
 				</td>
 			</tr>	
 	</xsl:template>
@@ -243,13 +259,37 @@
 				<br />
 				<b>Type Definition: </b>
 	
-				<br />
-				<span style="white-space: pre-wrap; font-family:Courier">
-					<xsl:value-of select="." />
-				</span>
-				<br />
+				<br></br>
+				<pre>
+					<span style="white-space: pre-wrap; font-family:Courier; font-size: 8pt">
+	<!-- 					<xsl:value-of select="."/> -->
+						
+		  			<xsl:call-template name="break" />
+	                     
+					</span>
+				</pre>
+				<br></br>
 			</td>
 		</tr>
+	</xsl:template>
+
+	<xsl:template name="break">
+	  <xsl:param name="text" select="string(.)"/>
+	  <xsl:choose>
+	    <xsl:when test="contains($text, '&#xa;')">
+	      <xsl:value-of select="substring-before($text, '&#xa;')"/>
+	      	<br/>
+	      <xsl:call-template name="break">
+	        <xsl:with-param 
+	          name="text" 
+	          select="substring-after($text, '&#xa;')"
+	        />
+	      </xsl:call-template>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="$text"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="rootOid">
