@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.drop']" name="functional.resources.diagram" label="Functional Resource Diagram" domainClass="FunctionalResourceModel.FunctionalResourceModel" enablePopupBars="true">
       <metamodel href="../../ccsds.fr.model/model/functional_resource.ecore#/"/>
       <defaultLayer name="functional.resources.diagram.default.layer" icon="/Functional Resource Tools Diagram.design/icons/CWELogo.png">
-        <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel.FunctionalResource">
+        <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel::FunctionalResource">
           <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:stringIdentifier" labelPosition="node" resizeKind="NSEW" width="15" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -175,6 +175,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="functional.resources.diagram.details" titleExpression="aql:'Details of '+self.classifier" domainClass="FunctionalResourceModel::FunctionalResource" enablePopupBars="true">
+      <metamodel href="../../ccsds.fr.model/model/functional_resource.ecore#/"/>
       <defaultLayer name="Default">
         <containerMappings name="functional.resource.container" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="HorizontalStack">
           <subContainerMappings name="functional.resource.container.parameters" semanticCandidatesExpression="var:self" domainClass="FunctionalResourceModel::FunctionalResource" childrenPresentation="List">
