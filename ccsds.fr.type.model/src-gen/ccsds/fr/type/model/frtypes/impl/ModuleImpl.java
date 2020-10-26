@@ -330,14 +330,19 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		XmlHelper.writeEndElement(output, indentLevel + 2, XmlHelper.RESTRICTION);
 		XmlHelper.writeEndElement(output, indentLevel + 1, XmlHelper.SIMPLE_TYPE);
 
+		output.append(System.lineSeparator());
+		output.append(System.lineSeparator());
+		output.append(XmlHelper.COMMENT_START);
+		output.append("Stratum related base types");
+		output.append(XmlHelper.COMMENT_END);
 		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
 			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
 					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(abstractType)),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(abstractType)),
 					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
 
 			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
-					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(abstractType)));
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(abstractType)));
 		}
 
 	}
@@ -352,10 +357,12 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
-				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
-				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
+//				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
+				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.CSSM_NS),
 				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
-				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
+//				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
+//				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
+				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.CSSM_NS),
 				new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
 				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
 				new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));

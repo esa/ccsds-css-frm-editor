@@ -26,6 +26,8 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  */
 public class XmlHelper {
 	
+	public static final String NAMED = "Named";
+
 	public static final String GENERAL_XSD = "frm_type_definitions.xsd";
 	
 	public static final String ALL_EXCEPT = "ALL EXCEPT";
@@ -237,7 +239,7 @@ public class XmlHelper {
 	}
 	
 	/**
-	 * Returns the parent name as an XML attribute or null
+	 * Check if object or it's parent is a TypeDefinition and return the type attribute or null
 	 * @param object	The FRM object
 	 * @return			The name of the parent as a name=... attribute or null
 	 */
@@ -245,6 +247,8 @@ public class XmlHelper {
 		if (object.eContainer() instanceof TypeDefinition && 
 				((TypeDefinition)object.eContainer()).getName() != null) {
 			return new XmlAttribute(NAME, ((TypeDefinition)object.eContainer()).getName());
+		} else if(object instanceof TypeDefinition) {
+			return new XmlAttribute(NAME, ((TypeDefinition)object).getName());
 		}
 		
 		return null;
@@ -258,7 +262,7 @@ public class XmlHelper {
 	public static XmlAttribute getNamedTypeNameAttr(EObject object) {
 		XmlAttribute attr = getTypeNameAttr(object);
 		
-		return new XmlAttribute(attr.getName(), attr.getValue() + "Named");
+		return new XmlAttribute(attr.getName(), attr.getValue() + NAMED);
 	}
 	
 	/**
@@ -592,17 +596,17 @@ public class XmlHelper {
 	 * @param oid			The oid is used to construct a fixed iod attribute with the stringified OID
 	 */
 	public static void writeSimpleNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object) {
-		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
-				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
-				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
-				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
+//		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
+//				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
+//				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
+//				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
-				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentBaseType())));
+				new XmlAttribute(XmlHelper.BASE, ExportWriterContext.instance().getCurrentBaseType()));
 		
 		XmlHelper.writeAttributeSpec(output, indentLevel+3, XmlHelper.VALUE, typeName.getValue(), XmlHelper.REQUIRED);
 		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
@@ -623,16 +627,16 @@ public class XmlHelper {
 	 * @param oid			The oid is used to construct a fixed iod attribute with the stringified OID
 	 */
 	public static void writeComplexNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object) {
-		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
-				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
-				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
-				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
+//		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
+//				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
+//				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
+//				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
-				new XmlAttribute(XmlHelper.BASE, getFrBaseType(ExportWriterContext.instance().getCurrentBaseType())));
+				new XmlAttribute(XmlHelper.BASE, ExportWriterContext.instance().getCurrentBaseType()));
 		
 		XmlHelper.writeStartElement(output, indentLevel+3, XmlHelper.SEQUENCE);
 		XmlHelper.writeElement(output, indentLevel+3, XmlHelper.ELEMENT, 
@@ -652,7 +656,7 @@ public class XmlHelper {
 	 * @param s
 	 * @return
 	 */
-	private static String firstCharLowerCase(String s) {
+	public static String firstCharLowerCase(String s) {
 		if(s != null && s.length() > 0 && Character.isUpperCase(s.charAt(0))) {
 			StringBuffer l = new StringBuffer(s);
 			l.setCharAt(0, Character.toLowerCase(s.charAt(0)));
@@ -671,6 +675,16 @@ public class XmlHelper {
 	public static String getFrBaseType(String frClassifier) {
 		return frClassifier + "Type";
 	}
+
+	/**
+	 * Returns the XSD type name for the given startum
+	 * @param stratumName	
+	 * @return	The XSD FR type name
+	 */
+	public static String getFrStratumType(String stratumName) {
+		return XmlHelper.removeBlanks(stratumName + "StratumType");
+	}
+	
 	
 	/**
 	 * Returns the XSD element name for the given classifier

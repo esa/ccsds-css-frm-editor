@@ -24,7 +24,7 @@ public class ExportWriterContext {
 	private CompoundCommand compoundCommand;
 	
 	private EditingDomain editingDomain;
-	
+		
 	private String currentBaseType;
 	
 	private boolean isInStratum;

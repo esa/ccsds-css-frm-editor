@@ -164,17 +164,17 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	 * @param fr	The FR for whcih the base type is queried
 	 * @return		The base type t use for this FR
 	 */
-	private String getXsdBaseType(FunctionalResource fr) {
+	public static String getXsdBaseType(FunctionalResource fr) {
 		if(fr.eContainer() instanceof FunctionalResourceSet) {
 			if(fr.eContainer().eContainer() instanceof FunctionalResourceStratum) {
 				String name = ((FunctionalResourceStratum)fr.eContainer().eContainer()).getName();
 				if(name != null && name.length() > 0) {
-					return XmlHelper.removeBlanks(name); // remove blanks					
+					return XmlHelper.getFrStratumType(name); // remove blanks					
 				}				
 			}
 		}
 		
-		return fr.getClassifier();
+		return XmlHelper.getFrBaseType(fr.getClassifier());
 	}
 	
 	/**
@@ -229,6 +229,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					// add an OID for the RF itself
 					frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
 					
+					frModule.getTypeDefinition().add(new FrXsdExportAdapter(fr)); // add the FR to be able to create an XSD type per FR
 					addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addEventTypesAndOids(frModule, fr.getEvent(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
