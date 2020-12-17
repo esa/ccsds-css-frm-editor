@@ -12,6 +12,7 @@ import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -117,6 +118,9 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.provider.FunctionalResourceModelItemProviderAdapterFactory;
+import ccsds.fr.type.model.frtypes.TypeDefinition;
+import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
+import ccsds.fr.utility.FrUtility;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
@@ -1383,6 +1387,22 @@ public class FunctionalResourceModelEditor
 					boolean first = true;
 					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
+							
+							// #hd# adjust the references potentially pointing to other frm files TODO: test if below is fast enough
+							try {
+								if(resource.getContents().get(0) instanceof FunctionalResourceModel) {
+									FunctionalResourceModel frm = (FunctionalResourceModel)resource.getContents().get(0);
+									
+									List<TypeDefinition> localTypes = new LinkedList<TypeDefinition>();
+									FrUtility.getAllLocalTypeDefinitions(frm, localTypes);									
+									FrUtility.adjustLocalTypeReferences(frm, frm, localTypes);
+																	
+									FrUtility.adjustAncillaryInterfaceReferences(frm, frm);
+									FrUtility.adjustServiceAccessPointReferences(frm, frm);
+								}
+							} catch(Exception e) {
+								FrTypesUtil.warn("Exception saving FRM file: " + e);
+							}
 							try {
 								long timeStamp = resource.getTimeStamp();
 								resource.save(saveOptions);
