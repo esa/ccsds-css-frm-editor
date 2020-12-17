@@ -308,6 +308,13 @@ public class FrUtility {
 		}			
 	}	
 	
+	/**
+	 * Adjusts the object references to point to the local FRM file
+	 * Required to drag and drop FRs from one file to another
+	 * @param aif		For the given aif the references will be adjusted
+	 * @param frm		The FRs referenced by aif are checked if they are in the same file as the FRM 
+	 * @param frArray	The Array of local FRMs
+	 */
 	public static void adjustAncillaryInterfaceReference(AncillaryInterface aif, FunctionalResourceModel frm, FunctionalResource[] frArray) {
 		// replace the reference to the FR with an FR from this model. 
 		if(isFromSameResource(aif.getProvidingFunctionalResource(), frm) == false) {
