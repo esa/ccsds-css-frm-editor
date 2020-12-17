@@ -1,6 +1,10 @@
-Version 4.2.1 from TBD
+Version 4.2.1 from 17.12.2020
 - adapted frm.xsl to have nice ASN.1 formatting in Word imported HTML
 - Added tooltip for the FunctionalResourceModel node to list the contained FRs
+- handle references of SAP and Ancillary interface 
+- All references (Local Type Reference, SAP and Ancillary Interface) are now resolved to local FRM elements on save of the FRM file. 
+  All actions are logged, in case a reference cannot be resolved there is a warning in Eclipse Error Log
+ - Versioning has been adapted: if a version is specified in the form of the PED, the OID and version is calculated based on the given version 
 
 Version 4.2.0 from 30.06.2020
 - create XSD from FRM
