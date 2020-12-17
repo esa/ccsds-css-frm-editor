@@ -259,13 +259,35 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			
 			filterExternalOids(mElementMap); // filter out external OIDs
 			
-			int mElementIndex = oidOffset;	// first parameter index in the OID to be used		
+			//int mElementIndex = oidOffset;	// first parameter index in the OID to be used		
+			LinkedHashMap<Integer, Integer > versionNextElementIndexMap = new LinkedHashMap<Integer, Integer>();			
+			
 			Iterator<String> paramIt = mElementMap.keySet().iterator();
 			while(paramIt.hasNext()) {
-				List<FrModelElement> mElementVersions = mElementMap.get(paramIt.next());
+				List<FrModelElement> mElementSameClassifier = mElementMap.get(paramIt.next());
+				
 				int version = 1; // first version to be used
-				for(FrModelElement mElement : mElementVersions) {
-					version = mElement.getVersion(); // this destroys automatic version numbering, but takes into account the user specified version
+				if(mElementSameClassifier.size() > 0) {
+					version = mElementSameClassifier.get(0).getVersion(); // Initialise with the first user supplied value
+				}
+				
+				// iterate over the element with the same classifier
+				for(FrModelElement mElement : mElementSameClassifier) {
+					int userVersion = mElement.getVersion(); // this destroys automatic version numbering, but takes into account the user specified version
+					if(userVersion > version) {
+						version = userVersion;
+					}
+
+					 // we can reuse the ID of version 1, later versions have the same ID, but a different 
+					if(version  > 1 && versionNextElementIndexMap.get(1) != null) {
+						int elementIdOffset = versionNextElementIndexMap.get(1);
+						elementIdOffset = elementIdOffset - 1;
+						versionNextElementIndexMap.put(version, elementIdOffset); // add the initial OID offset where to start
+					} else if(versionNextElementIndexMap.containsKey(version) == false) {
+						versionNextElementIndexMap.put(version, oidOffset); // add the initial OID offset where to start
+					}
+					
+					
 					// for logging, determine the type
 					int oidFeatureId = FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID; // FR OID feature ID
 					if(mElement instanceof FunctionalResource) {
@@ -291,8 +313,10 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 						mElementOid.getOidBit().add(elementType);
 					}
 
-					// add the index as the actual ID of the element
-					mElementOid.getOidBit().add(mElementIndex);
+					
+					
+					// add the index as the actual ID of the element					
+					mElementOid.getOidBit().add(versionNextElementIndexMap.get(version));
 					
 					// version type for P/E/D 
 					if(isPED(mElement)) {
@@ -314,7 +338,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 						
 						SetCommand setOidBitCmd = new SetCommand(domain, mElement, 
 								mElement.eClass().getEStructuralFeature(FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID_BIT),
-								mElementIndex);
+								versionNextElementIndexMap.get(version));
 						setOids.append(setOidBitCmd);
 						
 						SetCommand setVersionCmd = new SetCommand(domain, mElement, 
@@ -341,10 +365,16 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 								mElementOid, ModelElementType.EVENT_OID_TYPE.getValue(), setOids);
 					}
 					
-					version++; // go to the next version
-				}
-				mElementIndex++; // next element index
-			}
+					int mElementIndex = versionNextElementIndexMap.get(version);
+					mElementIndex++; // next element index
+					versionNextElementIndexMap.put(version, mElementIndex);						
+
+					version++; // go to the next version for elements having the same classifier
+				} // end iteration over elements with same classifier
+				
+				// set the next element index according to the position along the dimension of the version
+				
+			} // end iteration over the element map, key: element classifier
 		}
 	}
 
@@ -460,7 +490,7 @@ public class UpdateOidsNameHandler extends AbstractHandler implements IHandler {
 			} else if (EcoreUtil.equals(currentOid, newOidValue) == false) {
 				Activator.getDefault().getLog()
 						.log(new Status(Status.INFO, Activator.PLUGIN_ID,
-								"Upated " + oidType + " for " + type + " " + parentName + " / " + mElement.getStringIdentifier()
+								"Updated " + oidType + " for " + type + " " + parentName + " / " + mElement.getClassifier()
 										+ " from " + OidItemProvider.getOidStr(currentOid) + " to "
 										+ OidItemProvider.getOidStr(newOidValue)));
 				return true;
