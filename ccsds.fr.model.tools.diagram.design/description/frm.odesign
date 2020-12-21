@@ -5,13 +5,13 @@
       <metamodel href="../../ccsds.fr.model/model/functional_resource.ecore#/"/>
       <defaultLayer name="functional.resources.diagram.default.layer" icon="/Functional Resource Tools Diagram.design/icons/CWELogo.png">
         <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel::FunctionalResource">
-          <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:stringIdentifier" labelPosition="node" resizeKind="NSEW" width="15" height="5">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:classifier" tooltipExpression="feature:stringIdentifier" labelPosition="node" resizeKind="NSEW" width="15" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="functional.resource.uses.relation" label="uses" deletionDescription="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.delete']" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:uses" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.reconnect']">
+        <edgeMappings name="functional.resource.uses.relation" label="uses" deletionDescription="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.delete']" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetFinderExpression="feature:uses" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.reconnect']">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="4">
@@ -19,7 +19,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="functional.resource.sap.relation" label="SAP" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:accessedFunctionalResource" sourceFinderExpression="feature:accessingFunctionalResource" domainClass="FunctionalResourceModel::ServiceAccessPoint" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.source']">
+        <edgeMappings name="functional.resource.sap.relation" label="SAP" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetFinderExpression="feature:accessedFunctionalResource" sourceFinderExpression="feature:accessingFunctionalResource" domainClass="FunctionalResourceModel::ServiceAccessPoint" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.source']">
           <style sourceArrow="InputArrow" targetArrow="FillDiamond" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessor = self.maxAccessor then self.minAccessor else self.minAccessor + '..' + if self.maxAccessor = -1 then '*' else self.maxAccessor endif endif">
@@ -33,7 +33,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="functional.resource.aif.relation" label="Ancillary Interface" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:requiringFunctionalResource" sourceFinderExpression="feature:providingFunctionalResource" domainClass="FunctionalResourceModel::AncillaryInterface" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.iaf.reconnect']">
+        <edgeMappings name="functional.resource.aif.relation" label="Ancillary Interface" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" targetFinderExpression="feature:requiringFunctionalResource" sourceFinderExpression="feature:providingFunctionalResource" domainClass="FunctionalResourceModel::AncillaryInterface" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.iaf.reconnect']">
           <style lineStyle="dash" sourceArrow="Diamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
@@ -41,24 +41,6 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="functional.resource.set.container" semanticCandidatesExpression="feature:eAllContents" domainClass="FunctionalResourceModel::FunctionalResourceSet">
-          <subContainerMappings name="functional.resource.container" semanticCandidatesExpression="feature:eAllContents" domainClass="FunctionalResourceModel::FunctionalResource">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dash_dot" labelExpression="feature:classifier" labelAlignment="LEFT" tooltipExpression="feature:classifier" roundedCorner="true" widthComputationExpression="35">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>bold</labelFormat>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
-            </style>
-          </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" roundedCorner="true">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelFormat>bold</labelFormat>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
-          </style>
-        </containerMappings>
         <toolSections name="functional.resource.section.relations" label="Relations">
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a uses relation among Functional Resources" name="functional.resource.uses.creation" label="uses" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.diagram']/@defaultLayer/@edgeMappings[name='functional.resource.uses.relation']">
             <sourceVariable name="source"/>
@@ -234,6 +216,179 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.drop']" name="functional.resources.set.diagram" label="Functional Resource Set Diagram" domainClass="FunctionalResourceModel::FunctionalResourceModel" enablePopupBars="true">
+      <metamodel href="../../ccsds.fr.model/model/functional_resource.ecore#/"/>
+      <defaultLayer name="functional.resources.diagram.default.layer" icon="/Functional Resource Tools Diagram.design/icons/CWELogo.png">
+        <nodeMappings name="functional.resource.node" label="Functional Resource Node" createElements="false" domainClass="FunctionalResourceModel::FunctionalResource">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:stringIdentifier" tooltipExpression="feature:stringIdentifier" labelPosition="node" resizeKind="NSEW" width="15" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="functional.resource.uses.relation" label="uses" deletionDescription="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.delete']" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:uses" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.uses.reconnect']">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="4">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="functional.resource.sap.relation" label="SAP" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:accessedFunctionalResource" sourceFinderExpression="feature:accessingFunctionalResource" domainClass="FunctionalResourceModel::ServiceAccessPoint" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.target'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.sap.reconnect.source']">
+          <style sourceArrow="InputArrow" targetArrow="FillDiamond" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <beginLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessor = self.maxAccessor then self.minAccessor else self.minAccessor + '..' + if self.maxAccessor = -1 then '*' else self.maxAccessor endif endif">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription showIcon="false" labelExpression="aql:if self.minAccessed = self.maxAccessed then self.minAccessed else self.minAccessed + '..' + self.maxAccessed endif">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="functional.resource.aif.relation" label="Ancillary Interface" sourceMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetMapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node'] //@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@containerMappings[name='functional.resource.set.container']/@subContainerMappings[name='functional.resource.container']" targetFinderExpression="feature:requiringFunctionalResource" sourceFinderExpression="feature:providingFunctionalResource" domainClass="FunctionalResourceModel::AncillaryInterface" useDomainElement="true" reconnections="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='functional.resource.iaf.reconnect']">
+          <style lineStyle="dash" sourceArrow="Diamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="functional.resource.set.container" semanticCandidatesExpression="feature:eAllContents" domainClass="FunctionalResourceModel::FunctionalResourceSet">
+          <subContainerMappings name="functional.resource.container" semanticCandidatesExpression="feature:eAllContents" domainClass="FunctionalResourceModel::FunctionalResource">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dash_dot" labelExpression="feature:classifier" labelAlignment="LEFT" tooltipExpression="feature:classifier" roundedCorner="true" widthComputationExpression="35">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="functional.resource.section.relations" label="Relations">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a uses relation among Functional Resources" name="functional.resource.uses.creation" label="uses" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@edgeMappings[name='functional.resource.uses.relation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="uses" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="functional.resource.sap.edge.creation" label="SAP" edgeMappings="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@edgeMappings[name='functional.resource.sap.relation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalResourceModel::ServiceAccessPoint" referenceName="serviceAccesspoint" variableName="sap">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessedFunctionalResource" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="functional.resource.aif.edge.creation" label="Ancillary Interface" edgeMappings="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@edgeMappings[name='functional.resource.aif.relation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="FunctionalResourceModel::AncillaryInterface" referenceName="providedAncillaryInterface" variableName="aif">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringFunctionalResource" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="providingFunctionalResource" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect.target" label="Reconnect SAP Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessedFunctionalResource" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.sap.reconnect.source" label="Reconnect SAP Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="accessingFunctionalResource" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.iaf.reconnect" label="Ancillary Interface">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringFunctionalResource" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="functional.resource.uses.reconnect" label="Reconnect Uses">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="uses" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="uses" elementExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="functional.resource.uses.delete" label="Delete Uses">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="uses" elementExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DNode).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="functional.resource.uses.drop" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.eClass().name = 'FunctionalResource'/]">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='functional.resources']/@ownedRepresentations[name='functional.resources.set.diagram']/@defaultLayer/@nodeMappings[name='functional.resource.node']" containerViewExpression="var:newContainerView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
