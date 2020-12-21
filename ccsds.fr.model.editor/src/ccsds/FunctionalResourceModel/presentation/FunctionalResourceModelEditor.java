@@ -1384,25 +1384,28 @@ public class FunctionalResourceModelEditor
 				public void execute(IProgressMonitor monitor) {
 					// Save the resources to the file system.
 					//
+					
+					// #hd# adjust the references potentially pointing to other frm files
+					try {
+						Resource resource = editingDomain.getResourceSet().getResources().get(0);
+						if(resource.getContents().get(0) instanceof FunctionalResourceModel) {
+							FunctionalResourceModel frm = (FunctionalResourceModel)resource.getContents().get(0);
+							
+							List<TypeDefinition> localTypes = new LinkedList<TypeDefinition>();
+							FrUtility.getAllLocalTypeDefinitions(frm, localTypes);									
+							FrUtility.adjustLocalTypeReferences(frm, frm, localTypes);
+															
+							FrUtility.adjustAncillaryInterfaceReferences(frm, frm);
+							FrUtility.adjustServiceAccessPointReferences(frm, frm);
+						}
+					} catch(Exception e) {
+						FrTypesUtil.warn("Exception saving FRM file: " + e);
+					}					
+					
 					boolean first = true;
 					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
 							
-							// #hd# adjust the references potentially pointing to other frm files TODO: test if below is fast enough
-							try {
-								if(resource.getContents().get(0) instanceof FunctionalResourceModel) {
-									FunctionalResourceModel frm = (FunctionalResourceModel)resource.getContents().get(0);
-									
-									List<TypeDefinition> localTypes = new LinkedList<TypeDefinition>();
-									FrUtility.getAllLocalTypeDefinitions(frm, localTypes);									
-									FrUtility.adjustLocalTypeReferences(frm, frm, localTypes);
-																	
-									FrUtility.adjustAncillaryInterfaceReferences(frm, frm);
-									FrUtility.adjustServiceAccessPointReferences(frm, frm);
-								}
-							} catch(Exception e) {
-								FrTypesUtil.warn("Exception saving FRM file: " + e);
-							}
 							try {
 								long timeStamp = resource.getTimeStamp();
 								resource.save(saveOptions);
