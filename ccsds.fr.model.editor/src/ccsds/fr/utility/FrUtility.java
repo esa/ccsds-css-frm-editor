@@ -290,7 +290,7 @@ public class FrUtility {
 		}
 		
 	}
-	
+
 	/**
 	 * Adjust ecore object references to point to the local FRM file
 	 * Required to drag and drop FRs from one file to another
@@ -301,12 +301,42 @@ public class FrUtility {
 		if(obj instanceof AncillaryInterface) {
 			AncillaryInterface aif = (AncillaryInterface)obj;			
 			adjustAncillaryInterfaceReference(aif, frm, FrUtility.getFunctionalResources(frm));
+		} else if(obj instanceof FunctionalResource) {
+			adjustUsesRelation((FunctionalResource)obj, FrUtility.getFunctionalResources(frm));
 		}
 		
 		for(EObject child : obj.eContents()) {
 			adjustAncillaryInterfaceReferences(child, frm);
 		}			
 	}	
+	
+	/**
+	 * Adjusts uses relation to a local FR coming from frArray if external.
+	 * @param fr
+	 * @param frArray
+	 */
+	private static void adjustUsesRelation(FunctionalResource fr, FunctionalResource[] frArray) {
+		if(fr.getUses() != null && fr.getUses().size() > 0) {
+			
+			int idx = 0;
+			for(FunctionalResource usedFr : fr.getUses()) {
+				if(isFromSameResource(usedFr, fr) == false && usedFr != null) {
+					String usedFrClassifier = usedFr.getClassifier();
+					for(FunctionalResource localFr : frArray) {
+						if(usedFr.getClassifier() != null && usedFr.getClassifier().equals(localFr.getClassifier()) == true) {
+							fr.getUses().set(idx, localFr);
+							FrTypesUtil.log("Replaced uses relation of " + fr.getClassifier() + " to FRM local FR " + localFr.getClassifier());
+							usedFrClassifier = null;
+						}
+					}
+					if(usedFrClassifier != null) {
+						FrTypesUtil.log("Failed to replace uses relation of " + fr.getClassifier() + " to FR " + usedFrClassifier);
+					}
+				}
+				idx++;
+			}
+		}
+	}
 	
 	/**
 	 * Adjusts the object references to point to the local FRM file
@@ -402,6 +432,5 @@ public class FrUtility {
 		}
 		
 		return null;
-	}	
-	
+	}
 }
