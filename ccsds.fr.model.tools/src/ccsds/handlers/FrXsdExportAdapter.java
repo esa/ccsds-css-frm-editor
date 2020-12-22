@@ -2,6 +2,7 @@ package ccsds.handlers;
 
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.Parameter;
+import ccsds.fr.type.model.ExportWriterContext;
 import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
@@ -23,6 +24,14 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
 		int myIndent = 0;
+		
+		String currentStratum = ExportWriterContext.instance().getCurrentStratumElement();
+		
+		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(currentStratum)),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifier())),
+				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrStratumElementName(currentStratum)));
+		
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(fr.getClassifier())));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, CreateFrAsnXsdHandler.getXsdBaseType(this.fr)));

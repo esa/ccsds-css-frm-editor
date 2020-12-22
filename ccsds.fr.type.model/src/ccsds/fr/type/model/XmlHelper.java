@@ -29,6 +29,8 @@ public class XmlHelper {
 	public static final String NAMED = "Named";
 
 	public static final String GENERAL_XSD = "frm_type_definitions.xsd";
+
+	public static final String STRATA_TYPES_XSD = "AbstractFrStrataParameterSets.xsd";
 	
 	public static final String ALL_EXCEPT = "ALL EXCEPT";
 	
@@ -630,7 +632,7 @@ public class XmlHelper {
 //		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
 //				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
 //				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
-//				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentBaseType())));
+//				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentStratumElement())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
@@ -706,5 +708,15 @@ public class XmlHelper {
 		}
 		
 		return s;
+	}
+
+	/**
+	 * Construct an element name for the given stratum.
+	 * Example: apertureStratumParameters for Aperture
+	 * @param stratumName
+	 * @return
+	 */
+	public static String getFrStratumElementName(String stratumName) {
+		return removeBlanks(firstCharLowerCase(stratumName + "StratumParameters"));
 	}
 }

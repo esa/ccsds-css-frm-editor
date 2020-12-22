@@ -159,9 +159,62 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	}
 	
 	/**
+	 * Writes an XSD file for the Functional resource Strata.
+	 * Each stratum is represented by and elment and a cimplex type, e.g.
+	 * 	<xsd:element name="apertureStratumParameters" type="ApertureStratumType" abstract="true"/>
+	 *  <xsd:complexType name="ApertureStratumType"/>
+	 * @param fileName
+	 * @param functionalResourceStratum
+	 */
+	private void writeXsdAbstractStrataTypes(String fileName, EList<FunctionalResourceStratum> functionalResourceStratum) {
+		BufferedWriter writer = null;
+		int indentLevel = 0;
+		try {
+			StringBuffer output = new StringBuffer();
+			output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+			
+			XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
+			new XmlAttribute(XmlHelper.XMLNS, XmlHelper.CSSM_NS),
+			new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
+			new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.CSSM_NS),
+			new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
+			new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
+			new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
+
+			for(FunctionalResourceStratum stratum : functionalResourceStratum) {
+				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.ELEMENT, 
+						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumElementName(stratum.getName())),
+						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(stratum.getName())),
+						new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+				
+				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE, 
+						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(stratum.getName())));
+				
+				XmlHelper.doBreakIndent(output, indentLevel+1);
+			}
+			
+			XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SCHEMA);
+			
+			writer = new BufferedWriter(new FileWriter(fileName));
+		    writer.write(output.toString());	
+		} catch(Exception e) {
+			System.err.println("Error writing Strata XSD file " + e);
+		} finally {
+			if(writer != null) {
+				try {
+					Activator.getDefault().getLog().log(new Status(Status.INFO, Activator.PLUGIN_ID, "Created FRM Strata XSD file " + fileName));
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}			
+	}
+	
+	/**
 	 * Returns the base type for the FR. the base type is
 	 * either the FR classifier or the name of the FR Stratum the FR is contained within
-	 * @param fr	The FR for whcih the base type is queried
+	 * @param fr	The FR for which the base type is queried
 	 * @return		The base type t use for this FR
 	 */
 	public static String getXsdBaseType(FunctionalResource fr) {
@@ -178,7 +231,26 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	}
 	
 	/**
-	 * Returns true if the givel FR is contained in a FR Stratum
+	 * Returns the base type for the FR. the base type is
+	 * either the FR classifier or the name of the FR Stratum the FR is contained within
+	 * @param fr	The FR for which the base type is queried
+	 * @return		The base type t use for this FR
+	 */
+	public static String getXsdStratumName(FunctionalResource fr) {
+		if(fr.eContainer() instanceof FunctionalResourceSet) {
+			if(fr.eContainer().eContainer() instanceof FunctionalResourceStratum) {
+				String name = ((FunctionalResourceStratum)fr.eContainer().eContainer()).getName();
+				if(name != null && name.length() > 0) {
+					return XmlHelper.removeBlanks(name); // remove blanks					
+				}				
+			}
+		}
+		
+		return XmlHelper.getFrBaseType(fr.getClassifier());
+	}	
+	
+	/**
+	 * Returns true if the given FR is contained in a FR Stratum
 	 * @param fr
 	 * @return
 	 */
@@ -212,6 +284,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			// write the general XSD type module
 			ExportWriterContext.instance().setCurrentBaseType(null);
 			writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + XmlHelper.GENERAL_XSD, module);
+			writeXsdAbstractStrataTypes(getXsdDirectory(frmFile) + File.separatorChar + XmlHelper.STRATA_TYPES_XSD, frm.getFunctionalResourceStratum());
 			
 			FunctionalResource[] functionalResources = FrUtility.getFunctionalResources(frm);		
 			// write one module / XSD per FR
@@ -221,10 +294,15 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					FromModule importGeneralXsd = FrtypesFactory.eINSTANCE.createFromModule();
 					importGeneralXsd.setName(XmlHelper.GENERAL_XSD);
 					frModule.getImports().add(importGeneralXsd);
+					
+					FromModule importStrataXsd = FrtypesFactory.eINSTANCE.createFromModule();
+					importStrataXsd.setName(XmlHelper.STRATA_TYPES_XSD);
+					frModule.getImports().add(importStrataXsd);
 	
 					// set the FR into the export context for XSD generation purposes				
 					ExportWriterContext.instance().setInStratum(isInStratum(fr));
 					ExportWriterContext.instance().setCurrentBaseType(getXsdBaseType(fr));
+					ExportWriterContext.instance().setCurrentStratumElement(getXsdStratumName(fr));
 					
 					// add an OID for the RF itself
 					frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
@@ -247,8 +325,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			ExportWriterContext.instance().getAbstractTypes().clear();
 		}
 	}
-	
-	
+
 	/**
 	 * Creates an ASN.1 module and an XSD from the FRM
 	 * @param functionalResources		The frM to use

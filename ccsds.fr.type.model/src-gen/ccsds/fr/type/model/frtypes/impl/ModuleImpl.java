@@ -332,18 +332,20 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		output.append(System.lineSeparator());
 		output.append(System.lineSeparator());
-		output.append(XmlHelper.COMMENT_START);
-		output.append("Stratum related base types");
-		output.append(XmlHelper.COMMENT_END);
-		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
-			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
-					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(abstractType)),
-					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
-
-			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
-					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(abstractType)));
-		}
+		
+// 		We do not write the general base types anymore to the built in types. The strata base types are written to a dedicated file		
+//		output.append(XmlHelper.COMMENT_START);
+//		output.append("Stratum related base types");
+//		output.append(XmlHelper.COMMENT_END);
+//		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
+//			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
+//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
+//					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(abstractType)),
+//					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+//
+//			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
+//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(abstractType)));
+//		}
 
 	}
 
@@ -369,8 +371,11 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		if (getImports().size() > 0 && getImports().get(0) != null
 				&& XmlHelper.GENERAL_XSD.equals(getImports().get(0).getName())) {
+
 			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE,
 					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.GENERAL_XSD));
+			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE,
+					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.STRATA_TYPES_XSD));
 
 			// generate an FR Specific base type 
 			if (ExportWriterContext.instance().getCurrentBaseType() != null

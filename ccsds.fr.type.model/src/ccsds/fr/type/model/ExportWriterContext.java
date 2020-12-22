@@ -27,6 +27,8 @@ public class ExportWriterContext {
 		
 	private String currentBaseType;
 	
+	private String currentStratumElement;
+	
 	private boolean isInStratum;
 	
 	private final List<String> abstractTypes = new LinkedList<String>();
@@ -169,6 +171,14 @@ public class ExportWriterContext {
 	public void setCurrentBaseType(String currentBaseType) {
 		this.currentBaseType = currentBaseType;
 	}		
+
+	public String getCurrentStratumElement() {
+		return currentStratumElement;
+	}
+
+	public void setCurrentStratumElement(String currentStratumElement) {
+		this.currentStratumElement = currentStratumElement;
+	}
 	
 	public List<String> getAbstractTypes() {
 		return abstractTypes;
@@ -181,5 +191,5 @@ public class ExportWriterContext {
 	public void setInStratum(boolean isInStratum) {
 		this.isInStratum = isInStratum;
 	}
-	
+
 }
