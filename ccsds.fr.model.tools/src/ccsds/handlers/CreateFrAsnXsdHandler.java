@@ -181,14 +181,51 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
 			new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
 
+			// base type for the startum types
+			final String stratumeBaseType = "StratumBaseType";
+			
+			XmlHelper.doBreakIndent(output, indentLevel+1);
+			
+			XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE,
+					new XmlAttribute(XmlHelper.NAME, stratumeBaseType));
+		
+			// Marcin want extra attributes for each stratum type
+			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
+					new XmlAttribute(XmlHelper.NAME, "frin"),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+					new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+
+			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
+					new XmlAttribute(XmlHelper.NAME, "frTypeOid"),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+					new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+			
+			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
+					new XmlAttribute(XmlHelper.NAME, "frNickname"),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+					new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));
+			
+			XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE);
+			
+			XmlHelper.doBreakIndent(output, indentLevel+1);
+			
 			for(FunctionalResourceStratum stratum : functionalResourceStratum) {
 				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.ELEMENT, 
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumElementName(stratum.getName())),
 						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(stratum.getName())),
 						new XmlAttribute(XmlHelper.ABSTRACT, "true"));
 				
-				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE, 
+				XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE, 
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(stratum.getName())));
+
+				XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.COMPLEX_CONTENT);
+				
+				XmlHelper.writeElement(output, indentLevel+3, XmlHelper.EXTENSION, 
+						new XmlAttribute(XmlHelper.BASE, stratumeBaseType));
+
+				XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.COMPLEX_CONTENT);			
+
+				XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE);
 				
 				XmlHelper.doBreakIndent(output, indentLevel+1);
 			}

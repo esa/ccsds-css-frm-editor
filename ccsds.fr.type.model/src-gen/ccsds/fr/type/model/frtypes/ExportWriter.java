@@ -104,7 +104,12 @@ public interface ExportWriter extends EObject {
 	/**
 	 * @generated NOT
 	 */
-	public static final String OR = " | ";
+	public static final String OR_NO_BLANK = "|";
+
+	/**
+	 * @generated NOT
+	 */
+	public static final String OR = " " + OR_NO_BLANK + " ";
 
 	/**
 	 * @generated NOT

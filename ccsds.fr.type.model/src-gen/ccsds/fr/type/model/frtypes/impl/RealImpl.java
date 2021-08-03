@@ -66,11 +66,11 @@ public class RealImpl extends SimpleRangeTypeImpl implements Real {
 
 			XmlHelper.writeSingleValueRestrictions(typeOutput, typeIndent, XmlHelper.DOUBLE,
 					getSingleValueConstraint().getValues());
-		} else if (getRangeConstraint() != null) {
+		} else if (getRangeConstraint() != null && getRangeConstraint().size() > 0) {
 			hasConstraints = true;
 			XmlHelper.writeRangeConstraint(typeOutput, typeIndent, XmlHelper.DOUBLE, getRangeConstraint());
 		} else {
-			XmlHelper.writeElement(typeOutput, typeIndent, XmlHelper.RESTRICTION,
+			XmlHelper.writeElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION,
 					new XmlAttribute(XmlHelper.BASE, XmlHelper.DOUBLE));
 		}
 		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);

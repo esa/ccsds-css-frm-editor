@@ -387,6 +387,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
 						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
 						new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+				
 				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.COMPLEX_TYPE,
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
 			}

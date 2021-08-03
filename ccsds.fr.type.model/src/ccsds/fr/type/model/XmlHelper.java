@@ -150,6 +150,8 @@ public class XmlHelper {
 	
 	public static final String OBJECT_IDENTIFIER = "ObjectIdentifier";
 	
+	public static final String OPTIONAL = "optional";	
+	
 	public static final String PATTERN = "pattern";
 	
 	public static final String RESTRICTION = "restriction";
@@ -327,9 +329,9 @@ public class XmlHelper {
 		while(iter.hasNext()) {			
 			pattern += iter.next();
 			if(iter.hasNext()) {
-				pattern += ExportWriter.OR;
+				pattern += ExportWriter.OR_NO_BLANK;
 			}
-		}
+		}		
 		
 		writeElement(output, indentLevel, XmlHelper.PATTERN, new XmlAttribute(XmlHelper.VALUE, pattern));		
 		writeEndElement(output, indentLevel+1, RESTRICTION);

@@ -28,7 +28,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		String currentStratum = ExportWriterContext.instance().getCurrentStratumElement();
 		
 		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
-				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(currentStratum)),
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifier())), // Marcin want something like AntennaElement
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifier())),
 				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrStratumElementName(currentStratum)));
 		

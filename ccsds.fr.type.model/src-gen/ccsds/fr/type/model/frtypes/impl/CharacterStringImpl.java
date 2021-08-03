@@ -329,7 +329,7 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 				pattern += constraint;
 				if (iter.hasNext()) {
 					if (getPermittedAlphabetConstraint().getType() == ConstraintType.OR) {
-						pattern += ExportWriter.OR;
+						pattern += ExportWriter.OR_NO_BLANK;
 					}
 				}
 			}
