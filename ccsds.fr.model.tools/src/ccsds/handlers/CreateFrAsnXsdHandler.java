@@ -15,7 +15,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -102,6 +104,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 				createAsn1Module(EcoreUtil.copy(module), FrUtility.getFunctionalResources(frm), FrUtility.getProjectExplorerSelection(), frmUpdateCompoundCmd, editor.getEditingDomain());
 				
 				editor.getEditingDomain().getCommandStack().execute(frmUpdateCompoundCmd);
+				
+				refreshProjects();
 			} finally {
 				ExportWriterContext.instance().setGeneration(false);
 				ExportWriterContext.instance().setEditingDomain(null);
@@ -112,6 +116,22 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		return null;
 	}
 
+	/**
+	 * Refreshes the projects of hte workspace to see the newly generated files and folders
+	 */
+	private void refreshProjects() {
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		if(projects != null) {
+			for(IProject p : projects) {
+				try {
+					p.refreshLocal(IResource.DEPTH_INFINITE, null);
+				} catch (CoreException e) {
+					e.printStackTrace();
+				}
+			}
+		}		
+	}
+	
 	/**
 	 * Gets and creates the XSD directory for the given FR
 	 * @param frmFile
