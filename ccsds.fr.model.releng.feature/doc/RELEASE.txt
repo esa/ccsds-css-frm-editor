@@ -1,3 +1,6 @@
+Version 4.2.2 from TBD
+- Address Marcins changes for XSD export
+
 Version 4.2.1 from 17.12.2020
 - adapted frm.xsl to have nice ASN.1 formatting in Word imported HTML
 - Added tooltip for the FunctionalResourceModel node to list the contained FRs
