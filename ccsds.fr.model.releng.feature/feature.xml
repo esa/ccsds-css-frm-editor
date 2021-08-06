@@ -2,7 +2,7 @@
 <feature
       id="ccsds.fr.model.feature"
       label="ccsds.fr.model"
-      version="4.2.1.qualifier"
+      version="4.2.2.qualifier"
       provider-name="esa.esoc.int"
       os="linux,macosx,win32">
 
