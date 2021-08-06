@@ -118,56 +118,56 @@ plug-ins before installation!!!
          id="ccsds.fr.model"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.edit"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.editor"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.model.tools.diagram.design"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model.edit"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="ccsds.fr.type.model.editor"
          download-size="0"
          install-size="0"
-         version="4.2.1.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
