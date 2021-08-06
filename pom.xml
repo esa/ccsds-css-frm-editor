@@ -48,7 +48,7 @@
 		</repository>
 		<site>
 			<id>vsdenexus</id>
-			<url>dav:https://vsdenexus.esoc.esa.int/nexus/content/sites/cda-p2-site/ccsds/functional-resources/editor/repository-p2</url>
+			<url>dav:https://vsdenexus.esoc.esa.int/nexus/content/sites/cda-p2-site/ccsds/functional-resources/editor/${version}/repository-p2</url>
 		</site>
 	</distributionManagement>
 
