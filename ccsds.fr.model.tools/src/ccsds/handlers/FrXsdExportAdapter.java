@@ -51,7 +51,25 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		}
 		
 		myIndent--;
-		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.ALL);
+		XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.ALL);
+
+		// Marcin want extra attributes for each FR type
+		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+				new XmlAttribute(XmlHelper.NAME, "frin"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+
+		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+				new XmlAttribute(XmlHelper.NAME, "frTypeOid"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+		
+		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+				new XmlAttribute(XmlHelper.NAME, "frNickname"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
+		
+		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);

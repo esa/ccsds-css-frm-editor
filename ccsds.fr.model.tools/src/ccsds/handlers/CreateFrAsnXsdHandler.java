@@ -208,23 +208,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			
 			XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE,
 					new XmlAttribute(XmlHelper.NAME, stratumeBaseType));
-		
-			// Marcin want extra attributes for each stratum type
-			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
-					new XmlAttribute(XmlHelper.NAME, "frin"),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-					new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
-
-			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
-					new XmlAttribute(XmlHelper.NAME, "frTypeOid"),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-					new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
-			
-			XmlHelper.writeElement(output, indentLevel+2, XmlHelper.ATTRIBUTE,
-					new XmlAttribute(XmlHelper.NAME, "frNickname"),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-					new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));
-			
+					
 			XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE);
 			
 			XmlHelper.doBreakIndent(output, indentLevel+1);
