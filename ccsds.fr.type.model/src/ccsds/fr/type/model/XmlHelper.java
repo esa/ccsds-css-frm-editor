@@ -30,7 +30,7 @@ public class XmlHelper {
 
 	public static final String GENERAL_XSD = "frm_type_definitions.xsd";
 
-	public static final String STRATA_TYPES_XSD = "AbstractFrStrataParameterSets.xsd";
+	public static final String ABSTRACT_FR_TYPES_XSD = "AbstractFrTypes.xsd";
 	
 	public static final String ALL_EXCEPT = "ALL EXCEPT";
 	
@@ -46,7 +46,9 @@ public class XmlHelper {
 	
 	public static final String CSSM_PREFIX = "cssm";
 	
-	public static final String CSSM_NS = "urn:ccsds:schema:cssm:1.0.0"; 
+	private static final String CSSM_NS = "urn:ccsds:schema:cssm:1.0.0";
+	
+	private static final String FRIM_NS = "urn/ccsds/schema/cssm/frim";
 	
 	public static final String CSSM_SCHEMA_PARAM = "SchemaCssmAbstractParameter-v1_0_0.xsd";
 	
@@ -173,6 +175,10 @@ public class XmlHelper {
 	public static final String USE = "use";
 	
 	public static final String VALUE = "value";
+
+	public static final String UNBOUNDED = "unbounded";
+
+	public static final String REF = "ref";
 
 	/**
 	 * Writes an XML start element for the given name and attributes
@@ -548,7 +554,11 @@ public class XmlHelper {
 		if(type instanceof Element) {			
 			type.writeXsd(typeIndent+2, typeOutput, null);			
 		} else {
-			XmlHelper.writeStartElement(typeOutput, indentLevel+2, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, "element"));
+			String sequenceElementName = "element";
+			if(object.eContainer() instanceof Element) {
+				sequenceElementName = ((Element)object.eContainer()).getName() + "Element";
+			}
+			XmlHelper.writeStartElement(typeOutput, indentLevel+2, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, sequenceElementName));
 			type.writeXsd(typeIndent+3, typeOutput, null);
 			XmlHelper.writeEndElement(typeOutput, indentLevel+2, XmlHelper.ELEMENT);
 		}
@@ -681,7 +691,7 @@ public class XmlHelper {
 	}
 
 	/**
-	 * Returns the XSD type name for the given startum
+	 * Returns the XSD type name for the given stratum
 	 * @param stratumName	
 	 * @return	The XSD FR type name
 	 */
@@ -721,4 +731,29 @@ public class XmlHelper {
 	public static String getFrStratumElementName(String stratumName) {
 		return removeBlanks(firstCharLowerCase(stratumName + "StratumParameters"));
 	}
+
+	public static String getParameterBaseType() {		
+		return "ParameterBaseType";
+	}
+
+	public static String getFrimBaseType() {
+		return "FunctionalResourceInstance";
+	}
+
+	public static String getFrimBaseElementName() {
+		return "functionalResourceInstance";
+	}	
+	
+	public static String getFgName() {		
+		return "FunctionalResourceGroup";
+	}
+
+	public static String getTargetNamespace() {
+		if(ExportWriterContext.instance().getGenerateFrim() == true) {
+			return FRIM_NS;
+		} else {
+			return CSSM_NS;
+		}
+	}
+
 }

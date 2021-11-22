@@ -265,5 +265,19 @@
             parentId="org.eclipse.ui.contexts.window">
       </context>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="ccsds.fr.model.tools.preferences.FrPreferencePage"
+            id="ccsds.fr.model.tools.preferences.FrPreferencePage"
+            name="Functional Resource Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="ccsds.fr.model.tools.preferences.FrPreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

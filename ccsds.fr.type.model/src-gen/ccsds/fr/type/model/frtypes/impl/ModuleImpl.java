@@ -350,6 +350,8 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	}
 
 	/**
+	 * Writes the module as an XSD.
+	 * Depending on the includes, additional stuff is written - TODO: clean-up, the modules should contain what is needed. Here is not the right place to add it. 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -360,11 +362,11 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
 //				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
-				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.CSSM_NS),
+				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()),
 				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
 //				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
 //				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
-				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.CSSM_NS),
+				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()),
 				new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
 				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
 				new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
@@ -375,7 +377,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE,
 					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.GENERAL_XSD));
 			XmlHelper.writeElement(output, indentLevel, XmlHelper.INCLUDE,
-					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.STRATA_TYPES_XSD));
+					new XmlAttribute(XmlHelper.schemaLocation, XmlHelper.ABSTRACT_FR_TYPES_XSD));
 
 			// generate an FR Specific base type 
 			if (ExportWriterContext.instance().getCurrentBaseType() != null
@@ -383,17 +385,25 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				XmlHelper.doBreakIndent(output, indentLevel);
 				String frClassifier = ExportWriterContext.instance().getCurrentBaseType();
 
-				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.ELEMENT,
-						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
-						new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
-						new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+				// elements for each FR are only needed for the CSSM config profiles
+				if(ExportWriterContext.instance().getGenerateFrim() == false) {				
+					XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.ELEMENT,
+							new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
+							new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
+							new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+				}
 				
 				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.COMPLEX_TYPE,
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
 			}
 
+		} else if(getImports().size() > 0) {
+			for(int idx=0; idx<getImports().size(); idx++) {
+				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.INCLUDE,
+						new XmlAttribute(XmlHelper.schemaLocation, getImports().get(idx).getName()));
+			}			
 		} else {
-			// write the built in types only for the general XSD
+			// write the built in types only for the general XSD which does not have imports
 			writeBuiltInTypes(indentLevel, output);
 		}
 
@@ -415,7 +425,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		output.append(System.lineSeparator());
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SCHEMA);
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
