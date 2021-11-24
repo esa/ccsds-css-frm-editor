@@ -364,6 +364,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 //				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
 				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()),
 				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
+				new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS),				
 //				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
 //				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
 				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()),

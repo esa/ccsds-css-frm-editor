@@ -26,6 +26,10 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  */
 public class XmlHelper {
 	
+	private static final String FR_TYPE_INFO = "frTypeInfo";
+
+	private static final String ECORE_KEY = "ecore:key";
+
 	public static final String NAMED = "Named";
 
 	public static final String GENERAL_XSD = "frm_type_definitions.xsd";
@@ -70,6 +74,10 @@ public class XmlHelper {
 	
 	public static final String XSD_NS = "http://www.w3.org/2001/XMLSchema";
 	
+	public static final String ECORE_NS_PREFIX = "xmlns:ecore";
+	
+	public static final String ECORE_NS ="http://www.eclipse.org/emf/2002/Ecore";
+	
 	public static final String XMLNS = "xmlns";
 	
 	public static final String targetNamespace = "targetNamespace";
@@ -97,6 +105,10 @@ public class XmlHelper {
 	public static final String ABSTRACT = "abstract";
 	
 	public static final String ALL = "all";
+	
+	public static final String ANNOTATION = "annotation";
+
+	public static final String APPINFO = "appinfo";
 	
 	public static final String BIT_STRING = "BitString";
 	
@@ -165,6 +177,8 @@ public class XmlHelper {
 	public static final String SIMPLE_CONTENT = "simpleContent"; 
 	
 	public static final String SIMPLE_TYPE = "simpleType";
+	
+	public static final String SOURCE = "source";	
 
 	public static final String STRING = NS_XSD_PREFIX + COLON + "string";
 
@@ -231,6 +245,22 @@ public class XmlHelper {
 		output.append(SLASH + rightBracket);
 		//doBreakIndent(output, indent);
 	}		
+
+	/**
+	 * Writes an XML end element for the given element
+	 * @param output
+	 * @param element
+	 */
+	public static void writeEndElementNoLb(StringBuffer output, int indentLevel, String element) {		
+		output.append(leftBracket);
+		output.append(SLASH);
+		output.append(NS_XSD_PREFIX);
+		output.append(COLON);
+		output.append(element);
+		output.append(rightBracket);
+		//doBreakIndent(output, indent);
+	}
+	
 	
 	/**
 	 * Writes an XML end element for the given element
@@ -239,13 +269,7 @@ public class XmlHelper {
 	 */
 	public static void writeEndElement(StringBuffer output, int indentLevel, String element) {		
 		doBreakIndent(output, indentLevel);
-		output.append(leftBracket);
-		output.append(SLASH);
-		output.append(NS_XSD_PREFIX);
-		output.append(COLON);
-		output.append(element);
-		output.append(rightBracket);
-		//doBreakIndent(output, indent);
+		writeEndElementNoLb(output, indentLevel, element);
 	}
 	
 	/**
@@ -498,8 +522,11 @@ public class XmlHelper {
 		if(oid != null) {
 			typeIndent++;			
 		}
-
+		
+		XmlHelper.writeTypeAnnotation(typeOutput, indentLevel+2, typeName);
+		
 		XmlHelper.writeStartElement(typeOutput, typeIndent+1, typeName);
+		
 		int idx = 0;
 		for(Type t : elements) {
 			if(t instanceof Element) {
@@ -754,6 +781,35 @@ public class XmlHelper {
 		} else {
 			return CSSM_NS;
 		}
+	}
+	
+	/**
+	 * Writes an annotation to the XSD, which is understood as a ecore extended metadata
+	 * @param output			Output stream to wrtie to
+	 * @param indentLevel		Level of indent
+	 * @param type				The content of the type annotation
+	 * 
+	 * Example:
+	 * <xsd:complexType name="Item">
+    	<xsd:annotation>
+       	<xsd:appinfo source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData" 
+       		ecore:key="frTypeInfo">
+         		CHOICE
+       	</xsd:appinfo>
+    	</xsd:annotation>
+	 * 
+	 */
+	public static void writeTypeAnnotation(StringBuffer output, int indentLevel, String type) {
+		// to go to an annotation:		http://www.eclipse.org/emf/2002/Ecore 
+		// to go to extended metadata:	http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		
+		writeStartElement(output, indentLevel, ANNOTATION);
+		writeStartElement(output, ++indentLevel, APPINFO, 
+				new XmlAttribute(SOURCE, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"), 
+				new XmlAttribute(ECORE_KEY, FR_TYPE_INFO));
+		output.append(type);		
+		writeEndElementNoLb(output, indentLevel--, APPINFO);
+		writeEndElement(output, indentLevel, ANNOTATION);
 	}
 
 }

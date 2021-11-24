@@ -198,6 +198,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
 			new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()),
 			new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
+			new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS),
 			new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()),
 			new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
 			new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
