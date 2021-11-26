@@ -10,6 +10,7 @@ import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -235,9 +236,9 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		if (getType() != null) {
-			getType().writeXsd(indentLevel, output, oid);
+			getType().writeXsd(indentLevel, output, oid, properties);
 		}
 	}
 
@@ -339,13 +340,15 @@ public class TypeDefinitionImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 		case FrtypesPackage.TYPE_DEFINITION___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
 			return null;
-		case FrtypesPackage.TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
-			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
+		case FrtypesPackage.TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2),
+					(Map<String, String>) arguments.get(3));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

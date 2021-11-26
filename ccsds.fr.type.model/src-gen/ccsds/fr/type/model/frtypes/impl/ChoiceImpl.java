@@ -10,6 +10,8 @@ import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -88,7 +90,7 @@ public class ChoiceImpl extends StructuredDifferentTypeImpl implements Choice {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.CHOICE, this, getElements(), oid);
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
+		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.CHOICE, this, getElements(), oid, properties);
 	}
 } //ChoiceImpl

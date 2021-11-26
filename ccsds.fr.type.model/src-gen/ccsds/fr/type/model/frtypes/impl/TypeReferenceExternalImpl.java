@@ -8,6 +8,8 @@ import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeReferenceExternal;
 import java.lang.Boolean;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -236,33 +238,34 @@ public class TypeReferenceExternalImpl extends TypeImpl implements TypeReference
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		// we do not know if a complex or a simple type?! for the moment go for a complex type
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		int typeIndent = indentLevel;
 		StringBuffer typeOutput = new StringBuffer();
 
-		if(isComplexType() == true) {
-			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE, XmlHelper.getTypeNameAttr(this));
+		if (isComplexType() == true) {
+			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE,
+					XmlHelper.getTypeNameAttr(this));
 			XmlHelper.writeElement(typeOutput, indentLevel, XmlHelper.EXTENSION,
 					new XmlAttribute(XmlHelper.BASE, getName()));
 			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
-	
+
 			if (oid != null) {
 				XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
-						XmlHelper.getTypeNameAttr(this), oid, this);
+						XmlHelper.getTypeNameAttr(this), oid, this, properties);
 			}
 		} else {
 			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
 			XmlHelper.writeElement(typeOutput, indentLevel, XmlHelper.RESTRICTION,
 					new XmlAttribute(XmlHelper.BASE, getName()));
 			XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
-	
+
 			if (oid != null) {
 				XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
-						XmlHelper.getTypeNameAttr(this), oid, this);
-			}		
+						XmlHelper.getTypeNameAttr(this), oid, this, properties);
+			}
 		}
 		output.append(typeOutput);
 	}

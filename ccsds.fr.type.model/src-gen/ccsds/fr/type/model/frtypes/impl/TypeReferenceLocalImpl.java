@@ -9,6 +9,8 @@ import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import ccsds.fr.type.model.frtypes.TypeReferenceLocal;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -234,10 +236,10 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		int typeIndent = indentLevel;
 		StringBuffer typeOutput = new StringBuffer();
-		
+
 		// write a type without value and oid attributes, which can again be referenced 		
 		if (XmlHelper.isSimpleType(getTypeDefinition().getType())) {
 			XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE, XmlHelper.getTypeNameAttr(this));
@@ -260,10 +262,10 @@ public class TypeReferenceLocalImpl extends TypeImpl implements TypeReferenceLoc
 
 			if (XmlHelper.isSimpleType(getTypeDefinition().getType())) {
 				XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
-						XmlHelper.getTypeNameAttr(this), oid, this);
+						XmlHelper.getTypeNameAttr(this), oid, this, properties);
 			} else {
 				XmlHelper.writeComplexNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
-						XmlHelper.getTypeNameAttr(this), oid, this);
+						XmlHelper.getTypeNameAttr(this), oid, this, properties);
 			}
 
 		}

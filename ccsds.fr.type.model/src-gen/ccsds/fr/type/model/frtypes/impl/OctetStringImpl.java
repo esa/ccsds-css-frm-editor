@@ -8,6 +8,9 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.OctetString;
+
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -53,7 +56,7 @@ public class OctetStringImpl extends SimpleSizeConstrainedTypeImpl implements Oc
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		boolean hasConstraints = false;
@@ -79,7 +82,7 @@ public class OctetStringImpl extends SimpleSizeConstrainedTypeImpl implements Oc
 			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
-					this);
+					this, properties);
 		}
 
 		if (typeOutput.length() > 0) {

@@ -11,6 +11,7 @@ import ccsds.fr.type.model.frtypes.StructuredSizeConstrainedType;
 import ccsds.fr.type.model.frtypes.Type;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -283,7 +284,7 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		XmlHelper.writeStructuredSameType(indentLevel, output, this, getElements(), oid);
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
+		XmlHelper.writeStructuredSameType(indentLevel, output, this, getElements(), oid, properties);
 	}
 } //StructuredSizeConstrainedTypeImpl

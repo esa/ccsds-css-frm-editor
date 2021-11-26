@@ -10,6 +10,8 @@ import ccsds.fr.type.model.frtypes.Null;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.SimpleType;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -44,7 +46,7 @@ public abstract class SimpleTypeImpl extends TypeImpl implements SimpleType {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		String baseType = "unknownBaseType";
@@ -83,7 +85,7 @@ public abstract class SimpleTypeImpl extends TypeImpl implements SimpleType {
 						XmlHelper.REQUIRED);
 			}
 			XmlHelper.writeFixedStringAttributeSpec(output, indentLevel + 1, XmlHelper.CLASSIFIER, typeAttr.getValue());
-			XmlHelper.writeOidAttribute(output, indentLevel + 1, oid);
+			XmlHelper.writeOidAttribute(output, indentLevel + 1, oid, properties);
 			XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);
 		} else {
 			XmlHelper.doBreakIndent(output, indentLevel);

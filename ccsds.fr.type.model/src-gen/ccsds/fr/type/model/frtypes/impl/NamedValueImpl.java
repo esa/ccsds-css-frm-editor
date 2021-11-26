@@ -10,6 +10,7 @@ import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import java.lang.Integer;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -157,7 +158,7 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -237,13 +238,15 @@ public class NamedValueImpl extends MinimalEObjectImpl.Container implements Name
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 		case FrtypesPackage.NAMED_VALUE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
 			return null;
-		case FrtypesPackage.NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
-			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
+		case FrtypesPackage.NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2),
+					(Map<String, String>) arguments.get(3));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

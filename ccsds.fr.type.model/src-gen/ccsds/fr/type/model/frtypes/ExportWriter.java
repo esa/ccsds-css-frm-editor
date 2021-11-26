@@ -2,6 +2,7 @@
  */
 package ccsds.fr.type.model.frtypes;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -262,6 +263,6 @@ public interface ExportWriter extends EObject {
 	 * @model outputDataType="ccsds.fr.type.model.frtypes.StringBuffer"
 	 * @generated
 	 */
-	void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid);
+	void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties);
 
 } // Asn1Writer

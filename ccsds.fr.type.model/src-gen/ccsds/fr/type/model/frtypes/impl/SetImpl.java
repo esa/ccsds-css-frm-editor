@@ -7,6 +7,9 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.Set;
+
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -51,7 +54,7 @@ public class SetImpl extends StructuredDifferentTypeImpl implements Set {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.ALL, this, getElements(), oid);
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
+		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.ALL, this, getElements(), oid, properties);
 	}
 } //SetImpl

@@ -14,6 +14,7 @@ import ccsds.fr.type.model.frtypes.TypeDefinition;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -332,20 +333,20 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		output.append(System.lineSeparator());
 		output.append(System.lineSeparator());
-		
-// 		We do not write the general base types anymore to the built in types. The strata base types are written to a dedicated file		
-//		output.append(XmlHelper.COMMENT_START);
-//		output.append("Stratum related base types");
-//		output.append(XmlHelper.COMMENT_END);
-//		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
-//			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
-//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
-//					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(abstractType)),
-//					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
-//
-//			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
-//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(abstractType)));
-//		}
+
+		// 		We do not write the general base types anymore to the built in types. The strata base types are written to a dedicated file		
+		//		output.append(XmlHelper.COMMENT_START);
+		//		output.append("Stratum related base types");
+		//		output.append(XmlHelper.COMMENT_END);
+		//		for (String abstractType : ExportWriterContext.instance().getAbstractTypes()) {
+		//			XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
+		//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(abstractType)),
+		//					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrStratumType(abstractType)),
+		//					new XmlAttribute(XmlHelper.ABSTRACT, "true"));
+		//
+		//			XmlHelper.writeElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
+		//					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrStratumType(abstractType)));
+		//		}
 
 	}
 
@@ -357,16 +358,16 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 
 		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
-//				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
+				//				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
 				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()),
 				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
-				new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS),				
-//				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
-//				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
+				new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS),
+				//				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
+				//				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
 				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()),
 				new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
 				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
@@ -387,22 +388,22 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				String frClassifier = ExportWriterContext.instance().getCurrentBaseType();
 
 				// elements for each FR are only needed for the CSSM config profiles
-				if(ExportWriterContext.instance().getGenerateFrim() == false) {				
+				if (ExportWriterContext.instance().getGenerateFrim() == false) {
 					XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.ELEMENT,
 							new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
 							new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
 							new XmlAttribute(XmlHelper.ABSTRACT, "true"));
 				}
-				
+
 				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.COMPLEX_TYPE,
 						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
 			}
 
-		} else if(getImports().size() > 0) {
-			for(int idx=0; idx<getImports().size(); idx++) {
-				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.INCLUDE,
+		} else if (getImports().size() > 0) {
+			for (int idx = 0; idx < getImports().size(); idx++) {
+				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.INCLUDE,
 						new XmlAttribute(XmlHelper.schemaLocation, getImports().get(idx).getName()));
-			}			
+			}
 		} else {
 			// write the built in types only for the general XSD which does not have imports
 			writeBuiltInTypes(indentLevel, output);
@@ -412,7 +413,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		// all type definitions
 		for (TypeDefinition td : getTypeDefinition()) {
 			try {
-				td.writeXsd(indentLevel, output, oid);
+				td.writeXsd(indentLevel, output, oid, properties);
 			} catch (Exception e) {
 				if (td != null && td.getName() != null) {
 					//FrTypesUtil.log("Exception creating type definition " + td.getName() + ": " + e);
@@ -426,7 +427,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 		output.append(System.lineSeparator());
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.SCHEMA);
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -551,13 +552,15 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 		case FrtypesPackage.MODULE___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
 			return null;
-		case FrtypesPackage.MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
-			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
+		case FrtypesPackage.MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2),
+					(Map<String, String>) arguments.get(3));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

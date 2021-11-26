@@ -44,6 +44,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -976,7 +977,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier() {
+	public EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier_Map() {
 		return exportWriterEClass.getEOperations().get(1);
 	}
 
@@ -1195,7 +1196,7 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 
 		exportWriterEClass = createEClass(EXPORT_WRITER);
 		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_ASN1__INT_STRINGBUFFER);
-		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER);
+		createEOperation(exportWriterEClass, EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP);
 
 		sizeConstrainedTypeEClass = createEClass(SIZE_CONSTRAINED_TYPE);
 		createEReference(sizeConstrainedTypeEClass, SIZE_CONSTRAINED_TYPE__SIZE_CONSTRAINT);
@@ -1460,11 +1461,17 @@ public class FrtypesPackageImpl extends EPackageImpl implements FrtypesPackage {
 		addEParameter(op, ecorePackage.getEInt(), "indentLevel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStringBuffer(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier(), null, "writeXsd", 0, 1,
+		op = initEOperation(getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier_Map(), null, "writeXsd", 0, 1,
 				IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "indentLevel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStringBuffer(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getObjectIdentifier(), "oid", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "properties", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sizeConstrainedTypeEClass, SizeConstrainedType.class, "SizeConstrainedType", IS_ABSTRACT,
 				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

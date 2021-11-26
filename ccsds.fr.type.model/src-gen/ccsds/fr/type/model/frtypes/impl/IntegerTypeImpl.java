@@ -12,6 +12,8 @@ import ccsds.fr.type.model.frtypes.NamedValue;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 
 import java.util.Collection;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -190,7 +192,7 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		boolean hasConstraints = false;
@@ -227,7 +229,7 @@ public class IntegerTypeImpl extends SimpleRangeTypeImpl implements IntegerType 
 			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
-					this);
+					this, properties);
 		}
 
 		XmlHelper.doBreakIndent(output, indentLevel);

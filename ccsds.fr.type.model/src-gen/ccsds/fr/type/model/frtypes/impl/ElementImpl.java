@@ -19,6 +19,7 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 import java.lang.Boolean;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -498,7 +499,7 @@ public class ElementImpl extends TypeImpl implements Element {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		StringBuffer typeOutput = new StringBuffer();
 		int typeIndent = indentLevel + 1;
 
@@ -524,11 +525,11 @@ public class ElementImpl extends TypeImpl implements Element {
 			} else if (XmlHelper.isSimpleType(getType())) {
 				XmlHelper.writeStartElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
 				XmlHelper.writeAttributeStart(typeOutput, typeIndent + 1, XmlHelper.VALUE, XmlHelper.REQUIRED);
-				getType().writeXsd(typeIndent + 2, typeOutput, null);
+				getType().writeXsd(typeIndent + 2, typeOutput, null, properties);
 				XmlHelper.writeAttributeEnd(typeOutput, typeIndent + 1);
 				XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.COMPLEX_TYPE);
 			} else if (getType() instanceof StructuredType) {
-				getType().writeXsd(indentLevel, typeOutput, null);
+				getType().writeXsd(indentLevel, typeOutput, null, properties);
 			}
 		} catch (Exception e) {
 			FrTypesUtil.warn("Failed to construct type from local type referecen for element " + getName() + ": " + e);

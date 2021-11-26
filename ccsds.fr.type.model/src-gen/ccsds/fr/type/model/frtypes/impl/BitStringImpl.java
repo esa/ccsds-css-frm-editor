@@ -9,6 +9,8 @@ import ccsds.fr.type.model.frtypes.BitString;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -54,7 +56,7 @@ public class BitStringImpl extends SimpleSizeConstrainedTypeImpl implements BitS
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		boolean hasConstraints = false;
@@ -79,7 +81,7 @@ public class BitStringImpl extends SimpleSizeConstrainedTypeImpl implements BitS
 			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
-					this);
+					this, properties);
 		}
 
 		XmlHelper.doBreakIndent(output, indentLevel);

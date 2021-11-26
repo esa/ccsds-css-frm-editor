@@ -94,7 +94,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = 1;
+	int EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = 1;
 
 	/**
 	 * The number of operations of the '<em>Export Writer</em>' class.
@@ -167,7 +167,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int TYPE_DEFINITION___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Type Definition</em>' class.
@@ -222,7 +222,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -277,7 +277,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Simple Type</em>' class.
@@ -332,7 +332,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Structured Type</em>' class.
@@ -387,7 +387,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int BOOLEAN___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Boolean</em>' class.
@@ -451,7 +451,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Simple Range Type</em>' class.
@@ -524,7 +524,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int INTEGER_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Integer Type</em>' class.
@@ -588,7 +588,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Simple Size Constrained Type</em>' class.
@@ -652,7 +652,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BIT_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int BIT_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Bit String</em>' class.
@@ -716,7 +716,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OCTET_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int OCTET_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Octet String</em>' class.
@@ -780,7 +780,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int REAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_RANGE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Real</em>' class.
@@ -844,7 +844,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATED___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int ENUMERATED___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Enumerated</em>' class.
@@ -926,7 +926,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHARACTER_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int CHARACTER_STRING___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Character String</em>' class.
@@ -990,7 +990,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Structured Different Type</em>' class.
@@ -1054,7 +1054,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SEQUENCE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Sequence</em>' class.
@@ -1127,7 +1127,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Structured Size Constrained Type</em>' class.
@@ -1200,7 +1200,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SEQUENCE_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Sequence Of</em>' class.
@@ -1264,7 +1264,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SET___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SET___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Set</em>' class.
@@ -1337,7 +1337,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SET_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SET_OF___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Set Of</em>' class.
@@ -1383,7 +1383,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -1447,7 +1447,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SIZE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Size Constraint</em>' class.
@@ -1511,7 +1511,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_RANGE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int VALUE_RANGE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Value Range Constraint</em>' class.
@@ -1575,7 +1575,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int NAMED_VALUE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Named Value</em>' class.
@@ -1639,7 +1639,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHOICE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int CHOICE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = STRUCTURED_DIFFERENT_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Choice</em>' class.
@@ -1703,7 +1703,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REFERENCE_LOCAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int TYPE_REFERENCE_LOCAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Type Reference Local</em>' class.
@@ -1758,7 +1758,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLE_VALUE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SINGLE_VALUE_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Single Value Constraint</em>' class.
@@ -1822,7 +1822,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERMITTED_ALPHABET_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int PERMITTED_ALPHABET_CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Permitted Alphabet Constraint</em>' class.
@@ -1913,7 +1913,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class.
@@ -1968,7 +1968,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_IDENTIFIER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int OBJECT_IDENTIFIER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Object Identifier</em>' class.
@@ -2068,7 +2068,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int ELEMENT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Element</em>' class.
@@ -2141,7 +2141,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REFERENCE_EXTERNAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int TYPE_REFERENCE_EXTERNAL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Type Reference External</em>' class.
@@ -2196,7 +2196,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NULL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int NULL___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = SIMPLE_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Null</em>' class.
@@ -2251,7 +2251,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int SIZE_CONSTRAINED_TYPE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>Size Constrained Type</em>' class.
@@ -2315,7 +2315,7 @@ public interface FrtypesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FROM_MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER;
+	int FROM_MODULE___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP;
 
 	/**
 	 * The number of operations of the '<em>From Module</em>' class.
@@ -3039,14 +3039,14 @@ public interface FrtypesPackage extends EPackage {
 	EOperation getExportWriter__WriteAsn1__int_StringBuffer();
 
 	/**
-	 * Returns the meta object for the '{@link ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier) <em>Write Xsd</em>}' operation.
+	 * Returns the meta object for the '{@link ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier, java.util.Map) <em>Write Xsd</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Write Xsd</em>' operation.
-	 * @see ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier)
+	 * @see ccsds.fr.type.model.frtypes.ExportWriter#writeXsd(int, java.lang.StringBuffer, ccsds.fr.type.model.frtypes.ObjectIdentifier, java.util.Map)
 	 * @generated
 	 */
-	EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier();
+	EOperation getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier_Map();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}'.
@@ -3768,8 +3768,8 @@ public interface FrtypesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER = eINSTANCE
-				.getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier();
+		EOperation EXPORT_WRITER___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP = eINSTANCE
+				.getExportWriter__WriteXsd__int_StringBuffer_ObjectIdentifier_Map();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.fr.type.model.frtypes.SizeConstrainedType <em>Size Constrained Type</em>}' class.

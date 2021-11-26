@@ -1,8 +1,10 @@
 package ccsds.fr.type.model;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +28,12 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  */
 public class XmlHelper {
 	
+	private static final String CDATA_END = "]]>";
+
+	private static final String CDATA_START = "<![CDATA[";
+
+	private static final String SEMANTIC_DEFINITION_PROP = "SemanticDefinition";
+
 	private static final String FR_TYPE_INFO = "frTypeInfo";
 
 	private static final String ECORE_KEY = "ecore:key";
@@ -304,7 +312,7 @@ public class XmlHelper {
 	 * @param output		The comment is written to this output
 	 * @param object		The parent of the given object is searched for the parent
 	 */
-	public static void writeComment(StringBuffer output, int indentLevel, EObject object) {
+	public static String writeComment(StringBuffer output, int indentLevel, EObject object) {
 		if(indentLevel <= 1) { // break for top-level items		
 			doBreakIndent(output, indentLevel);
 		}
@@ -327,6 +335,8 @@ public class XmlHelper {
 			doBreakIndent(output, indentLevel);
 			output.append(COMMENT_END);
 		}
+		
+		return comment;
 		//doBreakIndent(output, indentLevel);
 	}
 	
@@ -498,9 +508,9 @@ public class XmlHelper {
 	 * @param indentLevel
 	 * @param oid
 	 */
-	public static void writeOidAttribute(StringBuffer output, int indentLevel, ObjectIdentifier oid) {
+	public static void writeOidAttribute(StringBuffer output, int indentLevel, ObjectIdentifier oid, Map<String, String> properties) {
 		if(oid != null) {
-			oid.writeXsd(indentLevel, output, oid);
+			oid.writeXsd(indentLevel, output, oid, properties);
 		}
 	}
 	
@@ -513,8 +523,8 @@ public class XmlHelper {
 	 * @param elements		The child elements of the given object
 	 * @param oid			The oid to which this object corresponds or null for pure type definitions
 	 */
-	public static void writeStructuredDifferentType(int indentLevel, StringBuffer output, String typeName, EObject object, EList<Type> elements, ObjectIdentifier oid) {
-		XmlHelper.writeComment(output, indentLevel, object);
+	public static void writeStructuredDifferentType(int indentLevel, StringBuffer output, String typeName, EObject object, EList<Type> elements, ObjectIdentifier oid, Map<String, String> properties) {
+		String comment = XmlHelper.writeComment(output, indentLevel, object);
 
 		StringBuffer typeOutput = new StringBuffer();
 		int typeIndent = indentLevel;
@@ -523,17 +533,23 @@ public class XmlHelper {
 			typeIndent++;			
 		}
 		
-		XmlHelper.writeTypeAnnotation(typeOutput, indentLevel+2, typeName);
+		// comment is the comment from either Element or TypeDefinition
+		if(comment != null) {
+			XmlHelper.putPropSemanticDef(comment, properties); // replaces an eventually existing semantic definition
+		}
+		
+		XmlHelper.putPropType(typeName, properties);
+		XmlHelper.writePropertiesAsAnno(typeOutput, indentLevel+2, properties);		
 		
 		XmlHelper.writeStartElement(typeOutput, typeIndent+1, typeName);
 		
 		int idx = 0;
 		for(Type t : elements) {
 			if(t instanceof Element) {
-				t.writeXsd(typeIndent+2, typeOutput, null);
+				t.writeXsd(typeIndent+2, typeOutput, null, properties);
 			} else { // we have to include an artifical element for XSD
 				XmlHelper.writeStartElement(typeOutput, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, Integer.toString(idx)));
-				t.writeXsd(typeIndent+2, typeOutput, null);
+				t.writeXsd(typeIndent+2, typeOutput, null, properties);
 				XmlHelper.writeEndElement(typeOutput, indentLevel, XmlHelper.ELEMENT);
 				idx++;
 			}
@@ -541,7 +557,7 @@ public class XmlHelper {
 		XmlHelper.writeEndElement(typeOutput, typeIndent+1, typeName);
 		
 		if(oid != null) {		
-			writeComplexNamedType(indentLevel, output, getNamedTypeNameAttr(object), getTypeNameAttr(object), oid, object);
+			writeComplexNamedType(indentLevel, output, getNamedTypeNameAttr(object), getTypeNameAttr(object), oid, object, properties);
 		}
 		
 		XmlHelper.doBreakIndent(output, indentLevel);
@@ -560,7 +576,7 @@ public class XmlHelper {
 	 * @param elements		The child elements of the given object
 	 * @param oid			The oid to which this object corresponds or null for pure type definitions
 	 */
-	public static void writeStructuredSameType(int indentLevel, StringBuffer output, StructuredSizeConstrainedType object, Type type, ObjectIdentifier oid) {
+	public static void writeStructuredSameType(int indentLevel, StringBuffer output, StructuredSizeConstrainedType object, Type type, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, object);
 
 		StringBuffer typeOutput = new StringBuffer();
@@ -579,20 +595,20 @@ public class XmlHelper {
 		
 		XmlHelper.writeStartElement(typeOutput, typeIndent+1, SEQUENCE, attributes.toArray(new XmlAttribute[0]));
 		if(type instanceof Element) {			
-			type.writeXsd(typeIndent+2, typeOutput, null);			
+			type.writeXsd(typeIndent+2, typeOutput, null, properties);			
 		} else {
 			String sequenceElementName = "element";
 			if(object.eContainer() instanceof Element) {
 				sequenceElementName = ((Element)object.eContainer()).getName() + "Element";
 			}
 			XmlHelper.writeStartElement(typeOutput, indentLevel+2, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, sequenceElementName));
-			type.writeXsd(typeIndent+3, typeOutput, null);
+			type.writeXsd(typeIndent+3, typeOutput, null, properties);
 			XmlHelper.writeEndElement(typeOutput, indentLevel+2, XmlHelper.ELEMENT);
 		}
 		XmlHelper.writeEndElement(typeOutput, typeIndent+1, SEQUENCE);
 		
 		if(oid != null) {
-			writeComplexNamedType(indentLevel, output, getNamedTypeNameAttr(object), getTypeNameAttr(object), oid, object);
+			writeComplexNamedType(indentLevel, output, getNamedTypeNameAttr(object), getTypeNameAttr(object), oid, object, properties);
 		}
 		
 		XmlHelper.doBreakIndent(output, indentLevel);
@@ -636,7 +652,7 @@ public class XmlHelper {
 	 * @param typeName		The type of the generated value attribute 
 	 * @param oid			The oid is used to construct a fixed iod attribute with the stringified OID
 	 */
-	public static void writeSimpleNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object) {
+	public static void writeSimpleNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object, Map<String, String> properties) {
 //		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
 //				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
 //				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
@@ -651,7 +667,7 @@ public class XmlHelper {
 		
 		XmlHelper.writeAttributeSpec(output, indentLevel+3, XmlHelper.VALUE, typeName.getValue(), XmlHelper.REQUIRED);
 		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
-		XmlHelper.writeOidAttribute(output, indentLevel+3, oid);
+		XmlHelper.writeOidAttribute(output, indentLevel+3, oid, properties);
 
 		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
@@ -667,7 +683,7 @@ public class XmlHelper {
 	 * @param typeName		The type of the generated extension element 
 	 * @param oid			The oid is used to construct a fixed iod attribute with the stringified OID
 	 */
-	public static void writeComplexNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object) {
+	public static void writeComplexNamedType(int indentLevel, StringBuffer output, XmlAttribute namedType, XmlAttribute typeName, ObjectIdentifier oid, EObject object, Map<String, String> properties) {
 //		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
 //				new XmlAttribute(XmlHelper.NAME, firstCharLowerCase(namedType.getValue())),
 //				new XmlAttribute(XmlHelper.TYPE, namedType.getValue()),
@@ -685,7 +701,7 @@ public class XmlHelper {
 				new XmlAttribute(XmlHelper.TYPE, typeName.getValue()));
 		XmlHelper.writeEndElement(output, indentLevel+3, XmlHelper.SEQUENCE);
 		
-		XmlHelper.writeOidAttribute(output, indentLevel+3, oid);
+		XmlHelper.writeOidAttribute(output, indentLevel+3, oid, properties);
 		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
 		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
@@ -783,11 +799,13 @@ public class XmlHelper {
 		}
 	}
 	
+
+
 	/**
 	 * Writes an annotation to the XSD, which is understood as a ecore extended metadata
 	 * @param output			Output stream to wrtie to
 	 * @param indentLevel		Level of indent
-	 * @param type				The content of the type annotation
+	 * @param properties		A propery map written. Cleared after writing
 	 * 
 	 * Example:
 	 * <xsd:complexType name="Item">
@@ -799,17 +817,69 @@ public class XmlHelper {
     	</xsd:annotation>
 	 * 
 	 */
-	public static void writeTypeAnnotation(StringBuffer output, int indentLevel, String type) {
+	public static void writePropertiesAsAnno(StringBuffer output, int indentLevel, Map<String, String> properties) {
 		// to go to an annotation:		http://www.eclipse.org/emf/2002/Ecore 
 		// to go to extended metadata:	http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		
-		writeStartElement(output, indentLevel, ANNOTATION);
-		writeStartElement(output, ++indentLevel, APPINFO, 
-				new XmlAttribute(SOURCE, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"), 
-				new XmlAttribute(ECORE_KEY, FR_TYPE_INFO));
-		output.append(type);		
-		writeEndElementNoLb(output, indentLevel--, APPINFO);
-		writeEndElement(output, indentLevel, ANNOTATION);
+		if(properties == null || properties.size() == 0) {
+			return;
+		}
+		
+		writeStartElement(output, indentLevel++, ANNOTATION);
+		for(String propertyKey : properties.keySet()) {			
+			writeStartElement(output, indentLevel, APPINFO, 
+					new XmlAttribute(SOURCE, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"), 
+					new XmlAttribute(ECORE_KEY, propertyKey));
+			output.append(CDATA_START);
+			output.append(properties.get(propertyKey));
+			output.append(CDATA_END);
+			writeEndElementNoLb(output, indentLevel, APPINFO);
+		}
+		writeEndElement(output, --indentLevel, ANNOTATION);
+		
+		properties.clear();
 	}
 
+	
+	/**
+	 * Adds the given semantic definition to given properties
+	 * @param type
+	 * @param properties
+	 * @return The modified properties or new properties if argument is properties is null
+	 */
+	public static Map<String, String> putPropType(String type, Map<String, String> properties) {
+		if(properties == null) {
+			properties = new HashMap<String, String>();
+		}
+		
+		properties.put(FR_TYPE_INFO, type);
+		
+		return properties;
+	}	
+	
+	/**
+	 * Adds the given semantic definition to given properties
+	 * @param semanticDefinition
+	 * @param properties
+	 * @return The modified properties or new properties if argument is properties is null
+	 */
+	public static Map<String, String> putPropSemanticDef(String semanticDefinition, Map<String, String> properties) {
+		if(properties == null) {
+			properties = new HashMap<String, String>();
+		}
+		
+		properties.put(SEMANTIC_DEFINITION_PROP, semanticDefinition);
+		
+		return properties;
+	}
+	
+	/**
+	 * Removes an eventually existing property of the Semantinc Definition
+	 * @param properties
+	 */
+	private static void clearPropemanticDef(Map<String, String> properties) {
+		if(properties != null) {
+			properties.remove(SEMANTIC_DEFINITION_PROP);
+		}
+	}
 }

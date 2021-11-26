@@ -14,6 +14,8 @@ import ccsds.fr.type.model.frtypes.StringType;
 import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 
 import java.util.Iterator;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -291,7 +293,7 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		boolean hasConstraints = false;
@@ -358,7 +360,7 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
-					this);
+					this, properties);
 		}
 
 		XmlHelper.doBreakIndent(output, indentLevel);

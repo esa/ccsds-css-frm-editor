@@ -10,6 +10,8 @@ import ccsds.fr.type.model.frtypes.NamedValue;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 
 import java.util.Collection;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -187,7 +189,7 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		int typeIndent = indentLevel;
@@ -200,7 +202,7 @@ public class EnumeratedImpl extends SimpleTypeImpl implements Enumerated {
 
 		if (oid != null) {
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this),
-					XmlHelper.getTypeNameAttr(this), oid, this);
+					XmlHelper.getTypeNameAttr(this), oid, this, properties);
 		}
 
 		output.append(typeOutput);

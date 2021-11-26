@@ -8,6 +8,9 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.Real;
+
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -52,7 +55,7 @@ public class RealImpl extends SimpleRangeTypeImpl implements Real {
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		XmlHelper.writeComment(output, indentLevel, this);
 
 		boolean hasConstraints = false;
@@ -70,7 +73,7 @@ public class RealImpl extends SimpleRangeTypeImpl implements Real {
 			hasConstraints = true;
 			XmlHelper.writeRangeConstraint(typeOutput, typeIndent, XmlHelper.DOUBLE, getRangeConstraint());
 		} else {
-			XmlHelper.writeElement(typeOutput, typeIndent+1, XmlHelper.RESTRICTION,
+			XmlHelper.writeElement(typeOutput, typeIndent + 1, XmlHelper.RESTRICTION,
 					new XmlAttribute(XmlHelper.BASE, XmlHelper.DOUBLE));
 		}
 		XmlHelper.writeEndElement(typeOutput, typeIndent, XmlHelper.SIMPLE_TYPE);
@@ -82,7 +85,7 @@ public class RealImpl extends SimpleRangeTypeImpl implements Real {
 			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
-					this);
+					this, properties);
 		}
 
 		XmlHelper.doBreakIndent(output, indentLevel);

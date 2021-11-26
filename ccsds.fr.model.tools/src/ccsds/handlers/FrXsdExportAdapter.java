@@ -1,5 +1,7 @@
 package ccsds.handlers;
 
+import java.util.Map;
+
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.fr.type.model.ExportWriterContext;
@@ -22,7 +24,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	}
 
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		if(ExportWriterContext.instance().getGenerateFrim() == true) {
 			writeXsdFrim(indentLevel, output, oid);
 		} else {

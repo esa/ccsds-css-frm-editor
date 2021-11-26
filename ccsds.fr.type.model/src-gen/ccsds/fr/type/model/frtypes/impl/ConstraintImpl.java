@@ -7,6 +7,7 @@ import ccsds.fr.type.model.frtypes.FrtypesPackage;
 
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
@@ -55,7 +56,7 @@ public abstract class ConstraintImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -67,13 +68,15 @@ public abstract class ConstraintImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 		case FrtypesPackage.CONSTRAINT___WRITE_ASN1__INT_STRINGBUFFER:
 			writeAsn1((Integer) arguments.get(0), (StringBuffer) arguments.get(1));
 			return null;
-		case FrtypesPackage.CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER:
-			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2));
+		case FrtypesPackage.CONSTRAINT___WRITE_XSD__INT_STRINGBUFFER_OBJECTIDENTIFIER_MAP:
+			writeXsd((Integer) arguments.get(0), (StringBuffer) arguments.get(1), (ObjectIdentifier) arguments.get(2),
+					(Map<String, String>) arguments.get(3));
 			return null;
 		}
 		return super.eInvoke(operationID, arguments);

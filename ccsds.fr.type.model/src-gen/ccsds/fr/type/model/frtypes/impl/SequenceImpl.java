@@ -7,6 +7,9 @@ import ccsds.fr.type.model.frtypes.ExportWriter;
 import ccsds.fr.type.model.frtypes.FrtypesPackage;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.Sequence;
+
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -51,7 +54,7 @@ public class SequenceImpl extends StructuredDifferentTypeImpl implements Sequenc
 	 * @generated NOT
 	 */
 	@Override
-	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {
-		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.SEQUENCE, this, getElements(), oid);
+	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
+		XmlHelper.writeStructuredDifferentType(indentLevel, output, XmlHelper.SEQUENCE, this, getElements(), oid, properties);
 	}
 } //SequenceImpl

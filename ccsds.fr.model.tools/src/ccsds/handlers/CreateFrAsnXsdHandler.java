@@ -4,9 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -163,7 +165,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		BufferedWriter writer = null;
 		try {
 			StringBuffer xsdModuleStr = new StringBuffer();
-			module.writeXsd(0, xsdModuleStr, null);
+			module.writeXsd(0, xsdModuleStr, null, new HashMap<String, String>());
 			writer = new BufferedWriter(new FileWriter(fileName));
 		    writer.write(xsdModuleStr.toString());
 		} catch(Exception e) {
@@ -551,7 +553,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
-				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), PARAM, param.getSemanticDefinition(), exports));
+				Map<String, String> properties = XmlHelper.putPropSemanticDef(param.getSemanticDefinition(), null);				
+				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), PARAM, param.getSemanticDefinition(), exports, properties));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
@@ -631,7 +634,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	
 	/**
 	 * Helper class to generate ASN.1 and XSD from the FRM.
-	 * The TypeDefinitionProxy combines the type definition with the corresponding OID
+	 * The TypeDefinitionProxy combines the type definition with the corresponding OID and other information not part of the TypeDefinition
 	 */
 	class TypeDefinitionProxy extends TypeDefinitionImpl {
 
@@ -641,15 +644,28 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		private final String asn1Comment;
 		private String xmlComment;
 		private final OidValue typeOid;
+		private Map<String, String> properties;
 		
-
 		/**
 		 * Create a TypeDefinition proxy object with a type OID and a comment
+		 * @param typeName
+		 * @param def
+		 * @param typeOid
+		 * @param oidSuffix
+		 * @param comment
+		 * @param exports
+		 */
+		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String oidSuffix, String comment, List<String> exports) {
+			this(typeName, def, typeOid, oidSuffix, comment, exports, new HashMap<String, String>());
+		}
+		
+		/**
+		 * Create a TypeDefinition proxy object with a type OID and a comment, exports and properties
 		 * @param def
 		 * @param typeOid
 		 * @param comment
 		 */
-		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String oidSuffix, String comment, List<String> exports) {
+		public TypeDefinitionProxy(String typeName, TypeDefinition def, Oid typeOid, String oidSuffix, String comment, List<String> exports, Map<String, String> properties) {
 			if(def != null) {
 				//this.definition = EcoreUtil.copy(def); // why a copy?
 				this.definition = def; 
@@ -692,6 +708,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			} else {
 				this.asn1Comment = null;
 			}
+			
+			this.properties = properties;
 		}		
 
 		@Override
@@ -719,7 +737,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		}
 		
 		@Override
-		public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid) {			
+		public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {			
 			OidValue oidForGeneration = this.typeOid;
 			
 			// suppress named element generation for non-configuraton parameter
@@ -744,7 +762,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			//output.append(System.lineSeparator() + System.lineSeparator());
 			
 			if(this.definition != null) {
-				this.definition.writeXsd(indentLevel, output, oidForGeneration); // write type definition and OID together
+				this.definition.writeXsd(indentLevel, output, oidForGeneration, this.properties /* use the this.properties! */ ); // write type definition and OID together
 			} else {
 				//output.append(ExportWriter.COMMENT + " no type definition available" );
 			}						
@@ -808,7 +826,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		}
 
 		@Override
-		public void writeXsd(int indent, StringBuffer output, ObjectIdentifier oid) {
+		public void writeXsd(int indent, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 			XmlHelper.writeElement(output, indent, XmlHelper.ATTRIBUTE, 
 					new XmlAttribute(XmlHelper.NAME, "oid"),
 					new XmlAttribute(XmlHelper.TYPE, XmlHelper.OBJECT_IDENTIFIER),
