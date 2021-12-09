@@ -9,6 +9,10 @@ import ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart;
 
 import ccsds.FunctionalResourceModel.providers.FunctionalResourceModelMessages;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -28,7 +32,11 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
-
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.FocusAdapter;
@@ -67,6 +75,9 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
+	protected ReferencesTable annotation;
+	protected List<ViewerFilter> annotationBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> annotationFilters = new ArrayList<ViewerFilter>();
 	protected Text typeDefinition;
 	protected Text engineeringUnit;
 
@@ -122,6 +133,7 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.deprecated);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.annotation);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.typeDefinition);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Value.Properties.engineeringUnit);
 		
@@ -156,6 +168,9 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 				}
 				if (key == FunctionalResourceModelViewsRepository.Value.Properties.deprecated) {
 					return createDeprecatedCheckbox(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Value.Properties.annotation) {
+					return createAnnotationTableComposition(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Value.Properties.typeDefinition) {
 					return createTypeDefinitionTextarea(widgetFactory, parent);
@@ -681,6 +696,57 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createAnnotationTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.annotation = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Value.Properties.annotation, FunctionalResourceModelMessages.ValuePropertiesEditionPart_AnnotationLabel), new ReferencesTableListener() {
+			public void handleAdd() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValuePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Value.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				annotation.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValuePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Value.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				annotation.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValuePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Value.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				annotation.refresh();
+			}
+			public void handleRemove(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValuePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Value.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				annotation.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.annotationFilters) {
+			this.annotation.addFilter(filter);
+		}
+		this.annotation.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Value.Properties.annotation, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.annotation.createControls(parent, widgetFactory);
+		this.annotation.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ValuePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Value.Properties.annotation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData annotationData = new GridData(GridData.FILL_HORIZONTAL);
+		annotationData.horizontalSpan = 3;
+		this.annotation.setLayoutData(annotationData);
+		this.annotation.setLowerBound(0);
+		this.annotation.setUpperBound(-1);
+		annotation.setID(FunctionalResourceModelViewsRepository.Value.Properties.annotation);
+		annotation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAnnotationTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 	
 	protected Composite createTypeDefinitionTextarea(FormToolkit widgetFactory, Composite parent) {
 		Label typeDefinitionLabel = createDescription(parent, FunctionalResourceModelViewsRepository.Value.Properties.typeDefinition, FunctionalResourceModelMessages.ValuePropertiesEditionPart_TypeDefinitionLabel);
@@ -1076,6 +1142,72 @@ public class ValuePropertiesEditionPartForm extends SectionPropertiesEditingPart
 			deprecated.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart#initAnnotation(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAnnotation(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		annotation.setContentProvider(contentProvider);
+		annotation.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Value.Properties.annotation);
+		if (eefElementEditorReadOnlyState && annotation.isEnabled()) {
+			annotation.setEnabled(false);
+			annotation.setToolTipText(FunctionalResourceModelMessages.Value_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !annotation.isEnabled()) {
+			annotation.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart#updateAnnotation()
+	 * 
+	 */
+	public void updateAnnotation() {
+	annotation.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart#addFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAnnotation(ViewerFilter filter) {
+		annotationFilters.add(filter);
+		if (this.annotation != null) {
+			this.annotation.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart#addBusinessFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAnnotation(ViewerFilter filter) {
+		annotationBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.ValuePropertiesEditionPart#isContainedInAnnotationTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAnnotationTable(EObject element) {
+		return ((ReferencesTableSettings)annotation.getInput()).contains(element);
 	}
 
 	/**

@@ -13,7 +13,8 @@ import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.TypeDefinition;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -361,17 +362,24 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 
 		output.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
-		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA,
-				//				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.FRM_NS),
-				new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()),
-				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS),
-				new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS),
-				//				new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.CSSM_PREFIX, XmlHelper.CSSM_NS),
-				//				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.FRM_NS),
-				new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()),
-				new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal),
-				new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal),
-				new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
+		
+		List<XmlAttribute> attributes = new LinkedList<XmlAttribute>();
+		attributes.add(new XmlAttribute(XmlHelper.XMLNS, XmlHelper.getTargetNamespace()));
+		attributes.add(new XmlAttribute(XmlHelper.XMLNS + XmlHelper.COLON + XmlHelper.NS_XSD_PREFIX, XmlHelper.XSD_NS));
+		if(ExportWriterContext.instance().getGenerateFrim()) {
+			attributes.add(new XmlAttribute(XmlHelper.ECORE_NS_PREFIX, XmlHelper.ECORE_NS));
+			
+			final String key = "ecore:documentRoot";
+			if(properties != null && properties.get(key) != null) {
+				attributes.add(new XmlAttribute(key, properties.get(key)));
+			}
+		}
+		attributes.add(new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()));
+		attributes.add(new XmlAttribute(XmlHelper.elementFormDefault, XmlHelper.elementFormDefaultVal));
+		attributes.add(new XmlAttribute(XmlHelper.attributeFormDefault, XmlHelper.attributeFormDefaultVal));
+		attributes.add(new XmlAttribute(XmlHelper.version, XmlHelper.versionVal));
+		
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SCHEMA, attributes.toArray(new XmlAttribute[0]));
 
 		if (getImports().size() > 0 && getImports().get(0) != null
 				&& XmlHelper.GENERAL_XSD.equals(getImports().get(0).getName())) {
@@ -391,12 +399,12 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 				if (ExportWriterContext.instance().getGenerateFrim() == false) {
 					XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.ELEMENT,
 							new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(frClassifier)),
-							new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(frClassifier)),
+							new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(frClassifier)),
 							new XmlAttribute(XmlHelper.ABSTRACT, "true"));
 				}
 
 				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.COMPLEX_TYPE,
-						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(frClassifier)));
+						new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(frClassifier)));
 			}
 
 		} else if (getImports().size() > 0) {

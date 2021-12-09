@@ -59,6 +59,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
+	protected ReferencesTable annotation;
+	protected List<ViewerFilter> annotationBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> annotationFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable value;
 	protected List<ViewerFilter> valueBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> valueFilters = new ArrayList<ViewerFilter>();
@@ -108,6 +111,7 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.deprecated);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.annotation);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Event.Properties.value);
 		
 		
@@ -141,6 +145,9 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.deprecated) {
 					return createDeprecatedCheckbox(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Event.Properties.annotation) {
+					return createAnnotationAdvancedTableComposition(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Event.Properties.value) {
 					return createValueAdvancedTableComposition(parent);
@@ -529,6 +536,57 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * @param container
 	 * 
 	 */
+	protected Composite createAnnotationAdvancedTableComposition(Composite parent) {
+		this.annotation = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Event.Properties.annotation, FunctionalResourceModelMessages.EventPropertiesEditionPart_AnnotationLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				annotation.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				annotation.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				annotation.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				annotation.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.annotationFilters) {
+			this.annotation.addFilter(filter);
+		}
+		this.annotation.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Event.Properties.annotation, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.annotation.createControls(parent);
+		this.annotation.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EventPropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.Event.Properties.annotation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData annotationData = new GridData(GridData.FILL_HORIZONTAL);
+		annotationData.horizontalSpan = 3;
+		this.annotation.setLayoutData(annotationData);
+		this.annotation.setLowerBound(0);
+		this.annotation.setUpperBound(-1);
+		annotation.setID(FunctionalResourceModelViewsRepository.Event.Properties.annotation);
+		annotation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAnnotationAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
 	protected Composite createValueAdvancedTableComposition(Composite parent) {
 		this.value = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Event.Properties.value, FunctionalResourceModelMessages.EventPropertiesEditionPart_ValueLabel), new ReferencesTableListener() {
 			public void handleAdd() { 
@@ -844,6 +902,72 @@ public class EventPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			deprecated.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#initAnnotation(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAnnotation(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		annotation.setContentProvider(contentProvider);
+		annotation.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Event.Properties.annotation);
+		if (eefElementEditorReadOnlyState && annotation.isEnabled()) {
+			annotation.setEnabled(false);
+			annotation.setToolTipText(FunctionalResourceModelMessages.Event_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !annotation.isEnabled()) {
+			annotation.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#updateAnnotation()
+	 * 
+	 */
+	public void updateAnnotation() {
+	annotation.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#addFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAnnotation(ViewerFilter filter) {
+		annotationFilters.add(filter);
+		if (this.annotation != null) {
+			this.annotation.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#addBusinessFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAnnotation(ViewerFilter filter) {
+		annotationBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.EventPropertiesEditionPart#isContainedInAnnotationTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAnnotationTable(EObject element) {
+		return ((ReferencesTableSettings)annotation.getInput()).contains(element);
 	}
 
 

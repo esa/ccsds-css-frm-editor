@@ -3,6 +3,7 @@
  */
 package ccsds.FunctionalResourceModel.components;
 
+import ccsds.FunctionalResourceModel.Annotation;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
@@ -48,6 +49,11 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for annotation ReferencesTable
+	 */
+	protected ReferencesTableSettings annotationSettings;
 	
 	/**
 	 * Settings for qualifier ReferencesTable
@@ -106,6 +112,10 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.deprecated)) {
 				basePart.setDeprecated(directive.isDeprecated());
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.annotation)) {
+				annotationSettings = new ReferencesTableSettings(directive, FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation());
+				basePart.initAnnotation(annotationSettings);
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier)) {
 				qualifierSettings = new ReferencesTableSettings(directive, FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier());
 				basePart.initQualifier(qualifierSettings);
@@ -121,6 +131,21 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			
 			
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.annotation)) {
+				basePart.addFilterToAnnotation(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Annotation); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for annotation
+				// End of user code
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier)) {
 				basePart.addFilterToQualifier(new ViewerFilter() {
 					/**
@@ -144,6 +169,7 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -186,6 +212,9 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		if (editorKey == FunctionalResourceModelViewsRepository.Directive.Properties.deprecated) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated();
 		}
+		if (editorKey == FunctionalResourceModelViewsRepository.Directive.Properties.annotation) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation();
+		}
 		if (editorKey == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
 			return FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier();
 		}
@@ -225,6 +254,31 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		if (FunctionalResourceModelViewsRepository.Directive.Properties.deprecated == event.getAffectedEditor()) {
 			directive.setDeprecated((Boolean)event.getNewValue());
+		}
+		if (FunctionalResourceModelViewsRepository.Directive.Properties.annotation == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, annotationSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				annotationSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				annotationSettings.move(event.getNewIndex(), (Annotation) event.getNewValue());
+			}
 		}
 		if (FunctionalResourceModelViewsRepository.Directive.Properties.qualifier == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -316,6 +370,8 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.annotation))
+				basePart.updateAnnotation();
 			if (FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier))
 				basePart.updateQualifier();
 			if (FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition)){
@@ -345,6 +401,7 @@ public class DirectivePropertiesEditionComponent extends SinglePartPropertiesEdi
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_AuthorizingEntity(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_OidBit(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated(),
+			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation(),
 			FunctionalResourceModelPackage.eINSTANCE.getDirective_Qualifier(),
 			FunctionalResourceModelPackage.eINSTANCE.getDirective_GuardCondition()		);
 		return new NotificationFilter[] {filter,};

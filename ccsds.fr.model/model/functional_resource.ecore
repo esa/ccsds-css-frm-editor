@@ -54,6 +54,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="oid" eType="#//Oid" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deprecated" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" upperBound="-1"
+        eType="#//Annotation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Oid">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oidBit" unique="false"
@@ -137,5 +139,9 @@
         lowerBound="1" eType="#//FunctionalResource" eOpposite="#//FunctionalResource/providedAncillaryInterface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiringFunctionalResource"
         lowerBound="1" eType="#//FunctionalResource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Annotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

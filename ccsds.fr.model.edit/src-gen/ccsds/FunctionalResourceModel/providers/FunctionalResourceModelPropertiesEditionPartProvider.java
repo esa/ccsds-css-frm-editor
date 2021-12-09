@@ -6,6 +6,7 @@ package ccsds.FunctionalResourceModel.providers;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 
 import ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.AnnotationPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.DirectivePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.EventPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FrModelElementPropertiesEditionPartForm;
@@ -21,6 +22,7 @@ import ccsds.FunctionalResourceModel.parts.forms.TypedElementPropertiesEditionPa
 import ccsds.FunctionalResourceModel.parts.forms.ValuePropertiesEditionPartForm;
 
 import ccsds.FunctionalResourceModel.parts.impl.AncillaryInterfacePropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.AnnotationPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.DirectivePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.EventPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FrModelElementPropertiesEditionPartImpl;
@@ -67,6 +69,12 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new FunctionalResourceModelPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new FunctionalResourceModelPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.FunctionalResourceStratum.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new FunctionalResourceStratumPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new FunctionalResourceStratumPropertiesEditionPartForm(component);
 		}
 		if (key == FunctionalResourceModelViewsRepository.FunctionalResourceSet.class) {
 			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
@@ -140,11 +148,11 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new AncillaryInterfacePropertiesEditionPartForm(component);
 		}
-		if (key == FunctionalResourceModelViewsRepository.FunctionalResourceStratum.class) {
+		if (key == FunctionalResourceModelViewsRepository.Annotation.class) {
 			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
-				return new FunctionalResourceStratumPropertiesEditionPartImpl(component);
+				return new AnnotationPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
-				return new FunctionalResourceStratumPropertiesEditionPartForm(component);
+				return new AnnotationPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

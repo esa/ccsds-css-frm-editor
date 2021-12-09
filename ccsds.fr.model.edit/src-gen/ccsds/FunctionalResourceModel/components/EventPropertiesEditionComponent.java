@@ -3,6 +3,7 @@
  */
 package ccsds.FunctionalResourceModel.components;
 
+import ccsds.FunctionalResourceModel.Annotation;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
@@ -48,6 +49,11 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for annotation ReferencesTable
+	 */
+	protected ReferencesTableSettings annotationSettings;
 	
 	/**
 	 * Settings for value ReferencesTable
@@ -106,6 +112,10 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.deprecated)) {
 				basePart.setDeprecated(event.isDeprecated());
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.annotation)) {
+				annotationSettings = new ReferencesTableSettings(event, FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation());
+				basePart.initAnnotation(annotationSettings);
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.value)) {
 				valueSettings = new ReferencesTableSettings(event, FunctionalResourceModelPackage.eINSTANCE.getEvent_Value());
 				basePart.initValue(valueSettings);
@@ -119,6 +129,21 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			
 			
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.annotation)) {
+				basePart.addFilterToAnnotation(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Annotation); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for annotation
+				// End of user code
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.value)) {
 				basePart.addFilterToValue(new ViewerFilter() {
 					/**
@@ -141,6 +166,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -182,6 +208,9 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.deprecated) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated();
 		}
+		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.annotation) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation();
+		}
 		if (editorKey == FunctionalResourceModelViewsRepository.Event.Properties.value) {
 			return FunctionalResourceModelPackage.eINSTANCE.getEvent_Value();
 		}
@@ -218,6 +247,31 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		if (FunctionalResourceModelViewsRepository.Event.Properties.deprecated == event.getAffectedEditor()) {
 			event_.setDeprecated((Boolean)event.getNewValue());
+		}
+		if (FunctionalResourceModelViewsRepository.Event.Properties.annotation == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, annotationSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				annotationSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				annotationSettings.move(event.getNewIndex(), (Annotation) event.getNewValue());
+			}
 		}
 		if (FunctionalResourceModelViewsRepository.Event.Properties.value == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -306,6 +360,8 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.annotation))
+				basePart.updateAnnotation();
 			if (FunctionalResourceModelPackage.eINSTANCE.getEvent_Value().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.Event.Properties.value))
 				basePart.updateValue();
 			
@@ -328,6 +384,7 @@ public class EventPropertiesEditionComponent extends SinglePartPropertiesEditing
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_AuthorizingEntity(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_OidBit(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated(),
+			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation(),
 			FunctionalResourceModelPackage.eINSTANCE.getEvent_Value()		);
 		return new NotificationFilter[] {filter,};
 	}

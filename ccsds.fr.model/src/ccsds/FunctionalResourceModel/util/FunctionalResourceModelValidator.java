@@ -114,6 +114,8 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 				return validateServiceAccessPoint((ServiceAccessPoint)value, diagnostics, context);
 			case FunctionalResourceModelPackage.ANCILLARY_INTERFACE:
 				return validateAncillaryInterface((AncillaryInterface)value, diagnostics, context);
+			case FunctionalResourceModelPackage.ANNOTATION:
+				return validateAnnotation((Annotation)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -264,6 +266,15 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 	 */
 	public boolean validateAncillaryInterface(AncillaryInterface ancillaryInterface, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(ancillaryInterface, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAnnotation(Annotation annotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(annotation, diagnostics, context);
 	}
 
 	/**

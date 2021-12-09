@@ -424,13 +424,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FR_MODEL_ELEMENT__DEPRECATED = 8;
 
 	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FR_MODEL_ELEMENT__ANNOTATION = 9;
+
+	/**
 	 * The number of structural features of the '<em>Fr Model Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FR_MODEL_ELEMENT_FEATURE_COUNT = 9;
+	int FR_MODEL_ELEMENT_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Fr Model Element</em>' class.
@@ -548,6 +557,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_RESOURCE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__ANNOTATION = FR_MODEL_ELEMENT__ANNOTATION;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
@@ -703,6 +721,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int EVENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__ANNOTATION = FR_MODEL_ELEMENT__ANNOTATION;
+
+	/**
 	 * The feature id for the '<em><b>External Oid</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -820,6 +847,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int DIRECTIVE__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
 
 	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTIVE__ANNOTATION = FR_MODEL_ELEMENT__ANNOTATION;
+
+	/**
 	 * The feature id for the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -935,6 +971,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPED_ELEMENT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__ANNOTATION = FR_MODEL_ELEMENT__ANNOTATION;
 
 	/**
 	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
@@ -1079,6 +1124,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__ANNOTATION = TYPED_ELEMENT__ANNOTATION;
 
 	/**
 	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
@@ -1252,6 +1306,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int VALUE__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
 
 	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__ANNOTATION = TYPED_ELEMENT__ANNOTATION;
+
+	/**
 	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1394,6 +1457,15 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALIFIER__DEPRECATED = TYPED_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALIFIER__ANNOTATION = TYPED_ELEMENT__ANNOTATION;
 
 	/**
 	 * The feature id for the '<em><b>Type Definition</b></em>' attribute.
@@ -1586,6 +1658,53 @@ public interface FunctionalResourceModelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.AnnotationImpl <em>Annotation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.AnnotationImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAnnotation()
+	 * @generated
+	 */
+	int ANNOTATION = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel <em>Functional Resource Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1758,6 +1877,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFrModelElement_Deprecated();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FrModelElement#getAnnotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotation</em>'.
+	 * @see ccsds.FunctionalResourceModel.FrModelElement#getAnnotation()
+	 * @see #getFrModelElement()
+	 * @generated
+	 */
+	EReference getFrModelElement_Annotation();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Oid <em>Oid</em>}'.
@@ -2179,6 +2309,38 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EReference getAncillaryInterface_RequiringFunctionalResource();
 
 	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Annotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation</em>'.
+	 * @see ccsds.FunctionalResourceModel.Annotation
+	 * @generated
+	 */
+	EClass getAnnotation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Annotation#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ccsds.FunctionalResourceModel.Annotation#getName()
+	 * @see #getAnnotation()
+	 * @generated
+	 */
+	EAttribute getAnnotation_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ccsds.FunctionalResourceModel.Annotation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see ccsds.FunctionalResourceModel.Annotation#getValue()
+	 * @see #getAnnotation()
+	 * @generated
+	 */
+	EAttribute getAnnotation_Value();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum <em>Functional Resource Stratum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2407,6 +2569,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FR_MODEL_ELEMENT__DEPRECATED = eINSTANCE.getFrModelElement_Deprecated();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FR_MODEL_ELEMENT__ANNOTATION = eINSTANCE.getFrModelElement_Annotation();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.OidImpl <em>Oid</em>}' class.
@@ -2739,6 +2909,32 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE = eINSTANCE.getAncillaryInterface_RequiringFunctionalResource();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.AnnotationImpl <em>Annotation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.AnnotationImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getAnnotation()
+		 * @generated
+		 */
+		EClass ANNOTATION = eINSTANCE.getAnnotation();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION__NAME = eINSTANCE.getAnnotation_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION__VALUE = eINSTANCE.getAnnotation_Value();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl <em>Functional Resource Stratum</em>}' class.

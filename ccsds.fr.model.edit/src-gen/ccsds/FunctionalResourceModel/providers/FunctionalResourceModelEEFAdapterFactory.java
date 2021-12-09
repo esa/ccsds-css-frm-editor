@@ -125,5 +125,13 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	public Adapter createAncillaryInterfaceAdapter() {
 		return new AncillaryInterfacePropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createAnnotationAdapter()
+	 * 
+	 */
+	public Adapter createAnnotationAdapter() {
+		return new AnnotationPropertiesEditionProvider();
+	}
 
 }

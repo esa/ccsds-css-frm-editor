@@ -62,6 +62,9 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
+	protected ReferencesTable annotation;
+	protected List<ViewerFilter> annotationBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> annotationFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable qualifier;
 	protected List<ViewerFilter> qualifierBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> qualifierFilters = new ArrayList<ViewerFilter>();
@@ -119,6 +122,7 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.deprecated);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.annotation);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.Directive.Properties.guardCondition);
 		
@@ -153,6 +157,9 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.deprecated) {
 					return createDeprecatedCheckbox(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.annotation) {
+					return createAnnotationTableComposition(widgetFactory, parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.Directive.Properties.qualifier) {
 					return createQualifierTableComposition(widgetFactory, parent);
@@ -682,6 +689,57 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 	 * @param container
 	 * 
 	 */
+	protected Composite createAnnotationTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.annotation = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Directive.Properties.annotation, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_AnnotationLabel), new ReferencesTableListener() {
+			public void handleAdd() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				annotation.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				annotation.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				annotation.refresh();
+			}
+			public void handleRemove(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				annotation.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.annotationFilters) {
+			this.annotation.addFilter(filter);
+		}
+		this.annotation.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.Directive.Properties.annotation, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.annotation.createControls(parent, widgetFactory);
+		this.annotation.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DirectivePropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.Directive.Properties.annotation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData annotationData = new GridData(GridData.FILL_HORIZONTAL);
+		annotationData.horizontalSpan = 3;
+		this.annotation.setLayoutData(annotationData);
+		this.annotation.setLowerBound(0);
+		this.annotation.setUpperBound(-1);
+		annotation.setID(FunctionalResourceModelViewsRepository.Directive.Properties.annotation);
+		annotation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAnnotationTableComposition
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
 	protected Composite createQualifierTableComposition(FormToolkit widgetFactory, Composite parent) {
 		this.qualifier = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.Directive.Properties.qualifier, FunctionalResourceModelMessages.DirectivePropertiesEditionPart_QualifierLabel), new ReferencesTableListener() {
 			public void handleAdd() {
@@ -1056,6 +1114,72 @@ public class DirectivePropertiesEditionPartForm extends SectionPropertiesEditing
 			deprecated.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#initAnnotation(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAnnotation(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		annotation.setContentProvider(contentProvider);
+		annotation.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.Directive.Properties.annotation);
+		if (eefElementEditorReadOnlyState && annotation.isEnabled()) {
+			annotation.setEnabled(false);
+			annotation.setToolTipText(FunctionalResourceModelMessages.Directive_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !annotation.isEnabled()) {
+			annotation.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#updateAnnotation()
+	 * 
+	 */
+	public void updateAnnotation() {
+	annotation.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAnnotation(ViewerFilter filter) {
+		annotationFilters.add(filter);
+		if (this.annotation != null) {
+			this.annotation.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#addBusinessFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAnnotation(ViewerFilter filter) {
+		annotationBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.DirectivePropertiesEditionPart#isContainedInAnnotationTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAnnotationTable(EObject element) {
+		return ((ReferencesTableSettings)annotation.getInput()).contains(element);
 	}
 
 

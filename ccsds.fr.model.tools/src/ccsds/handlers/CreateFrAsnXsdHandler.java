@@ -165,7 +165,9 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		BufferedWriter writer = null;
 		try {
 			StringBuffer xsdModuleStr = new StringBuffer();
-			module.writeXsd(0, xsdModuleStr, null, new HashMap<String, String>());
+			Map<String, String> properties = new HashMap<String, String>();
+			properties.put("ecore:documentRoot", "Functional Resources");
+			module.writeXsd(0, xsdModuleStr, null, properties);
 			writer = new BufferedWriter(new FileWriter(fileName));
 		    writer.write(xsdModuleStr.toString());
 		} catch(Exception e) {
@@ -361,7 +363,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			}
 		}
 		
-		return XmlHelper.getFrBaseType(fr.getClassifier());
+		return XmlHelper.getFrType(fr.getClassifier());
 	}
 	
 	/**
@@ -380,7 +382,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			}
 		}
 		
-		return XmlHelper.getFrBaseType(fr.getClassifier());
+		return XmlHelper.getFrType(fr.getClassifier());
 	}	
 	
 	/**

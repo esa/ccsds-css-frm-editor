@@ -165,6 +165,14 @@
                id="ccsds.FunctionalResourceModel.section.TypedElement"
                tab="Base">
           </propertySection>              
+
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.AnnotationPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AnnotationPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.Annotation"
+               tab="Base">
+          </propertySection>              
+
       </propertySections>
 
    </extension>
@@ -243,6 +251,12 @@
                class="ccsds.FunctionalResourceModel.parts.forms.ParameterPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.ParameterPropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.Parameter"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.AnnotationPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AnnotationPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.Annotation"
                tab="Base">
          </propertySection>
       </propertySections>

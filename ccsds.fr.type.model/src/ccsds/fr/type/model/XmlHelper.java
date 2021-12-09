@@ -199,8 +199,10 @@ public class XmlHelper {
 	public static final String VALUE = "value";
 
 	public static final String UNBOUNDED = "unbounded";
-
+	
 	public static final String REF = "ref";
+
+	public static final String ZERO = "0";
 
 	/**
 	 * Writes an XML start element for the given name and attributes
@@ -725,11 +727,20 @@ public class XmlHelper {
 	}
 	
 	/**
+	 * Returns the XSD container type name for the given classifier
+	 * @param frClassifier	
+	 * @return	The XSD FR container type name
+	 */
+	public static String getFrContainerType(String frClassifier) {
+		return frClassifier + "Container";
+	}
+	
+	/**
 	 * Returns the XSD type name for the given classifier
 	 * @param frClassifier	
 	 * @return	The XSD FR type name
 	 */
-	public static String getFrBaseType(String frClassifier) {
+	public static String getFrType(String frClassifier) {
 		return frClassifier + "Type";
 	}
 

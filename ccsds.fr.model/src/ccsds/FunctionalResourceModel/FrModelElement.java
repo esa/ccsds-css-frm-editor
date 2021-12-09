@@ -4,6 +4,7 @@ package ccsds.FunctionalResourceModel;
 
 import java.util.Date;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getOidBit <em>Oid Bit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#isDeprecated <em>Deprecated</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FrModelElement#getAnnotation <em>Annotation</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement()
@@ -186,6 +188,22 @@ public interface FrModelElement extends EObject {
 	 * @generated
 	 */
 	void setDeprecated(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.Annotation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Annotation</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Annotation</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFrModelElement_Annotation()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Annotation> getAnnotation();
 
 	/**
 	 * Returns the value of the '<em><b>Authorizing Entity</b></em>' attribute.

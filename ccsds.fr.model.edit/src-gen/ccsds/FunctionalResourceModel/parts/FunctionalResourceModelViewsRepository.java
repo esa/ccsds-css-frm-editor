@@ -36,6 +36,24 @@ public class FunctionalResourceModelViewsRepository {
 	}
 
 	/**
+	 * FunctionalResourceStratum view descriptor
+	 * 
+	 */
+	public static class FunctionalResourceStratum {
+		public static class Properties {
+	
+			
+			public static String name = "FunctionalResourceModel::FunctionalResourceStratum::properties::name";
+			
+			
+			public static String functionalResourceSet = "FunctionalResourceModel::FunctionalResourceStratum::properties::functionalResourceSet";
+			
+	
+		}
+	
+	}
+
+	/**
 	 * FunctionalResourceSet view descriptor
 	 * 
 	 */
@@ -87,6 +105,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String deprecated = "FunctionalResourceModel::FrModelElement::properties::deprecated";
 			
+			
+			public static String annotation = "FunctionalResourceModel::FrModelElement::properties::annotation";
+			
 	
 		}
 	
@@ -137,6 +158,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String deprecated = "FunctionalResourceModel::FunctionalResource::properties::deprecated";
+			
+			
+			public static String annotation = "FunctionalResourceModel::FunctionalResource::properties::annotation";
 			
 			
 			public static String parameter = "FunctionalResourceModel::FunctionalResource::properties::parameter";
@@ -193,6 +217,9 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Event::properties::deprecated";
 			
 			
+			public static String annotation = "FunctionalResourceModel::Event::properties::annotation";
+			
+			
 			public static String value = "FunctionalResourceModel::Event::properties::value";
 			
 	
@@ -230,6 +257,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String deprecated = "FunctionalResourceModel::Directive::properties::deprecated";
+			
+			
+			public static String annotation = "FunctionalResourceModel::Directive::properties::annotation";
 			
 			
 			public static String qualifier = "FunctionalResourceModel::Directive::properties::qualifier";
@@ -272,6 +302,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String deprecated = "FunctionalResourceModel::Parameter::properties::deprecated";
+			
+			
+			public static String annotation = "FunctionalResourceModel::Parameter::properties::annotation";
 			
 			
 			public static String typeDefinition = "FunctionalResourceModel::Parameter::properties::typeDefinition";
@@ -322,6 +355,9 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Value::properties::deprecated";
 			
 			
+			public static String annotation = "FunctionalResourceModel::Value::properties::annotation";
+			
+			
 			public static String typeDefinition = "FunctionalResourceModel::Value::properties::typeDefinition";
 			
 			
@@ -364,6 +400,9 @@ public class FunctionalResourceModelViewsRepository {
 			public static String deprecated = "FunctionalResourceModel::Qualifier::properties::deprecated";
 			
 			
+			public static String annotation = "FunctionalResourceModel::Qualifier::properties::annotation";
+			
+			
 			public static String typeDefinition = "FunctionalResourceModel::Qualifier::properties::typeDefinition";
 			
 			
@@ -404,6 +443,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String deprecated = "FunctionalResourceModel::TypedElement::properties::deprecated";
+			
+			
+			public static String annotation = "FunctionalResourceModel::TypedElement::properties::annotation";
 			
 			
 			public static String typeDefinition = "FunctionalResourceModel::TypedElement::properties::typeDefinition";
@@ -471,17 +513,17 @@ public class FunctionalResourceModelViewsRepository {
 	}
 
 	/**
-	 * FunctionalResourceStratum view descriptor
+	 * Annotation view descriptor
 	 * 
 	 */
-	public static class FunctionalResourceStratum {
+	public static class Annotation {
 		public static class Properties {
 	
 			
-			public static String name = "FunctionalResourceModel::FunctionalResourceStratum::properties::name";
+			public static String name = "FunctionalResourceModel::Annotation::properties::name";
 			
 			
-			public static String functionalResourceSet = "FunctionalResourceModel::FunctionalResourceStratum::properties::functionalResourceSet";
+			public static String value = "FunctionalResourceModel::Annotation::properties::value";
 			
 	
 		}

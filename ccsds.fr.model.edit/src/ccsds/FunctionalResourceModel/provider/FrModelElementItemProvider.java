@@ -314,6 +314,7 @@ public class FrModelElementItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__ANNOTATION);
 		}
 		return childrenFeatures;
 	}
@@ -384,6 +385,7 @@ public class FrModelElementItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID:
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -405,6 +407,11 @@ public class FrModelElementItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__OID,
 				 FunctionalResourceModelFactory.eINSTANCE.createOid()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FR_MODEL_ELEMENT__ANNOTATION,
+				 FunctionalResourceModelFactory.eINSTANCE.createAnnotation()));
 	}
 
 	/**

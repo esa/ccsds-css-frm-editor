@@ -57,6 +57,12 @@
                tab="Base">
          </propertySection>
          <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceStratumPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceStratumPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.FunctionalResourceStratum"
+               tab="Base">
+         </propertySection>
+         <propertySection
                class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceSetPropertiesEditionPartForm"
                filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceSetPropertiesEditionProvider$EditionFilter"
                id="ccsds.FunctionalResourceModel.section.FunctionalResourceSet"
@@ -129,9 +135,9 @@
                tab="Base">
          </propertySection>
          <propertySection
-               class="ccsds.FunctionalResourceModel.parts.forms.FunctionalResourceStratumPropertiesEditionPartForm"
-               filter="ccsds.FunctionalResourceModel.providers.FunctionalResourceStratumPropertiesEditionProvider$EditionFilter"
-               id="ccsds.FunctionalResourceModel.section.FunctionalResourceStratum"
+               class="ccsds.FunctionalResourceModel.parts.forms.AnnotationPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.AnnotationPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.Annotation"
                tab="Base">
          </propertySection>
       </propertySections>

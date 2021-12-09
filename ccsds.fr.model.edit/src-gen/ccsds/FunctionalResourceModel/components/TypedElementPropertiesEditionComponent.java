@@ -3,6 +3,7 @@
  */
 package ccsds.FunctionalResourceModel.components;
 
+import ccsds.FunctionalResourceModel.Annotation;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.TypedElement;
@@ -30,10 +31,17 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 
 // End of user code
@@ -47,6 +55,11 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for annotation ReferencesTable
+	 */
+	protected ReferencesTableSettings annotationSettings;
 	
 	
 	/**
@@ -100,6 +113,10 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.deprecated)) {
 				basePart.setDeprecated(typedElement.isDeprecated());
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.annotation)) {
+				annotationSettings = new ReferencesTableSettings(typedElement, FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation());
+				basePart.initAnnotation(annotationSettings);
+			}
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition))
 				basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, typedElement.getTypeDefinition()));
 			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.engineeringUnit))
@@ -114,6 +131,21 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			
 			
 			
+			if (isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.annotation)) {
+				basePart.addFilterToAnnotation(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Annotation); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for annotation
+				// End of user code
+			}
 			
 			
 			// init values for referenced views
@@ -123,6 +155,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -165,6 +198,9 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == FunctionalResourceModelViewsRepository.TypedElement.Properties.deprecated) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated();
 		}
+		if (editorKey == FunctionalResourceModelViewsRepository.TypedElement.Properties.annotation) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation();
+		}
 		if (editorKey == FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition) {
 			return FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition();
 		}
@@ -204,6 +240,31 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (FunctionalResourceModelViewsRepository.TypedElement.Properties.deprecated == event.getAffectedEditor()) {
 			typedElement.setDeprecated((Boolean)event.getNewValue());
+		}
+		if (FunctionalResourceModelViewsRepository.TypedElement.Properties.annotation == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, annotationSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				annotationSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				annotationSettings.move(event.getNewIndex(), (Annotation) event.getNewValue());
+			}
 		}
 		if (FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition == event.getAffectedEditor()) {
 			typedElement.setTypeDefinition((java.lang.String)EEFConverterUtil.createFromString(EcorePackage.Literals.ESTRING, (String)event.getNewValue()));
@@ -273,6 +334,8 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.deprecated))
 				basePart.setDeprecated((Boolean)msg.getNewValue());
 			
+			if (FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.annotation))
+				basePart.updateAnnotation();
 			if (FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(FunctionalResourceModelViewsRepository.TypedElement.Properties.typeDefinition)){
 				if (msg.getNewValue() != null) {
 					basePart.setTypeDefinition(EcoreUtil.convertToString(EcorePackage.Literals.ESTRING, msg.getNewValue()));
@@ -307,6 +370,7 @@ public class TypedElementPropertiesEditionComponent extends SinglePartProperties
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_AuthorizingEntity(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_OidBit(),
 			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Deprecated(),
+			FunctionalResourceModelPackage.eINSTANCE.getFrModelElement_Annotation(),
 			FunctionalResourceModelPackage.eINSTANCE.getTypedElement_TypeDefinition(),
 			FunctionalResourceModelPackage.eINSTANCE.getTypedElement_EngineeringUnit()		);
 		return new NotificationFilter[] {filter,};

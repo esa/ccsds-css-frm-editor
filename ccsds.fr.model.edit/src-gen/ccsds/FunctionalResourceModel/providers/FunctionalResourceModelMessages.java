@@ -17,6 +17,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FunctionalResourceModelPropertiesEditionPart_PropertiesGroupLabel;
 
 	
+	public static String FunctionalResourceStratumPropertiesEditionPart_PropertiesGroupLabel;
+
+	
 	public static String FunctionalResourceSetPropertiesEditionPart_PropertiesGroupLabel;
 
 	
@@ -53,7 +56,7 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String AncillaryInterfacePropertiesEditionPart_PropertiesGroupLabel;
 
 	
-	public static String FunctionalResourceStratumPropertiesEditionPart_PropertiesGroupLabel;
+	public static String AnnotationPropertiesEditionPart_PropertiesGroupLabel;
 
 
 	
@@ -61,6 +64,12 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourceModel_Part_Title;
+
+	
+	public static String FunctionalResourceStratum_ReadOnly;
+
+	
+	public static String FunctionalResourceStratum_Part_Title;
 
 	
 	public static String FunctionalResourceSet_ReadOnly;
@@ -135,10 +144,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String AncillaryInterface_Part_Title;
 
 	
-	public static String FunctionalResourceStratum_ReadOnly;
+	public static String Annotation_ReadOnly;
 
 	
-	public static String FunctionalResourceStratum_Part_Title;
+	public static String Annotation_Part_Title;
 
 
 	
@@ -149,6 +158,12 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourceModelPropertiesEditionPart_FunctionalResourceLabel;
+
+	
+	public static String FunctionalResourceStratumPropertiesEditionPart_NameLabel;
+
+	
+	public static String FunctionalResourceStratumPropertiesEditionPart_FunctionalResourceSetLabel;
 
 	
 	public static String FunctionalResourceSetPropertiesEditionPart_NameLabel;
@@ -184,6 +199,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String FrModelElementPropertiesEditionPart_DeprecatedLabel;
 
 	
+	public static String FrModelElementPropertiesEditionPart_AnnotationLabel;
+
+	
 	public static String OidPropertiesEditionPart_OidBitLabel;
 
 	
@@ -209,6 +227,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_DeprecatedLabel;
+
+	
+	public static String FunctionalResourcePropertiesEditionPart_AnnotationLabel;
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_ParameterLabel;
@@ -253,6 +274,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String EventPropertiesEditionPart_DeprecatedLabel;
 
 	
+	public static String EventPropertiesEditionPart_AnnotationLabel;
+
+	
 	public static String EventPropertiesEditionPart_ValueLabel;
 
 	
@@ -278,6 +302,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String DirectivePropertiesEditionPart_DeprecatedLabel;
+
+	
+	public static String DirectivePropertiesEditionPart_AnnotationLabel;
 
 	
 	public static String DirectivePropertiesEditionPart_QualifierLabel;
@@ -308,6 +335,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String ParameterPropertiesEditionPart_DeprecatedLabel;
+
+	
+	public static String ParameterPropertiesEditionPart_AnnotationLabel;
 
 	
 	public static String ParameterPropertiesEditionPart_TypeDefinitionLabel;
@@ -346,6 +376,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String ValuePropertiesEditionPart_DeprecatedLabel;
 
 	
+	public static String ValuePropertiesEditionPart_AnnotationLabel;
+
+	
 	public static String ValuePropertiesEditionPart_TypeDefinitionLabel;
 
 	
@@ -376,6 +409,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String QualifierPropertiesEditionPart_DeprecatedLabel;
 
 	
+	public static String QualifierPropertiesEditionPart_AnnotationLabel;
+
+	
 	public static String QualifierPropertiesEditionPart_TypeDefinitionLabel;
 
 	
@@ -404,6 +440,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String TypedElementPropertiesEditionPart_DeprecatedLabel;
+
+	
+	public static String TypedElementPropertiesEditionPart_AnnotationLabel;
 
 	
 	public static String TypedElementPropertiesEditionPart_TypeDefinitionLabel;
@@ -442,10 +481,10 @@ public class FunctionalResourceModelMessages extends NLS {
 	public static String AncillaryInterfacePropertiesEditionPart_RequiringFunctionalResourceLabel;
 
 	
-	public static String FunctionalResourceStratumPropertiesEditionPart_NameLabel;
+	public static String AnnotationPropertiesEditionPart_NameLabel;
 
 	
-	public static String FunctionalResourceStratumPropertiesEditionPart_FunctionalResourceSetLabel;
+	public static String AnnotationPropertiesEditionPart_ValueLabel;
 
 
 	

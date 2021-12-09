@@ -3,6 +3,7 @@
 package ccsds.FunctionalResourceModel.impl;
 
 import ccsds.FunctionalResourceModel.AncillaryInterface;
+import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FrModelElement;
@@ -117,6 +118,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass ancillaryInterfaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -320,6 +328,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 */
 	public EAttribute getFrModelElement_Deprecated() {
 		return (EAttribute)frModelElementEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFrModelElement_Annotation() {
+		return (EReference)frModelElementEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -705,6 +722,33 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAnnotation() {
+		return annotationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotation_Name() {
+		return (EAttribute)annotationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotation_Value() {
+		return (EAttribute)annotationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFunctionalResourceStratum() {
 		return functionalResourceStratumEClass;
 	}
@@ -817,6 +861,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__OID_BIT);
 		createEReference(frModelElementEClass, FR_MODEL_ELEMENT__OID);
 		createEAttribute(frModelElementEClass, FR_MODEL_ELEMENT__DEPRECATED);
+		createEReference(frModelElementEClass, FR_MODEL_ELEMENT__ANNOTATION);
 
 		oidEClass = createEClass(OID);
 		createEAttribute(oidEClass, OID__OID_BIT);
@@ -866,6 +911,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEAttribute(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__NAME);
 		createEReference(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__PROVIDING_FUNCTIONAL_RESOURCE);
 		createEReference(ancillaryInterfaceEClass, ANCILLARY_INTERFACE__REQUIRING_FUNCTIONAL_RESOURCE);
+
+		annotationEClass = createEClass(ANNOTATION);
+		createEAttribute(annotationEClass, ANNOTATION__NAME);
+		createEAttribute(annotationEClass, ANNOTATION__VALUE);
 	}
 
 	/**
@@ -934,6 +983,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getFrModelElement_OidBit(), ecorePackage.getEInt(), "oidBit", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFrModelElement_Oid(), this.getOid(), null, "oid", null, 0, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrModelElement_Deprecated(), ecorePackage.getEBoolean(), "deprecated", null, 1, 1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFrModelElement_Annotation(), this.getAnnotation(), null, "annotation", null, 0, -1, FrModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(oidEClass, Oid.class, "Oid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOid_OidBit(), ecorePackage.getEInt(), "oidBit", null, 0, -1, Oid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -983,6 +1033,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getAncillaryInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAncillaryInterface_ProvidingFunctionalResource(), this.getFunctionalResource(), this.getFunctionalResource_ProvidedAncillaryInterface(), "providingFunctionalResource", null, 1, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAncillaryInterface_RequiringFunctionalResource(), this.getFunctionalResource(), null, "requiringFunctionalResource", null, 1, 1, AncillaryInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnnotation_Name(), ecorePackage.getEString(), "name", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotation_Value(), ecorePackage.getEString(), "value", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

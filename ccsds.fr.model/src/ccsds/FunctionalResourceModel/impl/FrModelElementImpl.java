@@ -2,20 +2,25 @@
  */
 package ccsds.FunctionalResourceModel.impl;
 
+import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +39,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getOidBit <em>Oid Bit</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getOid <em>Oid</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#isDeprecated <em>Deprecated</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FrModelElementImpl#getAnnotation <em>Annotation</em>}</li>
  * </ul>
  *
  * @generated
@@ -210,6 +216,16 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	protected boolean deprecated = DEPRECATED_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Annotation> annotation;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -381,6 +397,18 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Annotation> getAnnotation() {
+		if (annotation == null) {
+			annotation = new EObjectContainmentEList<Annotation>(Annotation.class, this, FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION);
+		}
+		return annotation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getAuthorizingEntity() {
 		return authorizingEntity;
 	}
@@ -449,6 +477,8 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__OID:
 				return basicSetOid(null, msgs);
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
+				return ((InternalEList<?>)getAnnotation()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -479,6 +509,8 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 				return getOid();
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				return isDeprecated();
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
+				return getAnnotation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -488,6 +520,7 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -517,6 +550,10 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				setDeprecated((Boolean)newValue);
+				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
+				getAnnotation().clear();
+				getAnnotation().addAll((Collection<? extends Annotation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -557,6 +594,9 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				setDeprecated(DEPRECATED_EDEFAULT);
 				return;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
+				getAnnotation().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -587,6 +627,8 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 				return oid != null;
 			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__DEPRECATED:
 				return deprecated != DEPRECATED_EDEFAULT;
+			case FunctionalResourceModelPackage.FR_MODEL_ELEMENT__ANNOTATION:
+				return annotation != null && !annotation.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

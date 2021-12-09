@@ -86,6 +86,9 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
+	protected ReferencesTable annotation;
+	protected List<ViewerFilter> annotationBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> annotationFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable parameter;
 	protected List<ViewerFilter> parameterBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> parameterFilters = new ArrayList<ViewerFilter>();
@@ -150,6 +153,7 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.event);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.directives);
@@ -188,6 +192,9 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated) {
 					return createDeprecatedCheckbox(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation) {
+					return createAnnotationAdvancedTableComposition(parent);
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.parameter) {
 					return createParameterAdvancedTableComposition(parent);
@@ -582,6 +589,57 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		EditingUtils.setEEFtype(deprecated, "eef::Checkbox"); //$NON-NLS-1$
 		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.deprecated, FunctionalResourceModelViewsRepository.SWT_KIND), null); //$NON-NLS-1$
 		// Start of user code for createDeprecatedCheckbox
+
+		// End of user code
+		return parent;
+	}
+
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createAnnotationAdvancedTableComposition(Composite parent) {
+		this.annotation = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_AnnotationLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				annotation.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				annotation.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				annotation.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				annotation.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.annotationFilters) {
+			this.annotation.addFilter(filter);
+		}
+		this.annotation.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.annotation.createControls(parent);
+		this.annotation.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData annotationData = new GridData(GridData.FILL_HORIZONTAL);
+		annotationData.horizontalSpan = 3;
+		this.annotation.setLayoutData(annotationData);
+		this.annotation.setLowerBound(0);
+		this.annotation.setUpperBound(-1);
+		annotation.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation);
+		annotation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAnnotationAdvancedTableComposition
 
 		// End of user code
 		return parent;
@@ -1192,6 +1250,72 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 			deprecated.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initAnnotation(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAnnotation(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		annotation.setContentProvider(contentProvider);
+		annotation.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.annotation);
+		if (eefElementEditorReadOnlyState && annotation.isEnabled()) {
+			annotation.setEnabled(false);
+			annotation.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !annotation.isEnabled()) {
+			annotation.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateAnnotation()
+	 * 
+	 */
+	public void updateAnnotation() {
+	annotation.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAnnotation(ViewerFilter filter) {
+		annotationFilters.add(filter);
+		if (this.annotation != null) {
+			this.annotation.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAnnotation(ViewerFilter filter) {
+		annotationBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInAnnotationTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAnnotationTable(EObject element) {
+		return ((ReferencesTableSettings)annotation.getInput()).contains(element);
 	}
 
 

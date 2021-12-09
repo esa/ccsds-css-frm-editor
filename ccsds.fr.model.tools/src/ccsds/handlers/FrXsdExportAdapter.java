@@ -2,6 +2,9 @@ package ccsds.handlers;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
+
+import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.fr.type.model.ExportWriterContext;
@@ -9,6 +12,7 @@ import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
+import ccsds.fr.utility.FrUtility;
 
 /**
  * For XSD export all configuration parameter shall be below an FR XSD type.
@@ -45,10 +49,10 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		
 		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifier())), // Marcin want something like AntennaElement
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifier())),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifier())),
 				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrStratumElementName(currentStratum)));
 		
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(fr.getClassifier())));
+		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, CreateFrAsnXsdHandler.getXsdBaseType(this.fr)));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
@@ -108,8 +112,26 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 //				new XmlAttribute(XmlHelper.NAME, fr.getClassifier()), 
 //				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifier())),
 //				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrimBaseElementName()));		
-		
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseType(fr.getClassifier())));
+
+		if(isDynamicFr(fr.getAnnotation()) == true) {		
+			// write a container element
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrContainerType(fr.getClassifier())));
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.getFrimBaseType()));
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.SEQUENCE);
+			XmlHelper.writeElement(output, indentLevel+myIndent--, XmlHelper.ELEMENT, 
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifier())),
+					new XmlAttribute(XmlHelper.MIN_OCCURS, XmlHelper.ZERO),
+					new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
+			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.SEQUENCE);
+			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
+			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.COMPLEX_TYPE);		
+			XmlHelper.doBreakIndent(output, indentLevel);
+		}
+		// write an FR element
+		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.getFrimBaseType()));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
@@ -154,5 +176,22 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);		
+	}
+
+	/**
+	 * Returns true if in the given annotations there is a annotations with
+	 * 	name == dynamic
+	 * 	value == true
+	 * @param annotation
+	 * @return
+	 */
+	private boolean isDynamicFr(EList<Annotation> annotation) {
+		for(Annotation anno : annotation) {
+			if(anno.getName().equalsIgnoreCase("dynamic") && 
+					anno.getValue().equalsIgnoreCase("true")) {
+				return true;
+			}
+		}
+		return false;
 	}	
 }

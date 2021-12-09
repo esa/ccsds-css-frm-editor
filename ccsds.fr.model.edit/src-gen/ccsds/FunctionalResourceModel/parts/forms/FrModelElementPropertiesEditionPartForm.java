@@ -8,6 +8,10 @@ import ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart;
 import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepository;
 import ccsds.FunctionalResourceModel.providers.FunctionalResourceModelMessages;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
@@ -19,6 +23,11 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -53,6 +62,9 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 	protected Text authorizingEntity;
 	protected Text oidBit;
 	protected Button deprecated;
+	protected ReferencesTable annotation;
+	protected List<ViewerFilter> annotationBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> annotationFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -106,6 +118,7 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FrModelElement.Properties.authorizingEntity);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FrModelElement.Properties.oidBit);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FrModelElement.Properties.deprecated);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation);
 		
 		
 		composer = new PartComposer(frModelElementStep) {
@@ -138,6 +151,9 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 				}
 				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.deprecated) {
 					return createDeprecatedCheckbox(widgetFactory, parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation) {
+					return createAnnotationTableComposition(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -657,6 +673,57 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createAnnotationTableComposition(FormToolkit widgetFactory, Composite parent) {
+		this.annotation = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, FunctionalResourceModelMessages.FrModelElementPropertiesEditionPart_AnnotationLabel), new ReferencesTableListener() {
+			public void handleAdd() {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				annotation.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				annotation.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				annotation.refresh();
+			}
+			public void handleRemove(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				annotation.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.annotationFilters) {
+			this.annotation.addFilter(filter);
+		}
+		this.annotation.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, FunctionalResourceModelViewsRepository.FORM_KIND));
+		this.annotation.createControls(parent, widgetFactory);
+		this.annotation.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FrModelElementPropertiesEditionPartForm.this, FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData annotationData = new GridData(GridData.FILL_HORIZONTAL);
+		annotationData.horizontalSpan = 3;
+		this.annotation.setLayoutData(annotationData);
+		this.annotation.setLowerBound(0);
+		this.annotation.setUpperBound(-1);
+		annotation.setID(FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation);
+		annotation.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAnnotationTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -925,6 +992,72 @@ public class FrModelElementPropertiesEditionPartForm extends SectionPropertiesEd
 			deprecated.setEnabled(true);
 		}	
 		
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart#initAnnotation(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initAnnotation(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		annotation.setContentProvider(contentProvider);
+		annotation.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FrModelElement.Properties.annotation);
+		if (eefElementEditorReadOnlyState && annotation.isEnabled()) {
+			annotation.setEnabled(false);
+			annotation.setToolTipText(FunctionalResourceModelMessages.FrModelElement_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !annotation.isEnabled()) {
+			annotation.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart#updateAnnotation()
+	 * 
+	 */
+	public void updateAnnotation() {
+	annotation.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart#addFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToAnnotation(ViewerFilter filter) {
+		annotationFilters.add(filter);
+		if (this.annotation != null) {
+			this.annotation.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart#addBusinessFilterAnnotation(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToAnnotation(ViewerFilter filter) {
+		annotationBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FrModelElementPropertiesEditionPart#isContainedInAnnotationTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInAnnotationTable(EObject element) {
+		return ((ReferencesTableSettings)annotation.getInput()).contains(element);
 	}
 
 
