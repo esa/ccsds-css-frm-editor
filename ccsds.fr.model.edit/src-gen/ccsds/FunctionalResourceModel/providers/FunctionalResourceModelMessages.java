@@ -58,6 +58,9 @@ public class FunctionalResourceModelMessages extends NLS {
 	
 	public static String AnnotationPropertiesEditionPart_PropertiesGroupLabel;
 
+	
+	public static String DataUnitPropertiesEditionPart_PropertiesGroupLabel;
+
 
 	
 	public static String FunctionalResourceModel_ReadOnly;
@@ -148,6 +151,12 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String Annotation_Part_Title;
+
+	
+	public static String DataUnit_ReadOnly;
+
+	
+	public static String DataUnit_Part_Title;
 
 
 	
@@ -248,6 +257,9 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String FunctionalResourcePropertiesEditionPart_ProvidedAncillaryInterfaceLabel;
+
+	
+	public static String FunctionalResourcePropertiesEditionPart_DataUnitLabel;
 
 	
 	public static String EventPropertiesEditionPart_SemanticDefinitionLabel;
@@ -485,6 +497,39 @@ public class FunctionalResourceModelMessages extends NLS {
 
 	
 	public static String AnnotationPropertiesEditionPart_ValueLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_SemanticDefinitionLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_ClassifierLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_StringIdentifierLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_VersionLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_CreationDateLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_AuthorizingEntityLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_OidBitLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_DeprecatedLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_AnnotationLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_TypeDefinitionLabel;
+
+	
+	public static String DataUnitPropertiesEditionPart_SubDataUnitLabel;
 
 
 	

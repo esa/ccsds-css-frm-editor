@@ -158,6 +158,7 @@ public class FunctionalResourceItemProvider
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DIRECTIVES);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
 			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
+			childrenFeatures.add(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DATA_UNIT);
 		}
 		return childrenFeatures;
 	}
@@ -228,6 +229,7 @@ public class FunctionalResourceItemProvider
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DIRECTIVES:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT:
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -269,6 +271,11 @@ public class FunctionalResourceItemProvider
 			(createChildParameter
 				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE,
 				 FunctionalResourceModelFactory.eINSTANCE.createAncillaryInterface()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(FunctionalResourceModelPackage.Literals.FUNCTIONAL_RESOURCE__DATA_UNIT,
+				 FunctionalResourceModelFactory.eINSTANCE.createDataUnit()));
 	}
 	
 	class ChangeListener implements INotifyChangedListener {

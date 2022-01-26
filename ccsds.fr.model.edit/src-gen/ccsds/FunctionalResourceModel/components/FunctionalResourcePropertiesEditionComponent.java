@@ -6,6 +6,7 @@ package ccsds.FunctionalResourceModel.components;
 // Start of user code for imports
 import ccsds.FunctionalResourceModel.AncillaryInterface;
 import ccsds.FunctionalResourceModel.Annotation;
+import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
@@ -106,6 +107,11 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 	 */
 	protected ReferencesTableSettings providedAncillaryInterfaceSettings;
 	
+	/**
+	 * Settings for dataUnit ReferencesTable
+	 */
+	protected ReferencesTableSettings dataUnitSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -185,6 +191,10 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface)) {
 				providedAncillaryInterfaceSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface());
 				basePart.initProvidedAncillaryInterface(providedAncillaryInterfaceSettings);
+			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit)) {
+				dataUnitSettings = new ReferencesTableSettings(functionalResource, FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_DataUnit());
+				basePart.initDataUnit(dataUnitSettings);
 			}
 			// init filters
 			
@@ -290,6 +300,21 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 				// Start of user code for additional businessfilters for providedAncillaryInterface
 				// End of user code
 			}
+			if (isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit)) {
+				basePart.addFilterToDataUnit(new ViewerFilter() {
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof DataUnit); //$NON-NLS-1$ 
+					}
+			
+				});
+				// Start of user code for additional businessfilters for dataUnit
+				// End of user code
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -297,6 +322,7 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -364,6 +390,9 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 		}
 		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface) {
 			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface();
+		}
+		if (editorKey == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit) {
+			return FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_DataUnit();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -560,6 +589,31 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 				providedAncillaryInterfaceSettings.move(event.getNewIndex(), (AncillaryInterface) event.getNewValue());
 			}
 		}
+		if (FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, dataUnitSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				dataUnitSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				dataUnitSettings.move(event.getNewIndex(), (DataUnit) event.getNewValue());
+			}
+		}
 	}
 
 	/**
@@ -636,6 +690,8 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 				basePart.updateServiceAccesspoint();
 			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface))
 				basePart.updateProvidedAncillaryInterface();
+			if (FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_DataUnit().equals(msg.getFeature()) && isAccessible(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit))
+				basePart.updateDataUnit();
 			
 		}
 	}
@@ -662,7 +718,8 @@ public class FunctionalResourcePropertiesEditionComponent extends SinglePartProp
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Directives(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_Uses(),
 			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ServiceAccesspoint(),
-			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface()		);
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface(),
+			FunctionalResourceModelPackage.eINSTANCE.getFunctionalResource_DataUnit()		);
 		return new NotificationFilter[] {filter,};
 	}
 

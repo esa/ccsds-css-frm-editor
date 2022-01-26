@@ -107,6 +107,9 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	protected ReferencesTable providedAncillaryInterface;
 	protected List<ViewerFilter> providedAncillaryInterfaceBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> providedAncillaryInterfaceFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable dataUnit;
+	protected List<ViewerFilter> dataUnitBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> dataUnitFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -160,6 +163,7 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.uses);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.serviceAccesspoint);
 		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface);
+		propertiesStep.addStep(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit);
 		
 		
 		composer = new PartComposer(functionalResourceStep) {
@@ -213,6 +217,9 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 				}
 				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.providedAncillaryInterface) {
 					return createProvidedAncillaryInterfaceAdvancedTableComposition(parent);
+				}
+				if (key == FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit) {
+					return createDataUnitAdvancedTableComposition(parent);
 				}
 				return parent;
 			}
@@ -982,6 +989,57 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 		return parent;
 	}
 
+	/**
+	 * @param container
+	 * 
+	 */
+	protected Composite createDataUnitAdvancedTableComposition(Composite parent) {
+		this.dataUnit = new ReferencesTable(getDescription(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, FunctionalResourceModelMessages.FunctionalResourcePropertiesEditionPart_DataUnitLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				dataUnit.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				dataUnit.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				dataUnit.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				dataUnit.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.dataUnitFilters) {
+			this.dataUnit.addFilter(filter);
+		}
+		this.dataUnit.setHelpText(propertiesEditionComponent.getHelpContent(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, FunctionalResourceModelViewsRepository.SWT_KIND));
+		this.dataUnit.createControls(parent);
+		this.dataUnit.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(FunctionalResourcePropertiesEditionPartImpl.this, FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData dataUnitData = new GridData(GridData.FILL_HORIZONTAL);
+		dataUnitData.horizontalSpan = 3;
+		this.dataUnit.setLayoutData(dataUnitData);
+		this.dataUnit.setLowerBound(0);
+		this.dataUnit.setUpperBound(-1);
+		dataUnit.setID(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit);
+		dataUnit.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createDataUnitAdvancedTableComposition
+
+		// End of user code
+		return parent;
+	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -1711,6 +1769,72 @@ public class FunctionalResourcePropertiesEditionPartImpl extends CompositeProper
 	 */
 	public boolean isContainedInProvidedAncillaryInterfaceTable(EObject element) {
 		return ((ReferencesTableSettings)providedAncillaryInterface.getInput()).contains(element);
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#initDataUnit(EObject current, EReference containingFeature, EReference feature)
+	 */
+	public void initDataUnit(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		dataUnit.setContentProvider(contentProvider);
+		dataUnit.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(FunctionalResourceModelViewsRepository.FunctionalResource.Properties.dataUnit);
+		if (eefElementEditorReadOnlyState && dataUnit.isEnabled()) {
+			dataUnit.setEnabled(false);
+			dataUnit.setToolTipText(FunctionalResourceModelMessages.FunctionalResource_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !dataUnit.isEnabled()) {
+			dataUnit.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#updateDataUnit()
+	 * 
+	 */
+	public void updateDataUnit() {
+	dataUnit.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addFilterDataUnit(ViewerFilter filter)
+	 * 
+	 */
+	public void addFilterToDataUnit(ViewerFilter filter) {
+		dataUnitFilters.add(filter);
+		if (this.dataUnit != null) {
+			this.dataUnit.addFilter(filter);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#addBusinessFilterDataUnit(ViewerFilter filter)
+	 * 
+	 */
+	public void addBusinessFilterToDataUnit(ViewerFilter filter) {
+		dataUnitBusinessFilters.add(filter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see ccsds.FunctionalResourceModel.parts.FunctionalResourcePropertiesEditionPart#isContainedInDataUnitTable(EObject element)
+	 * 
+	 */
+	public boolean isContainedInDataUnitTable(EObject element) {
+		return ((ReferencesTableSettings)dataUnit.getInput()).contains(element);
 	}
 
 

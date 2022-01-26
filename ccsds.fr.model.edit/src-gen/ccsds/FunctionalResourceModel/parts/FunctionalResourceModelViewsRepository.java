@@ -180,6 +180,9 @@ public class FunctionalResourceModelViewsRepository {
 			
 			public static String providedAncillaryInterface = "FunctionalResourceModel::FunctionalResource::properties::providedAncillaryInterface";
 			
+			
+			public static String dataUnit = "FunctionalResourceModel::FunctionalResource::properties::dataUnit";
+			
 	
 		}
 	
@@ -524,6 +527,51 @@ public class FunctionalResourceModelViewsRepository {
 			
 			
 			public static String value = "FunctionalResourceModel::Annotation::properties::value";
+			
+	
+		}
+	
+	}
+
+	/**
+	 * DataUnit view descriptor
+	 * 
+	 */
+	public static class DataUnit {
+		public static class Properties {
+	
+			
+			public static String semanticDefinition = "FunctionalResourceModel::DataUnit::properties::SemanticDefinition";
+			
+			
+			public static String classifier = "FunctionalResourceModel::DataUnit::properties::classifier";
+			
+			
+			public static String stringIdentifier = "FunctionalResourceModel::DataUnit::properties::stringIdentifier";
+			
+			
+			public static String version = "FunctionalResourceModel::DataUnit::properties::version";
+			
+			
+			public static String creationDate = "FunctionalResourceModel::DataUnit::properties::creationDate";
+			
+			
+			public static String authorizingEntity = "FunctionalResourceModel::DataUnit::properties::authorizingEntity";
+			
+			
+			public static String oidBit = "FunctionalResourceModel::DataUnit::properties::oidBit";
+			
+			
+			public static String deprecated = "FunctionalResourceModel::DataUnit::properties::deprecated";
+			
+			
+			public static String annotation = "FunctionalResourceModel::DataUnit::properties::annotation";
+			
+			
+			public static String typeDefinition = "FunctionalResourceModel::DataUnit::properties::typeDefinition";
+			
+			
+			public static String subDataUnit = "FunctionalResourceModel::DataUnit::properties::subDataUnit";
 			
 	
 		}

@@ -470,7 +470,7 @@ public class ElementImpl extends TypeImpl implements Element {
 				ExportWriterContext.instance().updateElementName(this, validName);
 			}
 
-			output.append(String.format("%1$-20s", validName));
+			output.append(String.format("%1$-30s", validName));
 		} else if (suppressElementName() == false) {
 			output.append("name not set for element");
 		}
@@ -490,7 +490,11 @@ public class ElementImpl extends TypeImpl implements Element {
 		}
 
 		if (this.optional == true) {
-			output.append(ExportWriter.BLANK + ExportWriter.OPTIONAL);
+			// if there is e.g. a SEQUENCE spanning over several lines, we want the OPTIONAL following: } OPTIONAL 
+			if(output.lastIndexOf(System.lineSeparator()) == (output.length() - System.lineSeparator().length())) {
+				output.delete(output.length() - System.lineSeparator().length(), output.length());				
+			}
+			output.append(ExportWriter.BLANK + ExportWriter.OPTIONAL);			
 		}
 	}
 

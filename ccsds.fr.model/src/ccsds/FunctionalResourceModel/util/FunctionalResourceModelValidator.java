@@ -116,6 +116,8 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 				return validateAncillaryInterface((AncillaryInterface)value, diagnostics, context);
 			case FunctionalResourceModelPackage.ANNOTATION:
 				return validateAnnotation((Annotation)value, diagnostics, context);
+			case FunctionalResourceModelPackage.DATA_UNIT:
+				return validateDataUnit((DataUnit)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -275,6 +277,15 @@ public class FunctionalResourceModelValidator extends EObjectValidator {
 	 */
 	public boolean validateAnnotation(Annotation annotation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(annotation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataUnit(DataUnit dataUnit, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataUnit, diagnostics, context);
 	}
 
 	/**

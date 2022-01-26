@@ -71,6 +71,7 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 			case FunctionalResourceModelPackage.SERVICE_ACCESS_POINT: return createServiceAccessPoint();
 			case FunctionalResourceModelPackage.ANCILLARY_INTERFACE: return createAncillaryInterface();
 			case FunctionalResourceModelPackage.ANNOTATION: return createAnnotation();
+			case FunctionalResourceModelPackage.DATA_UNIT: return createDataUnit();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -204,6 +205,16 @@ public class FunctionalResourceModelFactoryImpl extends EFactoryImpl implements 
 	public Annotation createAnnotation() {
 		AnnotationImpl annotation = new AnnotationImpl();
 		return annotation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataUnit createDataUnit() {
+		DataUnitImpl dataUnit = new DataUnitImpl();
+		return dataUnit;
 	}
 
 	/**

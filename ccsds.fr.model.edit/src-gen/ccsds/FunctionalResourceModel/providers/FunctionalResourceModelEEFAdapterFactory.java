@@ -133,5 +133,13 @@ public class FunctionalResourceModelEEFAdapterFactory extends FunctionalResource
 	public Adapter createAnnotationAdapter() {
 		return new AnnotationPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see ccsds.FunctionalResourceModel.util.FunctionalResourceModelAdapterFactory#createDataUnitAdapter()
+	 * 
+	 */
+	public Adapter createDataUnitAdapter() {
+		return new DataUnitPropertiesEditionProvider();
+	}
 
 }

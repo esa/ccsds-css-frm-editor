@@ -622,13 +622,22 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	int FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE = FR_MODEL_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Data Unit</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_RESOURCE__DATA_UNIT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Functional Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_RESOURCE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 6;
+	int FUNCTIONAL_RESOURCE_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Functional Resource</em>' class.
@@ -1705,6 +1714,143 @@ public interface FunctionalResourceModelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link ccsds.FunctionalResourceModel.impl.DataUnitImpl <em>Data Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ccsds.FunctionalResourceModel.impl.DataUnitImpl
+	 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getDataUnit()
+	 * @generated
+	 */
+	int DATA_UNIT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Semantic Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__SEMANTIC_DEFINITION = FR_MODEL_ELEMENT__SEMANTIC_DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Classifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__CLASSIFIER = FR_MODEL_ELEMENT__CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>String Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__STRING_IDENTIFIER = FR_MODEL_ELEMENT__STRING_IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__VERSION = FR_MODEL_ELEMENT__VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Creation Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__CREATION_DATE = FR_MODEL_ELEMENT__CREATION_DATE;
+
+	/**
+	 * The feature id for the '<em><b>Authorizing Entity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__AUTHORIZING_ENTITY = FR_MODEL_ELEMENT__AUTHORIZING_ENTITY;
+
+	/**
+	 * The feature id for the '<em><b>Oid Bit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__OID_BIT = FR_MODEL_ELEMENT__OID_BIT;
+
+	/**
+	 * The feature id for the '<em><b>Oid</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__OID = FR_MODEL_ELEMENT__OID;
+
+	/**
+	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__DEPRECATED = FR_MODEL_ELEMENT__DEPRECATED;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__ANNOTATION = FR_MODEL_ELEMENT__ANNOTATION;
+
+	/**
+	 * The feature id for the '<em><b>Type Definition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__TYPE_DEFINITION = FR_MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sub Data Unit</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT__SUB_DATA_UNIT = FR_MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT_FEATURE_COUNT = FR_MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Data Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_UNIT_OPERATION_COUNT = FR_MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceModel <em>Functional Resource Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1985,6 +2131,17 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctionalResource_ProvidedAncillaryInterface();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.FunctionalResource#getDataUnit <em>Data Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Data Unit</em>'.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResource#getDataUnit()
+	 * @see #getFunctionalResource()
+	 * @generated
+	 */
+	EReference getFunctionalResource_DataUnit();
 
 	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.Event <em>Event</em>}'.
@@ -2341,6 +2498,38 @@ public interface FunctionalResourceModelPackage extends EPackage {
 	EAttribute getAnnotation_Value();
 
 	/**
+	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.DataUnit <em>Data Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Unit</em>'.
+	 * @see ccsds.FunctionalResourceModel.DataUnit
+	 * @generated
+	 */
+	EClass getDataUnit();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.DataUnit#getTypeDefinition <em>Type Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Type Definition</em>'.
+	 * @see ccsds.FunctionalResourceModel.DataUnit#getTypeDefinition()
+	 * @see #getDataUnit()
+	 * @generated
+	 */
+	EReference getDataUnit_TypeDefinition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ccsds.FunctionalResourceModel.DataUnit#getSubDataUnit <em>Sub Data Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sub Data Unit</em>'.
+	 * @see ccsds.FunctionalResourceModel.DataUnit#getSubDataUnit()
+	 * @see #getDataUnit()
+	 * @generated
+	 */
+	EReference getDataUnit_SubDataUnit();
+
+	/**
 	 * Returns the meta object for class '{@link ccsds.FunctionalResourceModel.FunctionalResourceStratum <em>Functional Resource Stratum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2655,6 +2844,14 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		EReference FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE = eINSTANCE.getFunctionalResource_ProvidedAncillaryInterface();
 
 		/**
+		 * The meta object literal for the '<em><b>Data Unit</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FUNCTIONAL_RESOURCE__DATA_UNIT = eINSTANCE.getFunctionalResource_DataUnit();
+
+		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.EventImpl <em>Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2935,6 +3132,32 @@ public interface FunctionalResourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION__VALUE = eINSTANCE.getAnnotation_Value();
+
+		/**
+		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.DataUnitImpl <em>Data Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ccsds.FunctionalResourceModel.impl.DataUnitImpl
+		 * @see ccsds.FunctionalResourceModel.impl.FunctionalResourceModelPackageImpl#getDataUnit()
+		 * @generated
+		 */
+		EClass DATA_UNIT = eINSTANCE.getDataUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Definition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_UNIT__TYPE_DEFINITION = eINSTANCE.getDataUnit_TypeDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Data Unit</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_UNIT__SUB_DATA_UNIT = eINSTANCE.getDataUnit_SubDataUnit();
 
 		/**
 		 * The meta object literal for the '{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceStratumImpl <em>Functional Resource Stratum</em>}' class.

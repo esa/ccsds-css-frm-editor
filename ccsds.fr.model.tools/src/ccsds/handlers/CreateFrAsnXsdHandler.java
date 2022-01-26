@@ -212,18 +212,6 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			
 				
 			if(ExportWriterContext.instance().getGenerateFrim() == true) {
-				// ParameterBaseType
-				XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.COMPLEX_TYPE,
-						new XmlAttribute(XmlHelper.NAME, XmlHelper.getParameterBaseType()));							
-				
-				XmlHelper.writeElement(output, indentLevel+1, XmlHelper.ATTRIBUTE,
-						new XmlAttribute(XmlHelper.NAME, "expression"),
-						new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-						new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));				
-
-				XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_TYPE);
-				XmlHelper.doBreakIndent(output, indentLevel--);
-				
 				writeFrimTypes(output, indentLevel);
 			} else {
 				// ParameterBaseType
@@ -290,52 +278,131 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	 * @generated NOT
 	 */
 	private void writeFrimTypes(StringBuffer output, int indentLevel) {
+		final String EXPRESSION = "Expression";
+		final String EXPRESSION_REF = "ExpressionReference";
+		
+		// ParameterBaseType
+		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.COMPLEX_TYPE,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.getParameterBaseType()));							
+		
+		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.SEQUENCE);
+
+		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ELEMENT,
+				new XmlAttribute(XmlHelper.NAME, "expressionReference"),
+				new XmlAttribute(XmlHelper.TYPE, EXPRESSION_REF),
+				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
+		
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.SEQUENCE);
+		
+//		XmlHelper.writeElement(output, indentLevel--, XmlHelper.ATTRIBUTE,
+//				new XmlAttribute(XmlHelper.NAME, "expression"),
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+//				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));				
+
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);
+		
 		XmlHelper.doBreakIndent(output, indentLevel);
+
+		// Expression Reference: reference to the expression and dependencies		
+		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.COMPLEX_TYPE,
+				new XmlAttribute(XmlHelper.NAME, EXPRESSION_REF));							
+		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.SEQUENCE);
 		
 		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ELEMENT,
+				new XmlAttribute(XmlHelper.NAME, "dependency"),
+				new XmlAttribute(XmlHelper.TYPE, "Dependency"),
+				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
+
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.SEQUENCE);
+
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE,
+				new XmlAttribute(XmlHelper.NAME, "expression"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.ANY_URI),
+				new XmlAttribute(XmlHelper.ECORE_REFERENCE, EXPRESSION));					
+
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);
+
+		XmlHelper.doBreakIndent(output, indentLevel);
+		
+		
+		// expression type (placeholder)
+		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.COMPLEX_TYPE,
+				new XmlAttribute(XmlHelper.NAME, EXPRESSION));							
+		
+		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ATTRIBUTE, 
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.NAME),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING));
+		
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE, 
+				new XmlAttribute(XmlHelper.NAME, "expressionURL"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING));
+		
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);
+		
+		XmlHelper.doBreakIndent(output, indentLevel);
+		
+		// Dependency
+		XmlHelper.writeStartElement(output, indentLevel++, XmlHelper.COMPLEX_TYPE,
+				new XmlAttribute(XmlHelper.NAME, "Dependency"));
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE,
+				new XmlAttribute(XmlHelper.NAME, "target"),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.ANY_URI),
+				new XmlAttribute(XmlHelper.ECORE_REFERENCE, XmlHelper.getParameterBaseType()));					
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);
+		
+		XmlHelper.doBreakIndent(output, indentLevel);
+
+		// Functional resource Instance Element
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrimBaseElementName()),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrimBaseType()));
 		
 		//XmlHelper.doBreakIndent(output, indentLevel);
 		
 		// FunctionalResourceInstance
-		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
+		XmlHelper.writeStartElement(output, indentLevel++, XmlHelper.COMPLEX_TYPE,
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrimBaseType()),
 				new XmlAttribute(XmlHelper.ABSTRACT, "true"));
 		
-		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ATTRIBUTE, 
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE, 
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.NAME),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING));
 
-		XmlHelper.writeElement(output, indentLevel--, XmlHelper.ATTRIBUTE, 
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE, 
 				new XmlAttribute(XmlHelper.NAME, "instanceNumber"),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.INTEGER));
 
-		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);		
+		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);		
 		
 		XmlHelper.doBreakIndent(output, indentLevel+1);
 		
 		// functionalResourceGroup element
-		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, 
+		XmlHelper.writeElement(output, indentLevel++, XmlHelper.ELEMENT, 
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(XmlHelper.getFgName())),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFgName()));
 
 		// FunctionalResourceGroup type		
-		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE,
+		XmlHelper.writeStartElement(output, indentLevel++, XmlHelper.COMPLEX_TYPE,
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFgName()));		
-		XmlHelper.writeStartElement(output, ++indentLevel, XmlHelper.SEQUENCE);
+		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.SEQUENCE);
 		
 		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ELEMENT,
 				new XmlAttribute(XmlHelper.REF, XmlHelper.getFrimBaseElementName()),				
 				new XmlAttribute(XmlHelper.MIN_OCCURS, "0"),
 				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
 		
-		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ELEMENT,
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
 				new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(XmlHelper.getFgName())),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFgName()),
 				new XmlAttribute(XmlHelper.MIN_OCCURS, "0"),
 				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));		
 		
+		XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(EXPRESSION)),
+				new XmlAttribute(XmlHelper.TYPE, EXPRESSION),
+				new XmlAttribute(XmlHelper.MIN_OCCURS, "0"),
+				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));		
+				
 		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.SEQUENCE);
 		
 		XmlHelper.writeElement(output, indentLevel, XmlHelper.ATTRIBUTE, 

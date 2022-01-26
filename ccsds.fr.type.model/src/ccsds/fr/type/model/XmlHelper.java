@@ -28,6 +28,8 @@ import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
  */
 public class XmlHelper {
 	
+	public static final String ANY_URI = "xsd:anyURI";
+	
 	private static final String CDATA_END = "]]>";
 
 	private static final String CDATA_START = "<![CDATA[";
@@ -35,6 +37,8 @@ public class XmlHelper {
 	private static final String SEMANTIC_DEFINITION_PROP = "SemanticDefinition";
 
 	private static final String FR_TYPE_INFO = "frTypeInfo";
+
+	public static final String ECORE_REFERENCE = "ecore:reference";
 
 	private static final String ECORE_KEY = "ecore:key";
 

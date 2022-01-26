@@ -139,6 +139,15 @@ public interface FunctionalResourceModelFactory extends EFactory {
 	Annotation createAnnotation();
 
 	/**
+	 * Returns a new object of class '<em>Data Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Unit</em>'.
+	 * @generated
+	 */
+	DataUnit createDataUnit();
+
+	/**
 	 * Returns a new object of class '<em>Functional Resource Stratum</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

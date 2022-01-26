@@ -4,6 +4,7 @@ package ccsds.FunctionalResourceModel.impl;
 
 import ccsds.FunctionalResourceModel.AncillaryInterface;
 import ccsds.FunctionalResourceModel.Annotation;
+import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FrModelElement;
@@ -125,6 +126,13 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass annotationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataUnitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -452,6 +460,15 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFunctionalResource_DataUnit() {
+		return (EReference)functionalResourceEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEvent() {
 		return eventEClass;
 	}
@@ -749,6 +766,33 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataUnit() {
+		return dataUnitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataUnit_TypeDefinition() {
+		return (EReference)dataUnitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataUnit_SubDataUnit() {
+		return (EReference)dataUnitEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFunctionalResourceStratum() {
 		return functionalResourceStratumEClass;
 	}
@@ -873,6 +917,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__USES);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__SERVICE_ACCESSPOINT);
 		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE);
+		createEReference(functionalResourceEClass, FUNCTIONAL_RESOURCE__DATA_UNIT);
 
 		eventEClass = createEClass(EVENT);
 		createEReference(eventEClass, EVENT__EXTERNAL_OID);
@@ -915,6 +960,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		annotationEClass = createEClass(ANNOTATION);
 		createEAttribute(annotationEClass, ANNOTATION__NAME);
 		createEAttribute(annotationEClass, ANNOTATION__VALUE);
+
+		dataUnitEClass = createEClass(DATA_UNIT);
+		createEReference(dataUnitEClass, DATA_UNIT__TYPE_DEFINITION);
+		createEReference(dataUnitEClass, DATA_UNIT__SUB_DATA_UNIT);
 	}
 
 	/**
@@ -955,6 +1004,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		valueEClass.getESuperTypes().add(this.getTypedElement());
 		qualifierEClass.getESuperTypes().add(this.getTypedElement());
 		typedElementEClass.getESuperTypes().add(this.getFrModelElement());
+		dataUnitEClass.getESuperTypes().add(this.getFrModelElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(functionalResourceModelEClass, FunctionalResourceModel.class, "FunctionalResourceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -995,6 +1045,7 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEReference(getFunctionalResource_Uses(), this.getFunctionalResource(), null, "uses", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_ServiceAccesspoint(), this.getServiceAccessPoint(), this.getServiceAccessPoint_AccessedFunctionalResource(), "serviceAccesspoint", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFunctionalResource_ProvidedAncillaryInterface(), this.getAncillaryInterface(), this.getAncillaryInterface_ProvidingFunctionalResource(), "providedAncillaryInterface", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFunctionalResource_DataUnit(), this.getDataUnit(), null, "dataUnit", null, 0, -1, FunctionalResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvent_ExternalOid(), this.getOid(), null, "externalOid", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1037,6 +1088,10 @@ public class FunctionalResourceModelPackageImpl extends EPackageImpl implements 
 		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotation_Name(), ecorePackage.getEString(), "name", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotation_Value(), ecorePackage.getEString(), "value", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataUnitEClass, DataUnit.class, "DataUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataUnit_TypeDefinition(), theFrtypesPackage.getTypeDefinition(), null, "typeDefinition", null, 1, -1, DataUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataUnit_SubDataUnit(), this.getDataUnit(), null, "subDataUnit", null, 0, -1, DataUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

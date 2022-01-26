@@ -439,6 +439,50 @@ public interface FunctionalResourcePropertiesEditionPart {
 
 
 
+	/**
+	 * Init the dataUnit
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
+	 */
+	public void initDataUnit(ReferencesTableSettings settings);
+
+	/**
+	 * Update the dataUnit
+	 * @param newValue the dataUnit to update
+	 * 
+	 */
+	public void updateDataUnit();
+
+	/**
+	 * Adds the given filter to the dataUnit edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addFilterToDataUnit(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the dataUnit edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * 
+	 */
+	public void addBusinessFilterToDataUnit(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the dataUnit table
+	 * 
+	 */
+	public boolean isContainedInDataUnitTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

@@ -371,6 +371,29 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.DataUnit} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataUnitItemProvider dataUnitItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link ccsds.FunctionalResourceModel.DataUnit}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataUnitAdapter() {
+		if (dataUnitItemProvider == null) {
+			dataUnitItemProvider = new DataUnitItemProvider(this);
+		}
+
+		return dataUnitItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link ccsds.FunctionalResourceModel.FunctionalResourceStratum} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -530,6 +553,7 @@ public class FunctionalResourceModelItemProviderAdapterFactory extends Functiona
 		if (serviceAccessPointItemProvider != null) serviceAccessPointItemProvider.dispose();
 		if (ancillaryInterfaceItemProvider != null) ancillaryInterfaceItemProvider.dispose();
 		if (annotationItemProvider != null) annotationItemProvider.dispose();
+		if (dataUnitItemProvider != null) dataUnitItemProvider.dispose();
 	}
 
 }

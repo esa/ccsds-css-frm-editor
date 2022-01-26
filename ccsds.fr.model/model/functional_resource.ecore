@@ -73,6 +73,8 @@
         eType="#//ServiceAccessPoint" containment="true" eOpposite="#//ServiceAccessPoint/accessedFunctionalResource"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedAncillaryInterface"
         upperBound="-1" eType="#//AncillaryInterface" containment="true" eOpposite="#//AncillaryInterface/providingFunctionalResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataUnit" upperBound="-1"
+        eType="#//DataUnit" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//FrModelElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="externalOid" eType="#//Oid"
@@ -143,5 +145,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Annotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataUnit" eSuperTypes="#//FrModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeDefinition" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../ccsds.fr.type.model/model/frtypes.ecore#//TypeDefinition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subDataUnit" upperBound="-1"
+        eType="#//DataUnit" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

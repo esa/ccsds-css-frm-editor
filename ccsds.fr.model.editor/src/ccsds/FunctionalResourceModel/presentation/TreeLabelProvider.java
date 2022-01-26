@@ -1,5 +1,6 @@
 package ccsds.FunctionalResourceModel.presentation;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewer;
@@ -9,10 +10,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
+import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.fr.type.model.frtypes.ExportWriter;
+import ccsds.fr.type.model.frtypes.TypeDefinition;
+import ccsds.fr.type.model.frtypes.util.FrTypesUtil;
 import ccsds.fr.utility.FrUtility;
 import ccsds.oids.OidTree;
 
@@ -53,8 +57,37 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			}
 			
 			return frStringList.toString();
+		} else if(element instanceof DataUnit) {
+			// TODO: implement tooltip for all subDataUnits and all TypeDefinitions ASN.1
+			StringBuffer output = new StringBuffer();
+			printDataUnit((DataUnit)element, output);
+			
+			return output.toString();
 		}
 		return null;
+	}
+	
+	/**
+	 * Prints the given DataUnit to the given StringBuffer, types as ASN.1
+	 * @param du		The DataUnit to print
+	 * @param output	The output to print to
+	 */
+	private void printDataUnit(DataUnit du, StringBuffer output) {		
+		if(du.getClassifier() != null) {
+			output.append(FrTypesUtil.createAsnComment(du.getClassifier(), 0) 
+					+ System.lineSeparator() + System.lineSeparator());
+		}
+		
+		EList<TypeDefinition> tds = du.getTypeDefinition();
+		for(TypeDefinition td : tds) {
+			td.writeAsn1(0, output);
+		}
+		
+		EList<DataUnit> dus = du.getSubDataUnit();
+		for(DataUnit subDu : dus) {
+			printDataUnit(subDu, output);
+			output.append(System.lineSeparator());
+		}
 	}
 
 	@Override

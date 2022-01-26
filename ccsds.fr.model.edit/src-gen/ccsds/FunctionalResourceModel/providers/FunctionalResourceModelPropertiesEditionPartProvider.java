@@ -7,6 +7,7 @@ import ccsds.FunctionalResourceModel.parts.FunctionalResourceModelViewsRepositor
 
 import ccsds.FunctionalResourceModel.parts.forms.AncillaryInterfacePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.AnnotationPropertiesEditionPartForm;
+import ccsds.FunctionalResourceModel.parts.forms.DataUnitPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.DirectivePropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.EventPropertiesEditionPartForm;
 import ccsds.FunctionalResourceModel.parts.forms.FrModelElementPropertiesEditionPartForm;
@@ -23,6 +24,7 @@ import ccsds.FunctionalResourceModel.parts.forms.ValuePropertiesEditionPartForm;
 
 import ccsds.FunctionalResourceModel.parts.impl.AncillaryInterfacePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.AnnotationPropertiesEditionPartImpl;
+import ccsds.FunctionalResourceModel.parts.impl.DataUnitPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.DirectivePropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.EventPropertiesEditionPartImpl;
 import ccsds.FunctionalResourceModel.parts.impl.FrModelElementPropertiesEditionPartImpl;
@@ -153,6 +155,12 @@ public class FunctionalResourceModelPropertiesEditionPartProvider implements IPr
 				return new AnnotationPropertiesEditionPartImpl(component);
 			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
 				return new AnnotationPropertiesEditionPartForm(component);
+		}
+		if (key == FunctionalResourceModelViewsRepository.DataUnit.class) {
+			if (kind == FunctionalResourceModelViewsRepository.SWT_KIND)
+				return new DataUnitPropertiesEditionPartImpl(component);
+			if (kind == FunctionalResourceModelViewsRepository.FORM_KIND)
+				return new DataUnitPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

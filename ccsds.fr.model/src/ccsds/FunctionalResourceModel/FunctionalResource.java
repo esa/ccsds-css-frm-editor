@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getServiceAccesspoint <em>Service Accesspoint</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.FunctionalResource#getDataUnit <em>Data Unit</em>}</li>
  * </ul>
  *
  * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource()
@@ -125,5 +126,21 @@ public interface FunctionalResource extends FrModelElement {
 	 * @generated
 	 */
 	EList<AncillaryInterface> getProvidedAncillaryInterface();
+
+	/**
+	 * Returns the value of the '<em><b>Data Unit</b></em>' containment reference list.
+	 * The list contents are of type {@link ccsds.FunctionalResourceModel.DataUnit}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Unit</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Unit</em>' containment reference list.
+	 * @see ccsds.FunctionalResourceModel.FunctionalResourceModelPackage#getFunctionalResource_DataUnit()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<DataUnit> getDataUnit();
 
 } // FunctionalResource

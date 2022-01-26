@@ -3,6 +3,7 @@
 package ccsds.FunctionalResourceModel.impl;
 
 import ccsds.FunctionalResourceModel.AncillaryInterface;
+import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getUses <em>Uses</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getServiceAccesspoint <em>Service Accesspoint</em>}</li>
  *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getProvidedAncillaryInterface <em>Provided Ancillary Interface</em>}</li>
+ *   <li>{@link ccsds.FunctionalResourceModel.impl.FunctionalResourceImpl#getDataUnit <em>Data Unit</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,6 +99,16 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * @ordered
 	 */
 	protected EList<AncillaryInterface> providedAncillaryInterface;
+
+	/**
+	 * The cached value of the '{@link #getDataUnit() <em>Data Unit</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDataUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DataUnit> dataUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,6 +206,18 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<DataUnit> getDataUnit() {
+		if (dataUnit == null) {
+			dataUnit = new EObjectContainmentEList<DataUnit>(DataUnit.class, this, FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT);
+		}
+		return dataUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -224,6 +248,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return ((InternalEList<?>)getServiceAccesspoint()).basicRemove(otherEnd, msgs);
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				return ((InternalEList<?>)getProvidedAncillaryInterface()).basicRemove(otherEnd, msgs);
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
+				return ((InternalEList<?>)getDataUnit()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -248,6 +274,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return getServiceAccesspoint();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				return getProvidedAncillaryInterface();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
+				return getDataUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -285,6 +313,10 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				getProvidedAncillaryInterface().clear();
 				getProvidedAncillaryInterface().addAll((Collection<? extends AncillaryInterface>)newValue);
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
+				getDataUnit().clear();
+				getDataUnit().addAll((Collection<? extends DataUnit>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -315,6 +347,9 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				getProvidedAncillaryInterface().clear();
 				return;
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
+				getDataUnit().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -339,6 +374,8 @@ public class FunctionalResourceImpl extends FrModelElementImpl implements Functi
 				return serviceAccesspoint != null && !serviceAccesspoint.isEmpty();
 			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__PROVIDED_ANCILLARY_INTERFACE:
 				return providedAncillaryInterface != null && !providedAncillaryInterface.isEmpty();
+			case FunctionalResourceModelPackage.FUNCTIONAL_RESOURCE__DATA_UNIT:
+				return dataUnit != null && !dataUnit.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

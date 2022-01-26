@@ -140,6 +140,12 @@
                id="ccsds.FunctionalResourceModel.section.Annotation"
                tab="Base">
          </propertySection>
+         <propertySection
+               class="ccsds.FunctionalResourceModel.parts.forms.DataUnitPropertiesEditionPartForm"
+               filter="ccsds.FunctionalResourceModel.providers.DataUnitPropertiesEditionProvider$EditionFilter"
+               id="ccsds.FunctionalResourceModel.section.DataUnit"
+               tab="Base">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

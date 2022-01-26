@@ -220,10 +220,10 @@ public class SizeConstraintImpl extends ConstraintImpl implements SizeConstraint
 	@Override
 	public void writeAsn1(int indentLevel, StringBuffer output) {
 		if (getMin() != getMax()) {
-			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN + " "
+			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN
 					+ getMin() + ExportWriter.UNTIL + getMax() + ExportWriter.RPAREN + ExportWriter.RPAREN);
 		} else {
-			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN + " "
+			output.append(ExportWriter.BLANK + ExportWriter.LPAREN + ExportWriter.SIZE + ExportWriter.LPAREN
 					+ getMin() + ExportWriter.RPAREN + ExportWriter.RPAREN);
 		}
 		output.append(ExportWriter.BLANK);
