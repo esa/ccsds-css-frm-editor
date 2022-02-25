@@ -32,6 +32,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+
+import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FunctionalResource;
@@ -521,6 +523,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addEventTypesAndOids(frModule, fr.getEvent(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
+					addDataUnits(frModule, fr.getDataUnit(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					
 					final String frXsdFile = fr.getClassifier() + ".xsd";
 					writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + frXsdFile, frModule);
@@ -563,6 +566,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			addParamTypesAndOids(module, fr.getParameter(), exports, cmdUpdateTypeDefinition, editingDomain);
 			addEventTypesAndOids(module, fr.getEvent(), exports, cmdUpdateTypeDefinition, editingDomain);
 			addDirectiveTypesAndOids(module, fr.getDirectives(), exports, cmdUpdateTypeDefinition, editingDomain);
+			addDataUnits(module, fr.getDataUnit(), exports, cmdUpdateTypeDefinition, editingDomain);
 		}
 		
 		if(module.getName() == null || module.getName().length() == 0) {
@@ -667,6 +671,24 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		}
 	}
 
+	/**
+	 * Adds the type defintions of DataUnit objects to the given module
+	 * @param module					The module to add the type definitions to 
+	 * @param dataUnit					The list of data units, which type definitions shall be added to the module
+	 * @param exports					The exports for 
+	 * @param cmdUpdateTypeDefinition	A compound command to update the data unit 
+	 * @param editingDomain
+	 */
+	private void addDataUnits(Module module, EList<DataUnit> dataUnits, List<String> exports,
+			CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {
+		for(DataUnit du : dataUnits) {
+			for(TypeDefinition td : du.getTypeDefinition()) {
+				module.getTypeDefinition().add(EcoreUtil.copy(td)); // copy, otherwise the tpye definition is removed from the original data unit
+			}			
+			addDataUnits(module, du.getSubDataUnit(), exports, cmdUpdateTypeDefinition, editingDomain); // add recursively the type definitions of the sub data units.					
+		}
+	}	
+	
 	@Override
 	public boolean isEnabled() {
 		IEditorPart ep = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();

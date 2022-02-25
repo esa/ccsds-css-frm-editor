@@ -12,7 +12,6 @@ import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
-import ccsds.fr.utility.FrUtility;
 
 /**
  * For XSD export all configuration parameter shall be below an FR XSD type.
@@ -21,6 +20,9 @@ import ccsds.fr.utility.FrUtility;
  */
 public class FrXsdExportAdapter extends TypeDefinitionImpl {
 
+	private static final String YES = "yes";
+	private static final String TRUE = "true";
+	private static final String ANNOTATION_SUPPRESS = "suppress";
 	private final FunctionalResource fr;
 
 	public FrXsdExportAdapter(FunctionalResource fr) {
@@ -59,10 +61,13 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		
 		try {
 			for( Parameter p : fr.getParameter()) {
-				if((p.isConfigured() || ExportWriterContext.instance().getGenerateFrim()) && p.getTypeDef() != null) {
-					XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
-							new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
-							new XmlAttribute(XmlHelper.MIN_OCCURS, "0"));
+				if((p.isConfigured() && suppressConfigParam(p.getAnnotation()) == false )  
+						|| ExportWriterContext.instance().getGenerateFrim()) {
+					if(p.getTypeDef() != null) {
+						XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
+								new XmlAttribute(XmlHelper.MIN_OCCURS, "0"));
+					}
 				}
 			}
 		} catch(Exception e) {
@@ -188,9 +193,29 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	private boolean isDynamicFr(EList<Annotation> annotation) {
 		for(Annotation anno : annotation) {
 			if(anno.getName().equalsIgnoreCase("dynamic") && 
-					anno.getValue().equalsIgnoreCase("true")) {
+					anno.getValue().equalsIgnoreCase(TRUE)) {
 				return true;
 			}
+		}
+		return false;
+	}	
+	
+	/**
+	 * Checks the given annotations if for an annotation 'suppress' which is set to 'true'
+	 * @param annotation 	The annotations of a parameter
+	 * @return 				Returns true if is the annotation 'suppress' which is set to 'true'
+	 */
+	private boolean suppressConfigParam(EList<Annotation> annotation) {
+		try {
+			for(Annotation a : annotation) {
+				if(a.getName().equalsIgnoreCase(ANNOTATION_SUPPRESS) 
+						&& (a.getValue().equalsIgnoreCase(TRUE) || a.getValue().equalsIgnoreCase(YES))) {
+					return true;
+				}
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		return false;
 	}	

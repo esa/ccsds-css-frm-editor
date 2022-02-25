@@ -57,8 +57,7 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			}
 			
 			return frStringList.toString();
-		} else if(element instanceof DataUnit) {
-			// TODO: implement tooltip for all subDataUnits and all TypeDefinitions ASN.1
+		} else if(element instanceof DataUnit) {			
 			StringBuffer output = new StringBuffer();
 			printDataUnit((DataUnit)element, output);
 			
