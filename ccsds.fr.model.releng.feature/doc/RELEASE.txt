@@ -1,5 +1,7 @@
 Version 4.2.2 from TBD
 - Address Marcins changes for XSD export
+- Support of Functional Resource Instance Model (FRIM) as XSD
+- Experimental support 'Data Units' under a Functional Resource to specify data units like PDUs. Context: FR for DTN 
 
 Version 4.2.1 from 17.12.2020
 - adapted frm.xsl to have nice ASN.1 formatting in Word imported HTML
