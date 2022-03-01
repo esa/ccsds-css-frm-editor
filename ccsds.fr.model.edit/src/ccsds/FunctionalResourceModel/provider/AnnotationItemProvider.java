@@ -125,11 +125,16 @@ public class AnnotationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		String label = ((Annotation)object).getName();
+		
+		if(label != null && ((Annotation)object).getValue() != null) {
+			label = label + ": " + ((Annotation)object).getValue();
+		}
+		
 		return label == null || label.length() == 0 ?
 			getString("_UI_Annotation_type") :
 			getString("_UI_Annotation_type") + " " + label;

@@ -10,6 +10,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
+import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
@@ -62,6 +63,8 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 			printDataUnit((DataUnit)element, output);
 			
 			return output.toString();
+		} else if(element instanceof Annotation) {
+			return "Use 'suppress' with a value of 'yes' for configuration parameter not exported to XSD";
 		}
 		return null;
 	}
