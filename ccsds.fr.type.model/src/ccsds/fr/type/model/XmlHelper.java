@@ -836,6 +836,10 @@ public class XmlHelper {
 		// to go to an annotation:		http://www.eclipse.org/emf/2002/Ecore 
 		// to go to extended metadata:	http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		
+		if(ExportWriterContext.instance().getGenerateFrim() == false) {
+			return; //annotations are only written for FRIM
+		}
+		
 		if(properties == null || properties.size() == 0) {
 			return;
 		}
@@ -886,15 +890,5 @@ public class XmlHelper {
 		properties.put(SEMANTIC_DEFINITION_PROP, semanticDefinition);
 		
 		return properties;
-	}
-	
-	/**
-	 * Removes an eventually existing property of the Semantinc Definition
-	 * @param properties
-	 */
-	private static void clearPropemanticDef(Map<String, String> properties) {
-		if(properties != null) {
-			properties.remove(SEMANTIC_DEFINITION_PROP);
-		}
 	}
 }
