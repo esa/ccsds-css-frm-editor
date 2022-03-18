@@ -1,5 +1,6 @@
 package ccsds.fr.type.model;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -672,7 +673,7 @@ public class XmlHelper {
 				new XmlAttribute(XmlHelper.BASE, ExportWriterContext.instance().getCurrentBaseType()));
 		
 		XmlHelper.writeAttributeSpec(output, indentLevel+3, XmlHelper.VALUE, typeName.getValue(), XmlHelper.REQUIRED);
-		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
+		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, XmlHelper.getClassifier(object));
 		XmlHelper.writeOidAttribute(output, indentLevel+3, oid, properties);
 
 		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.EXTENSION);
@@ -708,14 +709,35 @@ public class XmlHelper {
 		XmlHelper.writeEndElement(output, indentLevel+3, XmlHelper.SEQUENCE);
 		
 		XmlHelper.writeOidAttribute(output, indentLevel+3, oid, properties);
-		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, typeName.getValue());
+		XmlHelper.writeFixedStringAttributeSpec(output, indentLevel+3, XmlHelper.CLASSIFIER, XmlHelper.getClassifier(object));
 		XmlHelper.writeEndElement(output, indentLevel+2, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);
 	}	
 	
 	/**
-	 * Makes the first cha lowercase
+	 * Reflective call to a getClassifier method of a parent container returning a String
+	 * Note: the reflective approach is used to avoid a dependency of the type model to the FR model
+	 * @param object	The object for which the classifier is searched (or in it'sparents)
+	 * @return			the classifier string or null if not found
+	 */
+	private static String getClassifier(EObject object) {
+		if(object != null) {
+			try {
+				Method getClassiferMethod = object.getClass().getMethod("getClassifier");
+				if(getClassiferMethod.getGenericReturnType().getTypeName().equals("java.lang.String")) {
+					return (String) getClassiferMethod.invoke(object);
+				}
+				getClassifier(object.eContainer());
+			} catch (Exception e) {
+				return getClassifier(object.eContainer());
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Makes the first char lower case
 	 * @param s
 	 * @return
 	 */

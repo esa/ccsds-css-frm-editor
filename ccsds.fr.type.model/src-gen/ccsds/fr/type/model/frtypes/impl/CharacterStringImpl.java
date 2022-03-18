@@ -355,9 +355,9 @@ public class CharacterStringImpl extends SimpleSizeConstrainedTypeImpl implement
 
 		if (oid != null) {
 			XmlAttribute typeAttr = XmlHelper.getTypeNameAttr(this);
-			if (hasConstraints == false) {
-				typeAttr = new XmlAttribute(XmlHelper.NAME, XmlHelper.STRING);
-			}
+//			if (hasConstraints == false) {
+//				typeAttr = new XmlAttribute(XmlHelper.NAME, XmlHelper.STRING);
+//			}
 
 			XmlHelper.writeSimpleNamedType(indentLevel, output, XmlHelper.getNamedTypeNameAttr(this), typeAttr, oid,
 					this, properties);
