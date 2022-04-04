@@ -372,6 +372,7 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 			final String key = "ecore:documentRoot";
 			if(properties != null && properties.get(key) != null) {
 				attributes.add(new XmlAttribute(key, properties.get(key)));
+				properties.remove(key); // only needed at top level
 			}
 		}
 		attributes.add(new XmlAttribute(XmlHelper.targetNamespace, XmlHelper.getTargetNamespace()));

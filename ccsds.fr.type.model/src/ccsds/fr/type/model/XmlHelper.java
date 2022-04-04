@@ -667,6 +667,8 @@ public class XmlHelper {
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
 		
+		writePropertiesAsAnno(output, indentLevel+1, properties);
+		
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
@@ -697,6 +699,7 @@ public class XmlHelper {
 //				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, getFrBaseElement(ExportWriterContext.instance().getCurrentStratumElement())));
 		
 		XmlHelper.writeStartElement(output, indentLevel, XmlHelper.COMPLEX_TYPE, namedType);
+		writePropertiesAsAnno(output, indentLevel+1, properties);		
 		XmlHelper.writeStartElement(output, indentLevel+1, XmlHelper.COMPLEX_CONTENT);
 		//XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.CSSM_ABSTRACT_PARAM_TYPE));
 		XmlHelper.writeStartElement(output, indentLevel+2, XmlHelper.EXTENSION, 
@@ -839,7 +842,8 @@ public class XmlHelper {
 
 
 	/**
-	 * Writes an annotation to the XSD, which is understood as a ecore extended metadata
+	 * Writes an annotation to the XSD, which is understood as a ecore extended metadata for frTypeInfo properties
+	 * Other anotations are written to source=<key> and element value is <value>
 	 * @param output			Output stream to wrtie to
 	 * @param indentLevel		Level of indent
 	 * @param properties		A propery map written. Cleared after writing
@@ -857,30 +861,34 @@ public class XmlHelper {
 	public static void writePropertiesAsAnno(StringBuffer output, int indentLevel, Map<String, String> properties) {
 		// to go to an annotation:		http://www.eclipse.org/emf/2002/Ecore 
 		// to go to extended metadata:	http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-		
-		if(ExportWriterContext.instance().getGenerateFrim() == false) {
-			return; //annotations are only written for FRIM
-		}
-		
+				
 		if(properties == null || properties.size() == 0) {
 			return;
 		}
 		
 		writeStartElement(output, indentLevel++, ANNOTATION);
-		for(String propertyKey : properties.keySet()) {			
-			writeStartElement(output, indentLevel, APPINFO, 
-					new XmlAttribute(SOURCE, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"), 
-					new XmlAttribute(ECORE_KEY, propertyKey));
-			output.append(CDATA_START);
-			output.append(properties.get(propertyKey));
-			output.append(CDATA_END);
-			writeEndElementNoLb(output, indentLevel, APPINFO);
+		for(String propertyKey : properties.keySet()) {
+			if(propertyKey.equals(FR_TYPE_INFO) && ExportWriterContext.instance().getGenerateFrim() == true) {				
+				writeStartElement(output, indentLevel, APPINFO, 
+						new XmlAttribute(SOURCE, "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"), 
+						new XmlAttribute(ECORE_KEY, propertyKey));
+				output.append(CDATA_START);
+				output.append(properties.get(propertyKey));
+				output.append(CDATA_END);
+				writeEndElementNoLb(output, indentLevel, APPINFO);
+			} else if(propertyKey.equals(FR_TYPE_INFO) == false) {
+				writeStartElement(output, indentLevel, APPINFO, 
+						new XmlAttribute(SOURCE, propertyKey)); // TODO: do we need here a URL for the source attribute?
+				output.append(CDATA_START);
+				output.append(properties.get(propertyKey));
+				output.append(CDATA_END);
+				writeEndElementNoLb(output, indentLevel, APPINFO);				
+			}
 		}
 		writeEndElement(output, --indentLevel, ANNOTATION);
 		
 		properties.clear();
 	}
-
 	
 	/**
 	 * Adds the given semantic definition to given properties

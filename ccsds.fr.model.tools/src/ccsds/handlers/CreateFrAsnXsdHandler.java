@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
+import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.DataUnit;
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
@@ -626,7 +627,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	private void addParamTypesAndOids(Module module, EList<Parameter> frmParameters, List<String> exports, CompoundCommand cmdUpdateTypeDefinitions, EditingDomain editingDomain) {
 		for(Parameter param : frmParameters) {
 			if(param.getTypeDef() != null) {
-				Map<String, String> properties = XmlHelper.putPropSemanticDef(param.getSemanticDefinition(), null);				
+				Map<String, String> properties = XmlHelper.putPropSemanticDef(param.getSemanticDefinition(), null);
+				annotationsToProps(param.getAnnotation(), properties);
 				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), PARAM, param.getSemanticDefinition(), exports, properties));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
@@ -645,7 +647,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			module.getTypeDefinition().add(new TypeDefinitionProxy(directive.getClassifier(), null, directive.getOid(), DIRECTIVE, directive.getSemanticDefinition(), exports));
 			for(Qualifier qualifier : directive.getQualifier()) {
 				if(qualifier.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), QUALIFIER, qualifier.getSemanticDefinition(), exports));
+					Map<String, String> properties = annotationsToProps(qualifier.getAnnotation(), new HashMap<String, String>());
+					module.getTypeDefinition().add(new TypeDefinitionProxy(qualifier.getClassifier(), qualifier.getTypeDef(), qualifier.getTypeOid(), QUALIFIER, qualifier.getSemanticDefinition(), exports, properties));
 					updateTypeDefinitionString(qualifier, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -664,7 +667,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			module.getTypeDefinition().add(new TypeDefinitionProxy(event.getClassifier(), null, event.getOid(), EVENT, event.getSemanticDefinition(), exports));
 			for(Value value : event.getValue()) {
 				if(value.getTypeDef() != null) {
-					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(),VALUE, value.getSemanticDefinition(), exports));
+					Map<String, String> properties = annotationsToProps(value.getAnnotation(), new HashMap<String, String>());
+					module.getTypeDefinition().add(new TypeDefinitionProxy(value.getClassifier(), value.getTypeDef(), value.getTypeOid(),VALUE, value.getSemanticDefinition(), exports, properties));
 					updateTypeDefinitionString(value, cmdUpdateTypeDefinitions, editingDomain);
 				}
 			}
@@ -688,6 +692,22 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			addDataUnits(module, du.getSubDataUnit(), exports, cmdUpdateTypeDefinition, editingDomain); // add recursively the type definitions of the sub data units.					
 		}
 	}	
+	
+	/**
+	 * Transfers the annotations into properties
+	 * @param annotations	The annotations to be transferred
+	 * @param properties	The properties holding the converted annotations
+	 * @return 				The potentially modified properties
+	 */
+	private Map<String, String> annotationsToProps(EList<Annotation> annotations, Map<String, String> properties) {
+		if(annotations == null || properties == null) {
+			return properties;
+		}
+		
+		annotations.forEach( a -> {properties.put(a.getName(), a.getValue());} );
+		
+		return properties;
+	}
 	
 	@Override
 	public boolean isEnabled() {
