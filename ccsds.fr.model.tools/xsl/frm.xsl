@@ -54,12 +54,24 @@
 								<a>			
 									<table align="center" width="100%" border="0">
 										<h2 align="left"></h2>
-										<a name="{TOC-ID}"></a>
+										<a name="{TOC-ID}"></a>																				
 										<xsl:for-each select="functionalResource">
+											
+											<xsl:variable name="color">
+												<xsl:choose>
+													<xsl:when test="@authorizingEntity">	
+														<xsl:value-of select="'lightgreen'"/>											
+													</xsl:when>
+													<xsl:otherwise>
+														<xsl:value-of select="'yellow'"/>
+													</xsl:otherwise>
+												</xsl:choose>			
+											</xsl:variable>																				
+										
 											<tr>
-												<td>
+												<td style="background-color:{$color}">
 													<a href="#{generate-id(.)}">
-														<xsl:value-of select="@classifier" />									
+														<xsl:value-of select="@classifier" />
 													</a>
 												</td>
 											</tr>
@@ -90,6 +102,15 @@
 			<xsl:text>'</xsl:text>
 			<xsl:value-of select="@classifier" />
 			<xsl:text>'</xsl:text>
+			<xsl:choose>
+				<xsl:when test="@authorizingEntity">
+					<xsl:text> authorized by </xsl:text>
+					<xsl:value-of select="@authorizingEntity"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text> (not authorized) </xsl:text>					
+				</xsl:otherwise>
+			</xsl:choose>
 			<a name="{generate-id(.)}"></a>
 			<xsl:text> </xsl:text>
 			<a href="#toc">(back to top)</a>
