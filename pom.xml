@@ -11,9 +11,24 @@
 
 	<properties>
 		<tycho.version>2.3.0</tycho.version>
+		<section>------------------------------------------------------------</section>
 	</properties>
 
+	<name>Functional Resource Editor</name>           
 
+	<licenses>
+		<license>
+			<name>ESA Public License</name>
+			<url>http://TBD</url>
+			<distribution>repo</distribution>
+			<comments></comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>European Space Agency</name>
+		<url>http://www.esa.int</url>
+	</organization>
 
 	<modules>
 		<module>ccsds.fr.model</module>
@@ -99,6 +114,39 @@
 				<version>3.7.1</version>
 			</plugin>
 
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>2.0.0</version>
+				<configuration>
+					<verbose>false</verbose>
+					<addSvnKeyWords>false</addSvnKeyWords>
+					<inceptionYear>2022</inceptionYear>
+					<organizationName>European Space Agency</organizationName>
+					<licenseName>epl_only_v2</licenseName>
+<!--					
+					<processStartTag>${section}</processStartTag>
+					<processEndTag>${section}</processEndTag>
+					<sectionDelimiter>${section}</sectionDelimiter>
+-->					
+					<roots>
+						<root>src</root>
+						<root>src-gen</root>
+					</roots>
+
+				</configuration>
+				<executions>
+				<execution>
+					<id>first</id>
+					<goals>
+					<goal>update-file-header</goal>
+					</goals>
+					<phase>process-sources</phase>
+					<configuration>
+					</configuration>
+				</execution>
+				</executions>
+      		</plugin>      
 
 		</plugins>
 	</build>

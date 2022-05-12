@@ -5,3 +5,4 @@ If the ecore model is updated:
 - Recover the custom OID editor control:
 	checkout OidPropertiesEditionPartForm and OidPropertiesEditionPartImpl, not all user code sections are preserved
 	TODO: find a way to make this user code surviving the code generation
+	Update license headers for new files by running 'mvn license:update-file-header'
