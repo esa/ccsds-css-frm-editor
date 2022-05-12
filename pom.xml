@@ -18,8 +18,8 @@
 
 	<licenses>
 		<license>
-			<name>ESA Public License</name>
-			<url>http://TBD</url>
+			<name>Eclipse Public License v 2.0</name>
+			<url>https://www.eclipse.org/legal/epl-2.0/</url>
 			<distribution>repo</distribution>
 			<comments></comments>
 		</license>
