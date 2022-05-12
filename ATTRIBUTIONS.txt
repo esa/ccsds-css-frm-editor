@@ -3,7 +3,7 @@ ATTRIBUTIONS
 This software includes the following copyrighted works.
 
 Component: Eclipse
-Version: 4.7 (Oxygen)
+Version:
 License: Eclipse Public License 2.0
 https://www.eclipse.org/legal/epl-2.0/
 Home Page: https://projects.eclipse.org/projects/eclipse
