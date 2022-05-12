@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: ccsds.FunctionalResourceModel.presentation.Functional_resourceEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ccsds.FunctionalResourceModel.presentation,
  ccsds.fr.utility
 Require-Bundle: org.eclipse.core.runtime,

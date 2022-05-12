@@ -6,7 +6,7 @@ Bundle-Version: 4.2.2.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ccsds.FunctionalResourceModel,
  ccsds.FunctionalResourceModel.impl,
  ccsds.FunctionalResourceModel.util
