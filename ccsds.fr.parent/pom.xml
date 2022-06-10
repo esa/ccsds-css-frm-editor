@@ -19,20 +19,20 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <!-- The COTS of the FRM editor -->
+  <!-- The COTS of the FRM editor
   <repositories>
     <repository>
       <id>oxygen</id>
       <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/oxygen/</url>
+      <url>https://download.eclipse.org/releases/2021-12/</url>
     </repository>
     <repository>
       <id>sirius</id>
       <layout>p2</layout>
-      <url>https://download.eclipse.org/sirius/updates/releases/6.0.0/oxygen/</url>
+      <url>https://download.eclipse.org/sirius/updates/releases/6.5.1/2020-09/</url>
     </repository>
   </repositories>
-
+-->
   <build>
     <plugins>
       <!-- Extensions to build Eclipse projects -->

@@ -1,7 +1,8 @@
-Version 4.2.2 from TBD
+Version 4.2.2 from 10.06.2022
 - Address Marcins changes for XSD export
 - Support of Functional Resource Instance Model (FRIM) as XSD
-- Experimental support 'Data Units' under a Functional Resource to specify data units like PDUs. Context: FR for DTN
+- Experimental support 'Data Units' under a Functional Resource to specify data units like PDUs. Context: FR for DTN.
+	Missing: OID generation and documentation for 'Data Units'
 - Support of annotations to e.g. suppress XSD export of annotated configuration parameter.  
 
 Version 4.2.1 from 17.12.2020
