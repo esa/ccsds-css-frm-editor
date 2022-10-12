@@ -22,3 +22,4 @@ ccsds.css.oid.model
 ccsds.css.oid.presentation
 ccsds.css.oid.tool
 **/target
+*.versionsBackup
