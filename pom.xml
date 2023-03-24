@@ -69,7 +69,33 @@
 		</site>
 	</distributionManagement>
 
-
+	<profiles>
+		<profile>
+			<!-- Activate this profile to perform the release to GitHub Pages -->
+			<id>release-composite</id>
+			<build>
+				<pluginManagement>
+				<plugins>
+					<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<executions>
+						<execution>
+						<id>default-install</id>
+						<phase>none</phase>
+						</execution>
+					</executions>
+					</plugin>
+					<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+					</plugin>
+				</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -78,6 +104,15 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho.version}</version>
 				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<format>'v'yyyyMMdd'-'HHmm</format>
+				</configuration>
 			</plugin>
 
 			<plugin>
