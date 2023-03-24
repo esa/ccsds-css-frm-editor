@@ -7,6 +7,7 @@
 
 	<properties>
 		<!-- Required properties for releasing -->
+		<!-- The p2 deployment to github follows from https://www.lorenzobettini.it/2021/03/publishing-an-eclipse-p2-composite-repository-on-github-pages/ -->
 		<github-update-repo>https://github.com/hdreihah/ccsds-css-frm-editor-p2.git</github-update-repo>
 		<github-local-clone>${project.build.directory}/checkout</github-local-clone>
 		<releases-directory>${github-local-clone}/releases</releases-directory>
