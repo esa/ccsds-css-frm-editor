@@ -1,3 +1,6 @@
+Version 4.2.3 from 24.3.2023
+- changed maven build to publish p2 as a github page
+
 Version 4.2.2 from 10.06.2022
 - Address Marcins changes for XSD export
 - Support of Functional Resource Instance Model (FRIM) as XSD
