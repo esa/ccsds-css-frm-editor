@@ -4,5 +4,5 @@ https://sanaregistry.org/r/functional_resources/
 A github repository hosting an eclipse p2 update site is available here:
 https://github.com/esa/ccsds-css-frm-editor-p2
 
-Use this URL as an eclipse update site to install and updates the Functional Resource Editor Plugins in eclipse:
+Use this URL as an eclipse update site to install and update the Functional Resource Editor Plugins in eclipse:
 https://esa.github.io/ccsds-css-frm-editor-p2/
