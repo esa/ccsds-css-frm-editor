@@ -170,4 +170,11 @@ plug-ins before installation!!!
          version="4.2.3.qualifier"
          unpack="false"/>
 
+   <plugin
+         id="ccsds.fr.type.model.transform"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

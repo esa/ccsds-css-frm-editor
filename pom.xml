@@ -43,6 +43,7 @@
 		<module>ccsds.fr.type.model</module>
 		<module>ccsds.fr.type.model.edit</module>
 		<module>ccsds.fr.type.model.editor</module>
+		<module>ccsds.fr.type.model.transform</module>	
 	</modules>
 
 	<repositories>
@@ -60,8 +61,8 @@
 
 	<distributionManagement>
 		<repository>
-			<id>vsdenexus</id>
-			<url>https://vsdenexus.esoc.esa.int/nexus/content/sites/cda-p2-site/</url>
+			<id>github.ccsds-css-frm-editor</id>
+			<url>https://maven.pkg.github.com/esa/ccsds-css-frm-editor</url>
 		</repository>
 		<site>
 			<id>vsdenexus</id>
@@ -88,7 +89,7 @@
 					<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<configuration>
-						<skip>true</skip>
+						<skip>false</skip>
 					</configuration>
 					</plugin>
 				</plugins>
