@@ -1,4 +1,4 @@
-package ccsds.tranform;
+package ccsds.transform;
 
 /*-
  * #%L
@@ -34,15 +34,19 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+
 import ccsds.FunctionalResourceModel.Directive;
 import ccsds.FunctionalResourceModel.Event;
 import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResource;
 import ccsds.FunctionalResourceModel.FunctionalResourceModel;
+import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.ServiceAccessPoint;
 import ccsds.fr.model.tools.NameTool;
+import ccsds.fr.type.model.transform.FrTypeTransformer;
 import ccsds.fr.utility.FrUtility;
+import ccsds.handlers.FrXsdExportAdapter;
 
 /**
  * Transforms a Functional Resource Model to the corresponding ecore model for instances
@@ -50,17 +54,37 @@ import ccsds.fr.utility.FrUtility;
  */
 public class FrModelTransformation {
 	
-	private static final String FRI = "fri";
-	private static final String HTTP_ISO_ORG_DOD_CCSDS_FRI = "http://iso.org.dod.ccsds.fri";
-	private EcoreFactory theCoreFactory;
-	private EClass functionalresourceInstanceClass;
-	private EPackage friTopPackage;
-	private EClass abstractParameter;
-	private EClass abstractEvent;
-	private EClass abstractDirective;
+	private static final String TYPES_PACKAGE = "types";
+	private static final String FRI = "fri";	
+	private final EcoreFactory theCoreFactory;
+	private final EClass functionalresourceInstanceClass;	
+	private final EClass functionalresourceInstanceContainerClass;	
+	private final EClass abstractParameter;
+	private final EClass abstractEvent;
+	private final EClass abstractDirective;
+	private final EPackage friTopPackage;
+	private final EPackage commonTypes;
 
 	public FrModelTransformation() {
 		theCoreFactory = EcoreFactory.eINSTANCE;
+		friTopPackage = createEPackage("FunctionalResourceModelInstance", FRI, FrTypeTransformer.HTTP_ISO_ORG_DOD_CCSDS_FRI);
+
+		commonTypes = theCoreFactory.createEPackage();
+		commonTypes.setName("CommonTypes");
+		commonTypes.setNsPrefix("CommonTypes");
+		commonTypes.setNsURI(FrTypeTransformer.HTTP_ISO_ORG_DOD_CCSDS_FRI + FrTypeTransformer.DOT + "commonTypes");
+		friTopPackage.getESubpackages().add(commonTypes);
+
+		// abstract base classes
+		abstractParameter = createAbstractParameter(commonTypes);
+		abstractEvent = createEventClass(commonTypes);
+		abstractDirective = createDirectiveClass(commonTypes);
+
+		functionalresourceInstanceClass = createFunctionalResourceInstance(commonTypes);
+		functionalresourceInstanceContainerClass = createFunctionalResourceInstanceContainer(commonTypes, functionalresourceInstanceClass);
+
+		EClass fgClass = createFunctionalGroupClass(commonTypes, functionalresourceInstanceClass);		
+		createFunctionalComplexClass(friTopPackage, fgClass);
 	}
 	
 	/**
@@ -73,36 +97,16 @@ public class FrModelTransformation {
 		try {
 			FunctionalResourceModel frm = FrUtility.loadFrm(frModelFile.getFullPath().toString());
 			
-			friTopPackage = createEPackage("FunctionalResourceModelInstance", FRI, HTTP_ISO_ORG_DOD_CCSDS_FRI);
-			
-			// create globally needed classes and make them available to the ecore package and the transformation
-			functionalresourceInstanceClass = createFunctionalResourceInstance();
-
-			// abstract base classes
-			abstractParameter = createAbstractParameter();
-			abstractEvent = createEventClass();
-			abstractDirective = createDirectiveClass();
-
-//			// create a service user class needed for modelling
-//			srvUserClass = createServiceUser();
-//			
-//			// create the entity management class
-//			EClass entityMgmtClass = createEntityMgmntClass();
-//			
-//			// create the top-level classes complex and network
-//			EClass complexClass = createComplexClass();			
-//			createNetworkClass(complexClass);
-			
-			// iterate over the functional resource model and map to target ecore elements (classes)
+			FrTypeTransformer typeTransformer = new FrTypeTransformer(commonTypes);
 			
 			FunctionalResource[] frArray = FrUtility.getFunctionalResources(frm);
 			for(FunctionalResource fr : frArray) {
 				//createDerivedFrInstance(fr, complexClass);
-				createDerivedFrInstance(fr, null);
+				createDerivedFrInstance(friTopPackage, fr, null, typeTransformer);
 			}
 		
 			//createDependencyForUse(FrUtility.getFunctionalResources(frm));
-			createDependencyForSap(FrUtility.getFunctionalResources(frm));
+			createDependencyForSap(friTopPackage, FrUtility.getFunctionalResources(frm));
 			
 			// save the new ecore model
 			ResourceSet metaResourceSet = new ResourceSetImpl();
@@ -155,15 +159,30 @@ public class FrModelTransformation {
 		return ecorePackage;
 	}
 	
-	private EClass createFunctionalResourceInstance() {
+	private EClass createFunctionalResourceInstance(EPackage friTopPackage) {
 		EClass frInstance = theCoreFactory.createEClass();
 		frInstance.setName("FunctionalResourceInstance");
+		
+		EAttribute semanticDescrAttr = theCoreFactory.createEAttribute();
+		semanticDescrAttr.setName("name");
+		semanticDescrAttr.setEType(EcorePackage.eINSTANCE.getEString());		
+		semanticDescrAttr.setUpperBound(1);
+		frInstance.getEStructuralFeatures().add(semanticDescrAttr);
 		
 		friTopPackage.getEClassifiers().add(frInstance);
 		return frInstance;
 	}
 
-	private EClass createAbstractParameter() {
+	private EClass createFunctionalResourceInstanceContainer(EPackage friTopPackage, EClass parent) {
+		EClass frInstanceContainer = theCoreFactory.createEClass();
+		frInstanceContainer.setName("FunctionalResourceInstanceContainer");
+		frInstanceContainer.getESuperTypes().add(parent);
+		friTopPackage.getEClassifiers().add(frInstanceContainer);
+		return frInstanceContainer;
+	}
+	
+	
+	private EClass createAbstractParameter(EPackage friTopPackage) {
 		EClass theClass = theCoreFactory.createEClass();
 		theClass.setName("AbstractParameter");
 		
@@ -171,7 +190,7 @@ public class FrModelTransformation {
 		return theClass;
 	}
 
-	private EClass createEventClass() {
+	private EClass createEventClass(EPackage friTopPackage) {
 		EClass theClass = theCoreFactory.createEClass();
 		theClass.setName("AbstractEvent");
 		
@@ -179,7 +198,7 @@ public class FrModelTransformation {
 		return theClass;
 	}
 
-	private EClass createDirectiveClass() {
+	private EClass createDirectiveClass(EPackage friTopPackage) {
 		EClass theClass = theCoreFactory.createEClass();
 		theClass.setName("AbstractDirective");
 		
@@ -191,17 +210,18 @@ public class FrModelTransformation {
 	/**
 	 * Creates a Functional resource Instance derived from functionalresourceInstanceClass EClass according to the FunctionalResource
 	 * and add it to the the given package
-	 * @param friTopPackage 	the package to which the created class is added
-	 * @param fr			the FunctionalResource used as a template for the new class.
-	 * @param complexClass 
+	 * @param friTopPackage 	The package to which the created class is added
+	 * @param fr				The FunctionalResource used as a template for the new class.
+	 * @param complexClass 		 
+	 * @param typeTransformer 	The type transformer to use for fr.type.model types 
 	 * @return 
 	 */
-	private EClass createDerivedFrInstance(FunctionalResource fr, EClass complexClass) {
+	private void createDerivedFrInstance(EPackage friTopPackage, FunctionalResource fr, EClass complexClass, FrTypeTransformer typeTransformer) {
 				
 		EClass frInstanceClass = theCoreFactory.createEClass();
 		frInstanceClass.setName(NameTool.wellFormed(fr.getClassifier()));
 		frInstanceClass.getESuperTypes().add(functionalresourceInstanceClass);
-		
+				
 		EPackage frPackage = createEPackage("Fr"+frInstanceClass.getName(), "frp"+frInstanceClass.getName(), "http://iso.org.dod.ccsds."+frInstanceClass.getName());
 
 		EAttribute instanceNo = theCoreFactory.createEAttribute();
@@ -219,7 +239,6 @@ public class FrModelTransformation {
 		semanticDescrAttr.setUpperBound(1);
 		frInstanceClass.getEStructuralFeatures().add(semanticDescrAttr);
 				
-
 		// add an attribute of the created FRI type to the complex class
 		EReference frList = theCoreFactory.createEReference();
 		frList.setName(deriveClassName(fr));
@@ -238,7 +257,12 @@ public class FrModelTransformation {
 
 		//createManagementClass(fr, frInstanceClass);
 		
-		List<EClass> paramClasses = createParamClasses(frPackage, frInstanceClass, fr.getParameter());
+		EPackage typePackage = theCoreFactory.createEPackage();
+		frPackage.getESubpackages().add(typePackage);
+		typePackage.setName(TYPES_PACKAGE);
+		typePackage.setNsPrefix(TYPES_PACKAGE + FrTypeTransformer.DOT + frInstanceClass.getName());
+		typePackage.setNsURI(FrTypeTransformer.HTTP_ISO_ORG_DOD_CCSDS_FRI + FrTypeTransformer.DOT + TYPES_PACKAGE + FrTypeTransformer.DOT + frInstanceClass.getName());
+		List<EClass> paramClasses = createParamClasses(frPackage, frInstanceClass, fr.getParameter(), typeTransformer, typePackage);
 		addReferences(frInstanceClass, paramClasses);
 		
 		List<EClass> eventClasses = createEventClasses(frPackage, frInstanceClass, fr.getEvent());
@@ -246,8 +270,25 @@ public class FrModelTransformation {
 
 		List<EClass> directiveClasses = createDirectiveClasses(frPackage, frInstanceClass, fr.getDirectives());
 		addReferences(frInstanceClass, directiveClasses);
+
+		// create an FR Instance container if necessary
+		if(FrXsdExportAdapter.isDynamicFr(fr.getAnnotation())) {
+			EClass frInstanceContainer = theCoreFactory.createEClass();
+			frInstanceContainer.setName(frInstanceClass.getName() + "Container");
+			frInstanceContainer.getESuperTypes().add(functionalresourceInstanceContainerClass);
+			
+			EReference instances = theCoreFactory.createEReference();			
+			instances.setName("frInstances");
+			instances.setContainment(true);
+			instances.setEType(frInstanceClass);
+			instances.setLowerBound(0);
+			instances.setUpperBound(-1);
+			
+			frInstanceContainer.getEStructuralFeatures().add(instances);
+			frPackage.getEClassifiers().add(frInstanceContainer);			
+		}
+
 		
-		return frInstanceClass;
 	}
 
 	/**
@@ -259,9 +300,9 @@ public class FrModelTransformation {
 	private List<EClass> createEventClasses(EPackage thePackage, EClass parent, EList<Event> events) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Event event : events) {
-			String name = deriveClassName(event);
+			String name = deriveClassName(event) + "Event";
 					
-			name = getUniqueClassifierName(parent.getName(), name);
+			name = getUniqueClassifierName(thePackage, parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractEvent);
@@ -298,9 +339,9 @@ public class FrModelTransformation {
 	private List<EClass> createDirectiveClasses(EPackage thePackage, EClass parent, EList<Directive> directives) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Directive directive : directives) {
-			String name = deriveClassName(directive);
+			String name = deriveClassName(directive) + "Directive";
 					
-			name = getUniqueClassifierName(parent.getName(), name);
+			name = getUniqueClassifierName(thePackage, parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractDirective);
@@ -332,15 +373,16 @@ public class FrModelTransformation {
 	
 	/**
 	 * Create a parameter class according to the given parameter list
-	 * @param parameters
+	 * @param parameters			
+	 * @param typeTransformer 
 	 * @return
 	 */
-	private List<EClass> createParamClasses(EPackage thePackage, EClass parent, EList<Parameter> parameters) {
+	private List<EClass> createParamClasses(EPackage thePackage, EClass parent, EList<Parameter> parameters, FrTypeTransformer typeTransformer, EPackage typePackage) {
 		List<EClass> createdClasses = new ArrayList<EClass>();
 		for(Parameter parameter : parameters) {
-			String name = deriveClassName(parameter);
+			String name = deriveClassName(parameter) + "Param";
 					
-			name = getUniqueClassifierName(parent.getName(), name);
+			name = getUniqueClassifierName(thePackage, parent.getName(), name);
 			EClass theClass = theCoreFactory.createEClass();
 			
 			theClass.getESuperTypes().add(abstractParameter);
@@ -353,19 +395,44 @@ public class FrModelTransformation {
 			semanticDescrAttr.setUpperBound(1);
 			theClass.getEStructuralFeatures().add(semanticDescrAttr);
 			
-			EAttribute typeAttr = theCoreFactory.createEAttribute();
-			typeAttr.setName("type");
-			typeAttr.setEType(EcorePackage.eINSTANCE.getEString());		
-			typeAttr.setDefaultValueLiteral(parameter.getTypeDefinition());		
-			typeAttr.setUpperBound(1);
-			theClass.getEStructuralFeatures().add(typeAttr);
+			EAttribute paramOid = theCoreFactory.createEAttribute();
+			paramOid.setName("oid");
+			paramOid.setEType(EcorePackage.eINSTANCE.getEString());		
+			paramOid.setDefaultValueLiteral(oidString(parameter.getOid()));
+			paramOid.setLowerBound(1);			
+			paramOid.setUpperBound(1);
+			paramOid.setUnsettable(true);
+			theClass.getEStructuralFeatures().add(paramOid);
+			
+			
+			
+//			EAttribute typeAttr = theCoreFactory.createEAttribute();
+//			typeAttr.setName("typeString");
+//			typeAttr.setDefaultValueLiteral(parameter.getTypeDefinition());		
+//			typeAttr.setUpperBound(1);
+//			theClass.getEStructuralFeatures().add(typeAttr);
 
-			EAttribute valueAttr = theCoreFactory.createEAttribute();
-			valueAttr.setName("value");
-			valueAttr.setEType(EcorePackage.eINSTANCE.getEString()); // what type to use? we cannot (easily) understand / translate the ASN.1 type definition		
+			EStructuralFeature value = theCoreFactory.createEAttribute();
+			
+			try {
+				EClassifier typeClassifier = typeTransformer.getEcore(parameter.getTypeDef(), typePackage);
+
+				// create a refercens if the value attribute is EClass and not EDatatype (enum, int, etc)
+				if(typeClassifier instanceof EClass) {
+					value = theCoreFactory.createEReference();
+					((EReference)value).setContainment(true);
+				}
+				value.setName("value");
+				value.setEType(typeClassifier);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			//valueAttr.setDefaultValueLiteral(parameter.getTypeDefinition());		
-			valueAttr.setUpperBound(1);
-			theClass.getEStructuralFeatures().add(valueAttr);			
+			value.setUpperBound(1);
+			theClass.getEStructuralFeatures().add(value);			
 
 //			EAttribute monitorAttr = theCoreFactory.createEAttribute();
 //			monitorAttr.setName("monitored");
@@ -389,6 +456,7 @@ public class FrModelTransformation {
 			configAttr.setDefaultValue(parameter.isConfigured());
 			configAttr.setChangeable(false);
 			configAttr.setUpperBound(1);
+			configAttr.setUnsettable(true);
 			theClass.getEStructuralFeatures().add(configAttr);			
 			
 			createdClasses.add(theClass);
@@ -435,7 +503,7 @@ public class FrModelTransformation {
 	 * @param frm
 	 */
 	@SuppressWarnings("unused")
-	private void createDependencyForUse(FunctionalResource[] frList) {
+	private void createDependencyForUse(EPackage friTopPackage, FunctionalResource[] frList) {
 		for(FunctionalResource fr : frList) {
 			EClass refSource = getClassByName(deriveClassName(fr), friTopPackage);
 			for(FunctionalResource usedFr : fr.getUses()) {
@@ -463,7 +531,7 @@ public class FrModelTransformation {
 	 * for the created FunctionalresourceInstanceClasses
 	 * @param frList The array of Functional Resources
 	 */
-	private void createDependencyForSap(FunctionalResource[] frList) {
+	private void createDependencyForSap(EPackage friTopPackage, FunctionalResource[] frList) {
 		for(FunctionalResource fr : frList) {
 			EClass refSource = getClassByName(deriveClassName(fr), friTopPackage);
 			List<String> sapNames = new LinkedList<String>();
@@ -530,6 +598,80 @@ public class FrModelTransformation {
 	}
 	
 	/**
+	 * Create a functional group class in the given package
+	 * @param frPackage
+	 */
+	private EClass createFunctionalGroupClass(EPackage frPackage, EClass functionalresourceInstanceClass) {
+		EClass functionalGroupClass = theCoreFactory.createEClass();
+		frPackage.getEClassifiers().add(functionalGroupClass);
+		
+		functionalGroupClass.setName("FunctionalGroup");
+		
+		EAttribute fgName = theCoreFactory.createEAttribute();
+		fgName.setName("name");
+		functionalGroupClass.getEStructuralFeatures().add(fgName);
+		fgName.setEType(EcorePackage.eINSTANCE.getEString());
+		fgName.setLowerBound(0);
+		fgName.setUpperBound(1);
+		
+		
+		EReference frInstances = theCoreFactory.createEReference();
+		frInstances.setName("frInstances");
+		frInstances.setContainment(true);
+		frInstances.setEType(functionalresourceInstanceClass);
+		frInstances.setLowerBound(0);
+		frInstances.setUpperBound(-1);
+		functionalGroupClass.getEStructuralFeatures().add(frInstances);
+		
+		EReference subFunctionalGroups = theCoreFactory.createEReference();
+		subFunctionalGroups.setName("subGroups");
+		subFunctionalGroups.setContainment(true);
+		subFunctionalGroups.setEType(functionalGroupClass);
+		subFunctionalGroups.setLowerBound(0);
+		subFunctionalGroups.setUpperBound(-1);		
+		functionalGroupClass.getEStructuralFeatures().add(subFunctionalGroups);
+		
+		return functionalGroupClass;
+	}
+
+	/**
+	 * Create a Complex class in the given package
+	 * @param frPackage
+	 * @param fgClass 
+	 */
+	private void createFunctionalComplexClass(EPackage frPackage, EClass fgClass) {
+		EClass complexClass = theCoreFactory.createEClass();
+		frPackage.getEClassifiers().add(complexClass);
+		
+		complexClass.setName("Complex");
+		
+		EAttribute name = theCoreFactory.createEAttribute();
+		name.setName("name");
+		complexClass.getEStructuralFeatures().add(name);
+		name.setEType(EcorePackage.eINSTANCE.getEString());
+		name.setLowerBound(0);
+		name.setUpperBound(1);
+		
+		
+		EReference frInstances = theCoreFactory.createEReference();
+		frInstances.setName("frInstances");
+		frInstances.setContainment(true);
+		frInstances.setEType(functionalresourceInstanceClass);
+		frInstances.setLowerBound(0);
+		frInstances.setUpperBound(-1);
+		complexClass.getEStructuralFeatures().add(frInstances);
+		
+		EReference subFunctionalGroups = theCoreFactory.createEReference();
+		subFunctionalGroups.setName("subGroups");
+		subFunctionalGroups.setContainment(true);
+		subFunctionalGroups.setEType(fgClass);
+		subFunctionalGroups.setLowerBound(0);
+		subFunctionalGroups.setUpperBound(-1);		
+		complexClass.getEStructuralFeatures().add(subFunctionalGroups);
+	}
+	
+	
+	/**
 	 * Creates for each parameter of the given functional resource
 	 * an attribute indicating support capabilities and adds to the FR
 	 * Note: In a similar way one could create a sort of runtime model containing the monitored values
@@ -573,17 +715,17 @@ public class FrModelTransformation {
 //	}
 
 	/**
-	 * Returns a classifier name which is valid within the fro package.
+	 * Returns a classifier name which is valid within the for package.
 	 * Uniqueness is achieved by adding 2..n for duplicated names.
 	 * @param name the name to make unique.
 	 * @return
 	 */
-	private String getUniqueClassifierName(String prefix, String name) {
+	private String getUniqueClassifierName(EPackage thePackage, String prefix, String name) {
 		int num = 0;
 		String orgName = name;
 		EClassifier c = null;
 		do {
-			c = friTopPackage.getEClassifier(name);
+			c = thePackage.getEClassifier(name);
 			
 			if(c == null)
 				return name;
@@ -597,6 +739,22 @@ public class FrModelTransformation {
 		} while(c != null);
 						
 		return name;
+	}	
+	
+	/**
+	 * Returns an OID string for the given OID
+	 */
+	public String oidString(Oid oid) {
+		StringBuffer oidStr = new StringBuffer();
+		for(int idx=0; idx<oid.getOidBit().size(); idx++) {
+			oidStr.append(oid.getOidBit().get(idx));
+			
+			if(idx+1 < oid.getOidBit().size()) {
+				oidStr.append(FrTypeTransformer.DOT);
+			}
+		}
+		
+		return oidStr.toString();
 	}
 	
 }

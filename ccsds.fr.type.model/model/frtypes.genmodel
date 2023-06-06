@@ -116,6 +116,7 @@
         <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/indentLevel"/>
         <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/output"/>
         <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/oid"/>
+        <genParameters ecoreParameter="frtypes.ecore#//ExportWriter/writeXsd/properties"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="frtypes.ecore#//SizeConstrainedType">

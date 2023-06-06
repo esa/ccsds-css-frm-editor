@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="TestPackage" nsURI="fr.test" nsPrefix="tst">
+  <eClassifiers xsi:type="ecore:EClass" name="NullType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectIdentifierType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumeratedType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BitStringType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OctetStringType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CharacterStringType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChoiceType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceOfType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetOfType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Null" eSuperTypes="//NullType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectIdentifier" eSuperTypes="//ObjectIdentifierType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oidBits" upperBound="-1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OctetString" eSuperTypes="//OctetStringType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="octets" upperBound="-1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eSubpackages name="EnumTest">
+    <eClassifiers xsi:type="ecore:EEnum" name="EnumTypeDefinition">
+      <eLiterals name="enumValue1"/>
+      <eLiterals name="enumValue2" value="1"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="LocalTypeReferenceTest">
+    <eClassifiers xsi:type="ecore:EClass" name="TestLocalTypeReference" eSuperTypes="//IntegerType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="//CommonTypes/ReferencedTypeDefinition"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="CommonTypes">
+    <eClassifiers xsi:type="ecore:EClass" name="ReferencedTypeDefinition" eSuperTypes="//IntegerType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1">
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="IntegerTest">
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerTypeDefinition" eSuperTypes="//IntegerType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1">
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" defaultValueLiteral="5" unsettable="true">
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" defaultValueLiteral="10" unsettable="true">
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="ChoiceTest">
+    <eClassifiers xsi:type="ecore:EClass" name="ChoiceTypeDefinition" eSuperTypes="//ChoiceType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="choiceTypeDefinitionBase" lowerBound="1" eType="//ChoiceTest/ChoiceTypeDefinitionBase"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ChoiceTypeDefinitionBase" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerChoice" eSuperTypes="//ChoiceTest/ChoiceTypeDefinitionBase">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="//ChoiceTest/IntegerChoiceValue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerChoiceValue" eSuperTypes="//IntegerType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1">
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnumChoice" eSuperTypes="//ChoiceTest/ChoiceTypeDefinitionBase">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="//ChoiceTest/EnumChoiceValue"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EnumChoiceValue">
+      <eLiterals name="enumValue1"/>
+      <eLiterals name="enumValue2" value="1"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="SequenceOfSequenceTypeTest">
+    <eClassifiers xsi:type="ecore:EClass" name="TestSequenceOfSequenceTypeDefinition"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TestSequenceOfSequenceTypeDefinitionItem"/>
+  </eSubpackages>
+</ecore:EPackage>

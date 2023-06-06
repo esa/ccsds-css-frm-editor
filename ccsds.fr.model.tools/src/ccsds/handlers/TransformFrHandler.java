@@ -21,7 +21,7 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
 
 import ccsds.fr.utility.FrUtility;
-import ccsds.tranform.FrModelTransformation;
+import ccsds.transform.FrModelTransformation;
 
 public class TransformFrHandler extends AbstractHandler implements IHandler {
 

@@ -1,0 +1,63 @@
+package ccsds.fr.type.model.transform;
+
+/*-
+ * #%L
+ * CCSDS Functional Resource Model Tools
+ * %%
+ * Copyright (C) 2022 European Space Agency
+ * %%
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ * #L%
+ */
+
+/**
+ * Utility class for naming 
+ */
+public class NameTool {
+
+	/**
+	 * Transforms the given string to a well formed name
+	 * by eliminating ' ' and '-' char. After such a character
+	 * the name character is capitalised.
+	 * @param name
+	 * @return
+	 */
+	public static String wellFormed(String name) {
+		if(name == null)
+			return null;
+		
+		String forbidden = " -,&/\\";
+		String result = "";
+		String ucName = name.toUpperCase();
+		boolean capitalize = true;
+		
+		for(int idx=0; idx<name.length(); idx++) {
+			if(forbidden.indexOf(name.charAt(idx)) == -1) {
+				if(capitalize == false) {
+					result += name.charAt(idx);
+				} else {					
+					result += ucName.charAt(idx);
+					capitalize = false;
+				}
+				
+			} else {
+				capitalize = true;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * Well formd name with first chanracter lowercase
+	 * @param name
+	 * @return
+	 */
+	public static String wellFormedLc(String name) {
+		String lcName = wellFormed(name);
+		return Character.toLowerCase(lcName.charAt(0)) + lcName.substring(1);
+	}
+}

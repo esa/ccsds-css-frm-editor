@@ -202,9 +202,10 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	 * 	name == dynamic
 	 * 	value == true
 	 * @param annotation
+	 * @return 
 	 * @return
 	 */
-	private boolean isDynamicFr(EList<Annotation> annotation) {
+	public static boolean isDynamicFr(EList<Annotation> annotation) {
 		for(Annotation anno : annotation) {
 			if(anno.getName().equalsIgnoreCase("dynamic") && 
 					anno.getValue().equalsIgnoreCase(TRUE)) {
