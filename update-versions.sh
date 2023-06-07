@@ -1,3 +1,3 @@
 #!/bin/sh
 
-mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=4.2.3-SNAPSHOT
+mvn org.eclipse.tycho:tycho-versions-plugin:1.3.0:set-version -DnewVersion=4.2.4

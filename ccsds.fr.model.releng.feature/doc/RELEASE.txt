@@ -1,3 +1,6 @@
+Version 4.2.4 from 7.6.2023
+- FRM to FRIm ecore transformation creates now ecore classes fr the FRM types
+
 Version 4.2.3 from 24.3.2023
 - changed maven build to publish p2 as a github page
 
