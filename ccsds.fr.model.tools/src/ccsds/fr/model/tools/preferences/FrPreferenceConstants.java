@@ -23,4 +23,8 @@ public class FrPreferenceConstants {
 	
 	public static final String P_FRIM_GENERATION = "frimGenerationPreference";
 	
+	public static final String P_FRM_TARGET_NS = "frmTargetNamespacePreference";
+	
+	public static final String P_FRIM_TARGET_NS = "frimTargetNamespacePreference";
+	
 }

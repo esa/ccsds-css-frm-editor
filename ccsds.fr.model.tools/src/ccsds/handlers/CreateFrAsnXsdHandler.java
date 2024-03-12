@@ -502,9 +502,10 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			}
 			
 			// initialize the context for FRIM generation based on the preferences
-			IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-			boolean generateFrim = store.getBoolean(FrPreferenceConstants.P_FRIM_GENERATION);
-			ExportWriterContext.instance().setGenerateFrim(generateFrim);
+			IPreferenceStore store = Activator.getDefault().getPreferenceStore();			
+			ExportWriterContext.instance().setGenerateFrim(store.getBoolean(FrPreferenceConstants.P_FRIM_GENERATION));
+			ExportWriterContext.instance().setTargetNsFrm(store.getString(FrPreferenceConstants.P_FRM_TARGET_NS));
+			ExportWriterContext.instance().setTargetNsFrim(store.getString(FrPreferenceConstants.P_FRIM_TARGET_NS));
 			
 			// write the general XSD type module
 			ExportWriterContext.instance().setCurrentBaseType(null);

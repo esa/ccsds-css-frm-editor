@@ -40,7 +40,7 @@ public class FrPreferencePage
 	public FrPreferencePage() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("Functional Resoruce Editor");
+		setDescription("Functional Resource Editor");
 	}
 	
 	/**
@@ -55,6 +55,16 @@ public class FrPreferencePage
 				FrPreferenceConstants.P_FRIM_GENERATION,
 				"Generate Functional Resource &Instance XSD (and all parameters)",
 				getFieldEditorParent()));
+		addField(
+				new StringFieldEditor(
+					FrPreferenceConstants.P_FRM_TARGET_NS,
+					"Functional Resource Model XSD Target Namespace",
+					getFieldEditorParent()));
+		addField(
+				new StringFieldEditor(
+					FrPreferenceConstants.P_FRIM_TARGET_NS,
+					"Functional Resource Instance Model XSD Target Namespace",
+					getFieldEditorParent()));
 	}
 
 	/* (non-Javadoc)

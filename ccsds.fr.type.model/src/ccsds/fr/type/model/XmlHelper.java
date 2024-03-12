@@ -77,9 +77,7 @@ public class XmlHelper {
 	
 	public static final String CSSM_PREFIX = "cssm";
 	
-	private static final String CSSM_NS = "urn:ccsds:schema:cssm:1.0.0";
-	
-	private static final String FRIM_NS = "urn/ccsds/schema/cssm/frim";
+	public static final String FRIM_NS = "urn/ccsds/schema/cssm/frim";
 	
 	public static final String CSSM_SCHEMA_PARAM = "SchemaCssmAbstractParameter-v1_0_0.xsd";
 	
@@ -847,9 +845,9 @@ public class XmlHelper {
 
 	public static String getTargetNamespace() {
 		if(ExportWriterContext.instance().getGenerateFrim() == true) {
-			return FRIM_NS;
+			return ExportWriterContext.instance().getTargetNsFrim();
 		} else {
-			return CSSM_NS;
+			return ExportWriterContext.instance().getTargetNsFrm();
 		}
 	}
 	

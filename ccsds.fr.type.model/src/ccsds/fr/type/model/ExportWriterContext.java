@@ -48,6 +48,10 @@ public class ExportWriterContext {
 	private boolean isInStratum;
 	
 	private final List<String> abstractTypes = new LinkedList<String>();
+
+	private String targetNsFrm;
+	
+	private String targetNsFrim;
 	
 	/**
 	 * Private constructor to prevent instantiation
@@ -216,4 +220,21 @@ public class ExportWriterContext {
 		this.isInStratum = isInStratum;
 	}
 
+	public void setTargetNsFrm(String targetNs) {
+		this.targetNsFrm = targetNs;
+		
+	}
+
+	public String getTargetNsFrm() {
+		return this.targetNsFrm;
+	}
+
+	public String getTargetNsFrim() {
+		return targetNsFrim;
+	}
+
+	public void setTargetNsFrim(String targetNsFrim) {
+		this.targetNsFrim = targetNsFrim;
+	}
+	
 }
