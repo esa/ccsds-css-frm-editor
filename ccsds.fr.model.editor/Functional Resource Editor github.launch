@@ -13,7 +13,7 @@
     <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/Functional Resource Editor github"/>
     <booleanAttribute key="default" value="true"/>
     <booleanAttribute key="includeOptional" value="true"/>
-    <stringAttribute key="location" value="${workspace_loc}/../tooling_ws_runtime_github_java11"/>
+    <stringAttribute key="location" value="${env_var:HOME}/.tooling_ws_runtime_github_java11"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.JAVA_COMMAND" value="java"/>
