@@ -106,15 +106,18 @@ public class OidTree {
 //		OidNode functionalResourcesGenericIdentifiers = crossSupprtResources.addChildNode(3, "functionalResourcesGenericIdentifiers");
 
 		OidNode crossSupportFunctionalities = crossSupprtResources.addChildNode(1, "crossSupportFunctionalities");
-//		OidNode frVersion = crossSupportFunctionalities.addChildNode(OidNode.OID_WILDCARD, "fr").
-//			addChildNode(OidNode.OID_WILDCARD, "version");
-		OidNode fr = crossSupportFunctionalities.addChildNode(OidNode.OID_WILDCARD, "fr");
+		OidNode agencyFunctionalities = crossSupprtResources.addChildNode(2, "agencyFunctionalities");
 		
-		fr.addChildNode(1, "parameter-type").addChildNode(OidNode.OID_WILDCARD, "Parameter ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
-		fr.addChildNode(2, "event-type").addChildNode(OidNode.OID_WILDCARD, "Event ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
-		fr.addChildNode(3, "directive-type").addChildNode(OidNode.OID_WILDCARD, "Directive ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+		OidNode[] frParents = {crossSupportFunctionalities, agencyFunctionalities};
 		
-		// System.out.println(this.toString());
+		for(OidNode frParent : frParents) {
+			
+			OidNode fr = frParent.addChildNode(OidNode.OID_WILDCARD, "fr");
+			
+			fr.addChildNode(1, "parameter-type").addChildNode(OidNode.OID_WILDCARD, "Parameter ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+			fr.addChildNode(2, "event-type").addChildNode(OidNode.OID_WILDCARD, "Event ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+			fr.addChildNode(3, "directive-type").addChildNode(OidNode.OID_WILDCARD, "Directive ID").addChildNode(OidNode.OID_WILDCARD, "version").addChildNode(OidNode.OID_WILDCARD, "QValueType");
+		}
 	}
 	
 	@Override
