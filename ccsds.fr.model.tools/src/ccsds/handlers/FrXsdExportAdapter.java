@@ -49,6 +49,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 			writeXsdFrim(indentLevel, output, oid);
 		} else {
 			writeXsdFrm(indentLevel, output, oid);
+			writeXsdFrmElements(indentLevel, output, -1); // for CSSM element definitions are used to define individual parameters
 		}
 	}
 
@@ -73,21 +74,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, CreateFrAsnXsdHandler.getXsdBaseType(this.fr)));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
 		
-		try {
-			for( Parameter p : fr.getParameter()) {
-				if((p.isConfigured() && suppressConfigParam(p.getAnnotation()) == false )  
-						|| ExportWriterContext.instance().getGenerateFrim()) {
-					if(p.getTypeDef() != null) {
-						XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
-								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
-								new XmlAttribute(XmlHelper.MIN_OCCURS, "0"));
-					}
-				}
-			}
-		} catch(Exception e) {
-			output.append(XmlHelper.COMMENT_START + e.toString() + XmlHelper.COMMENT_END);
-			e.printStackTrace();
-		}
+		writeXsdFrmElements(indentLevel, output, 0);
 		
 		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.ALL);
@@ -116,6 +103,35 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);		
+	}
+	
+	/**
+	 * Write for each FR configurable parameter an element
+	 * @param indentLevel		Level of indentation
+	 * @param output			The StringBuffer for the output
+	 * @param minOccurs			A value for the minOccurs attribute, generated for values >= 0
+	 */
+	private void writeXsdFrmElements(int indentLevel, StringBuffer output, int minOccurs) {
+		try {
+			for( Parameter p : fr.getParameter()) {
+				if((p.isConfigured() && suppressConfigParam(p.getAnnotation()) == false )  
+						|| ExportWriterContext.instance().getGenerateFrim()) {
+					if(p.getTypeDef() != null) {
+						if(minOccurs >= 0) {
+						XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
+								new XmlAttribute(XmlHelper.MIN_OCCURS, Integer.toString(minOccurs)));
+						} else {
+							XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED));							
+						}
+					}
+				}
+			}
+		} catch(Exception e) {
+			output.append(XmlHelper.COMMENT_START + e.toString() + XmlHelper.COMMENT_END);
+			e.printStackTrace();
+		}		
 	}
 	
 	/**

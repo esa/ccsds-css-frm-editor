@@ -228,7 +228,7 @@ public class XmlHelper {
 	 * @param attributes
 	 */
 	public static void writeStartElement(StringBuffer output, int indentLevel, String element, XmlAttribute... attributes) {
-		doBreakIndent(output, indentLevel);
+		//doBreakIndent(output, indentLevel);
 		output.append(leftBracket);		
 		output.append(NS_XSD_PREFIX);
 		output.append(COLON);
@@ -255,7 +255,7 @@ public class XmlHelper {
 	 * @param attributes
 	 */
 	public static void writeElement(StringBuffer output, int indentLevel, String element, XmlAttribute... attributes) {
-		doBreakIndent(output, indentLevel);
+		//doBreakIndent(output, indentLevel);
 		output.append(leftBracket);		
 		output.append(NS_XSD_PREFIX);
 		output.append(COLON);
@@ -295,7 +295,7 @@ public class XmlHelper {
 	 * @param element
 	 */
 	public static void writeEndElement(StringBuffer output, int indentLevel, String element) {		
-		doBreakIndent(output, indentLevel);
+		//doBreakIndent(output, indentLevel);
 		writeEndElementNoLb(output, indentLevel, element);
 	}
 	
@@ -579,7 +579,7 @@ public class XmlHelper {
 			writeComplexNamedType(indentLevel, output, getNamedTypeNameAttr(object), getTypeNameAttr(object), oid, object, properties);
 		}
 		
-		XmlHelper.doBreakIndent(output, indentLevel);
+		//XmlHelper.doBreakIndent(output, indentLevel);
 		XmlHelper.writeStartElement(output, typeIndent, XmlHelper.COMPLEX_TYPE, XmlHelper.getTypeNameAttr(object));
 		output.append(typeOutput);
 		XmlHelper.writeEndElement(output, typeIndent+1, XmlHelper.COMPLEX_TYPE);

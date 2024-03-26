@@ -18,6 +18,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -84,6 +85,7 @@ import ccsds.fr.utility.FrUtility;
  */
 public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 
+	private static final String FILE_EXT_XSD = ".xsd";
 	private static final String VALUE = "Value";
 	private static final String QUALIFIER = "Qualifier";
 	private static final String EVENT = "Event";
@@ -494,6 +496,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	 */
 	private void createXsdModule(Module module, FunctionalResourceModel frm, IFile frmFile, CompoundCommand cmdUpdateTypeDefinition, EditingDomain editingDomain) {
 		List<String> xsdExports = new LinkedList<String>();
+		List<String> xsdFiles = new LinkedList<String>();
 
 		try {
 			// create abstract types for each stratum
@@ -541,8 +544,9 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addDataUnits(frModule, fr.getDataUnit(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					
-					final String frXsdFile = fr.getClassifier() + ".xsd";
+					final String frXsdFile = fr.getClassifier() + FILE_EXT_XSD;
 					writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + frXsdFile, frModule);
+					xsdFiles.add(frXsdFile);
 					
 					// create an import for each created FR XSD
 					final FromModule importFrXsd = FrtypesFactory.eINSTANCE.createFromModule();
@@ -554,6 +558,8 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 				}
 			}
 			
+			createTopLevelXsd(getXsdDirectory(frmFile), xsdFiles);
+			
 			if(ExportWriterContext.instance().getGenerateFrim() == true) {
 				writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + "frim.xsd", frimModule);
 			}
@@ -564,6 +570,33 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		} finally {
 			ExportWriterContext.instance().getAbstractTypes().clear();
 		}
+	}
+
+	/**
+	 * Create an XSD to include all XSD files given as arguments
+	 * @param xsdDirectory	The XSD files to include
+	 * @param xsdFiles		The directory to hold the created file
+	 */
+	private void createTopLevelXsd(String xsdDirectory, List<String> xsdFiles) {
+		try (Writer writer = new BufferedWriter(new FileWriter(xsdDirectory + File.separator + "AllFunctionaResources" + FILE_EXT_XSD))) {
+			StringBuffer xsdTopLevelStr = new StringBuffer();
+			Module topLevelModule = FrtypesFactory.eINSTANCE.createModule();
+			
+			for(String xsdFile : xsdFiles) {
+				FromModule importedXsdModule = FrtypesFactory.eINSTANCE.createFromModule();
+				importedXsdModule.setName(xsdFile);
+				topLevelModule.getImports().add(importedXsdModule);
+			}
+			
+			
+			topLevelModule.writeXsd(2, xsdTopLevelStr, null, null);
+			writer.write(xsdTopLevelStr.toString());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**

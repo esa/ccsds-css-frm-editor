@@ -424,6 +424,9 @@ public class ModuleImpl extends MinimalEObjectImpl.Container implements Module {
 
 		} else if (getImports().size() > 0) {
 			for (int idx = 0; idx < getImports().size(); idx++) {
+				if(getImports().size() > 2) {
+					XmlHelper.doBreakIndent(output, indentLevel);
+				}
 				XmlHelper.writeElement(output, indentLevel + 1, XmlHelper.INCLUDE,
 						new XmlAttribute(XmlHelper.schemaLocation, getImports().get(idx).getName()));
 			}
