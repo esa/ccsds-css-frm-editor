@@ -116,6 +116,13 @@ public interface FrModelElement extends EObject {
 	String getClassifier();
 
 	/**
+	 * Get a classifier not 
+	 * 
+	 * @generated NOT
+	 */
+	String getClassifierWellFormed();
+
+	/**
 	 * Sets the value of the '{@link ccsds.FunctionalResourceModel.FrModelElement#getClassifier <em>Classifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +131,8 @@ public interface FrModelElement extends EObject {
 	 * @generated
 	 */
 	void setClassifier(String value);
+	
+	
 
 	/**
 	 * Returns the value of the '<em><b>Oid Bit</b></em>' attribute.

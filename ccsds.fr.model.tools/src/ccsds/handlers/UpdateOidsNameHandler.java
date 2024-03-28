@@ -54,7 +54,7 @@ import ccsds.FunctionalResourceModel.Value;
 import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.FunctionalResourceModel.provider.OidItemProvider;
 import ccsds.fr.model.tools.Activator;
-import ccsds.fr.model.tools.NameTool;
+import ccsds.fr.type.model.NameTool;
 
 enum ModelElementType {
 	FR_OID_TYPE(-1),

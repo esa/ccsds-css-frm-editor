@@ -63,15 +63,28 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		int myIndent = 0;
 		
 		final String currentStratum = ExportWriterContext.instance().getCurrentStratumElement();
+		final String baseType = CreateFrAsnXsdHandler.getXsdBaseType(this.fr);
+
+		if(baseType != null) {
+
+			XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifierWellFormed())), // Marcin want something like AntennaElement
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifierWellFormed())),
+					new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrStratumElementName(currentStratum)));
+		} else {
+			XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifierWellFormed())), // Marcin want something like AntennaElement
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifierWellFormed())));
+			
+		}
 		
-		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
-				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifier())), // Marcin want something like AntennaElement
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifier())),
-				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrStratumElementName(currentStratum)));
+		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifierWellFormed())));
 		
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())));
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, CreateFrAsnXsdHandler.getXsdBaseType(this.fr)));
+		
+		if(baseType != null) {
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, baseType));
+		}
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
 		
 		writeXsdFrmElements(indentLevel, output, 0);
@@ -85,7 +98,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
 				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
 
-		String frTypeOid = "";
+		String frTypeOid = "0"; // set a valid default
 		if(fr.getOid() != null) {
 			frTypeOid = fr.getOid().toString();
 		}
@@ -100,8 +113,12 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
 		
 		myIndent--;
-		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
-		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
+		
+		if(baseType != null) {
+			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);
+			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.COMPLEX_CONTENT);
+		}
+		
 		XmlHelper.writeEndElement(output, indentLevel, XmlHelper.COMPLEX_TYPE);		
 	}
 	
@@ -118,11 +135,11 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 						|| ExportWriterContext.instance().getGenerateFrim()) {
 					if(p.getTypeDef() != null) {
 						if(minOccurs >= 0) {
-						XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+						XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
 								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
 								new XmlAttribute(XmlHelper.MIN_OCCURS, Integer.toString(minOccurs)));
 						} else {
-							XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+							XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
 								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED));							
 						}
 					}
@@ -144,19 +161,19 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		int myIndent = 0;
 						
 //		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
-//				new XmlAttribute(XmlHelper.NAME, fr.getClassifier()), 
-//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifier())),
+//				new XmlAttribute(XmlHelper.NAME, fr.getClassifierWellFormed()), 
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrBaseType(fr.getClassifierWellFormed())),
 //				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrimBaseElementName()));		
 
 		if(isDynamicFr(fr.getAnnotation()) == true) {		
 			// write a container element
-			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrContainerType(fr.getClassifier())));
+			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrContainerType(fr.getClassifierWellFormed())));
 			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.getFrimBaseType()));
 			XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.SEQUENCE);
 			XmlHelper.writeElement(output, indentLevel+myIndent--, XmlHelper.ELEMENT, 
-					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())),
-					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifier())),
+					new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifierWellFormed())),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifierWellFormed())),
 					new XmlAttribute(XmlHelper.MIN_OCCURS, XmlHelper.ZERO),
 					new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
 			XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.SEQUENCE);
@@ -166,7 +183,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 			XmlHelper.doBreakIndent(output, indentLevel);
 		}
 		// write an FR element
-		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifier())));
+		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifierWellFormed())));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.getFrimBaseType()));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
@@ -174,7 +191,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		try {
 			for( Parameter p : fr.getParameter()) {
 				if((p.isConfigured() || ExportWriterContext.instance().getGenerateFrim()) && p.getTypeDef() != null) {
-					XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifier())),
+					XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
 							new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
 							new XmlAttribute(XmlHelper.MIN_OCCURS, "0"));
 				}
@@ -193,7 +210,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
 				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
 
-		String frTypeOid = "";
+		String frTypeOid = "0"; // Use a valid default
 		if(fr.getOid() != null) {
 			frTypeOid = fr.getOid().toString();
 		}

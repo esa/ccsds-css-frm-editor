@@ -1,4 +1,4 @@
-package ccsds.fr.model.tools;
+package ccsds.fr.type.model;
 
 /*-
  * #%L
@@ -30,7 +30,7 @@ public class NameTool {
 		if(name == null)
 			return null;
 		
-		String forbidden = " -,&/\\";
+		String forbidden = " -,&/\\\"";
 		String result = "";
 		String ucName = name.toUpperCase();
 		boolean capitalize = true;

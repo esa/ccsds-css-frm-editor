@@ -20,6 +20,7 @@ import ccsds.FunctionalResourceModel.Annotation;
 import ccsds.FunctionalResourceModel.FrModelElement;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
+import ccsds.fr.type.model.NameTool;
 
 import java.util.Collection;
 import java.util.Date;
@@ -309,6 +310,16 @@ public class FrModelElementImpl extends MinimalEObjectImpl.Container implements 
 		return classifier;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getClassifierWellFormed() {
+		String v = getClassifier().indexOf("/") == -1 ? NameTool.wellFormed(getClassifier()) : NameTool.wellFormed(getClassifier().toLowerCase());
+		return NameTool.wellFormed(v);
+	}	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

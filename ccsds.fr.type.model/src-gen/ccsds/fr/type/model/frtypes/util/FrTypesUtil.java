@@ -110,6 +110,8 @@ public class FrTypesUtil {
 		typeName = typeName.replace("/", "Over");
 		typeName = typeName.replace(".", "Dot");
 		typeName = typeName.replace("_", "-");
+		typeName = typeName.replace("\"", "");
+		typeName = typeName.replace(" ", "");
 //		typeName = typeName.replace("1", "One");
 //		typeName = typeName.replace("2", "Two");
 //		typeName = typeName.replace("3", "Three");
@@ -133,6 +135,11 @@ public class FrTypesUtil {
 					validName.deleteCharAt(chIdx);
 				}
 			} while(chIdx != -1);
+		}
+		
+		// names can't start with a digit
+		if(Character.isDigit(validName.charAt(0))) {
+			validName.insert(0, "n");
 		}
 		
 		// convert first character to lower case

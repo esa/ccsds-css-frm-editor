@@ -66,6 +66,7 @@ import ccsds.FunctionalResourceModel.presentation.FunctionalResourceModelEditor;
 import ccsds.fr.model.tools.Activator;
 import ccsds.fr.model.tools.preferences.FrPreferenceConstants;
 import ccsds.fr.type.model.ExportWriterContext;
+import ccsds.fr.type.model.NameTool;
 import ccsds.fr.type.model.XmlAttribute;
 import ccsds.fr.type.model.XmlHelper;
 import ccsds.fr.type.model.frtypes.ExportWriter;
@@ -437,7 +438,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 	 * Returns the base type for the FR. the base type is
 	 * either the FR classifier or the name of the FR Stratum the FR is contained within
 	 * @param fr	The FR for which the base type is queried
-	 * @return		The base type t use for this FR
+	 * @return		The base type t use for this FR or null if it has no base type
 	 */
 	public static String getXsdBaseType(FunctionalResource fr) {
 		if(fr.eContainer() instanceof FunctionalResourceSet) {
@@ -449,7 +450,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			}
 		}
 		
-		return XmlHelper.getFrType(fr.getClassifier());
+		return null;
 	}
 	
 	/**
@@ -468,7 +469,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			}
 		}
 		
-		return XmlHelper.getFrType(fr.getClassifier());
+		return XmlHelper.getFrType(fr.getClassifierWellFormed());
 	}	
 	
 	/**
@@ -536,7 +537,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					ExportWriterContext.instance().setCurrentStratumElement(getXsdStratumName(fr));
 					
 					// add an OID for the RF itself
-					frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifier() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
+					frModule.getTypeDefinition().add(new TypeDefinitionProxy(fr.getClassifierWellFormed() + FR, null, fr.getOid(), "", fr.getSemanticDefinition(), xsdExports));
 					
 					frModule.getTypeDefinition().add(new FrXsdExportAdapter(fr)); // add the FR to be able to create an XSD type per FR
 					addParamTypesAndOids(frModule, fr.getParameter(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
@@ -544,7 +545,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 					addDirectiveTypesAndOids(frModule, fr.getDirectives(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					addDataUnits(frModule, fr.getDataUnit(), xsdExports, cmdUpdateTypeDefinition, editingDomain);
 					
-					final String frXsdFile = fr.getClassifier() + FILE_EXT_XSD;
+					final String frXsdFile = fr.getClassifierWellFormed() + FILE_EXT_XSD;
 					writeXsdModule(getXsdDirectory(frmFile) + File.separatorChar + frXsdFile, frModule);
 					xsdFiles.add(frXsdFile);
 					
@@ -677,7 +678,12 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			if(param.getTypeDef() != null) {
 				Map<String, String> properties = XmlHelper.putPropSemanticDef(param.getSemanticDefinition(), null);
 				annotationsToProps(param.getAnnotation(), properties);
-				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), param.getTypeOid(), PARAM, param.getSemanticDefinition(), exports, properties));
+				Oid typeOid = param.getTypeOid();
+				if(typeOid == null && param.getOid() != null) {
+					typeOid = EcoreUtil.copy(param.getOid()); 
+					typeOid.getOidBit().add(1); // fake a type oid..
+				}
+				module.getTypeDefinition().add(new TypeDefinitionProxy(param.getClassifier(), param.getTypeDef(), typeOid, PARAM, param.getSemanticDefinition(), exports, properties));
 				updateTypeDefinitionString(param, cmdUpdateTypeDefinitions, editingDomain);
 			}
 		}
@@ -947,6 +953,11 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		private String createTypeName(String frmTypeName, boolean startUpperCase, String suffix) {
 			if(frmTypeName == null) {
 				return "type name not set";
+			}
+			
+			final String SLASH = "/";
+			if(frmTypeName.contains(SLASH) == true) {	// /WSDS/DATAP/PDATA -> WsdsDatapPdata	
+				frmTypeName = NameTool.wellFormed(frmTypeName.toLowerCase());
 			}
 			
 			if(startUpperCase == true && frmTypeName.length() > 1) {

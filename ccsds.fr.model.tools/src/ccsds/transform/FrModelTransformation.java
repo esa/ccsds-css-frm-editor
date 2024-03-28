@@ -43,7 +43,7 @@ import ccsds.FunctionalResourceModel.FunctionalResourceModel;
 import ccsds.FunctionalResourceModel.Oid;
 import ccsds.FunctionalResourceModel.Parameter;
 import ccsds.FunctionalResourceModel.ServiceAccessPoint;
-import ccsds.fr.model.tools.NameTool;
+import ccsds.fr.type.model.NameTool;
 import ccsds.fr.type.model.transform.FrTypeTransformer;
 import ccsds.fr.utility.FrUtility;
 import ccsds.handlers.FrXsdExportAdapter;

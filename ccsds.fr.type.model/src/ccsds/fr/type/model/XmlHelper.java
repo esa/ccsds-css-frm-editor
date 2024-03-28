@@ -368,7 +368,7 @@ public class XmlHelper {
 		//doBreakIndent(output, indentLevel+1);
 		writeStartElement(output, indentLevel+1, RESTRICTION, new XmlAttribute(BASE, TOKEN));
 		for(NamedValue nv : namedValues) {			
-			writeElement(output, indentLevel+2, ENUMERATION, new XmlAttribute(VALUE, nv.getName()));
+			writeElement(output, indentLevel+2, ENUMERATION, new XmlAttribute(VALUE, NameTool.wellFormed(nv.getName())));
 		}
 		
 		writeEndElement(output, indentLevel+1, RESTRICTION);
