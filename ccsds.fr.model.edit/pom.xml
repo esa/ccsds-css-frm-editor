@@ -6,7 +6,7 @@
   <parent>
 		<groupId>ccsds</groupId>
 		<artifactId>ccsds-css-frm-editor</artifactId>
-		<version>4.2.4</version>
+		<version>4.2.5-SNAPSHOT</version>
   </parent>
 
   <artifactId>ccsds.fr.model.edit</artifactId>
