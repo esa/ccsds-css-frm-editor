@@ -1,3 +1,9 @@
+Version 4.2.5 from 12.3.2024
+- Target XSD namespaces are now preferences
+- Generate an element for every FR parameter
+- Create XSD including all FR XSDs
+- Cope with FR and parameter names like /WSDS/DATA/PDATA -> WsdsDataPdata
+
 Version 4.2.4 from 7.6.2023
 - FRM to FRIm ecore transformation creates now ecore classes fr the FRM types
 
