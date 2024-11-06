@@ -508,6 +508,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			// initialize the context for FRIM generation based on the preferences
 			IPreferenceStore store = Activator.getDefault().getPreferenceStore();			
 			ExportWriterContext.instance().setGenerateFrim(store.getBoolean(FrPreferenceConstants.P_FRIM_GENERATION));
+			ExportWriterContext.instance().setGenerateOnlyCfgParams(store.getBoolean(FrPreferenceConstants.P_GENERATE_CFGPARAMS_ONLY));
 			ExportWriterContext.instance().setTargetNsFrm(store.getString(FrPreferenceConstants.P_FRM_TARGET_NS));
 			ExportWriterContext.instance().setTargetNsFrim(store.getString(FrPreferenceConstants.P_FRIM_TARGET_NS));
 			

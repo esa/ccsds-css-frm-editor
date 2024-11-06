@@ -53,8 +53,13 @@ public class FrPreferencePage
 		addField(
 			new BooleanFieldEditor(
 				FrPreferenceConstants.P_FRIM_GENERATION,
-				"Generate Functional Resource &Instance XSD (and all parameters)",
+				"Generate Functional Resource &Instance XSD",
 				getFieldEditorParent()));
+		addField(
+				new BooleanFieldEditor(
+					FrPreferenceConstants.P_GENERATE_CFGPARAMS_ONLY,
+					"Generate only Configuration Parameters for XSD",
+					getFieldEditorParent()));
 		addField(
 				new StringFieldEditor(
 					FrPreferenceConstants.P_FRM_TARGET_NS,

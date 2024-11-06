@@ -92,11 +92,11 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.ALL);
 
-		// Marcin want extra attributes for each FR type
-		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
-				new XmlAttribute(XmlHelper.NAME, "frin"),
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+		// Marcin want extra attributes for each FR type. Fall 2024: no string frin here
+//		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+//				new XmlAttribute(XmlHelper.NAME, "frin"),
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+//				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
 
 		String frTypeOid = "0"; // set a valid default
 		if(fr.getOid() != null) {
@@ -106,11 +106,12 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 				new XmlAttribute(XmlHelper.NAME, "frTypeOid"),
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.OBJECT_IDENTIFIER),
 				new XmlAttribute(XmlHelper.FIXED, frTypeOid));
-		
-		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
-				new XmlAttribute(XmlHelper.NAME, "frNickname"),
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
+
+		// CCSDS Fall 2024: no nick name for FRs anymore
+//		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+//				new XmlAttribute(XmlHelper.NAME, "frNickname"),
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+//				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
 		
 		myIndent--;
 		
@@ -132,7 +133,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		try {
 			for( Parameter p : fr.getParameter()) {
 				if((p.isConfigured() && suppressConfigParam(p.getAnnotation()) == false )  
-						|| ExportWriterContext.instance().getGenerateFrim()) {
+						|| ExportWriterContext.instance().getGenerateOnlyCfgParams() == false) {
 					if(p.getTypeDef() != null) {
 						if(minOccurs >= 0) {
 						XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
@@ -190,7 +191,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		
 		try {
 			for( Parameter p : fr.getParameter()) {
-				if((p.isConfigured() || ExportWriterContext.instance().getGenerateFrim()) && p.getTypeDef() != null) {
+				if((p.isConfigured() || ExportWriterContext.instance().getGenerateOnlyCfgParams() == false) && p.getTypeDef() != null) {
 					XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
 							new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
 							new XmlAttribute(XmlHelper.MIN_OCCURS, "0"));
@@ -204,11 +205,11 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.ALL);
 
-		// Marcin want extra attributes for each FR type
-		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
-				new XmlAttribute(XmlHelper.NAME, "frin"),
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
+		// Marcin want extra attributes for each FR type Fall 2024: no string frin here
+//		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+//				new XmlAttribute(XmlHelper.NAME, "frin"),
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+//				new XmlAttribute(XmlHelper.USE, XmlHelper.OPTIONAL));
 
 		String frTypeOid = "0"; // Use a valid default
 		if(fr.getOid() != null) {
@@ -219,10 +220,11 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 				new XmlAttribute(XmlHelper.TYPE, XmlHelper.OBJECT_IDENTIFIER),
 				new XmlAttribute(XmlHelper.FIXED, frTypeOid));
 		
-		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
-				new XmlAttribute(XmlHelper.NAME, "frNickname"),
-				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
-				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
+		// CCSDS Fall 2024: no nick name for FRs anymore
+//		XmlHelper.writeElement(output, indentLevel+myIndent, XmlHelper.ATTRIBUTE,
+//				new XmlAttribute(XmlHelper.NAME, "frNickname"),
+//				new XmlAttribute(XmlHelper.TYPE, XmlHelper.STRING),
+//				new XmlAttribute(XmlHelper.USE, XmlHelper.REQUIRED));		
 		
 		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent--, XmlHelper.EXTENSION);

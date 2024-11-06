@@ -35,6 +35,8 @@ public class ExportWriterContext {
 	
 	private boolean generateFrim = false;
 	
+	private boolean generateOnlyCfgParams = false;
+	
 	private static ExportWriterContext instance;
 	
 	private CompoundCommand compoundCommand;
@@ -79,9 +81,17 @@ public class ExportWriterContext {
 	public void setGenerateFrim(boolean generateFrim) {
 		this.generateFrim = generateFrim;
 	}
-	
+		
 	public boolean getGenerateFrim() {
 		return generateFrim;
+	}
+
+	public void setGenerateOnlyCfgParams(boolean generateOnlyCfgParams) {
+		this.generateOnlyCfgParams = generateOnlyCfgParams;
+	}
+
+	public boolean getGenerateOnlyCfgParams() {
+		return generateOnlyCfgParams;
 	}
 	
 	public CompoundCommand getCompoundCommand() {
