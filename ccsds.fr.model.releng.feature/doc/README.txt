@@ -24,9 +24,7 @@ If you have already installed the FRM editor in an old version it needs to be un
 
 2) Installation with local archive ccsds.fr.feature.zip
 	- Help -> Install New Software
-	- Available Software Sites -> Add -> Archive: point to ccsds.fr.feature.zip
-	- Select the created software site in 'Work with'
-	- Untick 'Group Items by category
+	- Available Software Sites -> Add -> https://esa.github.io/ccsds-css-frm-editor-p2/
 	- select 'ccsds.fr.model' and follow the installation wizard
 
 3) Re-start eclipse and create a project (File -> New -> Project -> General -> Project (Modeling Project or General -> Resource))
