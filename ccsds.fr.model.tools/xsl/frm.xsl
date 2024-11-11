@@ -167,6 +167,7 @@
 												<xsl:when test="@configured='true'">
 													<td width="40%">
 														<xsl:text>Monitored and Configured: </xsl:text>
+														<xsl:apply-templates select="annotation" />
 													</td>
 													<td>
 														<a href="#{generate-id(.)}">
@@ -433,6 +434,11 @@
 		</tr>
 	</xsl:template>
 
+	<xsl:template match="annotation">
+		<xsl:value-of select="@name" />
+		<xsl:text>=</xsl:text>		
+		<xsl:value-of select="@value" />
+	</xsl:template>
 
 	<xsl:template match="oid">
 		<xsl:text>OID </xsl:text>
