@@ -35,17 +35,51 @@
 			<xsl:text>,</xsl:text>	
 		</xsl:if>
 
+		<xsl:variable name="frpath">
+			<xsl:choose>
+				<xsl:when test="name() = 'parameter'">
+					<xsl:value-of select="'../../../@name'" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="'../../../../@name'" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<!-- Type: parameter | value | qualifer -->
 		<xsl:value-of select ="local-name()"/>
 		<xsl:text>,</xsl:text>	
+		
+		<!-- Classifer -->
 		<xsl:value-of select="@classifier" />
 		<xsl:text>,</xsl:text>	
+		
+		<!-- Configured -->
 		<xsl:value-of select="@configured" />
 		<xsl:text>,</xsl:text>	
+		
+		<!-- Annotation -->
 		<xsl:apply-templates select="annotation" />
 		<xsl:text>,</xsl:text>	
-		<xsl:value-of select="../@classifier" />
-		<xsl:text>,</xsl:text>	
-		<xsl:value-of select="../../../@name" />	
+		
+		
+		<!-- <xsl:value-of select="{frname}" />	-->
+			<xsl:choose>
+				<xsl:when test="name() = 'parameter'">
+					<!-- FR the parent is the FR -->
+					<xsl:value-of select="../@classifier" />
+					<xsl:text>,</xsl:text>	
+					<!-- Startum -->	
+					<xsl:value-of select="../../../@name" />
+				</xsl:when>
+				<xsl:otherwise>
+					<!-- FR the parent is the event or the directive, their parent is the FR-->
+					<xsl:value-of select="../../@classifier" />
+					<xsl:text>,</xsl:text>	
+					<!-- Startum -->	
+					<xsl:value-of select="../../../../@name" />
+				</xsl:otherwise>
+			</xsl:choose>		
 <!-- The semantic description can contain newline
 		<xsl:text>,"</xsl:text>	
 		<xsl:value-of select="@SemanticDefinition" />
