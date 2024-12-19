@@ -25,6 +25,8 @@ public class FrPreferenceConstants {
 	
 	public static final String P_GENERATE_CFGPARAMS_ONLY = "generateCfgParamsOnlyPreference";
 	
+	public static final String P_PARAMS_SUBSTITUTION_GROUP = "paramsSubstitutionGroupPreference";
+	
 	public static final String P_FRM_TARGET_NS = "frmTargetNamespacePreference";
 	
 	public static final String P_FRIM_TARGET_NS = "frimTargetNamespacePreference";

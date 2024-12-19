@@ -1,453 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="frtypes"
-    nsURI="http://ccsds.fr/types"
-    nsPrefix="frtypes">
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="TypeDefinition"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="type"
-        lowerBound="1"
-        eType="#//Type"
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="frtypes" nsURI="http://ccsds.fr/types" nsPrefix="frtypes">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeDefinition" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
         containment="true"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="comment"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Type"
-      abstract="true"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="singleValueConstraint"
-        eType="#//SingleValueConstraint"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singleValueConstraint"
+        eType="#//SingleValueConstraint" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SimpleType"
-      abstract="true"
-      eSuperTypes="#//Type"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="StructuredType"
-      abstract="true"
-      eSuperTypes="#//Type"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Boolean"
-      eSuperTypes="#//SimpleType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="IntegerType"
-      eSuperTypes="#//SimpleRangeType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="namedValues"
-        upperBound="-1"
-        eType="#//NamedValue"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleType" abstract="true" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredType" abstract="true" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Boolean" eSuperTypes="#//SimpleType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerType" eSuperTypes="#//SimpleRangeType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namedValues" upperBound="-1"
+        eType="#//NamedValue" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="BitString"
-      eSuperTypes="#//SimpleSizeConstrainedType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="OctetString"
-      eSuperTypes="#//SimpleSizeConstrainedType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Real"
-      eSuperTypes="#//SimpleRangeType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Enumerated"
-      eSuperTypes="#//SimpleType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="values"
-        lowerBound="1"
-        upperBound="-1"
-        eType="#//NamedValue"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BitString" eSuperTypes="#//SimpleSizeConstrainedType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OctetString" eSuperTypes="#//SimpleSizeConstrainedType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Real" eSuperTypes="#//SimpleRangeType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumerated" eSuperTypes="#//SimpleType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" lowerBound="1"
+        upperBound="-1" eType="#//NamedValue" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="CharacterString"
-      eSuperTypes="#//SimpleSizeConstrainedType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="permittedAlphabetConstraint"
-        eType="#//PermittedAlphabetConstraint"
-        containment="true"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="type"
-        eType="#//StringType"
+  <eClassifiers xsi:type="ecore:EClass" name="CharacterString" eSuperTypes="#//SimpleSizeConstrainedType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permittedAlphabetConstraint"
+        eType="#//PermittedAlphabetConstraint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//StringType"
         defaultValueLiteral="VisibleString"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Sequence"
-      eSuperTypes="#//StructuredDifferentType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SequenceOf"
-      eSuperTypes="#//StructuredSizeConstrainedType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Set"
-      eSuperTypes="#//StructuredDifferentType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SetOf"
-      eSuperTypes="#//StructuredSizeConstrainedType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Constraint"
-      abstract="true"
-      eSuperTypes="#//ExportWriter">
-    <eAnnotations
-        source="http://www.eclipse.org/emf/2002/GenModel">
-      <details
-          key="documentation"
-          value="Constraints: This is drastically simplified approach compared to what ASn.1 allows."/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//StructuredDifferentType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceOf" eSuperTypes="#//StructuredSizeConstrainedType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Set" eSuperTypes="#//StructuredDifferentType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetOf" eSuperTypes="#//StructuredSizeConstrainedType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="#//ExportWriter">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Constraints: This is drastically simplified approach compared to what ASn.1 allows."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SizeConstraint"
-      eSuperTypes="#//Constraint">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="min"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="max"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SizeConstraint" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="ValueRangeConstraint"
-      eSuperTypes="#//Constraint">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="min"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="max"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueRangeConstraint" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SimpleRangeType"
-      abstract="true"
-      eSuperTypes="#//SimpleType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="rangeConstraint"
-        upperBound="-1"
-        eType="#//ValueRangeConstraint"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleRangeType" abstract="true" eSuperTypes="#//SimpleType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rangeConstraint" upperBound="-1"
+        eType="#//ValueRangeConstraint" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SimpleSizeConstrainedType"
-      abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleSizeConstrainedType" abstract="true"
       eSuperTypes="#//SimpleType #//SizeConstrainedType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="NamedValue"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="value"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedValue" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="StructuredSizeConstrainedType"
-      abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredSizeConstrainedType" abstract="true"
       eSuperTypes="#//StructuredType #//SizeConstrainedType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="elements"
-        lowerBound="1"
-        eType="#//Type"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
+        eType="#//Type" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Choice"
-      eSuperTypes="#//StructuredDifferentType"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="TypeReferenceLocal"
-      eSuperTypes="#//Type">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="typeDefinition"
-        lowerBound="1"
-        eType="#//TypeDefinition"
-        eKeys="#//TypeDefinition/name"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Choice" eSuperTypes="#//StructuredDifferentType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeReferenceLocal" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeDefinition" lowerBound="1"
+        eType="#//TypeDefinition" eKeys="#//TypeDefinition/name"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SingleValueConstraint"
-      eSuperTypes="#//Constraint">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="values"
-        lowerBound="1"
-        upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleValueConstraint" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="PermittedAlphabetConstraint"
-      eSuperTypes="#//Constraint">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="values"
-        lowerBound="1"
-        upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="type"
-        eType="#//ConstraintType"
+  <eClassifiers xsi:type="ecore:EClass" name="PermittedAlphabetConstraint" eSuperTypes="#//Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ConstraintType"
         defaultValueLiteral="RANGE"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Module"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="typeDefinition"
-        upperBound="-1"
-        eType="#//TypeDefinition"
-        containment="true"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="oid"
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeDefinition" upperBound="-1"
+        eType="#//TypeDefinition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exports" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="exports"
-        upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="imports"
-        upperBound="-1"
-        eType="#//FromModule"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//FromModule" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="ObjectIdentifier"
-      eSuperTypes="#//SimpleType"/>
-  <eClassifiers
-      xsi:type="ecore:EEnum"
-      name="StringType">
-    <eLiterals
-        name="BMPString"/>
-    <eLiterals
-        name="IA5String"
-        value="1"/>
-    <eLiterals
-        name="GeneralString"
-        value="2"/>
-    <eLiterals
-        name="GraphicString"
-        value="3"/>
-    <eLiterals
-        name="NumericString"
-        value="4"/>
-    <eLiterals
-        name="PrintableString"
-        value="5"/>
-    <eLiterals
-        name="TeletexString"
-        value="6"/>
-    <eLiterals
-        name="UnivarsalString"
-        value="7"/>
-    <eLiterals
-        name="UTF8String"
-        value="8"/>
-    <eLiterals
-        name="VideotexString"
-        value="9"/>
-    <eLiterals
-        name="VisibleString"
-        value="10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectIdentifier" eSuperTypes="#//SimpleType"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="StringType">
+    <eLiterals name="BMPString"/>
+    <eLiterals name="IA5String" value="1"/>
+    <eLiterals name="GeneralString" value="2"/>
+    <eLiterals name="GraphicString" value="3"/>
+    <eLiterals name="NumericString" value="4"/>
+    <eLiterals name="PrintableString" value="5"/>
+    <eLiterals name="TeletexString" value="6"/>
+    <eLiterals name="UnivarsalString" value="7"/>
+    <eLiterals name="UTF8String" value="8"/>
+    <eLiterals name="VideotexString" value="9"/>
+    <eLiterals name="VisibleString" value="10"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Element"
-      eSuperTypes="#//Type">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="type"
-        lowerBound="1"
-        eType="#//Type"
+  <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"
         containment="true"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="tag"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="optional"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="comment"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="TypeReferenceExternal"
-      eSuperTypes="#//Type">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="complexType"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+  <eClassifiers xsi:type="ecore:EClass" name="TypeReferenceExternal" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="complexType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="Null"
-      eSuperTypes="#//SimpleType"/>
-  <eClassifiers
-      xsi:type="ecore:EDataType"
-      name="StringBuffer"
-      instanceClassName="java.lang.StringBuffer"/>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="ExportWriter"
-      abstract="true"
-      interface="true">
-    <eOperations
-        name="writeAsn1">
-      <eParameters
-          name="indentLevel"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters
-          name="output"
-          eType="#//StringBuffer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Null" eSuperTypes="#//SimpleType"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="StringBuffer" instanceClassName="java.lang.StringBuffer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExportWriter" abstract="true" interface="true">
+    <eOperations name="writeAsn1">
+      <eParameters name="indentLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="output" eType="#//StringBuffer"/>
     </eOperations>
-    <eOperations
-        name="writeXsd">
-      <eParameters
-          name="indentLevel"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters
-          name="output"
-          eType="#//StringBuffer"/>
-      <eParameters
-          name="oid"
-          eType="#//ObjectIdentifier"/>
-      <eParameters
-          name="properties">
-        <eGenericType
-            eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+    <eOperations name="writeXsd">
+      <eParameters name="indentLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="output" eType="#//StringBuffer"/>
+      <eParameters name="oid" eType="#//ObjectIdentifier"/>
+      <eParameters name="properties">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
           <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eGenericType>
       </eParameters>
     </eOperations>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="SizeConstrainedType"
-      abstract="true"
-      interface="true"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="sizeConstraint"
-        upperBound="-1"
-        eType="#//SizeConstraint"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SizeConstrainedType" abstract="true"
+      interface="true" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sizeConstraint" upperBound="-1"
+        eType="#//SizeConstraint" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EEnum"
-      name="ConstraintType">
-    <eLiterals
-        name="RANGE"/>
-    <eLiterals
-        name="OR"
-        value="1"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConstraintType">
+    <eLiterals name="RANGE"/>
+    <eLiterals name="OR" value="1"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="StructuredDifferentType"
-      abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredDifferentType" abstract="true"
       eSuperTypes="#//StructuredType">
-    <eStructuralFeatures
-        xsi:type="ecore:EReference"
-        name="elements"
-        lowerBound="1"
-        upperBound="-1"
-        eType="#//Type"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" lowerBound="1"
+        upperBound="-1" eType="#//Type" containment="true"/>
   </eClassifiers>
-  <eClassifiers
-      xsi:type="ecore:EClass"
-      name="FromModule"
-      eSuperTypes="#//ExportWriter">
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="name"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures
-        xsi:type="ecore:EAttribute"
-        name="importedTypes"
-        upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="FromModule" eSuperTypes="#//ExportWriter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedTypes" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

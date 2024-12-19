@@ -93,6 +93,8 @@ public class XmlHelper {
 	
 	public static final String EQUAL = "=";
 	
+	public static final String FRM_CONFIG_PARAM = "frmConfigParameter";
+	
 	public static final String SCHEMA = "schema";
 	
 	public static final String SUBSTITUTION_GROUP = "substitutionGroup";
@@ -228,7 +230,7 @@ public class XmlHelper {
 	 * @param attributes
 	 */
 	public static void writeStartElement(StringBuffer output, int indentLevel, String element, XmlAttribute... attributes) {
-		//doBreakIndent(output, indentLevel);
+		doBreakIndent(output, indentLevel);
 		output.append(leftBracket);		
 		output.append(NS_XSD_PREFIX);
 		output.append(COLON);
@@ -255,7 +257,7 @@ public class XmlHelper {
 	 * @param attributes
 	 */
 	public static void writeElement(StringBuffer output, int indentLevel, String element, XmlAttribute... attributes) {
-		//doBreakIndent(output, indentLevel);
+		doBreakIndent(output, indentLevel);
 		output.append(leftBracket);		
 		output.append(NS_XSD_PREFIX);
 		output.append(COLON);
@@ -263,14 +265,16 @@ public class XmlHelper {
 		
 		if(attributes != null) {
 			for(XmlAttribute a : attributes) {
-				output.append(BLANK);
-				output.append(a.toString());
+				if(a != null) {
+					output.append(BLANK);
+					output.append(a.toString());
+				}
 			}
 			output.append(BLANK);
 		}
 		
 		output.append(SLASH + rightBracket);
-		//doBreakIndent(output, indent);
+		//doBreakIndent(output, indentLevel);
 	}		
 
 	/**
@@ -294,9 +298,9 @@ public class XmlHelper {
 	 * @param output
 	 * @param element
 	 */
-	public static void writeEndElement(StringBuffer output, int indentLevel, String element) {		
-		//doBreakIndent(output, indentLevel);
-		writeEndElementNoLb(output, indentLevel, element);
+	public static void writeEndElement(StringBuffer output, int indentLevel, String element) {			
+		doBreakIndent(output, indentLevel);
+		writeEndElementNoLb(output, indentLevel, element);		
 	}
 	
 	/**
@@ -353,6 +357,7 @@ public class XmlHelper {
 			output.append(comment);
 			doBreakIndent(output, indentLevel);
 			output.append(COMMENT_END);
+			doBreakIndent(output, indentLevel);
 		}
 		
 		return comment;
@@ -365,13 +370,17 @@ public class XmlHelper {
 	 * @param namedValues
 	 */
 	public static void writeEnumRestrictions(StringBuffer output, int indentLevel, EList<NamedValue> namedValues) {	
-		//doBreakIndent(output, indentLevel+1);
+		doBreakIndent(output, indentLevel+1);
 		writeStartElement(output, indentLevel+1, RESTRICTION, new XmlAttribute(BASE, TOKEN));
+		
 		for(NamedValue nv : namedValues) {			
-			writeElement(output, indentLevel+2, ENUMERATION, new XmlAttribute(VALUE, NameTool.wellFormed(nv.getName())));
+			//doBreakIndent(output, indentLevel+4);
+			writeElement(output, indentLevel+4, ENUMERATION, new XmlAttribute(VALUE, nv.getName()));
 		}
 		
+		doBreakIndent(output, indentLevel+3);
 		writeEndElement(output, indentLevel+1, RESTRICTION);
+		doBreakIndent(output, indentLevel);
 	}
 
 	/**
@@ -407,10 +416,9 @@ public class XmlHelper {
 		// for XSD we (can) take only one range constraint  - take the first one
 		if(ranges.size() > 0) {
 			ValueRangeConstraint range = ranges.get(0);
-			
-			writeStartElement(output, indentLevel+1, RESTRICTION, new XmlAttribute(BASE, base));				
+			writeStartElement(output, indentLevel+1, RESTRICTION, new XmlAttribute(BASE, base));
 			writeElement(output, indentLevel+2, MIN_INCLUSIVE, new XmlAttribute(VALUE, range.getMin()));
-			writeElement(output, indentLevel+2, MAX_INCLUSIVE, new XmlAttribute(VALUE, range.getMax()));		
+			writeElement(output, indentLevel+2, MAX_INCLUSIVE, new XmlAttribute(VALUE, range.getMax()));
 			writeEndElement(output, indentLevel+1, RESTRICTION);
 		} else if(ranges.size() > 1) {
 			FrTypesUtil.warn("Multiple range constraints detected: " + ranges.size());
@@ -466,7 +474,7 @@ public class XmlHelper {
 	 * @param indentLevel	The level to indent
 	 */
 	public static void doBreakIndent(StringBuffer output, int indentLevel) {
-		output.append(System.lineSeparator());
+		output.append(System.lineSeparator());		
 		doIndent(output, indentLevel);
 	}
 	

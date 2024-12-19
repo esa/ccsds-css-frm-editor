@@ -37,6 +37,8 @@ public class ExportWriterContext {
 	
 	private boolean generateOnlyCfgParams = false;
 	
+	private String xsdSubstitutionGroup;
+	
 	private static ExportWriterContext instance;
 	
 	private CompoundCommand compoundCommand;
@@ -92,6 +94,14 @@ public class ExportWriterContext {
 
 	public boolean getGenerateOnlyCfgParams() {
 		return generateOnlyCfgParams;
+	}
+	
+	public void setXsdSubstitutionGroup(String xsdSubstitutionGroup) {
+		this.xsdSubstitutionGroup = xsdSubstitutionGroup;
+	}
+	
+	public String getXsdSubstitutionGroup() {
+		return this.xsdSubstitutionGroup;
 	}
 	
 	public CompoundCommand getCompoundCommand() {

@@ -28,7 +28,7 @@ import ccsds.fr.type.model.frtypes.ObjectIdentifier;
 import ccsds.fr.type.model.frtypes.impl.TypeDefinitionImpl;
 
 /**
- * For XSD export all configuration parameter shall be below an FR XSD type.
+ * For XSD export, all (configuration) parameter shall be below an FR XSD type.
  * However, the type FunctionalResource is not from fr.type.model. So this adapter
  * actually adapts the FR as a type for XSD writing. 
  */
@@ -47,9 +47,12 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
 		if(ExportWriterContext.instance().getGenerateFrim() == true) {
 			writeXsdFrim(indentLevel, output, oid);
+			if(ExportWriterContext.instance().getXsdSubstitutionGroup() != null && ExportWriterContext.instance().getXsdSubstitutionGroup().length() > 0) {				
+				writeXsdFrParamElements(indentLevel, output, -1, ExportWriterContext.instance().getXsdSubstitutionGroup()); // generate an element for every parameter with a substitution group attribute
+			}
 		} else {
 			writeXsdFrm(indentLevel, output, oid);
-			writeXsdFrmElements(indentLevel, output, -1); // for CSSM element definitions are used to define individual parameters
+			writeXsdFrParamElements(indentLevel, output, -1, null); // for CSSM element definitions are used to define individual parameters
 		}
 	}
 
@@ -87,7 +90,7 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 		}
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.ALL);
 		
-		writeXsdFrmElements(indentLevel, output, 0);
+		writeXsdFrParamElements(indentLevel, output, 0, null);
 		
 		myIndent--;
 		XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.ALL);
@@ -124,24 +127,35 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 	}
 	
 	/**
-	 * Write for each FR configurable parameter an element
+	 * Write for the FR member a parameter an element. Generation depending on ExportWriterContext settings
 	 * @param indentLevel		Level of indentation
 	 * @param output			The StringBuffer for the output
 	 * @param minOccurs			A value for the minOccurs attribute, generated for values >= 0
+	 * @param substitutionGroup If non-null, will generate an substitutionGroup="<@param>" attribute
 	 */
-	private void writeXsdFrmElements(int indentLevel, StringBuffer output, int minOccurs) {
+	private void writeXsdFrParamElements(int indentLevel, StringBuffer output, int minOccurs, String substitutionGroup) {
+		XmlHelper.doBreakIndent(output, indentLevel);
 		try {
 			for( Parameter p : fr.getParameter()) {
 				if((p.isConfigured() && suppressConfigParam(p.getAnnotation()) == false )  
 						|| ExportWriterContext.instance().getGenerateOnlyCfgParams() == false) {
+					XmlAttribute substitutionGroupAtr = null;
+					
+					// add a substitution group attribute if non-null
+					if(substitutionGroup != null ) {
+						substitutionGroupAtr = new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, ExportWriterContext.instance().getXsdSubstitutionGroup());
+					}
+					
 					if(p.getTypeDef() != null) {
 						if(minOccurs >= 0) {
 						XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
 								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED),
+								substitutionGroupAtr,
 								new XmlAttribute(XmlHelper.MIN_OCCURS, Integer.toString(minOccurs)));
 						} else {
 							XmlHelper.writeElement(output, indentLevel, XmlHelper.ELEMENT, new XmlAttribute(XmlHelper.NAME, XmlHelper.firstCharLowerCase(p.getClassifierWellFormed())),
-								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED));							
+								substitutionGroupAtr,
+								new XmlAttribute(XmlHelper.TYPE, p.getTypeDef().getName()+XmlHelper.NAMED));
 						}
 					}
 				}
@@ -183,7 +197,16 @@ public class FrXsdExportAdapter extends TypeDefinitionImpl {
 			XmlHelper.writeEndElement(output, indentLevel+myIndent, XmlHelper.COMPLEX_TYPE);		
 			XmlHelper.doBreakIndent(output, indentLevel);
 		}
-		// write an FR element
+		
+		// Write an FRIM element for the substitution group 'functionalResourceInstance' depending if the substitution group for parameters is present
+		if(ExportWriterContext.instance().getXsdSubstitutionGroup() != null && ExportWriterContext.instance().getXsdSubstitutionGroup().length() > 0) {
+		XmlHelper.writeElement(output, indentLevel+myIndent++, XmlHelper.ELEMENT,
+				new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrBaseElement(fr.getClassifierWellFormed())),
+				new XmlAttribute(XmlHelper.TYPE, XmlHelper.getFrType(fr.getClassifierWellFormed())),
+				new XmlAttribute(XmlHelper.SUBSTITUTION_GROUP, XmlHelper.getFrimBaseElementName()));
+		}
+		
+		// write an FRIM type
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_TYPE, new XmlAttribute(XmlHelper.NAME, XmlHelper.getFrType(fr.getClassifierWellFormed())));
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.COMPLEX_CONTENT);
 		XmlHelper.writeStartElement(output, indentLevel+myIndent++, XmlHelper.EXTENSION, new XmlAttribute(XmlHelper.BASE, XmlHelper.getFrimBaseType()));

@@ -62,6 +62,11 @@ public class FrPreferencePage
 					getFieldEditorParent()));
 		addField(
 				new StringFieldEditor(
+					FrPreferenceConstants.P_PARAMS_SUBSTITUTION_GROUP,
+					"Name of XSD substitution group for parameters (empty for no substitution group)",
+					getFieldEditorParent()));
+		addField(
+				new StringFieldEditor(
 					FrPreferenceConstants.P_FRM_TARGET_NS,
 					"Functional Resource Model XSD Target Namespace",
 					getFieldEditorParent()));

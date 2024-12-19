@@ -34,6 +34,7 @@ public class FrPreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(FrPreferenceConstants.P_FRIM_GENERATION, false);
 		store.setDefault(FrPreferenceConstants.P_GENERATE_CFGPARAMS_ONLY, true);
+		store.setDefault(FrPreferenceConstants.P_PARAMS_SUBSTITUTION_GROUP, XmlHelper.FRM_CONFIG_PARAM);
 		store.setDefault(FrPreferenceConstants.P_FRM_TARGET_NS, XmlHelper.FRM_NS);
 		store.setDefault(FrPreferenceConstants.P_FRIM_TARGET_NS, XmlHelper.FRIM_NS);
 	}

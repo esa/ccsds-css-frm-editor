@@ -310,6 +310,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		XmlHelper.writeElement(output, ++indentLevel, XmlHelper.ELEMENT,
 				new XmlAttribute(XmlHelper.NAME, "expressionReference"),
 				new XmlAttribute(XmlHelper.TYPE, EXPRESSION_REF),
+				new XmlAttribute(XmlHelper.MIN_OCCURS, XmlHelper.ZERO),
 				new XmlAttribute(XmlHelper.MAX_OCCURS, XmlHelper.UNBOUNDED));
 		
 		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.SEQUENCE);
@@ -432,6 +433,15 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 		XmlHelper.writeEndElement(output, --indentLevel, XmlHelper.COMPLEX_TYPE);		
 		
 		XmlHelper.doBreakIndent(output, indentLevel);
+		
+		// <xsd:element abstract="true" name="frmConfigParameter" type="ParameterBaseType"/>
+		if(ExportWriterContext.instance().getXsdSubstitutionGroup() != null && ExportWriterContext.instance().getXsdSubstitutionGroup().length() > 0)
+		{			
+			XmlHelper.writeElement(output, indentLevel++, XmlHelper.ELEMENT,
+					new XmlAttribute(XmlHelper.ABSTRACT, "true"),
+					new XmlAttribute(XmlHelper.NAME, ExportWriterContext.instance().getXsdSubstitutionGroup()),
+					new XmlAttribute(XmlHelper.TYPE, XmlHelper.getParameterBaseType()));
+		}
 	}		
 	
 	/**
@@ -509,6 +519,7 @@ public class CreateFrAsnXsdHandler extends AbstractHandler implements IHandler {
 			IPreferenceStore store = Activator.getDefault().getPreferenceStore();			
 			ExportWriterContext.instance().setGenerateFrim(store.getBoolean(FrPreferenceConstants.P_FRIM_GENERATION));
 			ExportWriterContext.instance().setGenerateOnlyCfgParams(store.getBoolean(FrPreferenceConstants.P_GENERATE_CFGPARAMS_ONLY));
+			ExportWriterContext.instance().setXsdSubstitutionGroup(store.getString(FrPreferenceConstants.P_PARAMS_SUBSTITUTION_GROUP));
 			ExportWriterContext.instance().setTargetNsFrm(store.getString(FrPreferenceConstants.P_FRM_TARGET_NS));
 			ExportWriterContext.instance().setTargetNsFrim(store.getString(FrPreferenceConstants.P_FRIM_TARGET_NS));
 			
