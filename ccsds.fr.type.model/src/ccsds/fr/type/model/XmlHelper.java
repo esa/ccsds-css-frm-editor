@@ -617,7 +617,11 @@ public class XmlHelper {
 		if(object.getSizeConstraint() != null && object.getSizeConstraint().size() > 0) {
 			// we can only write one size constraint
 			attributes.add(new XmlAttribute(MIN_OCCURS, Long.toString(object.getSizeConstraint().get(0).getMin())));
-			attributes.add(new XmlAttribute(MAX_OCCURS, Long.toString(object.getSizeConstraint().get(0).getMax())));
+			if(object.getSizeConstraint().get(0).getMax() == -1) {
+				attributes.add(new XmlAttribute(MAX_OCCURS, UNBOUNDED));
+			} else {
+				attributes.add(new XmlAttribute(MAX_OCCURS, Long.toString(object.getSizeConstraint().get(0).getMax())));
+			}
 		}
 		
 		XmlHelper.writeStartElement(typeOutput, typeIndent+1, SEQUENCE, attributes.toArray(new XmlAttribute[0]));

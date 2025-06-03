@@ -299,6 +299,22 @@ public abstract class StructuredSizeConstrainedTypeImpl extends StructuredTypeIm
 	 */
 	@Override
 	public void writeXsd(int indentLevel, StringBuffer output, ObjectIdentifier oid, Map<String, String> properties) {
+
+		// a SET OF or SEQUENCE of without size constraints shall have an unbounded pper size.
+		// We need to add an unbounded upper size to override the XSD mxOccurs=1 default
+		boolean addedSizeConstraints = false;
+		if(getSizeConstraint() == null || getSizeConstraint().size() == 0) {
+			addedSizeConstraints = true;
+			getSizeConstraint().add(FrtypesFactoryImpl.eINSTANCE.createSizeConstraint());
+			getSizeConstraint().get(0).setMax(-1);
+			getSizeConstraint().get(0).setMin(0);
+		}
+		
 		XmlHelper.writeStructuredSameType(indentLevel, output, this, getElements(), oid, properties);
+		
+		if(addedSizeConstraints == true) {
+			getSizeConstraint().clear();
+		}
+		
 	}
 } //StructuredSizeConstrainedTypeImpl
