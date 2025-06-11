@@ -7,7 +7,12 @@ https://github.com/esa/ccsds-css-frm-editor/tree/master/ccsds.fr.model.releng.fe
 A github repository hosting an eclipse p2 update site is available here:
 https://github.com/esa/ccsds-css-frm-editor-p2
 
-*** FRM Installation
+To install the FRM editor into eclipse, add the above update site for eclipse.
+Help -> Install New Software... -> Add...
+
+Select the added update site and install ccsds.fr.model.
+
+*** Manual FRM editor Installation
 
 1) Install EEF (if not yet installed)
 	- Help -> Install New Software
