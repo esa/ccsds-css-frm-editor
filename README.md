@@ -1,6 +1,9 @@
 This is the CCSDS Functional Resource Editor project. It provides eclipse plugins to edit Functional Resources as available at SANA in eclipse:
 https://sanaregistry.org/r/functional_resources/
 
+Functional Resource Model Editor documentation is here:
+https://github.com/esa/ccsds-css-frm-editor/tree/master/ccsds.fr.model.releng.feature/doc
+
 A github repository hosting an eclipse p2 update site is available here:
 https://github.com/esa/ccsds-css-frm-editor-p2
 
