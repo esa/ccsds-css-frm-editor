@@ -59,7 +59,7 @@ public class TreeLabelProvider extends ColumnLabelProvider {
 				e.printStackTrace();
 			}
 		} else if(element instanceof ExportWriter) {
-			StringBuffer asn1Buffer = new StringBuffer();
+			StringBuffer asn1Buffer = new StringBuffer("------------------------------------------------------------------------------------------------------------------------------\n");
 			((ExportWriter)element).writeAsn1(0, asn1Buffer);
 			
 			return asn1Buffer.toString();
