@@ -8,7 +8,7 @@
 		indent="yes" />
 
 	<xsl:template match="/">
-					<xsl:text>Parameter OID, Type, Classifier, Configured, Annotations, FR, Stratum</xsl:text> 
+					<xsl:text>Parameter OID, Type, Classifier, Configured, Engineering Unit, Annotations, FR, Stratum</xsl:text> 
 					<xsl:text>&#xa;</xsl:text>
 					<xsl:apply-templates select="//parameter" />
 					<xsl:apply-templates select="//value" />
@@ -56,6 +56,12 @@
 		
 		<!-- Configured -->
 		<xsl:value-of select="@configured" />
+		<xsl:text>,</xsl:text>	
+
+		<!-- Engineering Unit -->
+		<xsl:text>"</xsl:text>
+		<xsl:value-of select="@engineeringUnit" />
+		<xsl:text>"</xsl:text>
 		<xsl:text>,</xsl:text>	
 		
 		<!-- Annotation -->
