@@ -2,6 +2,8 @@
  */
 package ccsds.FunctionalResourceModel.impl;
 
+import ccsds.FunctionalResourceModel.FunctionalResourceModelFactory;
+
 /*-
  * #%L
  * CCSDS Functional Resource Model
@@ -19,6 +21,8 @@ package ccsds.FunctionalResourceModel.impl;
 import ccsds.FunctionalResourceModel.FunctionalResourceModelPackage;
 import ccsds.FunctionalResourceModel.Oid;
 import java.util.Collection;
+import java.util.Objects;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -161,5 +165,51 @@ public class OidImpl extends MinimalEObjectImpl.Container implements Oid {
 		
 		return result.toString();
 	}
+	
+	/**
+	 * Prints the OID as a string
+	 * @generated NOT
+	 */	
+	public static Oid fromString(String oidString) {
+		Oid o = FunctionalResourceModelFactory.eINSTANCE.createOid();
+		String[] oidBits = oidString.split("\\.");
+		if(oidBits == null || oidBits.length == 0) {
+			return null;
+		}
+		
+		try {
+			for(String oidBit : oidBits) {
+				if(oidBit.length() > 0) {
+					o.getOidBit().add(Integer.parseInt(oidBit));
+				}
+			}
+		} catch(Exception e) { 
+			return null;
+		}
+		
+		return o;
+	}
+	
+	/**
+	 * An implementation of equals for OIDs
+	 * @generated NOT
+	 */	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Oid) {
+			return this.oidBit.equals(((Oid)o).getOidBit());
+		}
+		
+		return false;
+	}
 
+	/**
+	 * An implementation of hash for OIDs
+	 * @generated NOT
+	 */	
+	@Override
+	public int hashCode() {
+		return Objects.hash(oidBit);
+	}
+	
 } //OidImpl

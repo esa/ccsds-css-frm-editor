@@ -5,6 +5,7 @@ Version 4.2.5 from TBD
 - Cope with FR and parameter names like /WSDS/DATA/PDATA -> WsdsDataPdata
 - optional expressionReference for FRIM XSDs
 - FRI elements with substitution group functionalResourceInstance
+- Added configuration level import from CSV. Right click an FRM file in Project Explorer
 
 Version 4.2.4 from 7.6.2023
 - FRM to FRIm ecore transformation creates now ecore classes fr the FRM types

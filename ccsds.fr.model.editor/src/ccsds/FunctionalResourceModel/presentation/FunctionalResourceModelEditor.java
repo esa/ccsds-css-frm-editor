@@ -695,7 +695,11 @@ public class FunctionalResourceModelEditor
 						 (new Runnable() {
 							  public void run() {
 								  firePropertyChange(IEditorPart.PROP_DIRTY);
-
+								  
+								  if (getEditorSite() != null && getEditorSite().getActionBars() != null) {
+									  getEditorSite().getActionBars().updateActionBars(); // update the undo / redo properly
+								  }
+								  
 								  // Try to select the affected objects.
 								  //
 								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();

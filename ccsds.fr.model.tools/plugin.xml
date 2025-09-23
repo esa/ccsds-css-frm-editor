@@ -92,6 +92,28 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="fr.import.config.csv"
+               icon="icons/auth_entity.gif"
+               label="Import Configuration Level CSV"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -182,6 +204,28 @@
                </with>
             </visibleWhen>
          </command>
+         <command
+               commandId="fr.import.config.csv"
+               icon="icons/auth_entity.gif"
+               label="Import Configuration Level CSV"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="frm">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -223,6 +267,10 @@
       <handler
             class="ccsds.handlers.CreateFrAsnXsdHandler"
             commandId="fr.create.asn1">
+      </handler>
+      <handler
+            class="ccsds.handlers.ImportConfigCsvHandler"
+            commandId="fr.import.config.csv">
       </handler>
    </extension>
    <extension
